@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en" data-bs-theme="blue-theme">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HKDSE 中文 Past Paper |  - dse.best</title>
+  <!--favicon-->
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
+  <meta name="keywords" content="dse past paper, dse past paper 中文, dselife, 2025 dse, english dse past paper, physics dse past paper, dse數學, ict dse past paper, dse m1 m2 past paper, dse maths past paper, dse00, dse VA, dse chem past paper by year, 2026 DSE時間表, DSE成績, DSE cut off, DSE放榜, DSE放榜日期, DSE視覺藝術, dsebest">
+  <meta name="robots" content="index, follow">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="HKDSE 歷屆試題 Past Paper | 中文、英文、數學、BAFS等 (2025) - dse.best">
+  <meta property="og:description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
+  <!--<meta property="og:image" content="assets/images/preview.png">-->
+  <meta property="og:url" content="https://www.dse.best/">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#007bff">
+  <!-- loader-->
+	<link href="assets/css/pace.min.css" rel="stylesheet">
+	<script src="assets/js/pace.min.js"></script>
+  <!--plugins-->
+  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
+  <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
+  <!--bootstrap css-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <!--main css-->
+  <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
+  <link href="sass/main.css" rel="stylesheet">
+  <link href="sass/dark-theme.css" rel="stylesheet">
+  <link href="sass/blue-theme.css" rel="stylesheet">
+  <link href="sass/semi-dark.css" rel="stylesheet">
+  <link href="sass/bordered-theme.css" rel="stylesheet">
+  <link href="sass/responsive.css" rel="stylesheet">
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XB60B3MXHH');
+</script>
+
+</head>
+
+<body>
+  <script>
+    (async function() {
+      // Fetch file host and paper data
+      const [mainRes, chineseRes] = await Promise.all([
+    fetch('config/main.json'),
+    fetch('config/chinese.json')
+  ]);
+      const mainData = await mainRes.json();
+      const chineseData = await chineseRes.json();
+      const fileHost = mainData.file_host.replace(/\/$/, '');
+    
+      // Find all download buttons with the data-paper-id attribute
+      document.querySelectorAll('a[data-paper-id]').forEach(btn => {
+        const paperId = btn.getAttribute('data-paper-id');
+        const filename = chineseData[paperId];
+        if (filename) {
+          btn.href = `${fileHost}/chinese/${filename}`;
+          btn.setAttribute('download', filename);
+        } else {
+          // Optional: hide or disable the button if file not found
+          btn.classList.add('disabled');
+          btn.href = "#";
+        }
+      });
+    })();
+    </script>
+    
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand align-items-center gap-4">
+      <div class="btn-toggle">
+        <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
+      </div>
+      <div class="search-bar flex-grow-1">
+        <div class="position-relative">
+          <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
+          <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+          <span class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+          <div class="search-popup p-3">
+            <div class="card rounded-4 overflow-hidden">
+              <div class="card-body search-content" style="display: none;">
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav gap-1 nav-right-links align-items-center">
+        <li class="nav-item d-lg-none mobile-search-btn">
+          <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img src="assets/images/county/06.png" width="22" alt="">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/06.png" width="20" alt=""><span class="ms-2">中文</span></a>
+            </li>
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/05.png" width="20" alt=""><span class="ms-2">English</span></a>
+            </li>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" style="display: none;">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
+            data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
+            <span class="badge-notify">5</span>
+          </a>
+          <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+            <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
+              <h5 class="notiy-title mb-0">Notifications</h5>
+              <div class="dropdown">
+              </div>
+            </div>
+            <div class="notify-list">
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    </nav>
+  </header>
+  <!--end top header-->
+
+   <!--start sidebar-->
+   <aside class="sidebar-wrapper" data-simplebar="init">
+    <div class="sidebar-header">
+      <div class="logo-icon">
+        <a href="index.html">
+          <img src="assets/images/logo-icon.png" class="logo-img" alt="dsebest-logo">
+        </a>
+      </div>
+      <div class="logo-name flex-grow-1">
+        <a href="index.html" class="text-decoration-none">
+          <h5 class="mb-0">DSEBest</h5>
+        </a>
+      </div>
+      <div class="sidebar-close">
+        <span class="material-icons-outlined">close</span>
+      </div>
+    </div>
+    <div class="sidebar-nav">
+      <!--navigation-->
+      <ul class="metismenu" id="sidenav">
+        <li>
+          <a href="index.html">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #007bff;">home</i>
+            </div>
+            <div class="menu-title">主頁</div>
+          </a>
+        </li>
+        <li class="menu-label">核心科目</li>
+        <li>
+          <a href="chinese">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e91e63;">book</i>
+            </div>
+            <div class="menu-title">中文</div>
+          </a>
+        </li>
+        <li>
+          <a href="english">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #4caf50;">book</i>
+            </div>
+            <div class="menu-title">英文</div>
+          </a>
+        </li>
+        <li>
+          <a href="math">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff9800;">calculate</i>
+            </div>
+            <div class="menu-title">數學</div>
+          </a>
+        </li>
+        <li>
+          <a href="citizen">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #9c27b0;">school</i>
+            </div>
+            <div class="menu-title">通識教育</div>
+          </a>
+        </li>
+        <li class="menu-label">選修科目</li>
+        <li>
+          <a href="physics">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #f44336;">bolt</i>
+            </div>
+            <div class="menu-title">物理</div>
+          </a>
+        </li>
+        <li>
+          <a href="chemistry">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #3f51b5;">biotech</i>
+            </div>
+            <div class="menu-title">化學</div>
+          </a>
+        </li>
+        <li>
+          <a href="biology">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #795548;">eco</i>
+            </div>
+            <div class="menu-title">生物</div>
+          </a>
+        </li>
+        <li>
+          <a href="ict">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #607d8b;">computer</i>
+            </div>
+            <div class="menu-title">資訊及通訊科技</div>
+          </a>
+        </li>
+        <li>
+          <a href="m1">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #8bc34a;">functions</i>
+            </div>
+            <div class="menu-title">數學延伸部分 (M1)</div>
+          </a>
+        </li>
+        <li>
+          <a href="m2">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #cddc39;">functions</i>
+            </div>
+            <div class="menu-title">數學延伸部分 (M2)</div>
+          </a>
+        </li>
+        <li>
+          <a href="geography">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #009688;">public</i>
+            </div>
+            <div class="menu-title">地理</div>
+          </a>
+        </li>
+        <li>
+          <a href="history">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #607d8b;">book</i>
+            </div>
+            <div class="menu-title">歷史</div>
+          </a>
+        </li>
+        <li>
+          <a href="chinese-history">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #795548;">book</i>
+            </div>
+            <div class="menu-title">中國歷史</div>
+          </a>
+        </li>
+        <li>
+          <a href="economics">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff5722;">attach_money</i>
+            </div>
+            <div class="menu-title">經濟</div>
+          </a>
+        </li>
+        <li>
+          <a href="bafs">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #00bcd4;">business</i>
+            </div>
+            <div class="menu-title">企業、會計與財務概論</div>
+          </a>
+        </li>
+        <li>
+          <a href="visual-arts">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #03a9f4;">palette</i>
+            </div>
+            <div class="menu-title">視覺藝術</div>
+          </a>
+        </li>
+        <li class="menu-label">其他</li>
+        <li>
+          <a href="contact">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
+            </div>
+            <div class="menu-title">聯絡我們</div>
+          </a>
+        </li>
+        <li>
+          <a href="disclaimer">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">warning</i>
+            </div>
+            <div class="menu-title">免責聲明</div>
+          </a>
+        </li>
+        <li>
+          <a href="privacy-policy">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">security</i>
+            </div>
+            <div class="menu-title">私隱政策</div>
+          </a>
+        </li>
+      </ul>
+      <!--end navigation-->
+    </div>
+  </aside>
+<!--end sidebar-->
+
+  <!--start main wrapper-->
+  <main class="main-wrapper">
+    <div class="main-content">
+      <!--breadcrumb-->
+      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">中文</div>
+        <div class="ps-3">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+              <li class="breadcrumb-item"><a href="index.html"><i class="bx bx-home-alt"></i></a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">DSE Past Paper</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <!--end breadcrumb-->
+  
+      <div class="card rounded-4" style="height: auto;">
+        <div class="card-body">
+          <h1 class="mb-4">DSE 中文 歷屆試題 Past Paper</h1>
+          <p class="mb-4">
+            歡迎瀏覽DSE中文歷屆試題。 在此，您可以找到按年份排列的試題及答案，助您備考。
+          </p>
+          <div class="alert alert-border-primary alert-dismissible fade show">
+            <div class=""><b>最後更新: </b>1/7/2025</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <!-- Year-wise Past Paper Listing -->
+           
+<!-- 模擬試卷 (Sample Papers) -->
+<h2 style="text-align: center;">模擬試卷</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">Sample Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">Sample Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">Sample Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">Sample Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷五</h5><p class="card-text">Sample Paper 5</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P5"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">Sample Paper Answers</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 練習試卷 (Practice Papers) -->
+<h2 style="text-align: center;">練習試卷</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">Practice Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">Practice Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">Practice Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">Practice Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷五</h5><p class="card-text">Practice Paper 5</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P5"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">Practice Paper Answers</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+          <!-- 2023 -->
+<h2 style="text-align: center;">2023</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2023 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2023 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2023 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2023 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2022 -->
+<h2 style="text-align: center;">2022</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2022 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2022 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2022 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2022 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2022 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2021 -->
+<h2 style="text-align: center;">2021</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2021 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2021 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2021 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2021 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2021 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2020 -->
+<h2 style="text-align: center;">2020</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2020 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2020 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2020 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2020 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2020 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2019 -->
+<h2 style="text-align: center;">2019</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2019 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2019 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2019 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2019 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2019 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2019 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2018 -->
+<h2 style="text-align: center;">2018</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2018 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2018 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2018 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2018 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2018 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2018 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2017 -->
+<h2 style="text-align: center;">2017</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2017 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2017 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2017 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2017 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2017 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2017 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2016 -->
+<h2 style="text-align: center;">2016</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2016 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2016 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2016 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2016 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2016 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2016 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2015 -->
+<h2 style="text-align: center;">2015</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2015 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2015 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2015 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2015 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷五</h5><p class="card-text">2015 Paper 5</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P5"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2015 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2015 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2014 -->
+<h2 style="text-align: center;">2014</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2014 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2014 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2014 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2014 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷五</h5><p class="card-text">2014 Paper 5</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P5"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">評分參考</h5><p class="card-text">2014 Marking Scheme</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_pe_r"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2014 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2013 -->
+<h2 style="text-align: center;">2013</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2013 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2013 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2013 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2013 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷五</h5><p class="card-text">2013 Paper 5</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P5"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2013 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+
+<!-- 2012 -->
+<h2 style="text-align: center;">2012</h2>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷一 閱讀</h5><p class="card-text">2012 Paper 1</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P1"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷二 寫作</h5><p class="card-text">2012 Paper 2</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P2"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷三 聆聽</h5><p class="card-text">2012 Paper 3</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P3"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷四 說話</h5><p class="card-text">2012 Paper 4</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P4"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">卷五</h5><p class="card-text">2012 Paper 5</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P5"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+  <div class="col"><div class="card h-100"><div class="card-body"><h5 class="card-title">答案</h5><p class="card-text">2012 Answer Booklet</p><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_ans"><i class="material-icons-outlined">cloud_download</i>下載 Download</a></div></div></div>
+</div>
+<hr class="my-4">
+  
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--end main wrapper-->
+
+  <!--start overlay-->
+     <div class="overlay btn-toggle"></div>
+  <!--end overlay-->
+
+   <!--start footer-->
+   <footer class="page-footer">
+    <p class="mb-0">Copyright © 2024. All right reserved.</p>
+  </footer>
+  <!--end footer-->
+
+
+  <!--start switcher-->
+  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+    <i class="material-icons-outlined">tune</i>
+  </button>
+  
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
+    <div class="offcanvas-header border-bottom h-70">
+      <div class="">
+        <h5 class="mb-0">主題自定義</h5>
+        <p class="mb-0">Customize your theme</p>
+      </div>
+      <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+        <i class="material-icons-outlined">close</i>
+      </a>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <div class="row g-3">
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
+            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BlueTheme">
+              <span class="material-icons-outlined">contactless</span>
+              <span>藍色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
+            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="LightTheme">
+              <span class="material-icons-outlined">light_mode</span>
+              <span>淺色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
+            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="DarkTheme">
+              <span class="material-icons-outlined">dark_mode</span>
+              <span>深色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
+            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="SemiDarkTheme">
+              <span class="material-icons-outlined">contrast</span>
+              <span>半深色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
+            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BoderedTheme">
+              <span class="material-icons-outlined">border_style</span>
+              <span>邊框</span>
+            </label>
+          </div>
+        </div><!--end row-->
+      </div>
+    </div>
+  </div>
+  <!--start switcher-->
+  <!--bootstrap js-->
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <!--plugins-->
+  <script src="assets/js/jquery.min.js"></script>
+  <!--plugins-->
+  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+  <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
+  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+	   new PerfectScrollbar(".sidebar-wrapper");
+     new PerfectScrollbar(".main-content");
+     setTimeout(function() {
+       Pace.stop();
+     }, 800);
+  </script>
+</body>
+
+</html>
