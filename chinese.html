@@ -69,7 +69,7 @@
         const filename = chineseData[paperId];
         if (filename) {
           btn.href = `${fileHost}/chinese/${filename}`;
-          btn.setAttribute('download', filename);
+          // btn.setAttribute('download', filename);
         } else {
           // Optional: hide or disable the button if file not found
           btn.classList.add('disabled');
