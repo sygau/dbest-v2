@@ -11,20 +11,6 @@ export default function middleware(req) {
         'max-age=31536000; includeSubDomains; preload',
     },
   });
-},
-
-{
-  "headers": [
-    {
-      "source": "/(.*)",
-      "has": [
-        { "type": "host", "value": "dbest-v1-git-main-1fus-projects.vercel.app" }
-      ],
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex" }
-      ]
-    }
-  ]
 }
 
 
