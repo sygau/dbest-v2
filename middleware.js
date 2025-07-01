@@ -17,13 +17,14 @@ export default function middleware(req) {
   "headers": [
     {
       "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "dbest-v1-git-main-1fus-projects.vercel.app" }
+      ],
       "headers": [
-        {
-          "key": "x-robots-tag",
-          "value": "noindex"
-        }
+        { "key": "X-Robots-Tag", "value": "noindex" }
       ]
     }
   ]
 }
+
 
