@@ -12,3 +12,18 @@ export default function middleware(req) {
     },
   });
 }
+
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "x-robots-tag",
+          "value": "noindex"
+        }
+      ]
+    }
+  ]
+}
+
