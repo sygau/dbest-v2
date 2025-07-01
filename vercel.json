@@ -8,5 +8,16 @@
   ],
   "rewrites": [
     { "source": "/:page", "destination": "/:page.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "your-project.vercel.app" }
+      ],
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
+    }
   ]
 }
