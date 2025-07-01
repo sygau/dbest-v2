@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/jable",
+      "destination": "https://jable.tv/",
+      "permanent": false
+    }
+  ]
+}
