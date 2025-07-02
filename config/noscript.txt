@@ -1,0 +1,18 @@
+<noscript>
+  <div style="position:fixed;top:32px;right:32px;z-index:99999;max-width:360px;">
+    <div class="card p-2 rounded-4 text-center shadow" style="background:transparent;">
+      <div class="card-body bg-grd-danger rounded-4" style="background:linear-gradient(90deg,#ff5252 0,#ff1744 100%);">
+        <div class="d-flex flex-column gap-2">
+          <span class="mb-3 text-white rounded-circle d-flex align-items-center justify-content-center" style="width:48px;height:48px;margin:auto;background:rgba(255,255,255,0.08);">
+            <i class="material-icons-outlined fs-2" style="font-size:2rem;">dangerous</i>
+          </span>
+          <h6 class="mb-1 text-white">請啟用 JavaScript</h6>
+          <div class="text-white" style="font-size:1rem;">
+            您的瀏覽器未啟用 JavaScript，本網站功能將無法正常運作。<br>
+            JavaScript is disabled in your browser. Please enable JavaScript to use this website.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</noscript>
