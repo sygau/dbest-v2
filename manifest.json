@@ -1,0 +1,21 @@
+{
+  "name": "DSEBest",
+  "short_name": "DBest",
+  "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f3e5f5",
+  "theme_color": "#8e24aa",
+  "icons": [ 
+    {
+      "src": "https://www.dse.best/assets/images/logo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://www.dse.best/assets/images/logo-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
