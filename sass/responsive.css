@@ -126,9 +126,6 @@
   .sidebar-wrapper .sidebar-header {
     position: relative !important;
   }
-  .sidebar-wrapper .sidebar-nav {
-    margin-top: 0 !important;
-  }
 }
 @media only screen and (max-width: 1199px) {
   .top-header .navbar {
