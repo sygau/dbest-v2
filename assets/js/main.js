@@ -12,6 +12,10 @@ $(function () {
 
   // new PerfectScrollbar(".mega-menu-widgets")
 
+  $(function () {
+    $('#sidenav').metisMenu();
+  });
+
    const savedTheme = localStorage.getItem("selectedTheme");
   if (savedTheme) {
     $("html").attr("data-bs-theme", savedTheme);
@@ -170,14 +174,14 @@ $(function () {
 
 
 
-  /* menu active 
+
 
   $(function () {
     for (var e = window.location, o = $(".metismenu li a").filter(function () {
       return this.href == e
     }).addClass("").parent().addClass("mm-active"); o.is("li");) o = o.parent("").addClass("mm-show").parent("").addClass("mm-active")
   });
-*/
+
 
 
 });
