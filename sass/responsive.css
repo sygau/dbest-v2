@@ -123,6 +123,9 @@
     cursor: move;
     transition: all 0.23s ease-out;
   }
+  .sidebar-wrapper .sidebar-header {
+    position: relative !important;
+  }
 }
 @media only screen and (max-width: 1199px) {
   .top-header .navbar {

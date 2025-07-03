@@ -89,7 +89,8 @@
   <link rel="apple-touch-icon" href="https://www.dse.best/assets/images/logo-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="DSEBest">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#1976d2">
 </head>
 
 <body>
@@ -754,22 +755,6 @@
     setTimeout(function () {
       Pace.stop();
     }, 680);
-  </script>
-  <!-- iOS/iPadOS Add to Home Screen Popup -->
-  <div id="iosInstall" style="display:none; position:fixed; bottom:20px; left:0; right:0; background:#fff3; padding:16px; text-align:center; z-index:1000;">
-    <b>安裝 DSEBest PWA App：</b> 請點擊 <span style="font-size:1.5em;">&#x1f5d2;</span> 然後選擇 <b>加入主畫面</b><br>
-    <button onclick="document.getElementById('iosInstall').style.display='none'" style="margin-top:8px;">關閉</button>
-  </div>
-  <script>
-  function isIos() {
-    return /iphone|ipad|ipod/i.test(navigator.userAgent);
-  }
-  function isInStandaloneMode() {
-    return ('standalone' in window.navigator) && window.navigator.standalone;
-  }
-  if (isIos() && !isInStandaloneMode()) {
-    document.getElementById('iosInstall').style.display = 'block';
-  }
   </script>
 </body>
 
