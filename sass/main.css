@@ -388,13 +388,9 @@ input::placeholder {
   background-color: #efefef;
 }
 .sidebar-wrapper .sidebar-nav {
+  margin-top: 70px;
   height: 100%;
   background-color: #ffffff;
-}
-@media screen and (min-width: 1200px) {
-  .sidebar-wrapper .sidebar-nav {
-    margin-top: 70px;
-  }
 }
 .sidebar-wrapper .sidebar-nav ul {
   padding: 10px;
@@ -542,16 +538,6 @@ input::placeholder {
   }
   body.toggled:not(.sidebar-hovered) .sidebar-bottom .dropdown-help {
     display: none;
-  }
-}
-@media (max-width: 1199px) {
-  .sidebar-wrapper .sidebar-header {
-    position: relative !important;
-    top: auto !important;
-    width: 100% !important;
-  }
-  .sidebar-wrapper .sidebar-nav {
-    margin-top: 0 !important;
   }
 }
 .chip {
