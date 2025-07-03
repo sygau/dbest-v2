@@ -9,7 +9,8 @@
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <!-- SEO Meta Tags -->
   <meta name="description" content="DSE 英文 English Past Paper 歷屆試題資源，涵蓋Reading, Listening, Writing, Speaking.。">
-  <meta name="keywords" content="dse english past paper,dse 英文 past paper, dse 英文 reading,dse 英文 writing, dse 英文 listening, dse 英文 ans, dse past paper reading, dse life english, 2025 dse english,2025 dse english paper 1, 2024 dse english,dse english paper 1, english paper 2, english paper 3, english paper 4, 2018 listening ans, dse reading ans, dse listening ans, paper 1 ans, paper 2 ans, paper 3 ans,  dse past paper writing, dse past paper listening, dse speaking past paper, dse ">
+  <meta name="keywords"
+    content="dse english past paper,dse 英文 past paper, dse 英文 reading,dse 英文 writing, dse 英文 listening, dse 英文 ans, dse past paper reading, dse life english, 2025 dse english,2025 dse english paper 1, 2024 dse english,dse english paper 1, english paper 2, english paper 3, english paper 4, 2018 listening ans, dse reading ans, dse listening ans, paper 1 ans, paper 2 ans, paper 3 ans,  dse past paper writing, dse past paper listening, dse speaking past paper, dse ">
   <meta name="robots" content="index, follow">
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="HKDSE 英文 English Past Paper | Reading, Listening, Writing, Speaking - dse.best">
@@ -19,16 +20,18 @@
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#007bff">
   <!-- loader-->
-	<link href="assets/css/pace.min.css" rel="stylesheet">
-	<script src="assets/js/pace.min.js"></script>
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
   <!--plugins-->
-  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
+  <link href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/css/perfect-scrollbar.min.css" rel="stylesheet">
+  <!--<link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet">s-->
+  <!--<link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">s-->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.css" rel="stylesheet"> -->
   <!--bootstrap css-->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href=" https://fonts.gstatic.com " crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <!--main css-->
   <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
@@ -38,31 +41,45 @@
   <link href="sass/semi-dark.css" rel="stylesheet">
   <link href="sass/bordered-theme.css" rel="stylesheet">
   <link href="sass/responsive.css" rel="stylesheet">
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XB60B3MXHH');
+  <script>
+    try {
+      var theme = localStorage.getItem('selectedTheme');
+      if (theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    } catch (e) { }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
+  <script defer>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XB60B3MXHH');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org ",
+    "@type": "WebSite",
+    "name": "DSEBest",
+    "url": "https://www.dse.best/ "
+  }
 </script>
 
 </head>
 
 <body>
   <script>
-    (async function() {
+    (async function () {
       // Fetch file host and paper data
       const [mainRes, chineseRes] = await Promise.all([
-    fetch('config/main.json'),
-    fetch('config/english.json')
-  ]);
+        fetch('config/main.json'),
+        fetch('config/english.json')
+      ]);
       const mainData = await mainRes.json();
       const chineseData = await chineseRes.json();
       const fileHost = mainData.file_host.replace(/\/$/, '');
-    
+
       // Find all download buttons with the data-paper-id attribute
       document.querySelectorAll('a[data-paper-id]').forEach(btn => {
         const paperId = btn.getAttribute('data-paper-id');
@@ -77,71 +94,78 @@
         }
       });
     })();
-    </script>
-    
-  <!--start header-->
+  </script>
+
+ <!--start header-->
   <header class="top-header">
     <nav class="navbar navbar-expand align-items-center gap-4">
       <div class="btn-toggle">
-        <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
+        <a href="javascript:;" aria-label="menu"><i class="material-icons-outlined">menu</i></a>
       </div>
       <div class="search-bar flex-grow-1">
         <div class="position-relative">
           <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
-          <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
-          <span class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+          <span
+            class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+          <span
+            class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
           <div class="search-popup p-3">
             <div class="card rounded-4 overflow-hidden">
               <div class="card-body search-content" style="display: none;">
-                </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
       <ul class="navbar-nav gap-1 nav-right-links align-items-center">
         <li class="nav-item d-lg-none mobile-search-btn">
           <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img src="assets/images/county/06.png" width="22" alt="cn-icon">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"><img
+              src="assets/images/county/06.png" width="22" height="22" alt="cn-icon">
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/06.png" width="20" alt="cn-icon"><span class="ms-2">中文</span></a>
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="assets/images/county/06.png" width="20" height="20" alt="cn-icon" loading="lazy"><span
+                  class="ms-2">中文</span></a>
             </li>
-            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/05.png" width="20" alt="us-icon"><span class="ms-2">English</span></a>
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="assets/images/county/05.png" width="20" height="20" alt="us-icon" loading="lazy"><span
+                  class="ms-2">English</span></a>
             </li>
-            </li>
-          </ul>
         </li>
-        <li class="nav-item dropdown" style="display: none;">
-          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
-            data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
-            <span class="badge-notify">5</span>
-          </a>
-          <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
-            <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
-              <h5 class="notiy-title mb-0">Notifications</h5>
-              <div class="dropdown">
-              </div>
-            </div>
-            <div class="notify-list">
+      </ul>
+      </li>
+      <li class="nav-item dropdown" style="display: none;">
+        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
+          data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
+          <span class="badge-notify">5</span>
+        </a>
+        <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+          <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
+            <h5 class="notiy-title mb-0">Notifications</h5>
+            <div class="dropdown">
             </div>
           </div>
-        </li>
+          <div class="notify-list">
+          </div>
+        </div>
+      </li>
       </ul>
 
     </nav>
   </header>
   <!--end top header-->
 
-   <!--start sidebar-->
-   <aside class="sidebar-wrapper" data-simplebar="init">
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper">
     <div class="sidebar-header">
       <div class="logo-icon">
         <a href="index.html">
-          <img src="assets/images/logo-icon.png" class="logo-img" alt="dsebest-logo">
+          <img src="assets/images/logo-icon.webp" class="logo-img" alt="dsebest-logo" loading="lazy">
         </a>
       </div>
       <div class="logo-name flex-grow-1">
@@ -303,7 +327,7 @@
       <!--end navigation-->
     </div>
   </aside>
-<!--end sidebar-->
+  <!--end sidebar-->
 
   <!--start main wrapper-->
   <main class="main-wrapper">
@@ -322,7 +346,7 @@
         </div>
       </div>
       <!--end breadcrumb-->
-  
+
       <div class="card rounded-4" style="height: auto;">
         <div class="card-body">
           <h1 class="mb-4">DSE 英文 歷屆試題 Past Papers (By year)</h1>
@@ -337,182 +361,972 @@
           <hr class="my-4">
           <br>
           <!-- Year-wise Past Paper Listing -->
-<!-- 2023 -->
-<h2 style="text-align: center;">2023</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2023 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2023 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2023 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2023 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2023 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2023 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2023 -->
+          <h2 style="text-align: center;">2023</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2023 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2023 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2023 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2023 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2023 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2023 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2023_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2022 -->
-<h2 style="text-align: center;">2022</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2022 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2022 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2022 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2022 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2022 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2022 -->
+          <h2 style="text-align: center;">2022</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2022 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2022 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2022 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2022 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2022 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2022_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2021 -->
-<h2 style="text-align: center;">2021</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2021 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2021 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2021 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2021 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2021 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2021 -->
+          <h2 style="text-align: center;">2021</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2021 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2021 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2021 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2021 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2021 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2021_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2020 -->
-<h2 style="text-align: center;">2020</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2020 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2020 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2020 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2020 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2020 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2020 -->
+          <h2 style="text-align: center;">2020</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2020 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2020 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2020 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2020 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2020 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2020_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2019 -->
-<h2 style="text-align: center;">2019</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2019 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2019 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2019 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2019 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2019 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2019 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2019 -->
+          <h2 style="text-align: center;">2019</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2019 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2019 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2019 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2019 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2019 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2019 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2019_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2018 -->
-<h2 style="text-align: center;">2018</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2018 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2018 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2018 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2018 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2018 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2018 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2018 -->
+          <h2 style="text-align: center;">2018</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2018 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2018 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2018 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2018 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2018 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2018 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2018_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2017 -->
-<h2 style="text-align: center;">2017</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2017 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2017 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2017 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2017 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2017 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2017 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2017 -->
+          <h2 style="text-align: center;">2017</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2017 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2017 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2017 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2017 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2017 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2017 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2017_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2016 -->
-<h2 style="text-align: center;">2016</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2016 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2016 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2016 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2016 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2016 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2016 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2016 -->
+          <h2 style="text-align: center;">2016</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2016 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2016 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2016 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2016 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2016 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2016 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2016_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2015 -->
-<h2 style="text-align: center;">2015</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2015 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2015 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2015 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2015 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2015 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2015 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2015 -->
+          <h2 style="text-align: center;">2015</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2015 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2015 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2015 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2015 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2015 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2015 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2015_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2014 -->
-<h2 style="text-align: center;">2014</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2014 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2014 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2014 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2014 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2014 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2014 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2014 -->
+          <h2 style="text-align: center;">2014</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2014 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2014 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2014 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2014 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2014 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2014 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2014_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2013 -->
-<h2 style="text-align: center;">2013</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2013 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2013 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2013 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2013 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2013 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2013 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2013 -->
+          <h2 style="text-align: center;">2013</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2013 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2013 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2013 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2013 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2013 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2013 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2013_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- 2012 -->
-<h2 style="text-align: center;">2012</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">2012 Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">2012 Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">2012 Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">2012 Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Performance Descriptors</h5><p class="card-text">2012 Performance Descriptors</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_per"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">2012 Answer Booklet</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- 2012 -->
+          <h2 style="text-align: center;">2012</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">2012 Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">2012 Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">2012 Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">2012 Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Performance Descriptors</h5>
+                  <p class="card-text">2012 Performance Descriptors</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_per"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">2012 Answer Booklet</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2012_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- PRACTICE PAPERS -->
-<h2 style="text-align: center;">Practice Papers</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">Practice Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">Practice Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">Practice Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">Practice Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">Practice Paper Answers</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- PRACTICE PAPERS -->
+          <h2 style="text-align: center;">Practice Papers</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">Practice Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">Practice Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">Practice Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">Practice Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">Practice Paper Answers</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="pp_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
-<!-- SAMPLE PAPERS -->
-<h2 style="text-align: center;">Sample Papers</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 1 Reading</h5><p class="card-text">Sample Paper 1: Reading</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P1"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 2 Writing</h5><p class="card-text">Sample Paper 2: Writing</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P2"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 3 Listening & Integrated Skills</h5><p class="card-text">Sample Paper 3: Listening & Integrated Skills</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P3"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Paper 4 Speaking</h5><p class="card-text">Sample Paper 4: Speaking</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P4"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-  <div class="col"><div class="card h-100 d-flex flex-column"><div class="card-body"><h5 class="card-title">Answers</h5><p class="card-text">Sample Paper Answers</p></div><div class="card-footer bg-transparent border-0"><a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_ans"><i class="material-icons-outlined">cloud_download</i>Download</a></div></div></div>
-</div>
-<hr class="my-4">
+          <!-- SAMPLE PAPERS -->
+          <h2 style="text-align: center;">Sample Papers</h2>
+          <br>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 1 Reading</h5>
+                  <p class="card-text">Sample Paper 1: Reading</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P1"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 2 Writing</h5>
+                  <p class="card-text">Sample Paper 2: Writing</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P2"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 3 Listening & Integrated Skills</h5>
+                  <p class="card-text">Sample Paper 3: Listening & Integrated Skills</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P3"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Paper 4 Speaking</h5>
+                  <p class="card-text">Sample Paper 4: Speaking</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_P4"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                  <h5 class="card-title">Answers</h5>
+                  <p class="card-text">Sample Paper Answers</p>
+                </div>
+                <div class="card-footer bg-transparent border-0"><a href="#"
+                    class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="sp_ans"><i
+                      class="material-icons-outlined">cloud_download</i>Download</a></div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
 
         </div>
       </div>
@@ -521,23 +1335,25 @@
   <!--end main wrapper-->
 
   <!--start overlay-->
-     <div class="overlay btn-toggle"></div>
+  <div class="overlay btn-toggle"></div>
   <!--end overlay-->
 
-   <!--start footer-->
-   <footer class="page-footer">
+  <!--start footer-->
+  <footer class="page-footer">
     <p class="mb-0">
-      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html" style="color:inherit;text-decoration:underline;">聯絡我們</a>。
-    </p> 
+      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html"
+        style="color:inherit;text-decoration:underline;">聯絡我們</a>。
+    </p>
   </footer>
   <!--end footer-->
 
 
   <!--start switcher-->
-  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
+    type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
     <i class="material-icons-outlined">tune</i>
   </button>
-  
+
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
     <div class="offcanvas-header border-bottom h-70">
       <div class="">
@@ -553,35 +1369,45 @@
         <div class="row g-3">
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BlueTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BlueTheme">
               <span class="material-icons-outlined">contactless</span>
               <span>藍色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="LightTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="LightTheme">
               <span class="material-icons-outlined">light_mode</span>
               <span>淺色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="DarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="DarkTheme">
               <span class="material-icons-outlined">dark_mode</span>
               <span>深色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="SemiDarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="SemiDarkTheme">
               <span class="material-icons-outlined">contrast</span>
               <span>半深色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BoderedTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BoderedTheme">
               <span class="material-icons-outlined">border_style</span>
               <span>邊框</span>
             </label>
@@ -592,20 +1418,23 @@
   </div>
   <!--start switcher-->
   <!--bootstrap js-->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
-  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!--plugins-->
-  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-  <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
-  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/dist/perfect-scrollbar.min.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>-->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.js"></script> -->
   <script>
-	   new PerfectScrollbar(".sidebar-wrapper");
-     setTimeout(function() {
-       Pace.stop();
-     }, 800);
+    $(function () { "use strict"; new PerfectScrollbar(".notify-list"); new PerfectScrollbar(".search-content"); const e = localStorage.getItem("selectedTheme"); e && ($("html").attr("data-bs-theme", e), $(`#${e.charAt(0).toUpperCase() + e.slice(1).replace("-theme", "")}Theme`).prop("checked", !0)); $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme"), localStorage.setItem("selectedTheme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light"), localStorage.setItem("selectedTheme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark"), localStorage.setItem("selectedTheme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark"), localStorage.setItem("selectedTheme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme"), localStorage.setItem("selectedTheme", "bodered-theme") }), $(".btn-toggle").click(function () { $("body").hasClass("toggled") ? ($("body").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($("body").addClass("toggled"), $(".sidebar-wrapper").hover(function () { $("body").addClass("sidebar-hovered") }, function () { $("body").removeClass("sidebar-hovered") })) }), $(".sidebar-close").on("click", function () { $("body").removeClass("toggled") }), $(".dark-mode i").click(function () { $(this).text(function (e, t) { return "dark_mode" === t ? "light_mode" : "dark_mode" }) }), $(".dark-mode").click(function () { $("html").attr("data-bs-theme", function (e, t) { return "dark" === t ? "light" : "dark" }) }), $(document).ready(function () { $(window).on("scroll", function () { $(this).scrollTop() > 60 ? $(".top-header .navbar").addClass("sticky-header") : $(".top-header .navbar").removeClass("sticky-header") }) }), $(".email-toggle-btn").on("click", function () { $(".email-wrapper").toggleClass("email-toggled") }), $(".email-toggle-btn-mobile").on("click", function () { $(".email-wrapper").removeClass("email-toggled") }), $(".compose-mail-btn").on("click", function () { $(".compose-mail-popup").show() }), $(".compose-mail-close").on("click", function () { $(".compose-mail-popup").hide() }), $(".chat-toggle-btn").on("click", function () { $(".chat-wrapper").toggleClass("chat-toggled") }), $(".chat-toggle-btn-mobile").on("click", function () { $(".chat-wrapper").removeClass("chat-toggled") }), $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme") }), $(".search-control").click(function () { $(".search-popup").addClass("d-block"), $(".search-close").addClass("d-block") }), $(".search-close").click(function () { $(".search-popup").removeClass("d-block"), $(".search-close").removeClass("d-block") }), $(".mobile-search-btn").click(function () { $(".search-popup").addClass("d-block") }), $(".mobile-search-close").click(function () { $(".search-popup").removeClass("d-block") }) });
   </script>
+</body>
+<script>
+  new PerfectScrollbar(".sidebar-wrapper");
+  setTimeout(function () {
+    Pace.stop();
+  }, 680);
+</script>
 </body>
 
 </html>

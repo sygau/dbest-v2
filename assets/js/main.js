@@ -12,6 +12,38 @@ $(function () {
 
   // new PerfectScrollbar(".mega-menu-widgets")
 
+   const savedTheme = localStorage.getItem("selectedTheme");
+  if (savedTheme) {
+    $("html").attr("data-bs-theme", savedTheme);
+    // Set the corresponding radio button as checked
+    $(`#${savedTheme.charAt(0).toUpperCase() + savedTheme.slice(1).replace('-theme','') }Theme`).prop("checked", true);
+  }
+
+  // Theme switcher with localStorage
+  $("#BlueTheme").on("click", function () {
+    $("html").attr("data-bs-theme", "blue-theme");
+    localStorage.setItem("selectedTheme", "blue-theme");
+  });
+
+  $("#LightTheme").on("click", function () {
+    $("html").attr("data-bs-theme", "light");
+    localStorage.setItem("selectedTheme", "light");
+  });
+
+  $("#DarkTheme").on("click", function () {
+    $("html").attr("data-bs-theme", "dark");
+    localStorage.setItem("selectedTheme", "dark");
+  });
+
+  $("#SemiDarkTheme").on("click", function () {
+    $("html").attr("data-bs-theme", "semi-dark");
+    localStorage.setItem("selectedTheme", "semi-dark");
+  });
+
+  $("#BoderedTheme").on("click", function () {
+    $("html").attr("data-bs-theme", "bodered-theme");
+    localStorage.setItem("selectedTheme", "bodered-theme");
+  });
 
 
   /* toggle button */

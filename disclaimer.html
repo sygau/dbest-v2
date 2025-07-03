@@ -8,27 +8,32 @@
   <!--favicon-->
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <!-- SEO Meta Tags -->
-  <meta name="description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
-  <meta name="keywords" content="dse past paper, dse past paper 中文, dselife, 2025 dse, english dse past paper, physics dse past paper, dse數學, ict dse past paper, dse m1 m2 past paper, dse maths past paper, dse00, dse VA, dse chem past paper by year, 2026 DSE時間表, DSE成績, DSE cut off, DSE放榜, DSE放榜日期, DSE視覺藝術, dsebest">
+  <meta name="description"
+    content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
+  <meta name="keywords"
+    content="dse past paper, dse past paper 中文, dselife, 2025 dse, english dse past paper, physics dse past paper, dse數學, ict dse past paper, dse m1 m2 past paper, dse maths past paper, dse00, dse VA, dse chem past paper by year, 2026 DSE時間表, DSE成績, DSE cut off, DSE放榜, DSE放榜日期, DSE視覺藝術, dsebest">
   <meta name="robots" content="index">
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="免責聲明 | dse.best">
-  <meta property="og:description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
+  <meta property="og:description"
+    content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
   <meta property="og:image" content="assets/images/logo-icon.png">
   <meta property="og:url" content="https://www.dse.best/">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#007bff">
   <!-- loader-->
-	<link href="assets/css/pace.min.css" rel="stylesheet">
-	<script src="assets/js/pace.min.js"></script>
+  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
   <!--plugins-->
-  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
+  <link href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/css/perfect-scrollbar.min.css" rel="stylesheet">
+  <!--<link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet">s-->
+  <!--<link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">s-->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.css" rel="stylesheet"> -->
   <!--bootstrap css-->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href=" https://fonts.gstatic.com " crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <!--main css-->
   <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
@@ -38,17 +43,22 @@
   <link href="sass/semi-dark.css" rel="stylesheet">
   <link href="sass/bordered-theme.css" rel="stylesheet">
   <link href="sass/responsive.css" rel="stylesheet">
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XB60B3MXHH');
-</script>
-
+  <script>
+    try {
+      var theme = localStorage.getItem('selectedTheme');
+      if (theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    } catch (e) { }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
+  <script defer>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XB60B3MXHH');
+  </script>
 </head>
 
 <body>
@@ -62,55 +72,60 @@
       <div class="search-bar flex-grow-1">
         <div class="position-relative">
           <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
-          <span class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
-          <span class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+          <span
+            class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+          <span
+            class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
           <div class="search-popup p-3">
             <div class="card rounded-4 overflow-hidden">
               <div class="card-body search-content" style="display: none;">
-                </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      </div>
       </div>
       <ul class="navbar-nav gap-1 nav-right-links align-items-center">
         <li class="nav-item d-lg-none mobile-search-btn">
           <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img src="assets/images/county/06.png" width="22" alt="cn-icon">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img
+              src="assets/images/county/06.png" width="22" alt="cn-icon">
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/06.png" width="20" alt="cn-icon"><span class="ms-2">中文</span></a>
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="assets/images/county/06.png" width="20" alt="cn-icon"><span class="ms-2">中文</span></a>
             </li>
-            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/05.png" width="20" alt="us-icon"><span class="ms-2">English</span></a>
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="assets/images/county/05.png" width="20" alt="us-icon"><span class="ms-2">English</span></a>
             </li>
-            </li>
-          </ul>
         </li>
-        <li class="nav-item dropdown" style="display: none;">
-          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
-            data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
-            <span class="badge-notify">5</span>
-          </a>
-          <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
-            <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
-              <h5 class="notiy-title mb-0">Notifications</h5>
-              <div class="dropdown">
-              </div>
-            </div>
-            <div class="notify-list">
+      </ul>
+      </li>
+      <li class="nav-item dropdown" style="display: none;">
+        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
+          data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
+          <span class="badge-notify">5</span>
+        </a>
+        <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+          <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
+            <h5 class="notiy-title mb-0">Notifications</h5>
+            <div class="dropdown">
             </div>
           </div>
-        </li>
+          <div class="notify-list">
+          </div>
+        </div>
+      </li>
       </ul>
     </nav>
   </header>
   <!--end top header-->
 
-   <!--start sidebar-->
-   <aside class="sidebar-wrapper" data-simplebar="init">
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper" data-simplebar="init">
     <div class="sidebar-header">
       <div class="logo-icon">
         <a href="index.html">
@@ -276,30 +291,30 @@
       <!--end navigation-->
     </div>
   </aside>
-<!--end sidebar-->
+  <!--end sidebar-->
 
   <!--start main wrapper-->
   <main class="main-wrapper">
     <div class="main-content">
       <!--breadcrumb-->
-				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">其他</div>
-					<div class="ps-3">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">免責聲明</li>
-							</ol>
-						</nav>
-					</div>
-				</div>
-				<!--end breadcrumb-->
-        <div class="card rounded-4" style="height:800px;">
-          <div class="card-body">
-            <h1>免責聲明 Disclaimer</h1>
-            <br>
-            <h3>中文</h5>
+      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">其他</div>
+        <div class="ps-3">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+              <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">免責聲明</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <!--end breadcrumb-->
+      <div class="card rounded-4" style="height:800px;">
+        <div class="card-body">
+          <h1>免責聲明 Disclaimer</h1>
+          <br>
+          <h3>中文</h5>
             <p>
               本網站所載之香港中學文憑考試（HKDSE）試題及相關資源均屬香港考試及評核局（HKEAA）之智慧財產。本網站僅供學術研究及個人學習用途，旨在協助學生自學及溫習，並無任何商業用途或牟利行為。<br>
               <br>
@@ -314,40 +329,54 @@
             <hr>
             <h3>English</h3>
             <p>
-              All HKDSE past papers and related materials on this website are the intellectual property of the Hong Kong Examinations and Assessment Authority (HKEAA). This website is intended solely for academic research and personal study purposes, to assist students in self-study and revision. No commercial use or profit-making activity is intended or permitted.<br>
+              All HKDSE past papers and related materials on this website are the intellectual property of the Hong Kong
+              Examinations and Assessment Authority (HKEAA). This website is intended solely for academic research and
+              personal study purposes, to assist students in self-study and revision. No commercial use or profit-making
+              activity is intended or permitted.<br>
               <br>
-              Users must not use any content from this site for commercial purposes, including but not limited to redistribution, public display, publication, sale, or use as teaching material in paid courses. Unauthorized copying, modification, distribution, or publication of any content from this site is strictly prohibited.<br>
+              Users must not use any content from this site for commercial purposes, including but not limited to
+              redistribution, public display, publication, sale, or use as teaching material in paid courses.
+              Unauthorized copying, modification, distribution, or publication of any content from this site is strictly
+              prohibited.<br>
               <br>
-              The resources provided on this website are sourced from public channels or user submissions. While we strive to ensure the accuracy and legality of all content, we do not guarantee that all materials are error-free or fully compliant with copyright laws. If any content involves third-party copyright or other rights, please contact us promptly. Upon verification, we will remove the relevant content as soon as possible.<br>
+              The resources provided on this website are sourced from public channels or user submissions. While we
+              strive to ensure the accuracy and legality of all content, we do not guarantee that all materials are
+              error-free or fully compliant with copyright laws. If any content involves third-party copyright or other
+              rights, please contact us promptly. Upon verification, we will remove the relevant content as soon as
+              possible.<br>
               <br>
-              The website assumes no responsibility for any consequences arising from the use of its resources. Users should exercise their own judgment and bear all risks.<br>
+              The website assumes no responsibility for any consequences arising from the use of its resources. Users
+              should exercise their own judgment and bear all risks.<br>
               <br>
-              If you have any questions or discover any infringing content, please <a href="/contact.html" style="color:inherit;text-decoration:underline;">contact us</a> immediately.
+              If you have any questions or discover any infringing content, please <a href="/contact.html"
+                style="color:inherit;text-decoration:underline;">contact us</a> immediately.
             </p>
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
   </main>
   <!--end main wrapper-->
 
   <!--start overlay-->
-     <div class="overlay btn-toggle"></div>
+  <div class="overlay btn-toggle"></div>
   <!--end overlay-->
 
-   <!--start footer-->
-   <footer class="page-footer">
+  <!--start footer-->
+  <footer class="page-footer">
     <p class="mb-0">
-      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html" style="color:inherit;text-decoration:underline;">聯絡我們</a>。
-    </p>    
+      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html"
+        style="color:inherit;text-decoration:underline;">聯絡我們</a>。
+    </p>
   </footer>
   <!--end footer-->
 
 
   <!--start switcher-->
-  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
+    type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
     <i class="material-icons-outlined">tune</i>
   </button>
-  
+
   <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
     <div class="offcanvas-header border-bottom h-70">
       <div class="">
@@ -363,35 +392,45 @@
         <div class="row g-3">
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BlueTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BlueTheme">
               <span class="material-icons-outlined">contactless</span>
               <span>藍色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="LightTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="LightTheme">
               <span class="material-icons-outlined">light_mode</span>
               <span>淺色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="DarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="DarkTheme">
               <span class="material-icons-outlined">dark_mode</span>
               <span>深色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="SemiDarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="SemiDarkTheme">
               <span class="material-icons-outlined">contrast</span>
               <span>半深色</span>
             </label>
           </div>
           <div class="col-12 col-xl-6">
             <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
-            <label class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4" for="BoderedTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BoderedTheme">
               <span class="material-icons-outlined">border_style</span>
               <span>邊框</span>
             </label>
@@ -411,10 +450,10 @@
   <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-	   new PerfectScrollbar(".sidebar-wrapper");
-     setTimeout(function() {
-       Pace.stop();
-     }, 800);
+    new PerfectScrollbar(".sidebar-wrapper");
+    setTimeout(function () {
+      Pace.stop();
+    }, 800);
   </script>
 </body>
 

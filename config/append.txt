@@ -1,37 +1,20 @@
-<!doctype html>
-<html lang="zh-Hant" data-bs-theme="blue-theme">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>聯絡我們 | dse.best</title>
-  <!--favicon-->
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-  <!-- SEO Meta Tags -->
-  <meta name="description"
-    content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
-  <meta name="keywords"
-    content="dse past paper, dse past paper 中文, dselife, 2025 dse, english dse past paper, physics dse past paper, dse數學, ict dse past paper, dse m1 m2 past paper, dse maths past paper, dse00, dse VA, dse chem past paper by year, 2026 DSE時間表, DSE成績, DSE cut off, DSE放榜, DSE放榜日期, DSE視覺藝術, dsebest">
-  <meta name="robots" content="index">
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="聯絡我們 | dse.best">
-  <meta property="og:description"
-    content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
-  <meta property="og:image" content="assets/images/logo-icon.png">
-  <meta property="og:url" content="https://www.dse.best/">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#007bff">
-  <!-- loader-->
+head
+
+
+<!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet">
-  <script src="assets/js/pace.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
   <!--plugins-->
-  <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/metisMenu.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/simplebar/css/simplebar.css">
+  <link href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/css/perfect-scrollbar.min.css" rel="stylesheet">
+  <!--<link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet">s-->
+  <!--<link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">s-->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.css" rel="stylesheet"> -->
   <!--bootstrap css-->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href=" https://fonts.gstatic.com " crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <!--main css-->
   <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
@@ -41,26 +24,36 @@
   <link href="sass/semi-dark.css" rel="stylesheet">
   <link href="sass/bordered-theme.css" rel="stylesheet">
   <link href="sass/responsive.css" rel="stylesheet">
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH"></script>
   <script>
+    try {
+      var theme = localStorage.getItem('selectedTheme');
+      if (theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    } catch (e) { }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
+  <script defer>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-XB60B3MXHH');
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org ",
+    "@type": "WebSite",
+    "name": "DSEBest",
+    "url": "https://www.dse.best/ "
+  }
+</script>
 
-</head>
-
-<body>
-
-  <!--start header-->
+<!--start header-->
   <header class="top-header">
     <nav class="navbar navbar-expand align-items-center gap-4">
       <div class="btn-toggle">
-        <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
+        <a href="javascript:;" aria-label="menu"><i class="material-icons-outlined">menu</i></a>
       </div>
       <div class="search-bar flex-grow-1">
         <div class="position-relative">
@@ -84,15 +77,17 @@
           <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img
-              src="assets/images/county/06.png" width="22" alt="cn-icon">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"><img
+              src="assets/images/county/06.png" width="22" height="22" alt="cn-icon">
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                  src="assets/images/county/06.png" width="20" alt="cn-icon"><span class="ms-2">中文</span></a>
+                  src="assets/images/county/06.png" width="20" height="20" alt="cn-icon" loading="lazy"><span
+                  class="ms-2">中文</span></a>
             </li>
             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                  src="assets/images/county/05.png" width="20" alt="us-icon"><span class="ms-2">English</span></a>
+                  src="assets/images/county/05.png" width="20" height="20" alt="us-icon" loading="lazy"><span
+                  class="ms-2">English</span></a>
             </li>
         </li>
       </ul>
@@ -113,16 +108,17 @@
         </div>
       </li>
       </ul>
+
     </nav>
   </header>
   <!--end top header-->
 
   <!--start sidebar-->
-  <aside class="sidebar-wrapper" data-simplebar="init">
+  <aside class="sidebar-wrapper">
     <div class="sidebar-header">
       <div class="logo-icon">
         <a href="index.html">
-          <img src="assets/images/logo-icon.png" class="logo-img" alt="dsebest-logo">
+          <img src="assets/images/logo-icon.webp" class="logo-img" alt="dsebest-logo" loading="lazy">
         </a>
       </div>
       <div class="logo-name flex-grow-1">
@@ -286,138 +282,22 @@
   </aside>
   <!--end sidebar-->
 
-  <!--start main wrapper-->
-  <main class="main-wrapper">
-    <div class="main-content">
-      <!--breadcrumb-->
-      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">其他</div>
-        <div class="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb mb-0 p-0">
-              <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">聯絡我們</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-      <!--end breadcrumb-->
-      <div class="card rounded-4" style="height:600px;">
-        <div class="card-body">
-          <h1>聯絡我們 Contact Us</h1>
-          <br>
-          <p class="mb-4">
-            如你發現本站內容有侵權、違規或有任何查詢，請隨時與我們聯絡。我們會盡快回覆及處理相關事宜。
-          </p>
-          <a href="mailto:info@dse.best" class="btn btn-primary btn-lg">
-            <i class="material-icons-outlined align-middle">email</i>
-            Email
-          </a>
-        </div>
-      </div>
-    </div>
-  </main>
-  <!--end main wrapper-->
 
-  <!--start overlay-->
-  <div class="overlay btn-toggle"></div>
-  <!--end overlay-->
-
-  <!--start footer-->
-  <footer class="page-footer">
-    <p class="mb-0">
-      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html"
-        style="color:inherit;text-decoration:underline;">聯絡我們</a>。
-    </p>
-  </footer>
-  <!--end footer-->
-
-
-  <!--start switcher-->
-  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
-    type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
-    <i class="material-icons-outlined">tune</i>
-  </button>
-
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
-    <div class="offcanvas-header border-bottom h-70">
-      <div class="">
-        <h5 class="mb-0">主題自定義</h5>
-        <p class="mb-0">Customize your theme</p>
-      </div>
-      <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
-        <i class="material-icons-outlined">close</i>
-      </a>
-    </div>
-    <div class="offcanvas-body">
-      <div>
-        <div class="row g-3">
-          <div class="col-12 col-xl-6">
-            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
-            <label
-              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
-              for="BlueTheme">
-              <span class="material-icons-outlined">contactless</span>
-              <span>藍色</span>
-            </label>
-          </div>
-          <div class="col-12 col-xl-6">
-            <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
-            <label
-              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
-              for="LightTheme">
-              <span class="material-icons-outlined">light_mode</span>
-              <span>淺色</span>
-            </label>
-          </div>
-          <div class="col-12 col-xl-6">
-            <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
-            <label
-              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
-              for="DarkTheme">
-              <span class="material-icons-outlined">dark_mode</span>
-              <span>深色</span>
-            </label>
-          </div>
-          <div class="col-12 col-xl-6">
-            <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
-            <label
-              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
-              for="SemiDarkTheme">
-              <span class="material-icons-outlined">contrast</span>
-              <span>半深色</span>
-            </label>
-          </div>
-          <div class="col-12 col-xl-6">
-            <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
-            <label
-              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
-              for="BoderedTheme">
-              <span class="material-icons-outlined">border_style</span>
-              <span>邊框</span>
-            </label>
-          </div>
-        </div><!--end row-->
-      </div>
-    </div>
-  </div>
-  <!--start switcher-->
-  <!--bootstrap js-->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
+<!--bootstrap js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
-  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!--plugins-->
-  <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-  <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
-  <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/dist/perfect-scrollbar.min.js"></script>
+  <!--<script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>-->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.js"></script> -->
   <script>
-    new PerfectScrollbar(".sidebar-wrapper");
-    setTimeout(function () {
-      Pace.stop();
-    }, 800);
+    $(function () { "use strict"; new PerfectScrollbar(".notify-list"); new PerfectScrollbar(".search-content"); const e = localStorage.getItem("selectedTheme"); e && ($("html").attr("data-bs-theme", e), $(`#${e.charAt(0).toUpperCase() + e.slice(1).replace("-theme", "")}Theme`).prop("checked", !0)); $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme"), localStorage.setItem("selectedTheme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light"), localStorage.setItem("selectedTheme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark"), localStorage.setItem("selectedTheme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark"), localStorage.setItem("selectedTheme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme"), localStorage.setItem("selectedTheme", "bodered-theme") }), $(".btn-toggle").click(function () { $("body").hasClass("toggled") ? ($("body").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($("body").addClass("toggled"), $(".sidebar-wrapper").hover(function () { $("body").addClass("sidebar-hovered") }, function () { $("body").removeClass("sidebar-hovered") })) }), $(".sidebar-close").on("click", function () { $("body").removeClass("toggled") }), $(".dark-mode i").click(function () { $(this).text(function (e, t) { return "dark_mode" === t ? "light_mode" : "dark_mode" }) }), $(".dark-mode").click(function () { $("html").attr("data-bs-theme", function (e, t) { return "dark" === t ? "light" : "dark" }) }), $(document).ready(function () { $(window).on("scroll", function () { $(this).scrollTop() > 60 ? $(".top-header .navbar").addClass("sticky-header") : $(".top-header .navbar").removeClass("sticky-header") }) }), $(".email-toggle-btn").on("click", function () { $(".email-wrapper").toggleClass("email-toggled") }), $(".email-toggle-btn-mobile").on("click", function () { $(".email-wrapper").removeClass("email-toggled") }), $(".compose-mail-btn").on("click", function () { $(".compose-mail-popup").show() }), $(".compose-mail-close").on("click", function () { $(".compose-mail-popup").hide() }), $(".chat-toggle-btn").on("click", function () { $(".chat-wrapper").toggleClass("chat-toggled") }), $(".chat-toggle-btn-mobile").on("click", function () { $(".chat-wrapper").removeClass("chat-toggled") }), $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme") }), $(".search-control").click(function () { $(".search-popup").addClass("d-block"), $(".search-close").addClass("d-block") }), $(".search-close").click(function () { $(".search-popup").removeClass("d-block"), $(".search-close").removeClass("d-block") }), $(".mobile-search-btn").click(function () { $(".search-popup").addClass("d-block") }), $(".mobile-search-close").click(function () { $(".search-popup").removeClass("d-block") }) });
   </script>
 </body>
-
-</html>
+<script>
+  new PerfectScrollbar(".sidebar-wrapper");
+  setTimeout(function () {
+    Pace.stop();
+  }, 680);
+</script>
