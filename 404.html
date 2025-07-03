@@ -23,269 +23,288 @@
   <meta name="theme-color" content="#007bff">
   <!-- loader-->
   <link href="https://dse.best/assets/css/pace.min.css" rel="stylesheet">
-  <script src="https://dse.best/assets/js/pace.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
   <!--plugins-->
-  <link href="https://dse.best/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://dse.best/assets/plugins/metismenu/metisMenu.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/css/perfect-scrollbar.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://dse.best/assets/plugins/metismenu/mm-vertical.css">
-  <link rel="stylesheet" type="text/css" href="https://dse.best/assets/plugins/simplebar/css/simplebar.css">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.css" rel="stylesheet"> -->
   <!--bootstrap css-->
-  <link href="https://dse.best/assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href=" https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <!--main css-->
   <link href="https://dse.best/assets/css/bootstrap-extended.css" rel="stylesheet">
-  <link href="sass/main.css" rel="stylesheet">
-  <link href="sass/dark-theme.css" rel="stylesheet">
-  <link href="sass/blue-theme.css" rel="stylesheet">
-  <link href="sass/semi-dark.css" rel="stylesheet">
-  <link href="sass/bordered-theme.css" rel="stylesheet">
-  <link href="sass/responsive.css" rel="stylesheet">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH"></script>
+  <link href="https://dse.best/sass/main.css" rel="stylesheet">
+  <link href="https://dse.best/sass/dark-theme.css" rel="stylesheet">
+  <link href="https://dse.best/sass/blue-theme.css" rel="stylesheet">
+  <link href="https://dse.best/sass/semi-dark.css" rel="stylesheet">
+  <link href="https://dse.best/sass/bordered-theme.css" rel="stylesheet">
+  <link href="https://dse.best/sass/responsive.css" rel="stylesheet">
   <script>
+    try {
+      var theme = localStorage.getItem('selectedTheme');
+      if (theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    } catch (e) { }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
+  <script defer>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-XB60B3MXHH');
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "DSEBest",
+    "url": "https://www.dse.best/"
+  }
+</script>
 </head>
 
 <body>
 
-  <!--start header-->
-  <header class="top-header">
-    <nav class="navbar navbar-expand align-items-center gap-4">
-      <div class="btn-toggle">
-        <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
-      </div>
-      <div class="search-bar flex-grow-1">
-        <div class="position-relative">
-          <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
-          <span
-            class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
-          <span
-            class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
-          <div class="search-popup p-3">
-            <div class="card rounded-4 overflow-hidden">
-              <div class="card-body search-content" style="display: none;">
-              </div>
+<!--start header-->
+<header class="top-header">
+  <nav class="navbar navbar-expand align-items-center gap-4">
+    <div class="btn-toggle">
+      <a href="javascript:;" aria-label="menu"><i class="material-icons-outlined">menu</i></a>
+    </div>
+    <div class="search-bar flex-grow-1">
+      <div class="position-relative">
+        <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
+        <span
+          class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+        <span
+          class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+        <div class="search-popup p-3">
+          <div class="card rounded-4 overflow-hidden">
+            <div class="card-body search-content">
+              <p class="search-title mb-0" style="white-space: nowrap;">⠀(裝飾嚟嘅， SEARCH唔到)⠀</p>
             </div>
           </div>
         </div>
       </div>
-      </div>
-      </div>
-      <ul class="navbar-nav gap-1 nav-right-links align-items-center">
-        <li class="nav-item d-lg-none mobile-search-btn">
-          <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;" data-bs-toggle="dropdown"><img
-              src="https://dse.best/assets/images/county/06.png" width="22" alt="cn-icon">
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                  src="https://dse.best/assets/images/county/06.png" width="20" alt="cn-icon"><span
-                  class="ms-2">中文</span></a>
-            </li>
-            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                  src="https://dse.best/assets/images/county/05.png" width="20" alt="us-icon"><span
-                  class="ms-2">English</span></a>
-            </li>
-        </li>
-      </ul>
+    </div>
+    </div>
+    </div>
+    <ul class="navbar-nav gap-1 nav-right-links align-items-center">
+      <li class="nav-item d-lg-none mobile-search-btn">
+        <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
       </li>
-      <li class="nav-item dropdown" style="display: none;">
-        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
-          data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
-          <span class="badge-notify">5</span>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"><img
+            src="https://dse.best/assets/images/county/06.png" width="22" height="22" alt="cn-icon">
         </a>
-        <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
-          <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
-            <h5 class="notiy-title mb-0">Notifications</h5>
-            <div class="dropdown">
-            </div>
-          </div>
-          <div class="notify-list">
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                src="https://dse.best/assets/images/county/06.png" width="20" height="20" alt="cn-icon" loading="lazy"><span
+                class="ms-2">中文</span></a>
+          </li>
+          <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                src="https://dse.best/assets/images/county/05.png" width="20" height="20" alt="us-icon" loading="lazy"><span
+                class="ms-2">English</span></a>
+          </li>
+      </li>
+    </ul>
+    </li>
+    <li class="nav-item dropdown" style="display: none;">
+      <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
+        data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
+        <span class="badge-notify">5</span>
+      </a>
+      <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+        <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
+          <h5 class="notiy-title mb-0">Notifications</h5>
+          <div class="dropdown">
           </div>
         </div>
+        <div class="notify-list">
+        </div>
+      </div>
+    </li>
+    </ul>
+
+  </nav>
+</header>
+<!--end top header-->
+
+<!--start sidebar-->
+<aside class="sidebar-wrapper">
+  <div class="sidebar-header">
+    <div class="logo-icon">
+      <a href="https://dse.best/">
+        <img src="https://dse.best/assets/images/logo-icon.webp" class="logo-img" alt="dsebest-logo" loading="lazy">
+      </a>
+    </div>
+    <div class="logo-name flex-grow-1">
+      <a href="https://dse.best/" class="text-decoration-none">
+        <h5 class="mb-0">DSEBest</h5>
+      </a>
+    </div>
+    <div class="sidebar-close">
+      <span class="material-icons-outlined">close</span>
+    </div>
+  </div>
+  <div class="sidebar-nav">
+    <!--navigation-->
+    <ul class="metismenu" id="sidenav">
+      <li>
+        <a href="https://dse.best/">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #007bff;">home</i>
+          </div>
+          <div class="menu-title">主頁</div>
+        </a>
       </li>
-      </ul>
-
-    </nav>
-  </header>
-  <!--end top header-->
-
-  <!--start sidebar-->
-  <aside class="sidebar-wrapper" data-simplebar="init">
-    <div class="sidebar-header">
-      <div class="logo-icon">
-        <a href="index.html">
-          <img src="https://dse.best/assets/images/logo-icon.png" class="logo-img" alt="dsebest-logo">
+      <li class="menu-label">核心科目</li>
+      <li>
+        <a href="https://dse.best/chinese">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #e91e63;">book</i>
+          </div>
+          <div class="menu-title">中文</div>
         </a>
-      </div>
-      <div class="logo-name flex-grow-1">
-        <a href="index.html" class="text-decoration-none">
-          <h5 class="mb-0">DSEBest</h5>
+      </li>
+      <li>
+        <a href="https://dse.best/english">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #4caf50;">book</i>
+          </div>
+          <div class="menu-title">英文 English</div>
         </a>
-      </div>
-      <div class="sidebar-close">
-        <span class="material-icons-outlined">close</span>
-      </div>
-    </div>
-    <div class="sidebar-nav">
-      <!--navigation-->
-      <ul class="metismenu" id="sidenav">
-        <li>
-          <a href="index.html">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #007bff;">home</i>
-            </div>
-            <div class="menu-title">主頁</div>
-          </a>
-        </li>
-        <li class="menu-label">核心科目</li>
-        <li>
-          <a href="chinese">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e91e63;">book</i>
-            </div>
-            <div class="menu-title">中文</div>
-          </a>
-        </li>
-        <li>
-          <a href="english">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #4caf50;">book</i>
-            </div>
-            <div class="menu-title">英文 English</div>
-          </a>
-        </li>
-        <li>
-          <a href="math">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff9800;">calculate</i>
-            </div>
-            <div class="menu-title">數學 Math</div>
-          </a>
-        </li>
-        <li>
-          <a href="citizen">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #9c27b0;">school</i>
-            </div>
-            <div class="menu-title">公民</div>
-          </a>
-        </li>
-        <li class="menu-label">選修科目</li>
-        <li>
-          <a href="physics">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #f44336;">bolt</i>
-            </div>
-            <div class="menu-title">物理 Physics</div>
-          </a>
-        </li>
-        <li>
-          <a href="chemistry">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #3f51b5;">biotech</i>
-            </div>
-            <div class="menu-title">化學 Chemistry</div>
-          </a>
-        </li>
-        <li>
-          <a href="biology">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #795548;">eco</i>
-            </div>
-            <div class="menu-title">生物 Biology</div>
-          </a>
-        </li>
-        <li>
-          <a href="ict">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #607d8b;">computer</i>
-            </div>
-            <div class="menu-title">資訊及通訊科技 ICT</div>
-          </a>
-        </li>
-        <li>
-          <a href="m1">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #8bc34a;">functions</i>
-            </div>
-            <div class="menu-title">M1</div>
-          </a>
-        </li>
-        <li>
-          <a href="m2">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #cddc39;">functions</i>
-            </div>
-            <div class="menu-title">M2</div>
-          </a>
-        </li>
-        <li>
-          <a href="geography">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #009688;">public</i>
-            </div>
-            <div class="menu-title">地理 Geography</div>
-          </a>
-        </li>
-        <li>
-          <a href="history">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #607d8b;">book</i>
-            </div>
-            <div class="menu-title">歷史 History</div>
-          </a>
-        </li>
-        <li>
-          <a href="chinese-history">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #795548;">book</i>
-            </div>
-            <div class="menu-title">中國歷史 Chinese History</div>
-          </a>
-        </li>
-        <li>
-          <a href="economics">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff5722;">attach_money</i>
-            </div>
-            <div class="menu-title">經濟 Economics</div>
-          </a>
-        </li>
-        <li>
-          <a href="bafs">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #00bcd4;">business</i>
-            </div>
-            <div class="menu-title">企業、會計與財務概論 BAFS</div>
-          </a>
-        </li>
-        <li>
-          <a href="visual-arts">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #03a9f4;">palette</i>
-            </div>
-            <div class="menu-title">視覺藝術 Visual Arts</div>
-          </a>
-        </li>
-        <li class="menu-label">其他</li>
-        <li>
-          <a href="contact">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
-            </div>
-            <div class="menu-title">聯絡我們</div>
-          </a>
-        </li>
-        <li>
-          <a href="disclaimer">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">warning</i>
-            </div>
-            <div class="menu-title">免責聲明</div>
-          </a>
-        </li>
-        <li>
-          <a href="privacy-policy">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">security</i>
-            </div>
-            <div class="menu-title">私隱政策</div>
-          </a>
-        </li>
-      </ul>
-      <!--end navigation-->
-    </div>
-  </aside>
-  <!--end sidebar-->
+      </li>
+      <li>
+        <a href="https://dse.best/math">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff9800;">calculate</i>
+          </div>
+          <div class="menu-title">數學 Math</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/citizen">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #9c27b0;">school</i>
+          </div>
+          <div class="menu-title">公民</div>
+        </a>
+      </li>
+      <li class="menu-label">選修科目</li>
+      <li>
+        <a href="https://dse.best/physics">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #f44336;">bolt</i>
+          </div>
+          <div class="menu-title">物理 Physics</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/chemistry">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #3f51b5;">biotech</i>
+          </div>
+          <div class="menu-title">化學 Chemistry</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/biology">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #795548;">eco</i>
+          </div>
+          <div class="menu-title">生物 Biology</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/ict">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #607d8b;">computer</i>
+          </div>
+          <div class="menu-title">資訊及通訊科技 ICT</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/m1">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #8bc34a;">functions</i>
+          </div>
+          <div class="menu-title">M1</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/m2">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #cddc39;">functions</i>
+          </div>
+          <div class="menu-title">M2</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/geography">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #009688;">public</i>
+          </div>
+          <div class="menu-title">地理 Geography</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/history">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #607d8b;">book</i>
+          </div>
+          <div class="menu-title">歷史 History</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/chinese-history">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #795548;">book</i>
+          </div>
+          <div class="menu-title">中國歷史 Chinese History</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/economics">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff5722;">attach_money</i>
+          </div>
+          <div class="menu-title">經濟 Economics</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/bafs">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #00bcd4;">business</i>
+          </div>
+          <div class="menu-title">企業、會計與財務概論 BAFS</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/visual-arts">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #03a9f4;">palette</i>
+          </div>
+          <div class="menu-title">視覺藝術 Visual Arts</div>
+        </a>
+      </li>
+      <li class="menu-label">其他</li>
+      <li>
+        <a href="https://dse.best/contact">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
+          </div>
+          <div class="menu-title">聯絡我們</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/disclaimer">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">warning</i>
+          </div>
+          <div class="menu-title">免責聲明</div>
+        </a>
+      </li>
+      <li>
+        <a href="https://dse.best/privacy-policy">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">security</i>
+          </div>
+          <div class="menu-title">私隱政策</div>
+        </a>
+      </li>
+    </ul>
+    <!--end navigation-->
+  </div>
+</aside>
+<!--end sidebar-->
+
 
   <!--start main wrapper-->
   <main class="main-wrapper">
@@ -315,7 +334,7 @@
           <p class="mb-4" style="margin-top: 40px; font-size: 1.4rem;">
             抱歉，找不到您要訪問的頁面。
           </p>
-          <a href="index.html">返回主頁</a>
+          <a href="https://dse.best/">返回主頁</a>
           <br>
           <hr class="my-4">
           <br>
@@ -409,19 +428,22 @@
   </div>
   <!--start switcher-->
   <!--bootstrap js-->
-  <script src="https://dse.best/assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
-  <script src="https://dse.best/assets/js/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!--plugins-->
-  <script src="https://dse.best/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-  <script src="https://dse.best/assets/plugins/metismenu/metisMenu.min.js"></script>
-  <script src="https://dse.best/assets/plugins/simplebar/js/simplebar.min.js"></script>
-  <script src="https://dse.best/assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/dist/perfect-scrollbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.js"></script> -->
+  <script>
+    // Minified main.js
+    $(function () { "use strict"; new PerfectScrollbar(".notify-list"), new PerfectScrollbar(".search-content"), $(function () { $("#sidenav").metisMenu() }); const e = localStorage.getItem("selectedTheme"); e && ($("html").attr("data-bs-theme", e), $(`#${e.charAt(0).toUpperCase() + e.slice(1).replace("-theme", "")}Theme`).prop("checked", !0)); $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme"), localStorage.setItem("selectedTheme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light"), localStorage.setItem("selectedTheme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark"), localStorage.setItem("selectedTheme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark"), localStorage.setItem("selectedTheme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme"), localStorage.setItem("selectedTheme", "bodered-theme") }), $(".btn-toggle").click(function () { $("body").hasClass("toggled") ? ($("body").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($("body").addClass("toggled"), $(".sidebar-wrapper").hover(function () { $("body").addClass("sidebar-hovered") }, function () { $("body").removeClass("sidebar-hovered") })) }), $(".sidebar-close").on("click", function () { $("body").removeClass("toggled") }), $(".dark-mode i").click(function () { $(this).text(function (e, t) { return "dark_mode" === t ? "light_mode" : "dark_mode" }) }), $(".dark-mode").click(function () { $("html").attr("data-bs-theme", function (e, t) { return "dark" === t ? "light" : "dark" }) }), $(document).ready(function () { $(window).on("scroll", function () { $(this).scrollTop() > 60 ? $(".top-header .navbar").addClass("sticky-header") : $(".top-header .navbar").removeClass("sticky-header") }) }), $(".email-toggle-btn").on("click", function () { $(".email-wrapper").toggleClass("email-toggled") }), $(".email-toggle-btn-mobile").on("click", function () { $(".email-wrapper").removeClass("email-toggled") }), $(".compose-mail-btn").on("click", function () { $(".compose-mail-popup").show() }), $(".compose-mail-close").on("click", function () { $(".compose-mail-popup").hide() }), $(".chat-toggle-btn").on("click", function () { $(".chat-wrapper").toggleClass("chat-toggled") }), $(".chat-toggle-btn-mobile").on("click", function () { $(".chat-wrapper").removeClass("chat-toggled") }), $(".search-control").click(function () { $(".search-popup").addClass("d-block"), $(".search-close").addClass("d-block") }), $(".search-close").click(function () { $(".search-popup").removeClass("d-block"), $(".search-close").removeClass("d-block") }), $(".mobile-search-btn").click(function () { $(".search-popup").addClass("d-block") }), $(".mobile-search-close").click(function () { $(".search-popup").removeClass("d-block") }), $(function () { for (var e = window.location, t = $(".metismenu li a").filter(function () { return this.href == e }).addClass("").parent().addClass("mm-active"); t.is("li");)t = t.parent("").addClass("mm-show").parent("").addClass("mm-active") }) });  
+  </script>
   <script>
     new PerfectScrollbar(".sidebar-wrapper");
     setTimeout(function () {
       Pace.stop();
-    }, 800);
+    }, 680);
   </script>
 </body>
 

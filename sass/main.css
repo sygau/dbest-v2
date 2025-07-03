@@ -101,7 +101,7 @@ input::placeholder {
 }
 .top-header .navbar .search-bar .search-popup .search-content {
   position: relative;
-  height: 24.3rem;
+  height: auto;
 }
 .top-header .navbar .search-bar .search-popup .search-title {
   font-size: 13px;
