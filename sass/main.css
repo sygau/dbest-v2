@@ -544,6 +544,16 @@ input::placeholder {
     display: none;
   }
 }
+@media (max-width: 1199px) {
+  .sidebar-wrapper .sidebar-header {
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+  .sidebar-wrapper .sidebar-nav {
+    margin-top: 0 !important;
+  }
+}
 .chip {
   display: inline-block;
   height: 32px;
