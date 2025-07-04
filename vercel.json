@@ -18,6 +18,15 @@
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex" }
       ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "dbest-v1-gsqxylviq-1fus-projects.vercel.app" }
+      ],
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
     }
   ]
 }
