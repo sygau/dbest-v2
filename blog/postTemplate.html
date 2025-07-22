@@ -4,45 +4,143 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>聯絡我們 | dse.best</title>
+  <title>{{seoTitle}}</title>
   <!--favicon-->
-  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://www.dse.best/assets/images/favicon.ico" type="image/x-icon">
   <!-- SEO Meta Tags -->
-  <meta name="description"
-    content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
-  <meta name="keywords"
-    content="dse past paper, dse past paper 中文, dselife, 2025 dse, english dse past paper, physics dse past paper, dse數學, ict dse past paper, dse m1 m2 past paper, dse maths past paper, dse00, dse VA, dse chem past paper by year, 2026 DSE時間表, DSE成績, DSE cut off, DSE放榜, DSE放榜日期, DSE視覺藝術, dsebest">
-  <meta name="robots" content="index">
+  <meta name="description" content="{{seoDescription}}">
+  <meta name="keywords" content="{{seoTags}}">
+  <meta name="robots" content="{{robotsMeta}}">
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="聯絡我們 | dse.best">
-  <meta property="og:description"
-    content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
-  <meta property="og:image" content="https://www.dse.best/assets/images/logo-icon.png">
-  <meta property="og:url" content="https://www.dse.best/">
-  <meta property="og:type" content="website">
-  <meta name="theme-color" content="#007bff">
+  <meta property="og:title" content="{{seoTitle}}">
+  <meta property="og:description" content="{{seoDescription}}">
+  <meta property="og:image" content="{{featuredImage}}">
+  <meta property="og:url" content="https://www.dse.best/blog/{{slug}}">
+  <meta property="og:type" content="article">
+  <meta name="theme-color" content="#8e24aa">
   <!-- loader-->
-  <link href="assets/css/pace.min.css" rel="stylesheet">
+  <link href="../assets/css/pace.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
   <!--plugins-->
   <link href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/css/perfect-scrollbar.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/plugins/metismenu/mm-vertical.css">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="../assets/plugins/metismenu/mm-vertical.css">
   <!--bootstrap css-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="preconnect" href=" https://fonts.gstatic.com " crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <!--main css-->
-  <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
-  <link href="sass/main.css" rel="stylesheet">
-  <link href="sass/dark-theme.css" rel="stylesheet">
-  <link href="sass/blue-theme.css" rel="stylesheet">
-  <link href="sass/semi-dark.css" rel="stylesheet">
-  <link href="sass/bordered-theme.css" rel="stylesheet">
-  <link href="sass/responsive.css" rel="stylesheet">
+  <link href="../assets/css/bootstrap-extended.css" rel="stylesheet">
+  <link href="../sass/main.css" rel="stylesheet">
+  <link href="../sass/dark-theme.css" rel="stylesheet">
+  <link href="../sass/blue-theme.css" rel="stylesheet">
+  <link href="../sass/semi-dark.css" rel="stylesheet">
+  <link href="../sass/bordered-theme.css" rel="stylesheet">
+  <link href="../sass/responsive.css" rel="stylesheet">
+  <style>
+    /* Responsive YouTube embeds */
+    .youtube-embed-responsive {
+      max-width: 700px;
+      margin: 2rem auto;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .post-content img {
+      max-width: 100%;
+      height: auto;
+      margin: 1.5rem 0;
+    }
+    /* Fix spacing for headings */
+    .post-content h1 {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+      line-height: 1.3;
+    }
+    .post-content h2 {
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.9rem;
+      line-height: 1.3;
+    }
+    .post-content h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      line-height: 1.3;
+    }
+    .post-content h4 {
+      margin-top: 1.8rem;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    .post-content h5, .post-content h6 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    /* Fix paragraph spacing */
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+    /* Fix list spacing */
+    .post-content ul, .post-content ol {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+    .post-content li {
+      margin-bottom: 0.7rem;
+    }
+    .post-content li:last-child {
+      margin-bottom: 0;
+    }
+    /* Fix button styling */
+    .post-content .btn {
+      display: inline-block;
+      margin: 1rem 0;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0.5rem;
+    }
+    /* Add space after buttons */
+    .post-content .btn + p {
+      margin-top: 1.5rem;
+    }
+    /* Fix spacing for blockquotes */
+    .post-content blockquote {
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid #6366f1;
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .youtube-embed-responsive {
+        margin: 1.5rem auto;
+      }
+      .post-content {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      .post-content h1 {
+        font-size: 1.8rem;
+      }
+      .post-content h2 {
+        font-size: 1.6rem;
+      }
+      .post-content h3 {
+        font-size: 1.4rem;
+      }
+      .post-content h4 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
   <script>
     try {
       var theme = localStorage.getItem('selectedTheme');
@@ -59,22 +157,44 @@
     gtag('js', new Date());
     gtag('config', 'G-XB60B3MXHH');
   </script>
+  <!-- Manifest -->
+  <link rel="manifest" href="../manifest.json">
+  <!-- iOS support -->
+  <link rel="apple-touch-icon" href="https://www.dse.best/assets/images/logo-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="DSEBest">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#1976d2">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.dse.best/blog/{{slug}}"
+  },
+  "headline": "{{seoTitle}}",
+  "description": "{{seoDescription}}",
+  "image": "https://www.dse.best/assets/images/logo-icon.webp",
+  "author": {
+    "@type": "Person",
+    "name": "{{author}}"
+  },
+  "publisher": {
+    "@type": "Organization",
     "name": "DSEBest",
-    "url": "https://www.dse.best/"
-  }
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.dse.best/assets/images/logo-icon.webp"
+    }
+  },
+  "datePublished": "{{date}}",
+  "dateModified": "{{date}}",
+  "articleSection": "{{category}}",
+  "keywords": "{{seoTags}}",
+  "inLanguage": "zh-HK"
+}
 </script>
-<!-- PWA Manifest & iOS Meta Tags -->
-<link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="https://www.dse.best/assets/images/logo-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="DSEBest">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#8e24aa">
-
 </head>
 
 <body>
@@ -109,15 +229,15 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"><img
-              src="assets/images/county/06.png" width="22" height="22" alt="cn-icon">
+              src="../assets/images/county/06.png" width="22" height="22" alt="cn-icon">
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                  src="assets/images/county/06.png" width="20" height="20" alt="cn-icon" loading="lazy"><span
+                  src="../assets/images/county/06.png" width="20" height="20" alt="cn-icon" loading="lazy"><span
                   class="ms-2">中文</span></a>
             </li>
             <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
-                  src="assets/images/county/05.png" width="20" height="20" alt="us-icon" loading="lazy"><span
+                  src="../assets/images/county/05.png" width="20" height="20" alt="us-icon" loading="lazy"><span
                   class="ms-2">English</span></a>
             </li>
         </li>
@@ -148,12 +268,12 @@
   <aside class="sidebar-wrapper">
     <div class="sidebar-header">
       <div class="logo-icon">
-        <a href="index.html">
-          <img src="assets/images/logo-icon.webp" class="logo-img" alt="dsebest-logo" loading="lazy">
+        <a href="../index.html">
+          <img src="../assets/images/logo-icon.webp" class="logo-img" alt="dsebest-logo" loading="lazy">
         </a>
       </div>
       <div class="logo-name flex-grow-1">
-        <a href="index.html" class="text-decoration-none">
+        <a href="../index.html" class="text-decoration-none">
           <h5 class="mb-0">DSEBest</h5>
         </a>
       </div>
@@ -165,42 +285,44 @@
       <!--navigation-->
       <ul class="metismenu" id="sidenav">
         <li>
-          <a href="index.html">
+          <a href="../index.html">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #007bff;">home</i>
             </div>
             <div class="menu-title">主頁</div>
           </a>
         </li>
         <li>
-          <a href="blog/">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffc107;">article</i></div>
+          <a href="index.html">
+            <div class="parent-icon">
+              <i class="material-icons-outlined" style="color: #ffc107;">article</i>
+            </div>
             <div class="menu-title">Blog</div>
           </a>
         </li>
         <li class="menu-label">核心科目</li>
         <li>
-          <a href="chinese">
+          <a href="../chinese">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #e83e8c;">book</i>
             </div>
             <div class="menu-title">中文</div>
           </a>
         </li>
         <li>
-          <a href="english">
+          <a href="../english">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #00bcd4;">book</i>
             </div>
             <div class="menu-title">英文 English</div>
           </a>
         </li>
         <li>
-          <a href="math">
+          <a href="../math">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff9800;">calculate</i>
             </div>
             <div class="menu-title">數學 Math</div>
           </a>
         </li>
         <li>
-          <a href="citizen">
+          <a href="../citizen">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #8e24aa;">school</i>
             </div>
             <div class="menu-title">公民</div>
@@ -208,84 +330,84 @@
         </li>
         <li class="menu-label">選修科目</li>
         <li>
-          <a href="physics">
+          <a href="../physics">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffc107;">bolt</i>
             </div>
             <div class="menu-title">物理 Physics</div>
           </a>
         </li>
         <li>
-          <a href="chemistry">
+          <a href="../chemistry">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #43a047;">biotech</i>
             </div>
             <div class="menu-title">化學 Chemistry</div>
           </a>
         </li>
         <li>
-          <a href="biology">
+          <a href="../biology">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #1976d2;">eco</i>
             </div>
             <div class="menu-title">生物 Biology</div>
           </a>
         </li>
         <li>
-          <a href="ict">
+          <a href="../ict">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #212529;">computer</i>
             </div>
             <div class="menu-title">資訊及通訊科技 ICT</div>
           </a>
         </li>
         <li>
-          <a href="m1">
+          <a href="../m1">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #7c4dff;">functions</i>
             </div>
             <div class="menu-title">M1</div>
           </a>
         </li>
         <li>
-          <a href="m2">
+          <a href="../m2">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #009688;">functions</i>
             </div>
             <div class="menu-title">M2</div>
           </a>
         </li>
         <li>
-          <a href="geography">
+          <a href="../geography">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #0097a7;">public</i>
             </div>
             <div class="menu-title">地理 Geography</div>
           </a>
         </li>
         <li>
-          <a href="history">
+          <a href="../history">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #6d4c41;">book</i>
             </div>
             <div class="menu-title">歷史 History</div>
           </a>
         </li>
         <li>
-          <a href="chinese-history">
+          <a href="../chinese-history">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #c62828;">book</i>
             </div>
             <div class="menu-title">中國歷史 Chinese History</div>
           </a>
         </li>
         <li>
-          <a href="economics">
+          <a href="../economics">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #6c757d;">attach_money</i>
             </div>
             <div class="menu-title">經濟 Economics</div>
           </a>
         </li>
         <li>
-          <a href="bafs">
+          <a href="../bafs">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffb300;">business</i>
             </div>
             <div class="menu-title">企業、會計與財務概論 BAFS</div>
           </a>
         </li>
         <li>
-          <a href="visual-arts">
+          <a href="../visual-arts">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #03a9f4;">palette</i>
             </div>
             <div class="menu-title">視覺藝術 Visual Arts</div>
@@ -293,21 +415,21 @@
         </li>
         <li class="menu-label">其他</li>
         <li>
-          <a href="contact">
+          <a href="../contact">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
             </div>
             <div class="menu-title">聯絡我們</div>
           </a>
         </li>
         <li>
-          <a href="disclaimer">
+          <a href="../disclaimer">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">warning</i>
             </div>
             <div class="menu-title">免責聲明</div>
           </a>
         </li>
         <li>
-          <a href="privacy-policy">
+          <a href="../privacy-policy">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">security</i>
             </div>
             <div class="menu-title">私隱政策</div>
@@ -324,29 +446,73 @@
     <div class="main-content">
       <!--breadcrumb-->
       <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">其他</div>
+        <div class="breadcrumb-title pe-3">Blog</div>
         <div class="ps-3">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
-              <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page">聯絡我們</li>
+              <li class="breadcrumb-item"><i class="material-icons-outlined align-middle">category</i> {{category}}</li>
             </ol>
           </nav>
         </div>
       </div>
       <!--end breadcrumb-->
-      <div class="card rounded-4" style="height:600px;">
+
+      <!-- Blog Post Content -->
+      <div class="card rounded-4">
         <div class="card-body">
-          <h1>聯絡我們 Contact Us</h1>
-          <br>
-          <p class="mb-4">
-            如你發現本站內容有侵權、違規或有任何查詢，請隨時與我們聯絡。我們會盡快回覆及處理相關事宜。
-          </p>
-          <a href="mailto:info@dse.best" class="btn btn-primary btn-lg">
-            <i class="material-icons-outlined align-middle">email</i>
-            Email
-          </a>
+          <!-- Post Header -->
+          <div class="post-header mb-4">
+            <h1 class="fw-bold mb-3" style="font-size: 2.5rem; line-height: 1.2;">
+              {{title}}
+            </h1>
+
+            <!-- Post Meta -->
+            <div class="post-meta d-flex flex-wrap align-items-center gap-3 mb-4">
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-primary">person</i>
+                <span>{{author}}</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-success">calendar_today</i>
+                <span>{{date}}</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-info">schedule</i>
+                <span>{{readingTime}}</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-warning">visibility</i>
+                <span id="busuanzi_value_site_pv"></span>
+              </div>
+            </div>
+            
+
+            <!-- Tags -->
+            <div class="post-tags mb-4">
+              {{tags}}
+            </div>
+
+            <!-- Featured Image -->
+            {{featuredImageSection}}
+
+          <!-- Post Content -->
+          <div class="post-content">
+            {{content}}
+          </div>
+
+          <!-- Post Footer -->
+          <div class="post-footer mt-5 pt-4 border-top">
+            <div class="row">
+              <div class="col-md-12 text-md-end">
+                <a href="../blog/" class="btn btn-outline-primary back-to-blog">
+                  <span class="d-flex align-items-center">
+                    <span class="me-2" style="font-size:1.2em;">&#8592;</span>
+                    返回主頁
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -360,12 +526,11 @@
   <!--start footer-->
   <footer class="page-footer">
     <p class="mb-0">
-      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html"
+      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="../contact.html"
         style="color:inherit;text-decoration:underline;">聯絡我們</a>。
     </p>
   </footer>
   <!--end footer-->
-
 
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
@@ -387,7 +552,7 @@
       <div>
         <div class="row g-3">
           <div class="col-12 col-xl-6">
-            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
+            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme">
             <label
               class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
               for="BlueTheme">
@@ -436,6 +601,7 @@
     </div>
   </div>
   <!--start switcher-->
+
   <!--bootstrap js-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
@@ -443,10 +609,9 @@
   <!--plugins-->
   <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/dist/perfect-scrollbar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.js"></script> -->
   <script>
     // Minified main.js
-    $(function () { "use strict"; new PerfectScrollbar(".notify-list"), new PerfectScrollbar(".search-content"), $(function () { $("#sidenav").metisMenu() }); const e = localStorage.getItem("selectedTheme"); e && ($("html").attr("data-bs-theme", e), $(`#${e.charAt(0).toUpperCase() + e.slice(1).replace("-theme", "")}Theme`).prop("checked", !0)); $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme"), localStorage.setItem("selectedTheme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light"), localStorage.setItem("selectedTheme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark"), localStorage.setItem("selectedTheme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark"), localStorage.setItem("selectedTheme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme"), localStorage.setItem("selectedTheme", "bodered-theme") }), $(".btn-toggle").click(function () { $("body").hasClass("toggled") ? ($("body").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($("body").addClass("toggled"), $(".sidebar-wrapper").hover(function () { $("body").addClass("sidebar-hovered") }, function () { $("body").removeClass("sidebar-hovered") })) }), $(".sidebar-close").on("click", function () { $("body").removeClass("toggled") }), $(".dark-mode i").click(function () { $(this).text(function (e, t) { return "dark_mode" === t ? "light_mode" : "dark_mode" }) }), $(".dark-mode").click(function () { $("html").attr("data-bs-theme", function (e, t) { return "dark" === t ? "light" : "dark" }) }), $(document).ready(function () { $(window).on("scroll", function () { $(this).scrollTop() > 60 ? $(".top-header .navbar").addClass("sticky-header") : $(".top-header .navbar").removeClass("sticky-header") }) }), $(".email-toggle-btn").on("click", function () { $(".email-wrapper").toggleClass("email-toggled") }), $(".email-toggle-btn-mobile").on("click", function () { $(".email-wrapper").removeClass("email-toggled") }), $(".compose-mail-btn").on("click", function () { $(".compose-mail-popup").show() }), $(".compose-mail-close").on("click", function () { $(".compose-mail-popup").hide() }), $(".chat-toggle-btn").on("click", function () { $(".chat-wrapper").toggleClass("chat-toggled") }), $(".chat-toggle-btn-mobile").on("click", function () { $(".chat-wrapper").removeClass("chat-toggled") }), $(".search-control").click(function () { $(".search-popup").addClass("d-block"), $(".search-close").addClass("d-block") }), $(".search-close").click(function () { $(".search-popup").removeClass("d-block"), $(".search-close").removeClass("d-block") }), $(".mobile-search-btn").click(function () { $(".search-popup").addClass("d-block") }), $(".mobile-search-close").click(function () { $(".search-popup").removeClass("d-block") }), $(function () { for (var e = window.location, t = $(".metismenu li a").filter(function () { return this.href == e }).addClass("").parent().addClass("mm-active"); t.is("li");)t = t.parent("").addClass("mm-show").parent("").addClass("mm-active") }) });  
+    $(function () { "use strict"; new PerfectScrollbar(".notify-list"), new PerfectScrollbar(".search-content"), $(function () { $("#sidenav").metisMenu() }); const e = localStorage.getItem("selectedTheme"); e && ($("html").attr("data-bs-theme", e), $(`#${e.charAt(0).toUpperCase() + e.slice(1).replace("-theme", "")}Theme`).prop("checked", !0)); $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme"), localStorage.setItem("selectedTheme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light"), localStorage.setItem("selectedTheme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark"), localStorage.setItem("selectedTheme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark"), localStorage.setItem("selectedTheme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme"), localStorage.setItem("selectedTheme", "bodered-theme") }), $(".btn-toggle").click(function () { $("body").hasClass("toggled") ? ($("body").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($("body").addClass("toggled"), $(".sidebar-wrapper").hover(function () { $("body").addClass("sidebar-hovered") }, function () { $("body").removeClass("sidebar-hovered") })) }), $(".sidebar-close").on("click", function () { $("body").removeClass("toggled") }), $(".dark-mode i").click(function () { $(this).text(function (e, t) { return "dark_mode" === t ? "light_mode" : "dark_mode" }) }), $(".dark-mode").click(function () { $("html").attr("data-bs-theme", function (e, t) { return "dark" === t ? "light" : "dark" }) }), $(document).ready(function () { $(window).on("scroll", function () { $(this).scrollTop() > 60 ? $(".top-header .navbar").addClass("sticky-header") : $(".top-header .navbar").removeClass("sticky-header") }) }), $(".email-toggle-btn").on("click", function () { $(".email-wrapper").toggleClass("email-toggled") }), $(".email-toggle-btn-mobile").on("click", function () { $(".email-wrapper").removeClass("email-toggled") }), $(".compose-mail-btn").on("click", function () { $(".compose-mail-popup").show() }), $(".compose-mail-close").on("click", function () { $(".compose-mail-popup").hide() }), $(".chat-toggle-btn").on("click", function () { $(".chat-wrapper").toggleClass("chat-toggled") }), $(".chat-toggle-btn-mobile").on("click", function () { $(".chat-wrapper").removeClass("chat-toggled") }), $(".search-control").click(function () { $(".search-popup").addClass("d-block"), $(".search-close").addClass("d-block") }), $(".search-close").click(function () { $(".search-popup").removeClass("d-block"), $(".search-close").removeClass("d-block") }), $(".mobile-search-btn").click(function () { $(".search-popup").addClass("d-block") }), $(".mobile-search-close").click(function () { $(".search-popup").removeClass("d-block") }), $(function () { for (var e = window.location, t = $(".metismenu li a").filter(function () { return this.href == e }).addClass("").parent().addClass("mm-active"); t.is("li");)t = t.parent("").addClass("mm-show").parent("").addClass("mm-active") }) }); 
   </script>
   <script>
     new PerfectScrollbar(".sidebar-wrapper");
@@ -455,5 +620,4 @@
     }, 680);
   </script>
 </body>
-
 </html>

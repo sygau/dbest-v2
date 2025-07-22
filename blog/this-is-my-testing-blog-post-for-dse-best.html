@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="zh-Hant" data-bs-theme="blue-theme">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>This is a SEO Title for my blog post</title>
+  <!--favicon-->
+  <link rel="icon" href="https://www.dse.best/assets/images/favicon.ico" type="image/x-icon">
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="This is a SEO Description for my blog post">
+  <meta name="keywords" content="SEO TAG 1, SEO TAG 2, SEO TAG 3">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="This is a SEO Title for my blog post">
+  <meta property="og:description" content="This is a SEO Description for my blog post">
+  <meta property="og:image" content="https://images.ctfassets.net/fqnskombkl24/7rBXFG9BzsRxW7rVThsedQ/da6c14d96d4948cf3d6cfdca3ef10e0e/apple-touch-icon.png">
+  <meta property="og:url" content="https://www.dse.best/blog/this-is-my-testing-blog-post-for-dse-best">
+  <meta property="og:type" content="article">
+  <meta name="theme-color" content="#8e24aa">
+  <!-- loader-->
+  <link href="../assets/css/pace.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
+  <!--plugins-->
+  <link href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/css/perfect-scrollbar.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../assets/plugins/metismenu/mm-vertical.css">
+  <!--bootstrap css-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+  <!--main css-->
+  <link href="../assets/css/bootstrap-extended.css" rel="stylesheet">
+  <link href="../sass/main.css" rel="stylesheet">
+  <link href="../sass/dark-theme.css" rel="stylesheet">
+  <link href="../sass/blue-theme.css" rel="stylesheet">
+  <link href="../sass/semi-dark.css" rel="stylesheet">
+  <link href="../sass/bordered-theme.css" rel="stylesheet">
+  <link href="../sass/responsive.css" rel="stylesheet">
+  <style>
+    /* Responsive YouTube embeds */
+    .youtube-embed-responsive {
+      max-width: 700px;
+      margin: 2rem auto;
+    }
+    .post-content {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .post-content img {
+      max-width: 100%;
+      height: auto;
+      margin: 1.5rem 0;
+    }
+    /* Fix spacing for headings */
+    .post-content h1 {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
+      line-height: 1.3;
+    }
+    .post-content h2 {
+      margin-top: 2.5rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.9rem;
+      line-height: 1.3;
+    }
+    .post-content h3 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      line-height: 1.3;
+    }
+    .post-content h4 {
+      margin-top: 1.8rem;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    .post-content h5, .post-content h6 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+    /* Fix paragraph spacing */
+    .post-content p {
+      margin-bottom: 1.5rem;
+    }
+    /* Fix list spacing */
+    .post-content ul, .post-content ol {
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      padding-left: 2rem;
+    }
+    .post-content li {
+      margin-bottom: 0.7rem;
+    }
+    .post-content li:last-child {
+      margin-bottom: 0;
+    }
+    /* Fix button styling */
+    .post-content .btn {
+      display: inline-block;
+      margin: 1rem 0;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0.5rem;
+    }
+    /* Add space after buttons */
+    .post-content .btn + p {
+      margin-top: 1.5rem;
+    }
+    /* Fix spacing for blockquotes */
+    .post-content blockquote {
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      border-left: 4px solid #6366f1;
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .youtube-embed-responsive {
+        margin: 1.5rem auto;
+      }
+      .post-content {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      .post-content h1 {
+        font-size: 1.8rem;
+      }
+      .post-content h2 {
+        font-size: 1.6rem;
+      }
+      .post-content h3 {
+        font-size: 1.4rem;
+      }
+      .post-content h4 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+  <script>
+    try {
+      var theme = localStorage.getItem('selectedTheme');
+      if (theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme);
+      }
+    } catch (e) { }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
+  <script defer>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XB60B3MXHH');
+  </script>
+  <!-- Manifest -->
+  <link rel="manifest" href="../manifest.json">
+  <!-- iOS support -->
+  <link rel="apple-touch-icon" href="https://www.dse.best/assets/images/logo-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="DSEBest">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#1976d2">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.dse.best/blog/this-is-my-testing-blog-post-for-dse-best"
+  },
+  "headline": "This is a SEO Title for my blog post",
+  "description": "This is a SEO Description for my blog post",
+  "image": "https://www.dse.best/assets/images/logo-icon.webp",
+  "author": {
+    "@type": "Person",
+    "name": "DSEBest"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DSEBest",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.dse.best/assets/images/logo-icon.webp"
+    }
+  },
+  "datePublished": "2025-07-13",
+  "dateModified": "2025-07-13",
+  "articleSection": "Testing",
+  "keywords": "SEO TAG 1, SEO TAG 2, SEO TAG 3",
+  "inLanguage": "zh-HK"
+}
+</script>
+</head>
+
+<body>
+
+  <!--start header-->
+  <header class="top-header">
+    <nav class="navbar navbar-expand align-items-center gap-4">
+      <div class="btn-toggle">
+        <a href="javascript:;" aria-label="menu"><i class="material-icons-outlined">menu</i></a>
+      </div>
+      <div class="search-bar flex-grow-1">
+        <div class="position-relative">
+          <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
+          <span
+            class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+          <span
+            class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+          <div class="search-popup p-3">
+            <div class="card rounded-4 overflow-hidden">
+              <div class="card-body search-content">
+                <p class="search-title mb-0" style="white-space: nowrap;">⠀(裝飾嚟嘅， SEARCH唔到)⠀</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <ul class="navbar-nav gap-1 nav-right-links align-items-center">
+        <li class="nav-item d-lg-none mobile-search-btn">
+          <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"><img
+              src="../assets/images/county/06.png" width="22" height="22" alt="cn-icon">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="../assets/images/county/06.png" width="20" height="20" alt="cn-icon" loading="lazy"><span
+                  class="ms-2">中文</span></a>
+            </li>
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="../assets/images/county/05.png" width="20" height="20" alt="us-icon" loading="lazy"><span
+                  class="ms-2">English</span></a>
+            </li>
+        </li>
+      </ul>
+      </li>
+      <li class="nav-item dropdown" style="display: none;">
+        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
+          data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
+          <span class="badge-notify">5</span>
+        </a>
+        <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+          <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
+            <h5 class="notiy-title mb-0">Notifications</h5>
+            <div class="dropdown">
+            </div>
+          </div>
+          <div class="notify-list">
+          </div>
+        </div>
+      </li>
+      </ul>
+
+    </nav>
+  </header>
+  <!--end top header-->
+
+  <!--start sidebar-->
+  <aside class="sidebar-wrapper">
+    <div class="sidebar-header">
+      <div class="logo-icon">
+        <a href="../index.html">
+          <img src="../assets/images/logo-icon.webp" class="logo-img" alt="dsebest-logo" loading="lazy">
+        </a>
+      </div>
+      <div class="logo-name flex-grow-1">
+        <a href="../index.html" class="text-decoration-none">
+          <h5 class="mb-0">DSEBest</h5>
+        </a>
+      </div>
+      <div class="sidebar-close">
+        <span class="material-icons-outlined">close</span>
+      </div>
+    </div>
+    <div class="sidebar-nav">
+      <!--navigation-->
+      <ul class="metismenu" id="sidenav">
+        <li>
+          <a href="../index.html">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #007bff;">home</i>
+            </div>
+            <div class="menu-title">主頁</div>
+          </a>
+        </li>
+        <li>
+          <a href="index.html">
+            <div class="parent-icon">
+              <i class="material-icons-outlined" style="color: #ffc107;">article</i>
+            </div>
+            <div class="menu-title">Blog</div>
+          </a>
+        </li>
+        <li class="menu-label">核心科目</li>
+        <li>
+          <a href="../chinese">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e83e8c;">book</i>
+            </div>
+            <div class="menu-title">中文</div>
+          </a>
+        </li>
+        <li>
+          <a href="../english">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #00bcd4;">book</i>
+            </div>
+            <div class="menu-title">英文 English</div>
+          </a>
+        </li>
+        <li>
+          <a href="../math">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff9800;">calculate</i>
+            </div>
+            <div class="menu-title">數學 Math</div>
+          </a>
+        </li>
+        <li>
+          <a href="../citizen">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #8e24aa;">school</i>
+            </div>
+            <div class="menu-title">公民</div>
+          </a>
+        </li>
+        <li class="menu-label">選修科目</li>
+        <li>
+          <a href="../physics">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffc107;">bolt</i>
+            </div>
+            <div class="menu-title">物理 Physics</div>
+          </a>
+        </li>
+        <li>
+          <a href="../chemistry">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #43a047;">biotech</i>
+            </div>
+            <div class="menu-title">化學 Chemistry</div>
+          </a>
+        </li>
+        <li>
+          <a href="../biology">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #1976d2;">eco</i>
+            </div>
+            <div class="menu-title">生物 Biology</div>
+          </a>
+        </li>
+        <li>
+          <a href="../ict">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #212529;">computer</i>
+            </div>
+            <div class="menu-title">資訊及通訊科技 ICT</div>
+          </a>
+        </li>
+        <li>
+          <a href="../m1">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #7c4dff;">functions</i>
+            </div>
+            <div class="menu-title">M1</div>
+          </a>
+        </li>
+        <li>
+          <a href="../m2">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #009688;">functions</i>
+            </div>
+            <div class="menu-title">M2</div>
+          </a>
+        </li>
+        <li>
+          <a href="../geography">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #0097a7;">public</i>
+            </div>
+            <div class="menu-title">地理 Geography</div>
+          </a>
+        </li>
+        <li>
+          <a href="../history">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #6d4c41;">book</i>
+            </div>
+            <div class="menu-title">歷史 History</div>
+          </a>
+        </li>
+        <li>
+          <a href="../chinese-history">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #c62828;">book</i>
+            </div>
+            <div class="menu-title">中國歷史 Chinese History</div>
+          </a>
+        </li>
+        <li>
+          <a href="../economics">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #6c757d;">attach_money</i>
+            </div>
+            <div class="menu-title">經濟 Economics</div>
+          </a>
+        </li>
+        <li>
+          <a href="../bafs">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffb300;">business</i>
+            </div>
+            <div class="menu-title">企業、會計與財務概論 BAFS</div>
+          </a>
+        </li>
+        <li>
+          <a href="../visual-arts">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #03a9f4;">palette</i>
+            </div>
+            <div class="menu-title">視覺藝術 Visual Arts</div>
+          </a>
+        </li>
+        <li class="menu-label">其他</li>
+        <li>
+          <a href="../contact">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
+            </div>
+            <div class="menu-title">聯絡我們</div>
+          </a>
+        </li>
+        <li>
+          <a href="../disclaimer">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">warning</i>
+            </div>
+            <div class="menu-title">免責聲明</div>
+          </a>
+        </li>
+        <li>
+          <a href="../privacy-policy">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">security</i>
+            </div>
+            <div class="menu-title">私隱政策</div>
+          </a>
+        </li>
+      </ul>
+      <!--end navigation-->
+    </div>
+  </aside>
+  <!--end sidebar-->
+
+  <!--start main wrapper-->
+  <main class="main-wrapper">
+    <div class="main-content">
+      <!--breadcrumb-->
+      <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">Blog</div>
+        <div class="ps-3">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+              <li class="breadcrumb-item"><i class="material-icons-outlined align-middle">category</i> Testing</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <!--end breadcrumb-->
+
+      <!-- Blog Post Content -->
+      <div class="card rounded-4">
+        <div class="card-body">
+          <!-- Post Header -->
+          <div class="post-header mb-4">
+            <h1 class="fw-bold mb-3" style="font-size: 2.5rem; line-height: 1.2;">
+              test blog post
+            </h1>
+
+            <!-- Post Meta -->
+            <div class="post-meta d-flex flex-wrap align-items-center gap-3 mb-4">
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-primary">person</i>
+                <span>DSEBest</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-success">calendar_today</i>
+                <span>2025-07-13</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-info">schedule</i>
+                <span>1 min read</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="material-icons-outlined me-2 text-warning">visibility</i>
+                <span id="busuanzi_value_site_pv"></span>
+              </div>
+            </div>
+            
+
+            <!-- Tags -->
+            <div class="post-tags mb-4">
+              <span class="badge bg-primary me-2">dsebest</span> <span class="badge bg-primary me-2">testing</span> <span class="badge bg-primary me-2">blogpost</span> <span class="badge bg-primary me-2">hello</span>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="text-center mb-4">
+        <img src="https://images.ctfassets.net/fqnskombkl24/7rBXFG9BzsRxW7rVThsedQ/da6c14d96d4948cf3d6cfdca3ef10e0e/apple-touch-icon.png" alt="test blog post"
+          class="img-fluid rounded" style="max-height: 400px; object-fit: cover;">
+      </div>
+
+          <!-- Post Content -->
+          <div class="post-content">
+            <h1>Heading 1</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><h2>Heading 2</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><h3>Heading 3</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><h4>Heading 4</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><h5>Heading 5</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><h6>Heading 6 </h6><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p><p><b>This is a bolded text.</b></p><p><i>This  is a italic text.</i></p><p><u>This is a underlined text</u></p><p><a href="https://dse.best">This is a hyperlink to my website.</a> </p><p><sup>This is a superscript</sup></p><p><sub>This is a subscript</sub></p><p><s><sub>This is a strikethought</sub></s></p><p><code>This is a code</code></p><ul><li><p>This is bullet list item one</p></li><li><p>This is bullet list item two</p></li></ul><ol><li><p>This is numbered list item one</p></li><li><p>This is numbered list item two</p></li></ol><blockquote><p>This is a quote </p></blockquote><hr/><p>Line above</p><table><tr><th><p>Example table </p></th><th><p>Test</p></th></tr><tr><td><p>test 1</p></td><td><p>test 2</p></td></tr></table><p>heres a embed photo below</p>
+            <div class="custom-image-block text-center my-3">
+              <img src="//images.ctfassets.net/fqnskombkl24/7rBXFG9BzsRxW7rVThsedQ/da6c14d96d4948cf3d6cfdca3ef10e0e/apple-touch-icon.png" alt="tesingFI" class="img-fluid" />
+              <div class="image-caption small text-muted mt-1">HELLO</div>
+            </div>
+          <h1>This is a very cool video</h1><p>
+      <div class="youtube-embed-responsive" style="max-width: 700px; margin: 0 auto;">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+            src="https://www.youtube.com/embed/xdmxM-v4KQg"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+     </p><p></p><p></p><h1>This is a button testing site.</h1><p><a href="https://example.com" class="btn btn-grd btn-grd-primary px-5 me-2 mb-2">Gradient Primary</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-danger px-5 me-2 mb-2">Gradient Danger</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-success px-5 me-2 mb-2">Gradient Success</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-info px-5 me-2 mb-2">Gradient Info</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-warning px-5 me-2 mb-2">Gradient Warning</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-voilet px-5 me-2 mb-2">Gradient Voilet</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-royal px-5 me-2 mb-2">Gradient Royal</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-branding px-5 me-2 mb-2">Gradient Branding</a>
+<a href="https://example.com" class="btn btn-grd btn-grd-deep-blue px-5 me-2 mb-2">Gradient Deep Blue</a></p><p><a href="https://example.com" class="btn btn-primary px-5 me-2 mb-2">Color Primary</a>
+<a href="https://example.com" class="btn btn-danger px-5 me-2 mb-2">Color Danger</a>
+<a href="https://example.com" class="btn btn-success px-5 me-2 mb-2">Color Success</a>
+<a href="https://example.com" class="btn btn-info px-5 me-2 mb-2">Color Info</a>
+<a href="https://example.com" class="btn btn-warning px-5 me-2 mb-2">Color Warning</a>
+<a href="https://example.com" class="btn btn-dark px-5 me-2 mb-2">Color Dark</a>
+<a href="https://example.com" class="btn btn-secondary px-5 me-2 mb-2">Color Secondary</a>
+<a href="https://example.com" class="btn btn-light px-5 me-2 mb-2">Color Light</a></p><p><a href="https://example.com" class="btn btn-primary px-5 raised me-2 mb-2">Raised Primary</a>
+<a href="https://example.com" class="btn btn-danger px-5 raised me-2 mb-2">Raised Danger</a>
+<a href="https://example.com" class="btn btn-success px-5 raised me-2 mb-2">Raised Success</a>
+<a href="https://example.com" class="btn btn-info px-5 raised me-2 mb-2">Raised Info</a>
+<a href="https://example.com" class="btn btn-warning px-5 raised me-2 mb-2">Raised Warning</a>
+<a href="https://example.com" class="btn btn-dark px-5 raised me-2 mb-2">Raised Dark</a>
+<a href="https://example.com" class="btn btn-secondary px-5 raised me-2 mb-2">Raised Secondary</a>
+<a href="https://example.com" class="btn btn-light px-5 raised me-2 mb-2">Raised Light</a></p><p><a href="https://example.com" class="btn btn-outline-primary px-5 me-2 mb-2">Outline Primary</a>
+<a href="https://example.com" class="btn btn-outline-danger px-5 me-2 mb-2">Outline Danger</a>
+<a href="https://example.com" class="btn btn-outline-success px-5 me-2 mb-2">Outline Success</a>
+<a href="https://example.com" class="btn btn-outline-info px-5 me-2 mb-2">Outline Info</a>
+<a href="https://example.com" class="btn btn-outline-warning px-5 me-2 mb-2">Outline Warning</a>
+<a href="https://example.com" class="btn btn-outline-dark px-5 me-2 mb-2">Outline Dark</a>
+<a href="https://example.com" class="btn btn-outline-secondary px-5 me-2 mb-2">Outline Secondary</a></p><p><a href="https://example.com" class="btn btn-inverse-primary px-5 me-2 mb-2">Inverse Primary</a>
+<a href="https://example.com" class="btn btn-inverse-danger px-5 me-2 mb-2">Inverse Danger</a>
+<a href="https://example.com" class="btn btn-inverse-success px-5 me-2 mb-2">Inverse Success</a>
+<a href="https://example.com" class="btn btn-inverse-info px-5 me-2 mb-2">Inverse Info</a>
+<a href="https://example.com" class="btn btn-inverse-warning px-5 me-2 mb-2">Inverse Warning</a>
+<a href="https://example.com" class="btn btn-inverse-dark px-5 me-2 mb-2">Inverse Dark</a>
+<a href="https://example.com" class="btn btn-inverse-secondary px-5 me-2 mb-2">Inverse Secondary</a></p><p><a href="https://example.com" class="btn btn-primary px-4 raised me-2 mb-2"><i class="material-icons-outlined" style="vertical-align: middle; margin-right: 0.3em;">search</i>Search</a>
+<a href="https://example.com" class="btn btn-danger px-4 raised me-2 mb-2"><i class="material-icons-outlined" style="vertical-align: middle; margin-right: 0.3em;">home</i>Home</a>
+<a href="https://example.com" class="btn btn-success px-4 raised me-2 mb-2"><i class="material-icons-outlined" style="vertical-align: middle; margin-right: 0.3em;">account_circle</i>Profile</a>
+<a href="https://example.com" class="btn btn-info px-4 raised me-2 mb-2"><i class="material-icons-outlined" style="vertical-align: middle; margin-right: 0.3em;">info</i>Info</a>
+<a href="https://example.com" class="btn btn-warning px-4 raised me-2 mb-2"><i class="material-icons-outlined" style="vertical-align: middle; margin-right: 0.3em;">warning</i>Warn</a>
+<a href="https://example.com" class="btn btn-royal px-4 raised me-2 mb-2"><i class="material-icons-outlined" style="vertical-align: middle; margin-right: 0.3em;">star</i>Star</a></p>
+          </div>
+
+          <!-- Post Footer -->
+          <div class="post-footer mt-5 pt-4 border-top">
+            <div class="row">
+              <div class="col-md-12 text-md-end">
+                <a href="../blog/" class="btn btn-outline-primary back-to-blog">
+                  <span class="d-flex align-items-center">
+                    <span class="me-2" style="font-size:1.2em;">&#8592;</span>
+                    返回主頁
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!--end main wrapper-->
+
+  <!--start overlay-->
+  <div class="overlay btn-toggle"></div>
+  <!--end overlay-->
+
+  <!--start footer-->
+  <footer class="page-footer">
+    <p class="mb-0">
+      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="../contact.html"
+        style="color:inherit;text-decoration:underline;">聯絡我們</a>。
+    </p>
+  </footer>
+  <!--end footer-->
+
+  <!--start switcher-->
+  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
+    type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+    <i class="material-icons-outlined">tune</i>
+  </button>
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
+    <div class="offcanvas-header border-bottom h-70">
+      <div class="">
+        <h5 class="mb-0">主題自定義</h5>
+        <p class="mb-0">Customize your theme</p>
+      </div>
+      <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+        <i class="material-icons-outlined">close</i>
+      </a>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <div class="row g-3">
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BlueTheme">
+              <span class="material-icons-outlined">contactless</span>
+              <span>藍色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="LightTheme">
+              <span class="material-icons-outlined">light_mode</span>
+              <span>淺色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="DarkTheme">
+              <span class="material-icons-outlined">dark_mode</span>
+              <span>深色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="SemiDarkTheme">
+              <span class="material-icons-outlined">contrast</span>
+              <span>半深色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BoderedTheme">
+              <span class="material-icons-outlined">border_style</span>
+              <span>邊框</span>
+            </label>
+          </div>
+        </div><!--end row-->
+      </div>
+    </div>
+  </div>
+  <!--start switcher-->
+
+  <!--bootstrap js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!--plugins-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!--plugins-->
+  <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/dist/perfect-scrollbar.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
+  <script>
+    // Minified main.js
+    $(function () { "use strict"; new PerfectScrollbar(".notify-list"), new PerfectScrollbar(".search-content"), $(function () { $("#sidenav").metisMenu() }); const e = localStorage.getItem("selectedTheme"); e && ($("html").attr("data-bs-theme", e), $(`#${e.charAt(0).toUpperCase() + e.slice(1).replace("-theme", "")}Theme`).prop("checked", !0)); $("#BlueTheme").on("click", function () { $("html").attr("data-bs-theme", "blue-theme"), localStorage.setItem("selectedTheme", "blue-theme") }), $("#LightTheme").on("click", function () { $("html").attr("data-bs-theme", "light"), localStorage.setItem("selectedTheme", "light") }), $("#DarkTheme").on("click", function () { $("html").attr("data-bs-theme", "dark"), localStorage.setItem("selectedTheme", "dark") }), $("#SemiDarkTheme").on("click", function () { $("html").attr("data-bs-theme", "semi-dark"), localStorage.setItem("selectedTheme", "semi-dark") }), $("#BoderedTheme").on("click", function () { $("html").attr("data-bs-theme", "bodered-theme"), localStorage.setItem("selectedTheme", "bodered-theme") }), $(".btn-toggle").click(function () { $("body").hasClass("toggled") ? ($("body").removeClass("toggled"), $(".sidebar-wrapper").unbind("hover")) : ($("body").addClass("toggled"), $(".sidebar-wrapper").hover(function () { $("body").addClass("sidebar-hovered") }, function () { $("body").removeClass("sidebar-hovered") })) }), $(".sidebar-close").on("click", function () { $("body").removeClass("toggled") }), $(".dark-mode i").click(function () { $(this).text(function (e, t) { return "dark_mode" === t ? "light_mode" : "dark_mode" }) }), $(".dark-mode").click(function () { $("html").attr("data-bs-theme", function (e, t) { return "dark" === t ? "light" : "dark" }) }), $(document).ready(function () { $(window).on("scroll", function () { $(this).scrollTop() > 60 ? $(".top-header .navbar").addClass("sticky-header") : $(".top-header .navbar").removeClass("sticky-header") }) }), $(".email-toggle-btn").on("click", function () { $(".email-wrapper").toggleClass("email-toggled") }), $(".email-toggle-btn-mobile").on("click", function () { $(".email-wrapper").removeClass("email-toggled") }), $(".compose-mail-btn").on("click", function () { $(".compose-mail-popup").show() }), $(".compose-mail-close").on("click", function () { $(".compose-mail-popup").hide() }), $(".chat-toggle-btn").on("click", function () { $(".chat-wrapper").toggleClass("chat-toggled") }), $(".chat-toggle-btn-mobile").on("click", function () { $(".chat-wrapper").removeClass("chat-toggled") }), $(".search-control").click(function () { $(".search-popup").addClass("d-block"), $(".search-close").addClass("d-block") }), $(".search-close").click(function () { $(".search-popup").removeClass("d-block"), $(".search-close").removeClass("d-block") }), $(".mobile-search-btn").click(function () { $(".search-popup").addClass("d-block") }), $(".mobile-search-close").click(function () { $(".search-popup").removeClass("d-block") }), $(function () { for (var e = window.location, t = $(".metismenu li a").filter(function () { return this.href == e }).addClass("").parent().addClass("mm-active"); t.is("li");)t = t.parent("").addClass("mm-show").parent("").addClass("mm-active") }) }); 
+  </script>
+  <script>
+    new PerfectScrollbar(".sidebar-wrapper");
+    setTimeout(function () {
+      Pace.stop();
+    }, 680);
+  </script>
+</body>
+</html>

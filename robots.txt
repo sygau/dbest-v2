@@ -3,4 +3,5 @@ Allow: /
 Disallow: /*.pdf$
 Disallow: /*.md$
 Disallow: /admin/
-# Sitemap: https://www.dse.life/sitemap.xml
+Disallow: /cdn/
+Sitemap: https://dse.best/sitemap.xml
