@@ -91,6 +91,66 @@
   <meta name="apple-mobile-web-app-title" content="DSEBest">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="theme-color" content="#1976d2">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <style>
+    body.pwa-ios, body.pwa-ios * {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body.pwa-ios img {
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
+    body.pwa-ios ::-webkit-scrollbar {
+      display: none;
+    }
+    body.pwa-ios input, body.pwa-ios textarea {
+      -webkit-user-select: auto;
+      user-select: auto;
+    }
+    body.pwa-ios {
+      overscroll-behavior: contain;
+      touch-action: manipulation;
+    }
+  </style>
+  <script>
+    // Detect if running as a PWA on iOS (iPhone/iPad)
+    function isIOSStandalone() {
+      const ua = window.navigator.userAgent;
+      const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      const standalone = window.navigator.standalone === true ||
+        (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+      return isIOS && standalone;
+    }
+
+    function applyPWAiOSNativeFeel() {
+      document.body.classList.add('pwa-ios');
+      // Prevent text selection
+      document.body.style.webkitUserSelect = 'none';
+      document.body.style.userSelect = 'none';
+      // Prevent zooming
+      let viewport = document.querySelector('meta[name="viewport"]');
+      if (viewport) {
+        viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+      }
+      // Prevent overscroll/stretching
+      document.body.style.overscrollBehavior = 'none';
+      document.body.style.webkitOverflowScrolling = 'auto';
+      document.body.style.touchAction = 'none';
+      // Prevent scroll bounce
+      document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+      }, { passive: false });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (isIOSStandalone()) {
+        applyPWAiOSNativeFeel();
+      }
+    });
+  </script>
 </head>
 
 <body>
