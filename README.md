@@ -7,17 +7,66 @@ relatedTemplates:
   - nextjs-boilerplate
 ---
 
-# HTML Starter
+# DSEBest 📚✨
 
-This is a starter HTML5 templates which is configured with Vercel Analytics (through a `script` tag), advanced routing with [Vercel Edge Middleware](https://vercel.com/docs/concepts/functions/edge-middleware), as well as some basic styles
+![GitHub last commit](https://img.shields.io/github/last-commit/1fu/dbest-v1?style=flat-square)
+![Code Size](https://img.shields.io/github/languages/code-size/1fu/dbest-v1?style=flat-square)
+![License](https://img.shields.io/github/license/1fu/dbest-v1?style=flat-square)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/html&project-name=html)
+> **DSEBest** is a modern, mobile-first, PWA-enabled platform for HKDSE students, featuring past papers, notes, and blog posts — all delivered lightning-fast and offline-ready.
 
-## Shortcode Guide
 
-You can add beautiful, flexible buttons to your blog posts or pages using the following shortcodes in your Contentful content.
+## 🚀 Features
 
-### Button Shortcode Format
+- 📱 **PWA**: Installable, and native-like on iOS/iPadOS
+- 📝 **Contentful-powered blog**: Dynamic posts, static HTML generation
+- 📄 **Past Papers**: Fast PDF access via CDN
+- 🌙 **Themes**: Light, dark, blue, and more
+- ⚡ **Optimized**: Blazing fast, Google PageSpeed friendly
+- 🧩 **No server-side code**: 100% static & CDN deployable
+
+
+## 🛠️ Tech Stack
+
+- HTML5, CSS3 (Sass), JavaScript (Vanilla)
+- [Contentful](https://www.contentful.com/) (CMS)
+- [Vercel](https://vercel.com/) (Hosting)
+- [GitHub Actions](https://github.com/features/actions) (Automation)
+- PWA (Service Worker, Manifest)
+
+
+## 🧑‍💻 Contentful.JS SSG Instructions
+
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Run the Contentful static site generator:**
+   ```sh
+   npm start
+   ```
+   - This will fetch posts from Contentful and generate static HTML files in the `/blog` directory.
+   - Make sure your Contentful API keys are set in your environment variables.
+
+
+## 🗺️ Contentful SSG Flowchart
+
+```mermaid
+flowchart TD
+    A[Start npm start] --> B[Load .env for Contentful credentials]
+    B --> C[Fetch posts from Contentful API]
+    C --> D[For each post:]
+    D --> E[Render HTML using template]
+    E --> F[Write HTML file to /blog/slug.html]
+    F --> G[Repeat for all posts]
+    G --> H[Done! Static blog ready]
+```
+
+## 🧩 Shortcode Documentation
+
+### Button Shortcode
+
+You can add beautiful, flexible buttons to your blog posts or pages using the following shortcode format in your Contentful content:
 
 ```
 [button;TYPE;STYLE;LABEL;URL]
@@ -35,36 +84,36 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - `LABEL`: The text to display on the button
 - `URL`: The link for the button
 
-### Examples
+#### Examples
 
-#### Gradient Buttons
+**Gradient Buttons**
 ```
 [button;gradient;primary;Gradient Primary;https://example.com]
 [button;gradient;danger;Gradient Danger;https://example.com]
 ```
 
-#### Color Buttons
+**Color Buttons**
 ```
 [button;color;primary;Color Primary;https://example.com]
 [button;color;danger;Color Danger;https://example.com]
 ```
 
-#### Raised Buttons
+**Raised Buttons**
 ```
 [button;raised;success;Raised Success;https://example.com]
 ```
 
-#### Outline Buttons
+**Outline Buttons**
 ```
 [button;outline;info;Outline Info;https://example.com]
 ```
 
-#### Inverse Buttons
+**Inverse Buttons**
 ```
 [button;inverse;warning;Inverse Warning;https://example.com]
 ```
 
-#### Icon Buttons
+**Icon Buttons**
 ```
 [button;icon+search;primary;Search;https://example.com]
 [button;icon+home;danger;Home;https://example.com]
@@ -73,10 +122,12 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - The value after `icon+` is the Material Icons name (see https://fonts.google.com/icons for options).
 - Icon buttons will have the icon before the label, with proper alignment and spacing.
 
-### Notes
+#### Notes
 - All buttons are responsive and use your template's styles.
 - You can use these shortcodes anywhere in your Contentful content.
-- For best results, place multiple buttons on the same line (separated by spaces) to avoid unwanted block-level wrapping.
 - If you use an unsupported type or style, the button will default to `gradient` and `primary`.
+- If the URL contains HTML, the parser will attempt to extract the correct link.
 
 ---
+
+*Made with ❤️ for HKDSE students.*

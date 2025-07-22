@@ -138,11 +138,8 @@
       // Prevent overscroll/stretching
       document.body.style.overscrollBehavior = 'none';
       document.body.style.webkitOverflowScrolling = 'auto';
-      document.body.style.touchAction = 'none';
-      // Prevent scroll bounce
-      document.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-      }, { passive: false });
+      // document.body.style.touchAction = 'none'; // Removed to allow scrolling
+      // document.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false }); // Removed to allow scrolling
     }
 
     document.addEventListener('DOMContentLoaded', function() {
