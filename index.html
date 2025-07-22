@@ -94,9 +94,9 @@
   <meta name="format-detection" content="telephone=no, email=no">
   <style>
     body.pwa-ios, body.pwa-ios * {
-      -webkit-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      -webkit-touch-callout: none !important;
       -webkit-tap-highlight-color: transparent;
     }
     body.pwa-ios img {
@@ -107,8 +107,12 @@
       display: none;
     }
     body.pwa-ios input, body.pwa-ios textarea {
-      -webkit-user-select: auto;
-      user-select: auto;
+      -webkit-user-select: auto !important;
+      user-select: auto !important;
+    }
+    html, body {
+      overscroll-behavior-y: contain;
+      overscroll-behavior-x: contain;
     }
     body.pwa-ios {
       overscroll-behavior: contain;
@@ -142,9 +146,20 @@
       // document.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false }); // Removed to allow scrolling
     }
 
+    function preventRubberBand(e) {
+      var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+      var scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
+      var clientHeight = document.documentElement.clientHeight;
+      var isAtTop = scrollTop === 0;
+      var isAtBottom = scrollTop + clientHeight >= scrollHeight;
+      if ((isAtTop && e.touches[0].clientY > 0) || (isAtBottom && e.touches[0].clientY < 0)) {
+        e.preventDefault();
+      }
+    }
     document.addEventListener('DOMContentLoaded', function() {
       if (isIOSStandalone()) {
         applyPWAiOSNativeFeel();
+        document.body.addEventListener('touchmove', preventRubberBand, { passive: false });
       }
     });
   </script>

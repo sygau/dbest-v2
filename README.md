@@ -1,17 +1,7 @@
----
-name: HTML Starter
-slug: html-starter-with-analytics
-description: HTML5 template with analytics and advanced routing configuration.
-deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/html&project-name=html
-relatedTemplates:
-  - nextjs-boilerplate
----
+
 
 # DSEBest 📚✨
 
-![GitHub last commit](https://img.shields.io/github/last-commit/1fu/dbest-v1?style=flat-square)
-![Code Size](https://img.shields.io/github/languages/code-size/1fu/dbest-v1?style=flat-square)
-![License](https://img.shields.io/github/license/1fu/dbest-v1?style=flat-square)
 
 > **DSEBest** is a modern, mobile-first, PWA-enabled platform for HKDSE students, featuring past papers, notes, and blog posts — all delivered lightning-fast and offline-ready.
 
