@@ -1,6 +1,8 @@
 name: Contentful Content Update
 
 on:
+  schedule:
+    - cron: '0 9 * * *'  # Every day at 5:00 PM Hong Kong time (UTC+8)
   repository_dispatch:
     types: [contentful_update]
   workflow_dispatch:  # Allow manual triggering from GitHub UI
