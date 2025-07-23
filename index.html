@@ -20,7 +20,7 @@
   <meta property="og:image" content="https://www.dse.best/assets/images/logo-icon.png">
   <meta property="og:url" content="https://www.dse.best/">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#8e24aa">
+  <meta name="theme-color" content="#0f1535">
   <!-- loader-->
   <link href="assets/css/pace.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
@@ -98,12 +98,21 @@
       user-select: none !important;
       -webkit-touch-callout: none !important;
       -webkit-tap-highlight-color: transparent;
+      scrollbar-width: none;           /* Firefox */
+      -ms-overflow-style: none;        /* IE 10+ */
     }
     body.pwa-ios img {
       -webkit-user-drag: none;
       user-drag: none;
     }
     body.pwa-ios ::-webkit-scrollbar {
+      display: none;                   /* Chrome, Safari, Opera */
+    }
+    body.pwa-ios .sidebar-wrapper {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body.pwa-ios .sidebar-wrapper::-webkit-scrollbar {
       display: none;
     }
     body.pwa-ios input, body.pwa-ios textarea {
@@ -425,7 +434,7 @@
           </h1>
           <p class="mb-4" style="margin-top: 40px; font-size: 1.4rem;">
             本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和
-            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。(v1.2.02d)
+            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。(v1.2.02e)
           </p>
           <br>
           <hr class="my-4">
