@@ -146,20 +146,12 @@
       // document.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false }); // Removed to allow scrolling
     }
 
-    function preventRubberBand(e) {
-      var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-      var scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
-      var clientHeight = document.documentElement.clientHeight;
-      var isAtTop = scrollTop === 0;
-      var isAtBottom = scrollTop + clientHeight >= scrollHeight;
-      if ((isAtTop && e.touches[0].clientY > 0) || (isAtBottom && e.touches[0].clientY < 0)) {
-        e.preventDefault();
-      }
-    }
+    // Remove the preventRubberBand function and its event listener to restore scrolling
+    // function preventRubberBand(e) { ... }
+    // document.body.addEventListener('touchmove', preventRubberBand, { passive: false });
     document.addEventListener('DOMContentLoaded', function() {
       if (isIOSStandalone()) {
         applyPWAiOSNativeFeel();
-        document.body.addEventListener('touchmove', preventRubberBand, { passive: false });
       }
     });
   </script>
@@ -433,7 +425,7 @@
           </h1>
           <p class="mb-4" style="margin-top: 40px; font-size: 1.4rem;">
             本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和
-            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。
+            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。(v1.2.02d)
           </p>
           <br>
           <hr class="my-4">
