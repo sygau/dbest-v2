@@ -331,7 +331,7 @@
 
   <!--start main wrapper-->
   <main class="main-wrapper">
-    <div class="main-content">
+    <div class="main-content" id="swup">
       <!--breadcrumb-->
       <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="breadcrumb-title pe-3">錯誤</div>
@@ -380,7 +380,9 @@
   </footer>
   <!--end footer-->
 
-
+  <!-- Swup for smooth transitions -->
+  <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
+  <script>const swup = new Swup();</script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
     type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
