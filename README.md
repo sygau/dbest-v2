@@ -121,3 +121,17 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 ---
 
 *Made with ❤️ for HKDSE students.*
+
+## TODO
+- UI Improvement
+- Caching
+- Add remaining/ALL subjects
+- Add topic names for ByTopics
+- Multilingual support
+- Add a chat room/box
+- Track PDF download/CDN activity
+- Codebase revamp (remove comments)
+- Google Ads
+- AI Mock Papers Section
+- Contentful.JS sitemap.xml generation
+- Alternnative analytics platform (Mixpanel?)
