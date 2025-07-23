@@ -342,6 +342,24 @@ $(function () {
     const isIOSDevice = isIOS();
     if (isIOSStandalone()) {
       applyPWAiOSNativeFeel();
+      
+      // Force refresh on first load to ensure PWA enhancements are applied
+      // This addresses iOS PWA caching issues
+      const hasVisited = sessionStorage.getItem('pwaVisited');
+      if (!hasVisited) {
+        sessionStorage.setItem('pwaVisited', 'true');
+        
+        // Only reload if not already reloaded (prevent loop)
+        const needsReload = sessionStorage.getItem('pwaReloaded') !== 'true';
+        if (needsReload) {
+          sessionStorage.setItem('pwaReloaded', 'true');
+          // Add a small delay before reload
+          setTimeout(() => {
+            window.location.reload();
+          }, 300);
+          return; // Skip the rest as we're reloading
+        }
+      }
     }
     
     // Initialize PerfectScrollbar with settings appropriate for the platform

@@ -364,7 +364,7 @@
           </h1>
           <p class="mb-4" style="margin-top: 40px; font-size: 1.4rem;">
             本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和
-            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。(v1.2.02l)
+            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。(v1.2.02m)
           </p>
           <br>
           <hr class="my-4">
@@ -754,6 +754,62 @@
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.js"></script> -->
   <script>
+    // Apply PWA enhancements immediately without waiting for main.js
+    (function() {
+      function isIOSStandalone() {
+        const ua = window.navigator.userAgent;
+        const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        const standalone = window.navigator.standalone === true ||
+          (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+        return isIOS && standalone;
+      }
+
+      function applyQuickIOSFix() {
+        if (isIOSStandalone()) {
+          document.body.classList.add('pwa-ios');
+          
+          // Force iOS scrolling fixes immediately
+          const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+          if (sidebarWrapper) {
+            sidebarWrapper.style.webkitOverflowScrolling = 'touch';
+            sidebarWrapper.style.overflowY = 'scroll';
+            sidebarWrapper.style.scrollbarWidth = 'none';
+          }
+          
+          // Add iOS-specific scrolling style immediately
+          const style = document.createElement('style');
+          style.innerHTML = `
+            body.pwa-ios .sidebar-wrapper,
+            body.pwa-ios .sidebar-nav {
+              overflow-y: scroll !important;
+              -webkit-overflow-scrolling: touch !important;
+              scrollbar-width: none !important;
+            }
+            body.pwa-ios .sidebar-wrapper::-webkit-scrollbar,
+            body.pwa-ios .sidebar-nav::-webkit-scrollbar { 
+              width: 0 !important;
+              display: none !important;
+            }
+            .ps__rail-x, .ps__rail-y, .ps__thumb-x, .ps__thumb-y {
+              opacity: 0 !important;
+              display: none !important;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      }
+      
+      // Run immediately
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyQuickIOSFix);
+      } else {
+        applyQuickIOSFix();
+      }
+      
+      // Run again after full load
+      window.addEventListener('load', applyQuickIOSFix);
+    })();
+
     setTimeout(function () {
       Pace.stop();
     }, 680);
