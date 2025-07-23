@@ -184,6 +184,105 @@ $(function () {
 
 
 
+  // PWA Enhancements
+  
+  /**
+   * Detects if running as a PWA on iOS (iPhone/iPad)
+   * @returns {boolean} True if running as PWA on iOS
+   */
+  function isIOSStandalone() {
+    const ua = window.navigator.userAgent;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const standalone = window.navigator.standalone === true ||
+      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+    return isIOS && standalone;
+  }
+  
+  /**
+   * Applies native-like feel for PWA on iOS
+   */
+  function applyPWAiOSNativeFeel() {
+    document.body.classList.add('pwa-ios');
+    // Prevent text selection
+    document.body.style.webkitUserSelect = 'none';
+    document.body.style.userSelect = 'none';
+    // Prevent zooming
+    let viewport = document.querySelector('meta[name="viewport"]');
+    if (viewport) {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+    }
+    // Prevent overscroll/stretching
+    document.body.style.overscrollBehavior = 'none';
+    document.body.style.webkitOverflowScrolling = 'auto';
+  }
+  
+  /**
+   * Function to hide sidebar scrollbars
+   */
+  function hideSidebarScrollbars() {
+    const sidebarRails = document.querySelectorAll('.sidebar-wrapper .ps__rail-y, .sidebar-wrapper .ps__rail-x');
+    sidebarRails.forEach(rail => {
+      rail.style.display = 'none';
+      rail.style.opacity = 0;
+      rail.style.width = '0';
+    });
+  }
+  
+  /**
+   * Function to hide all scrollbars throughout the app
+   */
+  function hideAllScrollbars() {
+    // Hide Perfect Scrollbar rails
+    const allRails = document.querySelectorAll('.ps__rail-x, .ps__rail-y, .ps__thumb-x, .ps__thumb-y');
+    allRails.forEach(rail => {
+      rail.style.display = 'none';
+      rail.style.opacity = 0;
+      rail.style.width = '0';
+      rail.style.height = '0';
+    });
+    
+    // Apply no-scrollbar style to important elements
+    document.documentElement.style.scrollbarWidth = 'none';
+    document.documentElement.style.msOverflowStyle = 'none';
+    document.body.style.scrollbarWidth = 'none';
+    document.body.style.msOverflowStyle = 'none';
+    
+    // Apply style to main content elements
+    const mainElements = document.querySelectorAll('.main-wrapper, .main-content');
+    mainElements.forEach(el => {
+      el.style.scrollbarWidth = 'none';
+      el.style.msOverflowStyle = 'none';
+    });
+  }
+  
+  // Apply the PWA enhancements when DOM is ready
+  document.addEventListener('DOMContentLoaded', function () {
+    if (isIOSStandalone()) {
+      applyPWAiOSNativeFeel();
+    }
+    
+    // Initialize PerfectScrollbar with minimal visual footprint
+    const sidebarPS = new PerfectScrollbar(".sidebar-wrapper", {
+      suppressScrollX: true,
+      wheelPropagation: true,
+      minScrollbarLength: 0
+    });
+    
+    // Hide scrollbars
+    hideSidebarScrollbars();
+    hideAllScrollbars();
+    
+    // Additional event listeners
+    window.addEventListener('resize', hideAllScrollbars);
+    
+    // Hide Pace spinner after loading
+    setTimeout(function () {
+      if (typeof Pace !== 'undefined') {
+        Pace.stop();
+      }
+      hideAllScrollbars();
+    }, 680);
+  });
 });
 
 

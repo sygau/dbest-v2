@@ -1606,3 +1606,100 @@ html[data-bs-theme="dark"] .post-content blockquote {
   font-style: italic;
   opacity: 1 !important;
 }
+
+/* PWA Enhancements */
+/* iOS PWA specific styles */
+body.pwa-ios,
+body.pwa-ios * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+}
+
+body.pwa-ios img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+body.pwa-ios ::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+body.pwa-ios .sidebar-wrapper {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body.pwa-ios .sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+body.pwa-ios input,
+body.pwa-ios textarea {
+  -webkit-user-select: auto !important;
+  user-select: auto !important;
+}
+
+html,
+body {
+  overscroll-behavior-y: contain;
+  overscroll-behavior-x: contain;
+}
+
+body.pwa-ios {
+  overscroll-behavior: contain;
+  touch-action: manipulation;
+}
+
+/* Hide all scrollbars universally */
+::-webkit-scrollbar {
+  width: 0 !important;
+  display: none !important;
+}
+
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Target both sidebar and main content areas */
+.sidebar-wrapper::-webkit-scrollbar, 
+.main-wrapper::-webkit-scrollbar,
+.main-content::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0 !important;
+  display: none !important;
+}
+
+.sidebar-wrapper,
+.main-wrapper,
+.main-content,
+html,
+body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* Hide Perfect Scrollbar elements everywhere */
+.ps__rail-x, 
+.ps__rail-y, 
+.ps__thumb-x, 
+.ps__thumb-y {
+  opacity: 0 !important;
+  background: transparent !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Hide Pace spinner but keep the progress bar */
+.pace .pace-activity {
+  display: none !important;
+}
