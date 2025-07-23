@@ -203,17 +203,67 @@ $(function () {
    */
   function applyPWAiOSNativeFeel() {
     document.body.classList.add('pwa-ios');
+    
     // Prevent text selection
     document.body.style.webkitUserSelect = 'none';
     document.body.style.userSelect = 'none';
+    
     // Prevent zooming
     let viewport = document.querySelector('meta[name="viewport"]');
     if (viewport) {
       viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
     }
+    
     // Prevent overscroll/stretching
     document.body.style.overscrollBehavior = 'none';
     document.body.style.webkitOverflowScrolling = 'auto';
+    
+    // Disable 3D touch/haptic touch preview
+    const disablePreview = document.createElement('meta');
+    disablePreview.name = 'apple-touch-callout';
+    disablePreview.content = 'none';
+    document.head.appendChild(disablePreview);
+    
+    // Force touch-action manipulation for better touch handling
+    document.body.style.touchAction = 'manipulation';
+    
+    // Disable pull-to-refresh
+    document.body.addEventListener('touchmove', function(e) {
+      // Allow scrolling within scrollable elements
+      if (e.target.closest('.sidebar-wrapper, .main-content')) {
+        return;
+      }
+      // Prevent pull-to-refresh
+      if (window.pageYOffset === 0 && e.touches[0].screenY > 0) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+    
+    // Apply full native app feel
+    const nativeAppStyle = document.createElement('style');
+    nativeAppStyle.innerHTML = `
+      body.pwa-ios {
+        -webkit-touch-callout: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+      
+      body.pwa-ios a, 
+      body.pwa-ios button {
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+      }
+      
+      body.pwa-ios * {
+        -webkit-user-drag: none !important;
+      }
+      
+      body.pwa-ios .sidebar-wrapper {
+        -webkit-overflow-scrolling: touch !important;
+        overflow-y: scroll !important;
+        overscroll-behavior: contain !important;
+      }
+    `;
+    document.head.appendChild(nativeAppStyle);
     
     // iOS-specific scrolling fixes
     const sidebarWrapper = document.querySelector('.sidebar-wrapper');

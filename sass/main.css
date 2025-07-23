@@ -1614,7 +1614,7 @@ body.pwa-ios * {
   -webkit-user-select: none !important;
   user-select: none !important;
   -webkit-touch-callout: none !important;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent !important;
   scrollbar-width: none;
   /* Firefox */
   -ms-overflow-style: none;
@@ -1622,28 +1622,54 @@ body.pwa-ios * {
 }
 
 body.pwa-ios img {
-  -webkit-user-drag: none;
-  user-drag: none;
+  -webkit-user-drag: none !important;
+  user-drag: none !important;
 }
 
 body.pwa-ios ::-webkit-scrollbar {
-  display: none;
+  display: none !important;
   /* Chrome, Safari, Opera */
+  width: 0 !important;
 }
 
 body.pwa-ios .sidebar-wrapper {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 body.pwa-ios .sidebar-wrapper::-webkit-scrollbar {
-  display: none;
+  display: none !important;
+  width: 0 !important;
 }
 
 body.pwa-ios input,
 body.pwa-ios textarea {
   -webkit-user-select: auto !important;
   user-select: auto !important;
+}
+
+/* Native app-like button behavior on iOS */
+body.pwa-ios a,
+body.pwa-ios button,
+body.pwa-ios [role="button"],
+body.pwa-ios input[type="button"],
+body.pwa-ios input[type="submit"] {
+  -webkit-tap-highlight-color: transparent !important;
+  tap-highlight-color: transparent !important;
+  touch-action: manipulation !important;
+}
+
+/* Prevent text magnification on double-tap */
+body.pwa-ios {
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+}
+
+/* PWA page transitions */
+body.pwa-ios .main-content {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 html,
