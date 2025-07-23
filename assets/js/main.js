@@ -184,110 +184,6 @@ $(function () {
 
 
 
-  // PWA Enhancements
-  
-  /**
-   * Detects if running as a PWA on iOS (iPhone/iPad)
-   * @returns {boolean} True if running as PWA on iOS
-   */
-  function isIOSStandalone() {
-    const ua = window.navigator.userAgent;
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-    const standalone = window.navigator.standalone === true ||
-      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
-    return isIOS && standalone;
-  }
-  
-  /**
-   * Applies native-like feel for PWA on iOS
-   */
-  function applyPWAiOSNativeFeel() {
-    document.body.classList.add('pwa-ios');
-    
-    // Prevent text selection
-    document.body.style.webkitUserSelect = 'none';
-    document.body.style.userSelect = 'none';
-    
-    // Prevent zooming
-    let viewport = document.querySelector('meta[name="viewport"]');
-    if (viewport) {
-      viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
-    }
-    
-    // Prevent overscroll/stretching
-    document.body.style.overscrollBehavior = 'none';
-    document.body.style.webkitOverflowScrolling = 'auto';
-    
-    // Disable 3D touch/haptic touch preview
-    const disablePreview = document.createElement('meta');
-    disablePreview.name = 'apple-touch-callout';
-    disablePreview.content = 'none';
-    document.head.appendChild(disablePreview);
-    
-    // Force touch-action manipulation for better touch handling
-    document.body.style.touchAction = 'manipulation';
-    
-    // Disable pull-to-refresh
-    document.body.addEventListener('touchmove', function(e) {
-      // Allow scrolling within scrollable elements
-      if (e.target.closest('.sidebar-wrapper, .main-content')) {
-        return;
-      }
-      // Prevent pull-to-refresh
-      if (window.pageYOffset === 0 && e.touches[0].screenY > 0) {
-        e.preventDefault();
-      }
-    }, { passive: false });
-    
-    // Apply full native app feel
-    const nativeAppStyle = document.createElement('style');
-    nativeAppStyle.innerHTML = `
-      body.pwa-ios {
-        -webkit-touch-callout: none !important;
-        -webkit-tap-highlight-color: transparent !important;
-      }
-      
-      body.pwa-ios a, 
-      body.pwa-ios button {
-        -webkit-tap-highlight-color: transparent !important;
-        -webkit-touch-callout: none !important;
-      }
-      
-      body.pwa-ios * {
-        -webkit-user-drag: none !important;
-      }
-      
-      body.pwa-ios .sidebar-wrapper {
-        -webkit-overflow-scrolling: touch !important;
-        overflow-y: scroll !important;
-        overscroll-behavior: contain !important;
-      }
-    `;
-    document.head.appendChild(nativeAppStyle);
-    
-    // iOS-specific scrolling fixes
-    const sidebarWrapper = document.querySelector('.sidebar-wrapper');
-    if (sidebarWrapper) {
-      // Apply iOS-specific scrolling properties
-      sidebarWrapper.style.webkitOverflowScrolling = 'touch';  // Enable momentum scrolling
-      sidebarWrapper.style.overflowY = 'scroll';
-      
-      // Force hide scrollbars on iOS
-      const style = document.createElement('style');
-      style.innerHTML = `
-        .sidebar-wrapper::-webkit-scrollbar { 
-          width: 0 !important;
-          display: none !important;
-        }
-        .sidebar-wrapper { 
-          overflow-y: scroll !important;
-          -webkit-overflow-scrolling: touch !important;
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }
-  
   /**
    * Function to hide sidebar scrollbars
    */
@@ -326,43 +222,10 @@ $(function () {
       el.style.msOverflowStyle = 'none';
     });
   }
-  
-  /**
-   * Detects if the device is running iOS
-   * @returns {boolean} True if running on iOS
-   */
-  function isIOS() {
-    const ua = window.navigator.userAgent;
-    return /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-  }
 
-  // Apply the PWA enhancements when DOM is ready
+  // Apply scrollbar functionality when DOM is ready
   document.addEventListener('DOMContentLoaded', function () {
-    // Check for iOS PWA mode
-    const isIOSDevice = isIOS();
-    if (isIOSStandalone()) {
-      applyPWAiOSNativeFeel();
-      
-      // Force refresh on first load to ensure PWA enhancements are applied
-      // This addresses iOS PWA caching issues
-      const hasVisited = sessionStorage.getItem('pwaVisited');
-      if (!hasVisited) {
-        sessionStorage.setItem('pwaVisited', 'true');
-        
-        // Only reload if not already reloaded (prevent loop)
-        const needsReload = sessionStorage.getItem('pwaReloaded') !== 'true';
-        if (needsReload) {
-          sessionStorage.setItem('pwaReloaded', 'true');
-          // Add a small delay before reload
-          setTimeout(() => {
-            window.location.reload();
-          }, 300);
-          return; // Skip the rest as we're reloading
-        }
-      }
-    }
-    
-    // Initialize PerfectScrollbar with settings appropriate for the platform
+    // Initialize PerfectScrollbar with optimal settings
     const sidebarPS = new PerfectScrollbar(".sidebar-wrapper", {
       suppressScrollX: true,
       wheelPropagation: true,
@@ -373,14 +236,7 @@ $(function () {
     // Ensure sidebar is scrollable but without visible scrollbars
     const sidebarWrapper = document.querySelector('.sidebar-wrapper');
     if (sidebarWrapper) {
-      if (isIOSDevice) {
-        // iOS needs these specific settings
-        sidebarWrapper.style.overflowY = 'scroll';
-        sidebarWrapper.style.webkitOverflowScrolling = 'touch';
-      } else {
-        // Non-iOS devices
-        sidebarWrapper.style.overflowY = 'auto';
-      }
+      sidebarWrapper.style.overflowY = 'auto';
       sidebarWrapper.style.scrollbarWidth = 'none';
       sidebarWrapper.style.msOverflowStyle = 'none';
     }
@@ -394,12 +250,7 @@ $(function () {
       hideAllScrollbars();
       // Re-check sidebar scrollability
       if (sidebarWrapper) {
-        if (isIOSDevice) {
-          sidebarWrapper.style.overflowY = 'scroll';
-          sidebarWrapper.style.webkitOverflowScrolling = 'touch';
-        } else {
-          sidebarWrapper.style.overflowY = 'auto';
-        }
+        sidebarWrapper.style.overflowY = 'auto';
       }
     });
     
@@ -411,23 +262,8 @@ $(function () {
       hideAllScrollbars();
       // Ensure sidebar remains scrollable
       if (sidebarWrapper) {
-        if (isIOSDevice) {
-          sidebarWrapper.style.overflowY = 'scroll';
-          sidebarWrapper.style.webkitOverflowScrolling = 'touch';
-        } else {
-          sidebarWrapper.style.overflowY = 'auto';
-        }
+        sidebarWrapper.style.overflowY = 'auto';
       }
     }, 680);
   });
 });
-
-
-
-
-
-
-
-
-
-
