@@ -1,4 +1,4 @@
-require('dotenv').config();
+// Remove dotenv import and add direct keys for Contentful
 const contentful = require('contentful');
 const fs = require('fs-extra');
 const path = require('path');
@@ -6,12 +6,13 @@ const { generatePostHTML, deletePostHTML } = require('./generatePosts');
 const { generateIndexHTML } = require('./generateIndex');
 
 const client = contentful.createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+  space: '7quy4v63pv3p',
+  environment: 'master', // Default environment
+  accessToken: 'yQVmPw3JYw_y3mH71vuDdtpKYbAKUCIpcJgNEQnBkGQ'
 });
 
-
+// Define blog content type directly
+const BLOG_CONTENT_TYPE = 'blogPost';
 
 /**
  * Advanced sync function: detects new, updated, and deleted posts.
@@ -37,7 +38,7 @@ async function syncBlog() {
   let response;
   try {
     response = await client.getEntries({
-      content_type: process.env.BLOG_CONTENT_TYPE || 'blogPost',
+      content_type: BLOG_CONTENT_TYPE,
       order: '-fields.date',
       include: 1
     });
@@ -147,8 +148,6 @@ async function syncBlog() {
   console.log('🎉 Blog sync completed!');
 }
 
-
-
 // Main execution - runs when file is executed directly
 if (require.main === module) {
   syncBlog().then(() => process.exit(0)).catch(err => {
@@ -156,3 +155,5 @@ if (require.main === module) {
     process.exit(1);
   });
 }
+
+module.exports = { syncBlog };
