@@ -264,6 +264,6 @@ $(function () {
       if (sidebarWrapper) {
         sidebarWrapper.style.overflowY = 'auto';
       }
-    }, 680);
+    }, 180);
   });
 });
