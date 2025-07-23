@@ -214,6 +214,28 @@ $(function () {
     // Prevent overscroll/stretching
     document.body.style.overscrollBehavior = 'none';
     document.body.style.webkitOverflowScrolling = 'auto';
+    
+    // iOS-specific scrolling fixes
+    const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+    if (sidebarWrapper) {
+      // Apply iOS-specific scrolling properties
+      sidebarWrapper.style.webkitOverflowScrolling = 'touch';  // Enable momentum scrolling
+      sidebarWrapper.style.overflowY = 'scroll';
+      
+      // Force hide scrollbars on iOS
+      const style = document.createElement('style');
+      style.innerHTML = `
+        .sidebar-wrapper::-webkit-scrollbar { 
+          width: 0 !important;
+          display: none !important;
+        }
+        .sidebar-wrapper { 
+          overflow-y: scroll !important;
+          -webkit-overflow-scrolling: touch !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
   }
   
   /**
@@ -255,23 +277,42 @@ $(function () {
     });
   }
   
+  /**
+   * Detects if the device is running iOS
+   * @returns {boolean} True if running on iOS
+   */
+  function isIOS() {
+    const ua = window.navigator.userAgent;
+    return /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+  }
+
   // Apply the PWA enhancements when DOM is ready
   document.addEventListener('DOMContentLoaded', function () {
+    // Check for iOS PWA mode
+    const isIOSDevice = isIOS();
     if (isIOSStandalone()) {
       applyPWAiOSNativeFeel();
     }
     
-    // Initialize PerfectScrollbar with minimal visual footprint
+    // Initialize PerfectScrollbar with settings appropriate for the platform
     const sidebarPS = new PerfectScrollbar(".sidebar-wrapper", {
       suppressScrollX: true,
       wheelPropagation: true,
-      minScrollbarLength: 0
+      minScrollbarLength: 0,
+      swipeEasing: true
     });
     
     // Ensure sidebar is scrollable but without visible scrollbars
     const sidebarWrapper = document.querySelector('.sidebar-wrapper');
     if (sidebarWrapper) {
-      sidebarWrapper.style.overflowY = 'auto';  // Ensure scrolling works
+      if (isIOSDevice) {
+        // iOS needs these specific settings
+        sidebarWrapper.style.overflowY = 'scroll';
+        sidebarWrapper.style.webkitOverflowScrolling = 'touch';
+      } else {
+        // Non-iOS devices
+        sidebarWrapper.style.overflowY = 'auto';
+      }
       sidebarWrapper.style.scrollbarWidth = 'none';
       sidebarWrapper.style.msOverflowStyle = 'none';
     }
@@ -285,7 +326,12 @@ $(function () {
       hideAllScrollbars();
       // Re-check sidebar scrollability
       if (sidebarWrapper) {
-        sidebarWrapper.style.overflowY = 'auto';
+        if (isIOSDevice) {
+          sidebarWrapper.style.overflowY = 'scroll';
+          sidebarWrapper.style.webkitOverflowScrolling = 'touch';
+        } else {
+          sidebarWrapper.style.overflowY = 'auto';
+        }
       }
     });
     
@@ -297,7 +343,12 @@ $(function () {
       hideAllScrollbars();
       // Ensure sidebar remains scrollable
       if (sidebarWrapper) {
-        sidebarWrapper.style.overflowY = 'auto';
+        if (isIOSDevice) {
+          sidebarWrapper.style.overflowY = 'scroll';
+          sidebarWrapper.style.webkitOverflowScrolling = 'touch';
+        } else {
+          sidebarWrapper.style.overflowY = 'auto';
+        }
       }
     }, 680);
   });

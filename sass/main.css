@@ -1692,6 +1692,26 @@ body {
   overflow-y: auto !important;
 }
 
+/* iOS PWA specific sidebar scrolling fixes */
+body.pwa-ios .sidebar-wrapper {
+  overflow-y: scroll !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+body.pwa-ios .sidebar-nav {
+  overflow-y: scroll !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific override */
+  .sidebar-wrapper, 
+  .sidebar-nav {
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+}
+
 /* Hide Perfect Scrollbar elements everywhere */
 .ps__rail-x, 
 .ps__rail-y, 
