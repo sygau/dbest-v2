@@ -225,34 +225,110 @@
       document.documentElement.style.overscrollBehavior = 'none';
       document.body.style.webkitOverflowScrolling = 'touch';
       
-      // Hide scrollbars more aggressively
+      // Hide scrollbars more aggressively - especially targeting iPad
       const scrollbarStyle = document.createElement('style');
       scrollbarStyle.textContent = `
-        ::-webkit-scrollbar {
+        /* Universal scrollbar hiding */
+        ::-webkit-scrollbar,
+        ::-webkit-scrollbar-track,
+        ::-webkit-scrollbar-thumb {
           display: none !important;
           width: 0 !important;
           height: 0 !important;
+          background: transparent !important;
+          appearance: none !important;
         }
+        
         * {
           scrollbar-width: none !important;
           -ms-overflow-style: none !important;
+          scrollbar-color: transparent transparent !important;
+        }
+        
+        /* Main content specific rules */
+        .main-content::-webkit-scrollbar,
+        .main-wrapper::-webkit-scrollbar,
+        main::-webkit-scrollbar {
+          display: none !important;
+          width: 0 !important;
+          height: 0 !important;
+          background: transparent !important;
+        }
+        
+        .main-content,
+        .main-wrapper,
+        main {
+          -webkit-overflow-scrolling: touch !important;
+          overflow-y: auto !important;
+          scrollbar-width: none !important;
+          -ms-overflow-style: none !important;
+          scroll-behavior: smooth !important;
         }
       `;
       document.head.appendChild(scrollbarStyle);
       
-      // Fix sidebar scrolling with stronger rules
-      setTimeout(function() {
-        const elements = document.querySelectorAll('.sidebar-wrapper, .sidebar-nav, .main-content, body, html');
+      // Fix scrolling behaviors with improved targeting
+      const fixScrolling = () => {
+        // Fix main content scrolling
+        const mainContent = document.querySelector('.main-content');
+        const mainWrapper = document.querySelector('.main-wrapper');
         
-        elements.forEach(el => {
-          if (el) {
-            el.style.webkitOverflowScrolling = 'touch';
-            el.style.overflowY = 'scroll';
-            el.style.scrollbarWidth = 'none';
-            el.style.msOverflowStyle = 'none';
-          }
-        });
-      }, 100);
+        if (mainContent) {
+          mainContent.style.webkitOverflowScrolling = 'touch';
+          mainContent.style.overflowY = 'auto';
+          mainContent.style.height = '100%';
+          mainContent.style.position = 'relative';
+          mainContent.style.scrollbarWidth = 'none';
+          mainContent.style.msOverflowStyle = 'none';
+        }
+        
+        if (mainWrapper) {
+          mainWrapper.style.webkitOverflowScrolling = 'touch';
+          mainWrapper.style.overflowY = 'auto';
+          mainWrapper.style.height = '100%';
+          mainWrapper.style.position = 'relative';
+          mainWrapper.style.scrollbarWidth = 'none';
+          mainWrapper.style.msOverflowStyle = 'none';
+        }
+        
+        // Fix sidebar scrolling
+        const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+        const sidebarNav = document.querySelector('.sidebar-nav');
+        
+        if (sidebarWrapper) {
+          sidebarWrapper.style.webkitOverflowScrolling = 'touch';
+          sidebarWrapper.style.overflowY = 'auto';
+          sidebarWrapper.style.scrollbarWidth = 'none';
+          sidebarWrapper.style.msOverflowStyle = 'none';
+        }
+        
+        if (sidebarNav) {
+          sidebarNav.style.webkitOverflowScrolling = 'touch';
+          sidebarNav.style.overflowY = 'auto';
+          sidebarNav.style.scrollbarWidth = 'none';
+          sidebarNav.style.msOverflowStyle = 'none';
+        }
+        
+        // Set document and body scroll properly
+        document.documentElement.style.height = '100%';
+        document.documentElement.style.overscrollBehavior = 'none';
+        document.body.style.height = '100%';
+        document.body.style.overscrollBehavior = 'none';
+        document.body.style.overflowY = 'auto';
+      };
+      
+      // Run immediately and after a slight delay
+      fixScrolling();
+      setTimeout(fixScrolling, 100);
+      setTimeout(fixScrolling, 500);
+      
+      // Also run after any scroll event to ensure consistent behavior
+      document.addEventListener('scroll', function() {
+        requestAnimationFrame(fixScrolling);
+      }, {passive: true});
+      
+      // Run when page height might change
+      window.addEventListener('resize', fixScrolling, {passive: true});
       
       // More aggressive 3D Touch prevention
       const touchStyle = document.createElement('style');
@@ -585,7 +661,7 @@
           </h1>
           <p class="mb-4" style="margin-top: 40px; font-size: 1.4rem;">
             本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和
-            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。(v1.2.02p)
+            M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。(v1.2.02q)
           </p>
           <br>
           <hr class="my-4">
