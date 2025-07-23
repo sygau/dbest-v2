@@ -1687,6 +1687,11 @@ body {
   -ms-overflow-style: none !important;
 }
 
+/* Ensure sidebar remains scrollable */
+.sidebar-wrapper {
+  overflow-y: auto !important;
+}
+
 /* Hide Perfect Scrollbar elements everywhere */
 .ps__rail-x, 
 .ps__rail-y, 

@@ -268,12 +268,26 @@ $(function () {
       minScrollbarLength: 0
     });
     
+    // Ensure sidebar is scrollable but without visible scrollbars
+    const sidebarWrapper = document.querySelector('.sidebar-wrapper');
+    if (sidebarWrapper) {
+      sidebarWrapper.style.overflowY = 'auto';  // Ensure scrolling works
+      sidebarWrapper.style.scrollbarWidth = 'none';
+      sidebarWrapper.style.msOverflowStyle = 'none';
+    }
+    
     // Hide scrollbars
     hideSidebarScrollbars();
     hideAllScrollbars();
     
     // Additional event listeners
-    window.addEventListener('resize', hideAllScrollbars);
+    window.addEventListener('resize', function() {
+      hideAllScrollbars();
+      // Re-check sidebar scrollability
+      if (sidebarWrapper) {
+        sidebarWrapper.style.overflowY = 'auto';
+      }
+    });
     
     // Hide Pace spinner after loading
     setTimeout(function () {
@@ -281,6 +295,10 @@ $(function () {
         Pace.stop();
       }
       hideAllScrollbars();
+      // Ensure sidebar remains scrollable
+      if (sidebarWrapper) {
+        sidebarWrapper.style.overflowY = 'auto';
+      }
     }, 680);
   });
 });
