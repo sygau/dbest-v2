@@ -1458,7 +1458,29 @@
   </script>
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
-  <script>const swup = new Swup();</script>
+  <script>
+    // Initial load: stop Pace after 180ms
+    setTimeout(function () {
+      if (window.Pace) {
+        Pace.stop();
+      }
+    }, 180);
+
+    // Swup navigation: restart and stop Pace
+    const swup = new Swup();
+    swup.on('transitionStart', () => {
+      if (window.Pace) {
+        Pace.restart();
+      }
+    });
+    swup.on('contentReplaced', () => {
+      setTimeout(function () {
+        if (window.Pace) {
+          Pace.stop();
+        }
+      }, 180);
+    });
+  </script>
 </body>
 
 </html>

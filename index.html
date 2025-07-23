@@ -681,7 +681,29 @@
 
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4"></script>
-  <script>const swup = new Swup();</script>
+  <script>
+    // Initial load: stop Pace after 180ms
+    setTimeout(function () {
+      if (window.Pace) {
+        Pace.stop();
+      }
+    }, 180);
+
+    // Swup navigation: restart and stop Pace
+    const swup = new Swup();
+    swup.on('transitionStart', () => {
+      if (window.Pace) {
+        Pace.restart();
+      }
+    });
+    swup.on('contentReplaced', () => {
+      setTimeout(function () {
+        if (window.Pace) {
+          Pace.stop();
+        }
+      }, 180);
+    });
+  </script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
     type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
@@ -759,11 +781,6 @@
   <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.6/dist/perfect-scrollbar.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.0/dist/simplebar.min.js"></script> -->
-  <script>
-    setTimeout(function () {
-      Pace.stop();
-    }, 180);
-  </script>
   <script src="assets/js/main.js"></script>
 </body>
 
