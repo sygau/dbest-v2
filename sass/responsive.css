@@ -63,8 +63,8 @@
   .sidebar-wrapper .sidebar-header .logo-name {
     display: flex !important;
     align-items: center !important;
-    padding-left: 2px !important; /* Reduced padding to fix gap */
-    margin-left: 0 !important;
+    padding-left: 0 !important; /* Removed padding completely */
+    margin-left: -8px !important; /* More negative margin to pull text closer to logo */
     z-index: 1051 !important;
     position: relative !important;
     opacity: 1 !important;
@@ -116,11 +116,19 @@
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     /* Prevent sidebar dragging */
     .sidebar-wrapper {
-      touch-action: none !important;
+      touch-action: pan-y !important; /* Changed from none to pan-y to allow only vertical scrolling */
       -webkit-user-drag: none !important;
       user-drag: none !important;
       -webkit-touch-callout: none !important;
       -webkit-tap-highlight-color: transparent !important;
+      position: fixed !important; /* Ensure it's fixed */
+      overflow: hidden !important; /* Hide overflow */
+      -webkit-overflow-scrolling: touch !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -webkit-transform: none !important;
+      transform: none !important;
+      -webkit-mask-image: -webkit-radial-gradient(white, black) !important; /* Fix for Safari rendering */
     }
     
     /* Allow only vertical scrolling in sidebar nav */
@@ -131,6 +139,11 @@
       overflow-y: auto !important;
       -webkit-user-drag: none !important;
       user-drag: none !important;
+      position: relative !important;
+      height: calc(100% - 70px) !important; /* Adjust height to account for header */
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -webkit-mask-image: -webkit-radial-gradient(white, black) !important;
     }
     
     /* Prevent dragging of menu items */
@@ -142,6 +155,22 @@
       user-drag: none !important;
       -webkit-touch-callout: none !important;
       -webkit-tap-highlight-color: transparent !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      pointer-events: auto !important;
+    }
+    
+    /* Additional fixes for touch devices */
+    .sidebar-wrapper * {
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    
+    /* Disable all touch interactions except scrolling */
+    .sidebar-wrapper .metismenu a,
+    .sidebar-wrapper .metismenu li {
+      pointer-events: auto !important;
+      cursor: pointer !important;
     }
     
     /* Adjust logo spacing */
@@ -156,7 +185,36 @@
     
     .sidebar-wrapper .sidebar-header .logo-name {
       padding-left: 0 !important;
-      margin-left: -4px !important; /* More aggressive negative margin for iPad */
+      margin-left: -10px !important; /* Even more aggressive negative margin for iPad */
+    }
+    
+    /* Fix for sidebar close button position */
+    .sidebar-wrapper .sidebar-header .sidebar-close {
+      margin-left: auto !important; /* Push to the right */
+    }
+    
+    /* iOS-specific sidebar fixes */
+    body.pwa-ios .sidebar-wrapper {
+      -webkit-transform: translate3d(0,0,0) !important;
+      transform: translate3d(0,0,0) !important;
+      -webkit-overflow-scrolling: touch !important;
+      position: fixed !important;
+      left: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      z-index: 1049 !important;
+    }
+    
+    /* Prevent content from being draggable */
+    .sidebar-wrapper .sidebar-nav ul,
+    .sidebar-wrapper .sidebar-nav .metismenu {
+      touch-action: pan-y !important;
+      -webkit-user-drag: none !important;
+      user-drag: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
     }
   }
 }
