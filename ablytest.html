@@ -181,7 +181,12 @@
             text-align: center;
             font-weight: 500;
         }
-
+        .debug-message {
+            text-align: center;
+            padding: 5px;
+            color: #999;
+            font-size: 0.8rem;
+        }
         @media (max-width: 600px) {
             .chat-container {
                 height: 95vh;
@@ -263,6 +268,16 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
+        // Function to add debug messages
+        function addDebugMessage(message) {
+            const debugElement = document.createElement('div');
+            debugElement.classList.add('debug-message');
+            debugElement.textContent = `[DEBUG] ${message}`;
+            chatMessages.appendChild(debugElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+
         // Function to show error messages
         function showErrorMessage(message) {
             // Clear previous messages for critical errors
@@ -276,10 +291,9 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // Initialize Ably with a demo key (replace with your own for production)
-        // This demo key is specifically for this example
+        // Initialize Ably with your API key
         const ably = new Ably.Realtime.Promise({
-            key: 'fOPjAQ.LL-6_A:1QcafkRsuzspOaW3zofjg8Cu_5WjxEjpHUF0syG4uCs', // Demo key
+            key: 'fOPjAQ.LL-6_A:1QcafkRsuzspOaW3zofjg8Cu_5WjxEjpHUF0syG4uCs', // YOUR API KEY
             echoMessages: false
         });
 
@@ -317,30 +331,46 @@
         // Wait for connection before setting up channel
         ably.connection.once('connected').then(() => {
             // Get the channel
-            channel = ably.channels.get('anonymous-chat-room-history');
+            // --- IMPORTANT: Make sure this matches the channel you publish to ---
+            channel = ably.channels.get('chat-room');
+            addDebugMessage(`Attempting to load history for channel: chat-room`);
 
             // Load last 100 messages
             channel.history({ limit: 100 }, (err, resultPage) => {
                 if (err) {
                     console.error('Error fetching history:', err);
+                    addDebugMessage(`History fetch error: ${err.message || err}`);
                     addSystemMessage("Could not load message history.");
                 } else {
+                    addDebugMessage(`History fetch successful. Raw resultPage items length: ${resultPage.items.length}`);
+
                     // History is returned newest first, so reverse for chronological order
                     const messages = resultPage.items.reverse();
+                    addDebugMessage(`Reversed messages array length: ${messages.length}`);
+
                     if (messages.length > 0) {
                         addSystemMessage(`Loaded last ${messages.length} messages:`);
-                        messages.forEach(msg => {
-                            // Messages from history don't distinguish sender easily without storing it in data
+                        let displayedCount = 0;
+                        messages.forEach((msg, index) => {
+                            addDebugMessage(`Processing message ${index + 1}: ID=${msg.id}, Data Type=${typeof msg.data}`);
+
                             // Assuming message format is { sender: ..., text: ... }
-                            if (msg.data && typeof msg.data === 'object' && msg.data.sender && msg.data.text) {
+                            if (msg.data && typeof msg.data === 'object' && msg.data.sender !== undefined && msg.data.text !== undefined) {
                                 addMessage(msg.data.sender, msg.data.text, false, msg.timestamp);
+                                displayedCount++;
                             } else {
-                                // Fallback if message format is different
-                                addMessage('System', JSON.stringify(msg.data || 'Unknown message'), false, msg.timestamp);
+                                // Log unexpected format but don't display it as a chat message
+                                addDebugMessage(`  -> Message ${index + 1} has unexpected format. Data: ${JSON.stringify(msg.data)}`);
+                                // Optionally, you could display these with a different style
+                                // addMessage('System', `Format Error: ${JSON.stringify(msg.data)}`, false, msg.timestamp);
                             }
                         });
+                        addDebugMessage(`Successfully displayed ${displayedCount} messages from history.`);
+                        if (displayedCount === 0 && messages.length > 0) {
+                             addSystemMessage("Found messages in history, but none matched the expected format {sender: '...', text: '...'}");
+                        }
                     } else {
-                        addSystemMessage("No previous messages found.");
+                        addSystemMessage("No previous messages found in history.");
                     }
                 }
 
@@ -352,14 +382,13 @@
 
                 addSystemMessage("You can now send messages!");
             });
-
         }).catch((err) => {
             console.error('Initial connection error:', err);
             updateConnectionStatus('Connection error');
             showErrorMessage("Failed to establish connection. Please check your network.");
         });
 
-        // Send message function
+        // Send message function - Ensure format matches history loading expectation
         function sendMessage() {
             if (!channel) {
                 showErrorMessage("Not connected to chat server yet. Please wait...");
@@ -370,7 +399,7 @@
             const text = messageInput.value.trim();
 
             if (text) {
-                // Publish the message
+                // Publish the message - Ensure this format matches what history expects
                 channel.publish('message', { sender, text })
                     .then(() => {
                         // Add to own chat (with current timestamp)
