@@ -76,15 +76,23 @@ async function syncBlog() {
   // 4. Detect new and updated posts
   const newPosts = [];
   const updatedPosts = [];
+  const missingFilePosts = [];
   for (const post of posts) {
     const contentfulID = post.sys.id;
     const existingPost = existingByContentfulID[contentfulID];
+    const slug = post.fields.slug;
+    const htmlFile = `${slug}.html`;
+    const filePath = path.join(BLOG_DIR, htmlFile);
     if (!existingPost) {
       newPosts.push(post);
       console.log(`🆕 New post detected: ${post.fields.title}`);
     } else if (existingPost.updatedAt !== post.sys.updatedAt) {
       updatedPosts.push(post);
       console.log(`🔄 Updated post detected: ${post.fields.title}`);
+    } else if (!fs.existsSync(filePath)) {
+      // If the HTML file is missing, regenerate it
+      missingFilePosts.push(post);
+      console.log(`📄 Missing HTML file detected for: ${post.fields.title}`);
     }
   }
 
@@ -107,8 +115,8 @@ async function syncBlog() {
   try {
     await fs.ensureDir(BLOG_DIR);
 
-    // Process new and updated posts
-    for (const post of [...newPosts, ...updatedPosts]) {
+    // Process new and updated posts, and posts with missing files
+    for (const post of [...newPosts, ...updatedPosts, ...missingFilePosts]) {
       try {
         await generatePostHTML(post, BLOG_DIR);
         logToFile(`Generated/Updated: ${post.fields.title} (${post.fields.slug})`);

@@ -969,6 +969,15 @@
               padding: 0.3rem 1rem !important;
             }
           }
+          @media (max-width: 767.98px) {
+            .filter-bar-card {
+              margin-bottom: 1.2rem !important;
+            }
+            .container.my-4 {
+              margin-top: 0.5rem !important;
+              padding-top: 0.5rem !important;
+            }
+          }
           </style>
 <!-- Filter/Sort Bar Card (Transparent) -->
 <div class="card mb-4 px-3 py-2 filter-bar-card" style="border-radius: 1.5rem; background: transparent; margin-bottom: 3rem !important;">
@@ -994,7 +1003,6 @@
       <button class="btn category-btn" data-category="economics" type="button">經濟 Economics</button>
       <button class="btn category-btn" data-category="BAFS" type="button">企會財 BAFS</button>
       <button class="btn category-btn" data-category="Visual Arts" type="button">視藝 Visual Arts</button>
-      <div class="w-100"></div>
     </div>
     <br>
     <!-- Sort Dropdown Wrapper -->
@@ -1013,7 +1021,8 @@
 
   </div>
 </div>
-<div style="height: 20px; clear: both;"></div>
+<!-- Reduced or removed spacer for mobile, keep for desktop only -->
+<div class="filter-bar-spacer d-none d-md-block" style="height: 20px; clear: both;"></div>
 <!-- Blog Card Design Sample: Responsive, Stacked on Mobile, with Meta Icons, Improved Alignment/Colors, Blue Theme Fix, Hierarchy, Dummy Long Excerpts, Image Scales with Card -->
 <div class="container my-4">
   <div class="row g-4 mb-5 align-items-stretch" id="blogCardRow">
