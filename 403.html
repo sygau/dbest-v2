@@ -383,26 +383,41 @@
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
   <script>
-    // Initial load: stop Pace after 180ms
-    setTimeout(function () {
+    // Track navigation count to handle subsequent navigations differently
+    window.navigationCount = 0;
+    
+    // Function to properly stop Pace progress bar
+    function stopPaceProgress() {
       if (window.Pace) {
         Pace.stop();
+        // Force completion of progress bar
+        document.documentElement.classList.remove('pace-running');
+        document.documentElement.classList.add('pace-done');
       }
-    }, 180);
-
-    // Swup navigation: restart and stop Pace
+    }
+    
+    // Initial load: stop Pace after 180ms
+    setTimeout(stopPaceProgress, 180);
+    
+    // Swup navigation with better Pace handling
     const swup = new Swup();
+    
     swup.on('transitionStart', () => {
+      window.navigationCount++;
       if (window.Pace) {
         Pace.restart();
       }
     });
+    
     swup.on('contentReplaced', () => {
-      setTimeout(function () {
-        if (window.Pace) {
-          Pace.stop();
-        }
-      }, 180);
+      // Always stop after 180ms
+      setTimeout(stopPaceProgress, 180);
+      
+      // For subsequent navigations, add extra insurance
+      if (window.navigationCount > 1) {
+        setTimeout(stopPaceProgress, 300);
+        setTimeout(stopPaceProgress, 500);
+      }
     });
   </script>
   <!--start switcher-->
