@@ -22,7 +22,7 @@
     position: relative !important;
     z-index: 1050 !important;
     overflow: visible !important;
-    gap: 0 !important;
+    gap: 4px !important; /* Add a small gap between logo and text */
   }
   
   /* Logo icon container */
@@ -30,14 +30,14 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
+    width: 36px !important; /* Slightly smaller width */
+    height: 36px !important; /* Slightly smaller height */
+    min-width: 36px !important; /* Slightly smaller min-width */
     z-index: 1051 !important;
     position: relative !important;
     opacity: 1 !important;
     visibility: visible !important;
-    margin-right: 0 !important;
+    margin-right: 2px !important; /* Add a small margin */
   }
   
   /* Logo image */
@@ -54,8 +54,8 @@
   .sidebar-wrapper .sidebar-header .logo-name {
     display: flex !important;
     align-items: center !important;
-    padding-left: 0 !important;
-    margin-left: -8px !important;
+    padding-left: 5px !important; /* Added padding instead of negative margin */
+    margin-left: 0 !important; /* Removed negative margin */
     z-index: 1051 !important;
     position: relative !important;
     opacity: 1 !important;
@@ -65,10 +65,14 @@
   /* Logo text */
   .sidebar-wrapper .sidebar-header .logo-name h5 {
     margin: 0 !important;
-    font-size: 18px !important;
+    font-size: 17px !important; /* Slightly smaller font */
     font-weight: 600 !important;
     opacity: 1 !important;
     visibility: visible !important;
+    text-rendering: optimizeLegibility !important; /* Improve font rendering */
+    -webkit-font-smoothing: antialiased !important; /* Better font smoothing on iOS */
+    -moz-osx-font-smoothing: grayscale !important; /* Better font smoothing on macOS */
+    letter-spacing: 0.02em !important; /* Slightly increase letter spacing */
   }
   
   /* Ensure sidebar header is always visible when toggled */
