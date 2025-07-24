@@ -16,7 +16,7 @@
   .sidebar-wrapper .sidebar-header {
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important; /* Changed from space-between to flex-start */
     height: 70px !important;
     padding: 0 15px !important;
     position: relative !important;
@@ -28,7 +28,7 @@
     backface-visibility: hidden;
     -webkit-perspective: 1000;
     perspective: 1000;
-    gap: 5px !important; /* Add gap between logo and text */
+    gap: 0 !important; /* Remove gap completely */
   }
   
   /* Logo icon container */
@@ -146,11 +146,17 @@
     
     /* Adjust logo spacing */
     .sidebar-wrapper .sidebar-header {
-      gap: 2px !important;
+      gap: 0 !important; /* Remove gap completely */
+      padding: 0 10px !important; /* Adjust overall padding */
+    }
+    
+    .sidebar-wrapper .sidebar-header .logo-icon {
+      margin-right: 0 !important;
     }
     
     .sidebar-wrapper .sidebar-header .logo-name {
       padding-left: 0 !important;
+      margin-left: -4px !important; /* More aggressive negative margin for iPad */
     }
   }
 }
