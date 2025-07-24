@@ -10,196 +10,262 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
+        
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --primary-color: #3a86ff;
+            --text-color: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --sent-msg-bg: #2c2f33;
+            --received-msg-bg: #3a86ff;
+            --error-color: #cf6679;
+            --success-color: #4caf50;
+        }
+        
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
         }
+        
         .chat-container {
             width: 100%;
-            max-width: 800px;
-            height: 90vh;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 100vh;
+            max-height: 100vh;
+            background-color: var(--surface-color);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-        }
-        .chat-header {
-            background: linear-gradient(to right, #4b6cb7, #182848);
-            color: white;
-            padding: 20px;
-            text-align: center;
             position: relative;
         }
+        
+        .chat-header {
+            background-color: var(--surface-color);
+            color: var(--text-color);
+            padding: 16px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
         .chat-header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0;
         }
+        
         .chat-header p {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin: 0;
         }
+        
+        .header-content {
+            flex: 1;
+            text-align: center;
+        }
+        
         .status-indicator {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
+        
         .status-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background-color: #f44336; /* Red for disconnected */
+            background-color: var(--error-color);
         }
+        
         .status-dot.connected {
-            background-color: #4CAF50; /* Green for connected */
+            background-color: var(--success-color);
         }
+        
         .status-text {
-            font-size: 0.85rem;
-            font-weight: 500;
+            font-size: 0.75rem;
+            font-weight: 400;
         }
+        
         .chat-messages {
             flex: 1;
-            padding: 20px;
+            padding: 16px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 8px;
+            background-color: var(--bg-color);
         }
+        
         .message {
             max-width: 80%;
-            padding: 12px 18px;
-            border-radius: 18px;
+            padding: 10px 14px;
+            border-radius: 16px;
             position: relative;
-            animation: fadeIn 0.3s ease-out;
+            word-break: break-word;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        
         .received {
-            background-color: #e3f2fd;
-            border-bottom-left-radius: 5px;
+            background-color: var(--received-msg-bg);
+            color: white;
+            border-bottom-left-radius: 4px;
             align-self: flex-start;
         }
+        
         .sent {
-            background-color: #4b6cb7;
-            color: white;
-            border-bottom-right-radius: 5px;
+            background-color: var(--sent-msg-bg);
+            color: var(--text-color);
+            border-bottom-right-radius: 4px;
             align-self: flex-end;
         }
+        
         .message-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
-            font-size: 0.85rem;
+            margin-bottom: 4px;
+            font-size: 0.75rem;
         }
+        
         .sender {
             font-weight: 600;
         }
+        
         .timestamp {
             opacity: 0.8;
         }
+        
         .message-content {
             line-height: 1.4;
+            font-size: 0.95rem;
         }
+        
         .chat-input-area {
-            padding: 20px;
-            background-color: #f5f5f5;
-            border-top: 1px solid #ddd;
+            padding: 12px;
+            background-color: var(--surface-color);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
+        
         .name-input {
-            flex: 0 0 150px;
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
+            flex: 0 0 100px;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
             outline: none;
-            transition: border-color 0.3s;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
         }
-        .name-input:focus {
-            border-color: #4b6cb7;
-        }
+        
         .message-input {
             flex: 1;
-            padding: 12px 20px;
-            border: 2px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
             outline: none;
-            transition: border-color 0.3s;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
         }
-        .message-input:focus {
-            border-color: #4b6cb7;
+        
+        .name-input::placeholder,
+        .message-input::placeholder {
+            color: var(--text-secondary);
         }
+        
         .send-button {
-            background: linear-gradient(to right, #4b6cb7, #182848);
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 30px;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 600;
+            border-radius: 20px;
+            padding: 0 16px;
+            font-size: 0.9rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .send-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .send-button:active {
-            transform: translateY(0);
-        }
+        
         .system-message {
             text-align: center;
-            padding: 10px;
-            color: #666;
-            font-style: italic;
-            font-size: 0.9rem;
+            padding: 6px 10px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin: 8px 0;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            align-self: center;
+            max-width: 80%;
         }
-        .typing-indicator {
-            padding: 10px 20px;
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-        }
+        
         .error-message {
-            background-color: #ffebee;
-            color: #c62828;
-            padding: 15px;
+            background-color: rgba(207, 102, 121, 0.1);
+            color: var(--error-color);
+            padding: 10px;
             text-align: center;
             font-weight: 500;
+            border-radius: 12px;
+            margin: 8px 0;
+            align-self: center;
+            max-width: 80%;
         }
-        .debug-message {
-            text-align: center;
-            padding: 5px;
-            color: #999;
-            font-size: 0.8rem;
+        
+        /* Scrollbar styling */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
         }
+        
+        .chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        
         @media (max-width: 600px) {
-            .chat-container {
-                height: 95vh;
-                border-radius: 10px;
+            .chat-header h1 {
+                font-size: 1rem;
             }
-            .chat-input-area {
-                flex-direction: column;
+            
+            .chat-header p {
+                font-size: 0.7rem;
             }
-            .name-input {
-                flex: 0 0 auto;
-            }
+            
             .message {
-                max-width: 90%;
+                max-width: 85%;
+            }
+            
+            .chat-input-area {
+                padding: 8px;
+            }
+            
+            .name-input {
+                flex: 0 0 80px;
+                font-size: 0.8rem;
+            }
+            
+            .message-input {
+                font-size: 0.8rem;
+            }
+            
+            .send-button {
+                padding: 0 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -207,8 +273,10 @@
 <body>
     <div class="chat-container">
         <div class="chat-header">
-            <h1>Anonymous Chat Room</h1>
-            <p>Powered by Jable TV</p>
+            <div class="header-content">
+                <h1>Anonymous Chat</h1>
+                <p>Powered by Jable TV</p>
+            </div>
             <div class="status-indicator">
                 <div class="status-dot" id="statusDot"></div>
                 <div class="status-text" id="statusText">Connecting...</div>
@@ -218,8 +286,8 @@
             <!-- Messages will be loaded here -->
         </div>
         <div class="chat-input-area">
-            <input type="text" class="name-input" id="userName" placeholder="Your name" maxlength="20">
-            <input type="text" class="message-input" id="messageInput" placeholder="Type your message..." maxlength="500">
+            <input type="text" class="name-input" id="userName" placeholder="Name" maxlength="20">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type a message..." maxlength="500">
             <button class="send-button" id="sendButton">Send</button>
         </div>
     </div>
@@ -389,8 +457,10 @@
             }
         });
 
-        // Add initial system message
-        // No initial messages - will show "You can now chat!" when connected
+        // Focus on message input when page loads
+        window.addEventListener('load', () => {
+            messageInput.focus();
+        });
     </script>
 </body>
 </html>
