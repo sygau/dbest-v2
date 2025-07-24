@@ -7,6 +7,109 @@
     padding: 100px 0 0 0;
   }
 }
+
+/* Fix for sidebar logo and text on mobile devices and iPads */
+@media screen and (max-width: 1199px), 
+       screen and (max-device-width: 1024px),
+       screen and (-webkit-min-device-pixel-ratio: 2) {
+  /* Enhance sidebar header visibility */
+  .sidebar-wrapper .sidebar-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 70px !important;
+    padding: 0 15px !important;
+    position: relative !important;
+    z-index: 1050 !important;
+    overflow: visible !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+  }
+  
+  /* Logo icon container */
+  .sidebar-wrapper .sidebar-header .logo-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    z-index: 1051 !important;
+    position: relative !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Logo image */
+  .sidebar-wrapper .sidebar-header .logo-icon img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 40px !important;
+    object-fit: contain !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Logo text container */
+  .sidebar-wrapper .sidebar-header .logo-name {
+    display: flex !important;
+    align-items: center !important;
+    padding-left: 10px !important;
+    z-index: 1051 !important;
+    position: relative !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Logo text */
+  .sidebar-wrapper .sidebar-header .logo-name h5 {
+    margin: 0 !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Ensure sidebar header is always visible when toggled */
+  .toggled .sidebar-wrapper .sidebar-header {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+  }
+}
+
+/* Specific fixes for iOS devices */
+@supports (-webkit-touch-callout: none) {
+  .sidebar-wrapper .sidebar-header {
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+  
+  .sidebar-wrapper .sidebar-header .logo-icon,
+  .sidebar-wrapper .sidebar-header .logo-name {
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+  }
+  
+  .sidebar-wrapper .sidebar-header .logo-icon img,
+  .sidebar-wrapper .sidebar-header .logo-name h5 {
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .email-header {
     border-top-left-radius: 0.25rem;
