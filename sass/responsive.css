@@ -16,7 +16,7 @@
   .sidebar-wrapper .sidebar-header {
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important; /* Changed from space-between to flex-start */
+    justify-content: flex-start !important;
     height: 70px !important;
     padding: 0 15px !important;
     position: relative !important;
@@ -28,7 +28,7 @@
     backface-visibility: hidden;
     -webkit-perspective: 1000;
     perspective: 1000;
-    gap: 0 !important; /* Remove gap completely */
+    gap: 0 !important;
   }
   
   /* Logo icon container */
@@ -43,7 +43,7 @@
     position: relative !important;
     opacity: 1 !important;
     visibility: visible !important;
-    margin-right: 0 !important; /* Remove any right margin */
+    margin-right: 0 !important;
   }
   
   /* Logo image */
@@ -63,8 +63,8 @@
   .sidebar-wrapper .sidebar-header .logo-name {
     display: flex !important;
     align-items: center !important;
-    padding-left: 0 !important; /* Removed padding completely */
-    margin-left: -8px !important; /* More negative margin to pull text closer to logo */
+    padding-left: 0 !important;
+    margin-left: -8px !important;
     z-index: 1051 !important;
     position: relative !important;
     opacity: 1 !important;
@@ -114,79 +114,24 @@
   
   /* Fix for draggable sidebar on iPads */
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    /* Prevent sidebar dragging but allow smooth scrolling */
+    /* Simple sidebar fixes */
     .sidebar-wrapper {
-      touch-action: manipulation !important; /* Changed to manipulation for better touch handling */
+      position: fixed !important;
       -webkit-user-drag: none !important;
       user-drag: none !important;
-      -webkit-touch-callout: none !important;
-      -webkit-tap-highlight-color: transparent !important;
-      position: fixed !important; /* Ensure it's fixed */
-      overflow: hidden !important; /* Hide overflow */
-      -webkit-overflow-scrolling: touch !important;
-      user-select: none !important;
-      -webkit-user-select: none !important;
-      -webkit-transform: translate3d(0,0,0) !important; /* Use translate3d for better hardware acceleration */
-      transform: translate3d(0,0,0) !important;
-      -webkit-mask-image: none !important; /* Remove mask which might interfere with scrolling */
     }
     
-    /* Allow smooth vertical scrolling in sidebar nav */
+    /* Basic scrolling fix */
     .sidebar-wrapper .sidebar-nav {
-      touch-action: manipulation !important; /* Changed from pan-y to manipulation for better scrolling */
+      overflow-y: auto !important;
       -webkit-overflow-scrolling: touch !important;
-      overflow-x: hidden !important;
-      overflow-y: scroll !important; /* Changed from auto to scroll */
-      -webkit-user-drag: none !important;
-      user-drag: none !important;
-      position: relative !important;
-      height: calc(100% - 70px) !important; /* Adjust height to account for header */
-      user-select: none !important;
-      -webkit-user-select: none !important;
-      scroll-behavior: smooth !important; /* Add smooth scrolling */
-      -webkit-mask-image: none !important; /* Remove mask which might interfere with scrolling */
-    }
-    
-    /* Prevent dragging of menu items but ensure they're clickable */
-    .sidebar-wrapper .metismenu,
-    .sidebar-wrapper .metismenu li,
-    .sidebar-wrapper .metismenu a {
-      touch-action: manipulation !important; /* Changed from pan-y to manipulation */
-      -webkit-user-drag: none !important;
-      user-drag: none !important;
-      -webkit-touch-callout: none !important;
-      -webkit-tap-highlight-color: transparent !important;
-      user-select: none !important;
-      -webkit-user-select: none !important;
-      pointer-events: auto !important;
-    }
-    
-    /* Make menu items more touch-friendly */
-    .sidebar-wrapper .metismenu li {
-      margin-bottom: 2px !important;
-    }
-    
-    .sidebar-wrapper .metismenu a {
-      padding: 10px 16px !important; /* Larger touch target */
-    }
-    
-    /* Additional fixes for touch devices */
-    .sidebar-wrapper * {
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-    }
-    
-    /* Disable all touch interactions except scrolling */
-    .sidebar-wrapper .metismenu a,
-    .sidebar-wrapper .metismenu li {
-      pointer-events: auto !important;
-      cursor: pointer !important;
+      height: calc(100% - 70px) !important;
     }
     
     /* Adjust logo spacing */
     .sidebar-wrapper .sidebar-header {
-      gap: 0 !important; /* Remove gap completely */
-      padding: 0 10px !important; /* Adjust overall padding */
+      gap: 0 !important;
+      padding: 0 10px !important;
     }
     
     .sidebar-wrapper .sidebar-header .logo-icon {
@@ -195,71 +140,12 @@
     
     .sidebar-wrapper .sidebar-header .logo-name {
       padding-left: 0 !important;
-      margin-left: -10px !important; /* Even more aggressive negative margin for iPad */
+      margin-left: -10px !important;
     }
     
     /* Fix for sidebar close button position */
     .sidebar-wrapper .sidebar-header .sidebar-close {
-      margin-left: auto !important; /* Push to the right */
-    }
-    
-    /* iOS-specific sidebar fixes */
-    body.pwa-ios .sidebar-wrapper {
-      -webkit-transform: translate3d(0,0,0) !important;
-      transform: translate3d(0,0,0) !important;
-      -webkit-overflow-scrolling: touch !important;
-      position: fixed !important;
-      left: 0 !important;
-      top: 0 !important;
-      bottom: 0 !important;
-      z-index: 1049 !important;
-    }
-    
-    /* Prevent content from being draggable */
-    .sidebar-wrapper .sidebar-nav ul,
-    .sidebar-wrapper .sidebar-nav .metismenu {
-      touch-action: manipulation !important; /* Changed from pan-y to manipulation */
-      -webkit-user-drag: none !important;
-      user-drag: none !important;
-      -webkit-touch-callout: none !important;
-      -webkit-tap-highlight-color: transparent !important;
-      user-select: none !important;
-      -webkit-user-select: none !important;
-      padding-bottom: 50px !important; /* Add padding at bottom for better scrolling */
-    }
-    
-    /* Additional iPad scrolling fixes */
-    .sidebar-wrapper .sidebar-nav::-webkit-scrollbar {
-      width: 4px !important;
-    }
-    
-    .sidebar-wrapper .sidebar-nav::-webkit-scrollbar-track {
-      background: transparent !important;
-    }
-    
-    .sidebar-wrapper .sidebar-nav::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.1) !important;
-      border-radius: 10px !important;
-    }
-    
-    /* iOS-specific scrolling improvements */
-    body.pwa-ios .sidebar-wrapper .sidebar-nav {
-      -webkit-overflow-scrolling: touch !important;
-      overflow-y: auto !important; /* Use auto instead of scroll for iOS */
-      position: absolute !important;
-      top: 70px !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      height: auto !important; /* Use absolute positioning instead of fixed height */
-      padding-bottom: 100px !important; /* Extra padding at bottom for iOS */
-      margin-bottom: 0 !important;
-    }
-    
-    /* Momentum scrolling for iOS */
-    body.pwa-ios .sidebar-wrapper .sidebar-nav .metismenu {
-      -webkit-overflow-scrolling: touch !important;
-      padding-bottom: 80px !important;
+      margin-left: auto !important;
     }
   }
 }
