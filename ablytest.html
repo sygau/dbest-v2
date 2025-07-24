@@ -315,7 +315,7 @@
         <div class="chat-messages" id="chatMessages">
             <!-- Messages will be loaded here -->
         </div>
-        <div class="chat-input-area">
+        <div class="chat-input-area" id="chatInputArea">
             <button class="user-icon-btn" id="userIconBtn" title="Set username"><span class="material-icons">person</span></button>
             <input type="text" class="name-input" id="userName" placeholder="Name" maxlength="20" style="display:none;">
             <input type="text" class="message-input" id="messageInput" placeholder="Type a message..." maxlength="500">
@@ -331,6 +331,7 @@
         const statusDot = document.getElementById('statusDot');
         const statusText = document.getElementById('statusText');
         const userIconBtn = document.getElementById('userIconBtn');
+        const chatInputArea = document.getElementById('chatInputArea');
 
         // Generate a random username if none provided
         function setRandomUsername() {
@@ -338,17 +339,27 @@
         }
         if (!userNameInput.value) setRandomUsername();
 
-        // Username modal logic for mobile
+        // Username edit logic: expand input, hide others
         function showUsernameInput() {
             userNameInput.style.display = 'block';
             userNameInput.classList.add('active');
+            userNameInput.style.flex = '1 1 100%';
+            userNameInput.style.maxWidth = '100%';
+            userNameInput.style.width = '100%';
             userNameInput.focus();
             userIconBtn.style.display = 'none';
+            messageInput.style.display = 'none';
+            sendButton.style.display = 'none';
         }
         function hideUsernameInput() {
             userNameInput.style.display = 'none';
             userNameInput.classList.remove('active');
+            userNameInput.style.flex = '';
+            userNameInput.style.maxWidth = '';
+            userNameInput.style.width = '';
             userIconBtn.style.display = 'flex';
+            messageInput.style.display = 'block';
+            sendButton.style.display = 'flex';
         }
         userIconBtn.addEventListener('click', showUsernameInput);
         userNameInput.addEventListener('blur', hideUsernameInput);
