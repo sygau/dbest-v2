@@ -28,6 +28,7 @@
     backface-visibility: hidden;
     -webkit-perspective: 1000;
     perspective: 1000;
+    gap: 5px !important; /* Add gap between logo and text */
   }
   
   /* Logo icon container */
@@ -42,6 +43,7 @@
     position: relative !important;
     opacity: 1 !important;
     visibility: visible !important;
+    margin-right: 0 !important; /* Remove any right margin */
   }
   
   /* Logo image */
@@ -57,11 +59,12 @@
     visibility: visible !important;
   }
   
-  /* Logo text container */
+  /* Logo text container - fix the gap */
   .sidebar-wrapper .sidebar-header .logo-name {
     display: flex !important;
     align-items: center !important;
-    padding-left: 10px !important;
+    padding-left: 2px !important; /* Reduced padding to fix gap */
+    margin-left: 0 !important;
     z-index: 1051 !important;
     position: relative !important;
     opacity: 1 !important;
@@ -108,12 +111,55 @@
     -webkit-transform: translate3d(0, 0, 0) !important;
     transform: translate3d(0, 0, 0) !important;
   }
+  
+  /* Fix for draggable sidebar on iPads */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Prevent sidebar dragging */
+    .sidebar-wrapper {
+      touch-action: none !important;
+      -webkit-user-drag: none !important;
+      user-drag: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* Allow only vertical scrolling in sidebar nav */
+    .sidebar-wrapper .sidebar-nav {
+      touch-action: pan-y !important;
+      -webkit-overflow-scrolling: touch !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      -webkit-user-drag: none !important;
+      user-drag: none !important;
+    }
+    
+    /* Prevent dragging of menu items */
+    .sidebar-wrapper .metismenu,
+    .sidebar-wrapper .metismenu li,
+    .sidebar-wrapper .metismenu a {
+      touch-action: pan-y !important;
+      -webkit-user-drag: none !important;
+      user-drag: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* Adjust logo spacing */
+    .sidebar-wrapper .sidebar-header {
+      gap: 2px !important;
+    }
+    
+    .sidebar-wrapper .sidebar-header .logo-name {
+      padding-left: 0 !important;
+    }
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .email-header {
     border-top-left-radius: 0.25rem;
   }
+  
   .email-sidebar {
     left: -280px;
   }
