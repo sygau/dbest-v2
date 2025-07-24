@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ably Anonymous Chat</title>
+    <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            height: 90vh;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .chat-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .chat-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .status-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+        }
+        
+        .status-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            position: relative;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .received {
+            background-color: #e3f2fd;
+            border-bottom-left-radius: 5px;
+            align-self: flex-start;
+        }
+        
+        .sent {
+            background-color: #4b6cb7;
+            color: white;
+            border-bottom-right-radius: 5px;
+            align-self: flex-end;
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+        }
+        
+        .sender {
+            font-weight: 600;
+        }
+        
+        .timestamp {
+            opacity: 0.8;
+        }
+        
+        .message-content {
+            line-height: 1.4;
+        }
+        
+        .chat-input-area {
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .name-input {
+            flex: 0 0 150px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .name-input:focus {
+            border-color: #4b6cb7;
+        }
+        
+        .message-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .message-input:focus {
+            border-color: #4b6cb7;
+        }
+        
+        .send-button {
+            background: linear-gradient(to right, #4b6cb7, #182848);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .send-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .send-button:active {
+            transform: translateY(0);
+        }
+        
+        .system-message {
+            text-align: center;
+            padding: 10px;
+            color: #666;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+        
+        .typing-indicator {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        @media (max-width: 600px) {
+            .chat-container {
+                height: 95vh;
+                border-radius: 10px;
+            }
+            
+            .chat-input-area {
+                flex-direction: column;
+            }
+            
+            .name-input {
+                flex: 0 0 auto;
+            }
+            
+            .message {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Anonymous Chat Room</h1>
+            <p>Powered by Ably Realtime</p>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <div class="status-text">Connected</div>
+            </div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="system-message">Welcome to the chat room! Set your name and start chatting.</div>
+        </div>
+        
+        <div class="chat-input-area">
+            <input type="text" class="name-input" id="userName" placeholder="Your name" maxlength="20">
+            <input type="text" class="message-input" id="messageInput" placeholder="Type your message..." maxlength="500">
+            <button class="send-button" id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Ably
+        const ably = new Ably.Realtime.Promise({
+            key: 'fOPjAQ.LL-6_A:1QcafkRsuzspOaW3zofjg8Cu_5WjxEjpHUF0syG4uCs', // Replace with your actual Ably API key
+            echoMessages: false
+        });
+        
+        // Connect to Ably
+        ably.connection.on('connected', () => {
+            console.log('Connected to Ably');
+            document.querySelector('.status-dot').style.backgroundColor = '#4CAF50';
+            document.querySelector('.status-text').textContent = 'Connected';a
+        });
+        
+        ably.connection.on('disconnected', () => {
+            console.log('Disconnected from Ably');
+            document.querySelector('.status-dot').style.backgroundColor = '#f44336';
+            document.querySelector('.status-text').textContent = 'Disconnected';
+        });
+        
+        // Get the channel
+        const channel = ably.channels.get('chat-room');
+        
+        // DOM elements
+        const chatMessages = document.getElementById('chatMessages');
+        const userNameInput = document.getElementById('userName');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+        
+        // Generate a random username if none provided
+        if (!userNameInput.value) {
+            userNameInput.value = 'User' + Math.floor(Math.random() * 1000);
+        }
+        
+        // Function to add a message to the chat
+        function addMessage(sender, message, isOwnMessage) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(isOwnMessage ? 'sent' : 'received');
+            
+            const now = new Date();
+            const timestamp = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            messageElement.innerHTML = `
+                <div class="message-header">
+                    <span class="sender">${sender}</span>
+                    <span class="timestamp">${timestamp}</span>
+                </div>
+                <div class="message-content">${message}</div>
+            `;
+            
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Function to add system messages
+        function addSystemMessage(message) {
+            const systemElement = document.createElement('div');
+            systemElement.classList.add('system-message');
+            systemElement.textContent = message;
+            chatMessages.appendChild(systemElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Subscribe to messages
+        channel.subscribe('message', (message) => {
+            const { sender, text } = message.data;
+            addMessage(sender, text, false);
+        });
+        
+        // Send message function
+        function sendMessage() {
+            const sender = userNameInput.value.trim() || 'Anonymous';
+            const text = messageInput.value.trim();
+            
+            if (text) {
+                // Publish the message
+                channel.publish('message', { sender, text });
+                
+                // Add to own chat
+                addMessage(sender, text, true);
+                
+                // Clear input
+                messageInput.value = '';
+            }
+        }
+        
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+        
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Add initial system messages
+        setTimeout(() => {
+            addSystemMessage("This is an anonymous chat - your identity is not stored");
+        }, 1000);
+        
+        setTimeout(() => {
+            addSystemMessage("Messages are delivered in real-time using Ably");
+        }, 2000);
+    </script>
+</body>
+</html>
