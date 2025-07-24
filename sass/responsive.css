@@ -8,145 +8,37 @@
   }
 }
 
-/* Fix for sidebar logo and text on mobile devices and iPads */
-@media screen and (max-width: 1199px), 
-       screen and (max-device-width: 1024px),
-       screen and (-webkit-min-device-pixel-ratio: 2) {
-  /* Enhance sidebar header visibility */
+/* Minimal sidebar gap fix for iPad/mobile */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Simple logo gap fix */
   .sidebar-wrapper .sidebar-header {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    height: 70px !important;
-    padding: 0 15px !important;
-    position: relative !important;
-    z-index: 1050 !important;
-    overflow: visible !important;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-    gap: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0 10px;
   }
   
-  /* Logo icon container */
   .sidebar-wrapper .sidebar-header .logo-icon {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    min-width: 40px !important;
-    z-index: 1051 !important;
-    position: relative !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    margin-right: 0 !important;
+    margin-right: 0;
   }
   
-  /* Logo image */
-  .sidebar-wrapper .sidebar-header .logo-icon img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 40px !important;
-    object-fit: contain !important;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: transform;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  
-  /* Logo text container - fix the gap */
   .sidebar-wrapper .sidebar-header .logo-name {
-    display: flex !important;
-    align-items: center !important;
-    padding-left: 0 !important;
-    margin-left: -8px !important;
-    z-index: 1051 !important;
-    position: relative !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    padding-left: 0;
+    margin-left: -10px;
   }
   
-  /* Logo text */
-  .sidebar-wrapper .sidebar-header .logo-name h5 {
-    margin: 0 !important;
-    font-size: 18px !important;
-    font-weight: 600 !important;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: transform;
-    opacity: 1 !important;
-    visibility: visible !important;
+  /* Fix sidebar dragging */
+  .sidebar-wrapper {
+    position: fixed;
+    -webkit-user-drag: none;
+    user-drag: none;
   }
   
-  /* Ensure sidebar header is always visible when toggled */
-  .toggled .sidebar-wrapper .sidebar-header {
-    opacity: 1 !important;
-    visibility: visible !important;
-    display: flex !important;
-  }
-}
-
-/* Specific fixes for iOS devices */
-@supports (-webkit-touch-callout: none) {
-  .sidebar-wrapper .sidebar-header {
-    -webkit-transform: translate3d(0, 0, 0) !important;
-    transform: translate3d(0, 0, 0) !important;
-  }
-  
-  .sidebar-wrapper .sidebar-header .logo-icon,
-  .sidebar-wrapper .sidebar-header .logo-name {
-    -webkit-transform: translate3d(0, 0, 0) !important;
-    transform: translate3d(0, 0, 0) !important;
-    -webkit-backface-visibility: hidden !important;
-    backface-visibility: hidden !important;
-  }
-  
-  .sidebar-wrapper .sidebar-header .logo-icon img,
-  .sidebar-wrapper .sidebar-header .logo-name h5 {
-    -webkit-transform: translate3d(0, 0, 0) !important;
-    transform: translate3d(0, 0, 0) !important;
-  }
-  
-  /* Fix for draggable sidebar on iPads */
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    /* Simple sidebar fixes */
-    .sidebar-wrapper {
-      position: fixed !important;
-      -webkit-user-drag: none !important;
-      user-drag: none !important;
-    }
-    
-    /* Basic scrolling fix */
-    .sidebar-wrapper .sidebar-nav {
-      overflow-y: auto !important;
-      -webkit-overflow-scrolling: touch !important;
-      height: calc(100% - 70px) !important;
-    }
-    
-    /* Adjust logo spacing */
-    .sidebar-wrapper .sidebar-header {
-      gap: 0 !important;
-      padding: 0 10px !important;
-    }
-    
-    .sidebar-wrapper .sidebar-header .logo-icon {
-      margin-right: 0 !important;
-    }
-    
-    .sidebar-wrapper .sidebar-header .logo-name {
-      padding-left: 0 !important;
-      margin-left: -10px !important;
-    }
-    
-    /* Fix for sidebar close button position */
-    .sidebar-wrapper .sidebar-header .sidebar-close {
-      margin-left: auto !important;
-    }
+  /* Basic scrolling */
+  .sidebar-wrapper .sidebar-nav {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -154,7 +46,6 @@
   .email-header {
     border-top-left-radius: 0.25rem;
   }
-  
   .email-sidebar {
     left: -280px;
   }
@@ -215,6 +106,7 @@
     transition: all 0.3s ease-out;
   }
 }
+
 /* Toogle in responsive */
 @media only screen and (max-width: 1199px) {
   .table-responsive {
@@ -268,6 +160,7 @@
     transition: all 0.23s ease-out;
   }
 }
+
 @media only screen and (max-width: 1199px) {
   .top-header .navbar {
     left: 0;
@@ -300,10 +193,12 @@
     left: -70px;
   }
 }
+
 @media only screen and (max-width: 992px) {
   .search-popup {
     position: fixed !important;
     top: 0 !important;
     z-index: 10;
   }
+}
 }/*# sourceMappingURL=responsive.css.map */
