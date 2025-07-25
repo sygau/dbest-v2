@@ -388,8 +388,7 @@ input::placeholder {
   background-color: #efefef;
 }
 .sidebar-wrapper .sidebar-nav {
-  margin-top: 0; /* Removed 70px margin */
-  height: 100%;
+
   background-color: #ffffff;
 }
 .sidebar-wrapper .sidebar-nav ul {
