@@ -1778,9 +1778,3 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
   margin-top: 0 !important;
   height: calc(100% - 70px) !important;
 }
-
-body.pwa-ios .top-header,
-body.pwa-ios .sidebar-header {
-  padding-top: env(safe-area-inset-top);
-}
-
