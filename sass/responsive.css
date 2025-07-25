@@ -23,14 +23,6 @@
   }
 }
 
-@media (max-width: 1199px) {
-  .sidebar-wrapper .sidebar-nav {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    height: calc(100% - 70px) !important;
-  }
-}
-
 @media screen and (max-width: 1024px) {
   .email-header {
     border-top-left-radius: 0.25rem;
