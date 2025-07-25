@@ -33,6 +33,18 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://dse.best/m1.html</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://dse.best/m2.html</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://dse.best/economics.html</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://dse.best/contact.html</loc>
     <changefreq>daily</changefreq>
   </url>

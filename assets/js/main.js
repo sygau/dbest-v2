@@ -6,9 +6,9 @@ $(function () {
 
   /* scrollar */
 
-  new PerfectScrollbar(".notify-list")
+  // new PerfectScrollbar(".notify-list")
 
-  new PerfectScrollbar(".search-content")
+  // new PerfectScrollbar(".search-content")
 
   // new PerfectScrollbar(".mega-menu-widgets")
 
@@ -226,12 +226,12 @@ $(function () {
   // Apply scrollbar functionality when DOM is ready
   document.addEventListener('DOMContentLoaded', function () {
     // Initialize PerfectScrollbar with optimal settings
-    const sidebarPS = new PerfectScrollbar(".sidebar-wrapper", {
-      suppressScrollX: true,
-      wheelPropagation: true,
-      minScrollbarLength: 0,
-      swipeEasing: true
-    });
+    // const sidebarPS = new PerfectScrollbar(".sidebar-wrapper", {
+    //   suppressScrollX: true,
+    //   wheelPropagation: true,
+    //   minScrollbarLength: 0,
+    //   swipeEasing: true
+    // });
     
     // Ensure sidebar is scrollable but without visible scrollbars
     const sidebarWrapper = document.querySelector('.sidebar-wrapper');
