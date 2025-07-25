@@ -8,12 +8,15 @@
   <!--favicon-->
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <!-- SEO Meta Tags -->
-  <meta name="description" content="DSE 視覺藝術 Visual Arts Past Paper 歷屆試題資源，涵蓋視覺藝術、中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
-  <meta name="keywords" content="dse visual arts past paper, dse va past paper, dse 視覺藝術 past paper, dse va paper, dse va pp">
+  <meta name="description"
+    content="DSE 視覺藝術 Visual Arts Past Paper 歷屆試題資源，涵蓋視覺藝術、中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
+  <meta name="keywords"
+    content="dse visual arts past paper, dse va past paper, dse 視覺藝術 past paper, dse va paper, dse va pp">
   <meta name="robots" content="index, follow">
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="HKDSE 視覺藝術 Visual Arts Past Paper - dse.best">
-  <meta property="og:description" content="DSE Past Paper 歷屆試題資源，涵蓋視覺藝術、中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
+  <meta property="og:description"
+    content="DSE Past Paper 歷屆試題資源，涵蓋視覺藝術、中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。">
   <meta property="og:image" content="https://www.dse.best/assets/images/logo-icon.png">
   <meta property="og:url" content="https://www.dse.best/">
   <meta property="og:type" content="website">
@@ -27,7 +30,8 @@
   <!--bootstrap css-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="preconnect" href=" https://fonts.gstatic.com " crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap">
   <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
   <!--main css-->
   <link href="assets/css/bootstrap-extended.css" rel="stylesheet">
@@ -83,15 +87,270 @@
 </head>
 
 <body>
+  <script>
+    (async function () {
+      // Fetch file host and paper data
+      const [mainRes, vaRes] = await Promise.all([
+        fetch('config/main.json'),
+        fetch('config/visual-arts.json')
+      ]);
+      const mainData = await mainRes.json();
+      const vaData = await vaRes.json();
+      const fileHost = mainData.file_host.replace(/\/$/, '');
+
+      // Find all download buttons with the data-paper-id attribute
+      document.querySelectorAll('a[data-paper-id]').forEach(btn => {
+        const paperId = btn.getAttribute('data-paper-id');
+        const filename = vaData[paperId];
+        if (filename) {
+          btn.href = `${fileHost}/visual-arts/${filename}`;
+          // btn.setAttribute('download', filename);
+        } else {
+          // Optional: hide or disable the button if file not found
+          btn.classList.add('disabled');
+          btn.href = "#";
+        }
+      });
+    })();
+  </script>
+
   <!--start header-->
   <header class="top-header">
-    <!-- ... existing code ... -->
+    <nav class="navbar navbar-expand align-items-center gap-4">
+      <div class="btn-toggle">
+        <a href="javascript:;" aria-label="menu"><i class="material-icons-outlined">menu</i></a>
+      </div>
+      <div class="search-bar flex-grow-1">
+        <div class="position-relative">
+          <input class="form-control rounded-5 px-5 search-control d-lg-block d-none" type="text" placeholder="Search">
+          <span
+            class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50">search</span>
+          <span
+            class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close">close</span>
+          <div class="search-popup p-3">
+            <div class="card rounded-4 overflow-hidden">
+              <div class="card-body search-content">
+                <p class="search-title mb-0" style="white-space: nowrap;">⠀(裝飾嚟嘅， SEARCH唔到)⠀</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      <ul class="navbar-nav gap-1 nav-right-links align-items-center">
+        <li class="nav-item d-lg-none mobile-search-btn">
+          <a class="nav-link" href="javascript:;"><i class="material-icons-outlined">search</i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"><img
+              src="assets/images/county/06.webp" width="22" height="22" alt="cn-icon">
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="assets/images/county/06.webp" width="20" height="20" alt="cn-icon" loading="lazy"><span
+                  class="ms-2">中文</span></a>
+            </li>
+            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img
+                  src="assets/images/county/05.webp" width="20" height="20" alt="us-icon" loading="lazy"><span
+                  class="ms-2">English</span></a>
+            </li>
+        </li>
+      </ul>
+      </li>
+      <li class="nav-item dropdown" style="display: none;">
+        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" data-bs-auto-close="outside"
+          data-bs-toggle="dropdown" href="javascript:;"><i class="material-icons-outlined">notifications</i>
+          <span class="badge-notify">5</span>
+        </a>
+        <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+          <div class="px-3 py-1 d-flex align-items-center justify-content-between border-bottom">
+            <h5 class="notiy-title mb-0">Notifications</h5>
+            <div class="dropdown">
+            </div>
+          </div>
+          <div class="notify-list">
+          </div>
+        </div>
+      </li>
+      </ul>
+
+    </nav>
   </header>
   <!--end top header-->
 
   <!--start sidebar-->
   <aside class="sidebar-wrapper">
-    <!-- ... existing code ... -->
+    <div class="sidebar-header">
+      <div class="logo-icon">
+        <a href="/">
+          <img src="assets/images/logo-icon.webp" class="logo-img" alt="dsebest-logo">
+        </a>
+      </div>
+      <div class="logo-name flex-grow-1">
+        <a href="/" class="text-decoration-none">
+          <h5 class="mb-0">DSEBest</h5>
+        </a>
+      </div>
+      <div class="sidebar-close">
+        <span class="material-icons-outlined">close</span>
+      </div>
+    </div>
+    <div class="sidebar-nav">
+      <!--navigation-->
+      <ul class="metismenu" id="sidenav">
+        <li>
+          <a href="/">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #007bff;">home</i>
+            </div>
+            <div class="menu-title">主頁</div>
+          </a>
+        </li>
+        <li>
+          <a href="blog/">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffc107;">article</i></div>
+            <div class="menu-title">Blog</div>
+          </a>
+        </li>
+        <li class="menu-label">核心科目</li>
+        <li>
+          <a href="chinese">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e83e8c;">book</i>
+            </div>
+            <div class="menu-title">中文</div>
+          </a>
+        </li>
+        <li>
+          <a href="english">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #00bcd4;">book</i>
+            </div>
+            <div class="menu-title">英文 English</div>
+          </a>
+        </li>
+        <li>
+          <a href="math">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ff9800;">calculate</i>
+            </div>
+            <div class="menu-title">數學 Math</div>
+          </a>
+        </li>
+        <li>
+          <a href="citizen">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #8e24aa;">school</i>
+            </div>
+            <div class="menu-title">公民</div>
+          </a>
+        </li>
+        <li class="menu-label">選修科目</li>
+        <li>
+          <a href="physics">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffc107;">bolt</i>
+            </div>
+            <div class="menu-title">物理 Physics</div>
+          </a>
+        </li>
+        <li>
+          <a href="chemistry">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #43a047;">biotech</i>
+            </div>
+            <div class="menu-title">化學 Chemistry</div>
+          </a>
+        </li>
+        <li>
+          <a href="biology">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #1976d2;">eco</i>
+            </div>
+            <div class="menu-title">生物 Biology</div>
+          </a>
+        </li>
+        <li>
+          <a href="ict">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #212529;">computer</i>
+            </div>
+            <div class="menu-title">資訊及通訊科技 ICT</div>
+          </a>
+        </li>
+        <li>
+          <a href="m1">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #7c4dff;">functions</i>
+            </div>
+            <div class="menu-title">M1</div>
+          </a>
+        </li>
+        <li>
+          <a href="m2">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #009688;">functions</i>
+            </div>
+            <div class="menu-title">M2</div>
+          </a>
+        </li>
+        <li>
+          <a href="geography">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #0097a7;">public</i>
+            </div>
+            <div class="menu-title">地理 Geography</div>
+          </a>
+        </li>
+        <li>
+          <a href="history">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #6d4c41;">book</i>
+            </div>
+            <div class="menu-title">歷史 History</div>
+          </a>
+        </li>
+        <li>
+          <a href="chinese-history">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #c62828;">book</i>
+            </div>
+            <div class="menu-title">中國歷史 Chinese History</div>
+          </a>
+        </li>
+        <li>
+          <a href="economics">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #6c757d;">attach_money</i>
+            </div>
+            <div class="menu-title">經濟 Economics</div>
+          </a>
+        </li>
+        <li>
+          <a href="bafs">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #ffb300;">business</i>
+            </div>
+            <div class="menu-title">企業、會計與財務概論 BAFS</div>
+          </a>
+        </li>
+        <li>
+          <a href="visual-arts">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #03a9f4;">palette</i>
+            </div>
+            <div class="menu-title">視覺藝術 Visual Arts</div>
+          </a>
+        </li>
+        <li class="menu-label">其他</li>
+        <li>
+          <a href="contact">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
+            </div>
+            <div class="menu-title">聯絡我們</div>
+          </a>
+        </li>
+        <li>
+          <a href="disclaimer">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">warning</i>
+            </div>
+            <div class="menu-title">免責聲明</div>
+          </a>
+        </li>
+        <li>
+          <a href="privacy-policy">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">security</i>
+            </div>
+            <div class="menu-title">私隱政策</div>
+          </a>
+        </li>
+      </ul>
+      <!--end navigation-->
+    </div>
   </aside>
   <!--end sidebar-->
 
@@ -141,25 +400,130 @@
   <!--start footer-->
   <footer class="page-footer">
     <p class="mb-0">
-      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html" style="color:inherit;text-decoration:underline;">聯絡我們</a>。
+      © 2024 版權所有。試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<a href="/contact.html"
+        style="color:inherit;text-decoration:underline;">聯絡我們</a>。
     </p>
   </footer>
   <!--end footer-->
 
+
   <!--start switcher-->
-  <!-- ... existing code ... -->
+  <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
+    type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
+    <i class="material-icons-outlined">tune</i>
+  </button>
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="staticBackdrop">
+    <div class="offcanvas-header border-bottom h-70">
+      <div class="">
+        <h5 class="mb-0">主題自定義</h5>
+        <p class="mb-0">Customize your theme</p>
+      </div>
+      <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+        <i class="material-icons-outlined">close</i>
+      </a>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        <div class="row g-3">
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="BlueTheme" checked>
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BlueTheme">
+              <span class="material-icons-outlined">contactless</span>
+              <span>藍色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="LightTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="LightTheme">
+              <span class="material-icons-outlined">light_mode</span>
+              <span>淺色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="DarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="DarkTheme">
+              <span class="material-icons-outlined">dark_mode</span>
+              <span>深色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="SemiDarkTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="SemiDarkTheme">
+              <span class="material-icons-outlined">contrast</span>
+              <span>半深色</span>
+            </label>
+          </div>
+          <div class="col-12 col-xl-6">
+            <input type="radio" class="btn-check" name="theme-options" id="BoderedTheme">
+            <label
+              class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+              for="BoderedTheme">
+              <span class="material-icons-outlined">border_style</span>
+              <span>邊框</span>
+            </label>
+          </div>
+        </div><!--end row-->
+      </div>
+    </div>
+  </div>
+  <!--start switcher-->
   <!--bootstrap js-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!--plugins-->
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
-  <!--main js-->
-  <script src="assets/js/main.js"></script>
+  
+      <!--main js-->
+    <script src="assets/js/main.js"></script>
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
   <script>
-    // ... existing code ...
+    // Track navigation count to handle subsequent navigations differently
+    window.navigationCount = 0;
+    
+    // Function to properly stop Pace progress bar
+    function stopPaceProgress() {
+      if (window.Pace) {
+        Pace.stop();
+        // Force completion of progress bar
+        document.documentElement.classList.remove('pace-running');
+        document.documentElement.classList.add('pace-done');
+      }
+    }
+    
+    // Initial load: stop Pace after 180ms
+    setTimeout(stopPaceProgress, 180);
+    
+    // Swup navigation with better Pace handling
+    const swup = new Swup();
+    
+    swup.on('transitionStart', () => {
+      window.navigationCount++;
+      if (window.Pace) {
+        Pace.restart();
+      }
+    });
+    
+    swup.on('contentReplaced', () => {
+      // Always stop after 180ms
+      setTimeout(stopPaceProgress, 180);
+      
+      // For subsequent navigations, add extra insurance
+      if (window.navigationCount > 1) {
+        setTimeout(stopPaceProgress, 300);
+        setTimeout(stopPaceProgress, 500);
+      }
+    });
   </script>
   <script>
     Pace.stop();
