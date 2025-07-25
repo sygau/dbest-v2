@@ -6,6 +6,7 @@
   "display": "standalone",
   "background_color": "#f3e5f5",
   "theme_color": "#8e24aa",
+  "lang": "zh-Hant",
   "icons": [ 
     {
       "src": "https://www.dse.best/assets/images/logo-icon.png",
@@ -13,7 +14,7 @@
       "type": "image/png"
     },
     {
-      "src": "https://www.dse.best/assets/images/logo-icon.png",
+      "src": "https://www.dse.best/assets/images/logo-icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
