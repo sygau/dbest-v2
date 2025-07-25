@@ -183,3 +183,16 @@
     z-index: 10;
   }
 }
+
+/* Sidebar nav gap fix for iPad/mobile (must come after desktop rule in main.css) */
+@media (max-width: 1199px), (device-width: 768px) and (orientation: portrait), (device-width: 1024px) and (orientation: landscape) {
+  .sidebar-wrapper .sidebar-nav {
+    margin-top: 0 !important;
+    height: calc(100% - 70px) !important;
+  }
+}
+
+body.pwa-ios .sidebar-wrapper .sidebar-nav {
+  margin-top: 0 !important;
+  height: calc(100% - 70px) !important;
+}

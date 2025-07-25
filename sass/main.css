@@ -1754,3 +1754,9 @@ body.pwa-ios .sidebar-nav {
 .pace .pace-activity {
   display: none !important;
 }
+@media (min-width: 1200px) {
+  .sidebar-wrapper .sidebar-nav {
+    margin-top: 70px;
+    height: calc(100% - 70px);
+  }
+}
