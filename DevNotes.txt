@@ -1,0 +1,25 @@
+Alternative Sidebar gap/collision fix css code on main.css
+
+/* /* --- Modern Sidebar Gap Handling (Deepseek's approach) --- */
+/* Default: No gap for mobile/tablet/touch devices */
+.sidebar-wrapper .sidebar-nav {
+  margin-top: 0;
+  height: 100%;
+}
+
+/* Desktop/laptop: Add gap only if device is wide AND has hover (mouse/trackpad) */
+@media (min-width: 1200px) and (hover: hover) {
+  .sidebar-wrapper .sidebar-nav {
+    margin-top: 70px;
+    height: calc(100% - 70px);
+  }
+}
+
+/* Optional: Explicitly target tablets in landscape (safety net) */
+@media (min-width: 768px) and (max-width: 1199px) and (orientation: landscape) {
+  .sidebar-wrapper .sidebar-nav {
+    margin-top: 0;
+    height: 100%;
+  }
+} 
+
