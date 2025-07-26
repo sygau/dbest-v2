@@ -388,18 +388,24 @@ $(function () {
       else if (fileName.includes('_eng')) extractedLanguage = 'english';
     }
 
+    // Clean up data for Google Analytics (capitalize and remove hyphens)
+    const cleanSubject = subject.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const cleanPaper = extractedPaper.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const cleanType = extractedType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const cleanLanguage = extractedLanguage.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
     // Send to Google Analytics
     if (typeof gtag !== 'undefined') {
       gtag('event', 'file_download', {
         'file_name': fileName,
-        'subject': subject,
+        'subject': cleanSubject,
         'year': extractedYear,
-        'paper': extractedPaper,
-        'type': extractedType,
-        'language': extractedLanguage,
+        'paper': cleanPaper,
+        'type': cleanType,
+        'language': cleanLanguage,
         'link_url': this.href,
         'event_category': 'Downloads',
-        'event_label': `${subject}_${extractedYear}_${extractedPaper}`
+        'event_label': `${cleanSubject}_${extractedYear}_${cleanPaper}`
       });
     }
   });
