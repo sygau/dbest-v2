@@ -5,55 +5,55 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/geography.html</loc>
+    <loc>https://dse.best/geography</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/math.html</loc>
+    <loc>https://dse.best/math</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/chemistry.html</loc>
+    <loc>https://dse.best/chemistry</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/biology.html</loc>
+    <loc>https://dse.best/biology</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/physics.html</loc>
+    <loc>https://dse.best/physics</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/chinese.html</loc>
+    <loc>https://dse.best/chinese</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/english.html</loc>
+    <loc>https://dse.best/english</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/m1.html</loc>
+    <loc>https://dse.best/m1</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/m2.html</loc>
+    <loc>https://dse.best/m2</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/economics.html</loc>
+    <loc>https://dse.best/economics</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/contact.html</loc>
+    <loc>https://dse.best/contact</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/disclaimer.html</loc>
+    <loc>https://dse.best/disclaimer</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/privacy-policy.html</loc>
+    <loc>https://dse.best/privacy-policy</loc>
     <changefreq>daily</changefreq>
   </url>
   <!-- Blog posts -->
@@ -62,7 +62,7 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://dse.best/blog/dse-chinese-paper-1.html</loc>
+    <loc>https://dse.best/blog/dse-chinese-paper-1</loc>
     <changefreq>daily</changefreq>
   </url>
 </urlset>
