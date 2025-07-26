@@ -58,6 +58,11 @@ Thumbs.db
 # Blog build templates
 blog/postTemplate.html 
 blog/indexTemplate.html
+
+# Git
 README.md
 .gitignore 
+
+# Development
 DevNotes.txt
+scripts/

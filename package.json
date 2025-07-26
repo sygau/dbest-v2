@@ -5,7 +5,8 @@
   "description": "DSE.BEST - Hong Kong DSE Past Papers and Blog",
   "main": "contentful/contentful.js",
   "scripts": {
-    "start": "node contentful/contentful.js"
+    "start": "node contentful/contentful.js",
+    "meta": "node scripts/updateMeta.js"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.3.0",

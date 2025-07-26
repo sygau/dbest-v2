@@ -3,7 +3,7 @@ const path = require('path');
 const ini = require('ini');
 
 // Paths
-const META_INI_PATH = path.join(__dirname, '../config/meta.ini');
+const META_INI_PATH = path.join(__dirname, 'meta.ini');
 const HTML_DIR = path.join(__dirname, '../');
 
 // Stat counter
@@ -74,6 +74,9 @@ async function generateMetaIni() {
         };
       }
     }
+
+    // Ensure scripts directory exists
+    await fs.mkdir(path.dirname(META_INI_PATH), { recursive: true });
 
     // Write to meta.ini
     await fs.writeFile(META_INI_PATH, ini.stringify(metaConfig), 'utf8');
@@ -159,9 +162,6 @@ async function updateMetaTags() {
   try {
     // Reset stats
     stats = { updated: 0, unchanged: 0 };
-
-    // Ensure config directory exists
-    await fs.mkdir(path.join(__dirname, '../config'), { recursive: true });
 
     // Generate meta.ini if it doesn't exist
     try {
