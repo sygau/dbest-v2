@@ -4,4 +4,5 @@ Disallow: /*.pdf$
 Disallow: /*.md$
 Disallow: /admin/
 Disallow: /cdn/
+Disallow: /dev/
 Sitemap: https://dse.best/sitemap.xml
