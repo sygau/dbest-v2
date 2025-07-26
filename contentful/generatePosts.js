@@ -46,7 +46,7 @@ async function generatePostHTML(post, blogDir) {
     '{{seoTags}}': Array.isArray(fields.seoTags) ? fields.seoTags.join(', ') : '',
     '{{author}}': fields.author || '',
     '{{date}}': fields.date || '',
-    '{{readingTime}}': fields.readingTime ? `${fields.readingTime} min read` : '',
+    '{{readingTime}}': fields.readingTime ? `${fields.readingTime}min read` : '',
     '{{tags}}': Array.isArray(fields.tags) ? fields.tags.map(tag => `<span class="badge bg-primary me-2">${tag}</span>`).join(' ') : '',
     '{{featuredImage}}': featuredImageUrl || '',
     '{{featuredImageSection}}': featuredImageUrl ? 
