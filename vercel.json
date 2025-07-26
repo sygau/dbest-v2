@@ -1,14 +1,21 @@
 {
+  "cleanUrls": true,
   "redirects": [
+    {
+      "source": "/:page.html",
+      "destination": "/:page",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug.html",
+      "destination": "/blog/:slug",
+      "permanent": true
+    },
     {
       "source": "/jable",
       "destination": "https://jable.tv/",
       "permanent": false
     }
-  ],
-  "rewrites": [
-    { "source": "/:page", "destination": "/:page.html" },
-    { "source": "/blog/:slug", "destination": "/blog/:slug.html" }
   ],
   "headers": [
     {
