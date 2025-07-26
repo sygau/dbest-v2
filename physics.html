@@ -2669,27 +2669,9 @@
     
     // Initial load: stop Pace after 180ms
     setTimeout(stopPaceProgress, 180);
-    
-    // Swup navigation with better Pace handling
+
+    // Initialize Swup for smooth page transitions
     const swup = new Swup();
-    
-    swup.on('transitionStart', () => {
-      window.navigationCount++;
-      if (window.Pace) {
-        Pace.restart();
-      }
-    });
-    
-    swup.on('contentReplaced', () => {
-      // Always stop after 180ms
-      setTimeout(stopPaceProgress, 180);
-      
-      // For subsequent navigations, add extra insurance
-      if (window.navigationCount > 1) {
-        setTimeout(stopPaceProgress, 300);
-        setTimeout(stopPaceProgress, 500);
-      }
-    });
   </script>
 </body>
 
