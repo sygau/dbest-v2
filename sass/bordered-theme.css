@@ -12,4 +12,24 @@
 [data-bs-theme=bodered-theme] body .card {
   box-shadow: none;
   border: 1px solid #dee2e6;
-}/*# sourceMappingURL=bordered-theme.css.map */
+}
+
+/* Back to Top Button - Bordered Theme */
+[data-bs-theme=bodered-theme] .back-to-top-btn {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  box-shadow: none;
+  border: 2px solid #007bff;
+}
+
+[data-bs-theme=bodered-theme] .back-to-top-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  border-color: #0056b3;
+}
+
+[data-bs-theme=bodered-theme] .back-to-top-btn:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/*# sourceMappingURL=bordered-theme.css.map */

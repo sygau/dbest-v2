@@ -266,4 +266,44 @@ $(function () {
       }
     }, 180);
   });
+
+  // Back to Top Button functionality
+  $(document).ready(function() {
+    const backToTopBtn = $('#backToTopBtn');
+
+    // Only initialize if the button exists on the page
+    if (backToTopBtn.length > 0) {
+      const scrollThreshold = 300;
+
+      // Show/hide button based on scroll position
+      $(window).on('scroll', function() {
+        const scrollTop = $(this).scrollTop();
+        if (scrollTop > scrollThreshold) {
+          backToTopBtn.addClass('show');
+        } else {
+          backToTopBtn.removeClass('show');
+        }
+      });
+
+      // Smooth scroll to top when button is clicked
+      backToTopBtn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({
+          scrollTop: 0
+        }, 600, 'swing');
+      });
+
+      // Keyboard navigation support
+      backToTopBtn.on('keydown', function(e) {
+        // Enter or Space key
+        if (e.which === 13 || e.which === 32) {
+          e.preventDefault();
+          $(this).click();
+        }
+      });
+
+      // Ensure button is accessible via keyboard
+      backToTopBtn.attr('tabindex', '0');
+    }
+  });
 });

@@ -94,4 +94,23 @@
 }
 [data-bs-theme=semi-dark] body .sidebar-wrapper .sidebar-bottom .dropdown-menu .dropdown-item:hover {
   background-color: var(--bs-semi-body-bg);
-}/*# sourceMappingURL=semi-dark.css.map */
+}
+
+/* Back to Top Button - Semi Dark Theme */
+[data-bs-theme=semi-dark] .back-to-top-btn {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+[data-bs-theme=semi-dark] .back-to-top-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.5);
+}
+
+[data-bs-theme=semi-dark] .back-to-top-btn:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/*# sourceMappingURL=semi-dark.css.map */

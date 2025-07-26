@@ -643,4 +643,23 @@
   border-radius: 4px;
   width: -moz-max-content;
   width: max-content;
-}/*# sourceMappingURL=blue-theme.css.map */
+}
+
+/* Back to Top Button - Blue Theme */
+[data-bs-theme=blue-theme] .back-to-top-btn {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+[data-bs-theme=blue-theme] .back-to-top-btn:hover {
+  background: linear-gradient(135deg, #4338ca, #6d28d9);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.5);
+}
+
+[data-bs-theme=blue-theme] .back-to-top-btn:focus {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/*# sourceMappingURL=blue-theme.css.map */

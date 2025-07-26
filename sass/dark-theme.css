@@ -279,4 +279,23 @@
 [data-bs-theme=dark] body .bootstrap-tagsinput {
   background-color: var(--bs-body-bg);
   border-color: var(--bs-border-color);
-}/*# sourceMappingURL=dark-theme.css.map */
+}
+
+/* Back to Top Button - Dark Theme */
+[data-bs-theme=dark] .back-to-top-btn {
+  background: linear-gradient(135deg, #6c757d, #495057);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
+}
+
+[data-bs-theme=dark] .back-to-top-btn:hover {
+  background: linear-gradient(135deg, #5a6268, #3d4043);
+  box-shadow: 0 6px 16px rgba(108, 117, 125, 0.5);
+}
+
+[data-bs-theme=dark] .back-to-top-btn:focus {
+  outline: 2px solid #6c757d;
+  outline-offset: 2px;
+}
+
+/*# sourceMappingURL=dark-theme.css.map */
