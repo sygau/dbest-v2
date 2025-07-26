@@ -394,18 +394,25 @@ $(function () {
     const cleanType = extractedType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     const cleanLanguage = extractedLanguage.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
-    // Send to Google Analytics
+    // Send to Google Analytics with optimized parameters
     if (typeof gtag !== 'undefined') {
       gtag('event', 'file_download', {
         'file_name': fileName,
+        'download_subject': cleanSubject,
+        'download_year': extractedYear,
+        'download_paper': cleanPaper,
+        'download_type': cleanType,
+        'download_language': cleanLanguage,
+        'link_url': this.href,
+        'value': 1
+      });
+
+      // Also send a simplified version for easier tracking
+      gtag('event', 'pdf_download', {
         'subject': cleanSubject,
         'year': extractedYear,
         'paper': cleanPaper,
-        'type': cleanType,
-        'language': cleanLanguage,
-        'link_url': this.href,
-        'event_category': 'Downloads',
-        'event_label': `${cleanSubject}_${extractedYear}_${cleanPaper}`
+        'language': cleanLanguage
       });
     }
   });
