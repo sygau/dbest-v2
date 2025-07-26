@@ -306,4 +306,101 @@ $(function () {
       backToTopBtn.attr('tabindex', '0');
     }
   });
+
+  // Automatic PDF Download Analytics Tracking
+  $(document).on('click', 'a[href$=".pdf"]', function() {
+    const fullUrl = this.href;
+    const fileName = fullUrl.split('/').pop(); // Extract filename from URL
+
+    // Auto-detect subject from CDN URL path (much more accurate!)
+    let subject = 'unknown';
+    if (fullUrl.includes('/math/')) subject = 'math';
+    else if (fullUrl.includes('/english/')) subject = 'english';
+    else if (fullUrl.includes('/chinese/')) subject = 'chinese';
+    else if (fullUrl.includes('/physics/')) subject = 'physics';
+    else if (fullUrl.includes('/chemistry/')) subject = 'chemistry';
+    else if (fullUrl.includes('/biology/')) subject = 'biology';
+    else if (fullUrl.includes('/geography/')) subject = 'geography';
+    else if (fullUrl.includes('/history/')) subject = 'history';
+    else if (fullUrl.includes('/economics/')) subject = 'economics';
+    else if (fullUrl.includes('/ict/')) subject = 'ict';
+    else if (fullUrl.includes('/m1/')) subject = 'm1';
+    else if (fullUrl.includes('/m2/')) subject = 'm2';
+    else if (fullUrl.includes('/bafs/')) subject = 'bafs';
+    else if (fullUrl.includes('/visual-arts/')) subject = 'visual-arts';
+    else if (fullUrl.includes('/citizen/')) subject = 'citizen';
+
+    // Fallback: try to detect from current page if URL detection fails
+    if (subject === 'unknown') {
+      const currentPage = window.location.pathname;
+      if (currentPage.includes('math')) subject = 'math';
+      else if (currentPage.includes('english')) subject = 'english';
+      else if (currentPage.includes('chinese')) subject = 'chinese';
+      else if (currentPage.includes('physics')) subject = 'physics';
+      else if (currentPage.includes('chemistry')) subject = 'chemistry';
+      else if (currentPage.includes('biology')) subject = 'biology';
+      else if (currentPage.includes('geography')) subject = 'geography';
+      else if (currentPage.includes('history')) subject = 'history';
+      else if (currentPage.includes('economics')) subject = 'economics';
+      else if (currentPage.includes('ict')) subject = 'ict';
+      else if (currentPage.includes('m1')) subject = 'm1';
+      else if (currentPage.includes('m2')) subject = 'm2';
+      else if (currentPage.includes('bafs')) subject = 'bafs';
+      else if (currentPage.includes('visual-arts')) subject = 'visual-arts';
+      else if (currentPage.includes('citizen')) subject = 'citizen';
+    }
+
+    // Use data attributes if available, otherwise auto-detect
+    const year = $(this).data('year') || 'unknown';
+    const paper = $(this).data('paper') || 'unknown';
+    const type = $(this).data('type') || 'regular';
+    const language = $(this).data('language') || 'unknown';
+
+    // Extract additional info from filename if not provided
+    let extractedYear = year;
+    let extractedPaper = paper;
+    let extractedType = type;
+    let extractedLanguage = language;
+
+    if (fileName) {
+      // Extract year from filename (2012-2024)
+      const yearMatch = fileName.match(/20(1[2-9]|2[0-4])/);
+      if (yearMatch && extractedYear === 'unknown') {
+        extractedYear = yearMatch[0];
+      }
+
+      // Extract paper type from filename
+      if (fileName.includes('_p1') || fileName.includes('p_1')) extractedPaper = 'P1';
+      else if (fileName.includes('_p2') || fileName.includes('p_2')) extractedPaper = 'P2';
+      else if (fileName.includes('_p3') || fileName.includes('p_3')) extractedPaper = 'P3';
+      else if (fileName.includes('_p4') || fileName.includes('p_4')) extractedPaper = 'P4';
+      else if (fileName.includes('_ans') || fileName.includes('an_s')) extractedPaper = 'Answers';
+      else if (fileName.includes('_per')) extractedPaper = 'Performance';
+
+      // Extract type from filename
+      if (fileName.includes('_pp_') || fileName.startsWith('pp_')) extractedType = 'practice';
+      else if (fileName.includes('_sp_')) extractedType = 'sample';
+      else if (fileName.includes('bytopic')) extractedType = 'bytopic';
+      else if (fileName.includes('exam')) extractedType = 'exam';
+
+      // Extract language from filename
+      if (fileName.includes('_chi')) extractedLanguage = 'chinese';
+      else if (fileName.includes('_eng')) extractedLanguage = 'english';
+    }
+
+    // Send to Google Analytics
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'file_download', {
+        'file_name': fileName,
+        'subject': subject,
+        'year': extractedYear,
+        'paper': extractedPaper,
+        'type': extractedType,
+        'language': extractedLanguage,
+        'link_url': this.href,
+        'event_category': 'Downloads',
+        'event_label': `${subject}_${extractedYear}_${extractedPaper}`
+      });
+    }
+  });
 });
