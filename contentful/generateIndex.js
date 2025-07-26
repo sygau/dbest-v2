@@ -51,7 +51,7 @@ async function generateIndexHTML(blogDir, posts) {
     // Create blog card HTML
     blogCardsHTML += `
     <div class="col-12 blog-card-wrapper" data-category="${post.category || 'Uncategorized'}" data-date="${post.date}" data-popularity="50">
-      <a href="${post.slug}.html" class="text-decoration-none">
+      <a href="${post.slug}" class="text-decoration-none">
         <div class="card blog-card border-0 shadow position-relative mb-3 h-100" style="cursor:pointer; align-items: stretch;">
           <div class="position-absolute top-0 start-0 w-100" style="height: 6px; border-radius: 1.5rem 1.5rem 0 0; z-index:2;">
             <div class="${categoryColorClass} w-100 h-100" style="border-radius: 1.5rem 1.5rem 0 0;"></div>
