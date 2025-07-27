@@ -98,23 +98,31 @@
     });
   }
 
-  // Main execution
-  try {
-    const subject = getCurrentSubject();
+  // Main execution function
+  async function initPaperLinks() {
+    try {
+      const subject = getCurrentSubject();
 
-    if (!subject) {
-      console.log('No subject detected - skipping paper links setup');
-      return;
+      if (!subject) {
+        console.log('No subject detected - skipping paper links setup');
+        return;
+      }
+
+      console.log(`Setting up paper links for: ${subject}`);
+
+      const { fileHost, papers } = await loadData(subject);
+      updateButtons(subject, fileHost, papers);
+
+      console.log(`✅ Paper links setup complete for ${subject}`);
+
+    } catch (error) {
+      console.error('❌ Failed to setup paper links:', error);
     }
-
-    console.log(`Setting up paper links for: ${subject}`);
-
-    const { fileHost, papers } = await loadData(subject);
-    updateButtons(subject, fileHost, papers);
-
-    console.log(`✅ Paper links setup complete for ${subject}`);
-
-  } catch (error) {
-    console.error('❌ Failed to setup paper links:', error);
   }
+
+  // Export to global scope
+  window.initPaperLinks = initPaperLinks;
+
+  // Auto-run on script load
+  initPaperLinks();
 })();

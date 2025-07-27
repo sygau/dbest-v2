@@ -1455,11 +1455,9 @@
       <!--main js-->
     <script src="assets/js/main.js"></script>
   <!-- Universal paper links appender -->
-  <script src="assets/js/appendLinks.js" data-swup-reload-script></script>
+  <script src="assets/js/appendLinks.js"></script>
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
-  <!-- Swup Scripts Plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/@swup/scripts-plugin@2.1.0/dist/index.modern.min.js"></script>
   <script>
     // Track navigation count to handle subsequent navigations differently
     window.navigationCount = 0;
@@ -1478,11 +1476,29 @@
     setTimeout(stopPaceProgress, 180);
 
     // Initialize Swup for smooth page transitions
-    const swup = new Swup({
-      plugins: [new SwupScriptsPlugin({
-        optin: true  // Only reload scripts with data-swup-reload-script
-      })]
-    });
+    // Initialize Swup first
+    const swup = new Swup();
+
+    // Unified initialization function
+    function initializePage() {
+      try {
+        if (typeof window.initPaperLinks === 'function') {
+          window.initPaperLinks();
+        }
+      } catch (error) {
+        console.error('Initialization error:', error);
+      }
+    }
+
+    // First load (compatible with Swup's initial render)
+    if (document.readyState === 'complete') {
+      initializePage();
+    } else {
+      document.addEventListener('DOMContentLoaded', initializePage);
+    }
+
+    // Swup 4+ hooks (correct event names)
+    swup.on('contentReplaced', initializePage);
   </script>
 </body>
 
