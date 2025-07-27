@@ -672,6 +672,8 @@
   </footer>
   <!--end footer-->
 
+  <!-- Universal paper links appender -->
+  <script src="assets/js/appendLinks.js"></script>
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
   <script>
@@ -691,8 +693,29 @@
     // Initial load: stop Pace after 180ms
     setTimeout(stopPaceProgress, 180);
 
-    // Initialize Swup for smooth page transitions
+    // Initialize Swup first
     const swup = new Swup();
+
+    // Unified initialization function
+    function initializePage() {
+      try {
+        if (typeof window.initPaperLinks === 'function') {
+          window.initPaperLinks();
+        }
+      } catch (error) {
+        console.error('Initialization error:', error);
+      }
+    }
+
+    // First load (compatible with Swup's initial render)
+    if (document.readyState === 'complete') {
+      initializePage();
+    } else {
+      document.addEventListener('DOMContentLoaded', initializePage);
+    }
+
+    // Swup 4+ hooks (correct event names)
+    swup.on('contentReplaced', initializePage);
   </script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
