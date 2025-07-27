@@ -1462,12 +1462,16 @@
   
       <!--main js-->
     <script src="assets/js/main.js"></script>
+  <!-- Universal paper links appender -->
+  <script src="assets/js/appendLinks.js" data-swup-reload-script></script>
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
+  <!-- Swup Scripts Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/@swup/scripts-plugin@2.1.0/dist/index.modern.min.js"></script>
   <script>
     // Track navigation count to handle subsequent navigations differently
     window.navigationCount = 0;
-    
+
     // Function to properly stop Pace progress bar
     function stopPaceProgress() {
       if (window.Pace) {
@@ -1477,12 +1481,16 @@
         document.documentElement.classList.add('pace-done');
       }
     }
-    
+
     // Initial load: stop Pace after 180ms
     setTimeout(stopPaceProgress, 180);
 
     // Initialize Swup for smooth page transitions
-    const swup = new Swup();
+    const swup = new Swup({
+      plugins: [new SwupScriptsPlugin({
+        optin: true  // Only reload scripts with data-swup-reload-script
+      })]
+    });
     </script>
 </body>
 

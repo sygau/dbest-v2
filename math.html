@@ -342,32 +342,6 @@
   <!--start main wrapper-->
   <main class="main-wrapper">
     <div class="main-content" id="swup">
-      <script>
-        (async function () {
-          // Fetch file host and paper data
-          const [mainRes, mathRes] = await Promise.all([
-            fetch('config/main.json'),
-            fetch('config/math.json')
-          ]);
-          const mainData = await mainRes.json();
-          const mathData = await mathRes.json();
-          const fileHost = mainData.file_host.replace(/\/$/, '');
-
-          // Find all download buttons with the data-paper-id attribute
-          document.querySelectorAll('a[data-paper-id]').forEach(btn => {
-            const paperId = btn.getAttribute('data-paper-id');
-            const filename = mathData[paperId];
-            if (filename) {
-              btn.href = `${fileHost}/math/${filename}`;
-              // btn.setAttribute('download', filename);
-            } else {
-              // Optional: hide or disable the button if file not found
-              btn.classList.add('disabled');
-              btn.href = "#";
-            }
-          });
-        })();
-      </script>
       <!--breadcrumb-->
       <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="breadcrumb-title pe-3">數學</div>
@@ -1480,12 +1454,16 @@
   
       <!--main js-->
     <script src="assets/js/main.js"></script>
+  <!-- Universal paper links appender -->
+  <script src="assets/js/appendLinks.js" data-swup-reload-script></script>
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
+  <!-- Swup Scripts Plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/@swup/scripts-plugin@2.1.0/dist/index.modern.min.js"></script>
   <script>
     // Track navigation count to handle subsequent navigations differently
     window.navigationCount = 0;
-    
+
     // Function to properly stop Pace progress bar
     function stopPaceProgress() {
       if (window.Pace) {
@@ -1495,12 +1473,16 @@
         document.documentElement.classList.add('pace-done');
       }
     }
-    
+
     // Initial load: stop Pace after 180ms
     setTimeout(stopPaceProgress, 180);
 
     // Initialize Swup for smooth page transitions
-    const swup = new Swup();
+    const swup = new Swup({
+      plugins: [new SwupScriptsPlugin({
+        optin: true  // Only reload scripts with data-swup-reload-script
+      })]
+    });
   </script>
 </body>
 
