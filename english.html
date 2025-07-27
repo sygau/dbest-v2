@@ -1505,8 +1505,16 @@
       document.addEventListener('DOMContentLoaded', initializePage);
     }
 
-    // Swup 4+ hooks (correct event names)
-    swup.on('contentReplaced', initializePage);
+    // Test both hooks to see which one fires
+    swup.hooks.on('content:replace', function() {
+      console.log('🔥 content:replace hook fired');
+      initializePage();
+    });
+
+    swup.hooks.on('page:view', function() {
+      console.log('🔥 page:view hook fired');
+      initializePage();
+    });
     </script>
 </body>
 
