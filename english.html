@@ -1505,16 +1505,8 @@
       document.addEventListener('DOMContentLoaded', initializePage);
     }
 
-    // Test both hooks to see which one fires
-    swup.hooks.on('content:replace', function() {
-      console.log('🔥 content:replace hook fired');
-      initializePage();
-    });
-
-    swup.hooks.on('page:view', function() {
-      console.log('🔥 page:view hook fired');
-      initializePage();
-    });
+    // Use content:replace hook - fires when new content is available
+    swup.hooks.on('content:replace', initializePage);
     </script>
 </body>
 

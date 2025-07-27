@@ -698,13 +698,9 @@
 
     // Unified initialization function
     function initializePage() {
-      console.log('📋 initializePage called');
       try {
         if (typeof window.initPaperLinks === 'function') {
-          console.log('✅ window.initPaperLinks found, calling it...');
           window.initPaperLinks();
-        } else {
-          console.log('❌ window.initPaperLinks not found');
         }
       } catch (error) {
         console.error('Initialization error:', error);
@@ -718,16 +714,8 @@
       document.addEventListener('DOMContentLoaded', initializePage);
     }
 
-    // Test both hooks to see which one fires
-    swup.hooks.on('content:replace', function() {
-      console.log('🔥 content:replace hook fired');
-      initializePage();
-    });
-
-    swup.hooks.on('page:view', function() {
-      console.log('🔥 page:view hook fired');
-      initializePage();
-    });
+    // Use content:replace hook - fires when new content is available
+    swup.hooks.on('content:replace', initializePage);
   </script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"

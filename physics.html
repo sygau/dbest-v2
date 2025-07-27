@@ -97,32 +97,6 @@
 </head>
 
 <body>
-  <script>
-    (async function () {
-      // Fetch file host and paper data
-      const [mainRes, chineseRes] = await Promise.all([
-        fetch('config/main.json'),
-        fetch('config/physics.json')
-      ]);
-      const mainData = await mainRes.json();
-      const chineseData = await chineseRes.json();
-      const fileHost = mainData.file_host.replace(/\/$/, '');
-
-      // Find all download buttons with the data-paper-id attribute
-      document.querySelectorAll('a[data-paper-id]').forEach(btn => {
-        const paperId = btn.getAttribute('data-paper-id');
-        const filename = chineseData[paperId];
-        if (filename) {
-          btn.href = `${fileHost}/physics/${filename}`;
-          // btn.setAttribute('download', filename);
-        } else {
-          // Optional: hide or disable the button if file not found
-          btn.classList.add('disabled');
-          btn.href = "#";
-        }
-      });
-    })();
-  </script>
 
 
   <!--start header-->
@@ -2652,6 +2626,8 @@
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
   <!--main js-->
   <script src="assets/js/main.js"></script>
+  <!-- Universal paper links appender -->
+  <script src="assets/js/appendLinks.js"></script>
   <!-- Swup for smooth transitions -->
   <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
   <script>
@@ -2671,8 +2647,29 @@
     // Initial load: stop Pace after 180ms
     setTimeout(stopPaceProgress, 180);
 
-    // Initialize Swup for smooth page transitions
+    // Initialize Swup first
     const swup = new Swup();
+
+    // Unified initialization function
+    function initializePage() {
+      try {
+        if (typeof window.initPaperLinks === 'function') {
+          window.initPaperLinks();
+        }
+      } catch (error) {
+        console.error('Initialization error:', error);
+      }
+    }
+
+    // First load (compatible with Swup's initial render)
+    if (document.readyState === 'complete') {
+      initializePage();
+    } else {
+      document.addEventListener('DOMContentLoaded', initializePage);
+    }
+
+    // Use content:replace hook - fires when new content is available
+    swup.hooks.on('content:replace', initializePage);
   </script>
 </body>
 
