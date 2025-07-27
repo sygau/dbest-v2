@@ -59,6 +59,7 @@ async function generatePostHTML(post, blogDir) {
               var disqus_config = function () {
                 this.page.url = 'https://dse.best/blog/${slug}';
                 this.page.identifier = '${slug}';
+                this.page.robots = 'noindex, nofollow';
               };
 
               (function() { // DON'T EDIT BELOW THIS LINE
