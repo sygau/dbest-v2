@@ -286,15 +286,24 @@ Paper Preferences:
 ---
 
 ## TODO
+
+### 🔥 High Priority (Do Now)
+- Add remaining/ALL subjects
 - UI Improvement
 - Caching
-- Add remaining/ALL subjects
+
+### 🚀 Medium Priority (Next 2-4 weeks)
 - Add topic names for ByTopics
+- Sitemap.xml generation
+- Search (Fuse?)
+
+### 💡 Lower Priority (Future)
 - Multilingual support
-- Add a chat room/box
-- Track PDF download/CDN activity
-- Codebase revamp (remove comments)
 - Google Ads
 - AI Mock Papers Section
-- Contentful.JS sitemap.xml generation
-- Alternnative analytics platform (Mixpanel?)
+- Alternative analytics platform (Mixpanel?)
+
+### 🤔 Consider Carefully
+- Add a chat room/box
+- Codebase revamp (remove comments)
+- NextJS evolution
