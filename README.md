@@ -291,6 +291,10 @@ Paper Preferences:
 - Add remaining/ALL subjects
 - UI Improvement
 - Caching
+- Compress 25MiB> PDFs due to CFP limitations
+- Validate all downloads (Anti Scraping)
+- Block scraping of PDFs (Anti Scraping)
+- Signed URLs for downloading with expiry (Anti Scraping)
 
 ### 🚀 Medium Priority (Next 2-4 weeks)
 - Add topic names for ByTopics
