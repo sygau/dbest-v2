@@ -33,6 +33,10 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://dse.best/citizen</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://dse.best/m1</loc>
     <changefreq>daily</changefreq>
   </url>
