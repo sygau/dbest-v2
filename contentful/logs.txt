@@ -121,3 +121,55 @@
 [2025-07-27T03:35:06.140Z] ✅ Blog index page generated successfully.
 [2025-07-27T03:35:06.141Z] No changes detected in this sync run.
 [2025-07-27T03:35:06.141Z] --- Sync completed ---
+[2025-07-27T03:54:36.054Z] --- Sync started ---
+[2025-07-27T03:54:36.155Z] New posts: 0, Updated posts: 0, Deleted posts: 0
+[2025-07-27T03:54:36.157Z] ✅ blogIndex.json generated successfully with 2 posts
+[2025-07-27T03:54:36.157Z] Posts after sync:
+[2025-07-27T03:54:36.158Z] - DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T03:54:36.158Z] - test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T03:54:36.160Z] ✅ Blog index page generated successfully.
+[2025-07-27T03:54:36.160Z] No changes detected in this sync run.
+[2025-07-27T03:54:36.160Z] --- Sync completed ---
+[2025-07-27T03:55:25.941Z] --- Sync started ---
+[2025-07-27T03:55:26.045Z] New posts: 0, Updated posts: 0, Deleted posts: 0
+[2025-07-27T03:55:26.049Z] Generated/Updated: DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T03:55:26.052Z] Generated/Updated: test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T03:55:26.053Z] ✅ blogIndex.json generated successfully with 2 posts
+[2025-07-27T03:55:26.053Z] Posts after sync:
+[2025-07-27T03:55:26.054Z] - DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T03:55:26.054Z] - test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T03:55:26.056Z] ✅ Blog index page generated successfully.
+[2025-07-27T03:55:26.056Z] No changes detected in this sync run.
+[2025-07-27T03:55:26.057Z] --- Sync completed ---
+[2025-07-27T03:56:02.556Z] --- Sync started ---
+[2025-07-27T03:56:02.659Z] New posts: 0, Updated posts: 0, Deleted posts: 0
+[2025-07-27T03:56:02.663Z] Generated/Updated: DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T03:56:02.664Z] ✅ blogIndex.json generated successfully with 2 posts
+[2025-07-27T03:56:02.664Z] Posts after sync:
+[2025-07-27T03:56:02.664Z] - DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T03:56:02.665Z] - test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T03:56:02.666Z] ✅ Blog index page generated successfully.
+[2025-07-27T03:56:02.667Z] No changes detected in this sync run.
+[2025-07-27T03:56:02.667Z] --- Sync completed ---
+[2025-07-27T03:58:17.664Z] --- Sync started ---
+[2025-07-27T03:58:17.766Z] New posts: 0, Updated posts: 0, Deleted posts: 0
+[2025-07-27T03:58:17.770Z] Generated/Updated: DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T03:58:17.773Z] Generated/Updated: test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T03:58:17.774Z] ✅ blogIndex.json generated successfully with 2 posts
+[2025-07-27T03:58:17.774Z] Posts after sync:
+[2025-07-27T03:58:17.775Z] - DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T03:58:17.775Z] - test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T03:58:17.777Z] ✅ Blog index page generated successfully.
+[2025-07-27T03:58:17.777Z] No changes detected in this sync run.
+[2025-07-27T03:58:17.778Z] --- Sync completed ---
+[2025-07-27T04:01:27.714Z] --- Sync started ---
+[2025-07-27T04:01:27.805Z] New posts: 0, Updated posts: 0, Deleted posts: 0
+[2025-07-27T04:01:27.808Z] Generated/Updated: DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T04:01:27.812Z] Generated/Updated: test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T04:01:27.813Z] ✅ blogIndex.json generated successfully with 2 posts
+[2025-07-27T04:01:27.813Z] Posts after sync:
+[2025-07-27T04:01:27.813Z] - DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T04:01:27.814Z] - test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T04:01:27.816Z] ✅ Blog index page generated successfully.
+[2025-07-27T04:01:27.816Z] No changes detected in this sync run.
+[2025-07-27T04:01:27.816Z] --- Sync completed ---
