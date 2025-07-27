@@ -49,8 +49,8 @@
   async function loadData(subject) {
     try {
       const [mainResponse, subjectResponse] = await Promise.all([
-        fetch('config/main.json'),
-        fetch(`config/${subject}.json`)
+        fetch('https://dse.best/config/main.json'),
+        fetch(`https://dse.best/config/${subject}.json`)
       ]);
 
       if (!mainResponse.ok || !subjectResponse.ok) {
