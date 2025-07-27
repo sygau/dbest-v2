@@ -692,7 +692,11 @@
     setTimeout(stopPaceProgress, 180);
 
     // Initialize Swup for smooth page transitions
-    const swup = new Swup();
+    const swup = new Swup({
+      plugins: [new SwupScriptsPlugin({
+        optin: true  // Only reload scripts with data-swup-reload-script
+      })]
+    });
   </script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
