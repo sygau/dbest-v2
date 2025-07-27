@@ -45,6 +45,26 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://dse.best/history</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://dse.best/chinese-history</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://dse.best/ict</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://dse.best/bafs</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://dse.best/visual-arts</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://dse.best/contact</loc>
     <changefreq>daily</changefreq>
   </url>
@@ -63,6 +83,10 @@
   </url>
   <url>
     <loc>https://dse.best/blog/dse-chinese-paper-1</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://dse.best/blog/this-is-my-testing-blog-post-for-dse-best</loc>
     <changefreq>daily</changefreq>
   </url>
 </urlset>
