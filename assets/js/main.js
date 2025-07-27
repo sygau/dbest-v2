@@ -307,6 +307,8 @@ $(function () {
     }
   });
 
+
+
   // Automatic PDF Download Analytics Tracking
   $(document).on('click', 'a[href$=".pdf"]', function() {
     const fullUrl = this.href;

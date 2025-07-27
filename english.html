@@ -95,32 +95,6 @@
 </head>
 
 <body>
-  <script>
-    (async function () {
-      // Fetch file host and paper data
-      const [mainRes, chineseRes] = await Promise.all([
-        fetch('config/main.json'),
-        fetch('config/english.json')
-      ]);
-      const mainData = await mainRes.json();
-      const chineseData = await chineseRes.json();
-      const fileHost = mainData.file_host.replace(/\/$/, '');
-
-      // Find all download buttons with the data-paper-id attribute
-      document.querySelectorAll('a[data-paper-id]').forEach(btn => {
-        const paperId = btn.getAttribute('data-paper-id');
-        const filename = chineseData[paperId];
-        if (filename) {
-          btn.href = `${fileHost}/english/${filename}`;
-          // btn.setAttribute('download', filename);
-        } else {
-          // Optional: hide or disable the button if file not found
-          btn.classList.add('disabled');
-          btn.href = "#";
-        }
-      });
-    })();
-  </script>
 
   <!--start header-->
   <header class="top-header">
@@ -366,6 +340,32 @@
   <!--start main wrapper-->
   <main class="main-wrapper">
     <div class="main-content" id="swup">
+      <script>
+        (async function () {
+          // Fetch file host and paper data
+          const [mainRes, englishRes] = await Promise.all([
+            fetch('config/main.json'),
+            fetch('config/english.json')
+          ]);
+          const mainData = await mainRes.json();
+          const englishData = await englishRes.json();
+          const fileHost = mainData.file_host.replace(/\/$/, '');
+
+          // Find all download buttons with the data-paper-id attribute
+          document.querySelectorAll('a[data-paper-id]').forEach(btn => {
+            const paperId = btn.getAttribute('data-paper-id');
+            const filename = englishData[paperId];
+            if (filename) {
+              btn.href = `${fileHost}/english/${filename}`;
+              // btn.setAttribute('download', filename);
+            } else {
+              // Optional: hide or disable the button if file not found
+              btn.classList.add('disabled');
+              btn.href = "#";
+            }
+          });
+        })();
+      </script>
       <!--breadcrumb-->
       <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div class="breadcrumb-title pe-3">英文</div>
