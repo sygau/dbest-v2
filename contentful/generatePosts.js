@@ -38,6 +38,40 @@ async function generatePostHTML(post, blogDir) {
   // Get featured image URL if available
   const featuredImageUrl = getFeaturedImageUrl(fields.media);
 
+  // Generate Disqus comments section if enabled
+  const generateDisqusSection = (enableComments, slug, title) => {
+    if (!enableComments) {
+      return ''; // Return empty string if comments are disabled
+    }
+
+    return `
+          <!-- Comments Section -->
+          <hr class="my-5" style="border-color: var(--bs-border-color-translucent);">
+          <div class="comments-section px-3 py-2">
+            <h4 class="mb-4">
+              <i class="material-icons-outlined me-2">comment</i>
+              留言討論
+            </h4>
+
+            <!-- Disqus Comments -->
+            <div id="disqus_thread"></div>
+            <script>
+              var disqus_config = function () {
+                this.page.url = 'https://dse.best/blog/${slug}';
+                this.page.identifier = '${slug}';
+              };
+
+              (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://dsebest.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          </div>`;
+  };
+
   // Prepare replacements
   const replacements = {
     '{{title}}': fields.title || '',
@@ -49,7 +83,7 @@ async function generatePostHTML(post, blogDir) {
     '{{readingTime}}': fields.readingTime ? `${fields.readingTime}min read` : '',
     '{{tags}}': Array.isArray(fields.tags) ? fields.tags.map(tag => `<span class="badge bg-primary me-2">${tag}</span>`).join(' ') : '',
     '{{featuredImage}}': featuredImageUrl || '',
-    '{{featuredImageSection}}': featuredImageUrl ? 
+    '{{featuredImageSection}}': featuredImageUrl ?
       `<div class="text-center mb-4">
         <img src="${featuredImageUrl}" alt="${fields.title || 'placeholder'}"
           class="img-fluid rounded" style="max-height: 400px; object-fit: cover;">
@@ -105,6 +139,7 @@ async function generatePostHTML(post, blogDir) {
         }
       }
     }))) : '',
+    '{{commentsSection}}': generateDisqusSection(fields.comments, fields.slug, fields.title),
     '{{slug}}': fields.slug || '',
     '{{category}}': fields.category || '',
     '{{lastUpdated}}': post.sys.updatedAt, // Use sys.updatedAt for last updated date
