@@ -183,3 +183,14 @@
 [2025-07-27T04:24:03.056Z] ✅ Blog index page generated successfully.
 [2025-07-27T04:24:03.057Z] No changes detected in this sync run.
 [2025-07-27T04:24:03.057Z] --- Sync completed ---
+[2025-07-27T09:33:14.247Z] --- Sync started ---
+[2025-07-27T09:33:14.355Z] New posts: 0, Updated posts: 0, Deleted posts: 0
+[2025-07-27T09:33:14.359Z] Generated/Updated: DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T09:33:14.362Z] Generated/Updated: test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T09:33:14.364Z] ✅ blogIndex.json generated successfully with 2 posts
+[2025-07-27T09:33:14.364Z] Posts after sync:
+[2025-07-27T09:33:14.364Z] - DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-27T09:33:14.365Z] - test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-27T09:33:14.367Z] ✅ Blog index page generated successfully.
+[2025-07-27T09:33:14.368Z] No changes detected in this sync run.
+[2025-07-27T09:33:14.368Z] --- Sync completed ---
