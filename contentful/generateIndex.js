@@ -71,7 +71,7 @@ async function generateIndexHTML(blogDir, posts) {
                 <span class="material-icons-outlined">schedule</span>${post.readingTime ? post.readingTime + ' min' : ''}
               </span>
               ${post.comments ? `<span class="blog-meta-item">
-                <span class="material-icons-outlined">comment</span><a href="${post.slug}#disqus_thread" data-disqus-identifier="${post.slug}">0 留言</a>
+                <span class="material-icons-outlined">comment</span><span data-disqus-identifier="${post.slug}">0</span>
               </span>` : ''}
             </div>
             <p class="card-text mb-1">${excerpt}</p>
