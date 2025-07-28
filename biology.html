@@ -1564,24 +1564,16 @@
   <script>
     // Track navigation count to handle subsequent navigations differently
     window.navigationCount = 0;
-    
     // Function to properly stop Pace progress bar
     function stopPaceProgress() {
       if (window.Pace) {
         Pace.stop();
-        // Force completion of progress bar
         document.documentElement.classList.remove('pace-running');
         document.documentElement.classList.add('pace-done');
       }
     }
-    
-    // Initial load: stop Pace after 180ms
     setTimeout(stopPaceProgress, 180);
-
-    // Initialize Swup first
     const swup = new Swup();
-
-    // Unified initialization function
     function initializePage() {
       try {
         if (typeof window.initPaperLinks === 'function') {
@@ -1591,16 +1583,30 @@
         console.error('Initialization error:', error);
       }
     }
-
-    // First load (compatible with Swup's initial render)
+    function loadCountdownJs() {
+      if (window.location.pathname === '/countdown') {
+        if (!window.DSECountdownLoaded) {
+          const countdownScript = document.createElement('script');
+          countdownScript.src = 'https://dse.best/assets/js/countdown.js';
+          countdownScript.onload = () => { window.DSECountdownLoaded = true; };
+          document.head.appendChild(countdownScript);
+        } else {
+          if (window.dseCountdown) window.dseCountdown.destroy();
+          if (document.getElementById('countdownCanvas')) {
+            window.dseCountdown = new DSECountdown();
+          }
+        }
+      }
+    }
     if (document.readyState === 'complete') {
       initializePage();
     } else {
       document.addEventListener('DOMContentLoaded', initializePage);
     }
-
-    // Use content:replace hook - fires when new content is available
-    swup.hooks.on('content:replace', initializePage);
+    swup.hooks.on('content:replace', () => {
+      initializePage();
+      loadCountdownJs();
+    });
   </script>
 </body>
 
