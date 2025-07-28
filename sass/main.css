@@ -1892,3 +1892,78 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
     font-size: 20px;
   }
 }
+
+/* Responsive countdown card */
+.countdown-card {
+  min-height: 70vh; /* Desktop default */
+}
+
+.countdown-canvas-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 0px;
+  min-height: 300px; /* Ensure minimum height for canvas */
+}
+
+/* Mobile: Optimized height for vertical layout */
+@media (max-width: 767px) {
+  .countdown-card {
+    min-height: 90vh; /* Increased to ensure all 4 boxes are visible */
+  }
+
+  .countdown-canvas-container {
+    padding: 0 10px; /* Less padding on mobile */
+    flex-grow: 1; /* Allow container to grow and use available space */
+    min-height: 550px; /* Increased height for larger boxes with tighter spacing */
+  }
+}
+
+/* Tablet and Desktop: Horizontal layout */
+@media (min-width: 768px) {
+  .countdown-card {
+    min-height: 70vh; /* Consistent height for horizontal layout */
+  }
+}
+
+/* iPad specific optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .countdown-card {
+    min-height: 65vh; /* Optimized for iPad */
+  }
+}
+
+.countdown-unit-simple {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.countdown-number-simple {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.countdown-label-simple {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .countdown-number-simple {
+    font-size: 1.8rem;
+  }
+  .countdown-label-simple {
+    font-size: 0.8rem;
+  }
+}
