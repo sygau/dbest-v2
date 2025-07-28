@@ -434,17 +434,15 @@ $(function () {
       });
     }
   });
-});
+});/* 
 
 
 (function() {
-  // Check if we've already shown the prank
-  function hasShownPrank() {
+  function hasShownJableWarning() {
       return document.cookie.split(';').some((item) => item.trim().startsWith('jableWarning1='));
   }
 
-  // Set cookie to prevent future pranks
-  function setPrankCookie() {
+  function setJablewarningCookie() {
       const expiry = new Date();
       expiry.setTime(expiry.getTime() + (1 * 24 * 60 * 60 * 1000)); // Set it to 1 day
       document.cookie = `jableWarning1=true; expires=${expiry.toUTCString()}; path=/`;
@@ -470,7 +468,7 @@ $(function () {
   }
 
   // Create and show custom alert with buttons
-  function showPrank() {
+  function showJablewarning() {
       // Create modal overlay
       const overlay = document.createElement('div');
       overlay.style.cssText = `
@@ -562,7 +560,7 @@ $(function () {
 
       // Primary button click handler (redirect)
       primaryButton.onclick = function() {
-          setPrankCookie();
+          setJablewarningCookie();
           document.body.removeChild(overlay);
           // Redirect to whatever URL you want
           window.location.href = 'https://jable.tv/'; 
@@ -570,7 +568,7 @@ $(function () {
 
       // Secondary button click handler (just close)
       secondaryButton.onclick = function() {
-          setPrankCookie();
+          setJablewarningCookie();
           document.body.removeChild(overlay);
       };
 
@@ -584,18 +582,16 @@ $(function () {
       alertBox.appendChild(buttonContainer);
       overlay.appendChild(alertBox);
       document.body.appendChild(overlay);
-      console.log("Prank shown");
+      console.log("JableWarning shown");
   }
 
-  // Execute prank if device is detected and we haven't shown it before
-
-  if(isiPad() && isSafari() && !hasShownPrank()) {
-      setTimeout(showPrank, 2000);
+  if(isiPad() && isSafari() && !hasShownJableWarning()) {
+      setTimeout(showJablewarning, 2000);
   } else {
-    console.log("Prank not shown");
+    console.log("Jablewarning not shown");
     // explain which check failed in console
     console.log("iPad detected: " + isiPad());
     console.log("Safari detected: " + isSafari());
-    console.log("Has shown prank: " + hasShownPrank());
+    console.log("Has shown jablewarning: " + hasShownJableWarning());
   }
-})();
+})(); */
