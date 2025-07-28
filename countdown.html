@@ -576,8 +576,12 @@
     // First load (compatible with Swup's initial render)
     if (document.readyState === 'complete') {
       initializePage();
+      loadCountdownJs()
     } else {
-      document.addEventListener('DOMContentLoaded', initializePage);
+      document.addEventListener('DOMContentLoaded', () => {
+        initializePage();
+        loadCountdownJs();
+      })
     }
 
     // Use content:replace hook - fires when new content is available
@@ -667,11 +671,6 @@
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
   <!--main js-->
   <script src="assets/js/main.js"></script>
-  <!-- DSE 2026 Countdown Canvas Script -->
-  <!-- We need to fix a problem because as someone came to countdown.html from other pages, the countdown.js script does not get loaded due to Swup.-->
-  <!-- We need to load the countdown.js script after the Swup content:replace event, however the countdown.js also need to be loaded on ALL pages.-->
-  <!-- Lets head over to other pages to solve this problem  -->
-  <script src="assets/js/countdown.js"></script>
 </body>
 
 </html>
