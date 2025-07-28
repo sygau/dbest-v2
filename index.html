@@ -716,11 +716,20 @@
     // Load countdown.js 
     function loadCountdownJs() {
       if (window.location.pathname === '/countdown') {
-        const countdownScript = document.createElement('script');
-        console.log("Loading Countdown.js...");
-        countdownScript.src = 'https://dse.best/assets/js/countdown.js';
-        document.head.appendChild(countdownScript);
-      } 
+        // Only inject the script ONCE per page session
+        if (!window.DSECountdownLoaded) {
+          const countdownScript = document.createElement('script');
+          countdownScript.src = 'https://dse.best/assets/js/countdown.js';
+          countdownScript.onload = () => { window.DSECountdownLoaded = true; };
+          document.head.appendChild(countdownScript);
+        } else {
+          // Script is already loaded, just re-initialize the countdown
+          if (window.dseCountdown) window.dseCountdown.destroy();
+          if (document.getElementById('countdownCanvas')) {
+            window.dseCountdown = new DSECountdown();
+          }
+        }
+      }
     }
 
     // First load (compatible with Swup's initial render)
