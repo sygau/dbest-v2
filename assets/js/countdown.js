@@ -239,26 +239,13 @@ class DSECountdown {
   }
 }
 
-// Initialize countdown when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  // Only initialize if countdown canvas exists
-  if (document.getElementById('countdownCanvas')) {
-    window.dseCountdown = new DSECountdown();
-  }
-});
-
-// Handle page navigation (for SPA-like behavior)
-document.addEventListener('swup:contentReplaced', function() {
-  // Cleanup previous countdown
-  if (window.dseCountdown) {
-    window.dseCountdown.destroy();
-  }
-
-  // Initialize new countdown if canvas exists
-  if (document.getElementById('countdownCanvas')) {
-    window.dseCountdown = new DSECountdown();
-  }
-});
+// Immediately destroy previous instance and create a new one if canvas exists
+if (window.dseCountdown) {
+  window.dseCountdown.destroy();
+}
+if (document.getElementById('countdownCanvas')) {
+  window.dseCountdown = new DSECountdown();
+}
 
 // Add roundRect polyfill for older browsers
 if (!CanvasRenderingContext2D.prototype.roundRect) {
