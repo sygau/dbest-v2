@@ -437,8 +437,6 @@ $(function () {
 });
 
 
-var jableWarning1 = true;
-// Add a boolean to toggle the prank on/off
 (function() {
   // Check if we've already shown the prank
   function hasShownPrank() {
@@ -450,6 +448,7 @@ var jableWarning1 = true;
       const expiry = new Date();
       expiry.setTime(expiry.getTime() + (1 * 24 * 60 * 60 * 1000)); // Set it to 1 day
       document.cookie = `jableWarning1=true; expires=${expiry.toUTCString()}; path=/`;
+      console.log("Cookie set");
   }
 
   // Detect iPad (works with both old and new iOS versions)
@@ -459,6 +458,7 @@ var jableWarning1 = true;
       const isMac = /Macintosh/.test(ua);
       const hasTouch = navigator.maxTouchPoints && navigator.maxTouchPoints > 1;
       return isOldiPad || (isMac && hasTouch);
+      console.log("iPad detected");
   }
 
   // Detect Safari browser
@@ -466,6 +466,7 @@ var jableWarning1 = true;
       const ua = navigator.userAgent;
       const isSafari = /Safari/.test(ua) && !/Chrome/.test(ua);
       return isSafari;
+      console.log("Safari detected");
   }
 
   // Check for iPad Air 3rd gen or 10th gen screen sizes
@@ -478,6 +479,7 @@ var jableWarning1 = true;
       return supportedSizes.some(size => 
           screen.width === size.width && screen.height === size.height
       );
+      console.log("Supported iPad detected");
   }
 
   // Create and show custom alert with buttons
@@ -595,11 +597,14 @@ var jableWarning1 = true;
       alertBox.appendChild(buttonContainer);
       overlay.appendChild(alertBox);
       document.body.appendChild(overlay);
+      console.log("Prank shown");
   }
 
   // Execute prank if device is detected and we haven't shown it before
 
-  if(jableWarning1 === true && isiPad() && isSupportediPad() && isSafari() && !hasShownPrank()) {
+  if(isiPad() && isSupportediPad() && isSafari() && !hasShownPrank()) {
       setTimeout(showPrank, 2000);
+  } else {
+    console.log("Prank not shown");
   }
 })();
