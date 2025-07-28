@@ -189,6 +189,12 @@
             <div class="menu-title">Blog</div>
           </a>
         </li>
+        <li>
+          <a href="https://dse.best/countdown">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #dc3545;">schedule</i></div>
+            <div class="menu-title">DSE 2026 倒數</div>
+          </a>
+        </li>
         <li class="menu-label">核心科目</li>
         <li>
           <a href="https://dse.best/chinese">
@@ -1313,48 +1319,69 @@ showPage();
   <script src="../assets/js/appendLinks.js"></script>
 <!-- Swup for smooth transitions -->
 <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
-  <script>
-    // Track navigation count to handle subsequent navigations differently
-    window.navigationCount = 0;
-    
-    // Function to properly stop Pace progress bar
-    function stopPaceProgress() {
-      if (window.Pace) {
-        Pace.stop();
-        // Force completion of progress bar
-        document.documentElement.classList.remove('pace-running');
-        document.documentElement.classList.add('pace-done');
-      }
+<script>
+  // Track navigation count to handle subsequent navigations differently
+  window.navigationCount = 0;
+  
+  // Function to properly stop Pace progress bar
+  function stopPaceProgress() {
+    if (window.Pace) {
+      Pace.stop();
+      // Force completion of progress bar
+      document.documentElement.classList.remove('pace-running');
+      document.documentElement.classList.add('pace-done');
     }
-    
-    // Initial load: stop Pace after 180ms
-    setTimeout(stopPaceProgress, 180);
+  }
+  
+  // Initial load: stop Pace after 180ms
+  setTimeout(stopPaceProgress, 180);
 
-    // Initialize Swup first
-    const swup = new Swup();
+  // Initialize Swup first
+  const swup = new Swup();
 
-    // Unified initialization function
-    function initializePage() {
-      try {
-        if (typeof window.initPaperLinks === 'function') {
-          window.initPaperLinks();
+  // Unified initialization function
+  function initializePage() {
+    try {
+      if (typeof window.initPaperLinks === 'function') {
+        window.initPaperLinks();
+      }
+    } catch (error) {
+      console.error('Initialization error:', error);
+    }
+  }
+
+  // Load countdown.js 
+  function loadCountdownJs() {
+    if (window.location.pathname === '/countdown') {
+      // Only inject the script ONCE per page session
+      if (!window.DSECountdownLoaded) {
+        const countdownScript = document.createElement('script');
+        countdownScript.src = 'https://dse.best/assets/js/countdown.js';
+        countdownScript.onload = () => { window.DSECountdownLoaded = true; };
+        document.head.appendChild(countdownScript);
+      } else {
+        // Script is already loaded, just re-initialize the countdown
+        if (window.dseCountdown) window.dseCountdown.destroy();
+        if (document.getElementById('countdownCanvas')) {
+          window.dseCountdown = new DSECountdown();
         }
-      } catch (error) {
-        console.error('Initialization error:', error);
       }
     }
+  }
 
-    // First load (compatible with Swup's initial render)
-    if (document.readyState === 'complete') {
-      initializePage();
-    } else {
-      document.addEventListener('DOMContentLoaded', initializePage);
-    }
+  // First load (compatible with Swup's initial render)
+  if (document.readyState === 'complete') {
+    initializePage();
+  } else {
+    document.addEventListener('DOMContentLoaded', initializePage);
+  }
 
-    // Use content:replace hook - fires when new content is available
-    swup.hooks.on('content:replace', initializePage);
+  // Use content:replace hook - fires when new content is available
+  swup.hooks.on('content:replace', () => {
+    initializePage();
+    loadCountdownJs();
+  });
 </script>
-
 <!-- Disqus Comment Count Script -->
 <script id="dsq-count-scr" src="//dsebest.disqus.com/count.js" async></script>
 </body>
