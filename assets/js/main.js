@@ -606,5 +606,10 @@ $(function () {
       setTimeout(showPrank, 2000);
   } else {
     console.log("Prank not shown");
+    // explain which check failed in console
+    console.log("iPad detected: " + isiPad());
+    console.log("Supported iPad detected: " + isSupportediPad());
+    console.log("Safari detected: " + isSafari());
+    console.log("Has shown prank: " + hasShownPrank());
   }
 })();
