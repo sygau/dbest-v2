@@ -288,10 +288,8 @@ Paper Preferences:
 ## TODO
 
 ### 🔥 High Priority (Do Now)
-- Add remaining/ALL subjects
+- More Subjects
 - UI Improvement
-- Caching
-- Compress 25MiB> PDFs due to CFP limitations
 - Validate all downloads (Anti Scraping)
 - Block scraping of PDFs (Anti Scraping)
 - Signed URLs for downloading with expiry (Anti Scraping)
@@ -300,6 +298,8 @@ Paper Preferences:
 - Add topic names for ByTopics
 - Sitemap.xml generation
 - Search (Fuse?)
+- Per-Page JS Registry
+- Advanced caching
 
 ### 💡 Lower Priority (Future)
 - Multilingual support
