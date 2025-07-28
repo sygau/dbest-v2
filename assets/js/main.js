@@ -469,19 +469,6 @@ $(function () {
       console.log("Safari detected");
   }
 
-  // Check for iPad Air 3rd gen or 10th gen screen sizes
-  function isSupportediPad() {
-      const supportedSizes = [
-          { width: 834, height: 1112 }, // iPad Air 3rd gen
-          { width: 820, height: 1180 }  // iPad 10th gen
-      ];
-      
-      return supportedSizes.some(size => 
-          screen.width === size.width && screen.height === size.height
-      );
-      console.log("Supported iPad detected");
-  }
-
   // Create and show custom alert with buttons
   function showPrank() {
       // Create modal overlay
@@ -602,13 +589,12 @@ $(function () {
 
   // Execute prank if device is detected and we haven't shown it before
 
-  if(isiPad() && isSupportediPad() && isSafari() && !hasShownPrank()) {
+  if(isiPad() && isSafari() && !hasShownPrank()) {
       setTimeout(showPrank, 2000);
   } else {
     console.log("Prank not shown");
     // explain which check failed in console
     console.log("iPad detected: " + isiPad());
-    console.log("Supported iPad detected: " + isSupportediPad());
     console.log("Safari detected: " + isSafari());
     console.log("Has shown prank: " + hasShownPrank());
   }
