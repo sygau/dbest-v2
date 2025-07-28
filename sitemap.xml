@@ -5,6 +5,10 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://dse.best/countdown</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://dse.best/geography</loc>
     <changefreq>daily</changefreq>
   </url>

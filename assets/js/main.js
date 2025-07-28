@@ -312,7 +312,18 @@ $(function () {
   // Automatic PDF Download Analytics Tracking
   $(document).on('click', 'a[href$=".pdf"]', function() {
     const fullUrl = this.href;
-    const fileName = fullUrl.split('/').pop(); // Extract filename from URL
+    let fileName = fullUrl.split('/').pop(); // Extract filename from URL
+
+    // Clean filename: remove query parameters and hash fragments
+    fileName = fileName.split('?')[0].split('#')[0];
+
+    // Debug logging to help identify the issue
+    console.log('PDF Download Debug:', {
+      fullUrl: fullUrl,
+      rawFileName: fullUrl.split('/').pop(),
+      cleanFileName: fileName,
+      splitResult: fullUrl.split('/')
+    });
 
     // Auto-detect subject from CDN URL path (much more accurate!)
     let subject = 'unknown';
@@ -398,7 +409,7 @@ $(function () {
 
     // Send to Google Analytics with optimized parameters
     if (typeof gtag !== 'undefined') {
-      gtag('event', 'file_download', {
+      const eventData = {
         'file_name': fileName,
         'download_subject': cleanSubject,
         'download_year': extractedYear,
@@ -407,7 +418,12 @@ $(function () {
         'download_language': cleanLanguage,
         'link_url': this.href,
         'value': 1
-      });
+      };
+
+      // Debug logging for GA4 data
+      console.log('Sending to GA4:', eventData);
+
+      gtag('event', 'file_download', eventData);
 
       // Also send a simplified version for easier tracking
       gtag('event', 'pdf_download', {
