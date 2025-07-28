@@ -713,6 +713,16 @@
       }
     }
 
+    // Load countdown.js 
+    function loadCountdownJs() {
+      if (window.location.pathname === '/countdown') {
+        const countdownScript = document.createElement('script');
+        console.log("Loading Countdown.js...");
+        countdownScript.src = 'https://dse.best/assets/js/countdown.js';
+        document.head.appendChild(countdownScript);
+      } 
+    }
+
     // First load (compatible with Swup's initial render)
     if (document.readyState === 'complete') {
       initializePage();
@@ -721,7 +731,10 @@
     }
 
     // Use content:replace hook - fires when new content is available
-    swup.hooks.on('content:replace', initializePage);
+    swup.hooks.on('content:replace', () => {
+      initializePage();
+      loadCountdownJs()
+    });
   </script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"

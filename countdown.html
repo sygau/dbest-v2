@@ -199,12 +199,6 @@
             <div class="menu-title">DSE 2026 倒數</div>
           </a>
         </li>
-        <li>
-          <a href="https://dse.best/countdown">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #dc3545;">schedule</i></div>
-            <div class="menu-title">DSE 2026 倒數</div>
-          </a>
-        </li>
         <li class="menu-label">核心科目</li>
         <li>
           <a href="https://dse.best/chinese">
@@ -569,6 +563,16 @@
       }
     }
 
+    // Load countdown.js 
+    function loadCountdownJs() {
+      if (window.location.pathname === '/countdown') {
+        const countdownScript = document.createElement('script');
+        console.log("Loading Countdown.js...")
+        countdownScript.src = 'https://dse.best/assets/js/countdown.js';
+        document.head.appendChild(countdownScript);
+      } 
+    }
+
     // First load (compatible with Swup's initial render)
     if (document.readyState === 'complete') {
       initializePage();
@@ -577,7 +581,10 @@
     }
 
     // Use content:replace hook - fires when new content is available
-    swup.hooks.on('content:replace', initializePage);
+    swup.hooks.on('content:replace', () => {
+      initializePage();
+      loadCountdownJs()
+    });
   </script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
@@ -661,6 +668,9 @@
   <!--main js-->
   <script src="assets/js/main.js"></script>
   <!-- DSE 2026 Countdown Canvas Script -->
+  <!-- We need to fix a problem because as someone came to countdown.html from other pages, the countdown.js script does not get loaded due to Swup.-->
+  <!-- We need to load the countdown.js script after the Swup content:replace event, however the countdown.js also need to be loaded on ALL pages.-->
+  <!-- Lets head over to other pages to solve this problem  -->
   <script src="assets/js/countdown.js"></script>
 </body>
 
