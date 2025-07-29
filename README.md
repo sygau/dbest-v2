@@ -283,7 +283,6 @@ Paper Preferences:
 - **Unknown Subject**: Verify CDN URL contains subject folder
 - **No Year Data**: Ensure filename contains 4-digit year (2012-2024)
 
----
 
 ## TODO
 
@@ -304,6 +303,7 @@ Paper Preferences:
 
 ### 💡 Lower Priority (Future)
 - Multilingual support
+- EJS/ES6 templates for shared layout/components
 - Google Ads
 - AI Mock Papers Section
 - Alternative analytics platform (Mixpanel?)
