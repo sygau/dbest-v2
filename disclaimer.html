@@ -425,56 +425,6 @@
   </footer>
   <!--end footer-->
 
-  <!-- Universal paper links appender -->
-  <script src="assets/js/appendLinks.js"></script>
-  <!-- Swup for smooth transitions -->
-  <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
-  <script>
-    // Track navigation count to handle subsequent navigations differently
-    window.navigationCount = 0;
-    function stopPaceProgress() {
-      if (window.Pace) {
-        Pace.stop();
-        document.documentElement.classList.remove('pace-running');
-        document.documentElement.classList.add('pace-done');
-      }
-    }
-    setTimeout(stopPaceProgress, 180);
-    const swup = new Swup();
-    function initializePage() {
-      try {
-        if (typeof window.initPaperLinks === 'function') {
-          window.initPaperLinks();
-        }
-      } catch (error) {
-        console.error('Initialization error:', error);
-      }
-    }
-    function loadCountdownJs() {
-      if (window.location.pathname === '/countdown') {
-        if (!window.DSECountdownLoaded) {
-          const countdownScript = document.createElement('script');
-          countdownScript.src = 'https://dse.best/assets/js/countdown.js';
-          countdownScript.onload = () => { window.DSECountdownLoaded = true; };
-          document.head.appendChild(countdownScript);
-        } else {
-          if (window.dseCountdown) window.dseCountdown.destroy();
-          if (document.getElementById('countdownCanvas')) {
-            window.dseCountdown = new DSECountdown();
-          }
-        }
-      }
-    }
-    if (document.readyState === 'complete') {
-      initializePage();
-    } else {
-      document.addEventListener('DOMContentLoaded', initializePage);
-    }
-    swup.hooks.on('content:replace', () => {
-      initializePage();
-      loadCountdownJs();
-    });
-  </script>
   <!--start switcher-->
   <button class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
     type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop">
@@ -547,16 +497,77 @@
       </div>
     </div>
   </div>
-  <!--start switcher-->
   <!--bootstrap js-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!--plugins-->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!--plugins-->
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
-  
   <!--main js-->
   <script src="assets/js/main.js"></script>
+  <!-- Universal paper links appender -->
+  <script src="assets/js/appendLinks.js"></script>
+  <!-- Swup for smooth transitions -->
+  <script src="https://cdn.jsdelivr.net/npm/swup@4.8.2/dist/Swup.umd.min.js"></script>
+  <script>
+    // Track navigation count to handle subsequent navigations differently
+    window.navigationCount = 0;
+    function stopPaceProgress() {
+      if (window.Pace) {
+        Pace.stop();
+        document.documentElement.classList.remove('pace-running');
+        document.documentElement.classList.add('pace-done');
+      }
+    }
+    setTimeout(stopPaceProgress, 180);
+    const swup = new Swup();
+    function initializePage() {
+      try {
+        if (typeof window.initPaperLinks === 'function') {
+          window.initPaperLinks();
+        }
+      } catch (error) {
+        console.error('Initialization error:', error);
+      }
+    }
+    function loadCountdownJs() {
+      if (window.location.pathname === '/countdown') {
+        if (!window.DSECountdownLoaded) {
+          const countdownScript = document.createElement('script');
+          countdownScript.src = 'https://dse.best/assets/js/countdown.js';
+          countdownScript.onload = () => { window.DSECountdownLoaded = true; };
+          document.head.appendChild(countdownScript);
+        } else {
+          if (window.dseCountdown) window.dseCountdown.destroy();
+          if (document.getElementById('countdownCanvas')) {
+            window.dseCountdown = new DSECountdown();
+          }
+        }
+      }
+    }
+    
+    // Function to load blog index script on /blog routes
+    function loadBlogIndexJS() {
+      if (window.location.pathname === '/blog' || window.location.pathname === '/blog/') {
+        if (!window.DSEBlogIndexLoaded) {
+          const blogIndexScript = document.createElement('script');
+          blogIndexScript.src = 'https://dse.best/assets/js/blogIndex.js';
+          blogIndexScript.onload = () => { window.DSEBlogIndexLoaded = true; };
+          document.head.appendChild(blogIndexScript);
+        }
+      }
+    }
+    if (document.readyState === 'complete') {
+      initializePage();
+    } else {
+      document.addEventListener('DOMContentLoaded', initializePage);
+    }
+    swup.hooks.on('content:replace', () => {
+      initializePage();
+      loadCountdownJs();
+      loadBlogIndexJS();
+    });
+  </script>
 </body>
 
 </html>

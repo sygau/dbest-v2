@@ -2161,6 +2161,18 @@
             }
           }
         }
+        
+        // Function to load blog index script on /blog routes
+        function loadBlogIndexJS() {
+          if (window.location.pathname === '/blog' || window.location.pathname === '/blog/') {
+            if (!window.DSEBlogIndexLoaded) {
+              const blogIndexScript = document.createElement('script');
+              blogIndexScript.src = 'https://dse.best/assets/js/blogIndex.js';
+              blogIndexScript.onload = () => { window.DSEBlogIndexLoaded = true; };
+              document.head.appendChild(blogIndexScript);
+            }
+          }
+        }
         if (document.readyState === 'complete') {
           initializePage();
         } else {
@@ -2169,6 +2181,7 @@
         swup.hooks.on('content:replace', () => {
           initializePage();
           loadCountdownJs();
+          loadBlogIndexJS();
         });
       </script>
 </body>
