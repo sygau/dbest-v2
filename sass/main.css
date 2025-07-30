@@ -2167,7 +2167,7 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
   .blog-meta-item .material-icons-outlined {
     font-size: 1.22rem !important;
     position: relative;
-    top: 2px;
+    top: 4px;
     color: inherit;
   }
 }
