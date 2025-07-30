@@ -421,7 +421,7 @@
           </div>
           <img src="https://dummyimage.com/200x200/ff7043/ffffff&text=DSE%20News" class="img-fluid blog-card-img h-100" alt="DSE News">
           <div class="card-body blog-card-body" style="z-index:1;">
-            <span class="badge bg-orange mb-2" style="font-size: 0.9rem; padding: 0.4em 0.6em;">DSE新聞 DSE News</span>
+            <span class="badge bg-orange mb-2" style="font-size: 0.9rem; padding: 0.4em 0.6em;">DSE News</span>
             <h2 class="card-title blog-card-title mb-2">讀書太慢？記唔住？10個AI工具幫你KO讀書難題 狀元都係咁樣Level Up</h2>
             <div class="d-flex blog-meta mb-2 flex-wrap">
               <span class="blog-meta-item">
@@ -765,7 +765,8 @@ showPage();
           disqusCountScript.src = '//dsebest.disqus.com/count.js';
           disqusCountScript.async = true;
           document.head.appendChild(disqusCountScript);
-        }
+        } else if (window.DISQUSWIDGETS && typeof window.DISQUSWIDGETS.getCount === 'function') {
+          window.DISQUSWIDGETS.getCount({ reset: true });
       }
     }
 

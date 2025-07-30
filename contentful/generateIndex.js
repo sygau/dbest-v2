@@ -194,7 +194,7 @@ function getCategoryDisplayName(category) {
     'Economics': '經濟 Economics',
     'BAFS': '企會財 BAFS',
     'Visual Arts': '視藝 Visual Arts',
-    'DSE News': 'DSE新聞 DSE News',
+    'DSE News': 'DSE News',
     'Testing': 'Testing'
   };
 

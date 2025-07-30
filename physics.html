@@ -2689,7 +2689,8 @@
           disqusCountScript.src = '//dsebest.disqus.com/count.js';
           disqusCountScript.async = true;
           document.head.appendChild(disqusCountScript);
-        }
+        } else if (window.DISQUSWIDGETS && typeof window.DISQUSWIDGETS.getCount === 'function') {
+          window.DISQUSWIDGETS.getCount({ reset: true });
       }
     }
 
