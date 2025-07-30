@@ -240,3 +240,16 @@
 [2025-07-30T13:37:49.760Z] ✅ Blog index page generated successfully.
 [2025-07-30T13:37:49.761Z] No changes detected in this sync run.
 [2025-07-30T13:37:49.761Z] --- Sync completed ---
+[2025-07-30T13:57:15.487Z] --- Sync started ---
+[2025-07-30T13:57:15.586Z] New posts: 0, Updated posts: 0, Deleted posts: 0
+[2025-07-30T13:57:15.590Z] Generated/Updated: 讀書太慢？記唔住？10個AI工具幫你KO讀書難題 狀元都係咁樣Level Up (10-useful-ai-tools-for-study-enchantment)
+[2025-07-30T13:57:15.593Z] Generated/Updated: DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-30T13:57:15.596Z] Generated/Updated: test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-30T13:57:15.597Z] ✅ blogIndex.json generated successfully with 3 posts
+[2025-07-30T13:57:15.597Z] Posts after sync:
+[2025-07-30T13:57:15.598Z] - 讀書太慢？記唔住？10個AI工具幫你KO讀書難題 狀元都係咁樣Level Up (10-useful-ai-tools-for-study-enchantment)
+[2025-07-30T13:57:15.598Z] - DSE 中文閱讀卷攻略：點樣準備 Paper 1 先叻？ (dse-chinese-paper-1)
+[2025-07-30T13:57:15.598Z] - test blog post (this-is-my-testing-blog-post-for-dse-best)
+[2025-07-30T13:57:15.600Z] ✅ Blog index page generated successfully.
+[2025-07-30T13:57:15.600Z] No changes detected in this sync run.
+[2025-07-30T13:57:15.601Z] --- Sync completed ---
