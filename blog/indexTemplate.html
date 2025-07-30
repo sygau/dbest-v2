@@ -691,6 +691,65 @@ showPage();
     }
   }
 
+  function loadBlogIndexJS() {
+      if (window.location.pathname === '/blog' || window.location.pathname === '/blog/') {
+        if (!window.DSEBlogIndexLoaded) {
+          const blogIndexScript = document.createElement('script');
+          blogIndexScript.src = 'https://dse.best/assets/js/blogIndex.js';
+          blogIndexScript.onload = () => { window.DSEBlogIndexLoaded = true; };
+          document.head.appendChild(blogIndexScript);
+        }
+        if (!document.getElementById('dsq-count-scr')) {
+          const disqusCountScript = document.createElement('script');
+          disqusCountScript.id = 'dsq-count-scr';
+          disqusCountScript.src = '//dsebest.disqus.com/count.js';
+          disqusCountScript.async = true;
+          document.head.appendChild(disqusCountScript);
+        }
+      }
+    }
+
+    function loadPostJS() {
+      // Check if we're on a blog post page (not the blog index)
+      if (window.location.pathname.startsWith('/blog/') && 
+          window.location.pathname !== '/blog/') {
+        
+        // Load Busuanzi view counter script if not already loaded
+        if (!window.BusuanziLoaded) {
+          const busuanziScript = document.createElement('script');
+          busuanziScript.src = 'https://busuanzi.icodeq.com/busuanzi.pure.mini.js';
+          busuanziScript.async = true;
+          busuanziScript.defer = true;
+          busuanziScript.onload = () => { window.BusuanziLoaded = true; };
+          document.head.appendChild(busuanziScript);
+        }
+        
+        // Load Disqus comments script if comments section exists and not already loaded
+        setTimeout(() => {
+          const disqusThread = document.getElementById('disqus_thread');
+          if (disqusThread && !window.DisqusLoaded) {
+            // Get the current page slug from URL for Disqus configuration
+            const pathSegments = window.location.pathname.split('/');
+            const slug = pathSegments[pathSegments.length - 1].replace('.html', '');
+            
+            // Configure Disqus
+            window.disqus_config = function () {
+              this.page.url = `https://dse.best/blog/${slug}`;
+              this.page.identifier = slug;
+              this.page.robots = 'noindex, nofollow';
+            };
+            
+            // Load Disqus embed script
+            const disqusScript = document.createElement('script');
+            disqusScript.src = 'https://dsebest.disqus.com/embed.js';
+            disqusScript.setAttribute('data-timestamp', +new Date());
+            disqusScript.onload = () => { window.DisqusLoaded = true; };
+            (document.head || document.body).appendChild(disqusScript);
+          }
+        }, 400);
+      }
+    }
+
   // First load (compatible with Swup's initial render)
   if (document.readyState === 'complete') {
     initializePage();
@@ -702,6 +761,8 @@ showPage();
   swup.hooks.on('content:replace', () => {
     initializePage();
     loadCountdownJs();
+    loadPostJS();
+    loadBlogIndexJS();
   });
 </script>
 <!-- Disqus Comment Count Script -->

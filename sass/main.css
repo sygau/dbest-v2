@@ -816,7 +816,7 @@ input::placeholder {
 .blog-meta-item .material-icons-outlined{
   font-size:1.05rem;
   line-height:1;
-  margin-right:0.15rem;
+  margin-right:0rem;
   vertical-align:middle;
 }
 
@@ -2125,7 +2125,7 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
   .blog-meta-item .material-icons-outlined {
     font-size: 1.15rem !important;
     position: relative;
-    top: 2px;
+    top: 4px;
     color: inherit;
   }
 }
