@@ -806,7 +806,20 @@ input::placeholder {
   font-size: 15px;
 }
 
-/* utilities */
+/* === Custom utility classes === */
+
+/* Align comment icon with text in blog meta */
+.blog-meta-item{
+  display:inline-flex;
+  align-items:center;
+}
+.blog-meta-item .material-icons-outlined{
+  font-size:1.05rem;
+  line-height:1;
+  margin-right:0.15rem;
+  vertical-align:middle;
+}
+
 .primaery-menu-close {
   display: flex;
   align-items: center;

@@ -825,6 +825,13 @@
           blogIndexScript.onload = () => { window.DSEBlogIndexLoaded = true; };
           document.head.appendChild(blogIndexScript);
         }
+        if (!document.getElementById('dsq-count-scr')) {
+          const disqusCountScript = document.createElement('script');
+          disqusCountScript.id = 'dsq-count-scr';
+          disqusCountScript.src = '//dsebest.disqus.com/count.js';
+          disqusCountScript.async = true;
+          document.head.appendChild(disqusCountScript);
+        }
       }
     }
 
