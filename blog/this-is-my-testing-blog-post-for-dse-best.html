@@ -9,7 +9,7 @@
   <link rel="icon" href="https://dse.best/assets/images/favicon.ico" type="image/x-icon">
   <!-- SEO Meta Tags -->
   <meta name="description" content="This is a SEO Description for my blog post">
-  <meta name="keywords" content="SEO TAG 1, SEO TAG 2, SEO TAG 3">
+
   <meta name="robots" content="noindex, nofollow">
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="This is a SEO Title for my blog post">
@@ -109,7 +109,7 @@
   "datePublished": "2025-07-13",
   "dateModified": "2025-07-13",
   "articleSection": "Testing",
-  "keywords": "SEO TAG 1, SEO TAG 2, SEO TAG 3",
+  "keywords": "{{seoTags}}",
   "inLanguage": "zh-HK"
 }
 </script>
@@ -704,7 +704,7 @@
           window.DISQUSWIDGETS.getCount({ reset: true });
       }
     }
-    }
+  }
     function loadPostJS() {
       // Check if we're on a blog post page (not the blog index)
       if (window.location.pathname.startsWith('/blog/') && 

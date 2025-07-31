@@ -78,7 +78,6 @@ async function generatePostHTML(post, blogDir) {
     '{{title}}': fields.title || '',
     '{{seoTitle}}': fields.seoTitle || '',
     '{{seoDescription}}': fields.seoDescription || '',
-    '{{seoTags}}': Array.isArray(fields.seoTags) ? fields.seoTags.join(', ') : '',
     '{{author}}': fields.author || '',
     '{{date}}': fields.date || '',
     '{{readingTime}}': fields.readingTime ? `${fields.readingTime}min read` : '',
