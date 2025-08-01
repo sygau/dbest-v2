@@ -521,6 +521,7 @@
     // First load (compatible with Swup's initial render)
     if (document.readyState === 'complete') {
       initializePage();
+      loadCountdownJs();
     } else {
       document.addEventListener('DOMContentLoaded', () => {
         initializePage();
