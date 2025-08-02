@@ -1115,7 +1115,8 @@
           action: 'moderate',
           clientId: ably.auth.clientId,
           username: sender,
-          message: text
+          message: text,
+          text: text  // Add text property for command checking
         })
       })
       .then(response => {
@@ -1161,7 +1162,8 @@
               action: 'publish',
               message: messageData,
               clientId: ably.auth.clientId,
-              username: sender
+              username: sender,
+              text: text  // Add text property for command checking
             })
           }).then(response => {
             if (!response.ok) {
