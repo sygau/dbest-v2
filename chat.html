@@ -865,11 +865,40 @@
     let rateLimitMessageCount = 0;
     
     // Rate limit settings
-    const SEND_COOLDOWN = 800; // 0.8s cooldown between sends
-    const MAX_MESSAGES_PER_MINUTE = 12; // Max 12 messages per minute
-    const MAX_BURST = 4; // Max messages in burst
-    const BURST_WINDOW = 5000; // 5 second burst window
+    const SEND_COOLDOWN = 15000; // 15s cooldown between sends
+    const MAX_MESSAGES_PER_MINUTE = 8; // Max 8 messages per minute
+    const MAX_BURST = 3; // Max 3 messages in burst
+    const BURST_WINDOW = 30000; // 30 second burst window
     const RATE_LIMIT_WINDOW = 60000; // 1 minute window for overall limit
+
+    // Helper function to disable/enable input
+    function setInputState(disabled, cooldownSeconds = 0) {
+      messageInput.disabled = disabled;
+      sendButton.disabled = disabled;
+      if (disabled && cooldownSeconds > 0) {
+        messageInput.placeholder = `Waiting ${cooldownSeconds} seconds...`;
+      } else {
+        messageInput.placeholder = 'Type a message…';
+      }
+    }
+
+    // Start a cooldown timer
+    function startCooldown(duration) {
+      setInputState(true, Math.ceil(duration/1000));
+      const updateInterval = setInterval(() => {
+        const remaining = Math.ceil((duration - (Date.now() - lastSendTime))/1000);
+        if (remaining > 0) {
+          setInputState(true, remaining);
+        } else {
+          clearInterval(updateInterval);
+          setInputState(false);
+        }
+      }, 1000);
+      setTimeout(() => {
+        clearInterval(updateInterval);
+        setInputState(false);
+      }, duration);
+    }
 
     async function sendMessage() {
       if (!channel) {
@@ -879,24 +908,30 @@
 
       const now = Date.now();
 
-      // Check if we're currently sending
-      if (isSending) {
-        addSystemMessage('Message is being sent, please wait...');
+      // Prevent double-sending by disabling during send
+      if (isSending || messageInput.disabled) {
         return;
       }
+      
+      isSending = true;
+      setInputState(true);
 
       // Enforce cooldown between messages
       if (now - lastSendTime < SEND_COOLDOWN) {
-        const waitTime = Math.ceil((SEND_COOLDOWN - (now - lastSendTime)) / 1000);
-        addSystemMessage(`Please wait ${waitTime} second${waitTime !== 1 ? 's' : ''} before sending another message`);
+        const remainingCooldown = SEND_COOLDOWN - (now - lastSendTime);
+        addSystemMessage(`Please wait ${Math.ceil(remainingCooldown/1000)} seconds before sending another message`);
+        startCooldown(remainingCooldown);
+        isSending = false;
         return;
       }
 
-      // Check burst rate limit (X messages per Y seconds)
+      // Check burst rate limit
       const burstWindowMessages = messageCount;
       if (now - windowStart <= BURST_WINDOW && burstWindowMessages >= MAX_BURST) {
-        const waitTime = Math.ceil((BURST_WINDOW - (now - windowStart)) / 1000);
-        addSystemMessage(`You're sending too fast! Please wait ${waitTime} seconds.`);
+        const waitTime = BURST_WINDOW - (now - windowStart);
+        addSystemMessage(`You're sending too fast! Please wait ${Math.ceil(waitTime/1000)} seconds.`);
+        startCooldown(waitTime);
+        isSending = false;
         return;
       }
 
@@ -906,8 +941,12 @@
         rateLimitMessageCount = 0;
         rateLimitStartTime = now;
       } else if (rateLimitMessageCount >= MAX_MESSAGES_PER_MINUTE) {
-        const waitTime = Math.ceil((RATE_LIMIT_WINDOW - (now - rateLimitStartTime)) / 1000);
-        addSystemMessage(`Rate limit exceeded. Please wait ${Math.floor(waitTime/60)} minute${Math.floor(waitTime/60) !== 1 ? 's' : ''} and ${waitTime % 60} second${waitTime % 60 !== 1 ? 's' : ''}.`);
+        const waitTime = RATE_LIMIT_WINDOW - (now - rateLimitStartTime);
+        const minutes = Math.floor(waitTime/60000);
+        const seconds = Math.ceil((waitTime % 60000)/1000);
+        addSystemMessage(`Rate limit exceeded. Please wait ${minutes ? minutes + ' minute' + (minutes !== 1 ? 's' : '') : ''} ${seconds ? seconds + ' second' + (seconds !== 1 ? 's' : '') : ''}.`);
+        startCooldown(waitTime);
+        isSending = false;
         return;
       }
 
@@ -993,10 +1032,18 @@
           rateLimitMessageCount = 1;
           rateLimitStartTime = now;
         }
+
+        // Start cooldown timer
+        startCooldown(SEND_COOLDOWN);
+        isSending = false;
       })
       .catch(error => {
-        console.error(error);
-        addSystemMessage(error.message || 'Failed to send message. Please try again.');
+        if (!error.silentFail) {
+          console.error(error);
+          addSystemMessage(error.message || 'Failed to send message. Please try again.');
+        }
+        setInputState(false);
+        isSending = false;
       });
     }
 
