@@ -785,7 +785,7 @@
 
     // Initialise Ably with auth endpoint
     const ably = new Ably.Realtime.Promise({
-      authUrl: '/api/chat-auth',
+      authUrl: 'https://dse.best/api/chat-auth',
       authMethod: 'POST',
       authParams: {
         clientId: localStorage.getItem('chatUsername') || randomUsername(),
