@@ -922,6 +922,11 @@
       channel.history({ limit: 50 }).then(result => {
         result.items.reverse().forEach(msg => {
           if (msg.data && msg.data.sender && msg.data.text) {
+            // Skip displaying purge messages in history
+            if (msg.data.isPurgeMessage) {
+              return;
+            }
+            
             const isMine = msg.data.clientId === ably.auth.clientId;
             addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id);
           }
@@ -929,7 +934,13 @@
       });
       // Subscribe to new messages
       channel.subscribe('message', msg => {
-        const { sender, text, isModerator, clientId } = msg.data;
+        const { sender, text, isModerator, clientId, isPurgeMessage } = msg.data;
+        
+        // Skip displaying purge messages
+        if (isPurgeMessage) {
+          return;
+        }
+        
         const isMine = clientId === ably.auth.clientId;
         addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id);
       });
