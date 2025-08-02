@@ -20,7 +20,7 @@ const MOD_COMMANDS = {
   unban: /^\/unban (\S+)$/i, // /unban clientId
   info: /^\/info (\S+)$/i,   // /info clientId - show user info
   help: /^\/help$/i,         // /help - show available commands
-  purge: /^\/purge(?:\s+(\d+|all))?$/i,  // /purge [number|all] - purge messages
+  purge: /^\/purge(?:\s+(\d+))?$/i,  // /purge [number] - purge messages with placeholder flood
   whois: /^\/whois (\S+)$/i  // /whois username - get user's client ID
 };
 
@@ -220,7 +220,7 @@ export default async function handler(req, res) {
 /info <clientid> - Show detailed information for a client ID
 /ban <clientid> - Permanently ban a user
 /unban <clientid> - Remove a user's ban
-/purge [number|all] - Purge messages` :
+/purge [number] - Clear chat by flooding with placeholder messages (default: 50)` :
             `Available commands:
 /help - Show this help message`;
 
@@ -318,72 +318,60 @@ export default async function handler(req, res) {
             });
           }
 
-          // Purge command
+          // Purge command - flood chat with placeholder messages
           if (match = MOD_COMMANDS.purge.exec(message)) {
-            const [, amount = "all"] = match;
-            const count = amount === "all" ? 'all' : parseInt(amount) || 50;
+            const [, amount = "50"] = match;
+            const count = parseInt(amount) || 50;
             
             const channel = ably.channels.get('dsebest-livechat');
             const now = Date.now();
 
             try {
-              if (count === 'all') {
-                // Notify all clients to clear all messages
-                await channel.publish('command', {
-                  type: 'purge',
-                  count: 'all',
-                  moderator: username,
-                  timestamp: now
+              // Send placeholder messages to push old messages out of view
+              const placeholderMessages = [
+                ".",
+                "‌", // Zero-width non-joiner
+                "⠀", // Braille blank
+                " ", // Regular space
+                "　" // Full-width space
+              ];
+
+              for (let i = 0; i < count; i++) {
+                await channel.publish('message', {
+                  id: `purge-${now}-${i}`,
+                  clientId: 'SYSTEM',
+                  username: 'System',
+                  text: placeholderMessages[i % placeholderMessages.length],
+                  timestamp: Date.now(),
+                  isModerator: true,
+                  isPurgeMessage: true // Special flag to identify purge messages
                 });
-
-                await logModeration(clientId, ip, username, 
-                  'N/A', 
-                  `Purged all messages`, 
-                  'MOD_PURGE');
-              } else {
-                // Get recent messages to get their IDs for targeted deletion
-                // Get recent messages to get their IDs for targeted deletion
-                const history = await channel.history({ limit: count });
-                const messages = history.items;
                 
-                if (messages.length > 0) {
-                  // Send individual delete commands for each message
-                  for (const msg of messages) {
-                    await channel.publish('command', {
-                      type: 'delete',
-                      messageId: msg.id,
-                      moderator: username,
-                      timestamp: Date.now()
-                    });
-                  }
-
-                  await logModeration(clientId, ip, username, 
-                    'N/A', 
-                    `Purged ${messages.length} messages`, 
-                    'MOD_PURGE');
-                } else {
-                  return res.status(200).json({
-                    status: 'Command executed',
-                    command: true,
-                    message: `No messages found to purge`
-                  });
+                // Small delay to avoid rate limiting
+                if (i % 10 === 0 && i > 0) {
+                  await new Promise(resolve => setTimeout(resolve, 100));
                 }
               }
+
+              await logModeration(clientId, ip, username, 
+                'N/A', 
+                `Purged chat with ${count} placeholder messages`, 
+                'MOD_PURGE');
+
+              return res.status(200).json({
+                status: 'Command executed',
+                command: true,
+                message: `Chat purged with ${count} placeholder messages`
+              });
             } catch (error) {
               console.error('Error during purge:', error);
               return res.status(500).json({
                 status: 'error',
                 command: true,
-                message: `Failed to purge messages: ${error.message}`,
+                message: `Failed to purge chat: ${error.message}`,
                 private: true
               });
             }
-
-            return res.status(200).json({
-              status: 'Command executed',
-              command: true,
-              message: `Purged ${amount === "all" ? "all" : count} messages`
-            });
           }
 
           // Whois command
