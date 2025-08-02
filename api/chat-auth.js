@@ -322,20 +322,30 @@ export default async function handler(req, res) {
             const [, amount = "all"] = match;
             const count = amount === "all" ? 'all' : parseInt(amount) || 50;
             
-            // Use the new purge action
-            await fetch('/api/chat-auth', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                action: 'purge',
-                count,
-                clientId,
-                username,
-                message: 'N/A'
-              })
-            });
+            // Handle purge directly instead of making another API call
+            const channel = ably.channels.get('dsebest-livechat');
+            
+            if (count === 'all') {
+              await channel.publish('command', {
+                type: 'purge',
+                count: 'all',
+                moderator: username,
+                timestamp: Date.now()
+              });
+            } else {
+              const history = await channel.history({ limit: count });
+              const messages = history.items;
+              
+              // Publish delete command for each message
+              for (const msg of messages) {
+                await channel.publish('command', {
+                  type: 'delete',
+                  messageId: msg.id,
+                  moderator: username,
+                  timestamp: Date.now()
+                });
+              }
+            }
 
             return res.status(200).json({
               status: 'Command executed',
