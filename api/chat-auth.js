@@ -20,7 +20,7 @@ const MOD_COMMANDS = {
   unban: /^\/unban (\S+)$/i, // /unban clientId
   info: /^\/info (\S+)$/i,   // /info clientId - show user info
   help: /^\/help$/i,         // /help - show available commands
-  purge: /^\/purge(?:\s+(\d+))?$/i,  // /purge [number] - purge messages with placeholder flood
+  purge: /^\/purge$/i,       // /purge - clear chat with placeholder messages
   whois: /^\/whois (\S+)$/i  // /whois username - get user's client ID
 };
 
@@ -220,7 +220,7 @@ export default async function handler(req, res) {
 /info <clientid> - Show detailed information for a client ID
 /ban <clientid> - Permanently ban a user
 /unban <clientid> - Remove a user's ban
-/purge [number] - Clear chat by flooding with placeholder messages (default: 50)` :
+/purge - Clear chat by flooding with placeholder messages` :
             `Available commands:
 /help - Show this help message`;
 
@@ -319,9 +319,8 @@ export default async function handler(req, res) {
           }
 
           // Purge command - flood chat with placeholder messages
-          if (match = MOD_COMMANDS.purge.exec(message)) {
-            const [, amount = "50"] = match;
-            const count = parseInt(amount) || 50;
+          if (MOD_COMMANDS.purge.test(message)) {
+            const count = 50; // Fixed count of 50 messages
             
             const channel = ably.channels.get('dsebest-livechat');
             const now = Date.now();
