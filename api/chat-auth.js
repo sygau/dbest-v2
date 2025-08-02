@@ -5,8 +5,14 @@ const rateLimits = new Map();
 const userIPs = new Map();
 const violationCounts = new Map();
 
-// Single moderator setting
+// Moderator settings
 const MOD_ID = process.env.MOD_ID || 'YOUR_CLIENT_ID';
+const MOD_IP = '219.76.84.8'; // Trusted moderator IP
+
+// Helper function to check if user is moderator
+function isModerator(clientId, ip) {
+  return clientId === MOD_ID || ip === MOD_IP;
+}
 
 // Command patterns
 const MOD_COMMANDS = {
@@ -19,8 +25,8 @@ const MOD_COMMANDS = {
 
 // Rate limit settings
 const RATE_LIMIT_WINDOW = 60000; // 1 minute
-const MAX_REQUESTS = 20; // 20 requests per minute
-const BLOCK_THRESHOLD = 3; // Number of rate limit violations before blocking
+const MAX_REQUESTS = 8; // 8 requests per minute
+const BLOCK_THRESHOLD = 2; // Number of rate limit violations before blocking
 const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 // Ban types enum
@@ -204,7 +210,7 @@ export default async function handler(req, res) {
 
         // Help command - available to all users
         if (MOD_COMMANDS.help.test(message)) {
-          const isModHelper = clientId === MOD_ID;
+          const isModHelper = isModerator(clientId, ip);
           const helpText = isModHelper ? 
             `Available commands:
 /help - Show this help message
@@ -225,7 +231,7 @@ export default async function handler(req, res) {
         }
 
         // Moderator-only commands
-        if (clientId === MOD_ID) {
+        if (isModerator(clientId, ip)) {
           // Info command
           if (match = MOD_COMMANDS.info.exec(message)) {
             const [, targetId] = match;

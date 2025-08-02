@@ -738,17 +738,46 @@
     });
 
     // Helper to append normal messages
-    function addMessage(sender, text, isMine, time = Date.now()) {
+    function addMessage(sender, text, isMine, time = Date.now(), clientId = null) {
       const wrapper = document.createElement('div');
       wrapper.className = 'd-flex flex-column' + (isMine ? ' align-items-end' : ' align-items-start');
       const bubble = document.createElement('div');
       bubble.className = 'chat-bubble ' + (isMine ? 'mine' : 'other');
+      
       // Username and timestamp line
       const headerDiv = document.createElement('div');
       headerDiv.className = 'd-flex justify-content-between align-items-center mb-1';
       
       const nameLine = document.createElement('strong');
       nameLine.textContent = sender;
+      
+      // Check if user is moderator and show client ID if they are
+      fetch('/api/chat-auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'check_mod',
+          clientId: ably.auth.clientId
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.isModerator && clientId) {
+          const idSpan = document.createElement('small');
+          idSpan.className = 'ms-2 text-warning';
+          idSpan.title = 'Client ID - Click to copy';
+          idSpan.textContent = `[${clientId}]`;
+          idSpan.style.cursor = 'pointer';
+          idSpan.onclick = () => {
+            navigator.clipboard.writeText(clientId);
+            addSystemMessage('Client ID copied to clipboard');
+          };
+          nameLine.appendChild(idSpan);
+        }
+      })
+      .catch(() => {/* Silently fail - no need to show error for mod check */});
       
       const timeSpan = document.createElement('small');
       timeSpan.className = 'ms-2 message-time';
@@ -805,7 +834,7 @@
         result.items.reverse().forEach(msg => {
           if (msg.data && msg.data.sender && msg.data.text) {
             const isMine = msg.clientId === ably.auth.clientId;
-            addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp);
+            addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.clientId);
           }
         });
       });
@@ -813,7 +842,7 @@
       channel.subscribe('message', msg => {
         const { sender, text } = msg.data;
         const isMine = msg.clientId === ably.auth.clientId;
-        addMessage(sender, text, isMine, msg.timestamp);
+        addMessage(sender, text, isMine, msg.timestamp, msg.clientId);
       });
 
       // Subscribe to moderation commands
