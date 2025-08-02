@@ -171,7 +171,7 @@ export default async function handler(req, res) {
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { clientId, username, message } = req.body;
+    const { clientId, username, message, action } = req.body;
     
     // Get client IP
     const ip = req.headers['x-forwarded-for']?.split(',')[0] || 
@@ -204,9 +204,10 @@ export default async function handler(req, res) {
     const ably = new Ably.Rest(process.env.ABLY_API_KEY);
 
     // Handle commands or moderation
-    if (message) {
+    if (req.body.action === 'moderate') {
+      const text = message;
       // Check for commands first before any moderation
-      if (message.startsWith('/')) {
+      if (text && text.startsWith('/')) {
         let match;
 
         // Help command - available to all users
@@ -399,16 +400,16 @@ export default async function handler(req, res) {
 
 
       // Normal message moderation
-      const modResult = moderateContent(message, clientId, ip, username);
+      const modResult = moderateContent(text, clientId, ip, username);
       if (!modResult.isClean) {
         if (modResult.severity !== 'low') {
           await logModeration(
             clientId, 
             ip, 
             username, 
-            message,
+            text,
             modResult.reason,
-'VIOLATION'
+            'VIOLATION'
           );
         }
         return res.status(403).json({ error: modResult.reason });
@@ -424,10 +425,10 @@ export default async function handler(req, res) {
 
     // For message publishing
     if (req.body.action === 'publish') {
-      const { message } = req.body;
+      const messageText = req.body.text;
       
       // Check if the message is clean
-      const modResult = moderateContent(message.text, clientId, ip, username);
+      const modResult = moderateContent(messageText, clientId, ip, username);
       if (!modResult.isClean) {
         return res.status(403).json({ error: modResult.reason });
       }
