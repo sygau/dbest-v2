@@ -1,14 +1,38 @@
 const Ably = require('ably/promises');
 
-// Initialize rate limiting map
+// Initialize tracking maps
 const rateLimits = new Map();
+const userIPs = new Map();
+const shadowBanned = new Map();
+
+// Filesystem for logging
+const fs = require('fs');
+const path = require('path');
 
 // Rate limit settings
 const RATE_LIMIT_WINDOW = 60000; // 1 minute
-const MAX_REQUESTS = 30; // 30 requests per minute
+const MAX_REQUESTS = 20; // 20 requests per minute
+const BLOCK_THRESHOLD = 3; // Number of rate limit violations before blocking
+const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+// Track rate limit violations
+const violationCounts = new Map();
+const blockedUsers = new Map();
 
 function isRateLimited(clientId) {
   const now = Date.now();
+
+  // Check if user is blocked
+  const blockData = blockedUsers.get(clientId);
+  if (blockData) {
+    if (now - blockData.blockedAt < BLOCK_DURATION) {
+      return { blocked: true, remaining: BLOCK_DURATION - (now - blockData.blockedAt) };
+    } else {
+      blockedUsers.delete(clientId);
+      violationCounts.delete(clientId);
+    }
+  }
+
   const userLimit = rateLimits.get(clientId);
 
   if (!userLimit) {
@@ -20,7 +44,6 @@ function isRateLimited(clientId) {
   }
 
   if (now - userLimit.windowStart > RATE_LIMIT_WINDOW) {
-    // Reset window
     rateLimits.set(clientId, {
       count: 1,
       windowStart: now
@@ -29,24 +52,116 @@ function isRateLimited(clientId) {
   }
 
   if (userLimit.count >= MAX_REQUESTS) {
-    return true;
+    // Increment violation count
+    const violations = (violationCounts.get(clientId) || 0) + 1;
+    violationCounts.set(clientId, violations);
+
+    // Check if user should be blocked
+    if (violations >= BLOCK_THRESHOLD) {
+      blockedUsers.set(clientId, { blockedAt: now });
+      return { blocked: true, remaining: BLOCK_DURATION };
+    }
+
+    return { limited: true, resetTime: userLimit.windowStart + RATE_LIMIT_WINDOW - now };
   }
 
   userLimit.count++;
   return false;
 }
 
-// Basic profanity check (can be expanded)
-function moderateContent(text) {
-  // Add your profanity list or use a package like bad-words
-  const basicBadWords = ['badword1', 'badword2']; // Replace with actual bad words
-  const containsBadWords = basicBadWords.some(word => 
-    text.toLowerCase().includes(word.toLowerCase())
-  );
+// Logging function for moderation events
+async function logModeration(clientId, ip, username, message, reason, action) {
+  const timestamp = new Date().toISOString();
+  const logEntry = `[${timestamp}] ${action}: ${username} (${clientId}) from ${ip}\nMessage: ${message}\nReason: ${reason}\n---\n`;
+  
+  try {
+    const logPath = path.join(process.cwd(), 'logs', 'moderation.log');
+    // Ensure logs directory exists
+    await fs.promises.mkdir(path.join(process.cwd(), 'logs'), { recursive: true });
+    await fs.promises.appendFile(logPath, logEntry);
+  } catch (error) {
+    console.error('Failed to write moderation log:', error);
+  }
+}
+
+// Shadow ban check
+function isShadowBanned(clientId) {
+  const banData = shadowBanned.get(clientId);
+  if (!banData) return false;
+  
+  // Check if ban is still active
+  if (Date.now() - banData.bannedAt < banData.duration) {
+    return true;
+  } else {
+    shadowBanned.delete(clientId);
+    return false;
+  }
+}
+
+// Content moderation with multiple checks
+function moderateContent(text, clientId, ip, username) {
+  // 1. Check for HTML/script tags
+  const hasHTML = /<[^>]*>/.test(text);
+  if (hasHTML) {
+    return {
+      isClean: false,
+      reason: 'HTML tags are not allowed'
+    };
+  }
+
+  // 2. Check for URLs/links
+  const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(\.[a-z]{2,}\/[^\s]+)/gi;
+  if (urlPattern.test(text)) {
+    return {
+      isClean: false,
+      reason: 'Links are not allowed in messages'
+    };
+  }
+
+  // 3. Check message length
+  if (text.length > 350) {
+    return {
+      isClean: false,
+      reason: 'Message is too long (max 350 characters)'
+    };
+  }
+
+  // 4. Advanced profanity check
+  const profanityPatterns = [
+    // Add your profanity patterns here
+    /\b(fuck|shit|damn|bitch)\b/i,
+    // Add more patterns as needed
+    // Unicode-aware patterns for common evasion tactics
+    /[\u0430-\u044f]{0,}(f+[^a-z]*u+[^a-z]*c+[^a-z]*k+)/i,
+  ];
+
+  for (const pattern of profanityPatterns) {
+    if (pattern.test(text)) {
+      return {
+        isClean: false,
+        reason: 'Message contains inappropriate language'
+      };
+    }
+  }
+
+  // 5. Check for spam patterns
+  const spamPatterns = [
+    /(.)\1{4,}/,  // Repeated characters (e.g., "aaaaa")
+    /(.{3,})\1{2,}/i  // Repeated words or patterns
+  ];
+
+  for (const pattern of spamPatterns) {
+    if (pattern.test(text)) {
+      return {
+        isClean: false,
+        reason: 'Message appears to be spam'
+      };
+    }
+  }
   
   return {
-    isClean: !containsBadWords,
-    reason: containsBadWords ? 'Message contains inappropriate content' : null
+    isClean: true,
+    reason: null
   };
 }
 
@@ -56,14 +171,32 @@ export default async function handler(req, res) {
   }
 
   const { clientId, username, action } = req.body;
+  
+  // Get client IP
+  const ip = req.headers['x-forwarded-for']?.split(',')[0] || 
+             req.headers['x-real-ip'] || 
+             req.socket.remoteAddress;
 
   if (!clientId || !username) {
     return res.status(400).json({ error: 'Missing required parameters' });
   }
 
+  // Track user IP
+  userIPs.set(clientId, {
+    ip,
+    lastSeen: Date.now(),
+    username
+  });
+
+  // Check if user is shadow banned
+  const shadowBanStatus = isShadowBanned(clientId);
+  
   // Check rate limiting
-  if (isRateLimited(clientId)) {
-    return res.status(429).json({ error: 'Rate limit exceeded' });
+  const rateLimitStatus = isRateLimited(clientId);
+  if (rateLimitStatus && rateLimitStatus.blocked) {
+    // Log permanent blocks
+    await logModeration(clientId, ip, username, 'N/A', 'Rate limit violation led to block', 'BLOCKED');
+    return res.status(429).json(rateLimitStatus);
   }
 
   try {
@@ -76,8 +209,39 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'No message to moderate' });
       }
 
-      const modResult = moderateContent(message);
+      // Check existing shadow ban
+      if (shadowBanStatus) {
+        // Silently accept but don't broadcast message
+        return res.status(200).json({ 
+          status: 'Message approved',
+          shadow: true // Client will show message only to sender
+        });
+      }
+
+      const modResult = moderateContent(message, clientId, ip, username);
+      
+      // Handle moderation result
       if (!modResult.isClean) {
+        // Log medium/high severity violations
+        if (modResult.severity !== 'low') {
+          await logModeration(
+            clientId, 
+            ip, 
+            username, 
+            message, 
+            modResult.reason,
+            modResult.severity === 'high' ? 'SHADOW_BANNED' : 'VIOLATION'
+          );
+        }
+
+        if (modResult.shadow) {
+          // For shadow banned content, pretend it was accepted
+          return res.status(200).json({ 
+            status: 'Message approved',
+            shadow: true
+          });
+        }
+        
         return res.status(403).json({ error: modResult.reason });
       }
       

@@ -845,11 +845,39 @@
     });
 
     // Publish message
-    function sendMessage() {
+    // Message rate limiting state
+    let isSending = false;
+    let lastSendTime = 0;
+    let messageCount = 0;
+    let windowStart = Date.now();
+    const SEND_COOLDOWN = 1000; // 1s cooldown between sends
+    const MAX_MESSAGES_PER_MINUTE = 15; // Max 15 messages per minute
+    const RATE_LIMIT_WINDOW = 60000; // 1 minute window
+
+    async function sendMessage() {
       if (!channel) {
-        // attempt to lazily get channel if connection is already established
-        try { channel = ably.channels.get('anonymous-chat-room-history'); } catch(e) {}
-        if (!channel) return; // still not ready
+        try { channel = ably.channels.get('dsebest-livechat'); } catch(e) {}
+        if (!channel) return;
+      }
+
+      const now = Date.now();
+
+      // Check if already sending or in cooldown
+      if (isSending || (now - lastSendTime < SEND_COOLDOWN)) {
+        addSystemMessage('Please wait before sending another message');
+        return;
+      }
+
+      // Reset rate limit window if needed
+      if (now - windowStart > RATE_LIMIT_WINDOW) {
+        messageCount = 0;
+        windowStart = now;
+      }
+
+      // Check rate limit
+      if (messageCount >= MAX_MESSAGES_PER_MINUTE) {
+        addSystemMessage('Rate limit exceeded. Please wait a moment before sending more messages.');
+        return;
       }
       
       const text = messageInput.value.trim();
@@ -878,22 +906,42 @@
       })
       .then(response => {
         if (!response.ok) {
-          return response.json().then(err => Promise.reject(err));
+          return response.json().then(err => {
+            if (err.blocked) {
+              const remainingTime = Math.ceil(err.remaining / (60 * 1000));
+              throw new Error(`You have been blocked from chat for ${remainingTime} minutes due to repeated violations.`);
+            } else if (err.limited) {
+              const resetTime = Math.ceil(err.resetTime / 1000);
+              throw new Error(`Rate limit exceeded. Please wait ${resetTime} seconds.`);
+            }
+            throw new Error(err.error || 'Failed to send message');
+          });
         }
-        // If moderation passes, publish the message
-        return channel.publish('message', { 
-          sender, 
-          text,
-          timestamp: Date.now()
+        return response.json().then(data => {
+          if (data.shadow) {
+            // For shadow banned messages, only show locally
+            addMessage(sender, text, true);
+            messageInput.value = '';
+            return Promise.reject({ silentFail: true }); // Skip publishing
+          }
+          // If moderation passes, publish the message
+          return channel.publish('message', { 
+            sender, 
+            text,
+            timestamp: Date.now()
+          });
         });
       })
       .then(() => {
+        // Increment message count on successful send
+        messageCount++;
+        lastSendTime = Date.now();
         addMessage(sender, text, true);
         messageInput.value = '';
       })
       .catch(error => {
         console.error(error);
-        addSystemMessage('Failed to send message. Please try again.');
+        addSystemMessage(error.message || 'Failed to send message. Please try again.');
       });
     }
 
