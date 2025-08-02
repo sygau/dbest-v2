@@ -324,6 +324,9 @@ export default async function handler(req, res) {
             const count = amount === "all" ? 'all' : parseInt(amount) || 50;
             
             const channel = ably.channels.get('dsebest-livechat');
+            
+            // First delete messages from Ably history
+            const now = Date.now();
 
             if (count === 'all') {
               // Delete all messages from history first using REST API
