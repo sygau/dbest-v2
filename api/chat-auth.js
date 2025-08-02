@@ -326,23 +326,7 @@ export default async function handler(req, res) {
             const channel = ably.channels.get('dsebest-livechat');
 
             if (count === 'all') {
-              // Get all messages first
-              const history = await channel.history({ limit: 1000, direction: 'forwards' });
-              const messages = history.items;
-
-              if (messages.length > 0) {
-                // Use the REST client to delete messages
-                const rest = new Ably.Rest(process.env.ABLY_API_KEY);
-                const restChannel = rest.channels.get(channel.name);
-
-                // Remove each message individually to ensure they're deleted
-                const deletePromises = messages.map(msg => 
-                  restChannel.deleteMessage(msg.id)
-                );
-                await Promise.all(deletePromises);
-              }
-
-              // Then notify clients
+              // Just notify clients to clear all messages - simpler approach
               await channel.publish('command', {
                 type: 'purge',
                 count: 'all',
@@ -350,30 +334,18 @@ export default async function handler(req, res) {
                 timestamp: Date.now()
               });
             } else {
-              // Get specific number of messages
+              // Get specific number of messages and notify about each deletion
               const history = await channel.history({ limit: count });
               const messages = history.items;
 
-              if (messages.length > 0) {
-                // Use the REST client to delete messages
-                const rest = new Ably.Rest(process.env.ABLY_API_KEY);
-                const restChannel = rest.channels.get(channel.name);
-
-                // Remove each message individually
-                const deletePromises = messages.map(msg => 
-                  restChannel.deleteMessage(msg.id)
-                );
-                await Promise.all(deletePromises);
-
-                // Notify clients about each deleted message
-                for (const msg of messages) {
-                  await channel.publish('command', {
-                    type: 'delete',
-                    messageId: msg.id,
-                    moderator: username,
-                    timestamp: Date.now()
-                  });
-                }
+              // Notify clients about each deleted message
+              for (const msg of messages) {
+                await channel.publish('command', {
+                  type: 'delete',
+                  messageId: msg.id,
+                  moderator: username,
+                  timestamp: Date.now()
+                });
               }
             }
 
@@ -485,23 +457,7 @@ export default async function handler(req, res) {
 
       try {
         if (count === 'all') {
-          // Get all messages first
-          const history = await channel.history({ limit: 1000, direction: 'forwards' });
-          const messages = history.items;
-
-          if (messages.length > 0) {
-            // Use the REST client to delete messages
-            const rest = new Ably.Rest(process.env.ABLY_API_KEY);
-            const restChannel = rest.channels.get(channel.name);
-
-            // Remove each message individually to ensure they're deleted
-            const deletePromises = messages.map(msg => 
-              restChannel.deleteMessage(msg.id)
-            );
-            await Promise.all(deletePromises);
-          }
-
-          // Then notify clients
+          // Just notify clients to clear all messages
           await channel.publish('command', {
             type: 'purge',
             count: 'all',
@@ -509,30 +465,18 @@ export default async function handler(req, res) {
             timestamp: Date.now()
           });
         } else {
-          // Get last N messages
+          // Get last N messages and notify about each deletion
           const history = await channel.history({ limit: count });
           const messages = history.items;
 
-          if (messages.length > 0) {
-            // Use the REST client to delete messages
-            const rest = new Ably.Rest(process.env.ABLY_API_KEY);
-            const restChannel = rest.channels.get(channel.name);
-
-            // Remove each message individually
-            const deletePromises = messages.map(msg => 
-              restChannel.deleteMessage(msg.id)
-            );
-            await Promise.all(deletePromises);
-
-            // Notify clients about each deleted message
-            for (const msg of messages) {
-              await channel.publish('command', {
-                type: 'delete',
-                messageId: msg.id,
-                moderator: username,
-                timestamp: Date.now()
-              });
-            }
+          // Notify clients about each deleted message
+          for (const msg of messages) {
+            await channel.publish('command', {
+              type: 'delete',
+              messageId: msg.id,
+              moderator: username,
+              timestamp: Date.now()
+            });
           }
         }
       } catch (error) {
