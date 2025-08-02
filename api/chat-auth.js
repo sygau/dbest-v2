@@ -200,10 +200,6 @@ export default async function handler(req, res) {
     if (message) {
       // Check for commands first before any moderation
       if (message.startsWith('/')) {
-      }
-
-      // Check for commands first before any moderation
-      if (message.startsWith('/')) {
         let match;
 
         // Help command - available to all users
@@ -220,10 +216,11 @@ export default async function handler(req, res) {
 /help - Show this help message`;
 
           return res.status(200).json({
-            status: 'Command executed',
+            status: 'success',
             command: true,
             message: helpText,
-            private: true
+            private: true,
+            doNotBroadcast: true
           });
         }
 
@@ -248,10 +245,11 @@ export default async function handler(req, res) {
             };
 
             return res.status(200).json({
-              status: 'Command executed',
+              status: 'success',
               command: true,
               message: `User Info:\n${JSON.stringify(info, null, 2)}`,
-              private: true
+              private: true,
+              doNotBroadcast: true
             });
           }
 
