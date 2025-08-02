@@ -3,7 +3,6 @@ const Ably = require('ably/promises');
 // Initialize tracking maps
 const rateLimits = new Map();
 const userIPs = new Map();
-const shadowBanned = new Map();
 const violationCounts = new Map();
 
 // Single moderator setting
@@ -27,8 +26,7 @@ const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 // Ban types enum
 const BAN_TYPES = {
   PERMANENT: 'permanent',
-  TEMPORARY: 'temporary',
-  SHADOW: 'shadow'
+  TEMPORARY: 'temporary'
 };
 
 // Track bans - simple Map of clientId -> banInfo
@@ -237,11 +235,9 @@ export default async function handler(req, res) {
             const [, targetId] = match;
             const targetData = userIPs.get(targetId);
             const banData = blockedUsers.get(targetId);
-            const shadowBanData = shadowBanned.get(targetId);
             
             let status = 'Active';
             if (banData) status = banData.type === BAN_TYPES.PERMANENT ? 'Permanently Banned' : 'Temporarily Banned';
-            if (shadowBanData) status = 'Shadow Banned';
 
             const info = {
               clientId: targetId,
@@ -249,7 +245,7 @@ export default async function handler(req, res) {
               ip: targetData?.ip || 'Unknown',
               status,
               lastSeen: targetData ? new Date(targetData.lastSeen).toISOString() : 'Never',
-              banInfo: banData || shadowBanData || 'None'
+              banInfo: banData || 'None'
             };
 
             return res.status(200).json({
@@ -306,7 +302,7 @@ export default async function handler(req, res) {
           if (match = MOD_COMMANDS.unban.exec(message)) {
             const [, targetId] = match;
             blockedUsers.delete(targetId);
-            shadowBanned.delete(targetId);
+
             await logModeration(targetId, userIPs.get(targetId)?.ip || 'unknown', targetId,
               'N/A', `Unbanned by moderator ${username}`, 'MOD_UNBAN');
             return res.status(200).json({
@@ -344,14 +340,6 @@ export default async function handler(req, res) {
         });
       }
 
-      // Check existing shadow ban
-      if (isShadowBanned(clientId)) {
-        // Silently accept but don't broadcast message
-        return res.status(200).json({ 
-          status: 'Message approved',
-          shadow: true
-        });
-      }
 
       // Normal message moderation
       const modResult = moderateContent(message, clientId, ip, username);
@@ -363,7 +351,7 @@ export default async function handler(req, res) {
             username, 
             message,
             modResult.reason,
-            modResult.severity === 'high' ? 'SHADOW_BANNED' : 'VIOLATION'
+'VIOLATION'
           );
         }
         return res.status(403).json({ error: modResult.reason });
