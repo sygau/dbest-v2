@@ -9,7 +9,6 @@ const violationCounts = new Map();
 // Single moderator setting
 const MOD_ID = process.env.MOD_ID || 'YOUR_CLIENT_ID';
 
-// Command patterns
 const MOD_COMMANDS = {
   ban: /^\/ban (\S+)$/i,     // /ban clientId - permanent ban
   unban: /^\/unban (\S+)$/i, // /unban clientId
@@ -96,6 +95,7 @@ async function logModeration(clientId, ip, username, message, reason, action) {
   console.log('MODERATION_LOG:', logEntry);
 }
 
+
 // Content moderation with multiple checks
 function moderateContent(text, clientId, ip, username) {
   // 1. Check for HTML/script tags
@@ -126,7 +126,10 @@ function moderateContent(text, clientId, ip, username) {
 
   // 4. Advanced profanity check
   const profanityPatterns = [
+    // Add your profanity patterns here
     /\b(fuck|shit|damn|bitch)\b/i,
+    // Add more patterns as needed
+    // Unicode-aware patterns for common evasion tactics
     /[\u0430-\u044f]{0,}(f+[^a-z]*u+[^a-z]*c+[^a-z]*k+)/i,
   ];
 
@@ -201,11 +204,9 @@ export default async function handler(req, res) {
     // For message moderation
     if (action === 'moderate') {
       const { message } = req.body;
-      if (!message) {
-        return res.status(400).json({ error: 'No message to moderate' });
-      }
-
-      // Check for commands
+          if (!message) {
+            return res.status(400).json({ error: 'No message to moderate' });
+          }      // Check for commands
       if (message.startsWith('/')) {
         let match;
 
@@ -226,7 +227,7 @@ export default async function handler(req, res) {
             status: 'Command executed',
             command: true,
             message: helpText,
-            private: true
+            private: true // Only show to sender
           });
         }
 
@@ -236,27 +237,21 @@ export default async function handler(req, res) {
           if (match = MOD_COMMANDS.info.exec(message)) {
             const [, targetId] = match;
             const targetData = userIPs.get(targetId);
-            const banData = blockedUsers.get(targetId);
-            const shadowBanData = shadowBanned.get(targetId);
+            const isBanned = isUserBanned(targetId);
             
-            let status = 'Active';
-            if (banData) status = banData.type === BAN_TYPES.PERMANENT ? 'Permanently Banned' : 'Temporarily Banned';
-            if (shadowBanData) status = 'Shadow Banned';
-
             const info = {
               clientId: targetId,
               username: targetData?.username || 'Unknown',
               ip: targetData?.ip || 'Unknown',
-              status,
-              lastSeen: targetData ? new Date(targetData.lastSeen).toISOString() : 'Never',
-              banInfo: banData || shadowBanData || 'None'
+              status: isBanned ? 'Banned' : 'Active',
+              lastSeen: targetData ? new Date(targetData.lastSeen).toISOString() : 'Never'
             };
 
             return res.status(200).json({
               status: 'Command executed',
               command: true,
               message: `User Info:\n${JSON.stringify(info, null, 2)}`,
-              private: true
+              private: true // Only show to moderator
             });
           }
 
@@ -274,74 +269,142 @@ export default async function handler(req, res) {
               });
             }
 
-            const banData = {
-              bannedAt: Date.now(),
-              type: BAN_TYPES.PERMANENT,
-              moderator: clientId,
-              reason: 'Moderator ban',
-              ip: targetData.ip,
-              duration: Infinity
-            };
+          const banData = {
+            bannedAt: Date.now(),
+            type: BAN_TYPES.PERMANENT,  // Always permanent ban
+            moderator: clientId,
+            reason: 'Moderator ban',
+            ip: targetData.ip,
+            duration: Infinity
+          };
 
-            blockedUsers.set(targetId, banData);
+          blockedUsers.set(targetId, banData);
+          
+          // Also ban the IP
+          const ipBans = Array.from(blockedUsers.entries())
+            .filter(([, data]) => data.ip === targetData.ip)
+            .map(([id]) => id);
             
-            // Also check for IP bans
-            const ipBans = Array.from(blockedUsers.entries())
-              .filter(([, data]) => data.ip === targetData.ip)
-              .map(([id]) => id);
-              
-            await logModeration(targetId, targetData.ip, targetData.username, 
-              'N/A', 
-              `Permanently banned by moderator ${username}. Associated IDs: ${ipBans.join(', ')}`, 
-              'MOD_BAN');
+          await logModeration(targetId, targetData.ip, targetData.username, 
+            'N/A', 
+            `Permanently banned by moderator ${username}. Associated IDs: ${ipBans.join(', ')}`, 
+            'MOD_BAN');
 
-            return res.status(200).json({ 
-              status: 'Command executed',
+          return res.status(200).json({ 
+            status: 'Command executed',
+            command: true,
+            message: `User ${targetId} has been permanently banned`
+          });
+        }
+        
+        if (match = MOD_COMMANDS.shadowban.exec(message)) {
+          const [, targetId] = match;
+          const targetData = userIPs.get(targetId);
+          
+          if (!targetData) {
+            return res.status(400).json({
+              status: 'error',
               command: true,
-              message: `User ${targetId} has been permanently banned`
+              message: `User ${targetId} not found in active users`
             });
           }
 
-          // Unban command
-          if (match = MOD_COMMANDS.unban.exec(message)) {
-            const [, targetId] = match;
-            blockedUsers.delete(targetId);
-            shadowBanned.delete(targetId);
-            await logModeration(targetId, userIPs.get(targetId)?.ip || 'unknown', targetId,
-              'N/A', `Unbanned by moderator ${username}`, 'MOD_UNBAN');
-            return res.status(200).json({
-              status: 'Command executed',
-              command: true,
-              message: `User ${targetId} has been unbanned`
-            });
-          }
+          shadowBanned.set(targetId, {
+            bannedAt: Date.now(),
+            type: BAN_TYPES.SHADOW,
+            moderator: clientId,
+            ip: targetData.ip,
+            reason: 'Moderator shadow ban'
+          });
 
-          // Purge command
-          if (match = MOD_COMMANDS.purge.exec(message)) {
-            const [, amount = "all"] = match;
-            const count = amount === "all" ? 999999 : parseInt(amount) || 50;
-            
-            await ably.channels.get('dsebest-livechat').publish('command', {
-              type: 'purge',
-              count: count,
-              moderator: username
-            });
+          await logModeration(targetId, targetData.ip, targetData.username,
+            'N/A', 
+            `Shadow banned by moderator ${username}. IP: ${targetData.ip}`,
+            'MOD_SHADOWBAN');
 
-            return res.status(200).json({
-              status: 'Command executed',
-              command: true,
-              message: `Purged ${amount === "all" ? "all" : count} messages`
-            });
-          }
+          return res.status(200).json({
+            status: 'Command executed',
+            command: true,
+            message: `User ${targetId} has been shadow banned`
+          });
         }
 
-        // If we get here, it's an unknown command
-        return res.status(400).json({
-          status: 'error',
-          command: true,
-          message: 'Unknown command',
-          private: true
-        });
+        // Add info command
+        if (match = MOD_COMMANDS.info.exec(message)) {
+          const [, targetId] = match;
+          const targetData = userIPs.get(targetId);
+          const banData = blockedUsers.get(targetId);
+          const shadowBanData = shadowBanned.get(targetId);
+          
+          let status = 'Active';
+          if (banData) status = banData.type === BAN_TYPES.PERMANENT ? 'Permanently Banned' : 'Temporarily Banned';
+          if (shadowBanData) status = 'Shadow Banned';
+
+          const info = {
+            clientId: targetId,
+            username: targetData?.username || 'Unknown',
+            ip: targetData?.ip || 'Unknown',
+            status,
+            lastSeen: targetData ? new Date(targetData.lastSeen).toISOString() : 'Never',
+            banInfo: banData || shadowBanData || 'None'
+          };
+
+          return res.status(200).json({
+            status: 'Command executed',
+            command: true,
+            message: `User Info:\n${JSON.stringify(info, null, 2)}`,
+            private: true // Only show to requester
+          });
+        }
+
+        if (match = MOD_COMMANDS.unban.exec(message)) {
+          const [, targetId] = match;
+          blockedUsers.delete(targetId);
+          shadowBanned.delete(targetId);
+          await logModeration(targetId, userIPs.get(targetId)?.ip || 'unknown', targetId,
+            'N/A', `Unbanned by moderator ${username}`, 'MOD_UNBAN');
+          return res.status(200).json({
+            status: 'Command executed',
+            command: true,
+            message: `User ${targetId} has been unbanned`
+          });
+        }
+
+        if (match = MOD_COMMANDS.purge.exec(message)) {
+          const [, amount = "all"] = match;
+          const count = amount === "all" ? 999999 : parseInt(amount) || 50;
+          
+          // Send purge command through Ably
+          await ably.channels.get('dsebest-livechat').publish('command', {
+            type: 'purge',
+            count: count,
+            moderator: username
+          });
+
+          return res.status(200).json({
+            status: 'Command executed',
+            command: true,
+            message: `Purged ${amount === "all" ? "all" : count} messages`
+          });
+        }
+
+        if (match = MOD_COMMANDS.mute.exec(message)) {
+          const [, targetId, minutes = "10"] = match;
+          const duration = parseInt(minutes) * 60 * 1000;
+          shadowBanned.set(targetId, {
+            bannedAt: Date.now(),
+            duration: duration,
+            moderator: clientId,
+            type: 'mute'
+          });
+          await logModeration(targetId, userIPs.get(targetId)?.ip || 'unknown', targetId,
+            'N/A', `Muted by moderator ${username} for ${minutes}m`, 'MOD_MUTE');
+          return res.status(200).json({
+            status: 'Command executed',
+            command: true,
+            message: `User ${targetId} has been muted for ${minutes} minutes`
+          });
+        }
       }
 
       // Check existing shadow ban
@@ -349,13 +412,15 @@ export default async function handler(req, res) {
         // Silently accept but don't broadcast message
         return res.status(200).json({ 
           status: 'Message approved',
-          shadow: true
+          shadow: true // Client will show message only to sender
         });
       }
 
-      // Normal message moderation
       const modResult = moderateContent(message, clientId, ip, username);
+      
+      // Handle moderation result
       if (!modResult.isClean) {
+        // Log medium/high severity violations
         if (modResult.severity !== 'low') {
           await logModeration(
             clientId, 
@@ -365,6 +430,13 @@ export default async function handler(req, res) {
             modResult.reason,
             modResult.severity === 'high' ? 'SHADOW_BANNED' : 'VIOLATION'
           );
+        }
+        if (modResult.shadow) {
+          // For shadow banned content, pretend it was accepted
+          return res.status(200).json({
+            status: 'Message approved',
+            shadow: true
+          });
         }
         return res.status(403).json({ error: modResult.reason });
       }
