@@ -483,21 +483,20 @@ export default async function handler(req, res) {
 
       try {
         if (count === 'all') {
-          // Delete all messages from history first using REST API
-          const deleteParams = new URLSearchParams();
-          deleteParams.append('start', '0');  // From beginning of time
-          deleteParams.append('end', Date.now().toString());  // Until now
-          
-          const response = await fetch(`https://rest.ably.io/channels/${channel.name}/messages?${deleteParams}`, {
-            method: 'DELETE',
-            headers: {
-              'Accept': 'application/json',
-              'Authorization': `Basic ${Buffer.from(process.env.ABLY_API_KEY).toString('base64')}`
-            }
-          });
+          // Get all messages first
+          const history = await channel.history({ limit: 1000, direction: 'forwards' });
+          const messages = history.items;
 
-          if (!response.ok) {
-            throw new Error(`Failed to delete messages: ${response.status} ${response.statusText}`);
+          if (messages.length > 0) {
+            // Use the REST client to delete messages
+            const rest = new Ably.Rest(process.env.ABLY_API_KEY);
+            const restChannel = rest.channels.get(channel.name);
+
+            // Remove each message individually to ensure they're deleted
+            const deletePromises = messages.map(msg => 
+              restChannel.deleteMessage(msg.id)
+            );
+            await Promise.all(deletePromises);
           }
 
           // Then notify clients
@@ -513,22 +512,15 @@ export default async function handler(req, res) {
           const messages = history.items;
 
           if (messages.length > 0) {
-            // Delete messages from history using REST API
-            const deleteParams = new URLSearchParams();
-            deleteParams.append('start', messages[messages.length - 1].timestamp);  // From oldest message
-            deleteParams.append('end', messages[0].timestamp);  // To newest message
-            
-            const response = await fetch(`https://rest.ably.io/channels/${channel.name}/messages?${deleteParams}`, {
-              method: 'DELETE',
-              headers: {
-                'Accept': 'application/json',
-                'Authorization': `Basic ${Buffer.from(process.env.ABLY_API_KEY).toString('base64')}`
-              }
-            });
+            // Use the REST client to delete messages
+            const rest = new Ably.Rest(process.env.ABLY_API_KEY);
+            const restChannel = rest.channels.get(channel.name);
 
-            if (!response.ok) {
-              throw new Error(`Failed to delete messages: ${response.status} ${response.statusText}`);
-            }
+            // Remove each message individually
+            const deletePromises = messages.map(msg => 
+              restChannel.deleteMessage(msg.id)
+            );
+            await Promise.all(deletePromises);
 
             // Notify clients about each deleted message
             for (const msg of messages) {
