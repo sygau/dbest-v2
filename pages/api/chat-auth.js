@@ -1,4 +1,5 @@
 const Ably = require('ably');
+const ably = new Ably.Rest(process.env.ABLY_API_KEY);
 // Initialize rate limiting map
 const rateLimits = new Map();
 
