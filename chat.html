@@ -828,33 +828,19 @@
         nameLine.appendChild(badge);
       }
       
-      // Check if user is moderator and show client ID if they are
-      fetch('/api/chat-auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'check_mod',
-          clientId: ably.auth.clientId
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.isModerator && clientId) {
-          const idSpan = document.createElement('small');
-          idSpan.className = 'ms-2 text-warning';
-          idSpan.title = 'Client ID - Click to copy';
-          idSpan.textContent = `[${clientId}]`;
-          idSpan.style.cursor = 'pointer';
-          idSpan.onclick = () => {
-            navigator.clipboard.writeText(clientId);
-            addSystemMessage('Client ID copied to clipboard');
-          };
-          nameLine.appendChild(idSpan);
-        }
-      })
-      .catch(() => {/* Silently fail - no need to show error for mod check */});
+      // Show client ID if user is a moderator
+      if (isUserModerator && clientId) {
+        const idSpan = document.createElement('small');
+        idSpan.className = 'ms-2 text-warning';
+        idSpan.title = 'Client ID - Click to copy';
+        idSpan.textContent = `[${clientId}]`;
+        idSpan.style.cursor = 'pointer';
+        idSpan.onclick = () => {
+          navigator.clipboard.writeText(clientId);
+          addSystemMessage('Client ID copied to clipboard');
+        };
+        nameLine.appendChild(idSpan);
+      }
       
       const timeSpan = document.createElement('small');
       timeSpan.className = 'ms-2 message-time';
@@ -900,6 +886,9 @@
     });
     let channel;
 
+    // Global variable to store moderator status
+    let isUserModerator = false;
+
     ably.connection.on('connected', () => { 
       setStatus('Connected', true); 
       addSystemMessage('Connected to chatroom');
@@ -910,14 +899,15 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          action: 'check_mod',
           clientId: ably.auth.clientId,
-          username: userNameInput.value.trim(),
-          message: '/help'
+          username: userNameInput.value.trim()
         })
       })
       .then(response => response.json())
       .then(data => {
-        if (data.isModerator) {
+        isUserModerator = !!data.isModerator;
+        if (isUserModerator) {
           addSystemMessage('Welcome, Moderator! Type /help to see available commands.');
         }
       })
