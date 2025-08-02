@@ -326,12 +326,17 @@ export default async function handler(req, res) {
             const channel = ably.channels.get('dsebest-livechat');
 
             if (count === 'all') {
-              // First delete all messages from history
-              const history = await channel.history({ limit: 1000 });
-              const deletePromises = history.items.map(msg => 
-                channel.detachFromHistory(msg.id)
-              );
-              await Promise.all(deletePromises);
+              // Delete all messages from history first using REST API
+              const deleteParams = new URLSearchParams();
+              deleteParams.append('start', '0');  // From beginning of time
+              deleteParams.append('end', Date.now().toString());  // Until now
+              
+              await fetch(`https://rest.ably.io/channels/dsebest-livechat/messages?${deleteParams}`, {
+                method: 'DELETE',
+                headers: {
+                  'Authorization': `Basic ${Buffer.from(process.env.ABLY_API_KEY).toString('base64')}`,
+                }
+              });
 
               // Then notify clients
               await channel.publish('command', {
@@ -344,21 +349,29 @@ export default async function handler(req, res) {
               // Get specific number of messages
               const history = await channel.history({ limit: count });
               const messages = history.items;
-              
-              // Delete messages from history first
-              const deletePromises = messages.map(msg => 
-                channel.detachFromHistory(msg.id)
-              );
-              await Promise.all(deletePromises);
 
-              // Then notify clients about each deleted message
-              for (const msg of messages) {
-                await channel.publish('command', {
-                  type: 'delete',
-                  messageId: msg.id,
-                  moderator: username,
-                  timestamp: Date.now()
+              if (messages.length > 0) {
+                // Delete messages from history using REST API
+                const deleteParams = new URLSearchParams();
+                deleteParams.append('start', messages[messages.length - 1].timestamp);  // From oldest message
+                deleteParams.append('end', messages[0].timestamp);  // To newest message
+                
+                await fetch(`https://rest.ably.io/channels/dsebest-livechat/messages?${deleteParams}`, {
+                  method: 'DELETE',
+                  headers: {
+                    'Authorization': `Basic ${Buffer.from(process.env.ABLY_API_KEY).toString('base64')}`,
+                  }
                 });
+
+                // Notify clients about each deleted message
+                for (const msg of messages) {
+                  await channel.publish('command', {
+                    type: 'delete',
+                    messageId: msg.id,
+                    moderator: username,
+                    timestamp: Date.now()
+                  });
+                }
               }
             }
 
