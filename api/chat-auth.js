@@ -103,8 +103,18 @@ async function logModeration(clientId, ip, username, message, reason, action) {
 
 // Content moderation with multiple checks
 function moderateContent(text, clientId, ip, username) {
-  // 1. Check for HTML/script tags
-  const hasHTML = /<[^>]*>/.test(text);
+  // Ensure text is a string and limit length
+  const cleanText = String(text || '').trim();
+  
+  if (!cleanText) {
+    return {
+      isClean: false,
+      reason: 'Message cannot be empty'
+    };
+  }
+
+  // 1. Check for HTML/script tags - stronger XSS prevention
+  const hasHTML = /<[^>]*>/.test(cleanText);
   if (hasHTML) {
     return {
       isClean: false,
@@ -112,31 +122,40 @@ function moderateContent(text, clientId, ip, username) {
     };
   }
 
-  // 2. Check for URLs/links
+  // 2. Check for JavaScript-like content
+  const hasJS = /(javascript|script|eval|function|alert|document|window|location)\s*[\(\:]/i.test(cleanText);
+  if (hasJS) {
+    return {
+      isClean: false,
+      reason: 'JavaScript-like content is not allowed'
+    };
+  }
+
+  // 3. Check for URLs/links
   const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(\.[a-z]{2,}\/[^\s]+)/gi;
-  if (urlPattern.test(text)) {
+  if (urlPattern.test(cleanText)) {
     return {
       isClean: false,
       reason: 'Links are not allowed in messages'
     };
   }
 
-  // 3. Check message length
-  if (text.length > 350) {
+  // 4. Check message length (server-side enforcement)
+  if (cleanText.length > 350) {
     return {
       isClean: false,
       reason: 'Message is too long (max 350 characters)'
     };
   }
 
-  // 4. Advanced profanity check
+  // 5. Advanced profanity check
   const profanityPatterns = [
     /\b(fuck|shit|damn|bitch)\b/i,
     /[\u0430-\u044f]{0,}(f+[^a-z]*u+[^a-z]*c+[^a-z]*k+)/i,
   ];
 
   for (const pattern of profanityPatterns) {
-    if (pattern.test(text)) {
+    if (pattern.test(cleanText)) {
       return {
         isClean: false,
         reason: 'Message contains inappropriate language'
@@ -144,14 +163,14 @@ function moderateContent(text, clientId, ip, username) {
     }
   }
 
-  // 5. Check for spam patterns
+  // 6. Check for spam patterns
   const spamPatterns = [
     /(.)\1{4,}/,  // Repeated characters (e.g., "aaaaa")
     /(.{3,})\1{2,}/i  // Repeated words or patterns
   ];
 
   for (const pattern of spamPatterns) {
-    if (pattern.test(text)) {
+    if (pattern.test(cleanText)) {
       return {
         isClean: false,
         reason: 'Message appears to be spam'
@@ -159,9 +178,18 @@ function moderateContent(text, clientId, ip, username) {
     }
   }
   
+  // HTML entity encode the text for extra safety
+  const safeText = cleanText
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+  
   return {
     isClean: true,
-    reason: null
+    reason: null,
+    cleanText: safeText // Return HTML-encoded text
   };
 }
 
@@ -173,31 +201,53 @@ export default async function handler(req, res) {
 
     const { clientId, username, message, action } = req.body;
     
+    // Validate and sanitize inputs
+    const cleanClientId = String(clientId || '').trim();
+    let cleanUsername = String(username || '').trim();
+    
+    // HTML encode username for safety
+    cleanUsername = cleanUsername
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+    
     // Get client IP
     const ip = req.headers['x-forwarded-for']?.split(',')[0] || 
                req.headers['x-real-ip'] || 
                req.socket.remoteAddress;
 
-    if (!clientId || !username) {
+    if (!cleanClientId || !cleanUsername) {
       return res.status(400).json({ error: 'Missing required parameters' });
     }
 
+    // Additional input validation
+    if (cleanUsername.length > 14 || cleanUsername.length < 3) {
+      return res.status(400).json({ error: 'Invalid username length' });
+    }
+
+    // Check for malicious clientId patterns
+    if (cleanClientId.length > 100 || /[<>\"'&]/.test(cleanClientId)) {
+      return res.status(400).json({ error: 'Invalid client ID format' });
+    }
+
     // Track user IP
-    userIPs.set(clientId, {
+    userIPs.set(cleanClientId, {
       ip,
       lastSeen: Date.now(),
-      username
+      username: cleanUsername
     });
 
     // Check if user is banned
-    if (isUserBanned(clientId)) {
+    if (isUserBanned(cleanClientId)) {
       return res.status(403).json({ error: 'You are permanently banned from the chat' });
     }
     
     // Check rate limiting
-    const rateLimitStatus = isRateLimited(clientId);
+    const rateLimitStatus = isRateLimited(cleanClientId);
     if (rateLimitStatus && rateLimitStatus.blocked) {
-      await logModeration(clientId, ip, username, 'N/A', 'Rate limit violation', 'RATE_LIMIT');
+      await logModeration(cleanClientId, ip, cleanUsername, 'N/A', 'Rate limit violation', 'RATE_LIMIT');
       return res.status(429).json({ error: 'Rate limit exceeded' });
     }
 
@@ -212,7 +262,7 @@ export default async function handler(req, res) {
 
         // Help command - available to all users
         if (MOD_COMMANDS.help.test(message)) {
-          const isModHelper = isModerator(clientId, ip);
+          const isModHelper = isModerator(cleanClientId, ip);
           const helpText = isModHelper ? 
             `Available commands:
 /help - Show this help message
@@ -234,7 +284,7 @@ export default async function handler(req, res) {
         }
 
         // Moderator-only commands
-        if (isModerator(clientId, ip)) {
+        if (isModerator(cleanClientId, ip)) {
           // Info command
           if (match = MOD_COMMANDS.info.exec(message)) {
             const [, targetId] = match;
@@ -352,7 +402,7 @@ export default async function handler(req, res) {
                 }
               }
 
-              await logModeration(clientId, ip, username, 
+              await logModeration(cleanClientId, ip, cleanUsername, 
                 'N/A', 
                 `Purged chat with ${count} placeholder messages`, 
                 'MOD_PURGE');
@@ -418,13 +468,13 @@ export default async function handler(req, res) {
 
 
       // Normal message moderation
-      const modResult = moderateContent(text, clientId, ip, username);
+      const modResult = moderateContent(text, cleanClientId, ip, cleanUsername);
       if (!modResult.isClean) {
         if (modResult.severity !== 'low') {
           await logModeration(
-            clientId, 
+            cleanClientId, 
             ip, 
-            username, 
+            cleanUsername, 
             text,
             modResult.reason,
             'VIOLATION'
@@ -434,7 +484,7 @@ export default async function handler(req, res) {
       }
       
       // Check if sender is moderator
-      const isMod = isModerator(clientId, ip);
+      const isMod = isModerator(cleanClientId, ip);
       return res.status(200).json({ 
         status: 'Message approved',
         isModerator: isMod 
@@ -446,17 +496,25 @@ export default async function handler(req, res) {
       const messageText = req.body.text;
       
       // Check if the message is clean
-      const modResult = moderateContent(messageText, clientId, ip, username);
+      const modResult = moderateContent(messageText, cleanClientId, ip, cleanUsername);
       if (!modResult.isClean) {
         return res.status(403).json({ error: modResult.reason });
       }
 
       // Check if sender is moderator
-      const isMod = isModerator(clientId, ip);
+      const isMod = isModerator(cleanClientId, ip);
+      
+      // Create sanitized message object
+      const sanitizedMessage = {
+        clientId: cleanClientId,
+        username: cleanUsername,
+        text: modResult.cleanText,
+        timestamp: Date.now()
+      };
       
       // Publish through server's Ably instance with verified status
       await ably.channels.get('dsebest-livechat').publish('message', {
-        ...message,
+        ...sanitizedMessage,
         isModerator: isMod // Server-verified moderator status
       });
 
