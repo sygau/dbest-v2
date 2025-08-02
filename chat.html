@@ -131,6 +131,23 @@
     [data-bs-theme="blue-theme"] .chat-system-message {
       color: #a4b8ff; /* lighter for dark blue bg */
     }
+    
+    /* Moderator styles */
+    .chat-bubble.moderator {
+      background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    }
+    .moderator-badge {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 4px;
+      color: #ffd700;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    .chat-bubble.moderator .moderator-badge {
+      color: #fff;
+    }
   </style>
 </head>
 
@@ -414,14 +431,15 @@
           </div>
           <!-- Chat messages -->
           <div id="chatMessages" class="flex-grow-1 overflow-auto border rounded-3 p-3 bg-transparent" style="height:60vh"></div>
-          <!-- Input group -->
+          <!-- Username input -->
+          <div class="input-group" style="max-width: 300px;">
+            <input type="text" id="userNameInput" class="form-control" maxlength="14" placeholder="Your name" disabled>
+            <button class="btn btn-outline-secondary" id="editNameBtn" type="button" aria-label="Edit username">
+              <i class="material-icons-outlined">edit</i>
+            </button>
+          </div>
+          <!-- Message input -->
           <div class="input-group">
-            <div class="input-group me-2" style="max-width: 200px;">
-              <input type="text" id="userNameInput" class="form-control" maxlength="14" placeholder="Your name" disabled>
-              <button class="btn btn-outline-secondary" id="editNameBtn" type="button" aria-label="Edit username">
-                <i class="material-icons-outlined">edit</i>
-              </button>
-            </div>
             <input type="text" id="messageInput" class="form-control" placeholder="Type a message…" autocomplete="off">
             <button class="btn btn-primary" id="sendButton" type="button" aria-label="Send message">
               <i class="material-icons-outlined">send</i>
@@ -738,11 +756,14 @@
     });
 
     // Helper to append normal messages
-    function addMessage(sender, text, isMine, time = Date.now(), clientId = null) {
+    function addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false) {
       const wrapper = document.createElement('div');
       wrapper.className = 'd-flex flex-column' + (isMine ? ' align-items-end' : ' align-items-start');
       const bubble = document.createElement('div');
       bubble.className = 'chat-bubble ' + (isMine ? 'mine' : 'other');
+      if (isModerator) {
+        bubble.className += ' moderator';
+      }
       
       // Username and timestamp line
       const headerDiv = document.createElement('div');
@@ -750,6 +771,13 @@
       
       const nameLine = document.createElement('strong');
       nameLine.textContent = sender;
+      if (isModerator) {
+        const badge = document.createElement('span');
+        badge.className = 'moderator-badge';
+        badge.innerHTML = '<i class="material-icons-outlined" style="font-size: 16px;">verified</i>';
+        badge.title = 'Moderator';
+        nameLine.appendChild(badge);
+      }
       
       // Check if user is moderator and show client ID if they are
       fetch('/api/chat-auth', {
@@ -840,9 +868,9 @@
       });
       // Subscribe to new messages
       channel.subscribe('message', msg => {
-        const { sender, text } = msg.data;
+        const { sender, text, isModerator } = msg.data;
         const isMine = msg.clientId === ably.auth.clientId;
-        addMessage(sender, text, isMine, msg.timestamp, msg.clientId);
+        addMessage(sender, text, isMine, msg.timestamp, msg.clientId, isModerator);
       });
 
       // Subscribe to moderation commands
@@ -1038,7 +1066,8 @@
           return channel.publish('message', { 
             sender, 
             text,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            isModerator: data.isModerator
           });
         });
       })

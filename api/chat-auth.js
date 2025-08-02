@@ -20,7 +20,8 @@ const MOD_COMMANDS = {
   unban: /^\/unban (\S+)$/i, // /unban clientId
   info: /^\/info (\S+)$/i,   // /info clientId - show user info
   help: /^\/help$/i,         // /help - show available commands
-  purge: /^\/purge(?:\s+(\d+|all))?$/i  // /purge [number|all] - purge messages
+  purge: /^\/purge(?:\s+(\d+|all))?$/i,  // /purge [number|all] - purge messages
+  whois: /^\/whois (\S+)$/i  // /whois username - get user's client ID
 };
 
 // Rate limit settings
@@ -214,9 +215,10 @@ export default async function handler(req, res) {
           const helpText = isModHelper ? 
             `Available commands:
 /help - Show this help message
-/info <userid> - Show user information
-/ban <userid> - Permanently ban a user
-/unban <userid> - Remove a user's ban
+/whois <username> - Get client ID and info for a user by their username
+/info <clientid> - Show detailed information for a client ID
+/ban <clientid> - Permanently ban a user
+/unban <clientid> - Remove a user's ban
 /purge [number|all] - Purge messages` :
             `Available commands:
 /help - Show this help message`;
@@ -332,6 +334,39 @@ export default async function handler(req, res) {
               message: `Purged ${amount === "all" ? "all" : count} messages`
             });
           }
+
+          // Whois command
+          if (match = MOD_COMMANDS.whois.exec(message)) {
+            const [, targetUsername] = match;
+            const matches = Array.from(userIPs.entries())
+              .filter(([, data]) => data.username.toLowerCase() === targetUsername.toLowerCase())
+              .map(([clientId, data]) => ({
+                clientId,
+                username: data.username,
+                ip: data.ip,
+                lastSeen: new Date(data.lastSeen).toISOString()
+              }));
+
+            if (matches.length === 0) {
+              return res.status(200).json({
+                status: 'error',
+                command: true,
+                message: `No users found with username "${targetUsername}"`,
+                private: true
+              });
+            }
+
+            const message = matches.map(user => 
+              `User: ${user.username}\nClient ID: ${user.clientId}\nIP: ${user.ip}\nLast seen: ${user.lastSeen}`
+            ).join('\n\n');
+
+            return res.status(200).json({
+              status: 'success',
+              command: true,
+              message: `Found ${matches.length} match${matches.length > 1 ? 'es' : ''}:\n\n${message}`,
+              private: true
+            });
+          }
         }
 
         // If we get here, it's an unknown command
@@ -359,7 +394,13 @@ export default async function handler(req, res) {
         }
         return res.status(403).json({ error: modResult.reason });
       }
-      return res.status(200).json({ status: 'Message approved' });
+      
+      // Check if sender is moderator
+      const isMod = isModerator(clientId, ip);
+      return res.status(200).json({ 
+        status: 'Message approved',
+        isModerator: isMod 
+      });
     }
 
     // For token generation
