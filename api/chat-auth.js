@@ -324,61 +324,59 @@ export default async function handler(req, res) {
             const count = amount === "all" ? 'all' : parseInt(amount) || 50;
             
             const channel = ably.channels.get('dsebest-livechat');
-            
-            // First delete messages from Ably history
             const now = Date.now();
 
-            if (count === 'all') {
-              // Delete all messages from history first using REST API
-              const now = Date.now();
-              const deleteParams = new URLSearchParams();
-              deleteParams.append('start', '0');  // From beginning of time
-              deleteParams.append('end', now.toString());  // Until now
-              
-              const auth = Buffer.from(process.env.ABLY_API_KEY).toString('base64');
-              await fetch(`https://rest.ably.io/channels/dsebest-livechat/messages?${deleteParams}`, {
-                method: 'DELETE',
-                headers: {
-                  'Authorization': `Basic ${auth}`
-                }
-              });
-
-              // Then notify clients
-              await channel.publish('command', {
-                type: 'purge',
-                count: 'all',
-                moderator: username,
-                timestamp: now
-              });
-            } else {
-              // Get specific number of messages
-              const history = await channel.history({ limit: count });
-              const messages = history.items;
-              
-              if (messages.length > 0) {
-                // Delete messages from history using REST API
-                const deleteParams = new URLSearchParams();
-                deleteParams.append('start', messages[messages.length - 1].timestamp);  // From oldest message
-                deleteParams.append('end', messages[0].timestamp);  // To newest message
-                
-                const auth = Buffer.from(process.env.ABLY_API_KEY).toString('base64');
-                await fetch(`https://rest.ably.io/channels/dsebest-livechat/messages?${deleteParams}`, {
-                  method: 'DELETE',
-                  headers: {
-                    'Authorization': `Basic ${auth}`
-                  }
+            try {
+              if (count === 'all') {
+                // Notify all clients to clear all messages
+                await channel.publish('command', {
+                  type: 'purge',
+                  count: 'all',
+                  moderator: username,
+                  timestamp: now
                 });
 
-                // Then notify clients about each deleted message
-                for (const msg of messages) {
-                  await channel.publish('command', {
-                    type: 'delete',
-                    messageId: msg.id,
-                    moderator: username,
-                    timestamp: Date.now()
+                await logModeration(clientId, ip, username, 
+                  'N/A', 
+                  `Purged all messages`, 
+                  'MOD_PURGE');
+              } else {
+                // Get recent messages to get their IDs for targeted deletion
+                // Get recent messages to get their IDs for targeted deletion
+                const history = await channel.history({ limit: count });
+                const messages = history.items;
+                
+                if (messages.length > 0) {
+                  // Send individual delete commands for each message
+                  for (const msg of messages) {
+                    await channel.publish('command', {
+                      type: 'delete',
+                      messageId: msg.id,
+                      moderator: username,
+                      timestamp: Date.now()
+                    });
+                  }
+
+                  await logModeration(clientId, ip, username, 
+                    'N/A', 
+                    `Purged ${messages.length} messages`, 
+                    'MOD_PURGE');
+                } else {
+                  return res.status(200).json({
+                    status: 'Command executed',
+                    command: true,
+                    message: `No messages found to purge`
                   });
                 }
               }
+            } catch (error) {
+              console.error('Error during purge:', error);
+              return res.status(500).json({
+                status: 'error',
+                command: true,
+                message: `Failed to purge messages: ${error.message}`,
+                private: true
+              });
             }
 
             return res.status(200).json({
@@ -476,76 +474,6 @@ export default async function handler(req, res) {
       });
 
       return res.status(200).json({ status: 'published' });
-    }
-
-    // For purging messages
-    if (req.body.action === 'purge') {
-      const { count } = req.body;
-      if (!isModerator(clientId, ip)) {
-        return res.status(403).json({ error: 'Not authorized' });
-      }
-
-      const channel = ably.channels.get('dsebest-livechat');
-
-      try {
-        if (count === 'all') {
-          // Delete all messages from history first using REST API
-          const now = Date.now();
-          const deleteParams = new URLSearchParams();
-          deleteParams.append('start', '0');  // From beginning of time
-          deleteParams.append('end', now.toString());  // Until now
-          
-          const auth = Buffer.from(process.env.ABLY_API_KEY).toString('base64');
-          await fetch(`https://rest.ably.io/channels/dsebest-livechat/messages?${deleteParams}`, {
-            method: 'DELETE',
-            headers: {
-              'Authorization': `Basic ${auth}`
-            }
-          });
-
-          // Then notify clients
-          await channel.publish('command', {
-            type: 'purge',
-            count: 'all',
-            moderator: username,
-            timestamp: now
-          });
-        } else {
-          // Get last N messages
-          const history = await channel.history({ limit: count });
-          const messages = history.items;
-
-          if (messages.length > 0) {
-            // Delete messages from history using REST API
-            const deleteParams = new URLSearchParams();
-            deleteParams.append('start', messages[messages.length - 1].timestamp);  // From oldest message
-            deleteParams.append('end', messages[0].timestamp);  // To newest message
-            
-            const auth = Buffer.from(process.env.ABLY_API_KEY).toString('base64');
-            await fetch(`https://rest.ably.io/channels/dsebest-livechat/messages?${deleteParams}`, {
-              method: 'DELETE',
-              headers: {
-                'Authorization': `Basic ${auth}`
-              }
-            });
-
-            // Then notify clients about each deleted message
-            for (const msg of messages) {
-              await channel.publish('command', {
-                type: 'delete',
-                messageId: msg.id,
-                moderator: username,
-                timestamp: Date.now()
-              });
-            }
-          }
-        }
-      } catch (error) {
-        console.error('Error during purge:', error);
-        return res.status(500).json({ error: 'Failed to purge messages: ' + error.message });
-      }
-
-      return res.status(200).json({ status: 'purge complete' });
     }
 
     // For token generation
