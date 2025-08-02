@@ -922,16 +922,16 @@
       channel.history({ limit: 50 }).then(result => {
         result.items.reverse().forEach(msg => {
           if (msg.data && msg.data.sender && msg.data.text) {
-            const isMine = msg.clientId === ably.auth.clientId;
-            addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.clientId, msg.data.isModerator, msg.id);
+            const isMine = msg.data.clientId === ably.auth.clientId;
+            addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id);
           }
         });
       });
       // Subscribe to new messages
       channel.subscribe('message', msg => {
-        const { sender, text, isModerator } = msg.data;
-        const isMine = msg.clientId === ably.auth.clientId;
-        addMessage(sender, text, isMine, msg.timestamp, msg.clientId, isModerator, msg.id);
+        const { sender, text, isModerator, clientId } = msg.data;
+        const isMine = clientId === ably.auth.clientId;
+        addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id);
       });
 
       // Subscribe to moderation commands
