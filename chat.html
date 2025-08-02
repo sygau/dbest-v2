@@ -134,7 +134,7 @@
     
     /* Moderator styles */
     .chat-bubble.moderator {
-      background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+      background: linear-gradient(135deg, #312e14 0%, #ffa500 100%);
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
     }
@@ -430,20 +430,48 @@
             <span id="statusText">Connecting…</span>
           </div>
           <!-- Chat messages -->
-          <div id="chatMessages" class="flex-grow-1 overflow-auto border rounded-3 p-3 bg-transparent" style="height:60vh"></div>
-          <!-- Username input -->
-          <div class="input-group" style="max-width: 300px;">
-            <input type="text" id="userNameInput" class="form-control" maxlength="14" placeholder="Your name" disabled>
-            <button class="btn btn-outline-secondary" id="editNameBtn" type="button" aria-label="Edit username">
-              <i class="material-icons-outlined">edit</i>
-            </button>
+          <div id="chatMessages" class="flex-grow-1 overflow-auto border rounded-3 p-3 bg-transparent" style="height:75vh"></div>
+          <!-- Chat input wrapper with responsive layout -->
+          <div class="d-flex gap-2">
+            <!-- Username input - desktop inline, mobile in modal -->
+            <div class="input-group d-none d-md-flex" style="width: 200px;">
+              <input type="text" id="userNameInput" class="form-control" maxlength="14" placeholder="Your name" disabled>
+              <button class="btn btn-outline-secondary" id="editNameBtn" type="button" aria-label="Edit username">
+                <i class="material-icons-outlined">edit</i>
+              </button>
+            </div>
+            <div class="d-block d-md-none">
+              <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#usernameModal">
+                <i class="material-icons-outlined">account_circle</i>
+              </button>
+            </div>
+            <!-- Message input -->
+            <div class="input-group flex-grow-1">
+              <input type="text" id="messageInput" class="form-control" placeholder="Type a message…" autocomplete="off">
+              <button class="btn btn-primary" id="sendButton" type="button" aria-label="Send message">
+                <i class="material-icons-outlined">send</i>
+              </button>
+            </div>
           </div>
-          <!-- Message input -->
-          <div class="input-group">
-            <input type="text" id="messageInput" class="form-control" placeholder="Type a message…" autocomplete="off">
-            <button class="btn btn-primary" id="sendButton" type="button" aria-label="Send message">
-              <i class="material-icons-outlined">send</i>
-            </button>
+
+          <!-- Username Modal for mobile -->
+          <div class="modal fade" id="usernameModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Change Username</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="input-group">
+                    <input type="text" id="userNameInputMobile" class="form-control" maxlength="14" placeholder="Your name">
+                    <button class="btn btn-primary" id="saveUsernameBtn" type="button">
+                      <i class="material-icons-outlined">save</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -734,6 +762,8 @@
           editNameBtn.innerHTML = '<i class="material-icons-outlined">edit</i>';
           localStorage.setItem('chatUsername', newUsername);
           addSystemMessage(`Username changed to ${newUsername}`);
+          // Sync with mobile input
+          document.getElementById('userNameInputMobile').value = newUsername;
         }
       } else {
         // Start editing
@@ -741,6 +771,22 @@
         userNameInput.focus();
         editNameBtn.innerHTML = '<i class="material-icons-outlined">check</i>';
       }
+    });
+
+    // Handle mobile username changes
+    document.getElementById('saveUsernameBtn').addEventListener('click', () => {
+      const newUsername = document.getElementById('userNameInputMobile').value.trim();
+      if (validateUsername(newUsername)) {
+        userNameInput.value = newUsername;
+        localStorage.setItem('chatUsername', newUsername);
+        addSystemMessage(`Username changed to ${newUsername}`);
+        bootstrap.Modal.getInstance(document.getElementById('usernameModal')).hide();
+      }
+    });
+
+    // Sync usernames between desktop and mobile views
+    document.getElementById('usernameModal').addEventListener('show.bs.modal', () => {
+      document.getElementById('userNameInputMobile').value = userNameInput.value;
     });
 
     userNameInput.addEventListener('keypress', (e) => {
@@ -756,9 +802,12 @@
     });
 
     // Helper to append normal messages
-    function addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false) {
+    function addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false, messageId = null) {
       const wrapper = document.createElement('div');
       wrapper.className = 'd-flex flex-column' + (isMine ? ' align-items-end' : ' align-items-start');
+      if (messageId) {
+        wrapper.dataset.messageId = messageId;
+      }
       const bubble = document.createElement('div');
       bubble.className = 'chat-bubble ' + (isMine ? 'mine' : 'other');
       if (isModerator) {
@@ -851,7 +900,29 @@
     });
     let channel;
 
-    ably.connection.on('connected', () => { setStatus('Connected', true); addSystemMessage('Connected to chatroom'); });
+    ably.connection.on('connected', () => { 
+      setStatus('Connected', true); 
+      addSystemMessage('Connected to chatroom');
+      // Check if user is a moderator
+      fetch('/api/chat-auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          clientId: ably.auth.clientId,
+          username: userNameInput.value.trim(),
+          message: '/help'
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.isModerator) {
+          addSystemMessage('Welcome, Moderator! Type /help to see available commands.');
+        }
+      })
+      .catch(() => {/* Silently fail */});
+    });
     ably.connection.on('disconnected', () => { setStatus('Disconnected', false); addSystemMessage('Disconnected from chatroom'); });
     ably.connection.on('failed', () => { setStatus('Failed', false); addSystemMessage('Connection failed'); });
 
@@ -862,7 +933,7 @@
         result.items.reverse().forEach(msg => {
           if (msg.data && msg.data.sender && msg.data.text) {
             const isMine = msg.clientId === ably.auth.clientId;
-            addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.clientId);
+            addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.clientId, msg.data.isModerator, msg.id);
           }
         });
       });
@@ -870,18 +941,29 @@
       channel.subscribe('message', msg => {
         const { sender, text, isModerator } = msg.data;
         const isMine = msg.clientId === ably.auth.clientId;
-        addMessage(sender, text, isMine, msg.timestamp, msg.clientId, isModerator);
+        addMessage(sender, text, isMine, msg.timestamp, msg.clientId, isModerator, msg.id);
       });
 
       // Subscribe to moderation commands
       channel.subscribe('command', msg => {
-        const { type, count, moderator } = msg.data;
+        const { type, count, moderator, messageId, timestamp } = msg.data;
+        
         if (type === 'purge') {
-          // Remove last N messages
-          const messages = Array.from(chatMessages.children);
-          messages.slice(-count).forEach(msg => msg.remove());
-          addSystemMessage(`Last ${count} messages were purged by moderator ${moderator}`);
+          if (count === 'all') {
+            // Clear all messages
+            chatMessages.innerHTML = '';
+            addSystemMessage(`All messages were purged by moderator ${moderator}`);
+          }
         }
+        
+        if (type === 'delete') {
+          // Remove specific message by ID
+          const messageElement = document.querySelector(`[data-message-id="${messageId}"]`);
+          if (messageElement) {
+            messageElement.remove();
+          }
+        }
+      });
       });
       
       // Handle presence
@@ -910,7 +992,6 @@
           setStatus('Connected', true, members.length);
         }
       });
-    });
 
     // Publish message
     // Client-side rate limiting state
@@ -1062,12 +1143,35 @@
             messageInput.value = '';
             return Promise.reject({ silentFail: true }); // Skip publishing
           }
-          // If moderation passes, publish the message
-          return channel.publish('message', { 
+
+          const messageData = { 
             sender, 
             text,
             timestamp: Date.now(),
-            isModerator: data.isModerator
+            clientId: ably.auth.clientId // Include clientId for server verification
+          };
+
+          // Send to server for publishing
+          return fetch('/api/chat-auth', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              action: 'publish',
+              message: messageData,
+              clientId: ably.auth.clientId,
+              username: sender
+            })
+          }).then(response => {
+            if (!response.ok) {
+              throw new Error('Failed to publish message');
+            }
+            return response.json();
+          }).then(publishData => {
+            // Server will handle the actual publishing through Ably
+            // No need to publish here as the server will do it
+            return Promise.resolve();
           });
         });
       })

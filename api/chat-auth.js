@@ -320,12 +320,21 @@ export default async function handler(req, res) {
           // Purge command
           if (match = MOD_COMMANDS.purge.exec(message)) {
             const [, amount = "all"] = match;
-            const count = amount === "all" ? 999999 : parseInt(amount) || 50;
+            const count = amount === "all" ? 'all' : parseInt(amount) || 50;
             
-            await ably.channels.get('dsebest-livechat').publish('command', {
-              type: 'purge',
-              count: count,
-              moderator: username
+            // Use the new purge action
+            await fetch('/api/chat-auth', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                action: 'purge',
+                count,
+                clientId,
+                username,
+                message: 'N/A'
+              })
             });
 
             return res.status(200).json({
@@ -401,6 +410,64 @@ export default async function handler(req, res) {
         status: 'Message approved',
         isModerator: isMod 
       });
+    }
+
+    // For message publishing
+    if (req.body.action === 'publish') {
+      const { message } = req.body;
+      
+      // Check if the message is clean
+      const modResult = moderateContent(message.text, clientId, ip, username);
+      if (!modResult.isClean) {
+        return res.status(403).json({ error: modResult.reason });
+      }
+
+      // Check if sender is moderator
+      const isMod = isModerator(clientId, ip);
+      
+      // Publish through server's Ably instance with verified status
+      await ably.channels.get('dsebest-livechat').publish('message', {
+        ...message,
+        isModerator: isMod // Server-verified moderator status
+      });
+
+      return res.status(200).json({ status: 'published' });
+    }
+
+    // For purging messages
+    if (req.body.action === 'purge') {
+      const { count } = req.body;
+      if (!isModerator(clientId, ip)) {
+        return res.status(403).json({ error: 'Not authorized' });
+      }
+
+      const channel = ably.channels.get('dsebest-livechat');
+
+      if (count === 'all') {
+        // For purging all messages, we'll publish a special command
+        await channel.publish('command', {
+          type: 'purge',
+          count: 'all',
+          moderator: username,
+          timestamp: Date.now()
+        });
+      } else {
+        // For purging specific number of messages
+        const history = await channel.history({ limit: count });
+        const messages = history.items;
+        
+        // Publish delete command for each message
+        for (const msg of messages) {
+          await channel.publish('command', {
+            type: 'delete',
+            messageId: msg.id,
+            moderator: username,
+            timestamp: Date.now()
+          });
+        }
+      }
+
+      return res.status(200).json({ status: 'purge complete' });
     }
 
     // For token generation
