@@ -815,6 +815,17 @@
         const isMine = msg.clientId === ably.auth.clientId;
         addMessage(sender, text, isMine, msg.timestamp);
       });
+
+      // Subscribe to moderation commands
+      channel.subscribe('command', msg => {
+        const { type, count, moderator } = msg.data;
+        if (type === 'purge') {
+          // Remove last N messages
+          const messages = Array.from(chatMessages.children);
+          messages.slice(-count).forEach(msg => msg.remove());
+          addSystemMessage(`Last ${count} messages were purged by moderator ${moderator}`);
+        }
+      });
       
       // Handle presence
       channel.presence.subscribe('enter', member => {
@@ -907,20 +918,25 @@
       .then(response => {
         if (!response.ok) {
           return response.json().then(err => {
-            if (err.blocked) {
-              const remainingTime = Math.ceil(err.remaining / (60 * 1000));
-              throw new Error(`You have been blocked from chat for ${remainingTime} minutes due to repeated violations.`);
-            } else if (err.limited) {
-              const resetTime = Math.ceil(err.resetTime / 1000);
-              throw new Error(`Rate limit exceeded. Please wait ${resetTime} seconds.`);
-            }
             throw new Error(err.error || 'Failed to send message');
           });
         }
         return response.json().then(data => {
-          if (data.shadow) {
-            // For shadow banned messages, only show locally
-            addMessage(sender, text, true);
+          if (data.command) {
+            if (data.private) {
+              // For private command responses (like /help and /info)
+              // Add as system message only visible to the sender
+              const wrap = document.createElement('div');
+              wrap.className = 'chat-system-message text-start my-2 small fst-italic bg-dark bg-opacity-10 p-2 rounded';
+              // Use pre-wrap to preserve formatting
+              wrap.style.whiteSpace = 'pre-wrap';
+              wrap.textContent = data.message;
+              chatMessages.appendChild(wrap);
+              chatMessages.scrollTop = chatMessages.scrollHeight;
+            } else {
+              // For public command confirmations
+              addSystemMessage(data.message);
+            }
             messageInput.value = '';
             return Promise.reject({ silentFail: true }); // Skip publishing
           }
