@@ -323,10 +323,17 @@ export default async function handler(req, res) {
             const [, amount = "all"] = match;
             const count = amount === "all" ? 'all' : parseInt(amount) || 50;
             
-            // Handle purge directly instead of making another API call
             const channel = ably.channels.get('dsebest-livechat');
-            
+
             if (count === 'all') {
+              // First delete all messages from history
+              const history = await channel.history({ limit: 1000 });
+              const deletePromises = history.items.map(msg => 
+                channel.detachFromHistory(msg.id)
+              );
+              await Promise.all(deletePromises);
+
+              // Then notify clients
               await channel.publish('command', {
                 type: 'purge',
                 count: 'all',
@@ -334,10 +341,17 @@ export default async function handler(req, res) {
                 timestamp: Date.now()
               });
             } else {
+              // Get specific number of messages
               const history = await channel.history({ limit: count });
               const messages = history.items;
               
-              // Publish delete command for each message
+              // Delete messages from history first
+              const deletePromises = messages.map(msg => 
+                channel.detachFromHistory(msg.id)
+              );
+              await Promise.all(deletePromises);
+
+              // Then notify clients about each deleted message
               for (const msg of messages) {
                 await channel.publish('command', {
                   type: 'delete',
@@ -455,7 +469,14 @@ export default async function handler(req, res) {
       const channel = ably.channels.get('dsebest-livechat');
 
       if (count === 'all') {
-        // For purging all messages, we'll publish a special command
+        // First delete all messages from history
+        const history = await channel.history({ limit: 1000 });
+        const deletePromises = history.items.map(msg => 
+          channel.detachFromHistory(msg.id)
+        );
+        await Promise.all(deletePromises);
+
+        // Then notify clients
         await channel.publish('command', {
           type: 'purge',
           count: 'all',
@@ -463,11 +484,17 @@ export default async function handler(req, res) {
           timestamp: Date.now()
         });
       } else {
-        // For purging specific number of messages
+        // Get specific number of messages
         const history = await channel.history({ limit: count });
         const messages = history.items;
         
-        // Publish delete command for each message
+        // Delete messages from history first
+        const deletePromises = messages.map(msg => 
+          channel.detachFromHistory(msg.id)
+        );
+        await Promise.all(deletePromises);
+
+        // Then notify clients about each deleted message
         for (const msg of messages) {
           await channel.publish('command', {
             type: 'delete',

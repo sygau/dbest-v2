@@ -943,10 +943,15 @@
             // Clear all messages
             chatMessages.innerHTML = '';
             addSystemMessage(`All messages were purged by moderator ${moderator}`);
+          } else {
+            // Clear last N messages
+            const messages = Array.from(chatMessages.children).reverse();
+            for (let i = 0; i < count && i < messages.length; i++) {
+              messages[i].remove();
+            }
+            addSystemMessage(`Last ${count} messages were purged by moderator ${moderator}`);
           }
-        }
-        
-        if (type === 'delete') {
+        } else if (type === 'delete') {
           // Remove specific message by ID
           const messageElement = document.querySelector(`[data-message-id="${messageId}"]`);
           if (messageElement) {
