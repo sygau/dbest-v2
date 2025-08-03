@@ -2797,3 +2797,60 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
 .chat-bubble.moderator .moderator-badge {
   color: #fff;
 }
+
+/* Chat Rules Modal Styling */
+.rules-content h6 {
+  border-bottom: 2px solid;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.rules-content .text-primary {
+  border-color: var(--bs-primary);
+}
+
+.rules-content .text-danger {
+  border-color: var(--bs-danger);
+}
+
+.rules-content .text-warning {
+  border-color: var(--bs-warning);
+}
+
+.rules-content .text-info {
+  border-color: var(--bs-info);
+}
+
+.rules-content li {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.rules-content .material-icons-outlined {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.rules-content code {
+  background-color: var(--bs-gray-100);
+  color: var(--bs-gray-800);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.875em;
+}
+
+[data-bs-theme="dark"] .rules-content code {
+  background-color: var(--bs-gray-800);
+  color: var(--bs-gray-200);
+}
+
+/* Welcome message styling */
+.chat-system-message .btn {
+  transition: all 0.2s ease;
+}
+
+.chat-system-message .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}

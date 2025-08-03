@@ -219,6 +219,12 @@ class DSEChat {
       usernameModal.addEventListener('show.bs.modal', this.handleUsernameModalShow.bind(this));
     }
 
+    // Rules button
+    const rulesBtn = document.getElementById('rulesBtn');
+    if (rulesBtn) {
+      rulesBtn.addEventListener('click', this.showRulesModal.bind(this));
+    }
+
     // Message sending
     this.sendButton.addEventListener('click', this.sendMessage.bind(this));
     this.messageInput.addEventListener('keypress', this.handleMessageKeypress.bind(this));
@@ -312,6 +318,59 @@ class DSEChat {
   handleMessageKeypress(e) {
     if (e.key === 'Enter') {
       this.sendMessage();
+    }
+  }
+
+  // Show rules modal
+  showRulesModal() {
+    const rulesModal = document.getElementById('rulesModal');
+    if (rulesModal) {
+      const modal = new bootstrap.Modal(rulesModal);
+      modal.show();
+    }
+  }
+
+  // Check if user should see welcome message with rules
+  checkAndShowWelcomeMessage() {
+    const hasSeenWelcome = localStorage.getItem('chatWelcomeShown');
+    if (!hasSeenWelcome) {
+      // Mark as shown
+      localStorage.setItem('chatWelcomeShown', 'true');
+      
+      // Show welcome message with clickable rules link
+      setTimeout(() => {
+        this.addWelcomeMessage();
+      }, 1000); // Delay to ensure chat is fully loaded
+    }
+  }
+
+  // Add special welcome message with clickable rules link
+  addWelcomeMessage() {
+    const wrap = document.createElement('div');
+    wrap.className = 'chat-system-message text-center my-3 p-3 border rounded-3 bg-primary bg-opacity-10';
+    
+    wrap.innerHTML = `
+      <div class="mb-2">
+        <i class="material-icons-outlined text-primary" style="font-size: 24px;">waving_hand</i>
+      </div>
+      <div class="text-primary fw-bold mb-2">歡迎來到 DSE Best 聊天室！ Welcome to DSE Best Chatroom!</div>
+      <div class="small mb-2">
+        請花一分鐘閱讀聊天室規則，確保大家都有良好的交流體驗。<br>
+        Please take a moment to read the chat rules to ensure a positive experience for everyone.
+      </div>
+      <button class="btn btn-primary btn-sm" id="welcomeRulesBtn">
+        <i class="material-icons-outlined me-1" style="font-size: 16px;">menu_book</i>
+        閱讀規則 Read Rules
+      </button>
+    `;
+    
+    this.chatMessages.appendChild(wrap);
+    this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+    
+    // Add click handler for the welcome rules button
+    const welcomeRulesBtn = document.getElementById('welcomeRulesBtn');
+    if (welcomeRulesBtn) {
+      welcomeRulesBtn.addEventListener('click', this.showRulesModal.bind(this));
     }
   }
 
@@ -628,6 +687,10 @@ class DSEChat {
     this.ably.connection.on('connected', () => { 
       this.setStatus('Connected', true); 
       this.addSystemMessage('Connected to chatroom');
+      
+      // Check and show welcome message for new users
+      this.checkAndShowWelcomeMessage();
+      
       // Check if user is a moderator
       fetch('/api/chat-auth', {
         method: 'POST',
