@@ -573,8 +573,6 @@
   <!--bootstrap js-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <!-- Ably Realtime Messaging -->
-  <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
   <!--plugins-->
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
   
@@ -680,587 +678,87 @@
         }, 400);
       }
     }
+
+    function loadChatJS() {
+      const currentPath = window.location.pathname;
+      if (currentPath === '/chat' || currentPath === '/chat.html' || currentPath.endsWith('/chat') || currentPath.endsWith('/chat.html')) {
+        // Destroy existing chat instance if it exists
+        if (window.dseChat) {
+          window.dseChat.destroy();
+          window.dseChat = null;
+        }
+
+        // Load Ably script if not already loaded
+        if (!window.Ably && !window.AblyLoading) {
+          window.AblyLoading = true;
+          const ablyScript = document.createElement('script');
+          ablyScript.src = 'https://cdn.ably.com/lib/ably.min-1.js';
+          ablyScript.onload = () => {
+            window.AblyLoaded = true;
+            window.AblyLoading = false;
+            loadChatScript();
+          };
+          ablyScript.onerror = () => {
+            console.error('Failed to load Ably script');
+            window.AblyLoading = false;
+          };
+          document.head.appendChild(ablyScript);
+        } else if (window.Ably) {
+          loadChatScript();
+        }
+
+        function loadChatScript() {
+          // Load chat script if not already loaded
+          if (!window.DSEChatLoaded) {
+            const chatScript = document.createElement('script');
+            chatScript.src = 'https://dse.best/assets/js/chat.js';
+            chatScript.onload = () => {
+              window.DSEChatLoaded = true;
+              initializeChat();
+            };
+            chatScript.onerror = () => {
+              console.error('Failed to load chat script');
+            };
+            document.head.appendChild(chatScript);
+          } else {
+            initializeChat();
+          }
+        }
+
+        function initializeChat() {
+          // Check if chat elements exist on the page
+          if (document.getElementById('chatMessages')) {
+            try {
+              window.dseChat = new DSEChat();
+              window.dseChat.init();
+            } catch (error) {
+              console.error('Failed to initialize chat:', error);
+            }
+          }
+        }
+      } else {
+        // Clean up chat if navigating away from chat page
+        if (window.dseChat) {
+          window.dseChat.destroy();
+          window.dseChat = null;
+        }
+      }
+    }
     if (document.readyState === 'complete') {
       initializePage();
+      loadChatJS(); // Initialize chat on first load if we're on chat page
     } else {
-      document.addEventListener('DOMContentLoaded', initializePage);
+      document.addEventListener('DOMContentLoaded', () => {
+        initializePage();
+        loadChatJS(); // Initialize chat on first load if we're on chat page
+      });
     }
     swup.hooks.on('content:replace', () => {
       initializePage();
       loadCountdownJs();
       loadBlogIndexJS();
       loadPostJS();
-    });
-  </script>
-  <!-- Ably Live Chat -->
-  <script src="https://cdn.ably.com/lib/ably.min-1.js"></script>
-  <script>
-    // DOM elements
-    const chatMessages = document.getElementById('chatMessages');
-    const statusDot = document.getElementById('statusDot');
-    const statusText = document.getElementById('statusText');
-    const userNameInput = document.getElementById('userNameInput');
-    const editNameBtn = document.getElementById('editNameBtn');
-    const messageInput = document.getElementById('messageInput');
-    const sendButton = document.getElementById('sendButton');
-
-    // Constants for validation
-    const MAX_MESSAGE_LENGTH = 350;
-    const MAX_USERNAME_LENGTH = 14;
-    const MIN_USERNAME_LENGTH = 3;
-
-    // Generate a random username if none provided
-    function randomUsername() {
-      const animals = ['Tiger','Panda','Dolphin','Eagle','Fox','Koala','Lion','Otter','Penguin','Shark'];
-      return animals[Math.floor(Math.random()*animals.length)] + Math.floor(100 + Math.random()*900);
-    }
-
-    // Load username from localStorage or generate new one
-    function initializeUsername() {
-      const savedUsername = localStorage.getItem('chatUsername');
-      if (savedUsername) {
-        userNameInput.value = savedUsername;
-      } else {
-        userNameInput.value = randomUsername();
-        localStorage.setItem('chatUsername', userNameInput.value);
-      }
-    }
-    initializeUsername();
-
-    // Enhanced validation functions with security checks
-    function validateUsername(username) {
-      if (!username) {
-        addSystemMessage('Username cannot be empty');
-        return false;
-      }
-      
-      // Sanitize input
-      const cleanUsername = String(username).trim();
-      
-      if (cleanUsername.length < MIN_USERNAME_LENGTH) {
-        addSystemMessage(`Username must be at least ${MIN_USERNAME_LENGTH} characters long`);
-        return false;
-      }
-      if (cleanUsername.length > MAX_USERNAME_LENGTH) {
-        addSystemMessage(`Username cannot be longer than ${MAX_USERNAME_LENGTH} characters`);
-        return false;
-      }
-      
-      // Check for suspicious patterns
-      if (/<|>|&|"|'|script|javascript|onload|onerror|eval/i.test(cleanUsername)) {
-        addSystemMessage('Username contains invalid characters');
-        return false;
-      }
-      
-      return true;
-    }
-
-    function validateMessage(message) {
-      if (!message) {
-        addSystemMessage('Message cannot be empty');
-        return false;
-      }
-      
-      // Sanitize input
-      const cleanMessage = String(message).trim();
-      
-      if (cleanMessage.length > MAX_MESSAGE_LENGTH) {
-        addSystemMessage(`Message cannot be longer than ${MAX_MESSAGE_LENGTH} characters`);
-        return false;
-      }
-      
-      // Client-side security checks (server will do more thorough checks)
-      if (/<script|javascript:|onload|onerror|eval\s*\(|fetch\s*\(|xhr|websocket/i.test(cleanMessage)) {
-        addSystemMessage('Message contains suspicious content');
-        return false;
-      }
-      
-      return true;
-    }
-
-    // Handle username editing
-    editNameBtn.addEventListener('click', () => {
-      const isEditing = userNameInput.disabled;
-      if (!isEditing) {
-        // Save changes
-        const newUsername = userNameInput.value.trim();
-        if (validateUsername(newUsername)) {
-          userNameInput.disabled = true;
-          editNameBtn.innerHTML = '<i class="material-icons-outlined">edit</i>';
-          localStorage.setItem('chatUsername', newUsername);
-          addSystemMessage(`Username changed to ${newUsername}`);
-          // Sync with mobile input
-          document.getElementById('userNameInputMobile').value = newUsername;
-        }
-      } else {
-        // Start editing
-        userNameInput.disabled = false;
-        userNameInput.focus();
-        editNameBtn.innerHTML = '<i class="material-icons-outlined">check</i>';
-      }
-    });
-
-    // Handle mobile username changes
-    document.getElementById('saveUsernameBtn').addEventListener('click', () => {
-      const newUsername = document.getElementById('userNameInputMobile').value.trim();
-      if (validateUsername(newUsername)) {
-        userNameInput.value = newUsername;
-        localStorage.setItem('chatUsername', newUsername);
-        addSystemMessage(`Username changed to ${newUsername}`);
-        bootstrap.Modal.getInstance(document.getElementById('usernameModal')).hide();
-      }
-    });
-
-    // Sync usernames between desktop and mobile views
-    document.getElementById('usernameModal').addEventListener('show.bs.modal', () => {
-      document.getElementById('userNameInputMobile').value = userNameInput.value;
-    });
-
-    userNameInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const newUsername = userNameInput.value.trim();
-        if (validateUsername(newUsername)) {
-          userNameInput.disabled = true;
-          editNameBtn.innerHTML = '<i class="material-icons-outlined">edit</i>';
-          localStorage.setItem('chatUsername', newUsername);
-          addSystemMessage(`Username changed to ${newUsername}`);
-        }
-      }
-    });
-
-    // Helper to append normal messages
-    function addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false, messageId = null) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'd-flex flex-column' + (isMine ? ' align-items-end' : ' align-items-start');
-      if (messageId) {
-        wrapper.dataset.messageId = messageId;
-      }
-      const bubble = document.createElement('div');
-      bubble.className = 'chat-bubble ' + (isMine ? 'mine' : 'other');
-      if (isModerator) {
-        bubble.className += ' moderator';
-      }
-      
-      // Username and timestamp line
-      const headerDiv = document.createElement('div');
-      headerDiv.className = 'd-flex justify-content-between align-items-center mb-1';
-      
-      const nameLine = document.createElement('strong');
-      // Sanitize sender name to prevent XSS
-      nameLine.textContent = String(sender || 'Unknown').substring(0, 20);
-      if (isModerator) {
-        const badge = document.createElement('span');
-        badge.className = 'moderator-badge';
-        badge.innerHTML = '<i class="material-icons-outlined" style="font-size: 16px;">verified</i>';
-        badge.title = 'Moderator';
-        nameLine.appendChild(badge);
-      }
-      
-      // Show client ID if user is a moderator
-      if (isUserModerator && clientId) {
-        const idSpan = document.createElement('small');
-        idSpan.className = 'ms-2 text-warning';
-        idSpan.title = 'Client ID - Click to copy';
-        idSpan.textContent = `[${String(clientId).substring(0, 20)}]`;
-        idSpan.style.cursor = 'pointer';
-        idSpan.onclick = () => {
-          navigator.clipboard.writeText(clientId);
-          addSystemMessage('Client ID copied to clipboard');
-        };
-        nameLine.appendChild(idSpan);
-      }
-      
-      const timeSpan = document.createElement('small');
-      timeSpan.className = 'ms-2 message-time';
-      timeSpan.textContent = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      
-      headerDiv.appendChild(nameLine);
-      headerDiv.appendChild(timeSpan);
-      bubble.appendChild(headerDiv);
-      
-      // Message content - CRITICAL: Use textContent to prevent XSS
-      const textSpan = document.createElement('span');
-      textSpan.textContent = String(text || '').substring(0, 500); // Limit length as extra safety
-      bubble.appendChild(textSpan);
-      wrapper.appendChild(bubble);
-      chatMessages.appendChild(wrapper);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Enhanced system message function with XSS protection
-    function addSystemMessage(text) {
-      const wrap = document.createElement('div');
-      wrap.className = 'chat-system-message text-center my-2 small fst-italic';
-      // Use textContent to prevent XSS
-      wrap.textContent = String(text || '').substring(0, 200);
-      chatMessages.appendChild(wrap);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Update connection status indicator
-    function setStatus(text, connected, onlineCount = 0) {
-      statusText.innerHTML = `${text} <span class="text-muted">|</span> <strong>${onlineCount}</strong> ${onlineCount === 1 ? 'User' : 'Users'} Online`;
-      statusDot.classList.toggle('bg-success', connected);
-      statusDot.classList.toggle('bg-danger', !connected);
-    }
-
-    // Initialise Ably with auth endpoint
-    const ably = new Ably.Realtime.Promise({
-      authUrl: 'https://dse.best/api/chat-auth',
-      authMethod: 'POST',
-      authParams: {
-        clientId: localStorage.getItem('chatUsername') || randomUsername(),
-        username: localStorage.getItem('chatUsername') || randomUsername()
-      }
-    });
-    let channel;
-
-    // Global variable to store moderator status
-    let isUserModerator = false;
-
-    ably.connection.on('connected', () => { 
-      setStatus('Connected', true); 
-      addSystemMessage('Connected to chatroom');
-      // Check if user is a moderator
-      fetch('/api/chat-auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'check_mod',
-          clientId: ably.auth.clientId,
-          username: userNameInput.value.trim()
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        isUserModerator = !!data.isModerator;
-        if (isUserModerator) {
-          addSystemMessage('Welcome, Moderator! Type /help to see available commands.');
-        }
-      })
-      .catch(() => {/* Silently fail */});
-    });
-    ably.connection.on('disconnected', () => { setStatus('Disconnected', false); addSystemMessage('Disconnected from chatroom'); });
-    ably.connection.on('failed', () => { setStatus('Failed', false); addSystemMessage('Connection failed'); });
-
-    ably.connection.once('connected').then(() => {
-      channel = ably.channels.get('dsebest-livechat');
-      // Load last 50 messages
-      channel.history({ limit: 50 }).then(result => {
-        result.items.reverse().forEach(msg => {
-          if (msg.data && msg.data.sender && msg.data.text) {
-            // Skip displaying purge messages in history
-            if (msg.data.isPurgeMessage) {
-              return;
-            }
-            
-            const isMine = msg.data.clientId === ably.auth.clientId;
-            addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id);
-          }
-        });
-      });
-      // Subscribe to new messages
-      channel.subscribe('message', msg => {
-        const { sender, text, isModerator, clientId, isPurgeMessage } = msg.data;
-        
-        // Skip displaying purge messages
-        if (isPurgeMessage) {
-          return;
-        }
-        
-        const isMine = clientId === ably.auth.clientId;
-        addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id);
-      });
-
-      // Subscribe to moderation commands
-      channel.subscribe('command', msg => {
-        const { type, count, moderator, messageId, timestamp } = msg.data;
-        
-        if (type === 'purge') {
-          if (count === 'all') {
-            // Clear all messages
-            chatMessages.innerHTML = '';
-            addSystemMessage(`All messages were purged by moderator ${moderator}`);
-          } else {
-            // Clear last N messages
-            const messages = Array.from(chatMessages.children).reverse();
-            for (let i = 0; i < count && i < messages.length; i++) {
-              messages[i].remove();
-            }
-            addSystemMessage(`Last ${count} messages were purged by moderator ${moderator}`);
-          }
-        } else if (type === 'delete') {
-          // Remove specific message by ID
-          const messageElement = document.querySelector(`[data-message-id="${messageId}"]`);
-          if (messageElement) {
-            messageElement.remove();
-          }
-        }
-      });
-      
-      // Handle presence
-      channel.presence.subscribe('enter', member => {
-        channel.presence.get((err, members) => {
-          if (!err) {
-            setStatus('Connected', true, members.length);
-          }
-        });
-      });
-      
-      channel.presence.subscribe('leave', member => {
-        channel.presence.get((err, members) => {
-          if (!err) {
-            setStatus('Connected', true, members.length);
-          }
-        });
-      });
-      
-      // Enter presence set
-      channel.presence.enter();
-      
-      // Get initial presence count
-      channel.presence.get((err, members) => {
-        if (!err) {
-          setStatus('Connected', true, members.length);
-        }
-      });
-    });
-
-    // Publish message
-    // Client-side rate limiting state
-    let isSending = false;
-    let lastSendTime = 0;
-    let messageCount = 0;
-    let windowStart = Date.now();
-    let rateLimitStartTime = Date.now();
-    let rateLimitMessageCount = 0;
-    
-    // Rate limit settings
-    const SEND_COOLDOWN = 15000; // 15s cooldown between sends
-    const MAX_MESSAGES_PER_MINUTE = 8; // Max 8 messages per minute
-    const MAX_BURST = 3; // Max 3 messages in burst
-    const BURST_WINDOW = 30000; // 30 second burst window
-    const RATE_LIMIT_WINDOW = 60000; // 1 minute window for overall limit
-
-    // Helper function to disable/enable input
-    function setInputState(disabled, cooldownSeconds = 0) {
-      messageInput.disabled = disabled;
-      sendButton.disabled = disabled;
-      if (disabled && cooldownSeconds > 0) {
-        messageInput.placeholder = `Waiting ${cooldownSeconds} seconds...`;
-      } else {
-        messageInput.placeholder = 'Type a message…';
-      }
-    }
-
-    // Start a cooldown timer
-    function startCooldown(duration) {
-      setInputState(true, Math.ceil(duration/1000));
-      const updateInterval = setInterval(() => {
-        const remaining = Math.ceil((duration - (Date.now() - lastSendTime))/1000);
-        if (remaining > 0) {
-          setInputState(true, remaining);
-        } else {
-          clearInterval(updateInterval);
-          setInputState(false);
-        }
-      }, 1000);
-      setTimeout(() => {
-        clearInterval(updateInterval);
-        setInputState(false);
-      }, duration);
-    }
-
-    async function sendMessage() {
-      if (!channel) {
-        try { channel = ably.channels.get('dsebest-livechat'); } catch(e) {}
-        if (!channel) return;
-      }
-
-      const now = Date.now();
-
-      // Prevent double-sending by disabling during send
-      if (isSending || messageInput.disabled) {
-        return;
-      }
-      
-      isSending = true;
-      setInputState(true);
-
-      // Enforce cooldown between messages
-      if (now - lastSendTime < SEND_COOLDOWN) {
-        const remainingCooldown = SEND_COOLDOWN - (now - lastSendTime);
-        addSystemMessage(`Please wait ${Math.ceil(remainingCooldown/1000)} seconds before sending another message`);
-        startCooldown(remainingCooldown);
-        isSending = false;
-        return;
-      }
-
-      // Check burst rate limit
-      const burstWindowMessages = messageCount;
-      if (now - windowStart <= BURST_WINDOW && burstWindowMessages >= MAX_BURST) {
-        const waitTime = BURST_WINDOW - (now - windowStart);
-        addSystemMessage(`You're sending too fast! Please wait ${Math.ceil(waitTime/1000)} seconds.`);
-        startCooldown(waitTime);
-        isSending = false;
-        return;
-      }
-
-      // Check overall rate limit (messages per minute)
-      if (now - rateLimitStartTime > RATE_LIMIT_WINDOW) {
-        // Reset the minute window
-        rateLimitMessageCount = 0;
-        rateLimitStartTime = now;
-      } else if (rateLimitMessageCount >= MAX_MESSAGES_PER_MINUTE) {
-        const waitTime = RATE_LIMIT_WINDOW - (now - rateLimitStartTime);
-        const minutes = Math.floor(waitTime/60000);
-        const seconds = Math.ceil((waitTime % 60000)/1000);
-        addSystemMessage(`Rate limit exceeded. Please wait ${minutes ? minutes + ' minute' + (minutes !== 1 ? 's' : '') : ''} ${seconds ? seconds + ' second' + (seconds !== 1 ? 's' : '') : ''}.`);
-        startCooldown(waitTime);
-        isSending = false;
-        return;
-      }
-
-      // Reset burst window if needed
-      if (now - windowStart > BURST_WINDOW) {
-        messageCount = 0;
-        windowStart = now;
-      }
-      
-      const text = messageInput.value.trim();
-      const sender = userNameInput.value.trim();
-
-      // Enhanced validation with security checks
-      if (!validateUsername(sender)) {
-        isSending = false;
-        setInputState(false);
-        return;
-      }
-      if (!validateMessage(text)) {
-        isSending = false;
-        setInputState(false);
-        return;
-      }
-
-      // Additional client-side length and content verification
-      if (text.length > MAX_MESSAGE_LENGTH || sender.length > MAX_USERNAME_LENGTH) {
-        addSystemMessage('Input exceeds maximum allowed length');
-        isSending = false;
-        setInputState(false);
-        return;
-      }
-
-      // First moderate the message
-      fetch('/api/chat-auth', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'moderate',
-          clientId: ably.auth.clientId,
-          username: sender,
-          message: text,
-          text: text  // Add text property for command checking
-        })
-      })
-      .then(response => {
-        if (!response.ok) {
-          return response.json().then(err => {
-            throw new Error(err.error || 'Failed to send message');
-          });
-        }
-        return response.json().then(data => {
-          if (data.command) {
-            if (data.private) {
-              // For private command responses (like /help and /info)
-              // Add as system message only visible to the sender
-              const wrap = document.createElement('div');
-              wrap.className = 'chat-system-message text-start my-2 small fst-italic bg-dark bg-opacity-10 p-2 rounded';
-              // Use pre-wrap to preserve formatting
-              wrap.style.whiteSpace = 'pre-wrap';
-              wrap.textContent = data.message;
-              chatMessages.appendChild(wrap);
-              chatMessages.scrollTop = chatMessages.scrollHeight;
-            } else {
-              // For public command confirmations
-              addSystemMessage(data.message);
-            }
-            messageInput.value = '';
-            return Promise.reject({ silentFail: true }); // Skip publishing
-          }
-
-          const messageData = { 
-            sender, 
-            text,
-            timestamp: Date.now(),
-            clientId: ably.auth.clientId // Include clientId for server verification
-          };
-
-          // Send to server for publishing
-          return fetch('/api/chat-auth', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              action: 'publish',
-              message: messageData,
-              clientId: ably.auth.clientId,
-              username: sender,
-              text: text  // Add text property for command checking
-            })
-          }).then(response => {
-            if (!response.ok) {
-              throw new Error('Failed to publish message');
-            }
-            return response.json();
-          }).then(publishData => {
-            // Server will handle the actual publishing through Ably
-            // No need to publish here as the server will do it
-            return Promise.resolve();
-          });
-        });
-      })
-      .then(() => {
-        // Update all rate limit counters
-        const now = Date.now();
-        messageCount++;
-        rateLimitMessageCount++;
-        lastSendTime = now;
-        messageInput.value = '';
-        
-        // Reset burst window if needed
-        if (now - windowStart > BURST_WINDOW) {
-          messageCount = 1;
-          windowStart = now;
-        }
-
-        // Reset rate limit window if needed
-        if (now - rateLimitStartTime > RATE_LIMIT_WINDOW) {
-          rateLimitMessageCount = 1;
-          rateLimitStartTime = now;
-        }
-
-        // Start cooldown timer
-        startCooldown(SEND_COOLDOWN);
-        isSending = false;
-      })
-      .catch(error => {
-        if (!error.silentFail) {
-          console.error(error);
-          addSystemMessage(error.message || 'Failed to send message. Please try again.');
-        }
-        setInputState(false);
-        isSending = false;
-      });
-    }
-
-    sendButton.addEventListener('click', sendMessage);
-    messageInput.addEventListener('keypress', e => {
-      if (e.key === 'Enter') sendMessage();
+      loadChatJS(); // Handle chat loading/cleanup on navigation
     });
   </script>
 </body>
