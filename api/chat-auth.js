@@ -160,6 +160,152 @@ async function logModeration(clientId, ip, username, message, reason, action) {
   console.log('MODERATION_LOG:', logEntry);
 }
 
+// Modular spam detection system
+function detectSpam(text) {
+  const spamChecks = [
+    // Character repetition spam
+    {
+      pattern: /(.)\1{4,}/,
+      reason: 'Excessive character repetition detected',
+      severity: 'medium'
+    },
+    // Word/phrase repetition
+    {
+      pattern: /(.{3,})\1{2,}/i,
+      reason: 'Repetitive content detected',
+      severity: 'medium'
+    },
+    // Excessive caps
+    {
+      pattern: /[A-Z]{8,}/,
+      reason: 'Excessive capital letters',
+      severity: 'low'
+    },
+    // Pattern spamming (abcabcabc)
+    {
+      pattern: /(.)\1(.)\2(.)\3/i,
+      reason: 'Spam pattern detected',
+      severity: 'medium'
+    },
+    // Alternating characters spam
+    {
+      pattern: /^(.)(.)(\1\2){3,}/,
+      reason: 'Alternating spam pattern detected',
+      severity: 'medium'
+    },
+    // Unicode spam (invisible characters, zero-width, etc.)
+    {
+      pattern: /[\u200B-\u200D\uFEFF\u00AD\u061C\u180E\u2060\u2061\u2062\u2063\u2064\u2065\u2066\u2067\u2068\u2069]{3,}/,
+      reason: 'Invisible character spam detected',
+      severity: 'high'
+    },
+    // Emoji spam
+    {
+      pattern: /([\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]){5,}/u,
+      reason: 'Excessive emoji usage',
+      severity: 'low'
+    },
+    // Number spam
+    {
+      pattern: /\d{10,}/,
+      reason: 'Excessive numbers detected',
+      severity: 'medium'
+    },
+    // Special character spam
+    {
+      pattern: /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`]{8,}/,
+      reason: 'Excessive special characters',
+      severity: 'medium'
+    },
+    // Mixed case spam (aLtErNaTiNg)
+    {
+      pattern: /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{10,}$/,
+      test: (text) => {
+        if (text.length < 10) return false;
+        let caseChanges = 0;
+        let lastCase = null;
+        for (let char of text) {
+          if (/[a-zA-Z]/.test(char)) {
+            const isUpper = char === char.toUpperCase();
+            if (lastCase !== null && lastCase !== isUpper) {
+              caseChanges++;
+            }
+            lastCase = isUpper;
+          }
+        }
+        return caseChanges > text.length * 0.3; // More than 30% case changes
+      },
+      reason: 'Alternating case spam detected',
+      severity: 'medium'
+    }
+  ];
+
+  for (const check of spamChecks) {
+    let isSpam = false;
+    
+    if (check.test) {
+      isSpam = check.test(text);
+    } else if (check.pattern) {
+      isSpam = check.pattern.test(text);
+    }
+    
+    if (isSpam) {
+      return {
+        isClean: false,
+        reason: check.reason,
+        severity: check.severity
+      };
+    }
+  }
+
+  // Advanced heuristics
+  
+  // Check for high entropy (random-looking text)
+  const entropy = calculateEntropy(text);
+  if (entropy > 4.5 && text.length > 20) {
+    return {
+      isClean: false,
+      reason: 'Message appears to be random characters',
+      severity: 'medium'
+    };
+  }
+
+  // Check consonant/vowel ratio for gibberish
+  if (text.length > 15) {
+    const consonants = (text.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g) || []).length;
+    const vowels = (text.match(/[aeiouAEIOU]/g) || []).length;
+    const ratio = consonants / (vowels + 1); // +1 to avoid division by zero
+    
+    if (ratio > 5 || (vowels === 0 && consonants > 8)) {
+      return {
+        isClean: false,
+        reason: 'Message appears to be gibberish',
+        severity: 'medium'
+      };
+    }
+  }
+
+  return { isClean: true };
+}
+
+// Helper function to calculate text entropy
+function calculateEntropy(text) {
+  const freq = {};
+  for (let char of text.toLowerCase()) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+  
+  let entropy = 0;
+  const len = text.length;
+  
+  for (let char in freq) {
+    const p = freq[char] / len;
+    entropy -= p * Math.log2(p);
+  }
+  
+  return entropy;
+}
+
 // Content moderation with multiple checks
 function moderateContent(text, clientId, ip, username) {
   // Skip moderation for moderators entirely
@@ -203,14 +349,33 @@ function moderateContent(text, clientId, ip, username) {
     };
   }
 
-  // 3. Check for URLs/links (enhanced)
-  const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(\.[a-z]{2,}\/[^\s]+)|(bit\.ly|tinyurl|t\.co)/gi;
-  if (urlPattern.test(cleanText)) {
-    return {
-      isClean: false,
-      reason: 'Links are not allowed in messages',
-      severity: 'medium'
-    };
+  // 3. Enhanced link/domain detection (stricter)
+  const linkPatterns = [
+    // Standard URLs
+    /(https?:\/\/[^\s]+)/gi,
+    /(www\.[^\s]+)/gi,
+    // Domain-like patterns without protocol
+    /\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\b/gi,
+    // Common short URL patterns
+    /(bit\.ly|tinyurl|t\.co|goo\.gl|short\.link|ow\.ly|is\.gd|buff\.ly)/gi,
+    // IP addresses
+    /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/gi,
+    // Discord/social media invites
+    /(discord\.gg|discord\.com\/invite)/gi,
+    // Email-like patterns
+    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi,
+    // Suspicious domain extensions
+    /\b\w+\.(tk|ml|ga|cf|click|download|exe|zip|rar)\b/gi
+  ];
+
+  for (const pattern of linkPatterns) {
+    if (pattern.test(cleanText)) {
+      return {
+        isClean: false,
+        reason: 'Links and domains are not allowed in messages',
+        severity: 'medium'
+      };
+    }
   }
 
   // 4. Check for potential data exfiltration attempts
@@ -224,20 +389,49 @@ function moderateContent(text, clientId, ip, username) {
   }
 
   // 5. Check message length (server-side enforcement)
-  if (cleanText.length > 350) {
+  if (cleanText.length > 150) {
     return {
       isClean: false,
-      reason: 'Message is too long (max 350 characters)',
+      reason: 'Message is too long (max 150 characters)',
       severity: 'low'
     };
   }
 
-  // 6. Enhanced profanity check
+  // 6. Enhanced profanity check (much stricter)
   const profanityPatterns = [
-    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss)\b/i,
-    /[\u0430-\u044f]{0,}(f+[^a-z]*u+[^a-z]*c+[^a-z]*k+)/i,
-    /\b\w*[4@]ss\w*\b/i, // Leetspeak variants
-    /\b\w*sh[1!]t\w*\b/i
+    // Basic profanity (English)
+    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|porn|nude|naked)\b/i,
+    
+    // Leetspeak and obfuscated variants
+    /\b\w*[f][^a-z]*[u][^a-z]*[c][^a-z]*[k]\w*\b/i,
+    /\b\w*[s][^a-z]*[h][^a-z]*[i][^a-z]*[t]\w*\b/i,
+    /\b\w*[b][^a-z]*[i][^a-z]*[t][^a-z]*[c][^a-z]*[h]\w*\b/i,
+    /\b\w*[4@]ss\w*\b/i,
+    /\b\w*[d][^a-z]*[a][^a-z]*[m][^a-z]*[n]\w*\b/i,
+    
+    // Numbers and symbols replacing letters
+    /\b\w*f+[^a-z]*u+[^a-z]*c+[^a-z]*k+\w*\b/i,
+    /\b\w*sh[1!]t\w*\b/i,
+    /\b\w*b[1!]tch\w*\b/i,
+    /\b\w*[4@]s{2,}\w*\b/i,
+    
+    // Chinese profanity (basic)
+    /\b(他媽的|幹你娘|操你媽|去死|白癡|智障|腦殘|垃圾|廢物)\b/i,
+    
+    // Hate speech and slurs
+    /\b(nigger|nigga|faggot|retard|nazi|hitler|kill\s*yourself|kys|suicide)\b/i,
+    
+    // Drug references
+    /\b(cocaine|heroin|meth|weed|marijuana|cannabis|drug|drugs|高|ice|crack)\b/i,
+    
+    // Spam-like repetitive patterns
+    /(.)\1{5,}/i, // 6+ repeated characters
+    /\b(\w+)\s+\1\s+\1\b/i, // Same word repeated 3+ times
+    
+    // Common bypass attempts
+    /[f]+[u\*\-_]*[c]+[k\*\-_]+/i,
+    /[s]+[h\*\-_]*[i\*\-_]*[t]+/i,
+    /[b]+[i\*\-_]*[t\*\-_]*[c]+[h\*\-_]*/i
   ];
 
   for (const pattern of profanityPatterns) {
@@ -245,27 +439,15 @@ function moderateContent(text, clientId, ip, username) {
       return {
         isClean: false,
         reason: 'Message contains inappropriate language',
-        severity: 'medium'
+        severity: 'high'
       };
     }
   }
 
-  // 7. Check for spam patterns (enhanced)
-  const spamPatterns = [
-    /(.)\1{4,}/,  // Repeated characters (e.g., "aaaaa")
-    /(.{3,})\1{2,}/i,  // Repeated words or patterns
-    /[A-Z]{10,}/, // Excessive caps
-    /(.)\1(.)\2(.)\3/i, // Pattern spamming like "ababab"
-  ];
-
-  for (const pattern of spamPatterns) {
-    if (pattern.test(cleanText)) {
-      return {
-        isClean: false,
-        reason: 'Message appears to be spam',
-        severity: 'medium'
-      };
-    }
+  // 7. Enhanced spam detection (modularized)
+  const spamDetectionResult = detectSpam(cleanText);
+  if (!spamDetectionResult.isClean) {
+    return spamDetectionResult;
   }
 
   // 8. Check for potential injection attempts

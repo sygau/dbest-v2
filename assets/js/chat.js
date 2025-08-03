@@ -22,7 +22,7 @@ class DSEChat {
     this.RATE_LIMIT_WINDOW = 60000; // 1 minute window for overall limit
     
     // Constants for validation
-    this.MAX_MESSAGE_LENGTH = 350;
+    this.MAX_MESSAGE_LENGTH = 150;
     this.MAX_USERNAME_LENGTH = 14;
     this.MIN_USERNAME_LENGTH = 3;
     
@@ -34,6 +34,7 @@ class DSEChat {
     this.editNameBtn = null;
     this.messageInput = null;
     this.sendButton = null;
+    this.charCounter = null;
   }
 
   // Initialize the chat system
@@ -51,6 +52,7 @@ class DSEChat {
     this.editNameBtn = document.getElementById('editNameBtn');
     this.messageInput = document.getElementById('messageInput');
     this.sendButton = document.getElementById('sendButton');
+    this.charCounter = document.getElementById('charCounter');
 
     if (!this.chatMessages || !this.userNameInput || !this.messageInput) {
       console.log('Chat DOM elements not found, skipping initialization');
@@ -102,6 +104,7 @@ class DSEChat {
     this.editNameBtn = null;
     this.messageInput = null;
     this.sendButton = null;
+    this.charCounter = null;
   }
 
   // Generate a random username
@@ -168,6 +171,28 @@ class DSEChat {
       this.addSystemMessage('Message contains suspicious content');
       return false;
     }
+
+    // Enhanced link detection (client-side)
+    const linkPatterns = [
+      /(https?:\/\/[^\s]+)/gi,
+      /(www\.[^\s]+)/gi,
+      /\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\b/gi,
+      /(bit\.ly|tinyurl|t\.co|goo\.gl|discord\.gg)/gi,
+      /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi
+    ];
+
+    for (const pattern of linkPatterns) {
+      if (pattern.test(cleanMessage)) {
+        this.addSystemMessage('Links and domains are not allowed in messages');
+        return false;
+      }
+    }
+
+    // Basic profanity check (client-side preview)
+    if (/\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|porn|nude|naked|nigger|nigga|faggot|retard)\b/i.test(cleanMessage)) {
+      this.addSystemMessage('Message contains inappropriate language');
+      return false;
+    }
     
     return true;
   }
@@ -192,6 +217,12 @@ class DSEChat {
     // Message sending
     this.sendButton.addEventListener('click', this.sendMessage.bind(this));
     this.messageInput.addEventListener('keypress', this.handleMessageKeypress.bind(this));
+    
+    // Character counter
+    if (this.messageInput && this.charCounter) {
+      this.messageInput.addEventListener('input', this.updateCharCounter.bind(this));
+      this.updateCharCounter(); // Initialize counter
+    }
   }
 
   // Remove event listeners
@@ -207,6 +238,7 @@ class DSEChat {
     }
     if (this.messageInput) {
       this.messageInput.removeEventListener('keypress', this.handleMessageKeypress.bind(this));
+      this.messageInput.removeEventListener('input', this.updateCharCounter.bind(this));
     }
   }
 
@@ -275,6 +307,25 @@ class DSEChat {
   handleMessageKeypress(e) {
     if (e.key === 'Enter') {
       this.sendMessage();
+    }
+  }
+
+  // Update character counter
+  updateCharCounter() {
+    if (!this.messageInput || !this.charCounter) return;
+    
+    const currentLength = this.messageInput.value.length;
+    const maxLength = this.MAX_MESSAGE_LENGTH;
+    
+    this.charCounter.textContent = `${currentLength}/${maxLength}`;
+    
+    // Change color based on usage
+    if (currentLength > maxLength * 0.9) {
+      this.charCounter.className = 'text-danger';
+    } else if (currentLength > maxLength * 0.7) {
+      this.charCounter.className = 'text-warning';
+    } else {
+      this.charCounter.className = 'text-muted';
     }
   }
 

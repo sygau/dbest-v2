@@ -198,6 +198,12 @@
             <div class="menu-title">DSE 2026 倒數</div>
           </a>
         </li>
+        <li>
+          <a href="https://dse.best/chat">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #1976d2;">chat</i></div>
+            <div class="menu-title">聊天室 Chatroom</div>
+          </a>
+        </li>
         <li class="menu-label">核心科目</li>
         <li>
           <a href="https://dse.best/chinese">
@@ -2007,6 +2013,72 @@
         }, 400);
       }
     }
+
+    function loadChatJS() {
+      const currentPath = window.location.pathname;
+      if (currentPath === '/chat' || currentPath === '/chat.html' || currentPath.endsWith('/chat') || currentPath.endsWith('/chat.html')) {
+        // Destroy existing chat instance if it exists
+        if (window.dseChat) {
+          window.dseChat.destroy();
+          window.dseChat = null;
+        }
+
+        // Load Ably script if not already loaded
+        if (!window.Ably && !window.AblyLoading) {
+          window.AblyLoading = true;
+          const ablyScript = document.createElement('script');
+          ablyScript.src = 'https://cdn.ably.com/lib/ably.min-1.js';
+          ablyScript.onload = () => {
+            window.AblyLoaded = true;
+            window.AblyLoading = false;
+            loadChatScript();
+          };
+          ablyScript.onerror = () => {
+            console.error('Failed to load Ably script');
+            window.AblyLoading = false;
+          };
+          document.head.appendChild(ablyScript);
+        } else if (window.Ably) {
+          loadChatScript();
+        }
+
+        function loadChatScript() {
+          // Load chat script if not already loaded
+          if (!window.DSEChatLoaded) {
+            const chatScript = document.createElement('script');
+            chatScript.src = 'https://dse.best/assets/js/chat.js';
+            chatScript.onload = () => {
+              window.DSEChatLoaded = true;
+              initializeChat();
+            };
+            chatScript.onerror = () => {
+              console.error('Failed to load chat script');
+            };
+            document.head.appendChild(chatScript);
+          } else {
+            initializeChat();
+          }
+        }
+
+        function initializeChat() {
+          // Check if chat elements exist on the page
+          if (document.getElementById('chatMessages')) {
+            try {
+              window.dseChat = new DSEChat();
+              window.dseChat.init();
+            } catch (error) {
+              console.error('Failed to initialize chat:', error);
+            }
+          }
+        }
+      } else {
+        // Clean up chat if navigating away from chat page
+        if (window.dseChat) {
+          window.dseChat.destroy();
+          window.dseChat = null;
+        }
+      }
+    }
     if (document.readyState === 'complete') {
       initializePage();
     } else {
@@ -2017,6 +2089,7 @@
       loadCountdownJs();
       loadBlogIndexJS();
       loadPostJS();
+      loadChatJS();
     });
   </script>
 </body>

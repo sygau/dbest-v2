@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com https://busuanzi.icodeq.com https://dsebest.disqus.com https://cdn.ably.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: wss:; frame-src https://disqus.com;">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com https://busuanzi.icodeq.com https://dsebest.disqus.com https://cdn.ably.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: wss:; frame-src https://disqus.com;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
@@ -13,13 +14,11 @@
   <!--favicon-->
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <!-- SEO Meta Tags -->
-  <meta name="description"
-    content="聊天室 Chatroom - 與其他DSE學生即時交流學習心得、分享考試技巧、解答疑難。涵蓋所有DSE科目，包括中文、英文、數學、通識及選修科目。">
+  <meta name="description" content="聊天室 Chatroom - 與其他DSE學生即時交流學習心得、分享考試技巧、解答疑難。涵蓋所有DSE科目，包括中文、英文、數學、通識及選修科目。">
   <meta name="robots" content="noindex, nofollow">
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="聊天室 Chatroom - dse.best">
-  <meta property="og:description"
-    content="加入聊天室，與其他DSE學生即時交流學習心得、分享考試技巧、解答疑難。涵蓋所有DSE科目，包括中文、英文、數學、通識及選修科目。">
+  <meta property="og:description" content="加入聊天室，與其他DSE學生即時交流學習心得、分享考試技巧、解答疑難。涵蓋所有DSE科目，包括中文、英文、數學、通識及選修科目。">
   <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png">
   <meta property="og:url" content="https://dse.best/chatroom">
   <meta property="og:type" content="website">
@@ -70,32 +69,90 @@
     "url": "https://dse.best/"
   }
 </script>
-<!-- Vercel Analytics -->
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<!-- Vercel Speed Insights -->
-<script>
-  window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/speed-insights/script.js"></script>
-<!-- PWA Manifest & iOS Meta Tags -->
-<link rel="manifest" href="/manifest.json">
- <link rel="apple-touch-icon" sizes="180x180" href="https://dse.best/assets/images/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="DSEBest">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#0f1535">
-<meta name="format-detection" content="telephone=no, email=no">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta name="apple-touch-callout" content="none">
+  <!-- Vercel Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <!-- PWA Manifest & iOS Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://dse.best/assets/images/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="DSEBest">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#0f1535">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-touch-callout" content="none">
 
-<!-- PWA iOS Styles -->
-<style>body.pwa-ios,body.pwa-ios *{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important;-webkit-tap-highlight-color:transparent!important;scrollbar-width:none!important;-ms-overflow-style:none!important}body.pwa-ios img{-webkit-user-drag:none!important;user-drag:none!important}body.pwa-ios ::-webkit-scrollbar{display:none!important;width:0!important}body.pwa-ios .sidebar-wrapper,body.pwa-ios .sidebar-nav{overflow-y:scroll!important;-webkit-overflow-scrolling:touch!important}body.pwa-ios input,body.pwa-ios textarea{-webkit-user-select:auto!important;user-select:auto!important}body.pwa-ios{overscroll-behavior:contain;touch-action:manipulation;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}body.pwa-ios .ps__rail-x,body.pwa-ios .ps__rail-y,body.pwa-ios .ps__thumb-x,body.pwa-ios .ps__thumb-y{opacity:0!important;display:none!important;width:0!important;height:0!important}body.pwa-ios a,body.pwa-ios button,body.pwa-ios [role="button"],body.pwa-ios input[type="button"],body.pwa-ios input[type="submit"]{-webkit-tap-highlight-color:transparent!important;touch-action:manipulation!important}</style>
+  <!-- PWA iOS Styles -->
+  <style>
+    body.pwa-ios,
+    body.pwa-ios * {
+      -webkit-user-select: none !important;
+      user-select: none !important;
+      -webkit-touch-callout: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important
+    }
 
-<!-- PWA iOS Script -->
-<script>function isIOSStandalone(){const e=window.navigator.userAgent,t=/iPad|iPhone|iPod/.test(e)||/Mac/.test(e)&&navigator.maxTouchPoints>1||!window.MSStream,n=!0===window.navigator.standalone||window.matchMedia&&window.matchMedia("(display-mode: standalone)").matches;return t&&n}function applyPWAiOSNativeFeel(){document.body.classList.add("pwa-ios"),document.documentElement.style.webkitUserSelect="none",document.documentElement.style.userSelect="none",document.body.style.webkitUserSelect="none",document.body.style.userSelect="none",document.documentElement.style.touchAction="manipulation",document.body.style.touchAction="manipulation",document.addEventListener("gesturestart",function(e){return e.preventDefault(),!1},{passive:!1}),document.addEventListener("gesturechange",function(e){return e.preventDefault(),!1},{passive:!1}),document.addEventListener("gestureend",function(e){return e.preventDefault(),!1},{passive:!1});let e=document.querySelector('meta[name="viewport"]');e&&e.setAttribute("content","width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no");const t=document.createElement("meta");t.name="viewport",t.content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",document.head.appendChild(t),document.body.style.overscrollBehavior="none",document.documentElement.style.overscrollBehavior="none",document.body.style.webkitOverflowScrolling="touch";const n=document.createElement("style");n.textContent="::-webkit-scrollbar,::-webkit-scrollbar-track,::-webkit-scrollbar-thumb{display:none!important;width:0!important;height:0!important;background:transparent!important;appearance:none!important}*{scrollbar-width:none!important;-ms-overflow-style:none!important;scrollbar-color:transparent transparent!important}.main-content::-webkit-scrollbar,.main-wrapper::-webkit-scrollbar,main::-webkit-scrollbar{display:none!important;width:0!important;height:0!important;background:transparent!important}.main-content,.main-wrapper,main{-webkit-overflow-scrolling:touch!important;overflow-y:auto!important;scrollbar-width:none!important;-ms-overflow-style:none!important;scroll-behavior:smooth!important}",document.head.appendChild(n);const o=()=>{const e=document.querySelector(".main-content"),t=document.querySelector(".main-wrapper");e&&(e.style.webkitOverflowScrolling="touch",e.style.overflowY="auto",e.style.height="100%",e.style.position="relative",e.style.scrollbarWidth="none",e.style.msOverflowStyle="none"),t&&(t.style.webkitOverflowScrolling="touch",t.style.overflowY="auto",t.style.height="100%",t.style.position="relative",t.style.scrollbarWidth="none",t.style.msOverflowStyle="none"),document.documentElement.style.height="100%",document.documentElement.style.overscrollBehavior="none",document.body.style.height="100%",document.body.style.overscrollBehavior="none",document.body.style.overflowY="auto"};o(),setTimeout(o,100),setTimeout(o,500),document.addEventListener("scroll",function(){requestAnimationFrame(o)},{passive:!0}),window.addEventListener("resize",o,{passive:!0});const l=document.createElement("style");l.innerHTML="*{-webkit-touch-callout:none!important;-webkit-tap-highlight-color:transparent!important}body,html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}a,button,[role=button],input,select,textarea{touch-action:manipulation!important}",document.head.appendChild(l);const s=setInterval(()=>{document.documentElement.style.webkitUserSelect="none",document.documentElement.style.userSelect="none",document.body.style.webkitUserSelect="none",document.body.style.userSelect="none"},2e3);window.addEventListener("unload",()=>{clearInterval(s)})}"loading"===document.readyState?document.addEventListener("DOMContentLoaded",function(){isIOSStandalone()&&applyPWAiOSNativeFeel()}):isIOSStandalone()&&applyPWAiOSNativeFeel(),window.addEventListener("load",function(){isIOSStandalone()&&applyPWAiOSNativeFeel()}),window.addEventListener("orientationchange",function(){setTimeout(()=>{isIOSStandalone()&&applyPWAiOSNativeFeel()},100)});</script>
+    body.pwa-ios img {
+      -webkit-user-drag: none !important;
+      user-drag: none !important
+    }
+
+    body.pwa-ios ::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important
+    }
+
+    body.pwa-ios .sidebar-wrapper,
+    body.pwa-ios .sidebar-nav {
+      overflow-y: scroll !important;
+      -webkit-overflow-scrolling: touch !important
+    }
+
+    body.pwa-ios input,
+    body.pwa-ios textarea {
+      -webkit-user-select: auto !important;
+      user-select: auto !important
+    }
+
+    body.pwa-ios {
+      overscroll-behavior: contain;
+      touch-action: manipulation;
+      -webkit-text-size-adjust: 100% !important;
+      text-size-adjust: 100% !important
+    }
+
+    body.pwa-ios .ps__rail-x,
+    body.pwa-ios .ps__rail-y,
+    body.pwa-ios .ps__thumb-x,
+    body.pwa-ios .ps__thumb-y {
+      opacity: 0 !important;
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important
+    }
+
+    body.pwa-ios a,
+    body.pwa-ios button,
+    body.pwa-ios [role="button"],
+    body.pwa-ios input[type="button"],
+    body.pwa-ios input[type="submit"] {
+      -webkit-tap-highlight-color: transparent !important;
+      touch-action: manipulation !important
+    }
+  </style>
+
+  <!-- PWA iOS Script -->
+  <script>function isIOSStandalone() { const e = window.navigator.userAgent, t = /iPad|iPhone|iPod/.test(e) || /Mac/.test(e) && navigator.maxTouchPoints > 1 || !window.MSStream, n = !0 === window.navigator.standalone || window.matchMedia && window.matchMedia("(display-mode: standalone)").matches; return t && n } function applyPWAiOSNativeFeel() { document.body.classList.add("pwa-ios"), document.documentElement.style.webkitUserSelect = "none", document.documentElement.style.userSelect = "none", document.body.style.webkitUserSelect = "none", document.body.style.userSelect = "none", document.documentElement.style.touchAction = "manipulation", document.body.style.touchAction = "manipulation", document.addEventListener("gesturestart", function (e) { return e.preventDefault(), !1 }, { passive: !1 }), document.addEventListener("gesturechange", function (e) { return e.preventDefault(), !1 }, { passive: !1 }), document.addEventListener("gestureend", function (e) { return e.preventDefault(), !1 }, { passive: !1 }); let e = document.querySelector('meta[name="viewport"]'); e && e.setAttribute("content", "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"); const t = document.createElement("meta"); t.name = "viewport", t.content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover", document.head.appendChild(t), document.body.style.overscrollBehavior = "none", document.documentElement.style.overscrollBehavior = "none", document.body.style.webkitOverflowScrolling = "touch"; const n = document.createElement("style"); n.textContent = "::-webkit-scrollbar,::-webkit-scrollbar-track,::-webkit-scrollbar-thumb{display:none!important;width:0!important;height:0!important;background:transparent!important;appearance:none!important}*{scrollbar-width:none!important;-ms-overflow-style:none!important;scrollbar-color:transparent transparent!important}.main-content::-webkit-scrollbar,.main-wrapper::-webkit-scrollbar,main::-webkit-scrollbar{display:none!important;width:0!important;height:0!important;background:transparent!important}.main-content,.main-wrapper,main{-webkit-overflow-scrolling:touch!important;overflow-y:auto!important;scrollbar-width:none!important;-ms-overflow-style:none!important;scroll-behavior:smooth!important}", document.head.appendChild(n); const o = () => { const e = document.querySelector(".main-content"), t = document.querySelector(".main-wrapper"); e && (e.style.webkitOverflowScrolling = "touch", e.style.overflowY = "auto", e.style.height = "100%", e.style.position = "relative", e.style.scrollbarWidth = "none", e.style.msOverflowStyle = "none"), t && (t.style.webkitOverflowScrolling = "touch", t.style.overflowY = "auto", t.style.height = "100%", t.style.position = "relative", t.style.scrollbarWidth = "none", t.style.msOverflowStyle = "none"), document.documentElement.style.height = "100%", document.documentElement.style.overscrollBehavior = "none", document.body.style.height = "100%", document.body.style.overscrollBehavior = "none", document.body.style.overflowY = "auto" }; o(), setTimeout(o, 100), setTimeout(o, 500), document.addEventListener("scroll", function () { requestAnimationFrame(o) }, { passive: !0 }), window.addEventListener("resize", o, { passive: !0 }); const l = document.createElement("style"); l.innerHTML = "*{-webkit-touch-callout:none!important;-webkit-tap-highlight-color:transparent!important}body,html{-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}a,button,[role=button],input,select,textarea{touch-action:manipulation!important}", document.head.appendChild(l); const s = setInterval(() => { document.documentElement.style.webkitUserSelect = "none", document.documentElement.style.userSelect = "none", document.body.style.webkitUserSelect = "none", document.body.style.userSelect = "none" }, 2e3); window.addEventListener("unload", () => { clearInterval(s) }) } "loading" === document.readyState ? document.addEventListener("DOMContentLoaded", function () { isIOSStandalone() && applyPWAiOSNativeFeel() }) : isIOSStandalone() && applyPWAiOSNativeFeel(), window.addEventListener("load", function () { isIOSStandalone() && applyPWAiOSNativeFeel() }), window.addEventListener("orientationchange", function () { setTimeout(() => { isIOSStandalone() && applyPWAiOSNativeFeel() }, 100) });</script>
 
   <!-- Chatroom custom styles -->
   <style>
@@ -106,7 +163,7 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     /* Chat bubbles */
     .chat-bubble {
       max-width: 80%;
@@ -114,42 +171,51 @@
       border-radius: 1rem;
       color: #fff;
       word-break: break-word;
-      box-shadow: 0 2px 4px rgba(0,0,0,.12);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .12);
       margin-bottom: 1rem;
     }
+
     .chat-bubble.other {
       background: linear-gradient(135deg, #0052cc 0%, #0033a0 100%);
     }
+
     .chat-bubble.mine {
-      background: linear-gradient(135deg,#ff4b2b 0%, #ff416c 100%);
+      background: linear-gradient(135deg, #ff4b2b 0%, #ff416c 100%);
     }
+
     /* Message time styling */
     .chat-bubble .message-time {
       opacity: 0.9;
       color: rgba(255, 255, 255, 0.9);
       font-size: 0.8em;
     }
+
     /* System message colour tweak for better contrast */
     .chat-system-message {
       color: var(--bs-secondary-color);
     }
+
     [data-bs-theme="blue-theme"] .chat-system-message {
-      color: #a4b8ff; /* lighter for dark blue bg */
+      color: #a4b8ff;
+      /* lighter for dark blue bg */
     }
-    
+
     /* Moderator styles */
     .chat-bubble.moderator {
       background: linear-gradient(135deg, #312e14 0%, #ffa500 100%);
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
     }
+
     .moderator-badge {
+      vertical-align: middle;
       display: inline-flex;
       align-items: center;
       margin-left: 4px;
       color: #ffd700;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
+
     .chat-bubble.moderator .moderator-badge {
       color: #fff;
     }
@@ -223,7 +289,7 @@
   </header>
   <!--end top header-->
 
-    <!--start sidebar-->
+  <!--start sidebar-->
   <aside class="sidebar-wrapper">
     <div class="sidebar-header">
       <div class="logo-icon">
@@ -260,6 +326,12 @@
           <a href="https://dse.best/countdown">
             <div class="parent-icon"><i class="material-icons-outlined" style="color: #dc3545;">schedule</i></div>
             <div class="menu-title">DSE 2026 倒數</div>
+          </a>
+        </li>
+        <li>
+          <a href="https://dse.best/chat">
+            <div class="parent-icon"><i class="material-icons-outlined" style="color: #1976d2;">chat</i></div>
+            <div class="menu-title">聊天室 Chatroom</div>
           </a>
         </li>
         <li class="menu-label">核心科目</li>
@@ -384,11 +456,11 @@
             <div class="menu-title">關於我們</div>
           </a>
         </li>
-          <a href="https://dse.best/contact">
-            <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
-            </div>
-            <div class="menu-title">聯絡我們</div>
-          </a>
+        <a href="https://dse.best/contact">
+          <div class="parent-icon"><i class="material-icons-outlined" style="color: #e8eaf6;">contact_support</i>
+          </div>
+          <div class="menu-title">聯絡我們</div>
+        </a>
         </li>
         <li>
           <a href="https://dse.best/disclaimer">
@@ -435,28 +507,37 @@
             <span id="statusText">Connecting…</span>
           </div>
           <!-- Chat messages -->
-          <div id="chatMessages" class="flex-grow-1 overflow-auto border rounded-3 p-3 bg-transparent" style="height:75vh"></div>
+          <div id="chatMessages" class="flex-grow-1 overflow-auto border rounded-3 p-3 bg-transparent"
+            style="height:75vh"></div>
           <!-- Chat input wrapper with responsive layout -->
           <div class="d-flex gap-2">
             <!-- Username input - desktop inline, mobile in modal -->
             <div class="input-group d-none d-md-flex" style="width: 200px;">
-              <input type="text" id="userNameInput" class="form-control" maxlength="14" placeholder="Your name" disabled>
+              <input type="text" id="userNameInput" class="form-control" maxlength="14" placeholder="Your name"
+                disabled>
               <button class="btn btn-outline-secondary" id="editNameBtn" type="button" aria-label="Edit username">
                 <i class="material-icons-outlined">edit</i>
               </button>
             </div>
             <div class="d-block d-md-none">
-              <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#usernameModal">
+              <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal"
+                data-bs-target="#usernameModal">
                 <i class="material-icons-outlined">account_circle</i>
               </button>
             </div>
             <!-- Message input -->
             <div class="input-group flex-grow-1">
-              <input type="text" id="messageInput" class="form-control" placeholder="Type a message…" autocomplete="off">
+              <input type="text" id="messageInput" class="form-control" placeholder="Type a message… (max 150 chars)"
+                autocomplete="off" maxlength="150">
               <button class="btn btn-primary" id="sendButton" type="button" aria-label="Send message">
                 <i class="material-icons-outlined">send</i>
               </button>
             </div>
+          </div>
+
+          <!-- Character counter -->
+          <div class="text-end">
+            <small id="charCounter" class="text-muted">0/150</small>
           </div>
 
           <!-- Username Modal for mobile -->
@@ -469,7 +550,8 @@
                 </div>
                 <div class="modal-body">
                   <div class="input-group">
-                    <input type="text" id="userNameInputMobile" class="form-control" maxlength="14" placeholder="Your name">
+                    <input type="text" id="userNameInputMobile" class="form-control" maxlength="14"
+                      placeholder="Your name">
                     <button class="btn btn-primary" id="saveUsernameBtn" type="button">
                       <i class="material-icons-outlined">save</i>
                     </button>
@@ -575,7 +657,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <!--plugins-->
   <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
-  
+
   <!--main js-->
   <script src="assets/js/main.js"></script>
   <!-- Universal paper links appender -->
@@ -634,15 +716,15 @@
           document.head.appendChild(disqusCountScript);
         } else if (window.DISQUSWIDGETS && typeof window.DISQUSWIDGETS.getCount === 'function') {
           window.DISQUSWIDGETS.getCount({ reset: true });
+        }
       }
     }
-  }
 
     function loadPostJS() {
       // Check if we're on a blog post page (not the blog index)
-      if (window.location.pathname.startsWith('/blog/') && 
-          window.location.pathname !== '/blog/') {
-        
+      if (window.location.pathname.startsWith('/blog/') &&
+        window.location.pathname !== '/blog/') {
+
         // Load Busuanzi view counter script if not already loaded
         if (!window.BusuanziLoaded) {
           const busuanziScript = document.createElement('script');
@@ -652,7 +734,7 @@
           busuanziScript.onload = () => { window.BusuanziLoaded = true; };
           document.head.appendChild(busuanziScript);
         }
-        
+
         // Load Disqus comments script if comments section exists and not already loaded
         setTimeout(() => {
           const disqusThread = document.getElementById('disqus_thread');
@@ -660,14 +742,14 @@
             // Get the current page slug from URL for Disqus configuration
             const pathSegments = window.location.pathname.split('/');
             const slug = pathSegments[pathSegments.length - 1].replace('.html', '');
-            
+
             // Configure Disqus
             window.disqus_config = function () {
               this.page.url = `https://dse.best/blog/${slug}`;
               this.page.identifier = slug;
               this.page.robots = 'noindex, nofollow';
             };
-            
+
             // Load Disqus embed script
             const disqusScript = document.createElement('script');
             disqusScript.src = 'https://dsebest.disqus.com/embed.js';
@@ -758,7 +840,7 @@
       loadCountdownJs();
       loadBlogIndexJS();
       loadPostJS();
-      loadChatJS(); // Handle chat loading/cleanup on navigation
+      loadChatJS();
     });
   </script>
 </body>
