@@ -325,7 +325,7 @@ class DSEChat {
     } else if (currentLength > maxLength * 0.7) {
       this.charCounter.className = 'text-warning';
     } else {
-      this.charCounter.className = 'text-muted';
+      this.charCounter.className = 'text';
     }
   }
 
