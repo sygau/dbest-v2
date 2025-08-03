@@ -1,100 +1,164 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://dse.best/</loc>
+    <lastmod>2025-08-03</lastmod>
     <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://dse.best/about</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://dse.best/countdown</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://dse.best/geography</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://dse.best/math</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://dse.best/chemistry</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://dse.best/biology</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://dse.best/physics</loc>
-    <changefreq>daily</changefreq>
-  </url>
+  
+  <!-- Core DSE Subject Pages - High Priority -->
   <url>
     <loc>https://dse.best/chinese</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://dse.best/english</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dse.best/citizen</loc>
-    <changefreq>daily</changefreq>
+    <loc>https://dse.best/math</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
+  
+  <!-- Science Subjects - High Priority -->
+  <url>
+    <loc>https://dse.best/physics</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/chemistry</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/biology</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Extended Math Modules -->
   <url>
     <loc>https://dse.best/m1</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dse.best/m2</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Liberal Studies & Social Sciences -->
+  <url>
+    <loc>https://dse.best/citizen</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dse.best/economics</loc>
-    <changefreq>daily</changefreq>
+    <loc>https://dse.best/geography</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dse.best/history</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dse.best/chinese-history</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dse.best/economics</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Technology & Arts -->
+  <url>
     <loc>https://dse.best/ict</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dse.best/bafs</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
+  
+  <!-- Interactive Features -->
   <url>
-    <loc>https://dse.best/contact</loc>
+    <loc>https://dse.best/countdown</loc>
+    <lastmod>2025-08-03</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://dse.best/disclaimer</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
-    <loc>https://dse.best/privacy-policy</loc>
-    <changefreq>daily</changefreq>
-  </url>
-  <!-- Blog posts -->
+  
+  <!-- Blog Section -->
   <url>
     <loc>https://dse.best/blog/</loc>
+    <lastmod>2025-08-03</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dse.best/blog/dse-chinese-paper-1</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dse.best/blog/10-useful-ai-tools-for-student-enchantment</loc>
-    <changefreq>daily</changefreq>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Information Pages -->
+  <url>
+    <loc>https://dse.best/about</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/contact</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/disclaimer</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/privacy-policy</loc>
+    <lastmod>2025-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
