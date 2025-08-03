@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Real-time bus arrivals for stop 001272 - Quarry Bay Street, King's Road">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#4299e1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Bus Timer">
+    <link rel="manifest" href="/bustime/manifest.json">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMyZDM3NDgiLz4KPHN2ZyB4PSI0OCIgeT0iNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHA1aCBkPSJNNCAxNmMwIDEuMTEuODkgMiAyIDJoMTJjMS4xMSAwIDItLjg5IDItMlY4YzAtMS4xMS0uODktMi0yLTJINmMtMS4xMSAwLTIgLjg5LTIgMnY4eiIgZmlsbD0iIzQyOTllMSIvPgo8cGF0aCBkPSJNNiA4aDEydjhoLTEyVjh6IiBmaWxsPSIjZjdmYWZjIi8+CjxjaXJjbGUgY3g9IjgiIGN5PSIxOCIgcj0iMiIgZmlsbD0iIzJkMzc0OCIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE4IiByPSIyIiBmaWxsPSIjMmQzNzQ4Ii8+CjwvcGF0aD4KPC9zdmc+Cg==">
+    
     <title>Bus Stop 001272 - Real Time Arrivals</title>
     <style>
         * {
@@ -626,15 +637,23 @@
             async fetchBusData() {
                 try {
                     const response = await fetch(`/api/bus-checker?stop=${this.stopId}`);
-                    const data = await response.json();
                     
-                    if (response.ok) {
-                        this.renderBusData(data);
-                    } else {
-                        this.showError(data.error || 'Failed to fetch bus data');
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
                     }
+                    
+                    const contentType = response.headers.get('content-type');
+                    if (!contentType || !contentType.includes('application/json')) {
+                        const text = await response.text();
+                        throw new Error(`Expected JSON, got: ${text.substring(0, 100)}...`);
+                    }
+                    
+                    const data = await response.json();
+                    this.renderBusData(data);
+                    
                 } catch (error) {
-                    this.showError('Network error: ' + error.message);
+                    console.error('Fetch error:', error);
+                    this.showError('Unable to load bus data: ' + error.message);
                 }
             }
 
@@ -936,6 +955,96 @@
         document.addEventListener('DOMContentLoaded', () => {
             new BusTracker();
         });
+
+        // PWA Installation Support
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button or banner
+            showInstallPromotion();
+        });
+
+        function showInstallPromotion() {
+            // Create install button if it doesn't exist
+            if (!document.getElementById('installBtn')) {
+                const installBtn = document.createElement('button');
+                installBtn.id = 'installBtn';
+                installBtn.innerHTML = '📱 Install App';
+                installBtn.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    left: 20px;
+                    background: #48bb78;
+                    color: white;
+                    border: none;
+                    padding: 10px 15px;
+                    border-radius: 25px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+                    z-index: 1000;
+                    font-size: 0.9rem;
+                `;
+                
+                installBtn.addEventListener('click', async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        
+                        if (outcome === 'accepted') {
+                            console.log('User accepted the install prompt');
+                        }
+                        
+                        deferredPrompt = null;
+                        installBtn.remove();
+                    }
+                });
+                
+                document.body.appendChild(installBtn);
+                
+                // Auto-hide after 10 seconds
+                setTimeout(() => {
+                    if (installBtn.parentNode) {
+                        installBtn.remove();
+                    }
+                }, 10000);
+            }
+        }
+
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register('/bustime/sw.js', {
+                        scope: '/bustime/'
+                    });
+                    console.log('ServiceWorker registered successfully');
+                    
+                    // Update service worker if needed
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // New content available, show update prompt
+                                showUpdatePrompt();
+                            }
+                        });
+                    });
+                } catch (error) {
+                    console.log('ServiceWorker registration failed:', error);
+                }
+            });
+        }
+
+        function showUpdatePrompt() {
+            if (confirm('New version available! Refresh to update?')) {
+                window.location.reload();
+            }
+        }
     </script>
 </body>
 </html>

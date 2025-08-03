@@ -1,0 +1,26 @@
+{
+  "name": "Bus Stop Time Tracker",
+  "short_name": "BTimer",
+  "description": "Real-time bus arrivals tracker",
+  "start_url": "/bustime/",
+  "display": "standalone",
+  "background_color": "#2d3748",
+  "theme_color": "#4299e1",
+  "orientation": "portrait-primary",
+  "scope": "/bustime/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiMyZDM3NDgiLz4KPHN2ZyB4PSI0OCIgeT0iNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KPHA1aCBkPSJNNCAxNmMwIDEuMTEuODkgMiAyIDJoMTJjMS4xMSAwIDItLjg5IDItMlY4YzAtMS4xMS0uODktMi0yLTJINmMtMS4xMSAwLTIgLjg5LTIgMnY4eiIgZmlsbD0iIzQyOTllMSIvPgo8cGF0aCBkPSJNNiA4aDEydjhoLTEyVjh6IiBmaWxsPSIjZjdmYWZjIi8+CjxjaXJjbGUgY3g9IjgiIGN5PSIxOCIgcj0iMiIgZmlsbD0iIzJkMzc0OCIvPgo8Y2lyY2xlIGN4PSIxNiIgY3k9IjE4IiByPSIyIiBmaWxsPSIjMmQzNzQ4Ii8+CjwvcGF0aD4KPC9zdmc+Cg==",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiMyZDM3NDgiLz4KPHN2ZyB4PSIxMjgiIHk9IjEyOCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSI+CjxwYXRoIGQ9Ik00IDE2YzAgMS4xMS44OSAyIDIgMmgxMmMxLjExIDAgMi0uODkgMi0yVjhjMC0xLjExLS44OS0yLTItMkg2Yy0xLjExIDAtMiAuODktMiAydjh6IiBmaWxsPSIjNDI5OWUxIi8+CjxwYXRoIGQ9Ik02IDhoMTJ2OGgtMTJWOHoiIGZpbGw9IiNmN2ZhZmMiLz4KPGNpcmNsZSBjeD0iOCIgY3k9IjE4IiByPSIyIiBmaWxsPSIjMmQzNzQ4Ii8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMTgiIHI9IjIiIGZpbGw9IiMyZDM3NDgiLz4KPC9wYXRoPgo8L3N2Zz4K",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["travel", "navigation", "productivity"],
+  "lang": "en",
+  "dir": "ltr"
+}

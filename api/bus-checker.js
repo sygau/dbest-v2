@@ -1,5 +1,5 @@
 // api/bus-checker.js
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const { stop, lat, lng, radius = 400, route } = req.query;
   
   try {
