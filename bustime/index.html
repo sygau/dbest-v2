@@ -156,6 +156,29 @@
             min-width: 70px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .bus-route.school-route {
+            background: #48bb78;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+            animation: schoolPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes schoolPulse {
+            0%, 100% { 
+                box-shadow: 0 4px 15px rgba(72, 187, 120, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 6px 20px rgba(72, 187, 120, 0.6);
+                transform: scale(1.05);
+            }
+        }
+
+        .bus-card.school-route {
+            border: 2px solid rgba(72, 187, 120, 0.5);
+            background: rgba(72, 187, 120, 0.05);
         }
 
         .bus-destination {
@@ -164,6 +187,24 @@
             color: #f7fafc;
             font-weight: 600;
             font-size: 1.1rem;
+        }
+
+        .bus-card.school-route {
+            border: 2px solid rgba(72, 187, 120, 0.5);
+            background: rgba(72, 187, 120, 0.05);
+        }
+
+        .school-badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .arrivals {
@@ -389,6 +430,9 @@
                 this.countdownInterval = null;
                 this.countdown = 10;
                 
+                // Configure your school routes here
+                this.schoolRoutes = ['2', '2A', '77', '99'];
+                
                 this.elements = {
                     loading: document.getElementById('loading'),
                     busesContainer: document.getElementById('busesContainer'),
@@ -461,8 +505,16 @@
                 this.elements.noBuses.style.display = 'none';
                 this.elements.busesContainer.style.display = 'grid';
 
-                // Sort buses by earliest arrival time
+                // Sort buses: school routes first, then by earliest arrival time
                 const sortedBuses = [...buses].sort((a, b) => {
+                    const aIsSchool = this.schoolRoutes.includes(a.route);
+                    const bIsSchool = this.schoolRoutes.includes(b.route);
+                    
+                    // School routes come first
+                    if (aIsSchool && !bIsSchool) return -1;
+                    if (!aIsSchool && bIsSchool) return 1;
+                    
+                    // Within same category, sort by arrival time
                     const aTime = a.nextBuses?.[0]?.remainingTime || 999;
                     const bTime = b.nextBuses?.[0]?.remainingTime || 999;
                     return aTime - bTime;
@@ -476,12 +528,16 @@
             createBusCard(bus) {
                 const destination = bus.nextBuses?.[0]?.destination || 'Unknown destination';
                 const arrivals = (bus.nextBuses || []).slice(0, 3);
+                const isSchoolRoute = this.schoolRoutes.includes(bus.route);
 
                 return `
-                    <div class="bus-card">
+                    <div class="bus-card ${isSchoolRoute ? 'school-route' : ''}">
                         <div class="bus-header">
-                            <div class="bus-route">${bus.route}</div>
-                            <div class="bus-destination">${destination}</div>
+                            <div class="bus-route ${isSchoolRoute ? 'school-route' : ''}">${bus.route}</div>
+                            <div class="bus-destination">
+                                ${destination}
+                                ${isSchoolRoute ? '<span class="school-badge">🎓 School</span>' : ''}
+                            </div>
                         </div>
                         <div class="arrivals">
                             ${arrivals.map(arrival => this.createArrivalItem(arrival)).join('')}
