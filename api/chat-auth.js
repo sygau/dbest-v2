@@ -399,8 +399,20 @@ function moderateContent(text, clientId, ip, username) {
 
   // 6. Enhanced profanity check (much stricter)
   const profanityPatterns = [
-    // Basic profanity (English)
-    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|porn|nude|naked)\b/i,
+    // Basic profanity (English) - expanded
+    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|intercourse|nude|naked|penis|vagina|anal|oral|masturbate|orgasm|cumshot|blowjob|handjob|dildo|vibrator)\b/i,
+    
+    // Additional strong profanity
+    /\b(motherfucker|asshole|douchebag|jackass|dickhead|shithead|fuckface|cocksucker|twat|prick|knobhead|tosser|wanker|bellend|pillock|minger|scrubber|slag)\b/i,
+    
+    // Sexual content
+    /\b(horny|kinky|fetish|bdsm|threesome|gangbang|bukkake|creampie|deepthroat|rimjob|69|fisting|squirt|milf|gilf|cougar|escort|prostitute|hooker)\b/i,
+    
+    // Adult websites and platforms
+    /\b(onlyfans|xvideos|redtube|youjizz|xhamster|spankwire|chaturbate|cam4|livejasmin|missav|thisav|brazzers|jav|javhd|hentai|hanime|nhentai|loli|rule34|xnxx|redtube|youporn|eporner)\b/i,
+
+    // Body parts (vulgar)
+    /\b(ballsack|nutsack|scrotum|clitoris|labia|areola|nipples|butthole|anus|rectum|pubic|genital|erection|boner)\b/i,
     
     // Leetspeak and obfuscated variants
     /\b\w*[f][^a-z]*[u][^a-z]*[c][^a-z]*[k]\w*\b/i,
@@ -414,15 +426,26 @@ function moderateContent(text, clientId, ip, username) {
     /\b\w*sh[1!]t\w*\b/i,
     /\b\w*b[1!]tch\w*\b/i,
     /\b\w*[4@]s{2,}\w*\b/i,
+    /\b\w*p[0o]rn\w*\b/i,
+    /\bs[3e]x\b/i, // Fixed: more specific to avoid catching "test"
     
-    // Chinese profanity (basic)
-    /\b(他媽的|幹你娘|操你媽|去死|白癡|智障|腦殘|垃圾|廢物)\b/i,
+    // Chinese profanity (Mandarin)
+    /\b(他媽的|幹你娘|操你媽|去死|白癡|智障|腦殘|垃圾|廢物|幹|操|靠北|靠腰|機掰|雞掰|屌|懶叫|鳥|屁眼|婊子|臭婊子|賤人|死人頭|王八蛋|混蛋|畜生|禽獸|狗屎|狗娘養的|傻逼|傻瓜|傻屄|狗日的|你妹|草泥马|日你妈|死全家|滾蛋|死肥豬|二逼|他妈的|变态|我操|我靠|操你妈|操你祖宗十八代|死肥猪|滚|滚开|滚蛋|笨蛋|臭鸡蛋)\b/i,
+    
+    // Cantonese profanity (Hong Kong)
+    /\b(屌你|屌|瘀|閪|西|撚|柒頭|仆街|仆你個街|死仔包|死八婆|鬼佬|死鬼佬|死開|收皮|執嘢|搵笨|搵死|食屎|食蕉|碌葛|九唔搭八|頂你|頂你個肺|戇居|低能|白痴|戇鳩|傻瓜|蠢材|衰仔|衰佬|衰婆|你老母|屌你老母|你阿媽|屌你阿媽|死雞|死豬|死牛|死狗|屎忽鬼|屎坑婆|屎窟鬼|雞|鳩|撚樣|撚嘢|鳩嘢|柒嘢|西嘢|閪嘢|哨牙|爛牙|爛舌頭|含撚|含鳩|含西|去死啦|死啦|仆你|推你|屌機|撚機|鳩機|柒機|西機|閪機)\b/i,
+    
+    // Cantonese romanization variants
+    /\b(diu|dllm|sldpk|dnlm|dlnm|dn|sb3|on9|6uo|onl79|on99|0n9|seven|onnine)\b/i,
+    
+    // More Cantonese (traditional characters and variants)
+    /\b(戇撚|戇鳩|撚頭|撚仔|鳩仔|西仔|閪仔|柒仔|戇豬|蠢豬|低撚能|撚低能|鳩低能|死撚仔|死鳩仔|死西仔|死閪仔|死柒仔|撚樣衰|鳩樣衰|西樣衰|閪樣衰|柒樣衰|屌你撚|屌你鳩|屌你西|屌你閪|屌你柒|含撚包|含鳩包|含西包|含閪包|含柒包|屌撚你|屌鳩你|屌西你|屌閪你|屌柒你|PK|仆街仔|仆街死|咸濕|妖|神經病|唔該死|死扑街|戇屎|慳啲啦|撈撈|搵扑街|阮囡|臭雞|臭閪|屎忽|死屍頭|屌屎)\b/i,
     
     // Hate speech and slurs
-    /\b(nigger|nigga|faggot|retard|nazi|hitler|kill\s*yourself|kys|suicide)\b/i,
+    /\b(nigger|faggot|retard|nazi|hitler|kill\s*yourself|kys|suicide|chink|gook|spic|wetback|beaner|cracker|honky|kike|jap|raghead|towelhead|sandnigger|camel\s*jockey)\b/i,
     
     // Drug references
-    /\b(cocaine|heroin|meth|weed|marijuana|cannabis|drug|drugs|高|ice|crack)\b/i,
+    /\b(cocaine|heroin|meth|weed|marijuana|cannabis|drug|drugs|ice|crack|ecstasy|molly|mdma|lsd|acid|shrooms|mushrooms|ketamine|special\s*k|opium|fentanyl|oxy|xanax|adderall|ritalin|dope|pot|ganja|hash|blunt|joint|bong|pipe|needle|syringe|dealer|pusher)\b/i,
     
     // Spam-like repetitive patterns
     /(.)\1{5,}/i, // 6+ repeated characters
@@ -431,7 +454,27 @@ function moderateContent(text, clientId, ip, username) {
     // Common bypass attempts
     /[f]+[u\*\-_]*[c]+[k\*\-_]+/i,
     /[s]+[h\*\-_]*[i\*\-_]*[t]+/i,
-    /[b]+[i\*\-_]*[t\*\-_]*[c]+[h\*\-_]*/i
+    /[b]+[i\*\-_]*[t\*\-_]*[c]+[h\*\-_]*/i,
+    /[d]+[i\*\-_]*[u\*\-_]+/i,
+    /[p]+[o\*\-_]*[r]+[n\*\-_]*/i,
+    
+    // Character substitution patterns
+    /\b\w*[ph]+[4@a]*[gg]*[oò0ó]+[t7]+\w*\b/i, // faggot variants
+    /\b\w*[r3e]+[t7]+[4@a]+[r3e]*[d]+\w*\b/i, // retard variants
+    /\b\w*[n]+[1il!]+[g9]+[g9]+[3ea]+[r3e]\w*\b/i, // racial slur variants
+    
+    // Asterisk/symbol bypass attempts
+    /\bf\*+u\*+c\*+k\b/i,
+    /\bs\*+h\*+i\*+t\b/i,
+    /\bb\*+i\*+t\*+c\*+h\b/i,
+    /\ba\*+s\*+s\b/i,
+    /\bp\*+o\*+r\*+n\b/i,
+    /\bd\*+a\*+m\*+n\b/i,
+    
+    // Unicode and special character bypass attempts
+    /[ḟƒ]+[ùúûüũūŭů]+[çćĉċč]+[ķk]+/i, // f*ck with unicode
+    /[śŝşšș]+[ĥħ]+[ìíîïĩīĭį]+[ţťŧ]+/i, // sh*t with unicode
+    /[ḃƀ]+[ìíîïĩīĭį]+[ţťŧ]+[çćĉċč]+[ĥħ]+/i // b*tch with unicode
   ];
 
   for (const pattern of profanityPatterns) {
