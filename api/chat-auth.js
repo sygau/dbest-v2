@@ -7,7 +7,7 @@ const violationCounts = new Map();
 
 // Moderator settings
 const MOD_ID = process.env.MOD_ID || 'YOUR_CLIENT_ID';
-const MOD_IP = '219.76.84.8'; // Trusted moderator IP
+const MOD_IP = '119.237.203.252'; // Trusted moderator IP
 
 // Helper function to check if user is moderator
 function isModerator(clientId, ip) {
@@ -389,7 +389,7 @@ export default async function handler(req, res) {
                 await channel.publish('message', {
                   id: `purge-${now}-${i}`,
                   clientId: 'SYSTEM',
-                  username: 'System',
+                  sender: 'System',  // Changed from 'username' to 'sender'
                   text: placeholderMessages[i % placeholderMessages.length],
                   timestamp: Date.now(),
                   isModerator: true,
@@ -507,7 +507,7 @@ export default async function handler(req, res) {
       // Create sanitized message object
       const sanitizedMessage = {
         clientId: cleanClientId,
-        username: cleanUsername,
+        sender: cleanUsername,  // Changed from 'username' to 'sender' to match client expectations
         text: modResult.cleanText,
         timestamp: Date.now()
       };
