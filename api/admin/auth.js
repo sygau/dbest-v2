@@ -30,7 +30,11 @@ export default async function handler(req, res) {
                 });
             }
 
-            if (ADMIN_CREDENTIALS[username] && ADMIN_CREDENTIALS[username] === password) {
+            // Debug logging (remove in production)
+            console.log('Login attempt:', { username, password: password ? '[REDACTED]' : 'empty' });
+            console.log('Available credentials:', Object.keys(ADMIN_CREDENTIALS));
+
+            if (ADMIN_CREDENTIALS.hasOwnProperty(username) && ADMIN_CREDENTIALS[username] === password) {
                 // Create a simple token (username + timestamp + signature)
                 const timestamp = Date.now();
                 const payload = `${username}:${timestamp}`;
@@ -160,7 +164,7 @@ export function verifyAdminAuth(req) {
         }
 
         // Check if username is valid
-        if (!ADMIN_CREDENTIALS[username]) {
+        if (!ADMIN_CREDENTIALS.hasOwnProperty(username)) {
             return { authenticated: false, error: 'Invalid user' };
         }
 
