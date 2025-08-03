@@ -103,13 +103,55 @@ async function getBusRoute(route) {
 // Get buses at specific stop
 async function getBusesAtStop(stopId) {
   try {
-    // Get all available routes for this stop by checking multiple bus companies
-    const busData = [];
+    // Predefined routes for stop 001272 (organized by priority)
+    const routeConfig = {
+      // Main/most common priority + school routes
+      priority: ['2', '2A', '77', '99', '85', '85A', '8H', '81', '81A'],
+      // Common for outings/travel
+      common: ['722', '18X', '82'],
+      // School routes but rare
+      schoolRare: ['307P', '678'],
+      // Less frequently used
+      occasional: ['19P', '302A', '33X', '77A', 'A12', 'N8X', 'NA12']
+    };
     
-    // Check Citybus (CTB) routes
-    const ctbRoutes = await getAvailableRoutesAtStop(stopId, 'CTB');
-    for (const route of ctbRoutes) {
-      const etaData = await getBusETA(stopId, route, 'CTB');
+    // Flatten all routes into a single array
+    const allRoutes = [
+      ...routeConfig.priority,
+      ...routeConfig.common, 
+      ...routeConfig.schoolRare,
+      ...routeConfig.occasional
+    ];
+    
+    const busData = [];
+    const unavailableRoutes = [];
+    
+    // Check each route for active service
+    for (const route of allRoutes) {
+      try {
+        const etaData = await getBusETA(stopId, route, 'CTB');
+        
+        if (etaData.length > 0) {
+          busData.push({
+            route,
+            company: 'CTB',
+            stopId,
+            stopName: `Stop ${stopId}`,
+            nextBuses: etaData.slice(0, 3).map(bus => ({
+              eta: bus.eta,
+              remainingTime: calculateMinutes(bus.eta),
+              remarks: bus.rmk_en || 'On time',
+              destination: bus.dest_en
+            }))
+          });
+        } else {
+          unavailableRoutes.push(route);
+        }
+      } catch (error) {
+        unavailableRoutes.push(route);
+        continue;
+      }
+    }
       
       if (etaData.length > 0) {
         busData.push({
@@ -127,71 +169,10 @@ async function getBusesAtStop(stopId) {
       }
     }
     
-    // Check New World First Bus (NWFB) routes
-    const nwfbRoutes = await getAvailableRoutesAtStop(stopId, 'NWFB');
-    for (const route of nwfbRoutes) {
-      const etaData = await getBusETA(stopId, route, 'NWFB');
-      
-      if (etaData.length > 0) {
-        busData.push({
-          route,
-          company: 'NWFB',
-          stopId,
-          stopName: `Stop ${stopId}`,
-          nextBuses: etaData.slice(0, 3).map(bus => ({
-            eta: bus.eta,
-            remainingTime: calculateMinutes(bus.eta),
-            remarks: bus.rmk_en || 'On time',
-            destination: bus.dest_en
-          }))
-        });
-      }
-    }
-    
     return busData;
     
   } catch (error) {
     console.warn(`Error fetching stop ${stopId}:`, error.message);
-    return [];
-  }
-}
-
-// Get all available routes at a specific stop
-async function getAvailableRoutesAtStop(stopId, company) {
-  try {
-    // Common routes that might serve most stops - we'll test these
-    const commonRoutes = [
-      '1', '2', '2A', '2B', '2X', '3', '4', '5', '5B', '5X', '6', '6A', '6X', '7', '8', '8P', '8S', '8X', '9', '10',
-      '11', '12', '12A', '12M', '13', '14', '15', '15B', '16', '16M', '17', '18', '18P', '18X', '19', '20',
-      '21', '22', '23', '23B', '24', '25', '25A', '26', '27', '28', '29', '30', '30X', '31', '32', '33', '33X',
-      '34', '35', '36', '37', '38', '39', '40', '40M', '40P', '41', '41A', '42', '43', '43M', '44', '45',
-      '46', '46X', '47', '48', '49', '49X', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59',
-      '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '72A', '73', '74',
-      '75', '76', '77', '78', '79', '80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
-      '91', '92', '93', '94', '95', '96', '97', '98', '99', '100', '101', '102', '103', '104', '105',
-      '106', '107', '108', '109', '110', '111', '112', '113', '114', '115', '116', '117', '118', '119', '120',
-      '170', '171', '172', '260', '590', '595', '629', '671', '681', '682', '690', '694', '722', '780', '788', '789', '792', '796'
-    ];
-    
-    const availableRoutes = [];
-    
-    // Test each route to see if it serves this stop
-    for (const route of commonRoutes) {
-      try {
-        const etaData = await getBusETA(stopId, route, company);
-        if (etaData.length > 0) {
-          availableRoutes.push(route);
-        }
-      } catch (error) {
-        // Route doesn't exist or doesn't serve this stop, continue
-        continue;
-      }
-    }
-    
-    return availableRoutes;
-    
-  } catch (error) {
-    console.warn(`Error getting routes for stop ${stopId} (${company}):`, error.message);
     return [];
   }
 }

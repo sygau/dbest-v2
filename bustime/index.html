@@ -207,6 +207,99 @@
             letter-spacing: 0.5px;
         }
 
+        .overview-section {
+            background: rgba(45, 55, 72, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .overview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .overview-title {
+            color: #f7fafc;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .school-filter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        .school-filter input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #48bb78;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .overview-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(74, 85, 104, 0.4);
+            border-radius: 10px;
+            border-left: 4px solid #4299e1;
+        }
+
+        .overview-item.school-route {
+            border-left-color: #48bb78;
+            background: rgba(72, 187, 120, 0.1);
+        }
+
+        .overview-route {
+            font-weight: bold;
+            color: #f7fafc;
+            font-size: 1rem;
+        }
+
+        .overview-route.school-route {
+            color: #48bb78;
+        }
+
+        .overview-time {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .overview-time.arriving-soon {
+            color: #48bb78;
+            animation: pulse 2s infinite;
+        }
+
+        .overview-time.delayed {
+            color: #ed8936;
+        }
+
+        .unavailable-notice {
+            background: rgba(237, 137, 54, 0.1);
+            border: 1px solid rgba(237, 137, 54, 0.3);
+            color: #ed8936;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
         .arrivals {
             display: grid;
             gap: 10px;
@@ -358,6 +451,16 @@
                 right: 10px;
                 font-size: 0.7rem;
             }
+
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .overview-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -405,6 +508,18 @@
 
         <div id="alerts" class="alerts"></div>
 
+        <div id="overviewSection" class="overview-section" style="display: none;">
+            <div class="overview-header">
+                <div class="overview-title">📊 Quick Overview</div>
+                <div class="school-filter">
+                    <input type="checkbox" id="schoolOnlyFilter">
+                    <label for="schoolOnlyFilter">🎓 School buses only</label>
+                </div>
+            </div>
+            <div id="unavailableNotice" class="unavailable-notice" style="display: none;"></div>
+            <div id="overviewGrid" class="overview-grid"></div>
+        </div>
+
         <div id="loading" class="loading">
             <div class="loading-spinner"></div>
             <div>Loading bus information...</div>
@@ -431,7 +546,22 @@
                 this.countdown = 10;
                 
                 // Configure your school routes here
-                this.schoolRoutes = ['2', '2A', '77', '99'];
+                this.schoolRoutes = ['2', '2A', '77', '99', '85', '85A', '8H', '81', '81A', '307P', '678'];
+                
+                // All predefined routes
+                this.allRoutes = [
+                    // Main/most common priority
+                    '2', '2A', '77', '99', '85', '85A', '8H', '81', '81A',
+                    // Common for outings/travel
+                    '722', '18X', '82',
+                    // School routes but rare
+                    '307P', '678',
+                    // Less frequently used
+                    '19P', '302A', '33X', '77A', 'A12', 'N8X', 'NA12'
+                ];
+                
+                // Load school filter preference from localStorage
+                this.schoolOnlyMode = localStorage.getItem('schoolOnlyFilter') === 'true';
                 
                 this.elements = {
                     loading: document.getElementById('loading'),
@@ -441,7 +571,11 @@
                     serviceStatus: document.getElementById('serviceStatus'),
                     lastUpdated: document.getElementById('lastUpdated'),
                     countdownEl: document.getElementById('countdown'),
-                    refreshBtn: document.getElementById('refreshBtn')
+                    refreshBtn: document.getElementById('refreshBtn'),
+                    overviewSection: document.getElementById('overviewSection'),
+                    overviewGrid: document.getElementById('overviewGrid'),
+                    schoolFilter: document.getElementById('schoolOnlyFilter'),
+                    unavailableNotice: document.getElementById('unavailableNotice')
                 };
 
                 this.init();
@@ -449,6 +583,7 @@
 
             async init() {
                 this.setupRefreshButton();
+                this.setupSchoolFilter();
                 await this.fetchBusData();
                 this.startAutoRefresh();
             }
@@ -456,6 +591,22 @@
             setupRefreshButton() {
                 this.elements.refreshBtn.addEventListener('click', () => {
                     this.manualRefresh();
+                });
+            }
+
+            setupSchoolFilter() {
+                // Set initial state
+                this.elements.schoolFilter.checked = this.schoolOnlyMode;
+                
+                // Add event listener
+                this.elements.schoolFilter.addEventListener('change', (e) => {
+                    this.schoolOnlyMode = e.target.checked;
+                    localStorage.setItem('schoolOnlyFilter', this.schoolOnlyMode.toString());
+                    
+                    // Re-render with current data if available
+                    if (this.lastBusData) {
+                        this.renderBusData(this.lastBusData);
+                    }
                 });
             }
 
@@ -488,6 +639,7 @@
             }
 
             renderBusData(data) {
+                this.lastBusData = data; // Store for filter changes
                 this.hideLoading();
                 this.updateServiceStatus(data.serviceStatus);
                 this.renderAlerts(data.alerts || []);
@@ -498,15 +650,119 @@
                     return;
                 }
 
+                // Check for unavailable routes
+                this.checkUnavailableRoutes(data.buses);
+                
+                // Render overview and detailed sections
+                this.renderOverview(data.buses);
                 this.renderBuses(data.buses);
             }
 
+            checkUnavailableRoutes(availableBuses) {
+                const availableRoutes = availableBuses.map(bus => bus.route);
+                const unavailableRoutes = this.allRoutes.filter(route => 
+                    !availableRoutes.includes(route)
+                );
+
+                if (unavailableRoutes.length > 0) {
+                    this.elements.unavailableNotice.style.display = 'block';
+                    this.elements.unavailableNotice.innerHTML = `
+                        <strong>⚠️ Currently Unavailable:</strong> 
+                        Routes ${unavailableRoutes.join(', ')} are not running or have no upcoming arrivals.
+                    `;
+                } else {
+                    this.elements.unavailableNotice.style.display = 'none';
+                }
+            }
+
+            renderOverview(buses) {
+                this.elements.overviewSection.style.display = 'block';
+                
+                // Filter buses based on school-only mode
+                const filteredBuses = this.schoolOnlyMode 
+                    ? buses.filter(bus => this.schoolRoutes.includes(bus.route))
+                    : buses;
+
+                if (filteredBuses.length === 0 && this.schoolOnlyMode) {
+                    this.elements.overviewGrid.innerHTML = `
+                        <div style="grid-column: 1/-1; text-align: center; color: #a0aec0; padding: 20px;">
+                            🎓 No school buses currently available
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Sort buses: school routes first, then by earliest arrival time
+                const sortedBuses = [...filteredBuses].sort((a, b) => {
+                    const aIsSchool = this.schoolRoutes.includes(a.route);
+                    const bIsSchool = this.schoolRoutes.includes(b.route);
+                    
+                    if (aIsSchool && !bIsSchool) return -1;
+                    if (!aIsSchool && bIsSchool) return 1;
+                    
+                    const aTime = a.nextBuses?.[0]?.remainingTime || 999;
+                    const bTime = b.nextBuses?.[0]?.remainingTime || 999;
+                    return aTime - bTime;
+                });
+
+                this.elements.overviewGrid.innerHTML = sortedBuses
+                    .map(bus => this.createOverviewItem(bus))
+                    .join('');
+            }
+
+            createOverviewItem(bus) {
+                const nextBus = bus.nextBuses?.[0];
+                const minutes = nextBus?.remainingTime || 999;
+                const isSchoolRoute = this.schoolRoutes.includes(bus.route);
+                const isArriving = minutes <= 3;
+                const isDelayed = minutes > 15;
+
+                let timeText = '';
+                if (minutes === 999) {
+                    timeText = 'No data';
+                } else if (minutes === 0) {
+                    timeText = 'Arriving';
+                } else if (minutes === 1) {
+                    timeText = '1 min';
+                } else {
+                    timeText = `${minutes} mins`;
+                }
+
+                const timeClass = isArriving ? 'arriving-soon' : (isDelayed ? 'delayed' : '');
+
+                return `
+                    <div class="overview-item ${isSchoolRoute ? 'school-route' : ''}">
+                        <div class="overview-route ${isSchoolRoute ? 'school-route' : ''}">${bus.route}</div>
+                        <div class="overview-time ${timeClass}">${timeText}</div>
+                    </div>
+                `;
+            }
+
             renderBuses(buses) {
+                // Filter buses based on school-only mode
+                const filteredBuses = this.schoolOnlyMode 
+                    ? buses.filter(bus => this.schoolRoutes.includes(bus.route))
+                    : buses;
+
+                if (filteredBuses.length === 0) {
+                    if (this.schoolOnlyMode) {
+                        this.elements.busesContainer.style.display = 'none';
+                        this.elements.noBuses.style.display = 'block';
+                        this.elements.noBuses.innerHTML = `
+                            <h3>🎓 No school buses available</h3>
+                            <p>No school bus services found at the moment. Try turning off the school filter to see all buses.</p>
+                        `;
+                    } else {
+                        this.showNoBuses();
+                    }
+                    return;
+                }
+
                 this.elements.noBuses.style.display = 'none';
                 this.elements.busesContainer.style.display = 'grid';
 
                 // Sort buses: school routes first, then by earliest arrival time
-                const sortedBuses = [...buses].sort((a, b) => {
+                const sortedBuses = [...filteredBuses].sort((a, b) => {
                     const aIsSchool = this.schoolRoutes.includes(a.route);
                     const bIsSchool = this.schoolRoutes.includes(b.route);
                     
