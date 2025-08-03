@@ -2781,9 +2781,8 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
 
 /* Moderator styles */
 .chat-bubble.moderator {
-  background: linear-gradient(135deg, #312e14 0%, #ffa500 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, #252314 0%, #ffa500 100%)
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .moderator-badge {
