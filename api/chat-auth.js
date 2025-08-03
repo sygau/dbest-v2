@@ -5,6 +5,121 @@ const rateLimits = new Map();
 const userIPs = new Map();
 const violationCounts = new Map();
 
+// Logflare configuration
+const LOGFLARE_API_KEY = process.env.LOGFLARE_API_KEY || '7MnWPFtPMj28';
+const LOGFLARE_SOURCE_ID = process.env.LOGFLARE_SOURCE_ID || '4cd60bba-acd6-4e2b-83f6-0271b53350db';
+const LOGFLARE_ENDPOINT = `https://api.logflare.app/logs?source=${LOGFLARE_SOURCE_ID}`;
+
+// Enhanced logging with Logflare using fetch
+async function logToLogflare(event, metadata = {}) {
+  if (!LOGFLARE_API_KEY || LOGFLARE_API_KEY === 'YOUR_LOGFLARE_API_KEY') {
+    console.log('LOGFLARE_EVENT:', JSON.stringify({ event, metadata }, null, 2));
+    return;
+  }
+
+  try {
+    const logEntry = {
+      message: event,
+      metadata: {
+        timestamp: new Date().toISOString(),
+        service: 'dse-chat',
+        ...metadata
+      }
+    };
+
+    // Create AbortController for timeout (better compatibility)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+    const response = await fetch(LOGFLARE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'X-API-KEY': LOGFLARE_API_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(logEntry),
+      signal: controller.signal
+    });
+
+    clearTimeout(timeoutId);
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Failed to log to Logflare:', error.message);
+    // Fallback to console logging
+    console.log('LOGFLARE_EVENT:', JSON.stringify({ event, metadata }, null, 2));
+  }
+}
+
+// Device detection helper
+function detectDevice(userAgent) {
+  if (!userAgent) return 'Unknown';
+  
+  const ua = userAgent.toLowerCase();
+  
+  // Mobile devices
+  if (ua.includes('mobile') || ua.includes('android') || ua.includes('iphone') || ua.includes('ipod')) {
+    if (ua.includes('android')) return 'Android Mobile';
+    if (ua.includes('iphone')) return 'iPhone';
+    if (ua.includes('ipod')) return 'iPod';
+    return 'Mobile';
+  }
+  
+  // Tablets
+  if (ua.includes('tablet') || ua.includes('ipad')) {
+    if (ua.includes('ipad')) return 'iPad';
+    return 'Tablet';
+  }
+  
+  // Desktop browsers
+  if (ua.includes('windows')) return 'Windows Desktop';
+  if (ua.includes('macintosh') || ua.includes('mac os')) return 'Mac Desktop';
+  if (ua.includes('linux')) return 'Linux Desktop';
+  if (ua.includes('chromeos')) return 'Chrome OS';
+  
+  return 'Desktop';
+}
+
+// IP geolocation helper using fetch
+async function getGeolocation(ip) {
+  try {
+    // Skip private/local IPs
+    if (ip === '127.0.0.1' || ip === '::1' || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
+      return { country: 'Local', region: 'Local', city: 'Local' };
+    }
+    
+    // Create AbortController for timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
+    
+    const response = await fetch(`http://ip-api.com/json/${ip}?fields=country,regionName,city,status`, {
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      return {
+        country: data.country || 'Unknown',
+        region: data.regionName || 'Unknown',
+        city: data.city || 'Unknown'
+      };
+    }
+  } catch (error) {
+    console.warn('Geolocation lookup failed:', error.message);
+  }
+  
+  return { country: 'Unknown', region: 'Unknown', city: 'Unknown' };
+}
+
 // Moderator settings
 const MOD_ID = process.env.MOD_ID || 'YOUR_CLIENT_ID';
 const MOD_IP = '119.237.203.252'; // Trusted moderator IP
@@ -24,7 +139,9 @@ const MOD_COMMANDS = {
   help: /^\/help$/i,         // /help - show available commands
   purge: /^\/purge$/i,       // /purge - clear chat with placeholder messages
   whois: /^\/whois (\S+)$/i, // /whois username - get user's client ID
-  listbans: /^\/listbans$/i  // /listbans - show all banned users and IPs
+  listbans: /^\/listbans$/i, // /listbans - show all banned users and IPs
+  online: /^\/online$/i,     // /online - show currently active users
+  stats: /^\/stats$/i        // /stats - show user statistics
 };
 
 // Rate limit settings
@@ -45,6 +162,53 @@ const blockedUsers = new Map();
 const blockedIPs = new Map();
 // Track fingerprinting data to detect ban evasion
 const userFingerprints = new Map();
+
+// Historical user data for moderation purposes (keeps data longer)
+const userHistory = new Map();
+
+// Clean up inactive users and log leave events
+function cleanupInactiveUsers() {
+  const now = Date.now();
+  const INACTIVE_THRESHOLD = 5 * 60 * 1000; // 5 minutes
+  const HISTORY_RETENTION = 24 * 60 * 60 * 1000; // Keep history for 24 hours
+
+  for (const [clientId, userData] of userIPs.entries()) {
+    if (now - userData.lastSeen > INACTIVE_THRESHOLD) {
+      // Log user leave
+      logToLogflare('user_leave', {
+        event_type: 'user_leave',
+        client_id: clientId,
+        username: userData.username,
+        ip_address: userData.ip,
+        device_info: userData.deviceInfo || 'Unknown',
+        geography: userData.geoData || { country: 'Unknown', region: 'Unknown', city: 'Unknown' },
+        session_duration: now - (userData.firstSeen || userData.lastSeen),
+        leave_reason: 'inactive_timeout',
+        timestamp: new Date().toISOString()
+      });
+      
+      // Move to historical data instead of deleting completely
+      userHistory.set(clientId, {
+        ...userData,
+        leftAt: now,
+        leftReason: 'inactive_timeout'
+      });
+      
+      // Remove from active users
+      userIPs.delete(clientId);
+    }
+  }
+  
+  // Clean up old historical data (older than 24 hours)
+  for (const [clientId, userData] of userHistory.entries()) {
+    if (userData.leftAt && (now - userData.leftAt > HISTORY_RETENTION)) {
+      userHistory.delete(clientId);
+    }
+  }
+}
+
+// Run cleanup every 2 minutes
+setInterval(cleanupInactiveUsers, 2 * 60 * 1000);
 
 // Enhanced ban check function with IP-level enforcement
 function isUserBanned(clientId, ip) {
@@ -158,6 +322,164 @@ async function logModeration(clientId, ip, username, message, reason, action) {
   const timestamp = new Date().toISOString();
   const logEntry = `[${timestamp}] ${action}: ${username} (${clientId}) from ${ip}\nMessage: ${message}\nReason: ${reason}`;
   console.log('MODERATION_LOG:', logEntry);
+}
+
+// Username moderation function
+async function moderateUsername(username, clientId, ip) {
+  // Skip moderation for moderators entirely
+  if (isModerator(clientId, ip)) {
+    return {
+      isClean: true,
+      reason: null,
+      cleanUsername: username
+    };
+  }
+
+  // Ensure username is a string and trim it
+  const cleanUsername = String(username || '').trim();
+  
+  if (!cleanUsername) {
+    return {
+      isClean: false,
+      reason: 'Username cannot be empty'
+    };
+  }
+
+  // Length validation
+  if (cleanUsername.length > 14 || cleanUsername.length < 3) {
+    return {
+      isClean: false,
+      reason: 'Username must be 3-14 characters long'
+    };
+  }
+
+  // Check for HTML/script tags
+  const hasHTML = /<[^>]*>/.test(cleanUsername);
+  if (hasHTML) {
+    return {
+      isClean: false,
+      reason: 'HTML tags are not allowed in usernames',
+      severity: 'high'
+    };
+  }
+
+  // Check for JavaScript-like content
+  const hasJS = /(javascript|script|eval|function|alert|document|window|location|innerHTML|outerHTML|onload|onerror)\s*[\(\:=]/i.test(cleanUsername);
+  if (hasJS) {
+    return {
+      isClean: false,
+      reason: 'JavaScript-like content is not allowed in usernames',
+      severity: 'high'
+    };
+  }
+
+  // Check for links/domains
+  const linkPatterns = [
+    /(https?:\/\/[^\s]+)/gi,
+    /(www\.[^\s]+)/gi,
+    /\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\b/gi,
+    /(bit\.ly|tinyurl|t\.co|goo\.gl|short\.link|ow\.ly|is\.gd|buff\.ly)/gi,
+    /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/gi,
+    /(discord\.gg|discord\.com\/invite)/gi,
+    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi
+  ];
+
+  for (const pattern of linkPatterns) {
+    if (pattern.test(cleanUsername)) {
+      return {
+        isClean: false,
+        reason: 'Links and domains are not allowed in usernames',
+        severity: 'medium'
+      };
+    }
+  }
+
+  // Apply the same profanity filtering as messages
+  const profanityPatterns = [
+    // Basic profanity (English) - core set for usernames
+    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|nude|naked|penis|vagina|anal|oral|masturbate|orgasm)\b/i,
+    
+    // Strong profanity
+    /\b(motherfucker|asshole|douchebag|jackass|dickhead|shithead|fuckface|cocksucker|twat|prick)\b/i,
+    
+    // Sexual content
+    /\b(horny|kinky|fetish|bdsm|porn|xxx|onlyfans|escort|prostitute|hooker)\b/i,
+
+    // Numbers and symbols replacing letters
+    /\b\w*f+[^a-z]*u+[^a-z]*c+[^a-z]*k+\w*\b/i,
+    /\b\w*sh[1!]t\w*\b/i,
+    /\b\w*b[1!]tch\w*\b/i,
+    /\b\w*[4@]s{2,}\w*\b/i,
+    /\b\w*p[0o]rn\w*\b/i,
+    /\bs[3e]x\b/i,
+    
+    // Chinese profanity (core set)
+    /\b(他媽的|幹你娘|操你媽|去死|白癡|智障|腦殘|垃圾|廢物|幹|操|靠北|靠腰|機掰|雞掰|屌|懶叫|鳥|屁眼|婊子|臭婊子|賤人|死人頭|王八蛋|混蛋|畜生|禽獸|狗屎|狗娘養的|傻逼|傻瓜|傻屄|狗日的|你妹|草泥马|日你妈|死全家|滾蛋|死肥豬|二逼|他妈的|变态|我操|我靠|操你妈)\b/i,
+    
+    // Cantonese profanity (core set)
+    /\b(屌你|屌|瘀|閪|西|撚|柒頭|仆街|仆你個街|死仔包|死八婆|鬼佬|死鬼佬|死開|收皮|執嘢|搵笨|搵死|食屎|食蕉|碌葛|九唔搭八|頂你|頂你個肺|戇居|低能|白痴|戇鳩|傻瓜|蠢材|衰仔|衰佬|衰婆)\b/i,
+    
+    // Hate speech and slurs
+    /\b(nigger|faggot|retard|nazi|hitler|chink|gook|spic|wetback|beaner|cracker|honky|kike|jap|raghead|towelhead|sandnigger)\b/i,
+    
+    // Common bypass attempts
+    /[f]+[u\*\-_]*[c]+[k\*\-_]+/i,
+    /[s]+[h\*\-_]*[i\*\-_]*[t]+/i,
+    /[b]+[i\*\-_]*[t\*\-_]*[c]+[h\*\-_]*/i,
+    /[d]+[i\*\-_]*[u\*\-_]+/i,
+    /[p]+[o\*\-_]*[r]+[n\*\-_]*/i
+  ];
+
+  for (const pattern of profanityPatterns) {
+    if (pattern.test(cleanUsername)) {
+      return {
+        isClean: false,
+        reason: 'Username contains inappropriate language',
+        severity: 'high'
+      };
+    }
+  }
+
+  // Check for excessive special characters or numbers
+  const specialCharCount = (cleanUsername.match(/[^a-zA-Z0-9\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
+  if (specialCharCount > cleanUsername.length * 0.4) {
+    return {
+      isClean: false,
+      reason: 'Username contains too many special characters',
+      severity: 'medium'
+    };
+  }
+
+  // Check for admin/moderator impersonation
+  const adminPatterns = [
+    /\b(admin|administrator|mod|moderator|staff|owner|dse\.?best|system|bot|official)\b/i,
+    /\b(管理|管理员|版主|官方|系統|机器人)\b/i
+  ];
+
+  for (const pattern of adminPatterns) {
+    if (pattern.test(cleanUsername)) {
+      return {
+        isClean: false,
+        reason: 'Username cannot impersonate staff or official accounts',
+        severity: 'high'
+      };
+    }
+  }
+
+  // HTML entity encode the username for extra safety
+  const safeUsername = cleanUsername
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;');
+  
+  return {
+    isClean: true,
+    reason: null,
+    cleanUsername: safeUsername
+  };
 }
 
 // Modular spam detection system
@@ -539,26 +861,19 @@ export default async function handler(req, res) {
     const cleanClientId = String(clientId || '').trim();
     let cleanUsername = String(username || '').trim();
     
-    // HTML encode username for safety
-    cleanUsername = cleanUsername
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#x27;');
-    
-    // Get client IP
+    // Get client IP and additional request info
     const ip = req.headers['x-forwarded-for']?.split(',')[0] || 
                req.headers['x-real-ip'] || 
                req.socket.remoteAddress;
+    
+    const userAgent = req.headers['user-agent'] || '';
+    const deviceInfo = detectDevice(userAgent);
+    
+    // Get geolocation data
+    const geoData = await getGeolocation(ip);
 
     if (!cleanClientId || !cleanUsername) {
       return res.status(400).json({ error: 'Missing required parameters' });
-    }
-
-    // Additional input validation
-    if (cleanUsername.length > 14 || cleanUsername.length < 3) {
-      return res.status(400).json({ error: 'Invalid username length' });
     }
 
     // Check for malicious clientId patterns
@@ -566,12 +881,72 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid client ID format' });
     }
 
-    // Track user IP
+    // Apply username moderation (NEW!)
+    const usernameModResult = await moderateUsername(cleanUsername, cleanClientId, ip);
+    if (!usernameModResult.isClean) {
+      // Log username violation
+      await logToLogflare('username_violation', {
+        event_type: 'username_violation',
+        client_id: cleanClientId,
+        username: cleanUsername,
+        ip_address: ip,
+        device_info: deviceInfo,
+        geography: geoData,
+        violation_reason: usernameModResult.reason,
+        severity: usernameModResult.severity || 'medium',
+        user_agent: userAgent
+      });
+      
+      return res.status(400).json({ error: usernameModResult.reason });
+    }
+    
+    // Use the cleaned username
+    cleanUsername = usernameModResult.cleanUsername;
+
+    // Check if this is a new user or username change
+    const existingUser = userIPs.get(cleanClientId);
+    const isNewUser = !existingUser;
+    const isUsernameChange = existingUser && existingUser.username !== cleanUsername;
+
+    // Track user IP and updated info
+    const currentTime = Date.now();
+    const existingUserData = userIPs.get(cleanClientId);
+    
     userIPs.set(cleanClientId, {
       ip,
-      lastSeen: Date.now(),
-      username: cleanUsername
+      lastSeen: currentTime,
+      firstSeen: existingUserData?.firstSeen || currentTime, // Keep original join time
+      username: cleanUsername,
+      deviceInfo,
+      geoData,
+      userAgent
     });
+
+    // Log user join/leave/username change events
+    if (isNewUser) {
+      await logToLogflare('user_join', {
+        event_type: 'user_join',
+        client_id: cleanClientId,
+        username: cleanUsername,
+        ip_address: ip,
+        device_info: deviceInfo,
+        geography: geoData,
+        user_agent: userAgent,
+        timestamp: new Date().toISOString()
+      });
+    } else if (isUsernameChange) {
+      await logToLogflare('username_change', {
+        event_type: 'username_change',
+        client_id: cleanClientId,
+        old_username: existingUser.username,
+        new_username: cleanUsername,
+        ip_address: ip,
+        device_info: deviceInfo,
+        geography: geoData,
+        user_agent: userAgent,
+        timestamp: new Date().toISOString()
+      });
+    }
 
     // Check if user is banned
     if (isUserBanned(cleanClientId, ip)) {
@@ -582,6 +957,19 @@ export default async function handler(req, res) {
     const rateLimitStatus = isRateLimited(cleanClientId, ip);
     if (rateLimitStatus && rateLimitStatus.blocked) {
       await logModeration(cleanClientId, ip, cleanUsername, 'N/A', 'Rate limit violation', 'RATE_LIMIT');
+      
+      // Log rate limit violation
+      await logToLogflare('rate_limit_violation', {
+        event_type: 'rate_limit_violation',
+        client_id: cleanClientId,
+        username: cleanUsername,
+        ip_address: ip,
+        device_info: deviceInfo,
+        geography: geoData,
+        user_agent: userAgent,
+        timestamp: new Date().toISOString()
+      });
+      
       return res.status(429).json({ error: 'Rate limit exceeded' });
     }
 
@@ -607,6 +995,8 @@ export default async function handler(req, res) {
 /banip <ip> - Ban a specific IP address
 /unbanip <ip> - Unban a specific IP address
 /listbans - Show all banned users and IPs
+/online - Show currently active users
+/stats - Show user statistics and cleanup info
 /purge - Clear chat by flooding with placeholder messages` :
             `Available commands:
 /help - Show this help message`;
@@ -635,10 +1025,18 @@ export default async function handler(req, res) {
               });
             }
             
-            const targetData = userIPs.get(targetId);
+            // Check active users first, then historical data
+            let targetData = userIPs.get(targetId);
+            let isActive = true;
+            
+            if (!targetData) {
+              targetData = userHistory.get(targetId);
+              isActive = false;
+            }
+            
             const banData = blockedUsers.get(targetId);
             
-            let status = 'Active';
+            let status = isActive ? 'Active' : 'Inactive';
             if (banData) status = banData.type === BAN_TYPES.PERMANENT ? 'Permanently Banned' : 'Temporarily Banned';
 
             const info = {
@@ -646,7 +1044,10 @@ export default async function handler(req, res) {
               username: targetData?.username || 'Unknown',
               ip: targetData?.ip || 'Unknown',
               status,
+              isActive,
               lastSeen: targetData ? new Date(targetData.lastSeen).toISOString() : 'Never',
+              leftAt: targetData?.leftAt ? new Date(targetData.leftAt).toISOString() : null,
+              leftReason: targetData?.leftReason || null,
               banInfo: banData || 'None'
             };
 
@@ -687,7 +1088,7 @@ export default async function handler(req, res) {
             const banData = {
               bannedAt: Date.now(),
               type: BAN_TYPES.PERMANENT,
-              moderator: clientId,
+              moderator: cleanClientId,
               reason: 'Moderator ban',
               ip: targetData.ip,
               duration: Infinity
@@ -699,7 +1100,7 @@ export default async function handler(req, res) {
               bannedAt: Date.now(),
               reason: 'Associated with banned user',
               bannedUser: targetId,
-              moderator: clientId
+              moderator: cleanClientId
             });
             
             // Ban all other users from the same IP
@@ -719,8 +1120,28 @@ export default async function handler(req, res) {
               
             await logModeration(targetId, targetData.ip, targetData.username, 
               'N/A', 
-              `Permanently banned by moderator ${username}. IP banned. Associated IDs: ${ipUsers.join(', ')}`, 
+              `Permanently banned by moderator ${cleanUsername}. IP banned. Associated IDs: ${ipUsers.join(', ')}`, 
               'MOD_BAN');
+
+            // Log ban to Logflare with comprehensive data
+            await logToLogflare('user_ban', {
+              event_type: 'user_ban',
+              banned_client_id: targetId,
+              banned_username: targetData.username,
+              banned_ip_address: targetData.ip,
+              banned_device_info: targetData.deviceInfo || 'Unknown',
+              banned_geography: targetData.geoData || { country: 'Unknown', region: 'Unknown', city: 'Unknown' },
+              ban_reason: 'Moderator ban',
+              ban_type: 'permanent',
+              moderator_client_id: cleanClientId,
+              moderator_username: cleanUsername,
+              moderator_ip: ip,
+              moderator_device_info: deviceInfo,
+              moderator_geography: geoData,
+              affected_accounts: ipUsers,
+              affected_count: ipUsers.length,
+              timestamp: new Date().toISOString()
+            });
 
             return res.status(200).json({ 
               status: 'Command executed',
@@ -946,6 +1367,74 @@ export default async function handler(req, res) {
             }
           }
 
+          // Online command - show active users
+          if (MOD_COMMANDS.online.test(message)) {
+            const activeUsers = Array.from(userIPs.entries()).map(([clientId, data]) => ({
+              clientId: clientId.substring(0, 8) + '...', // Truncate for privacy
+              username: data.username,
+              lastSeen: Math.round((Date.now() - data.lastSeen) / 1000) // seconds ago
+            }));
+
+            if (activeUsers.length === 0) {
+              return res.status(200).json({
+                status: 'success',
+                command: true,
+                message: 'No users currently active',
+                private: true
+              });
+            }
+
+            const userList = activeUsers
+              .sort((a, b) => a.lastSeen - b.lastSeen) // Sort by most recent activity
+              .map(user => `• ${user.username} (${user.lastSeen}s ago)`)
+              .join('\n');
+
+            return res.status(200).json({
+              status: 'success',
+              command: true,
+              message: `👥 Active Users (${activeUsers.length}):\n\n${userList}`,
+              private: true
+            });
+          }
+
+          // Stats command - show system statistics
+          if (MOD_COMMANDS.stats.test(message)) {
+            const now = Date.now();
+            const activeCount = userIPs.size;
+            const historicalCount = userHistory.size;
+            const bannedCount = blockedUsers.size;
+            const bannedIPCount = blockedIPs.size;
+            
+            // Calculate uptime (since server start - approximate)
+            const uptimeHours = Math.round((now - (global.serverStartTime || now)) / (1000 * 60 * 60));
+            
+            const stats = `📊 System Statistics:
+
+Active Users: ${activeCount}
+Historical Data: ${historicalCount} users (24h retention)
+Banned Users: ${bannedCount}
+Banned IPs: ${bannedIPCount}
+Server Uptime: ~${uptimeHours}h
+
+💾 Memory Usage:
+- Active user data: ${activeCount} entries
+- Historical data: ${historicalCount} entries
+- Rate limits: ${rateLimits.size} entries
+- Violation counts: ${violationCounts.size} entries
+
+🧹 Cleanup Info:
+- Inactive threshold: 5 minutes
+- History retention: 24 hours
+- Cleanup interval: 2 minutes`;
+
+            return res.status(200).json({
+              status: 'success',
+              command: true,
+              message: stats,
+              private: true
+            });
+          }
+
           // Whois command
           if (match = MOD_COMMANDS.whois.exec(message)) {
             const [, targetUsername] = match;
@@ -959,16 +1448,33 @@ export default async function handler(req, res) {
               });
             }
             
-            const matches = Array.from(userIPs.entries())
+            // Search active users
+            const activeMatches = Array.from(userIPs.entries())
               .filter(([, data]) => data.username.toLowerCase() === targetUsername.toLowerCase())
               .map(([clientId, data]) => ({
                 clientId,
                 username: data.username,
                 ip: data.ip,
-                lastSeen: new Date(data.lastSeen).toISOString()
+                lastSeen: new Date(data.lastSeen).toISOString(),
+                isActive: true
               }));
+              
+            // Search historical data
+            const historicalMatches = Array.from(userHistory.entries())
+              .filter(([, data]) => data.username.toLowerCase() === targetUsername.toLowerCase())
+              .map(([clientId, data]) => ({
+                clientId,
+                username: data.username,
+                ip: data.ip,
+                lastSeen: new Date(data.lastSeen).toISOString(),
+                leftAt: data.leftAt ? new Date(data.leftAt).toISOString() : null,
+                leftReason: data.leftReason || 'Unknown',
+                isActive: false
+              }));
+              
+            const allMatches = [...activeMatches, ...historicalMatches];
 
-            if (matches.length === 0) {
+            if (allMatches.length === 0) {
               return res.status(200).json({
                 status: 'error',
                 command: true,
@@ -977,21 +1483,27 @@ export default async function handler(req, res) {
               });
             }
 
-            const message = matches.map(user => 
-              `User: ${user.username}\nClient ID: ${user.clientId}\nIP: ${user.ip}\nLast seen: ${user.lastSeen}`
-            ).join('\n\n');
+            const message = allMatches.map(user => {
+              let userInfo = `User: ${user.username}\nClient ID: ${user.clientId}\nIP: ${user.ip}\nLast seen: ${user.lastSeen}`;
+              if (!user.isActive) {
+                userInfo += `\nStatus: Inactive (left ${user.leftAt})\nLeft reason: ${user.leftReason}`;
+              } else {
+                userInfo += '\nStatus: Active';
+              }
+              return userInfo;
+            }).join('\n\n');
 
             return res.status(200).json({
               status: 'success',
               command: true,
-              message: `🔍 Found ${matches.length} match${matches.length > 1 ? 'es' : ''}:\n\n${message}`,
+              message: `🔍 Found ${allMatches.length} match${allMatches.length > 1 ? 'es' : ''} (${activeMatches.length} active, ${historicalMatches.length} historical):\n\n${message}`,
               private: true
             });
           }
         }
 
         // Check if the command looks like a valid command but with wrong syntax
-        const commandPrefixes = ['/ban', '/unban', '/banip', '/unbanip', '/info', '/whois', '/purge', '/listbans', '/help'];
+        const commandPrefixes = ['/ban', '/unban', '/banip', '/unbanip', '/info', '/whois', '/purge', '/listbans', '/help', '/online', '/stats'];
         const commandWord = text.split(' ')[0].toLowerCase();
         
         if (commandPrefixes.some(prefix => commandWord.startsWith(prefix))) {
@@ -1027,6 +1539,12 @@ export default async function handler(req, res) {
             case '/help':
               helpText = 'Correct usage: /help (no parameters needed)';
               break;
+            case '/online':
+              helpText = 'Correct usage: /online (no parameters needed)';
+              break;
+            case '/stats':
+              helpText = 'Correct usage: /stats (no parameters needed)';
+              break;
           }
           
           return res.status(400).json({
@@ -1059,6 +1577,21 @@ export default async function handler(req, res) {
             modResult.reason,
             'VIOLATION'
           );
+          
+          // Log message violation to Logflare
+          await logToLogflare('message_violation', {
+            event_type: 'message_violation',
+            client_id: cleanClientId,
+            username: cleanUsername,
+            ip_address: ip,
+            device_info: deviceInfo,
+            geography: geoData,
+            message_content: text,
+            violation_reason: modResult.reason,
+            severity: modResult.severity || 'medium',
+            user_agent: userAgent,
+            timestamp: new Date().toISOString()
+          });
         }
         return res.status(403).json({ error: modResult.reason });
       }
@@ -1078,11 +1611,40 @@ export default async function handler(req, res) {
       // Check if the message is clean
       const modResult = moderateContent(messageText, cleanClientId, ip, cleanUsername);
       if (!modResult.isClean) {
+        // Log message violation to Logflare
+        await logToLogflare('message_violation', {
+          event_type: 'message_violation',
+          client_id: cleanClientId,
+          username: cleanUsername,
+          ip_address: ip,
+          device_info: deviceInfo,
+          geography: geoData,
+          message_content: messageText,
+          violation_reason: modResult.reason,
+          severity: modResult.severity || 'medium',
+          user_agent: userAgent,
+          timestamp: new Date().toISOString()
+        });
+        
         return res.status(403).json({ error: modResult.reason });
       }
 
       // Check if sender is moderator
       const isMod = isModerator(cleanClientId, ip);
+      
+      // Log successful message to Logflare
+      await logToLogflare('message_sent', {
+        event_type: 'message_sent',
+        client_id: cleanClientId,
+        username: cleanUsername,
+        ip_address: ip,
+        device_info: deviceInfo,
+        geography: geoData,
+        message_content: modResult.cleanText,
+        is_moderator: isMod,
+        user_agent: userAgent,
+        timestamp: new Date().toISOString()
+      });
       
       // Create sanitized message object
       const sanitizedMessage = {
@@ -1101,11 +1663,68 @@ export default async function handler(req, res) {
       return res.status(200).json({ status: 'published' });
     }
 
+    // Handle explicit user leave events
+    if (req.body.action === 'leave') {
+      const userData = userIPs.get(cleanClientId);
+      if (userData) {
+        // Log user leave
+        await logToLogflare('user_leave', {
+          event_type: 'user_leave',
+          client_id: cleanClientId,
+          username: cleanUsername,
+          ip_address: ip,
+          device_info: deviceInfo,
+          geography: geoData,
+          session_duration: currentTime - (userData.firstSeen || userData.lastSeen),
+          leave_reason: 'explicit_leave',
+          timestamp: new Date().toISOString()
+        });
+        
+        // Move to historical data
+        userHistory.set(cleanClientId, {
+          ...userData,
+          leftAt: currentTime,
+          leftReason: 'explicit_leave'
+        });
+        
+        // Remove from active users
+        userIPs.delete(cleanClientId);
+      }
+      
+      return res.status(200).json({ status: 'User left successfully' });
+    }
+
     // For token generation
-    const tokenParams = { clientId, capability: {
+    if (req.body.action === 'token' || !req.body.action) {
+      // Log connection attempt
+      await logToLogflare('connection_attempt', {
+        event_type: 'connection_attempt',
+        client_id: cleanClientId,
+        username: cleanUsername,
+        ip_address: ip,
+        device_info: deviceInfo,
+        geography: geoData,
+        user_agent: userAgent,
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    const tokenParams = { clientId: cleanClientId, capability: {
       'dsebest-livechat': ['publish', 'subscribe', 'presence', 'history']
     }};
     const tokenRequest = await ably.auth.createTokenRequest(tokenParams);
+    
+    // Log successful token generation
+    await logToLogflare('token_generated', {
+      event_type: 'token_generated',
+      client_id: cleanClientId,
+      username: cleanUsername,
+      ip_address: ip,
+      device_info: deviceInfo,
+      geography: geoData,
+      timestamp: new Date().toISOString()
+    });
+    
     return res.status(200).json(tokenRequest);
 
   } catch (error) {

@@ -79,6 +79,9 @@ class DSEChat {
 
     console.log('Destroying DSE Chat...');
     
+    // Send leave event to server
+    this.sendLeaveEvent();
+    
     // Disconnect from Ably
     if (this.ably) {
       try {
@@ -234,6 +237,14 @@ class DSEChat {
       this.messageInput.addEventListener('input', this.updateCharCounter.bind(this));
       this.updateCharCounter(); // Initialize counter
     }
+    
+    // Page unload detection for leave events
+    this.handleBeforeUnload = this.handleBeforeUnload.bind(this);
+    this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
+    
+    window.addEventListener('beforeunload', this.handleBeforeUnload);
+    window.addEventListener('pagehide', this.handleBeforeUnload);
+    document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 
   // Remove event listeners
@@ -250,6 +261,37 @@ class DSEChat {
     if (this.messageInput) {
       this.messageInput.removeEventListener('keypress', this.handleMessageKeypress.bind(this));
       this.messageInput.removeEventListener('input', this.updateCharCounter.bind(this));
+    }
+    
+    // Remove page unload listeners
+    if (this.handleBeforeUnload) {
+      window.removeEventListener('beforeunload', this.handleBeforeUnload);
+      window.removeEventListener('pagehide', this.handleBeforeUnload);
+    }
+    if (this.handleVisibilityChange) {
+      document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    }
+  }
+
+  // Handle page unload events
+  handleBeforeUnload() {
+    this.sendLeaveEvent();
+  }
+
+  // Handle visibility change (user switches tabs/minimizes)
+  handleVisibilityChange() {
+    if (document.hidden) {
+      // User has left the tab - could be considered a leave event
+      // We'll use a delayed check to see if they're really leaving
+      this.visibilityTimeout = setTimeout(() => {
+        this.sendLeaveEvent();
+      }, 30000); // Wait 30 seconds before considering it a leave
+    } else {
+      // User returned - cancel the leave event
+      if (this.visibilityTimeout) {
+        clearTimeout(this.visibilityTimeout);
+        this.visibilityTimeout = null;
+      }
     }
   }
 
@@ -1026,6 +1068,31 @@ class DSEChat {
       }
       this.setInputState(false);
       this.isSending = false;
+    });
+  }
+
+  // Send leave event to server for logging
+  sendLeaveEvent() {
+    if (!this.ably || !this.ably.auth.clientId) {
+      return;
+    }
+
+    const username = this.userNameInput?.value?.trim() || 'Anonymous';
+    
+    // Send leave event asynchronously (don't wait for response)
+    fetch('/api/chat-auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        action: 'leave',
+        clientId: this.ably.auth.clientId,
+        username: username
+      })
+    }).catch(error => {
+      // Silently fail - logging is not critical for user experience
+      console.warn('Failed to log leave event:', error);
     });
   }
 }
