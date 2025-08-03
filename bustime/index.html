@@ -81,6 +81,7 @@
             align-items: center;
             gap: 15px;
             margin-top: 15px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
         }
 
@@ -125,7 +126,6 @@
         .last-updated {
             color: #a0aec0;
             font-size: 0.9rem;
-            margin-bottom: 15px;
         }
 
         .school-filter-section {
@@ -201,6 +201,21 @@
             text-align: center;
             box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .route-number {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .route-fare {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            font-weight: 500;
         }
 
         .bus-route.school-route {
@@ -305,6 +320,21 @@
             font-weight: bold;
             color: #f7fafc;
             font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+
+        .overview-route-number {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .overview-route-fare {
+            font-size: 0.7rem;
+            opacity: 0.8;
+            font-weight: 400;
         }
 
         .overview-route.school-route {
@@ -332,7 +362,7 @@
             color: #ed8936;
             padding: 15px;
             border-radius: 16px;
-            margin-bottom: 20px;
+            margin: 30px 0;
             font-size: 0.9rem;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -516,6 +546,14 @@
                 min-width: 60px;
             }
 
+            .route-number {
+                font-size: 1.1rem;
+            }
+
+            .route-fare {
+                font-size: 0.6rem;
+            }
+
             .bus-card {
                 padding: 12px;
             }
@@ -544,6 +582,13 @@
             </div>
         </div>
 
+        <div id="overviewSection" class="overview-section" style="display: none;">
+            <div class="overview-header">
+                <div class="overview-title">📊 Quick Overview</div>
+            </div>
+            <div id="overviewGrid" class="overview-grid"></div>
+        </div>
+
         <div class="school-filter-section">
             <div class="school-filter">
                 <input type="checkbox" id="schoolOnlyFilter">
@@ -552,13 +597,6 @@
         </div>
 
         <div id="alerts" class="alerts"></div>
-
-        <div id="overviewSection" class="overview-section" style="display: none;">
-            <div class="overview-header">
-                <div class="overview-title">📊 Quick Overview</div>
-            </div>
-            <div id="overviewGrid" class="overview-grid"></div>
-        </div>
 
         <div id="loading" class="loading">
             <div class="loading-spinner"></div>
@@ -589,6 +627,31 @@
                 
                 // Configure your school routes here
                 this.schoolRoutes = ['2', '2A', '77', '99', '85', '85A', '8H', '81', '81A', '307P', '678'];
+                
+                // Fare pricing for each route (in HKD)
+                this.routeFares = {
+                    '2A': 2.8,
+                    '2': 2.8,
+                    '77': 4.9,
+                    '77A': 4.9,
+                    '99': 4.9,
+                    '85': 2.6,
+                    '85A': 2.6,
+                    '81': 2.8,
+                    '81A': 2.8,
+                    '82': 2.8,
+                    '722': 4.4,
+                    '18X': 5.4,
+                    '19P': 3.3,
+                    '302A': 7.2,
+                    '33X': 7.3,
+                    'A12': 23.8,
+                    'N8X': 5.9,
+                    'NA12': 30.4,
+                    '8H': 3.5,
+                    '307P': 3.9,
+                    '678': 3.9
+                };
                 
                 // All predefined routes
                 this.allRoutes = [
@@ -766,6 +829,7 @@
                 const isSchoolRoute = this.schoolRoutes.includes(bus.route);
                 const isArriving = minutes <= 3;
                 const isDelayed = minutes > 15;
+                const fare = this.routeFares[bus.route] || 'N/A';
 
                 let timeText = '';
                 if (minutes === 999) {
@@ -782,7 +846,10 @@
 
                 return `
                     <div class="overview-item ${isSchoolRoute ? 'school-route' : ''}">
-                        <div class="overview-route ${isSchoolRoute ? 'school-route' : ''}">${bus.route}</div>
+                        <div class="overview-route ${isSchoolRoute ? 'school-route' : ''}">
+                            <div class="overview-route-number">${bus.route}</div>
+                            <div class="overview-route-fare">$${fare}</div>
+                        </div>
                         <div class="overview-time ${timeClass}">${timeText}</div>
                     </div>
                 `;
@@ -835,11 +902,15 @@
                 const destination = bus.nextBuses?.[0]?.destination || 'Unknown destination';
                 const arrivals = (bus.nextBuses || []).slice(0, 3);
                 const isSchoolRoute = this.schoolRoutes.includes(bus.route);
+                const fare = this.routeFares[bus.route] || 'N/A';
 
                 return `
                     <div class="bus-card ${isSchoolRoute ? 'school-route' : ''}">
                         <div class="bus-header">
-                            <div class="bus-route ${isSchoolRoute ? 'school-route' : ''}">${bus.route}</div>
+                            <div class="bus-route ${isSchoolRoute ? 'school-route' : ''}">
+                                <div class="route-number">${bus.route}</div>
+                                <div class="route-fare">$${fare}</div>
+                            </div>
                             <div class="bus-destination">
                                 ${destination}
                                 ${isSchoolRoute ? '<span class="school-badge">🎓 School</span>' : ''}
