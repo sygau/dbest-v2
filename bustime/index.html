@@ -7,10 +7,12 @@
     <meta name="description" content="Real-time bus arrivals for stop 001272 - Quarry Bay Street, King's Road">
     
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#4299e1">
+    <meta name="theme-color" content="#2d3748">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Bus Timer">
+    <meta name="msapplication-navbutton-color" content="#2d3748">
+    <meta name="msapplication-TileColor" content="#2d3748">
     <link rel="manifest" href="/bustime/manifest.json">
     
     <!-- Apple Touch Icons -->
@@ -34,11 +36,14 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            background-attachment: fixed;
             min-height: 100vh;
             padding: 15px;
             color: #e2e8f0;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
+            /* Ensure overscroll matches background */
+            background-color: #2d3748;
         }
 
         .container {

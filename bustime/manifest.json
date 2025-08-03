@@ -5,7 +5,7 @@
   "start_url": "/bustime/",
   "display": "standalone",
   "background_color": "#2d3748",
-  "theme_color": "#4299e1",
+  "theme_color": "#2d3748",
   "orientation": "portrait-primary",
   "scope": "/bustime/",
   "icons": [
