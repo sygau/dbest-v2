@@ -580,12 +580,33 @@
     }
     function loadBlogIndexJS() {
       if (window.location.pathname === '/blog' || window.location.pathname === '/blog/') {
+        // Clean up any existing blog index functionality first
+        if (window.DSEBlogIndex && typeof window.DSEBlogIndex.cleanup === 'function') {
+          window.DSEBlogIndex.cleanup();
+        }
+        
         if (!window.DSEBlogIndexLoaded) {
           const blogIndexScript = document.createElement('script');
           blogIndexScript.src = 'https://dse.best/assets/js/blogIndex.js';
-          blogIndexScript.onload = () => { window.DSEBlogIndexLoaded = true; };
+          blogIndexScript.onload = () => { 
+            window.DSEBlogIndexLoaded = true;
+            // Initialize blog index after script loads
+            if (window.DSEBlogIndex && typeof window.DSEBlogIndex.init === 'function') {
+              window.DSEBlogIndex.init();
+            }
+          };
+          blogIndexScript.onerror = () => {
+            console.error('Failed to load blog index script');
+            window.DSEBlogIndexLoaded = false;
+          };
           document.head.appendChild(blogIndexScript);
+        } else {
+          // Script already loaded, just reinitialize
+          if (window.DSEBlogIndex && typeof window.DSEBlogIndex.init === 'function') {
+            window.DSEBlogIndex.init();
+          }
         }
+        
         if (!document.getElementById('dsq-count-scr')) {
           const disqusCountScript = document.createElement('script');
           disqusCountScript.id = 'dsq-count-scr';
@@ -594,9 +615,14 @@
           document.head.appendChild(disqusCountScript);
         } else if (window.DISQUSWIDGETS && typeof window.DISQUSWIDGETS.getCount === 'function') {
           window.DISQUSWIDGETS.getCount({ reset: true });
+        }
+      } else {
+        // Clean up blog index functionality when leaving blog page
+        if (window.DSEBlogIndex && typeof window.DSEBlogIndex.cleanup === 'function') {
+          window.DSEBlogIndex.cleanup();
+        }
       }
     }
-  }
 
     function loadPostJS() {
       // Check if we're on a blog post page (not the blog index)
