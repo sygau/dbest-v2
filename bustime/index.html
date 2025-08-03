@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Stop 001272 - Real Time</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .stop-info {
+            color: #718096;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-normal { background: #48bb78; color: white; }
+        .status-minor_delays { background: #ed8936; color: white; }
+        .status-disrupted { background: #f56565; color: white; }
+        .status-no_service { background: #a0aec0; color: white; }
+
+        .last-updated {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .alerts {
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 4px solid #f56565;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert.severity-medium { border-left-color: #ed8936; }
+        .alert.severity-high { border-left-color: #f56565; }
+
+        .buses-container {
+            display: grid;
+            gap: 15px;
+        }
+
+        .bus-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .bus-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .bus-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .bus-route {
+            background: #4299e1;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .bus-destination {
+            flex: 1;
+            margin-left: 15px;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .arrivals {
+            display: grid;
+            gap: 10px;
+        }
+
+        .arrival {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: #f7fafc;
+            border-radius: 10px;
+            border-left: 4px solid transparent;
+        }
+
+        .arrival.arriving-soon {
+            border-left-color: #48bb78;
+            background: #f0fff4;
+        }
+
+        .arrival.delayed {
+            border-left-color: #ed8936;
+            background: #fffaf0;
+        }
+
+        .arrival-time {
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .arrival-time.arriving-soon {
+            color: #48bb78;
+            animation: pulse 2s infinite;
+        }
+
+        .arrival-time.delayed {
+            color: #ed8936;
+        }
+
+        .arrival-eta {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .arrival-remarks {
+            color: #718096;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .no-buses {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+        }
+
+        .refresh-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #718096;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header {
+                padding: 20px 15px;
+            }
+
+            .bus-card {
+                padding: 15px;
+            }
+
+            .bus-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .bus-destination {
+                margin-left: 0;
+            }
+
+            .arrival {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .refresh-indicator {
+                top: 10px;
+                right: 10px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .bus-route {
+                font-size: 1rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚌 Bus Stop 001272</h1>
+            <div class="stop-info">Real-time bus arrivals</div>
+            <div id="serviceStatus" class="status-badge status-normal">Normal Service</div>
+            <div class="last-updated">
+                Last updated: <span id="lastUpdated">Loading...</span>
+            </div>
+        </div>
+
+        <div id="alerts" class="alerts"></div>
+
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <div>Loading bus information...</div>
+        </div>
+
+        <div id="busesContainer" class="buses-container" style="display: none;"></div>
+        
+        <div id="noBuses" class="no-buses" style="display: none;">
+            <h3>No buses available</h3>
+            <p>No bus services found for this stop at the moment.</p>
+        </div>
+    </div>
+
+    <div class="refresh-indicator">
+        Auto-refresh: <span id="countdown">10</span>s
+    </div>
+
+    <script>
+        class BusTracker {
+            constructor() {
+                this.stopId = '001272';
+                this.refreshInterval = 10000; // 10 seconds
+                this.countdownInterval = null;
+                this.countdown = 10;
+                
+                this.elements = {
+                    loading: document.getElementById('loading'),
+                    busesContainer: document.getElementById('busesContainer'),
+                    noBuses: document.getElementById('noBuses'),
+                    alerts: document.getElementById('alerts'),
+                    serviceStatus: document.getElementById('serviceStatus'),
+                    lastUpdated: document.getElementById('lastUpdated'),
+                    countdownEl: document.getElementById('countdown')
+                };
+
+                this.init();
+            }
+
+            async init() {
+                await this.fetchBusData();
+                this.startAutoRefresh();
+            }
+
+            async fetchBusData() {
+                try {
+                    const response = await fetch(`/api/bus-checker?stop=${this.stopId}`);
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        this.renderBusData(data);
+                    } else {
+                        this.showError(data.error || 'Failed to fetch bus data');
+                    }
+                } catch (error) {
+                    this.showError('Network error: ' + error.message);
+                }
+            }
+
+            renderBusData(data) {
+                this.hideLoading();
+                this.updateServiceStatus(data.serviceStatus);
+                this.renderAlerts(data.alerts || []);
+                this.updateLastUpdated(data.timestamp);
+
+                if (!data.buses || data.buses.length === 0) {
+                    this.showNoBuses();
+                    return;
+                }
+
+                this.renderBuses(data.buses);
+            }
+
+            renderBuses(buses) {
+                this.elements.noBuses.style.display = 'none';
+                this.elements.busesContainer.style.display = 'grid';
+
+                // Sort buses by earliest arrival time
+                const sortedBuses = [...buses].sort((a, b) => {
+                    const aTime = a.nextBuses?.[0]?.remainingTime || 999;
+                    const bTime = b.nextBuses?.[0]?.remainingTime || 999;
+                    return aTime - bTime;
+                });
+
+                this.elements.busesContainer.innerHTML = sortedBuses
+                    .map(bus => this.createBusCard(bus))
+                    .join('');
+            }
+
+            createBusCard(bus) {
+                const destination = bus.nextBuses?.[0]?.destination || 'Unknown destination';
+                const arrivals = (bus.nextBuses || []).slice(0, 3);
+
+                return `
+                    <div class="bus-card">
+                        <div class="bus-header">
+                            <div class="bus-route">${bus.route}</div>
+                            <div class="bus-destination">${destination}</div>
+                        </div>
+                        <div class="arrivals">
+                            ${arrivals.map(arrival => this.createArrivalItem(arrival)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            createArrivalItem(arrival) {
+                const minutes = arrival.remainingTime;
+                const isArriving = minutes <= 2;
+                const isDelayed = minutes > 15;
+                
+                let timeText = '';
+                if (minutes === 0) {
+                    timeText = 'Arriving';
+                } else if (minutes === 1) {
+                    timeText = '1 min';
+                } else {
+                    timeText = `${minutes} mins`;
+                }
+
+                const arrivalClass = isArriving ? 'arriving-soon' : (isDelayed ? 'delayed' : '');
+                const timeClass = isArriving ? 'arriving-soon' : (isDelayed ? 'delayed' : '');
+
+                return `
+                    <div class="arrival ${arrivalClass}">
+                        <div class="arrival-time ${timeClass}">${timeText}</div>
+                        <div class="arrival-info">
+                            <div class="arrival-eta">${this.formatETA(arrival.eta)}</div>
+                            ${arrival.remarks && arrival.remarks !== 'On time' ? 
+                                `<div class="arrival-remarks">${arrival.remarks}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            formatETA(etaString) {
+                try {
+                    const eta = new Date(etaString);
+                    return eta.toLocaleTimeString('en-HK', { 
+                        hour: '2-digit', 
+                        minute: '2-digit',
+                        hour12: false 
+                    });
+                } catch {
+                    return 'Unknown';
+                }
+            }
+
+            renderAlerts(alerts) {
+                if (alerts.length === 0) {
+                    this.elements.alerts.innerHTML = '';
+                    return;
+                }
+
+                this.elements.alerts.innerHTML = alerts
+                    .map(alert => `
+                        <div class="alert severity-${alert.severity}">
+                            <strong>${this.getAlertTitle(alert.type)}</strong>
+                            <div>${alert.message}</div>
+                        </div>
+                    `).join('');
+            }
+
+            getAlertTitle(type) {
+                const titles = {
+                    'no_data': '⚠️ No Data',
+                    'widespread_delays': '🚨 Service Disruption',
+                    'some_delays': '⏰ Minor Delays'
+                };
+                return titles[type] || 'ℹ️ Notice';
+            }
+
+            updateServiceStatus(status) {
+                const statusTexts = {
+                    'normal': 'Normal Service',
+                    'minor_delays': 'Minor Delays',
+                    'disrupted': 'Service Disrupted',
+                    'no_service': 'No Service'
+                };
+
+                this.elements.serviceStatus.textContent = statusTexts[status] || 'Unknown';
+                this.elements.serviceStatus.className = `status-badge status-${status}`;
+            }
+
+            updateLastUpdated(timestamp) {
+                try {
+                    const time = new Date(timestamp);
+                    this.elements.lastUpdated.textContent = time.toLocaleTimeString('en-HK', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit',
+                        hour12: false
+                    });
+                } catch {
+                    this.elements.lastUpdated.textContent = 'Unknown';
+                }
+            }
+
+            hideLoading() {
+                this.elements.loading.style.display = 'none';
+            }
+
+            showNoBuses() {
+                this.elements.busesContainer.style.display = 'none';
+                this.elements.noBuses.style.display = 'block';
+            }
+
+            showError(message) {
+                this.hideLoading();
+                this.elements.alerts.innerHTML = `
+                    <div class="alert severity-high">
+                        <strong>⚠️ Error</strong>
+                        <div>${message}</div>
+                    </div>
+                `;
+            }
+
+            startAutoRefresh() {
+                // Refresh data every 10 seconds
+                setInterval(() => {
+                    this.fetchBusData();
+                    this.countdown = 10;
+                }, this.refreshInterval);
+
+                // Update countdown every second
+                this.countdownInterval = setInterval(() => {
+                    this.countdown--;
+                    this.elements.countdownEl.textContent = this.countdown;
+                    
+                    if (this.countdown <= 0) {
+                        this.countdown = 10;
+                    }
+                }, 1000);
+            }
+        }
+
+        // Initialize the bus tracker when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new BusTracker();
+        });
+    </script>
+</body>
+</html>
