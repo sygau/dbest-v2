@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="description" content="Real-time bus arrivals for stop 001272 - Quarry Bay Street, King's Road">
+    <meta name="description" content="Real-time bus arrivals">
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#2d3748">
@@ -188,6 +188,20 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
+            position: relative;
+        }
+
+        .bus-fare {
+            position: absolute;
+            top: -5px;
+            right: 0;
+            background: rgba(45, 55, 72, 0.9);
+            color: #a0aec0;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .bus-route {
@@ -201,21 +215,6 @@
             text-align: center;
             box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-
-        .route-number {
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        .route-fare {
-            font-size: 0.7rem;
-            opacity: 0.9;
-            font-weight: 500;
         }
 
         .bus-route.school-route {
@@ -309,6 +308,17 @@
             background: rgba(74, 85, 104, 0.4);
             border-radius: 10px;
             border-left: 4px solid #4299e1;
+            position: relative;
+        }
+
+        .overview-fare {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            font-size: 0.65rem;
+            opacity: 0.7;
+            color: #a0aec0;
+            font-weight: 400;
         }
 
         .overview-item.school-route {
@@ -320,21 +330,6 @@
             font-weight: bold;
             color: #f7fafc;
             font-size: 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 2px;
-        }
-
-        .overview-route-number {
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .overview-route-fare {
-            font-size: 0.7rem;
-            opacity: 0.8;
-            font-weight: 400;
         }
 
         .overview-route.school-route {
@@ -544,14 +539,6 @@
                 font-size: 1.1rem;
                 padding: 8px 14px;
                 min-width: 60px;
-            }
-
-            .route-number {
-                font-size: 1.1rem;
-            }
-
-            .route-fare {
-                font-size: 0.6rem;
             }
 
             .bus-card {
@@ -846,11 +833,9 @@
 
                 return `
                     <div class="overview-item ${isSchoolRoute ? 'school-route' : ''}">
-                        <div class="overview-route ${isSchoolRoute ? 'school-route' : ''}">
-                            <div class="overview-route-number">${bus.route}</div>
-                            <div class="overview-route-fare">$${fare}</div>
-                        </div>
+                        <div class="overview-route ${isSchoolRoute ? 'school-route' : ''}">${bus.route}</div>
                         <div class="overview-time ${timeClass}">${timeText}</div>
+                        <div class="overview-fare">$${fare}</div>
                     </div>
                 `;
             }
@@ -907,14 +892,12 @@
                 return `
                     <div class="bus-card ${isSchoolRoute ? 'school-route' : ''}">
                         <div class="bus-header">
-                            <div class="bus-route ${isSchoolRoute ? 'school-route' : ''}">
-                                <div class="route-number">${bus.route}</div>
-                                <div class="route-fare">$${fare}</div>
-                            </div>
+                            <div class="bus-route ${isSchoolRoute ? 'school-route' : ''}">${bus.route}</div>
                             <div class="bus-destination">
                                 ${destination}
                                 ${isSchoolRoute ? '<span class="school-badge">🎓 School</span>' : ''}
                             </div>
+                            <div class="bus-fare">$${fare}</div>
                         </div>
                         <div class="arrivals">
                             ${arrivals.map(arrival => this.createArrivalItem(arrival)).join('')}
