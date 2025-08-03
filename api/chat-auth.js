@@ -18,10 +18,13 @@ function isModerator(clientId, ip) {
 const MOD_COMMANDS = {
   ban: /^\/ban (\S+)$/i,     // /ban clientId - permanent ban
   unban: /^\/unban (\S+)$/i, // /unban clientId
+  banip: /^\/banip (\S+)$/i, // /banip IP - ban specific IP
+  unbanip: /^\/unbanip (\S+)$/i, // /unbanip IP - unban specific IP
   info: /^\/info (\S+)$/i,   // /info clientId - show user info
   help: /^\/help$/i,         // /help - show available commands
   purge: /^\/purge$/i,       // /purge - clear chat with placeholder messages
-  whois: /^\/whois (\S+)$/i  // /whois username - get user's client ID
+  whois: /^\/whois (\S+)$/i, // /whois username - get user's client ID
+  listbans: /^\/listbans$/i  // /listbans - show all banned users and IPs
 };
 
 // Rate limit settings
@@ -38,13 +41,48 @@ const BAN_TYPES = {
 
 // Track bans - simple Map of clientId -> banInfo
 const blockedUsers = new Map();
+// Track IP bans separately for stronger enforcement
+const blockedIPs = new Map();
+// Track fingerprinting data to detect ban evasion
+const userFingerprints = new Map();
 
-// Simple ban check function
-function isUserBanned(clientId) {
-  return blockedUsers.has(clientId);
+// Enhanced ban check function with IP-level enforcement
+function isUserBanned(clientId, ip) {
+  // Never ban moderators
+  if (isModerator(clientId, ip)) return false;
+  
+  // Check direct client ID ban
+  if (blockedUsers.has(clientId)) return true;
+  
+  // Check IP ban (stronger enforcement)
+  if (blockedIPs.has(ip)) return true;
+  
+  // Check for ban evasion by looking for other banned clients from same IP
+  const ipUsers = Array.from(userIPs.entries())
+    .filter(([, data]) => data.ip === ip)
+    .map(([id]) => id);
+  
+  for (const userId of ipUsers) {
+    if (blockedUsers.has(userId)) {
+      // Auto-ban this client ID as well for ban evasion
+      blockedUsers.set(clientId, {
+        bannedAt: Date.now(),
+        type: BAN_TYPES.PERMANENT,
+        reason: 'Ban evasion detected',
+        originalBannedUser: userId,
+        ip: ip
+      });
+      return true;
+    }
+  }
+  
+  return false;
 }
 
-function isRateLimited(clientId) {
+function isRateLimited(clientId, ip) {
+  // Never rate-limit moderators
+  if (isModerator(clientId, ip)) return false;
+
   const now = Date.now();
 
   // Check if user is blocked
@@ -58,39 +96,60 @@ function isRateLimited(clientId) {
     }
   }
 
+  // Enhanced rate limiting: also check by IP to prevent easy circumvention
+  const ipRateKey = `ip_${ip}`;
   const userLimit = rateLimits.get(clientId);
+  const ipLimit = rateLimits.get(ipRateKey);
+  
+  // Check both client ID and IP rate limits
+  const clientExceeded = checkRateLimit(clientId, userLimit, now);
+  const ipExceeded = checkRateLimit(ipRateKey, ipLimit, now);
+  
+  if (clientExceeded || ipExceeded) {
+    return clientExceeded || ipExceeded;
+  }
 
-  if (!userLimit) {
-    rateLimits.set(clientId, {
+  return false;
+}
+
+// Helper function to check rate limits
+function checkRateLimit(key, limitData, now) {
+  if (!limitData) {
+    rateLimits.set(key, {
       count: 1,
       windowStart: now
     });
     return false;
   }
 
-  if (now - userLimit.windowStart > RATE_LIMIT_WINDOW) {
-    rateLimits.set(clientId, {
+  if (now - limitData.windowStart > RATE_LIMIT_WINDOW) {
+    rateLimits.set(key, {
       count: 1,
       windowStart: now
     });
     return false;
   }
 
-  if (userLimit.count >= MAX_REQUESTS) {
+  if (limitData.count >= MAX_REQUESTS) {
     // Increment violation count
-    const violations = (violationCounts.get(clientId) || 0) + 1;
-    violationCounts.set(clientId, violations);
+    const violations = (violationCounts.get(key) || 0) + 1;
+    violationCounts.set(key, violations);
 
     // Check if user should be blocked
     if (violations >= BLOCK_THRESHOLD) {
-      blockedUsers.set(clientId, { blockedAt: now });
+      if (key.startsWith('ip_')) {
+        const ip = key.substring(3);
+        blockedIPs.set(ip, { blockedAt: now, reason: 'Rate limit violations' });
+      } else {
+        blockedUsers.set(key, { blockedAt: now, reason: 'Rate limit violations' });
+      }
       return { blocked: true, remaining: BLOCK_DURATION };
     }
 
-    return { limited: true, resetTime: userLimit.windowStart + RATE_LIMIT_WINDOW - now };
+    return { limited: true, resetTime: limitData.windowStart + RATE_LIMIT_WINDOW - now };
   }
 
-  userLimit.count++;
+  limitData.count++;
   return false;
 }
 
@@ -103,6 +162,15 @@ async function logModeration(clientId, ip, username, message, reason, action) {
 
 // Content moderation with multiple checks
 function moderateContent(text, clientId, ip, username) {
+  // Skip moderation for moderators entirely
+  if (isModerator(clientId, ip)) {
+    return {
+      isClean: true,
+      reason: null,
+      cleanText: text // Return original text for moderators
+    };
+  }
+
   // Ensure text is a string and limit length
   const cleanText = String(text || '').trim();
   
@@ -113,67 +181,107 @@ function moderateContent(text, clientId, ip, username) {
     };
   }
 
+  // Enhanced security checks
+  
   // 1. Check for HTML/script tags - stronger XSS prevention
   const hasHTML = /<[^>]*>/.test(cleanText);
   if (hasHTML) {
     return {
       isClean: false,
-      reason: 'HTML tags are not allowed'
+      reason: 'HTML tags are not allowed',
+      severity: 'high'
     };
   }
 
-  // 2. Check for JavaScript-like content
-  const hasJS = /(javascript|script|eval|function|alert|document|window|location)\s*[\(\:]/i.test(cleanText);
+  // 2. Check for JavaScript-like content (enhanced)
+  const hasJS = /(javascript|script|eval|function|alert|document|window|location|innerHTML|outerHTML|onload|onerror)\s*[\(\:=]/i.test(cleanText);
   if (hasJS) {
     return {
       isClean: false,
-      reason: 'JavaScript-like content is not allowed'
+      reason: 'JavaScript-like content is not allowed',
+      severity: 'high'
     };
   }
 
-  // 3. Check for URLs/links
-  const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(\.[a-z]{2,}\/[^\s]+)/gi;
+  // 3. Check for URLs/links (enhanced)
+  const urlPattern = /(https?:\/\/[^\s]+)|(www\.[^\s]+)|(\.[a-z]{2,}\/[^\s]+)|(bit\.ly|tinyurl|t\.co)/gi;
   if (urlPattern.test(cleanText)) {
     return {
       isClean: false,
-      reason: 'Links are not allowed in messages'
+      reason: 'Links are not allowed in messages',
+      severity: 'medium'
     };
   }
 
-  // 4. Check message length (server-side enforcement)
+  // 4. Check for potential data exfiltration attempts
+  const dataExfilPattern = /(fetch|xhr|xmlhttprequest|websocket|ajax)/i;
+  if (dataExfilPattern.test(cleanText)) {
+    return {
+      isClean: false,
+      reason: 'Suspicious content detected',
+      severity: 'high'
+    };
+  }
+
+  // 5. Check message length (server-side enforcement)
   if (cleanText.length > 350) {
     return {
       isClean: false,
-      reason: 'Message is too long (max 350 characters)'
+      reason: 'Message is too long (max 350 characters)',
+      severity: 'low'
     };
   }
 
-  // 5. Advanced profanity check
+  // 6. Enhanced profanity check
   const profanityPatterns = [
-    /\b(fuck|shit|damn|bitch)\b/i,
+    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss)\b/i,
     /[\u0430-\u044f]{0,}(f+[^a-z]*u+[^a-z]*c+[^a-z]*k+)/i,
+    /\b\w*[4@]ss\w*\b/i, // Leetspeak variants
+    /\b\w*sh[1!]t\w*\b/i
   ];
 
   for (const pattern of profanityPatterns) {
     if (pattern.test(cleanText)) {
       return {
         isClean: false,
-        reason: 'Message contains inappropriate language'
+        reason: 'Message contains inappropriate language',
+        severity: 'medium'
       };
     }
   }
 
-  // 6. Check for spam patterns
+  // 7. Check for spam patterns (enhanced)
   const spamPatterns = [
     /(.)\1{4,}/,  // Repeated characters (e.g., "aaaaa")
-    /(.{3,})\1{2,}/i  // Repeated words or patterns
+    /(.{3,})\1{2,}/i,  // Repeated words or patterns
+    /[A-Z]{10,}/, // Excessive caps
+    /(.)\1(.)\2(.)\3/i, // Pattern spamming like "ababab"
   ];
 
   for (const pattern of spamPatterns) {
     if (pattern.test(cleanText)) {
       return {
         isClean: false,
-        reason: 'Message appears to be spam'
+        reason: 'Message appears to be spam',
+        severity: 'medium'
+      };
+    }
+  }
+
+  // 8. Check for potential injection attempts
+  const injectionPatterns = [
+    /['"]\s*[;\|&`$()]/,
+    /union\s+select/i,
+    /drop\s+table/i,
+    /exec\s*\(/i
+  ];
+
+  for (const pattern of injectionPatterns) {
+    if (pattern.test(cleanText)) {
+      return {
+        isClean: false,
+        reason: 'Suspicious content detected',
+        severity: 'high'
       };
     }
   }
@@ -184,7 +292,8 @@ function moderateContent(text, clientId, ip, username) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;');
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;');
   
   return {
     isClean: true,
@@ -240,12 +349,12 @@ export default async function handler(req, res) {
     });
 
     // Check if user is banned
-    if (isUserBanned(cleanClientId)) {
+    if (isUserBanned(cleanClientId, ip)) {
       return res.status(403).json({ error: 'You are permanently banned from the chat' });
     }
     
     // Check rate limiting
-    const rateLimitStatus = isRateLimited(cleanClientId);
+    const rateLimitStatus = isRateLimited(cleanClientId, ip);
     if (rateLimitStatus && rateLimitStatus.blocked) {
       await logModeration(cleanClientId, ip, cleanUsername, 'N/A', 'Rate limit violation', 'RATE_LIMIT');
       return res.status(429).json({ error: 'Rate limit exceeded' });
@@ -264,12 +373,15 @@ export default async function handler(req, res) {
         if (MOD_COMMANDS.help.test(message)) {
           const isModHelper = isModerator(cleanClientId, ip);
           const helpText = isModHelper ? 
-            `Available commands:
+            `Available moderator commands:
 /help - Show this help message
 /whois <username> - Get client ID and info for a user by their username
 /info <clientid> - Show detailed information for a client ID
-/ban <clientid> - Permanently ban a user
+/ban <clientid> - Permanently ban a user and their IP
 /unban <clientid> - Remove a user's ban
+/banip <ip> - Ban a specific IP address
+/unbanip <ip> - Unban a specific IP address
+/listbans - Show all banned users and IPs
 /purge - Clear chat by flooding with placeholder messages` :
             `Available commands:
 /help - Show this help message`;
@@ -326,6 +438,7 @@ export default async function handler(req, res) {
               });
             }
 
+            // Enhanced ban with IP blocking
             const banData = {
               bannedAt: Date.now(),
               type: BAN_TYPES.PERMANENT,
@@ -336,35 +449,150 @@ export default async function handler(req, res) {
             };
 
             blockedUsers.set(targetId, banData);
+            // Also ban the IP
+            blockedIPs.set(targetData.ip, {
+              bannedAt: Date.now(),
+              reason: 'Associated with banned user',
+              bannedUser: targetId,
+              moderator: clientId
+            });
             
-            // Also check for IP bans
-            const ipBans = Array.from(blockedUsers.entries())
+            // Ban all other users from the same IP
+            const ipUsers = Array.from(userIPs.entries())
               .filter(([, data]) => data.ip === targetData.ip)
               .map(([id]) => id);
               
+            ipUsers.forEach(userId => {
+              if (userId !== targetId) {
+                blockedUsers.set(userId, {
+                  ...banData,
+                  reason: 'Same IP as banned user',
+                  originalBannedUser: targetId
+                });
+              }
+            });
+              
             await logModeration(targetId, targetData.ip, targetData.username, 
               'N/A', 
-              `Permanently banned by moderator ${username}. Associated IDs: ${ipBans.join(', ')}`, 
+              `Permanently banned by moderator ${username}. IP banned. Associated IDs: ${ipUsers.join(', ')}`, 
               'MOD_BAN');
 
             return res.status(200).json({ 
               status: 'Command executed',
               command: true,
-              message: `User ${targetId} has been permanently banned`
+              message: `User ${targetId} and IP ${targetData.ip} have been permanently banned. ${ipUsers.length} accounts affected.`
             });
           }
 
           // Unban command
           if (match = MOD_COMMANDS.unban.exec(message)) {
             const [, targetId] = match;
+            const targetData = userIPs.get(targetId);
+            
             blockedUsers.delete(targetId);
+            
+            // Also unban the IP if no other banned users share it
+            if (targetData?.ip) {
+              const otherBannedFromIP = Array.from(blockedUsers.entries())
+                .filter(([, data]) => data.ip === targetData.ip && targetId !== targetId);
+              
+              if (otherBannedFromIP.length === 0) {
+                blockedIPs.delete(targetData.ip);
+              }
+            }
 
-            await logModeration(targetId, userIPs.get(targetId)?.ip || 'unknown', targetId,
+            await logModeration(targetId, targetData?.ip || 'unknown', targetId,
               'N/A', `Unbanned by moderator ${username}`, 'MOD_UNBAN');
             return res.status(200).json({
               status: 'Command executed',
               command: true,
               message: `User ${targetId} has been unbanned`
+            });
+          }
+
+          // Ban IP command
+          if (match = MOD_COMMANDS.banip.exec(message)) {
+            const [, targetIP] = match;
+            
+            blockedIPs.set(targetIP, {
+              bannedAt: Date.now(),
+              reason: 'Direct IP ban by moderator',
+              moderator: clientId
+            });
+
+            // Ban all users currently using this IP
+            const affectedUsers = Array.from(userIPs.entries())
+              .filter(([, data]) => data.ip === targetIP)
+              .map(([id]) => id);
+
+            affectedUsers.forEach(userId => {
+              blockedUsers.set(userId, {
+                bannedAt: Date.now(),
+                type: BAN_TYPES.PERMANENT,
+                moderator: clientId,
+                reason: 'IP banned by moderator',
+                ip: targetIP
+              });
+            });
+
+            await logModeration('SYSTEM', targetIP, 'N/A', 'N/A', 
+              `IP banned by moderator ${username}. Affected users: ${affectedUsers.join(', ')}`, 
+              'MOD_IP_BAN');
+
+            return res.status(200).json({
+              status: 'Command executed',
+              command: true,
+              message: `IP ${targetIP} has been banned. ${affectedUsers.length} users affected.`
+            });
+          }
+
+          // Unban IP command
+          if (match = MOD_COMMANDS.unbanip.exec(message)) {
+            const [, targetIP] = match;
+            
+            blockedIPs.delete(targetIP);
+
+            await logModeration('SYSTEM', targetIP, 'N/A', 'N/A',
+              `IP unbanned by moderator ${username}`, 'MOD_IP_UNBAN');
+              
+            return res.status(200).json({
+              status: 'Command executed',
+              command: true,
+              message: `IP ${targetIP} has been unbanned`
+            });
+          }
+
+          // List bans command
+          if (MOD_COMMANDS.listbans.test(message)) {
+            const bannedUsers = Array.from(blockedUsers.entries()).slice(0, 10);
+            const bannedIPs = Array.from(blockedIPs.entries()).slice(0, 10);
+            
+            let banList = 'Recent Bans:\n\n';
+            
+            if (bannedUsers.length > 0) {
+              banList += 'Banned Users:\n';
+              bannedUsers.forEach(([id, data]) => {
+                banList += `• ${id} (${data.reason || 'No reason'})\n`;
+              });
+              banList += '\n';
+            }
+            
+            if (bannedIPs.length > 0) {
+              banList += 'Banned IPs:\n';
+              bannedIPs.forEach(([ip, data]) => {
+                banList += `• ${ip} (${data.reason || 'No reason'})\n`;
+              });
+            }
+            
+            if (bannedUsers.length === 0 && bannedIPs.length === 0) {
+              banList += 'No active bans.';
+            }
+
+            return res.status(200).json({
+              status: 'success',
+              command: true,
+              message: banList,
+              private: true
             });
           }
 

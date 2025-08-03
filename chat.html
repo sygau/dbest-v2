@@ -4,6 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://code.jquery.com https://www.googletagmanager.com https://busuanzi.icodeq.com https://dsebest.disqus.com https://cdn.ably.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: wss:; frame-src https://disqus.com;">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <title>聊天室 Chatroom - dse.best</title>
   <!--favicon-->
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -722,20 +727,31 @@
     }
     initializeUsername();
 
-    // Validation functions
+    // Enhanced validation functions with security checks
     function validateUsername(username) {
       if (!username) {
         addSystemMessage('Username cannot be empty');
         return false;
       }
-      if (username.length < MIN_USERNAME_LENGTH) {
+      
+      // Sanitize input
+      const cleanUsername = String(username).trim();
+      
+      if (cleanUsername.length < MIN_USERNAME_LENGTH) {
         addSystemMessage(`Username must be at least ${MIN_USERNAME_LENGTH} characters long`);
         return false;
       }
-      if (username.length > MAX_USERNAME_LENGTH) {
+      if (cleanUsername.length > MAX_USERNAME_LENGTH) {
         addSystemMessage(`Username cannot be longer than ${MAX_USERNAME_LENGTH} characters`);
         return false;
       }
+      
+      // Check for suspicious patterns
+      if (/<|>|&|"|'|script|javascript|onload|onerror|eval/i.test(cleanUsername)) {
+        addSystemMessage('Username contains invalid characters');
+        return false;
+      }
+      
       return true;
     }
 
@@ -744,10 +760,21 @@
         addSystemMessage('Message cannot be empty');
         return false;
       }
-      if (message.length > MAX_MESSAGE_LENGTH) {
+      
+      // Sanitize input
+      const cleanMessage = String(message).trim();
+      
+      if (cleanMessage.length > MAX_MESSAGE_LENGTH) {
         addSystemMessage(`Message cannot be longer than ${MAX_MESSAGE_LENGTH} characters`);
         return false;
       }
+      
+      // Client-side security checks (server will do more thorough checks)
+      if (/<script|javascript:|onload|onerror|eval\s*\(|fetch\s*\(|xhr|websocket/i.test(cleanMessage)) {
+        addSystemMessage('Message contains suspicious content');
+        return false;
+      }
+      
       return true;
     }
 
@@ -819,7 +846,8 @@
       headerDiv.className = 'd-flex justify-content-between align-items-center mb-1';
       
       const nameLine = document.createElement('strong');
-      nameLine.textContent = sender;
+      // Sanitize sender name to prevent XSS
+      nameLine.textContent = String(sender || 'Unknown').substring(0, 20);
       if (isModerator) {
         const badge = document.createElement('span');
         badge.className = 'moderator-badge';
@@ -833,7 +861,7 @@
         const idSpan = document.createElement('small');
         idSpan.className = 'ms-2 text-warning';
         idSpan.title = 'Client ID - Click to copy';
-        idSpan.textContent = `[${clientId}]`;
+        idSpan.textContent = `[${String(clientId).substring(0, 20)}]`;
         idSpan.style.cursor = 'pointer';
         idSpan.onclick = () => {
           navigator.clipboard.writeText(clientId);
@@ -850,20 +878,21 @@
       headerDiv.appendChild(timeSpan);
       bubble.appendChild(headerDiv);
       
-      // Message content
+      // Message content - CRITICAL: Use textContent to prevent XSS
       const textSpan = document.createElement('span');
-      textSpan.textContent = text;
+      textSpan.textContent = String(text || '').substring(0, 500); // Limit length as extra safety
       bubble.appendChild(textSpan);
       wrapper.appendChild(bubble);
       chatMessages.appendChild(wrapper);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Helper to append system messages
+    // Enhanced system message function with XSS protection
     function addSystemMessage(text) {
       const wrap = document.createElement('div');
       wrap.className = 'chat-system-message text-center my-2 small fst-italic';
-      wrap.textContent = text;
+      // Use textContent to prevent XSS
+      wrap.textContent = String(text || '').substring(0, 200);
       chatMessages.appendChild(wrap);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -1103,11 +1132,23 @@
       const text = messageInput.value.trim();
       const sender = userNameInput.value.trim();
 
-      // Validate both username and message
+      // Enhanced validation with security checks
       if (!validateUsername(sender)) {
+        isSending = false;
+        setInputState(false);
         return;
       }
       if (!validateMessage(text)) {
+        isSending = false;
+        setInputState(false);
+        return;
+      }
+
+      // Additional client-side length and content verification
+      if (text.length > MAX_MESSAGE_LENGTH || sender.length > MAX_USERNAME_LENGTH) {
+        addSystemMessage('Input exceeds maximum allowed length');
+        isSending = false;
+        setInputState(false);
         return;
       }
 
