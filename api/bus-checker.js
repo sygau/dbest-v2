@@ -152,22 +152,6 @@ async function getBusesAtStop(stopId) {
         continue;
       }
     }
-      
-      if (etaData.length > 0) {
-        busData.push({
-          route,
-          company: 'CTB',
-          stopId,
-          stopName: `Stop ${stopId}`,
-          nextBuses: etaData.slice(0, 3).map(bus => ({
-            eta: bus.eta,
-            remainingTime: calculateMinutes(bus.eta),
-            remarks: bus.rmk_en || 'On time',
-            destination: bus.dest_en
-          }))
-        });
-      }
-    }
     
     return busData;
     
