@@ -1,3 +1,8 @@
+// Helper function to escape regex special characters
+function escapeRegex(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 // Chat functionality for DSEBest chatroom
 // Handles Ably realtime messaging with security features
 
@@ -405,14 +410,217 @@ class DSEChat {
     this.statusDot.classList.toggle('bg-danger', !connected);
   }
 
+  // Generate a unique client ID
+  generateClientId() {
+    const timestamp = Date.now().toString(36);
+    const randomPart = Math.random().toString(36).substring(2, 8);
+    return `client_${timestamp}_${randomPart}`;
+  }
+
+  // Emoji shortcode mapping
+  getEmojiShortcodes() {
+    return {
+      ':heart:': '❤️',
+      ':love:': '💕',
+      ':smile:': '😊',
+      ':laugh:': '😂',
+      ':cry:': '😢',
+      ':angry:': '😠',
+      ':thumbsup:': '👍',
+      ':thumbsdown:': '👎',
+      ':fire:': '🔥',
+      ':star:': '⭐',
+      ':sun:': '☀️',
+      ':moon:': '🌙',
+      ':rainbow:': '🌈',
+      ':coffee:': '☕',
+      ':pizza:': '🍕',
+      ':birthday:': '🎂',
+      ':party:': '🎉',
+      ':music:': '🎵',
+      ':book:': '📚',
+      ':pencil:': '✏️',
+      ':check:': '✅',
+      ':cross:': '❌',
+      ':question:': '❓',
+      ':exclamation:': '❗',
+      ':thinking:': '🤔',
+      ':cool:': '😎',
+      ':wink:': '😉',
+      ':kiss:': '😘',
+      ':surprised:': '😮',
+      ':sleepy:': '😴',
+      ':sick:': '🤒',
+      ':dizzy:': '😵',
+      ':clap:': '👏',
+      ':wave:': '👋',
+      ':pray:': '🙏',
+      ':muscle:': '💪',
+      ':brain:': '🧠',
+      ':eyes:': '👀',
+      ':ear:': '👂',
+      ':nose:': '👃',
+      ':tongue:': '👅',
+      ':lips:': '💋',
+      ':nail:': '💅',
+      ':selfie:': '🤳',
+      ':dance:': '💃',
+      ':run:': '🏃',
+      ':swim:': '🏊',
+      ':bike:': '🚴',
+      ':car:': '🚗',
+      ':bus:': '🚌',
+      ':train:': '🚆',
+      ':plane:': '✈️',
+      ':rocket:': '🚀',
+      ':house:': '🏠',
+      ':school:': '🏫',
+      ':hospital:': '🏥',
+      ':bank:': '🏦',
+      ':church:': '⛪',
+      ':mountain:': '⛰️',
+      ':beach:': '🏖️',
+      ':ocean:': '🌊',
+      ':tree:': '🌳',
+      ':flower:': '🌸',
+      ':rose:': '🌹',
+      ':tulip:': '🌷',
+      ':sunflower:': '🌻',
+      ':cactus:': '🌵',
+      ':apple:': '🍎',
+      ':banana:': '🍌',
+      ':orange:': '🍊',
+      ':grape:': '🍇',
+      ':strawberry:': '🍓',
+      ':watermelon:': '🍉',
+      ':pineapple:': '🍍',
+      ':peach:': '🍑',
+      ':cherry:': '🍒',
+      ':kiwi:': '🥝',
+      ':avocado:': '🥑',
+      ':tomato:': '🍅',
+      ':corn:': '🌽',
+      ':carrot:': '🥕',
+      ':potato:': '🥔',
+      ':bread:': '🍞',
+      ':cheese:': '🧀',
+      ':meat:': '🥩',
+      ':chicken:': '🍗',
+      ':bacon:': '🥓',
+      ':hamburger:': '🍔',
+      ':fries:': '🍟',
+      ':hotdog:': '🌭',
+      ':taco:': '🌮',
+      ':burrito:': '🌯',
+      ':sushi:': '🍣',
+      ':ramen:': '🍜',
+      ':soup:': '🍲',
+      ':salad:': '🥗',
+      ':icecream:': '🍦',
+      ':donut:': '🍩',
+      ':cookie:': '🍪',
+      ':candy:': '🍬',
+      ':chocolate:': '🍫',
+      ':popcorn:': '🍿',
+      ':beer:': '🍺',
+      ':wine:': '🍷',
+      ':cocktail:': '🍸',
+      ':tea:': '🍵',
+      ':juice:': '🧃',
+      ':milk:': '🥛',
+      ':water:': '💧',
+      ':dog:': '🐶',
+      ':cat:': '🐱',
+      ':mouse:': '🐭',
+      ':hamster:': '🐹',
+      ':rabbit:': '🐰',
+      ':fox:': '🦊',
+      ':bear:': '🐻',
+      ':panda:': '🐼',
+      ':koala:': '🐨',
+      ':tiger:': '🐯',
+      ':lion:': '🦁',
+      ':cow:': '🐮',
+      ':pig:': '🐷',
+      ':frog:': '🐸',
+      ':monkey:': '🐵',
+      ':chicken:': '🐔',
+      ':penguin:': '🐧',
+      ':bird:': '🐦',
+      ':duck:': '🦆',
+      ':eagle:': '🦅',
+      ':owl:': '🦉',
+      ':bat:': '🦇',
+      ':wolf:': '🐺',
+      ':horse:': '🐴',
+      ':unicorn:': '🦄',
+      ':zebra:': '🦓',
+      ':deer:': '🦌',
+      ':cow:': '🐄',
+      ':sheep:': '🐑',
+      ':goat:': '🐐',
+      ':camel:': '🐪',
+      ':elephant:': '🐘',
+      ':rhino:': '🦏',
+      ':hippo:': '🦛',
+      ':giraffe:': '🦒',
+      ':kangaroo:': '🦘',
+      ':badger:': '🦡',
+      ':otter:': '🦦',
+      ':skunk:': '🦨',
+      ':sloth:': '🦥',
+      ':turtle:': '🐢',
+      ':snake:': '🐍',
+      ':lizard:': '🦎',
+      ':dragon:': '🐲',
+      ':fish:': '🐟',
+      ':shark:': '🦈',
+      ':whale:': '🐳',
+      ':dolphin:': '🐬',
+      ':octopus:': '🐙',
+      ':crab:': '🦀',
+      ':lobster:': '🦞',
+      ':shrimp:': '🦐',
+      ':squid:': '🦑',
+      ':bug:': '🐛',
+      ':ant:': '🐜',
+      ':bee:': '🐝',
+      ':butterfly:': '🦋',
+      ':spider:': '🕷️',
+      ':scorpion:': '🦂',
+      ':mosquito:': '🦟'
+    };
+  }
+
+  // Process emoji shortcodes in text
+  processEmojiShortcodes(text) {
+    const emojiMap = this.getEmojiShortcodes();
+    let processedText = text;
+    
+    // Replace shortcodes with emojis
+    for (const [shortcode, emoji] of Object.entries(emojiMap)) {
+      const regex = new RegExp(escapeRegex(shortcode), 'gi');
+      processedText = processedText.replace(regex, emoji);
+    }
+    
+    return processedText;
+  }
+
   // Initialize Ably connection
   initializeAbly() {
+    // Get or generate a unique client ID
+    let clientId = localStorage.getItem('chatClientId');
+    if (!clientId) {
+      clientId = this.generateClientId();
+      localStorage.setItem('chatClientId', clientId);
+    }
+
     // Initialise Ably with auth endpoint
     this.ably = new Ably.Realtime.Promise({
       authUrl: 'https://dse.best/api/chat-auth',
       authMethod: 'POST',
       authParams: {
-        clientId: localStorage.getItem('chatUsername') || this.randomUsername(),
+        clientId: clientId,
         username: localStorage.getItem('chatUsername') || this.randomUsername()
       }
     });
@@ -629,20 +837,23 @@ class DSEChat {
     const text = this.messageInput.value.trim();
     const sender = this.userNameInput.value.trim();
 
+    // Process emoji shortcodes
+    const processedText = this.processEmojiShortcodes(text);
+
     // Enhanced validation with security checks
     if (!this.validateUsername(sender)) {
       this.isSending = false;
       this.setInputState(false);
       return;
     }
-    if (!this.validateMessage(text)) {
+    if (!this.validateMessage(processedText)) {
       this.isSending = false;
       this.setInputState(false);
       return;
     }
 
     // Additional client-side length and content verification
-    if (text.length > this.MAX_MESSAGE_LENGTH || sender.length > this.MAX_USERNAME_LENGTH) {
+    if (processedText.length > this.MAX_MESSAGE_LENGTH || sender.length > this.MAX_USERNAME_LENGTH) {
       this.addSystemMessage('Input exceeds maximum allowed length');
       this.isSending = false;
       this.setInputState(false);
@@ -659,8 +870,8 @@ class DSEChat {
         action: 'moderate',
         clientId: this.ably.auth.clientId,
         username: sender,
-        message: text,
-        text: text  // Add text property for command checking
+        message: processedText,
+        text: processedText  // Add text property for command checking
       })
     })
     .then(response => {
@@ -691,7 +902,7 @@ class DSEChat {
 
         const messageData = { 
           sender, 
-          text,
+          text: processedText,
           timestamp: Date.now(),
           clientId: this.ably.auth.clientId // Include clientId for server verification
         };
@@ -707,7 +918,7 @@ class DSEChat {
             message: messageData,
             clientId: this.ably.auth.clientId,
             username: sender,
-            text: text  // Add text property for command checking
+            text: processedText  // Add text property for command checking
           })
         }).then(response => {
           if (!response.ok) {

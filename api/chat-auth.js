@@ -625,6 +625,16 @@ export default async function handler(req, res) {
           // Info command
           if (match = MOD_COMMANDS.info.exec(message)) {
             const [, targetId] = match;
+            
+            if (!targetId || targetId.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /info <clientId>',
+                private: true
+              });
+            }
+            
             const targetData = userIPs.get(targetId);
             const banData = blockedUsers.get(targetId);
             
@@ -652,13 +662,23 @@ export default async function handler(req, res) {
           // Ban command
           if (match = MOD_COMMANDS.ban.exec(message)) {
             const [, targetId] = match;
+            
+            if (!targetId || targetId.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /ban <clientId>',
+                private: true
+              });
+            }
+            
             const targetData = userIPs.get(targetId);
             
             if (!targetData) {
               return res.status(400).json({
                 status: 'error',
                 command: true,
-                message: `User ${targetId} not found in active users`,
+                message: `❌ User ${targetId} not found in active users`,
                 private: true
               });
             }
@@ -705,13 +725,23 @@ export default async function handler(req, res) {
             return res.status(200).json({ 
               status: 'Command executed',
               command: true,
-              message: `User ${targetId} and IP ${targetData.ip} have been permanently banned. ${ipUsers.length} accounts affected.`
+              message: `✅ User ${targetId} and IP ${targetData.ip} have been permanently banned. ${ipUsers.length} accounts affected.`
             });
           }
 
           // Unban command
           if (match = MOD_COMMANDS.unban.exec(message)) {
             const [, targetId] = match;
+            
+            if (!targetId || targetId.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /unban <clientId>',
+                private: true
+              });
+            }
+            
             const targetData = userIPs.get(targetId);
             
             blockedUsers.delete(targetId);
@@ -731,13 +761,33 @@ export default async function handler(req, res) {
             return res.status(200).json({
               status: 'Command executed',
               command: true,
-              message: `User ${targetId} has been unbanned`
+              message: `✅ User ${targetId} has been unbanned`
             });
           }
 
           // Ban IP command
           if (match = MOD_COMMANDS.banip.exec(message)) {
             const [, targetIP] = match;
+            
+            if (!targetIP || targetIP.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /banip <ip_address>',
+                private: true
+              });
+            }
+            
+            // Basic IP validation
+            const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+            if (!ipRegex.test(targetIP)) {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid IP address format',
+                private: true
+              });
+            }
             
             blockedIPs.set(targetIP, {
               bannedAt: Date.now(),
@@ -767,13 +817,33 @@ export default async function handler(req, res) {
             return res.status(200).json({
               status: 'Command executed',
               command: true,
-              message: `IP ${targetIP} has been banned. ${affectedUsers.length} users affected.`
+              message: `✅ IP ${targetIP} has been banned. ${affectedUsers.length} users affected.`
             });
           }
 
           // Unban IP command
           if (match = MOD_COMMANDS.unbanip.exec(message)) {
             const [, targetIP] = match;
+            
+            if (!targetIP || targetIP.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /unbanip <ip_address>',
+                private: true
+              });
+            }
+            
+            // Basic IP validation
+            const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+            if (!ipRegex.test(targetIP)) {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid IP address format',
+                private: true
+              });
+            }
             
             blockedIPs.delete(targetIP);
 
@@ -783,7 +853,7 @@ export default async function handler(req, res) {
             return res.status(200).json({
               status: 'Command executed',
               command: true,
-              message: `IP ${targetIP} has been unbanned`
+              message: `✅ IP ${targetIP} has been unbanned`
             });
           }
 
@@ -863,7 +933,7 @@ export default async function handler(req, res) {
               return res.status(200).json({
                 status: 'Command executed',
                 command: true,
-                message: `Chat purged with ${count} placeholder messages`
+                message: `🧹 Chat purged with ${count} placeholder messages`
               });
             } catch (error) {
               console.error('Error during purge:', error);
@@ -879,6 +949,16 @@ export default async function handler(req, res) {
           // Whois command
           if (match = MOD_COMMANDS.whois.exec(message)) {
             const [, targetUsername] = match;
+            
+            if (!targetUsername || targetUsername.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /whois <username>',
+                private: true
+              });
+            }
+            
             const matches = Array.from(userIPs.entries())
               .filter(([, data]) => data.username.toLowerCase() === targetUsername.toLowerCase())
               .map(([clientId, data]) => ({
@@ -892,7 +972,7 @@ export default async function handler(req, res) {
               return res.status(200).json({
                 status: 'error',
                 command: true,
-                message: `No users found with username "${targetUsername}"`,
+                message: `❌ No users found with username "${targetUsername}"`,
                 private: true
               });
             }
@@ -904,17 +984,64 @@ export default async function handler(req, res) {
             return res.status(200).json({
               status: 'success',
               command: true,
-              message: `Found ${matches.length} match${matches.length > 1 ? 'es' : ''}:\n\n${message}`,
+              message: `🔍 Found ${matches.length} match${matches.length > 1 ? 'es' : ''}:\n\n${message}`,
               private: true
             });
           }
+        }
+
+        // Check if the command looks like a valid command but with wrong syntax
+        const commandPrefixes = ['/ban', '/unban', '/banip', '/unbanip', '/info', '/whois', '/purge', '/listbans', '/help'];
+        const commandWord = text.split(' ')[0].toLowerCase();
+        
+        if (commandPrefixes.some(prefix => commandWord.startsWith(prefix))) {
+          // It's a recognized command but with invalid syntax
+          const baseCommand = commandPrefixes.find(prefix => commandWord.startsWith(prefix));
+          let helpText = '';
+          
+          switch (baseCommand) {
+            case '/ban':
+              helpText = 'Correct usage: /ban <clientId>';
+              break;
+            case '/unban':
+              helpText = 'Correct usage: /unban <clientId>';
+              break;
+            case '/banip':
+              helpText = 'Correct usage: /banip <ip_address>';
+              break;
+            case '/unbanip':
+              helpText = 'Correct usage: /unbanip <ip_address>';
+              break;
+            case '/info':
+              helpText = 'Correct usage: /info <clientId>';
+              break;
+            case '/whois':
+              helpText = 'Correct usage: /whois <username>';
+              break;
+            case '/purge':
+              helpText = 'Correct usage: /purge (no parameters needed)';
+              break;
+            case '/listbans':
+              helpText = 'Correct usage: /listbans (no parameters needed)';
+              break;
+            case '/help':
+              helpText = 'Correct usage: /help (no parameters needed)';
+              break;
+          }
+          
+          return res.status(400).json({
+            status: 'error',
+            command: true,
+            message: `❌ Invalid command syntax. ${helpText}`,
+            private: true
+          });
         }
 
         // If we get here, it's an unknown command
         return res.status(400).json({
           status: 'error',
           command: true,
-          message: 'Unknown command',
+          message: '❌ Unknown command. Type /help to see available commands.',
           private: true
         });
       }
