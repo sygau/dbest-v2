@@ -103,11 +103,11 @@ async function getBusRoute(route) {
 // Get buses at specific stop
 async function getBusesAtStop(stopId) {
   try {
-    // For simplicity, test with common routes at this stop
-    const commonRoutes = ['1', '2', '5', '10', '15'];
+    // Routes available at stop 001272 (Quarry Bay Street, King's Road)
+    const availableRoutes = ['2', '2A', '33', '77', '81', '82', '85', '99', '722'];
     const busData = [];
     
-    for (const route of commonRoutes) {
+    for (const route of availableRoutes) {
       const etaData = await getBusETA(stopId, route);
       
       if (etaData.length > 0) {
