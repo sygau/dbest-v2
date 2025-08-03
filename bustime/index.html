@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <meta name="description" content="Real-time bus arrivals for stop 001272 - Quarry Bay Street, King's Road">
     
@@ -22,6 +22,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -30,6 +37,8 @@
             min-height: 100vh;
             padding: 15px;
             color: #e2e8f0;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .container {
@@ -109,6 +118,25 @@
         .status-no_service { background: #a0aec0; color: white; }
 
         .last-updated {
+            color: #a0aec0;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .school-filter-section {
+            background: rgba(45, 55, 72, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .school-filter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
             color: #a0aec0;
             font-size: 0.9rem;
         }
@@ -230,7 +258,7 @@
 
         .overview-header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             margin-bottom: 15px;
         }
@@ -239,14 +267,6 @@
             color: #f7fafc;
             font-size: 1.2rem;
             font-weight: 600;
-        }
-
-        .school-filter {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #a0aec0;
-            font-size: 0.9rem;
         }
 
         .school-filter input[type="checkbox"] {
@@ -293,7 +313,7 @@
         }
 
         .overview-time.arriving-soon {
-            color: #48bb78;
+            color: #68d391;
             animation: pulse 2s infinite;
         }
 
@@ -305,10 +325,12 @@
             background: rgba(237, 137, 54, 0.1);
             border: 1px solid rgba(237, 137, 54, 0.3);
             color: #ed8936;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 16px;
+            margin-bottom: 20px;
             font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .arrivals {
@@ -343,7 +365,7 @@
         }
 
         .arrival-time.arriving-soon {
-            color: #48bb78;
+            color: #68d391;
             animation: pulse 2s infinite;
         }
 
@@ -469,7 +491,7 @@
 
             .overview-header {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 gap: 10px;
             }
         }
@@ -507,7 +529,7 @@
     <div class="container">
         <div class="header">
             <h1>🚌 Bus Arrivals</h1>
-            <div class="stop-info">Stop 001272 - Quarry Bay Street, King's Road</div>
+            <div class="stop-info">Live Bus Arrival Time Tracker</div>
             <div class="header-controls">
                 <div id="serviceStatus" class="status-badge status-normal">Normal Service</div>
                 <button id="refreshBtn" class="refresh-btn">🔄 Refresh Now</button>
@@ -517,17 +539,19 @@
             </div>
         </div>
 
+        <div class="school-filter-section">
+            <div class="school-filter">
+                <input type="checkbox" id="schoolOnlyFilter">
+                <label for="schoolOnlyFilter">🎓 School buses only</label>
+            </div>
+        </div>
+
         <div id="alerts" class="alerts"></div>
 
         <div id="overviewSection" class="overview-section" style="display: none;">
             <div class="overview-header">
                 <div class="overview-title">📊 Quick Overview</div>
-                <div class="school-filter">
-                    <input type="checkbox" id="schoolOnlyFilter">
-                    <label for="schoolOnlyFilter">🎓 School buses only</label>
-                </div>
             </div>
-            <div id="unavailableNotice" class="unavailable-notice" style="display: none;"></div>
             <div id="overviewGrid" class="overview-grid"></div>
         </div>
 
@@ -542,6 +566,8 @@
             <h3>No buses available</h3>
             <p>No bus services found for this stop at the moment.</p>
         </div>
+
+        <div id="unavailableNotice" class="unavailable-notice" style="display: none;"></div>
     </div>
 
     <div class="refresh-indicator">
@@ -954,7 +980,48 @@
         // Initialize the bus tracker when page loads
         document.addEventListener('DOMContentLoaded', () => {
             new BusTracker();
+            
+            // PWA Enhancements - Prevent zoom and improve touch experience
+            setupPWAEnhancements();
         });
+
+        function setupPWAEnhancements() {
+            // Prevent pinch zoom
+            document.addEventListener('touchstart', function(event) {
+                if (event.touches.length > 1) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+
+            // Prevent double-tap zoom
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, { passive: false });
+
+            // Prevent keyboard zoom on form inputs
+            document.addEventListener('touchstart', function(event) {
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+                    event.target.style.fontSize = '16px';
+                }
+            });
+
+            // Disable context menu on long press
+            document.addEventListener('contextmenu', function(event) {
+                event.preventDefault();
+            });
+
+            // Prevent text selection on touch devices
+            document.addEventListener('selectstart', function(event) {
+                if (event.target.tagName !== 'INPUT' && event.target.tagName !== 'TEXTAREA') {
+                    event.preventDefault();
+                }
+            });
+        }
 
         // PWA Installation Support
         let deferredPrompt;
