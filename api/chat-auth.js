@@ -123,9 +123,16 @@ async function getGeolocation(ip) {
 // Moderator settings
 const MOD_ID = process.env.MOD_ID || 'YOUR_CLIENT_ID';
 const MOD_IP = '218.103.134.106'; // Trusted moderator IP
+const MOD_SECRET_KEY = process.env.MOD_SECRET_KEY || 'dse-mod-secret-2025'; // Secret key for mod auth
 
 // Helper function to check if user is moderator
-function isModerator(clientId, ip) {
+function isModerator(clientId, ip, secretmodkey = null) {
+  // Check secret key first (primary method)
+  if (secretmodkey && secretmodkey === MOD_SECRET_KEY) {
+    return true;
+  }
+  
+  // Fallback to IP/ID check
   return clientId === MOD_ID || ip === MOD_IP;
 }
 
@@ -211,9 +218,9 @@ function cleanupInactiveUsers() {
 setInterval(cleanupInactiveUsers, 2 * 60 * 1000);
 
 // Enhanced ban check function with IP-level enforcement
-function isUserBanned(clientId, ip) {
+function isUserBanned(clientId, ip, secretmodkey = null) {
   // Never ban moderators
-  if (isModerator(clientId, ip)) return false;
+  if (isModerator(clientId, ip, secretmodkey)) return false;
   
   // Check direct client ID ban
   if (blockedUsers.has(clientId)) return true;
@@ -243,9 +250,9 @@ function isUserBanned(clientId, ip) {
   return false;
 }
 
-function isRateLimited(clientId, ip) {
+function isRateLimited(clientId, ip, secretmodkey = null) {
   // Never rate-limit moderators
-  if (isModerator(clientId, ip)) return false;
+  if (isModerator(clientId, ip, secretmodkey)) return false;
 
   const now = Date.now();
 
@@ -855,7 +862,7 @@ export default async function handler(req, res) {
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { clientId, username, message, action } = req.body;
+    const { clientId, username, message, action, secretmodkey } = req.body;
     
     // Validate and sanitize inputs
     const cleanClientId = String(clientId || '').trim();
@@ -949,12 +956,12 @@ export default async function handler(req, res) {
     }
 
     // Check if user is banned
-    if (isUserBanned(cleanClientId, ip)) {
+    if (isUserBanned(cleanClientId, ip, secretmodkey)) {
       return res.status(403).json({ error: 'You are permanently banned from the chat' });
     }
     
     // Check rate limiting
-    const rateLimitStatus = isRateLimited(cleanClientId, ip);
+    const rateLimitStatus = isRateLimited(cleanClientId, ip, secretmodkey);
     if (rateLimitStatus && rateLimitStatus.blocked) {
       await logModeration(cleanClientId, ip, cleanUsername, 'N/A', 'Rate limit violation', 'RATE_LIMIT');
       
@@ -984,7 +991,7 @@ export default async function handler(req, res) {
 
         // Help command - available to all users
         if (MOD_COMMANDS.help.test(message)) {
-          const isModHelper = isModerator(cleanClientId, ip);
+          const isModHelper = isModerator(cleanClientId, ip, secretmodkey);
           const helpText = isModHelper ? 
             `Available moderator commands:
 /help - Show this help message
@@ -1011,7 +1018,7 @@ export default async function handler(req, res) {
         }
 
         // Moderator-only commands
-        if (isModerator(cleanClientId, ip)) {
+        if (isModerator(cleanClientId, ip, secretmodkey)) {
           // Info command
           if (match = MOD_COMMANDS.info.exec(message)) {
             const [, targetId] = match;
@@ -1597,7 +1604,7 @@ Server Uptime: ~${uptimeHours}h
       }
       
       // Check if sender is moderator
-      const isMod = isModerator(cleanClientId, ip);
+      const isMod = isModerator(cleanClientId, ip, secretmodkey);
       return res.status(200).json({ 
         status: 'Message approved',
         isModerator: isMod 
@@ -1630,7 +1637,7 @@ Server Uptime: ~${uptimeHours}h
       }
 
       // Check if sender is moderator
-      const isMod = isModerator(cleanClientId, ip);
+      const isMod = isModerator(cleanClientId, ip, secretmodkey);
       
       // Log successful message to Logflare
       await logToLogflare('message_sent', {

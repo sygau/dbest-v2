@@ -132,6 +132,11 @@ class DSEChat {
     }
   }
 
+  // Get secret key from localStorage if available
+  getSecretKey() {
+    return localStorage.getItem('dsechat_mod_secret') || null;
+  }
+
   // Enhanced validation functions with security checks
   validateUsername(username) {
     if (!username) {
@@ -976,7 +981,8 @@ class DSEChat {
         clientId: this.ably.auth.clientId,
         username: sender,
         message: processedText,
-        text: processedText  // Add text property for command checking
+        text: processedText,  // Add text property for command checking
+        secretmodkey: this.getSecretKey() // Add secret key for mod auth
       })
     })
     .then(response => {
@@ -1023,7 +1029,8 @@ class DSEChat {
             message: messageData,
             clientId: this.ably.auth.clientId,
             username: sender,
-            text: processedText  // Add text property for command checking
+            text: processedText,  // Add text property for command checking
+            secretmodkey: this.getSecretKey() // Add secret key for mod auth
           })
         }).then(response => {
           if (!response.ok) {
@@ -1088,7 +1095,8 @@ class DSEChat {
       body: JSON.stringify({
         action: 'leave',
         clientId: this.ably.auth.clientId,
-        username: username
+        username: username,
+        secretmodkey: this.getSecretKey() // Add secret key for mod auth
       })
     }).catch(error => {
       // Silently fail - logging is not critical for user experience
