@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSM</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet">
+    
+    <style>
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header {
+            background: #21262d;
+            border-bottom: 1px solid #30363d;
+            border-radius: 12px 12px 0 0 !important;
+        }
+        
+        .form-control {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            color: #c9d1d9;
+        }
+        
+        .form-control:focus {
+            background: #0d1117;
+            border-color: #58a6ff;
+            color: #c9d1d9;
+            box-shadow: 0 0 0 0.25rem rgba(88, 166, 255, 0.25);
+        }
+        
+        .btn-primary {
+            background: #238636;
+            border-color: #238636;
+        }
+        
+        .btn-primary:hover {
+            background: #2ea043;
+            border-color: #2ea043;
+        }
+        
+        .btn-danger {
+            background: #da3633;
+            border-color: #da3633;
+        }
+        
+        .btn-danger:hover {
+            background: #f85149;
+            border-color: #f85149;
+        }
+        
+        .btn-outline-secondary {
+            color: #7d8590;
+            border-color: #30363d;
+        }
+        
+        .btn-outline-secondary:hover {
+            background: #30363d;
+            border-color: #30363d;
+            color: #c9d1d9;
+        }
+        
+        .table-dark {
+            --bs-table-bg: #0d1117;
+            --bs-table-striped-bg: #161b22;
+            border-color: #30363d;
+        }
+        
+        .table-dark td, .table-dark th {
+            border-color: #30363d;
+        }
+        
+        .alert-info {
+            background: #0c2d48;
+            border-color: #1f6feb;
+            color: #58a6ff;
+        }
+        
+        .text-muted {
+            color: #7d8590 !important;
+        }
+        
+        .ls-item {
+            word-break: break-all;
+        }
+        
+        .ls-key {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            background: #21262d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        .ls-value {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            background: #0d1117;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .ls-value {
+                max-width: 150px;
+            }
+            
+            .table-responsive {
+                font-size: 0.9em;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h1 class="h2 mb-2">
+                <i class="material-icons-outlined me-2" style="font-size: 28px; vertical-align: text-bottom;">storage</i>
+                LocalStorage Manager
+            </h1>
+            <p class="text-muted">Manage browser localStorage items easily</p>
+        </div>
+
+        <!-- Add New Item Card -->
+        <div class="card mb-4 fade-in">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="material-icons-outlined me-2" style="font-size: 20px; vertical-align: text-bottom;">add</i>
+                    Add New Item
+                </h5>
+            </div>
+            <div class="card-body">
+                <form id="addForm">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="keyInput" class="form-label">Key</label>
+                            <input type="text" class="form-control" id="keyInput" placeholder="Enter key name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="valueInput" class="form-label">Value</label>
+                            <input type="text" class="form-control" id="valueInput" placeholder="Enter value" required>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="material-icons-outlined me-1" style="font-size: 18px;">add</i>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Quick Actions Card -->
+        <div class="card mb-4 fade-in">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="material-icons-outlined me-2" style="font-size: 20px; vertical-align: text-bottom;">flash_on</i>
+                    Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-2">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-outline-secondary w-100" onclick="setModSecret()">
+                            <i class="material-icons-outlined me-1" style="font-size: 18px;">security</i>
+                            Set Mod Key
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-outline-secondary w-100" onclick="clearChatData()">
+                            <i class="material-icons-outlined me-1" style="font-size: 18px;">chat</i>
+                            Clear Chat Data
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-danger w-100" onclick="clearAllStorage()">
+                            <i class="material-icons-outlined me-1" style="font-size: 18px;">delete_sweep</i>
+                            Clear All
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Items Card -->
+        <div class="card fade-in">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="material-icons-outlined me-2" style="font-size: 20px; vertical-align: text-bottom;">list</i>
+                    Current Items
+                    <span class="badge bg-secondary ms-2" id="itemCount">0</span>
+                </h5>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="refreshList()">
+                    <i class="material-icons-outlined" style="font-size: 16px;">refresh</i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="emptyState" class="text-center text-muted py-4" style="display: none;">
+                    <i class="material-icons-outlined mb-2" style="font-size: 48px; opacity: 0.5;">inbox</i>
+                    <p class="mb-0">No localStorage items found</p>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover" id="storageTable" style="display: none;">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Value</th>
+                                <th width="100">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="storageTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Alert -->
+        <div class="alert alert-info mt-4 fade-in">
+            <i class="material-icons-outlined me-2" style="font-size: 20px; vertical-align: text-bottom;">info</i>
+            <strong>Info:</strong> This tool manages localStorage for the current domain. Changes take effect immediately and persist across browser sessions.
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshList();
+            
+            // Setup form submission
+            document.getElementById('addForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                addItem();
+            });
+            
+            // Auto-refresh every 5 seconds
+            setInterval(refreshList, 5000);
+        });
+
+        // Add new localStorage item
+        function addItem() {
+            const key = document.getElementById('keyInput').value.trim();
+            const value = document.getElementById('valueInput').value.trim();
+            
+            if (!key || !value) {
+                alert('Please enter both key and value');
+                return;
+            }
+            
+            try {
+                localStorage.setItem(key, value);
+                
+                // Clear form
+                document.getElementById('keyInput').value = '';
+                document.getElementById('valueInput').value = '';
+                
+                // Refresh list
+                refreshList();
+                
+                // Show success feedback
+                showToast(`Added: ${key}`, 'success');
+                
+            } catch (error) {
+                alert('Error adding item: ' + error.message);
+            }
+        }
+
+        // Remove localStorage item
+        function removeItem(key) {
+            if (confirm(`Are you sure you want to remove "${key}"?`)) {
+                try {
+                    localStorage.removeItem(key);
+                    refreshList();
+                    showToast(`Removed: ${key}`, 'danger');
+                } catch (error) {
+                    alert('Error removing item: ' + error.message);
+                }
+            }
+        }
+
+        // Edit localStorage item
+        function editItem(key) {
+            const currentValue = localStorage.getItem(key);
+            const newValue = prompt(`Edit value for "${key}":`, currentValue);
+            
+            if (newValue !== null && newValue !== currentValue) {
+                try {
+                    localStorage.setItem(key, newValue);
+                    refreshList();
+                    showToast(`Updated: ${key}`, 'info');
+                } catch (error) {
+                    alert('Error updating item: ' + error.message);
+                }
+            }
+        }
+
+        // Refresh the localStorage list
+        function refreshList() {
+            const tbody = document.getElementById('storageTableBody');
+            const table = document.getElementById('storageTable');
+            const emptyState = document.getElementById('emptyState');
+            const itemCount = document.getElementById('itemCount');
+            
+            tbody.innerHTML = '';
+            
+            const items = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                items.push({ key, value });
+            }
+            
+            // Sort items by key
+            items.sort((a, b) => a.key.localeCompare(b.key));
+            
+            if (items.length === 0) {
+                table.style.display = 'none';
+                emptyState.style.display = 'block';
+                itemCount.textContent = '0';
+            } else {
+                table.style.display = 'table';
+                emptyState.style.display = 'none';
+                itemCount.textContent = items.length;
+                
+                items.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="ls-item">
+                            <span class="ls-key">${escapeHtml(item.key)}</span>
+                        </td>
+                        <td class="ls-item">
+                            <div class="ls-value" title="${escapeHtml(item.value)}">${escapeHtml(item.value)}</div>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <button type="button" class="btn btn-outline-secondary" onclick="editItem('${escapeHtml(item.key)}')" title="Edit">
+                                    <i class="material-icons-outlined" style="font-size: 14px;">edit</i>
+                                </button>
+                                <button type="button" class="btn btn-outline-danger" onclick="removeItem('${escapeHtml(item.key)}')" title="Delete">
+                                    <i class="material-icons-outlined" style="font-size: 14px;">delete</i>
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+        }
+
+        // Quick Actions
+        function setModSecret() {
+            const secret = prompt('Enter moderator secret key:');
+            if (secret && secret.trim()) {
+                localStorage.setItem('dsechat_mod_secret', secret.trim());
+                refreshList();
+                showToast('Moderator secret key set!', 'success');
+            }
+        }
+
+        function clearChatData() {
+            if (confirm('Clear all chat-related localStorage items?')) {
+                const chatKeys = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key.includes('chat') || key.includes('dsechat') || key.includes('Username')) {
+                        chatKeys.push(key);
+                    }
+                }
+                
+                chatKeys.forEach(key => localStorage.removeItem(key));
+                refreshList();
+                showToast(`Cleared ${chatKeys.length} chat items`, 'info');
+            }
+        }
+
+        function clearAllStorage() {
+            if (confirm('Are you sure you want to clear ALL localStorage items? This cannot be undone!')) {
+                const count = localStorage.length;
+                localStorage.clear();
+                refreshList();
+                showToast(`Cleared all ${count} items`, 'danger');
+            }
+        }
+
+        // Utility functions
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showToast(message, type = 'info') {
+            // Create a simple toast notification
+            const toast = document.createElement('div');
+            toast.className = `alert alert-${type} position-fixed`;
+            toast.style.cssText = `
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                min-width: 300px;
+                opacity: 0;
+                transform: translateX(100%);
+                transition: all 0.3s ease;
+            `;
+            toast.innerHTML = `
+                <i class="material-icons-outlined me-2" style="font-size: 18px; vertical-align: text-bottom;">
+                    ${type === 'success' ? 'check_circle' : type === 'danger' ? 'error' : 'info'}
+                </i>
+                ${message}
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => {
+                toast.style.opacity = '1';
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + R to refresh
+            if ((e.ctrlKey || e.metaKey) && e.key === 'r') {
+                e.preventDefault();
+                refreshList();
+                showToast('Refreshed!', 'info');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -123,7 +123,7 @@ async function getGeolocation(ip) {
 // Moderator settings
 const MOD_ID = process.env.MOD_ID || 'YOUR_CLIENT_ID';
 const MOD_IP = '218.103.134.106'; // Trusted moderator IP
-const MOD_SECRET_KEY = process.env.MOD_SECRET_KEY || 'dse-mod-secret-2025'; // Secret key for mod auth
+const MOD_SECRET_KEY = process.env.MOD_SECRET_KEY || 'WATCHJABLETV2025'; // Secret key for mod auth
 
 // Helper function to check if user is moderator
 function isModerator(clientId, ip, secretmodkey = null) {
