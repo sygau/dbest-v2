@@ -122,7 +122,7 @@ async function getGeolocation(ip) {
 
 // Moderator settings
 const MOD_ID = process.env.MOD_ID || 'YOUR_CLIENT_ID';
-const MOD_IP = '119.237.203.252'; // Trusted moderator IP
+const MOD_IP = '218.103.134.106'; // Trusted moderator IP
 
 // Helper function to check if user is moderator
 function isModerator(clientId, ip) {
