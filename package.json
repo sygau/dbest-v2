@@ -6,8 +6,10 @@
   "main": "contentful/contentful.js",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run prebuild && next build",
+    "build": "next build",
+    "build:full": "npm run prebuild && next build",
     "prebuild": "node scripts/generate-blog-data.js",
+    "prebuild:safe": "node -e \"console.log('Checking for blog data...'); try { require('./data/blog-index.json'); console.log('✅ Blog data found'); } catch(e) { console.log('⚠️  Blog data not found, using static data'); }\"",
     "start": "next start",
     "lint": "next lint",
     "export": "npm run prebuild && next build && next export",
