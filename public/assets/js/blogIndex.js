@@ -1,3 +1,7 @@
+// DEPRECATED: This file is no longer used
+// Blog functionality has been moved directly into pages/blog/index.tsx
+// This file is kept for reference only
+
 // Blog Index Module - Handles category filtering, sorting, and pagination
 window.DSEBlogIndex = (function() {
   // Private variables
@@ -108,7 +112,7 @@ window.DSEBlogIndex = (function() {
     
     // Prev button
     const prevLi = document.createElement('li');
-    prevLi.className = 'page-item' + (currentPage <= 1 ? '' : '');
+    prevLi.className = 'page-item' + (currentPage <= 1 ? ' disabled' : '');
     prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>`;
     const prevHandler = e => { 
       e.preventDefault(); 
@@ -120,23 +124,25 @@ window.DSEBlogIndex = (function() {
     addTrackedEventListener(prevLi, 'click', prevHandler);
     pagination.appendChild(prevLi);
     
-    // Page numbers
-    for (let i = 1; i <= totalPages; i++) {
-      const li = document.createElement('li');
-      li.className = 'page-item' + (i === currentPage ? ' active' : '');
-      li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
-      const pageHandler = e => { 
-        e.preventDefault(); 
-        currentPage = i; 
-        showPage(); 
-      };
-      addTrackedEventListener(li, 'click', pageHandler);
-      pagination.appendChild(li);
+    // Page numbers (only show if more than 1 page)
+    if (totalPages > 1) {
+      for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement('li');
+        li.className = 'page-item' + (i === currentPage ? ' active' : '');
+        li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+        const pageHandler = e => { 
+          e.preventDefault(); 
+          currentPage = i; 
+          showPage(); 
+        };
+        addTrackedEventListener(li, 'click', pageHandler);
+        pagination.appendChild(li);
+      }
     }
     
     // Next button
     const nextLi = document.createElement('li');
-    nextLi.className = 'page-item' + (currentPage >= totalPages ? '' : '');
+    nextLi.className = 'page-item' + (currentPage >= totalPages ? ' disabled' : '');
     nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>`;
     const nextHandler = e => { 
       e.preventDefault(); 
@@ -176,7 +182,8 @@ window.DSEBlogIndex = (function() {
   return {
     init: function() {
       // Check if we're on the blog page and elements exist
-      if (window.location.pathname !== '/blog' && window.location.pathname !== '/blog/') {
+      const currentPath = window.location.pathname;
+      if (!currentPath.includes('/blog')) {
         return;
       }
       
@@ -190,7 +197,7 @@ window.DSEBlogIndex = (function() {
         if (!categoryButtons.length || !blogCards.length) {
           console.warn('Blog index elements not found, retrying...');
           // Retry after a short delay
-          setTimeout(() => this.init(), 100);
+          setTimeout(() => this.init(), 200);
           return;
         }
         
@@ -198,6 +205,11 @@ window.DSEBlogIndex = (function() {
         currentCategory = 'all';
         currentSort = 'newest';
         currentPage = 1;
+        
+        // Set initial active state for "All" button
+        if (categoryButtons.length > 0) {
+          categoryButtons[0].classList.add('active');
+        }
         
         // Setup functionality
         setupCategoryButtons();
@@ -207,7 +219,7 @@ window.DSEBlogIndex = (function() {
         filterAndSortCardsWithPagination();
         
         console.log('Blog index initialized successfully');
-      }, 50);
+      }, 100);
     },
     
     cleanup: function() {
@@ -231,16 +243,5 @@ window.DSEBlogIndex = (function() {
   };
 })();
 
-// Auto-initialize if DOM is ready and we're on blog page
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    if (window.DSEBlogIndex) {
-      window.DSEBlogIndex.init();
-    }
-  });
-} else {
-  // DOM is already ready
-  if (window.DSEBlogIndex) {
-    window.DSEBlogIndex.init();
-  }
-}
+// Manual initialization - let the TSX file handle initialization
+// This prevents conflicts with Next.js hydration

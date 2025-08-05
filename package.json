@@ -5,16 +5,30 @@
   "description": "DSE.BEST - Hong Kong DSE Past Papers and Blog",
   "main": "contentful/contentful.js",
   "scripts": {
-    "start": "node contentful/contentful.js",
-    "meta": "node scripts/updateMeta.js"
+    "dev": "next dev",
+    "build": "npm run prebuild && next build",
+    "prebuild": "node scripts/generate-blog-data.js",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "npm run prebuild && next build && next export",
+    "contentful": "node contentful/contentful.js",
+    "meta": "node scripts/updateMeta.js",
+    "blog:sync": "node scripts/generate-blog-data.js"
   },
   "dependencies": {
-    "@contentful/rich-text-html-renderer": "^16.3.0",
-    "@contentful/rich-text-types": "^16.3.0",
+    "@contentful/rich-text-html-renderer": "^16.6.10",
+    "@contentful/rich-text-types": "^16.8.5",
+    "@types/node": "^24.2.0",
+    "@types/react": "^19.1.9",
     "@vercel/edge": "^0.1.2",
     "ably": "^1.2.48",
-    "contentful": "^10.6.0",
-    "fs-extra": "^11.1.1"
+    "contentful": "^10.15.1",
+    "framer-motion": "^12.23.12",
+    "fs-extra": "^11.1.1",
+    "next": "^15.4.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "typescript": "^5.9.2"
   },
   "repository": {
     "type": "git",

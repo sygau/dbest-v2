@@ -2516,10 +2516,10 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
 .category-btn[data-category="ICT"] { background: #37474f; color: #fff; border-color: #37474f; }
 .category-btn[data-category="M1"] { background: #673ab7; color: #fff; border-color: #673ab7; }
 .category-btn[data-category="M2"] { background: #00796b; color: #fff; border-color: #00796b; }
-.category-btn[data-category="geography"] { background: #0288d1; color: #fff; border-color: #0288d1; }
-.category-btn[data-category="history"] { background: #795548; color: #fff; border-color: #795548; }
-.category-btn[data-category="chinese history"] { background: #b71c1c; color: #fff; border-color: #b71c1c; }
-.category-btn[data-category="economics"] { background: #546e7a; color: #fff; border-color: #546e7a; }
+.category-btn[data-category="Geography"] { background: #0288d1; color: #fff; border-color: #0288d1; }
+.category-btn[data-category="History"] { background: #795548; color: #fff; border-color: #795548; }
+.category-btn[data-category="Chinese History"] { background: #b71c1c; color: #fff; border-color: #b71c1c; }
+.category-btn[data-category="Economics"] { background: #546e7a; color: #fff; border-color: #546e7a; }
 .category-btn[data-category="BAFS"] { background: #ff8f00; color: #212529; border-color: #ff8f00; }
 .category-btn[data-category="Visual Arts"] { background: #0277bd; color: #fff; border-color: #0277bd; }
 .category-btn { font-weight: 600; border-radius: 999px !important; padding: 0.35rem 1.1rem; border-width: 2px; margin-bottom: 2px; }
