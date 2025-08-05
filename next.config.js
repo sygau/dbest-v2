@@ -2,21 +2,22 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
-  // Remove output: 'export' for Vercel deployment
-  // output: 'export',
-  // distDir: 'out',
   
-  // Optimize for performance and reduce flash
+  // Enable full optimization for production
   swcMinify: true,
   experimental: {
-    optimizeCss: false,
+    optimizeCss: true,
     largePageDataBytes: 128 * 100000, // 128KB
   },
   
-  // Optimize compiler
+  // Optimize compiler for production
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    styledComponents: true,
   },
+  
+  // Minify HTML in production
+  compress: true,
   
   images: {
     unoptimized: true,
@@ -27,8 +28,9 @@ const nextConfig = {
       'nextjs.dse.best' // Preview domain
     ],
   },
-  // Remove assetPrefix to let Vercel handle this automatically
-  // assetPrefix: process.env.NODE_ENV === 'production' ? 'https://dse.best' : '',
+  
+  // Explicitly disable assetPrefix for all deployments
+  assetPrefix: '',
   
   // Environment variables for build
   env: {
