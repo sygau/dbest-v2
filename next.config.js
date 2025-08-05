@@ -4,16 +4,15 @@ const nextConfig = {
   trailingSlash: false,
   
   // Enable full optimization for production
-  swcMinify: true,
   experimental: {
-    optimizeCss: true,
+    // Disable optimizeCss as it requires additional dependencies
+    optimizeCss: false,
     largePageDataBytes: 128 * 100000, // 128KB
   },
   
   // Optimize compiler for production
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
-    styledComponents: true,
   },
   
   // Minify HTML in production
