@@ -429,12 +429,12 @@ async function moderateUsername(username, clientId, ip) {
     // Hate speech and slurs
     /\b(nigger|faggot|retard|nazi|hitler|chink|gook|spic|wetback|beaner|cracker|honky|kike|jap|raghead|towelhead|sandnigger)\b/i,
     
-    // Common bypass attempts
-    /[f]+[u\*\-_]*[c]+[k\*\-_]+/i,
-    /[s]+[h\*\-_]*[i\*\-_]*[t]+/i,
-    /[b]+[i\*\-_]*[t\*\-_]*[c]+[h\*\-_]*/i,
-    /[d]+[i\*\-_]*[u\*\-_]+/i,
-    /[p]+[o\*\-_]*[r]+[n\*\-_]*/i
+    // Common bypass attempts - more specific patterns
+    /\bf+[u\*\-_]+c+[k\*\-_]+\b/i,
+    /\bs+h+[i\*\-_]+t+\b/i,  // More specific: requires 'h' after 's'
+    /\bb+[i\*\-_]+t+[c\*\-_]+h+\b/i,
+    /\bd+[i\*\-_]+[u\*\-_]+\b/i,
+    /\bp+[o\*\-_]+r+[n\*\-_]+\b/i
   ];
 
   for (const pattern of profanityPatterns) {
@@ -780,12 +780,12 @@ function moderateContent(text, clientId, ip, username) {
     /(.)\1{5,}/i, // 6+ repeated characters
     /\b(\w+)\s+\1\s+\1\b/i, // Same word repeated 3+ times
     
-    // Common bypass attempts
-    /[f]+[u\*\-_]*[c]+[k\*\-_]+/i,
-    /[s]+[h\*\-_]*[i\*\-_]*[t]+/i,
-    /[b]+[i\*\-_]*[t\*\-_]*[c]+[h\*\-_]*/i,
-    /[d]+[i\*\-_]*[u\*\-_]+/i,
-    /[p]+[o\*\-_]*[r]+[n\*\-_]*/i,
+    // Common bypass attempts - more specific patterns
+    /\bf+[u\*\-_]+c+[k\*\-_]+\b/i,
+    /\bs+h+[i\*\-_]+t+\b/i,  // More specific: requires 'h' after 's'
+    /\bb+[i\*\-_]+t+[c\*\-_]+h+\b/i,
+    /\bd+[i\*\-_]+[u\*\-_]+\b/i,
+    /\bp+[o\*\-_]+r+[n\*\-_]+\b/i,
     
     // Character substitution patterns
     /\b\w*[ph]+[4@a]*[gg]*[oò0ó]+[t7]+\w*\b/i, // faggot variants
