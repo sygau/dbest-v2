@@ -24,10 +24,6 @@ export default function Document() {
         <link href="/assets/css/pace.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
         
-        {/* plugins */}
-        <link href="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.css" rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="/assets/plugins/metismenu/mm-vertical.css" />
-        
         {/* bootstrap css */}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
@@ -63,6 +59,17 @@ export default function Document() {
             "name": "DSEBest",
             "url": "https://dse.best/"
           })
+        }} />
+        
+        {/* Google Analytics */}
+        <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
+        <script defer dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-XB60B3MXHH');
+          `
         }} />
         
         {/* Vercel Analytics */}
@@ -121,8 +128,94 @@ export default function Document() {
         {/* jQuery */}
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         
-        {/* MetisMenu */}
-        <script src="https://cdn.jsdelivr.net/npm/metismenu@3.0.7/dist/metisMenu.min.js"></script>
+        {/* Custom lightweight navigation */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Lightweight MetisMenu replacement with Next.js navigation support
+            function updateActiveNavigation() {
+              try {
+                const currentPath = window.location.pathname;
+                
+                // Remove all active classes first
+                $('.sidebar-nav li').removeClass('mm-active');
+                
+                // Add active class to current page link
+                $('.sidebar-nav a').each(function() {
+                  if (this.pathname === currentPath || this.getAttribute('href') === currentPath) {
+                    $(this).closest('li').addClass('mm-active');
+                  }
+                });
+                
+                console.log('Navigation updated for path:', currentPath);
+              } catch (error) {
+                console.error('Error updating navigation:', error);
+              }
+            }
+            
+            // Wait for DOM and Next.js to be ready
+            function initializeNavigation() {
+              // Initial update
+              updateActiveNavigation();
+              
+              // Listen for Next.js router events if available
+              if (typeof window !== 'undefined') {
+                // Method 1: Next.js router events (if available)
+                const checkRouter = () => {
+                  if (window.next && window.next.router && window.next.router.events) {
+                    console.log('Using Next.js router events');
+                    window.next.router.events.on('routeChangeComplete', updateActiveNavigation);
+                    return true;
+                  }
+                  return false;
+                };
+                
+                // Try to access router immediately and with delays
+                if (!checkRouter()) {
+                  setTimeout(checkRouter, 500);
+                  setTimeout(checkRouter, 1000);
+                }
+                
+                // Method 2: URL change detection
+                let lastUrl = window.location.href;
+                const urlChangeObserver = new MutationObserver(() => {
+                  const currentUrl = window.location.href;
+                  if (currentUrl !== lastUrl) {
+                    lastUrl = currentUrl;
+                    setTimeout(updateActiveNavigation, 50);
+                  }
+                });
+                
+                // Start observing after a brief delay to ensure DOM is ready
+                setTimeout(() => {
+                  if (document.body) {
+                    urlChangeObserver.observe(document.body, { childList: true, subtree: true });
+                  }
+                }, 100);
+                
+                // Method 3: Browser navigation events
+                window.addEventListener('popstate', () => {
+                  setTimeout(updateActiveNavigation, 50);
+                });
+                
+                // Method 4: Periodic check as fallback
+                setInterval(() => {
+                  if (window.location.href !== lastUrl) {
+                    lastUrl = window.location.href;
+                    updateActiveNavigation();
+                  }
+                }, 1000);
+              }
+            }
+            
+            // Initialize when jQuery is ready
+            $(function() {
+              initializeNavigation();
+            });
+            
+            // Also initialize on window load as backup
+            window.addEventListener('load', initializeNavigation);
+          `
+        }} />
         
         {/* main.js */}
         <script src="/assets/js/main.js" defer></script>
@@ -159,29 +252,6 @@ export default function Document() {
             } else {
               document.addEventListener('DOMContentLoaded', window.initializePage);
             }
-          `
-        }} />
-        
-        {/* Google Analytics - Delayed load for performance */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            // Load Google Analytics after page is fully loaded
-            window.addEventListener('load', function() {
-              setTimeout(function() {
-                // Create script element for gtag
-                var gtagScript = document.createElement('script');
-                gtagScript.async = true;
-                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH';
-                document.head.appendChild(gtagScript);
-                
-                // Initialize gtag
-                window.dataLayer = window.dataLayer || [];
-                function gtag() { dataLayer.push(arguments); }
-                window.gtag = gtag;
-                gtag('js', new Date());
-                gtag('config', 'G-XB60B3MXHH');
-              }, 2000); // Delay 2 seconds to let critical resources load first
-            });
           `
         }} />
       </body>

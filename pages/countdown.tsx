@@ -3,24 +3,34 @@ import { useEffect } from 'react'
 
 export default function CountdownPage() {
     useEffect(() => {
+        // Function to initialize countdown
+        const initCountdown = () => {
+            if (document.getElementById('countdownCanvas') && (window as any).DSECountdown) {
+                try {
+                    if ((window as any).dseCountdown) (window as any).dseCountdown.destroy();
+                    (window as any).dseCountdown = new (window as any).DSECountdown();
+                } catch (error) {
+                    console.error('Error initializing DSE Countdown:', error);
+                }
+            }
+        };
+
         // Load countdown.js script
-        if (!(window as any).DSECountdownLoaded) {
+        if (!(window as any).DSECountdownLoaded || !(window as any).DSECountdown) {
             const countdownScript = document.createElement('script');
             countdownScript.src = '/assets/js/countdown.js';
             countdownScript.onload = () => { 
                 (window as any).DSECountdownLoaded = true;
                 // Initialize countdown after script loads
-                if (document.getElementById('countdownCanvas')) {
-                    (window as any).dseCountdown = new (window as any).DSECountdown();
-                }
+                initCountdown();
+            };
+            countdownScript.onerror = () => {
+                console.error('Failed to load countdown.js');
             };
             document.head.appendChild(countdownScript);
         } else {
             // Script is already loaded, just re-initialize the countdown
-            if ((window as any).dseCountdown) (window as any).dseCountdown.destroy();
-            if (document.getElementById('countdownCanvas')) {
-                (window as any).dseCountdown = new (window as any).DSECountdown();
-            }
+            initCountdown();
         }
 
         // Cleanup function
