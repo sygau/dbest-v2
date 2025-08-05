@@ -1,11 +1,13 @@
 // DSE 2026 Canvas Countdown Timer
-class DSECountdown {
-  constructor() {
-    // Target DSE 2026 specifically
-    this.targetDate = new Date('2026-04-10T09:00:00+08:00');
-    this.canvas = document.getElementById('countdownCanvas');
-    this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
-    this.previousNumbers = {};
+// Prevent redeclaration on multiple script loads
+if (typeof window.DSECountdown === 'undefined') {
+  window.DSECountdown = class DSECountdown {
+    constructor() {
+      // Target DSE 2026 specifically
+      this.targetDate = new Date('2026-04-10T09:00:00+08:00');
+      this.canvas = document.getElementById('countdownCanvas');
+      this.ctx = this.canvas ? this.canvas.getContext('2d') : null;
+      this.previousNumbers = {};
 
     // Canvas setup
     if (this.canvas) {
@@ -262,4 +264,5 @@ if (!CanvasRenderingContext2D.prototype.roundRect) {
     this.quadraticCurveTo(x, y, x + radius, y);
     this.closePath();
   };
+}
 }

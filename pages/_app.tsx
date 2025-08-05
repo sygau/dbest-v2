@@ -163,7 +163,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </div>
         <div className="sidebar-nav" suppressHydrationWarning>
           {/* navigation */}
-          <ul className="metismenu" id="sidenav" suppressHydrationWarning>
+          <ul className="sidebar-menu" id="sidenav" suppressHydrationWarning>
             <li>
               <Link href="/">
                 <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#007bff'}}>home</i>

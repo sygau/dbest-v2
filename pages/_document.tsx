@@ -131,89 +131,97 @@ export default function Document() {
         {/* Custom lightweight navigation */}
         <script dangerouslySetInnerHTML={{
           __html: `
-            // Lightweight MetisMenu replacement with Next.js navigation support
-            function updateActiveNavigation() {
-              try {
-                const currentPath = window.location.pathname;
-                
-                // Remove all active classes first
-                $('.sidebar-nav li').removeClass('mm-active');
-                
-                // Add active class to current page link
-                $('.sidebar-nav a').each(function() {
-                  if (this.pathname === currentPath || this.getAttribute('href') === currentPath) {
-                    $(this).closest('li').addClass('mm-active');
-                  }
-                });
-                
-                console.log('Navigation updated for path:', currentPath);
-              } catch (error) {
-                console.error('Error updating navigation:', error);
-              }
-            }
-            
-            // Wait for DOM and Next.js to be ready
-            function initializeNavigation() {
-              // Initial update
-              updateActiveNavigation();
-              
-              // Listen for Next.js router events if available
-              if (typeof window !== 'undefined') {
-                // Method 1: Next.js router events (if available)
-                const checkRouter = () => {
-                  if (window.next && window.next.router && window.next.router.events) {
-                    console.log('Using Next.js router events');
-                    window.next.router.events.on('routeChangeComplete', updateActiveNavigation);
-                    return true;
-                  }
-                  return false;
-                };
-                
-                // Try to access router immediately and with delays
-                if (!checkRouter()) {
-                  setTimeout(checkRouter, 500);
-                  setTimeout(checkRouter, 1000);
+            // Lightweight sidebar navigation with Next.js support
+            // Prevent redeclaration on multiple script loads
+            if (typeof window.updateActiveNavigation === 'undefined') {
+              window.updateActiveNavigation = function() {
+                try {
+                  const currentPath = window.location.pathname;
+                  
+                  // Remove all active classes first
+                  $('.sidebar-nav li').removeClass('mm-active');
+                  
+                  // Add active class to current page link
+                  $('.sidebar-nav a').each(function() {
+                    if (this.pathname === currentPath || this.getAttribute('href') === currentPath) {
+                      $(this).closest('li').addClass('mm-active');
+                    }
+                  });
+                  
+                  console.log('Navigation updated for path:', currentPath);
+                } catch (error) {
+                  console.error('Error updating navigation:', error);
                 }
-                
-                // Method 2: URL change detection
-                let lastUrl = window.location.href;
-                const urlChangeObserver = new MutationObserver(() => {
-                  const currentUrl = window.location.href;
-                  if (currentUrl !== lastUrl) {
-                    lastUrl = currentUrl;
-                    setTimeout(updateActiveNavigation, 50);
-                  }
-                });
-                
-                // Start observing after a brief delay to ensure DOM is ready
-                setTimeout(() => {
-                  if (document.body) {
-                    urlChangeObserver.observe(document.body, { childList: true, subtree: true });
-                  }
-                }, 100);
-                
-                // Method 3: Browser navigation events
-                window.addEventListener('popstate', () => {
-                  setTimeout(updateActiveNavigation, 50);
-                });
-                
-                // Method 4: Periodic check as fallback
-                setInterval(() => {
-                  if (window.location.href !== lastUrl) {
-                    lastUrl = window.location.href;
-                    updateActiveNavigation();
-                  }
-                }, 1000);
-              }
+              };
             }
             
-            // Initialize when jQuery is ready
-            $(function() {
-              initializeNavigation();
-            });
-            
-            // Also initialize on window load as backup
-            window.addEventListener('load', initializeNavigation);
+            // Prevent redeclaration of initialization function
+            if (typeof window.navigationInitialized === 'undefined') {
+              window.navigationInitialized = true;
+              
+              // Wait for DOM and Next.js to be ready
+              function initializeNavigation() {
+                // Initial update
+                window.updateActiveNavigation();
+                
+                // Listen for Next.js router events if available
+                if (typeof window !== 'undefined') {
+                  // Method 1: Next.js router events (if available)
+                  const checkRouter = () => {
+                    if (window.next && window.next.router && window.next.router.events) {
+                      console.log('Using Next.js router events');
+                      window.next.router.events.on('routeChangeComplete', window.updateActiveNavigation);
+                      return true;
+                    }
+                    return false;
+                  };
+                  
+                  // Try to access router immediately and with delays
+                  if (!checkRouter()) {
+                    setTimeout(checkRouter, 500);
+                    setTimeout(checkRouter, 1000);
+                  }
+                  
+                  // Method 2: URL change detection
+                  let lastUrl = window.location.href;
+                  const urlChangeObserver = new MutationObserver(() => {
+                    const currentUrl = window.location.href;
+                    if (currentUrl !== lastUrl) {
+                      lastUrl = currentUrl;
+                      setTimeout(window.updateActiveNavigation, 50);
+                    }
+                  });
+                  
+                  // Start observing after a brief delay to ensure DOM is ready
+                  setTimeout(() => {
+                    if (document.body) {
+                      urlChangeObserver.observe(document.body, { childList: true, subtree: true });
+                    }
+                  }, 100);
+                  
+                  // Method 3: Browser navigation events
+                  window.addEventListener('popstate', () => {
+                    setTimeout(window.updateActiveNavigation, 50);
+                  });
+                  
+                  // Method 4: Periodic check as fallback
+                  setInterval(() => {
+                    if (window.location.href !== lastUrl) {
+                      lastUrl = window.location.href;
+                      window.updateActiveNavigation();
+                    }
+                  }, 1000);
+                }
+              }
+              
+              // Initialize when jQuery is ready
+              $(function() {
+                initializeNavigation();
+              });
+              
+              // Also initialize on window load as backup
+              window.addEventListener('load', initializeNavigation);
+            }
           `
         }} />
         

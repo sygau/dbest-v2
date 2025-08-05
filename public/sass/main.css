@@ -398,26 +398,26 @@ input::placeholder {
   list-style: none;
   background: 0 0;
 }
-.sidebar-wrapper .sidebar-nav .metismenu {
+.sidebar-wrapper .sidebar-nav .sidebar-menu {
   background: 0 0;
   display: flex;
   flex-direction: column;
 }
-.sidebar-wrapper .sidebar-nav .metismenu li + li {
+.sidebar-wrapper .sidebar-nav .sidebar-menu li + li {
   margin-top: 5px;
 }
-.sidebar-wrapper .sidebar-nav .metismenu li:first-child {
+.sidebar-wrapper .sidebar-nav .sidebar-menu li:first-child {
   margin-top: 5px;
 }
-.sidebar-wrapper .sidebar-nav .metismenu li:last-child {
+.sidebar-wrapper .sidebar-nav .sidebar-menu li:last-child {
   margin-bottom: 5px;
 }
-.sidebar-wrapper .sidebar-nav .metismenu > li {
+.sidebar-wrapper .sidebar-nav .sidebar-menu > li {
   display: flex;
   flex-direction: column;
   position: relative;
 }
-.sidebar-wrapper .sidebar-nav .metismenu a {
+.sidebar-wrapper .sidebar-nav .sidebar-menu a {
   position: relative;
   display: flex;
   align-items: center;
@@ -432,46 +432,46 @@ input::placeholder {
   border-radius: 0.25rem;
   transition: all 0.3s ease-out;
 }
-.sidebar-wrapper .sidebar-nav .metismenu a .parent-icon {
+.sidebar-wrapper .sidebar-nav .sidebar-menu a .parent-icon {
   line-height: 1;
 }
-.sidebar-wrapper .sidebar-nav .metismenu a .menu-title {
+.sidebar-wrapper .sidebar-nav .sidebar-menu a .menu-title {
   margin-left: 10px;
 }
-.sidebar-wrapper .sidebar-nav .metismenu a:active {
+.sidebar-wrapper .sidebar-nav .sidebar-menu a:active {
   color: #008cff;
   text-decoration: none;
   background-color: rgba(0, 140, 255, 0.05);
 }
-.sidebar-wrapper .sidebar-nav .metismenu a:focus {
+.sidebar-wrapper .sidebar-nav .sidebar-menu a:focus {
   color: #008cff;
   text-decoration: none;
   background-color: rgba(0, 140, 255, 0.05);
 }
-.sidebar-wrapper .sidebar-nav .metismenu a:hover {
+.sidebar-wrapper .sidebar-nav .sidebar-menu a:hover {
   color: #008cff;
   text-decoration: none;
   background-color: rgba(0, 140, 255, 0.05);
 }
-.sidebar-wrapper .sidebar-nav .metismenu ul {
+.sidebar-wrapper .sidebar-nav .sidebar-menu ul {
   background-color: #fff;
   padding: 0;
 }
-.sidebar-wrapper .sidebar-nav .metismenu ul a {
+.sidebar-wrapper .sidebar-nav .sidebar-menu ul a {
   padding: 6px 15px 6px 20px;
   font-size: 15px;
   border: 0;
 }
-.sidebar-wrapper .sidebar-nav .metismenu ul a i {
+.sidebar-wrapper .sidebar-nav .sidebar-menu ul a i {
   margin-right: 5px;
 }
-.sidebar-wrapper .sidebar-nav .metismenu ul ul a {
+.sidebar-wrapper .sidebar-nav .sidebar-menu ul ul a {
   padding: 8px 15px 8px 30px;
 }
-.sidebar-wrapper .sidebar-nav .metismenu ul ul ul a {
+.sidebar-wrapper .sidebar-nav .sidebar-menu ul ul ul a {
   padding: 8px 15px 8px 45px;
 }
-.sidebar-wrapper .sidebar-nav .metismenu .mm-active > a {
+.sidebar-wrapper .sidebar-nav .sidebar-menu .mm-active > a {
   color: #008cff;
   text-decoration: none;
   background-color: rgba(0, 140, 255, 0.05);
@@ -515,19 +515,19 @@ input::placeholder {
   body.toggled:not(.sidebar-hovered) .sidebar-wrapper .sidebar-header .toggle-icon {
     display: none;
   }
-  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .metismenu a {
+  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .sidebar-menu a {
     justify-content: center;
   }
-  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .metismenu .menu-title {
+  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .sidebar-menu .menu-title {
     display: none;
   }
-  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .metismenu li ul {
+  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .sidebar-menu li ul {
     display: none;
   }
-  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .metismenu li.menu-label {
+  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .sidebar-menu li.menu-label {
     display: none;
   }
-  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .metismenu .has-arrow:after {
+  body.toggled:not(.sidebar-hovered) .sidebar-wrapper .sidebar-menu .has-arrow:after {
     display: none;
   }
   body.toggled:not(.sidebar-hovered) .sidebar-wrapper .sidebar-bottom {
