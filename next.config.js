@@ -2,8 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
-  output: 'export',
-  distDir: 'out',
+  // Remove output: 'export' for Vercel deployment
+  // output: 'export',
+  // distDir: 'out',
   
   // Optimize for performance and reduce flash
   swcMinify: true,
@@ -22,10 +23,12 @@ const nextConfig = {
     domains: [
       'images.ctfassets.net', // Contentful CDN
       'dummyimage.com', // Fallback images
-      'dse.best' // Your domain
+      'dse.best', // Your domain
+      'nextjs.dse.best' // Preview domain
     ],
   },
-  assetPrefix: process.env.NODE_ENV === 'production' ? 'https://dse.best' : '',
+  // Remove assetPrefix to let Vercel handle this automatically
+  // assetPrefix: process.env.NODE_ENV === 'production' ? 'https://dse.best' : '',
   
   // Environment variables for build
   env: {
