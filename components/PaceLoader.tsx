@@ -12,6 +12,39 @@ export default function PaceLoader() {
   const router = useRouter()
 
   useEffect(() => {
+    // Initialize Pace.js when component mounts
+    const loadPace = async () => {
+      if (typeof window !== 'undefined') {
+        const Pace = (await import('pace-js')).default
+        
+        // Configure Pace.js with optimized settings
+        Pace.start({
+          ajax: {
+            trackMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+            trackWebSockets: true,
+            ignoreURLs: ['/api/health', '/assets/', '/_next/']
+          },
+          elements: {
+            selectors: ['[data-pace-track]']
+          },
+          restartOnPushState: true,
+          restartOnRequestAfter: false,
+          ghostTime: 100,
+          maxProgressPerFrame: 20,
+          easeFactor: 1.25,
+          startOnPageLoad: true,
+          minTime: 250
+        })
+
+        // Store Pace instance globally for router events
+        window.Pace = Pace
+      }
+    }
+
+    loadPace()
+  }, [])
+
+  useEffect(() => {
     const handleStart = () => {
       if (typeof window !== 'undefined' && window.Pace) {
         window.Pace.restart()

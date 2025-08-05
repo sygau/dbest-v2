@@ -20,15 +20,13 @@ export default function Document() {
         
         <meta name="theme-color" content="#0f1535" />
         
-        {/* loader */}
-        <link href="/assets/css/pace.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.3/pace.min.js"></script>
-        
-        {/* bootstrap css */}
+        {/* bootstrap css - preload for better performance */}
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        
+        {/* bootstrap js - preload for better performance */}
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" as="script" />
+        
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" />
         <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
         

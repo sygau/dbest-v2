@@ -24,10 +24,12 @@
     "@types/react": "^19.1.9",
     "@vercel/edge": "^0.1.2",
     "ably": "^1.2.48",
+    "bootstrap": "^5.3.2",
     "contentful": "^10.15.1",
     "framer-motion": "^12.23.12",
     "fs-extra": "^11.1.1",
     "next": "^15.4.5",
+    "pace-js": "^1.2.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "typescript": "^5.9.2"
