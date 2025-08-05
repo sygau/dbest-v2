@@ -56,17 +56,6 @@ export default function Document() {
           `
         }} />
         
-        {/* Google tag (gtag.js) */}
-        <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
-        <script defer dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-XB60B3MXHH');
-          `
-        }} />
-        
         <script type="application/ld+json" dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
@@ -170,6 +159,29 @@ export default function Document() {
             } else {
               document.addEventListener('DOMContentLoaded', window.initializePage);
             }
+          `
+        }} />
+        
+        {/* Google Analytics - Delayed load for performance */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Load Google Analytics after page is fully loaded
+            window.addEventListener('load', function() {
+              setTimeout(function() {
+                // Create script element for gtag
+                var gtagScript = document.createElement('script');
+                gtagScript.async = true;
+                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH';
+                document.head.appendChild(gtagScript);
+                
+                // Initialize gtag
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                window.gtag = gtag;
+                gtag('js', new Date());
+                gtag('config', 'G-XB60B3MXHH');
+              }, 2000); // Delay 2 seconds to let critical resources load first
+            });
           `
         }} />
       </body>
