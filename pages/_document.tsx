@@ -34,7 +34,7 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" />
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
         
         {/* main css */}
         <link href="/assets/css/bootstrap-extended.css" rel="stylesheet" />
