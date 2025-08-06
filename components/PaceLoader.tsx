@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, memo } from 'react'
 
 declare global {
   interface Window {
@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export default function PaceLoader() {
+const PaceLoader = memo(function PaceLoader() {
   const router = useRouter()
 
   useEffect(() => {
@@ -73,4 +73,6 @@ export default function PaceLoader() {
   }, [router])
 
   return null
-}
+})
+
+export default PaceLoader

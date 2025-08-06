@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <PaceLoader />
       
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>{`html,body,#__next{transition:none!important;margin:0;padding:0}*{box-sizing:border-box}.main-content{transition:opacity .2s ease-in-out;min-height:100vh}.main-wrapper{min-height:100vh}body{overflow-x:hidden}.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:linear-gradient(to right,#7928ca,#ff0080,#04e09a,#e0d504);-o-border-image:linear-gradient(to right,#7928ca,#ff0080,#04e09a,#e0d504) 1;border-image:linear-gradient(to right,#7928ca,#ff0080,#04e09a,#e0d504) 1;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:3px!important}.pace .pace-progress-inner{display:block;position:absolute;right:0;width:100px;height:100%;box-shadow:0 0 10px #0d6efd,0 0 5px #0d6efd;opacity:1;-webkit-transform:rotate(3deg) translate(0,-4px);-moz-transform:rotate(3deg) translate(0,-4px);-ms-transform:rotate(3deg) translate(0,-4px);-o-transform:rotate(3deg) translate(0,-4px);transform:rotate(3deg) translate(0,-4px)}.pace .pace-activity{display:none!important;visibility:hidden!important;opacity:0!important}`}</style>
       </Head>
 
