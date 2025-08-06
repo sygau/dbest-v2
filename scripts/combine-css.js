@@ -17,7 +17,14 @@ let combinedCSS = '';
 cssFiles.forEach(file => {
   try {
     const filePath = path.join(__dirname, '..', file);
-    const content = fs.readFileSync(filePath, 'utf8');
+    let content = fs.readFileSync(filePath, 'utf8');
+    
+    // Fix relative paths for assets when combining CSS files
+    if (file.includes('sass/')) {
+      // For files in sass/ directory, fix ../assets/ to /assets/
+      content = content.replace(/url\(\.\.\/assets\//g, 'url(/assets/');
+    }
+    
     combinedCSS += `/* ${file} */\n${content}\n\n`;
     console.log(`✅ Added: ${file} (${(content.length / 1024).toFixed(1)}KB)`);
   } catch (error) {
