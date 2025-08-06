@@ -15,8 +15,10 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Minify HTML in production
+  // Production optimizations
   compress: true,
+  poweredByHeader: false,
+  generateEtags: false,
   
   images: {
     unoptimized: true,
