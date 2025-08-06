@@ -48,31 +48,30 @@
    */
   async function loadData(subject) {
     try {
+      // Direct CDN URL - no need for main.json
+      const fileHost = 'https://cdn.dse.best';
+      
       // Try local files first (for development), then fallback to CDN
       const baseUrls = [
         window.location.origin, // Local development
         'https://dse.best'       // Production CDN
       ];
 
-      let mainData, subjectData;
+      let subjectData;
       let lastError;
 
       for (const baseUrl of baseUrls) {
         try {
-          console.log(`Trying to load config from: ${baseUrl}`);
+          console.log(`🔍 Loading ${subject} config from: ${baseUrl}`);
           
-          const [mainResponse, subjectResponse] = await Promise.all([
-            fetch(`${baseUrl}/config/main.json`),
-            fetch(`${baseUrl}/config/${subject}.json`)
-          ]);
+          const response = await fetch(`${baseUrl}/config/${subject}.json`);
 
-          if (mainResponse.ok && subjectResponse.ok) {
-            mainData = await mainResponse.json();
-            subjectData = await subjectResponse.json();
-            console.log(`✅ Successfully loaded config from: ${baseUrl}`);
+          if (response.ok) {
+            subjectData = await response.json();
+            console.log(`✅ Successfully loaded ${subject} config from: ${baseUrl}`);
             break;
           } else {
-            throw new Error(`HTTP ${mainResponse.status} or ${subjectResponse.status}`);
+            throw new Error(`HTTP ${response.status}`);
           }
         } catch (error) {
           console.log(`❌ Failed to load from ${baseUrl}:`, error.message);
@@ -81,12 +80,12 @@
         }
       }
 
-      if (!mainData || !subjectData) {
-        throw lastError || new Error(`Failed to load JSON files for ${subject} from all sources`);
+      if (!subjectData) {
+        throw lastError || new Error(`Failed to load JSON file for ${subject} from all sources`);
       }
 
       return {
-        fileHost: mainData.file_host.replace(/\/$/, ''),
+        fileHost,
         papers: subjectData
       };
     } catch (error) {
