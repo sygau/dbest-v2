@@ -4,6 +4,9 @@
   "installCommand": "npm install",
   "devCommand": "npm run dev",
   "cleanUrls": true,
+  "git": {
+    "ignorePaths": ["README.md", "*.md", "docs/**", ".gitignore", "LICENSE"]
+  },
   "redirects": [
     {
       "source": "/:page.html",

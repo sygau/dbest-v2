@@ -102,12 +102,12 @@
     const buttons = document.querySelectorAll('a[data-paper-id]');
 
     if (buttons.length === 0) {
-      console.log('No buttons with data-paper-id found');
+      console.log('📄 No buttons with data-paper-id found');
       return;
     }
 
-    console.log(`Updating ${buttons.length} buttons for ${subject}`);
-    console.log('Available paper IDs in config:', Object.keys(papers));
+    console.log(`🔗 Updating ${buttons.length} buttons for ${subject}`);
+    console.log('📋 Available paper IDs in config:', Object.keys(papers));
 
     const foundIds = [];
     const missingIds = [];
@@ -124,13 +124,13 @@
         button.href = '#';
         button.classList.add('disabled');
         missingIds.push(paperId);
-        console.warn(`No file found for paper ID: ${paperId}`);
+        console.log(`⚠️ No file found for paper ID: ${paperId}`);
       }
     });
 
     console.log(`✅ Found ${foundIds.length} papers:`, foundIds);
     if (missingIds.length > 0) {
-      console.warn(`❌ Missing ${missingIds.length} papers:`, missingIds);
+      console.log(`⚠️ Missing ${missingIds.length} papers:`, missingIds);
     }
   }
 
@@ -140,14 +140,19 @@
       const subject = getCurrentSubject();
 
       if (!subject) {
-        console.log('No subject detected - skipping paper links setup');
+        console.log('📄 No subject detected - this page doesn\'t need paper links');
         return;
       }
 
-      console.log(`Setting up paper links for: ${subject}`);
+      console.log(`🔗 Setting up paper links for: ${subject}`);
 
       // Wait for React components to render
-      await waitForElements();
+      const hasButtons = await waitForElements();
+      
+      if (!hasButtons) {
+        console.log(`📄 No paper buttons found on ${subject} page - this is normal for some pages`);
+        return;
+      }
 
       const { fileHost, papers } = await loadData(subject);
       updateButtons(subject, fileHost, papers);
@@ -161,19 +166,19 @@
 
   // Wait for elements with data-paper-id to be available
   function waitForElements(maxAttempts = 10, delay = 300) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       let attempts = 0;
 
       const checkForElements = () => {
         const buttons = document.querySelectorAll('a[data-paper-id]');
-        console.log(`Attempt ${attempts + 1}: Found ${buttons.length} buttons with data-paper-id`);
+        console.log(`🔍 Attempt ${attempts + 1}: Found ${buttons.length} buttons with data-paper-id`);
 
         if (buttons.length > 0) {
           console.log('✅ Found paper buttons, proceeding with initialization');
-          resolve();
+          resolve(true);
         } else if (attempts >= maxAttempts) {
-          console.warn(`❌ No buttons found after ${maxAttempts} attempts`);
-          reject(new Error('No buttons with data-paper-id found after waiting'));
+          console.log(`📄 No paper buttons found after ${maxAttempts} attempts - page may not need them`);
+          resolve(false);
         } else {
           attempts++;
           setTimeout(checkForElements, delay);
