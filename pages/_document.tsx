@@ -10,7 +10,6 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://code.jquery.com" />
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#0f1535" />
         
@@ -23,9 +22,9 @@ export default function Document() {
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" />
         <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
         
-        {/* Main CSS */}
+        {/* Main CSS - Using minified version */}
         <link href="/assets/css/bootstrap-extended.css" rel="stylesheet" />
-        <link href="/sass/main.css" rel="stylesheet" />
+        <link href="/sass/main.min.css" rel="stylesheet" />
         <link href="/sass/dark-theme.css" rel="stylesheet" />
         <link href="/sass/blue-theme.css" rel="stylesheet" />
         <link href="/sass/semi-dark.css" rel="stylesheet" />
