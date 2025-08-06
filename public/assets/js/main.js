@@ -97,29 +97,6 @@ $(function () {
   });
 
 
-  /* email */
-
-  $(".email-toggle-btn").on("click", function() {
-    $(".email-wrapper").toggleClass("email-toggled")
-  }), $(".email-toggle-btn-mobile").on("click", function() {
-    $(".email-wrapper").removeClass("email-toggled")
-  }), $(".compose-mail-btn").on("click", function() {
-    $(".compose-mail-popup").show()
-  }), $(".compose-mail-close").on("click", function() {
-    $(".compose-mail-popup").hide()
-  }), 
-
-
-  /* chat */
-
-  $(".chat-toggle-btn").on("click", function() {
-    $(".chat-wrapper").toggleClass("chat-toggled")
-  }), $(".chat-toggle-btn-mobile").on("click", function() {
-    $(".chat-wrapper").removeClass("chat-toggled")
-  }),
-
-
-
   /* switcher */
 
   $("#BlueTheme").on("click", function () {
@@ -329,6 +306,7 @@ $(function () {
     let subject = 'unknown';
     if (fullUrl.includes('/math/')) subject = 'math';
     else if (fullUrl.includes('/english/')) subject = 'english';
+    else if (fullUrl.includes('/chinese-history/')) subject = 'chinese-history';
     else if (fullUrl.includes('/chinese/')) subject = 'chinese';
     else if (fullUrl.includes('/physics/')) subject = 'physics';
     else if (fullUrl.includes('/chemistry/')) subject = 'chemistry';
@@ -343,78 +321,59 @@ $(function () {
     else if (fullUrl.includes('/visual-arts/')) subject = 'visual-arts';
     else if (fullUrl.includes('/citizen/')) subject = 'citizen';
 
-    // Fallback: try to detect from current page if URL detection fails
-    if (subject === 'unknown') {
-      const currentPage = window.location.pathname;
-      if (currentPage.includes('math')) subject = 'math';
-      else if (currentPage.includes('english')) subject = 'english';
-      else if (currentPage.includes('chinese')) subject = 'chinese';
-      else if (currentPage.includes('physics')) subject = 'physics';
-      else if (currentPage.includes('chemistry')) subject = 'chemistry';
-      else if (currentPage.includes('biology')) subject = 'biology';
-      else if (currentPage.includes('geography')) subject = 'geography';
-      else if (currentPage.includes('history')) subject = 'history';
-      else if (currentPage.includes('economics')) subject = 'economics';
-      else if (currentPage.includes('ict')) subject = 'ict';
-      else if (currentPage.includes('m1')) subject = 'm1';
-      else if (currentPage.includes('m2')) subject = 'm2';
-      else if (currentPage.includes('bafs')) subject = 'bafs';
-      else if (currentPage.includes('visual-arts')) subject = 'visual-arts';
-      else if (currentPage.includes('citizen')) subject = 'citizen';
-    }
+    // If URL detection fails, subject remains 'unknown' - no fallback needed
 
-    // Use data attributes if available, otherwise auto-detect
-    const year = $(this).data('year') || 'unknown';
-    const paper = $(this).data('paper') || 'unknown';
-    const type = $(this).data('type') || 'regular';
     const language = $(this).data('language') || 'unknown';
 
-    // Extract additional info from filename if not provided
-    let extractedYear = year;
-    let extractedPaper = paper;
-    let extractedType = type;
     let extractedLanguage = language;
 
     if (fileName) {
-      // Extract year from filename (2012-2024)
-      const yearMatch = fileName.match(/20(1[2-9]|2[0-4])/);
-      if (yearMatch && extractedYear === 'unknown') {
-        extractedYear = yearMatch[0];
-      }
-
-      // Extract paper type from filename
-      if (fileName.includes('_p1') || fileName.includes('p_1')) extractedPaper = 'P1';
-      else if (fileName.includes('_p2') || fileName.includes('p_2')) extractedPaper = 'P2';
-      else if (fileName.includes('_p3') || fileName.includes('p_3')) extractedPaper = 'P3';
-      else if (fileName.includes('_p4') || fileName.includes('p_4')) extractedPaper = 'P4';
-      else if (fileName.includes('_ans') || fileName.includes('an_s')) extractedPaper = 'Answers';
-      else if (fileName.includes('_per')) extractedPaper = 'Performance';
-
-      // Extract type from filename
-      if (fileName.includes('_pp_') || fileName.startsWith('pp_')) extractedType = 'practice';
-      else if (fileName.includes('_sp_')) extractedType = 'sample';
-      else if (fileName.includes('bytopic')) extractedType = 'bytopic';
-      else if (fileName.includes('exam')) extractedType = 'exam';
-
-      // Extract language from filename
+      // Extract language from filename - updated patterns
       if (fileName.includes('_chi')) extractedLanguage = 'chinese';
       else if (fileName.includes('_eng')) extractedLanguage = 'english';
+      // Math uses m0_eng pattern
+      else if (fileName.includes('m0_eng')) extractedLanguage = 'english';
+    }
+
+    // More robust language detection for subjects without clear indicators
+    if (extractedLanguage === 'unknown') {
+      // Chinese-only subjects (no English version available)
+      if (subject === 'chinese' || subject === 'chinese-history') {
+        extractedLanguage = 'chinese';
+      }
+      // English-only subjects
+      else if (subject === 'english') {
+        extractedLanguage = 'english';
+      }
+      // Math is always English (uses m0_eng pattern)
+      else if (subject === 'math') {
+        extractedLanguage = 'english';
+      }
+      // M1/M2 are English-only (no language indicators in filenames)
+      else if (subject === 'm1' || subject === 'm2') {
+        extractedLanguage = 'english';
+      }
+      // Sciences, Geography, Economics, ICT, BAFS have both versions
+      // Try to infer from page context, default to Chinese
+      else extractedLanguage = 'unknown';
     }
 
     // Clean up data for Google Analytics (capitalize and remove hyphens)
     const cleanSubject = subject.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    const cleanPaper = extractedPaper.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    const cleanType = extractedType.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     const cleanLanguage = extractedLanguage.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
     // Send to Google Analytics with optimized parameters
     if (typeof gtag !== 'undefined') {
+      // Simple approach: Subject + cleaned filename (remove underscores, keep it simple)
+      let baseName = fileName.replace(/\.pdf$/i, '').replace(/[_]/g, ' ').trim();
+      
+      // Create paper name: "Subject + cleaned filename" (e.g., "Chinese History pp chihist dse 2015 p1")
+      const paperName = `${cleanSubject} ${baseName}`.trim();
+      
       const eventData = {
-        'file_name': fileName,
+        'file_name': fileName,              // Full filename with .pdf
+        'paper_name': paperName,            // Subject + cleaned filename
         'download_subject': cleanSubject,
-        'download_year': extractedYear,
-        'download_paper': cleanPaper,
-        'download_type': cleanType,
         'download_language': cleanLanguage,
         'link_url': this.href,
         'value': 1
@@ -427,9 +386,9 @@ $(function () {
 
       // Also send a simplified version for easier tracking
       gtag('event', 'pdf_download', {
+        'file_name': fileName,              // Full filename with .pdf
+        'paper_name': paperName,            // Subject + cleaned filename
         'subject': cleanSubject,
-        'year': extractedYear,
-        'paper': cleanPaper,
         'language': cleanLanguage
       });
     }
