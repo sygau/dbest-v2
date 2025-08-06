@@ -21,14 +21,9 @@ export default function Document() {
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" />
         <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
         
-        {/* Main CSS - Using minified version */}
-        <link href="/assets/css/bootstrap-extended.min.css" rel="stylesheet" />
-        <link href="/sass/main.min.css" rel="stylesheet" />
-        <link href="/sass/dark-theme.min.css" rel="stylesheet" />
-        <link href="/sass/blue-theme.min.css" rel="stylesheet" />
-        <link href="/sass/semi-dark.min.css" rel="stylesheet" />
-        <link href="/sass/bordered-theme.min.css" rel="stylesheet" />
-        <link href="/sass/responsive.min.css" rel="stylesheet" />
+        {/* Combined CSS - All themes and styles in one file */}
+        <link rel="preload" href="/assets/css/combined.min.css" as="style" />
+        <link href="/assets/css/combined.min.css" rel="stylesheet" />
 
         <script type="application/ld+json" dangerouslySetInnerHTML={{
           __html: JSON.stringify({
