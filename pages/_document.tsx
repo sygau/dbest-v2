@@ -22,14 +22,14 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
         
         {/* Main CSS - Using minified version */}
-        <link href="/assets/css/bootstrap-extended.css" rel="stylesheet" />
+        <link href="/assets/css/bootstrap-extended.min.css" rel="stylesheet" />
         <link href="/sass/main.min.css" rel="stylesheet" />
-        <link href="/sass/dark-theme.css" rel="stylesheet" />
-        <link href="/sass/blue-theme.css" rel="stylesheet" />
-        <link href="/sass/semi-dark.css" rel="stylesheet" />
-        <link href="/sass/bordered-theme.css" rel="stylesheet" />
-        <link href="/sass/responsive.css" rel="stylesheet" />
-        
+        <link href="/sass/dark-theme.min.css" rel="stylesheet" />
+        <link href="/sass/blue-theme.min.css" rel="stylesheet" />
+        <link href="/sass/semi-dark.min.css" rel="stylesheet" />
+        <link href="/sass/bordered-theme.min.css" rel="stylesheet" />
+        <link href="/sass/responsive.min.css" rel="stylesheet" />
+
         <script type="application/ld+json" dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
