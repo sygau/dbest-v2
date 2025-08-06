@@ -131,12 +131,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">主頁</div>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/blog/">
                 <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#ffc107'}}>article</i></div>
                 <div className="menu-title">Blog</div>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link href="/countdown">
                 <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#dc3545'}}>schedule</i></div>
@@ -171,13 +171,13 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">數學 Math</div>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/citizen">
                 <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#8e24aa'}}>school</i>
                 </div>
                 <div className="menu-title">公民</div>
               </Link>
-            </li>
+            </li> */}
             <li className="menu-label">選修科目</li>
             <li>
               <Link href="/physics">
