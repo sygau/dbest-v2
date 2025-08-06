@@ -410,16 +410,16 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            {/* FAQ Item 5 */}
+            {/* FAQ Item 6 */}
             <div className="accordion-item">
               <h2 className="accordion-header" id="faq5-heading">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
-                  試題版權屬邊個？可以免費使用嗎？
+                  DSEBest 嘅資源幾時會更新？
                 </button>
               </h2>
               <div id="faq5" className="accordion-collapse collapse" aria-labelledby="faq5-heading" data-bs-parent="#faqAccordion">
                 <div className="accordion-body">
-                  歷屆試題及其版權均屬香港考試及評核局（HKEAA）所有。本站只作教育用途展示公開資源，嚴禁任何未經授權嘅商業用途或再發佈。如有疑問，請即 <Link href="/contact">聯絡我們</Link>。
+                  我哋會定期更新 DSEBest 嘅試題、答案同學習資源，確保內容最新最齊全。一般每月都會有新資料或功能加入，歡迎大家多啲留意網站公告或追蹤我哋嘅社交平台獲取最新消息。
                 </div>
               </div>
             </div>
