@@ -7,23 +7,23 @@
 (async function() {
   'use strict';
 
-  // Subject mapping - add new subjects here
+  // Subject mapping - order matters! Check longer matches first
   const SUBJECTS = {
+    'chinese-history': 'chinese-history', // Must come before 'chinese'
+    'visual-arts': 'visual-arts',
+    'chinese': 'chinese',
     'math': 'math',
     'english': 'english',
-    'chinese': 'chinese',
     'physics': 'physics',
     'chemistry': 'chemistry',
     'biology': 'biology',
     'geography': 'geography',
     'history': 'history',
-    'chinese-history': 'chinese-history',
     'economics': 'economics',
     'ict': 'ict',
     'm1': 'm1',
     'm2': 'm2',
     'bafs': 'bafs',
-    'visual-arts': 'visual-arts',
     'citizen': 'citizen'
   };
 
@@ -33,13 +33,16 @@
   function getCurrentSubject() {
     const path = window.location.pathname.toLowerCase();
 
-    // Check each subject
+    // Check each subject - order matters for partial matches
     for (const [key, value] of Object.entries(SUBJECTS)) {
-      if (path.includes(key)) {
+      // More precise matching to avoid false positives
+      if (path.includes(`/${key}`) || path.includes(`${key}.`) || path === `/${key}` || path.endsWith(`/${key}`)) {
+        console.log(`🎯 Detected subject: ${value} from path: ${path}`);
         return value;
       }
     }
 
+    console.log(`❓ No subject detected from path: ${path}`);
     return null;
   }
 
