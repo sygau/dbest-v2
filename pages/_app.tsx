@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <header className="top-header">
         <nav className="navbar navbar-expand align-items-center gap-4">
           <div className="btn-toggle">
-            <a href="javascript:;" aria-label="menu">
+            <a href="#" aria-label="menu">
               <i className="material-icons-outlined">menu</i>
             </a>
           </div>
@@ -54,14 +54,14 @@ export default function App({ Component, pageProps }: AppProps) {
           </div>
           <ul className="navbar-nav gap-1 nav-right-links align-items-center">
             <li className="nav-item d-lg-none mobile-search-btn">
-              <a className="nav-link" href="javascript:;">
+              <a className="nav-link" href="#">
                 <i className="material-icons-outlined">search</i>
               </a>
             </li>
             <li className="nav-item dropdown">
               <a 
                 className="nav-link dropdown-toggle dropdown-toggle-nocaret" 
-                href="javascript:;" 
+                href="#" 
                 data-bs-toggle="dropdown"
               >
                 <img 
@@ -74,7 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
               </a>
               <ul className="dropdown-menu dropdown-menu-end">
                 <li>
-                  <a className="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                  <a className="dropdown-item d-flex align-items-center py-2" href="#">
                     <img 
                       src="/assets/images/county/06.webp" 
                       width="20" 
@@ -86,7 +86,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item d-flex align-items-center py-2" href="javascript:;">
+                  <a className="dropdown-item d-flex align-items-center py-2" href="#">
                     <img 
                       src="/assets/images/county/05.webp" 
                       width="20" 
@@ -342,7 +342,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <h5 className="mb-0">主題自定義</h5>
             <p className="mb-0">Customize your theme</p>
           </div>
-          <a href="javascript:;" className="primaery-menu-close" data-bs-dismiss="offcanvas">
+          <a href="#" className="primaery-menu-close" data-bs-dismiss="offcanvas">
             <i className="material-icons-outlined">close</i>
           </a>
         </div>
