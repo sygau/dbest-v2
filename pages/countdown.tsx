@@ -58,15 +58,10 @@ export default function CountdownPage() {
 
             {/*breadcrumb*/}
             <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">DSE 2026 倒數計時器</div>
+                <div className="breadcrumb-title pe-3">其他</div>
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="/" aria-label="home">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
                             <li className="breadcrumb-item active" aria-current="page">
                                 DSE 2026 Countdown
                             </li>

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:full": "npm run prebuild && next build",
+    "build:full": "npm run prebuild && npm run css:build && next build",
     "prebuild": "node scripts/generate-blog-data.js",
     "prebuild:safe": "node -e \"console.log('Checking for blog data...'); try { require('./data/blog-index.json'); console.log('✅ Blog data found'); } catch(e) { console.log('⚠️  Blog data not found, using static data'); }\"",
     "start": "next start",
@@ -15,7 +15,9 @@
     "export": "npm run prebuild && next build && next export",
     "contentful": "node contentful/contentful.js",
     "meta": "node scripts/updateMeta.js",
-    "blog:sync": "node scripts/generate-blog-data.js"
+    "blog:sync": "node scripts/generate-blog-data.js",
+    "css:build": "node scripts/combine-css.js",
+    "css:test": "node scripts/test-css-bundle.js"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.6.10",
@@ -52,5 +54,8 @@
   "bugs": {
     "url": "https://github.com/1fu/dbest-v1/issues"
   },
-  "homepage": "https://github.com/1fu/dbest-v1#readme"
+  "homepage": "https://github.com/1fu/dbest-v1#readme",
+  "devDependencies": {
+    "clean-css": "^5.3.3"
+  }
 }

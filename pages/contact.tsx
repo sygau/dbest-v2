@@ -46,11 +46,6 @@ export default function ContactPage() {
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="javascript:;">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
                             <li className="breadcrumb-item active" aria-current="page">
                                 聯絡我們
                             </li>

@@ -22,11 +22,7 @@ export default function BiologyPage() {
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="/">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
+
                             <li className="breadcrumb-item active" aria-current="page">
                                 DSE Past Paper
                             </li>
@@ -2931,9 +2927,9 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
-                                    </a>
+                                        <BiDownload style={{ fontSize: 22 }} />
+  下載
+</a>
                                 </div>
                             </div>
                         </div>

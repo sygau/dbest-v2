@@ -23,11 +23,6 @@ export default function ChinesePage() {
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="/">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
                             <li className="breadcrumb-item active" aria-current="page">
                                 DSE Past Paper
                             </li>
@@ -74,8 +69,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -92,8 +87,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -110,8 +105,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -128,8 +123,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -146,8 +141,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_P5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -164,8 +159,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -188,8 +183,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -206,8 +201,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -224,8 +219,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -242,8 +237,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -260,8 +255,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_P5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -278,8 +273,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -302,8 +297,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -320,8 +315,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -338,8 +333,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -356,8 +351,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -380,8 +375,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -398,8 +393,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -416,8 +411,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -434,8 +429,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -452,8 +447,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -476,8 +471,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -494,8 +489,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -512,8 +507,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -530,8 +525,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -548,8 +543,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -572,8 +567,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -590,8 +585,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -608,8 +603,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -626,8 +621,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -644,8 +639,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -668,8 +663,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -686,8 +681,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -704,8 +699,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -722,8 +717,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -740,8 +735,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -758,8 +753,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -782,8 +777,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -800,8 +795,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -818,8 +813,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -836,8 +831,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -854,8 +849,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -872,8 +867,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -896,8 +891,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -914,8 +909,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -932,8 +927,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -950,8 +945,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -968,8 +963,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -986,8 +981,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1010,8 +1005,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1028,8 +1023,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1046,8 +1041,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1064,8 +1059,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1082,8 +1077,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1100,8 +1095,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1124,8 +1119,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1142,8 +1137,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1160,8 +1155,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1178,8 +1173,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1196,8 +1191,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_P5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1214,8 +1209,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1232,8 +1227,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1256,8 +1251,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1274,8 +1269,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1292,8 +1287,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1310,8 +1305,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1328,8 +1323,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_P5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1346,8 +1341,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_pe_r"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1364,8 +1359,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1388,8 +1383,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1406,8 +1401,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1424,8 +1419,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1442,8 +1437,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1460,8 +1455,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_P5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1478,8 +1473,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1502,8 +1497,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1520,8 +1515,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1538,8 +1533,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_P3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1556,8 +1551,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_P4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1574,8 +1569,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_P5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>
@@ -1592,8 +1587,8 @@ export default function ChinesePage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
                                     </a>
                                 </div>
                             </div>

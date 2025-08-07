@@ -33,11 +33,6 @@ export default function HomePage() {
         <div className="ps-3">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item">
-                <a href="javascript:;" aria-label="menu">
-                  <i className="bx bx-home-alt"></i>
-                </a>
-              </li>
               <li className="breadcrumb-item active" aria-current="page">Home</li>
             </ol>
           </nav>

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { BiCategory, BiUserCircle, BiCalendarEvent, BiTimeFive, BiShow, BiComment } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useEffect } from 'react'
 import fs from 'fs'
@@ -150,7 +151,7 @@ export default function BlogPost({ post }: BlogPostProps) {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 p-0">
               <li className="breadcrumb-item">
-                <i className="material-icons-outlined align-middle">category</i> {categoryDisplayName}
+                <BiCategory style={{ verticalAlign: 'text-bottom', fontSize: '1.2em', marginRight: '0.25em' }} /> {categoryDisplayName}
               </li>
             </ol>
           </nav>
@@ -167,33 +168,87 @@ export default function BlogPost({ post }: BlogPostProps) {
             </h1>
 
             {/* Post Meta */}
-            <div className="post-meta d-flex flex-wrap align-items-center gap-3 mb-4">
-              <div className="d-flex align-items-center">
-                <i className="material-icons-outlined me-2 text-primary">person</i>
-                <span>{post.author}</span>
+            <div className="post-meta d-flex flex-wrap align-items-center gap-3 mb-4 justify-content-between">
+              <div className="d-flex align-items-center gap-3">
+                <div className="d-flex align-items-center">
+                  <BiUserCircle style={{
+                    verticalAlign: 'text-bottom',
+                    fontSize: '2em',
+                    marginRight: '0.25em',
+                    color: '#0d6efd',
+                    background: 'rgba(13,110,253,0.12)',
+                    borderRadius: '50%',
+                    padding: '0.18em',
+                    boxShadow: '0 1px 4px rgba(13,110,253,0.10)'
+                  }} />
+                  <span>{post.author}</span>
+                </div>
+                <div className="d-flex align-items-center">
+                  <BiCalendarEvent style={{
+                    verticalAlign: 'text-bottom',
+                    fontSize: '2em',
+                    marginRight: '0.25em',
+                    color: '#198754',
+                    background: 'rgba(25,135,84,0.12)',
+                    borderRadius: '50%',
+                    padding: '0.18em',
+                    boxShadow: '0 1px 4px rgba(25,135,84,0.10)'
+                  }} />
+                  <span>{post.date}</span>
+                </div>
+                <div className="d-flex align-items-center">
+                  <BiTimeFive style={{
+                    verticalAlign: 'text-bottom',
+                    fontSize: '2em',
+                    marginRight: '0.25em',
+                    color: '#0dcaf0',
+                    background: 'rgba(13,202,240,0.12)',
+                    borderRadius: '50%',
+                    padding: '0.18em',
+                    boxShadow: '0 1px 4px rgba(13,202,240,0.10)'
+                  }} />
+                  <span>{post.readingTime ? `${post.readingTime}min read` : ''}</span>
+                </div>
+                <div className="d-flex align-items-center">
+                  <BiShow style={{
+                    verticalAlign: 'text-bottom',
+                    fontSize: '2em',
+                    marginRight: '0.25em',
+                    color: '#ffc107',
+                    background: 'rgba(255,193,7,0.12)',
+                    borderRadius: '50%',
+                    padding: '0.18em',
+                    boxShadow: '0 1px 4px rgba(255,193,7,0.10)'
+                  }} />
+                  <span id="busuanzi_value_page_pv"></span>
+                </div>
               </div>
-              <div className="d-flex align-items-center">
-                <i className="material-icons-outlined me-2 text-success">calendar_today</i>
-                <span>{post.date}</span>
-              </div>
-              <div className="d-flex align-items-center">
-                <i className="material-icons-outlined me-2 text-info">schedule</i>
-                <span>{post.readingTime ? `${post.readingTime}min read` : ''}</span>
-              </div>
-              <div className="d-flex align-items-center">
-                <i className="material-icons-outlined me-2 text-warning">visibility</i>
-                <span id="busuanzi_value_page_pv"></span>
-              </div>
+              {post.tags && post.tags.length > 0 && (
+                <div className="post-tags d-flex flex-wrap gap-2">
+                  {post.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        display: 'inline-block',
+                        background: 'linear-gradient(90deg, #0d6efd 60%, #0dcaf0 100%)',
+                        color: '#fff',
+                        borderRadius: '999px',
+                        padding: '0.35em 1em',
+                        fontWeight: 500,
+                        fontSize: '1em',
+                        letterSpacing: '0.03em',
+                        boxShadow: '0 1px 6px rgba(13,110,253,0.10)',
+                        border: 'none',
+                        transition: 'background 0.2s',
+                        cursor: 'default',
+                      }}
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-
-            {/* Tags */}
-            {post.tags && post.tags.length > 0 && (
-              <div className="post-tags mb-4">
-                {post.tags.map((tag, index) => (
-                  <span key={index} className="badge bg-primary me-2">{tag}</span>
-                ))}
-              </div>
-            )}
 
             {/* Featured Image */}
             {post.featuredImage && (
@@ -217,7 +272,16 @@ export default function BlogPost({ post }: BlogPostProps) {
               <hr className="my-5" style={{ borderColor: 'var(--bs-border-color-translucent)' }} />
               <div className="comments-section px-3 py-2">
                 <h4 className="mb-4">
-                  <i className="material-icons-outlined me-2">comment</i>
+                  <BiComment style={{
+                    verticalAlign: 'text-bottom',
+                    fontSize: '2em',
+                    marginRight: '0.25em',
+                    color: '#6c757d',
+                    background: 'rgba(108,117,125,0.12)',
+                    borderRadius: '50%',
+                    padding: '0.18em',
+                    boxShadow: '0 1px 4px rgba(108,117,125,0.10)'
+                  }} />
                   留言討論
                 </h4>
 

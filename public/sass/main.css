@@ -2830,3 +2830,86 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
+
+/* React Icons Overrides - Replacement for Material Icons */
+.material-icons-outlined,
+[class*="bi-"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+/* Apply material-icons-outlined styles to React Icons */
+svg[class*="bi-"] {
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Fix alignment for React Icons in buttons */
+button svg[class*="bi-"],
+a svg[class*="bi-"] {
+  vertical-align: middle;
+  margin: auto;
+}
+
+/* Add compatibility with back-to-top button */
+.back-to-top-btn svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* React Icons Overrides - Replacement for Material Icons */
+.material-icons-outlined,
+[class*="bi-"],
+svg[class*="Bi"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+/* Apply material-icons-outlined styles to React Icons */
+svg[class*="bi-"],
+svg[class*="Bi"] {
+  font-size: inherit;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Fix alignment for React Icons in buttons */
+button svg[class*="bi-"],
+a svg[class*="bi-"],
+button svg[class*="Bi"],
+a svg[class*="Bi"] {
+  vertical-align: middle;
+  margin: auto;
+}
+
+/* Add compatibility with back-to-top button */
+.back-to-top-btn svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* BoxIcons compatibility - make React Icons work where BoxIcons were used */
+.breadcrumb-item svg {
+  font-size: 20px;
+  vertical-align: text-bottom;
+}
+
+/* General icon sizing for consistency */
+svg[style*="fontSize"] {
+  vertical-align: middle;
+}

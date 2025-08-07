@@ -17,7 +17,16 @@ import {
   BiInfoCircle,
   BiSupport,
   BiError,
-  BiShieldAlt
+  BiShieldAlt,
+  BiMenu,
+  BiX,
+  BiSearch,
+  BiArrowToTop,
+  BiCog,
+  BiUpArrowAlt,
+  BiFile,
+  BiPalette,
+  BiBookReader
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
@@ -41,23 +50,23 @@ export default function App({ Component, pageProps }: AppProps) {
         <nav className="navbar navbar-expand align-items-center gap-4">
           <div className="btn-toggle">
             <a href="#" aria-label="menu">
-              <i className="material-icons-outlined">menu</i>
+              <BiMenu style={{ fontSize: 24 }} />
             </a>
           </div>
           <div className="search-bar flex-grow-1">
             <div className="position-relative">
-              <input 
+              {/* <input 
                 className="form-control rounded-5 px-5 search-control d-lg-block d-none" 
                 type="text" 
                 placeholder="Search"
               />
               <span 
-                className="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close"
+                className="position-absolute me-3 translate-middle-y end-0 top-50 search-close"
                 tabIndex={0} 
                 role="button" 
                 aria-label="Close Search"
               >
-                close
+                <BiX style={{ fontSize: 22 }} />
               </span>
               <div className="search-popup p-3">
                 <div className="card rounded-4 overflow-hidden">
@@ -67,13 +76,13 @@ export default function App({ Component, pageProps }: AppProps) {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <ul className="navbar-nav gap-1 nav-right-links align-items-center">
             <li className="nav-item d-lg-none mobile-search-btn">
               <a className="nav-link" href="#">
-                <i className="material-icons-outlined">search</i>
+                <BiSearch style={{ fontSize: 22 }} />
               </a>
             </li>
             <li className="nav-item dropdown">
@@ -119,7 +128,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </Link>
           </div>
           <div className="sidebar-close">
-            <span className="material-icons-outlined">close</span>
+            <BiX style={{ fontSize: 24 }} />
           </div>
         </div>
         <div className="sidebar-nav" suppressHydrationWarning>
@@ -133,7 +142,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </li>
             {/* <li>
               <Link href="/blog/">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#ffc107'}}>article</i></div>
+                <div className="parent-icon"><BiFile style={{color: '#ffc107', fontSize: 24}} /></div>
                 <div className="menu-title">Blog</div>
               </Link>
             </li> */}
@@ -170,8 +179,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </li>
             {/* <li>
               <Link href="/citizen">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#8e24aa'}}>school</i>
-                </div>
+                <div className="parent-icon"><BiBookReader style={{color: '#8e24aa', fontSize: 24}} /></div>
                 <div className="menu-title">公民</div>
               </Link>
             </li> */}
@@ -245,8 +253,7 @@ export default function App({ Component, pageProps }: AppProps) {
             {/*
             <li>
               <a href="/visual-arts">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#03a9f4'}}>palette</i>
-                </div>
+                <div className="parent-icon"><BiPalette style={{color: '#03a9f4', fontSize: 24}} /></div>
                 <div className="menu-title">視覺藝術 Visual Arts</div>
               </a>
             </li>
@@ -309,12 +316,12 @@ export default function App({ Component, pageProps }: AppProps) {
         data-bs-toggle="offcanvas" 
         data-bs-target="#staticBackdrop"
       >
-        <i className="material-icons-outlined">tune</i>
+        <BiCog style={{ fontSize: 24 }} />
       </button>
 
       {/* Back to Top Button */}
       <button id="backToTopBtn" className="back-to-top-btn" aria-label="Back to top" title="Back to top" tabIndex={0}>
-        <i className="material-icons-outlined">keyboard_arrow_up</i>
+        <BiUpArrowAlt style={{ fontSize: 24 }} />
       </button>
 
       {/* Theme Customizer Offcanvas */}
@@ -325,7 +332,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <p className="mb-0">Customize your theme</p>
           </div>
           <a href="#" className="primaery-menu-close" data-bs-dismiss="offcanvas">
-            <i className="material-icons-outlined">close</i>
+            <BiX style={{ fontSize: 24 }} />
           </a>
         </div>
         <div className="offcanvas-body">

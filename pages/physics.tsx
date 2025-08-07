@@ -22,11 +22,7 @@ export default function PhysicsPage() {
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="/">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
+
                             <li className="breadcrumb-item active" aria-current="page">
                                 DSE Past Paper
                             </li>
@@ -3391,7 +3387,8 @@ export default function PhysicsPage() {
                                     className="btn btn-info px-4 d-inline-flex gap-2"
                                     data-paper-id="sp_p1a_eng"
                                 >
-                                    <i className="material-icons-outlined">cloud_download</i>Download
+                                    <BiDownload style={{ fontSize: 22 }} />
+                                    Download
                                 </a>
                             </div>
                         </div>
@@ -3408,7 +3405,8 @@ export default function PhysicsPage() {
                                     className="btn btn-info px-4 d-inline-flex gap-2"
                                     data-paper-id="sp_p1b_eng"
                                 >
-                                    <i className="material-icons-outlined">cloud_download</i>Download
+                                    <BiDownload style={{ fontSize: 22 }} />
+                                    Download
                                 </a>
                             </div>
                         </div>
@@ -3425,7 +3423,8 @@ export default function PhysicsPage() {
                                     className="btn btn-info px-4 d-inline-flex gap-2"
                                     data-paper-id="sp_p2_eng"
                                 >
-                                    <i className="material-icons-outlined">cloud_download</i>Download
+                                    <BiDownload style={{ fontSize: 22 }} />
+                                    Download
                                 </a>
                             </div>
                         </div>

@@ -308,7 +308,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.editNameBtn.innerHTML = '<i class="material-icons-outlined">edit</i>';
+        this.editNameBtn.innerHTML = '<i class="bi bi-pencil"></i>';
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
         // Sync with mobile input
@@ -321,7 +321,7 @@ class DSEChat {
       // Start editing
       this.userNameInput.disabled = false;
       this.userNameInput.focus();
-      this.editNameBtn.innerHTML = '<i class="material-icons-outlined">check</i>';
+      this.editNameBtn.innerHTML = '<i class="bi bi-check"></i>';
     }
   }
 
@@ -330,7 +330,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.editNameBtn.innerHTML = '<i class="material-icons-outlined">edit</i>';
+        this.editNameBtn.innerHTML = '<i class="bi bi-pencil"></i>';
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
       }
@@ -398,7 +398,7 @@ class DSEChat {
     
     wrap.innerHTML = `
       <div class="mb-2">
-        <i class="material-icons-outlined text-primary" style="font-size: 24px;">waving_hand</i>
+        <i class="bi bi-hand-index-thumb text-primary" style="font-size: 24px;"></i>
       </div>
       <div class="text-primary fw-bold mb-2">歡迎來到 DSE Best 聊天室！ Welcome to DSE Best Chatroom!</div>
       <div class="small mb-2">
@@ -406,7 +406,7 @@ class DSEChat {
         Please take a moment to read the chat rules to ensure a positive experience for everyone.
       </div>
       <button class="btn btn-primary btn-sm" id="welcomeRulesBtn">
-        <i class="material-icons-outlined me-1" style="font-size: 16px;">menu_book</i>
+        <i class="bi bi-book me-1" style="font-size: 16px;"></i>
         閱讀規則 Read Rules
       </button>
     `;
@@ -463,7 +463,7 @@ class DSEChat {
     if (isModerator) {
       const badge = document.createElement('span');
       badge.className = 'moderator-badge';
-      badge.innerHTML = '<i class="material-icons-outlined" style="font-size: 16px;">verified</i>';
+      badge.innerHTML = '<i class="bi bi-patch-check-fill" style="font-size: 16px;"></i>';
       badge.title = 'Moderator';
       nameLine.appendChild(badge);
     }

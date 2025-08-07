@@ -22,11 +22,7 @@ export default function ChemistryPage() {
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="/">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
+
                             <li className="breadcrumb-item active" aria-current="page">
                                 DSE Past Paper
                             </li>
@@ -99,29 +95,6 @@ export default function ChemistryPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-                    {/*
-<h2 style="text-align: center;">評核內容</h2>
-<br>
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-  <div class="col">
-    <div class="card h-100 d-flex flex-column">
-<div class="card-body"><h5 class="card-title">2024 評核內容</h5><p class="card-text">2024 評核內容 (中文)</p></div>
-<div class="card-footer bg-transparent border-0">
-  <a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2024_exam_chi"><i class="material-icons-outlined">cloud_download</i>下載</a>
-</div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100 d-flex flex-column">
-<div class="card-body"><h5 class="card-title">2023 評核內容</h5><p class="card-text">2023 評核內容 (中文)</p></div>
-<div class="card-footer bg-transparent border-0">
-  <a href="#" class="btn btn-info px-4 d-inline-flex gap-2" data-paper-id="2024_exam_eng"><i class="material-icons-outlined">cloud_download</i>Download</a>
-</div>
-    </div>
-  </div>
-</div>
-<hr class="my-4">
-*/}
                     {/* 2023 */}
                     <h2 style={{ textAlign: "center" }}>2023</h2>
                     <br />

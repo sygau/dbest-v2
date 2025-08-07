@@ -24,11 +24,7 @@ export default function EnglishPage() {
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="/">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
+
                             <li className="breadcrumb-item active" aria-current="page">
                                 DSE Past Paper
                             </li>

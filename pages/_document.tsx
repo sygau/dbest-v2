@@ -19,7 +19,6 @@ export default function Document() {
         
         {/* Fonts */}
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" />
-        <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=swap" rel="stylesheet" />
         
         {/* Combined CSS - All themes and styles in one file */}
         <link rel="preload" href="/assets/css/combined.min.css" as="style" />

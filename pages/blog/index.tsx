@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { BiUserCircle, BiCalendarEvent, BiTimeFive, BiComment, BiFileBlank, BiSort } from 'react-icons/bi';
 import { GetStaticProps } from 'next'
 import fs from 'fs'
 import path from 'path'
@@ -547,7 +548,6 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
               {/* Sort Dropdown Wrapper */}
               <div className="dropdown">
                 <button className="btn btn-primary rounded-pill px-4 shadow-sm dropdown-toggle sort-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span className="material-icons-outlined align-middle me-1" style={{ fontSize: '1.2em', verticalAlign: '-2px' }}>sort</span>
                   <span id="sortLabel">Newest</span>
                 </button>
                 <ul className="dropdown-menu">
@@ -611,18 +611,21 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                               </span>
                               <h2 className="card-title blog-card-title mb-2">{post.title}</h2>
                               <div className="d-flex blog-meta mb-2 flex-wrap">
-                                <span className="blog-meta-item">
-                                  <span className="material-icons-outlined">person</span>{post.author || 'DSEBest'}
+                                <span className="blog-meta-item d-flex align-items-center">
+                                  <BiUserCircle className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                                  {post.author || 'DSEBest'}
                                 </span>
-                                <span className="blog-meta-item">
-                                  <span className="material-icons-outlined">event</span>{post.date}
+                                <span className="blog-meta-item d-flex align-items-center">
+                                  <BiCalendarEvent className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                                  {post.date}
                                 </span>
-                                <span className="blog-meta-item">
-                                  <span className="material-icons-outlined">schedule</span>{post.readingTime ? post.readingTime + ' min' : ''}
+                                <span className="blog-meta-item d-flex align-items-center">
+                                  <BiTimeFive className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                                  {post.readingTime ? post.readingTime + ' min' : ''}
                                 </span>
                                 {post.comments ? (
-                                  <span className="blog-meta-item">
-                                    <span className="material-icons-outlined">comment</span>
+                                  <span className="blog-meta-item d-flex align-items-center">
+                                    <BiComment className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
                                     <span className="disqus-comment-count" data-disqus-identifier={post.slug}>0</span>
                                   </span>
                                 ) : null}
@@ -648,9 +651,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
 
           {posts.length === 0 && (
             <div className="text-center py-5">
-              <i className="material-icons-outlined display-1 text-muted">
-                article
-              </i>
+              <BiFileBlank className="display-1 text-muted" />
               <h3 className="mt-3 text-muted">暫無文章</h3>
               <p className="text-muted">請稍後再來查看最新內容</p>
             </div>

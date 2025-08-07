@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { BiDownload } from 'react-icons/bi';
+import { BiDownload, BiWrench } from 'react-icons/bi';
 
 export default function CitizenPage() {
     return (
@@ -23,11 +23,7 @@ export default function CitizenPage() {
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item">
-                                <a href="/">
-                                    <i className="bx bx-home-alt" />
-                                </a>
-                            </li>
+
                             <li className="breadcrumb-item active" aria-current="page">
                                 DSE Past Paper
                             </li>
@@ -65,12 +61,7 @@ export default function CitizenPage() {
                         className="alert alert-warning d-flex align-items-center mb-4"
                         role="alert"
                     >
-                        <i
-                            className="material-icons-outlined me-3"
-                            style={{ fontSize: "2rem" }}
-                        >
-                            construction
-                        </i>
+                        <BiWrench className="me-3" style={{ fontSize: "2rem", color: '#ffc107', background: 'rgba(255,193,7,0.12)', borderRadius: '50%', padding: '0.18em', boxShadow: '0 1px 4px rgba(255,193,7,0.10)' }} />
                         <div>
                             <h5 className="alert-heading mb-2">頁面建設中 Work in Progress</h5>
                             <p className="mb-1">
