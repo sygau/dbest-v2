@@ -80,11 +80,11 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
           </div>
           <ul className="navbar-nav gap-1 nav-right-links align-items-center">
-            <li className="nav-item d-lg-none mobile-search-btn">
+            {/* <li className="nav-item d-lg-none mobile-search-btn">
               <a className="nav-link" href="#">
                 <BiSearch style={{ fontSize: 22 }} />
               </a>
-            </li>
+            </li> */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle dropdown-toggle-nocaret"
@@ -318,12 +318,14 @@ export default function App({ Component, pageProps }: AppProps) {
         </p>
       </footer>
 
-      {/* Theme Switcher Button */}
-      <button
+            {/* Theme Switcher Button */}
+      <button 
         className="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
-        type="button"
-        data-bs-toggle="offcanvas"
+        type="button" 
+        data-bs-toggle="offcanvas" 
         data-bs-target="#staticBackdrop"
+        aria-label="主題設定 Theme Settings"
+        title="主題設定 Theme Settings"
       >
         <BiCog style={{ fontSize: 24 }} />
       </button>
