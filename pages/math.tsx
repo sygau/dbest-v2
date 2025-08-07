@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { BiDownload } from 'react-icons/bi';
 
 export default function MathPage() {
     return (
@@ -73,7 +74,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -91,7 +92,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -115,7 +116,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -133,7 +134,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -151,7 +152,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -175,7 +176,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -193,7 +194,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -211,7 +212,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -235,7 +236,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -253,7 +254,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -271,7 +272,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -295,7 +296,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -313,7 +314,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -331,7 +332,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -355,7 +356,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -373,7 +374,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -391,7 +392,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -415,7 +416,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -433,7 +434,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -451,7 +452,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -475,7 +476,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -493,7 +494,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -511,7 +512,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -535,7 +536,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -553,7 +554,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -571,7 +572,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -595,7 +596,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -613,7 +614,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -631,7 +632,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -655,7 +656,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -673,7 +674,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -691,7 +692,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -715,7 +716,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -733,7 +734,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -751,7 +752,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -774,7 +775,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -792,7 +793,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -810,7 +811,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -828,7 +829,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -846,7 +847,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -866,7 +867,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_6"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -884,7 +885,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_7"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -902,7 +903,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_8"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -922,7 +923,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_9"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -942,7 +943,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_10"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -962,7 +963,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_11"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -980,7 +981,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_12"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -998,7 +999,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_13"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1018,7 +1019,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_14"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1036,7 +1037,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_15"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1054,7 +1055,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_16"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1074,7 +1075,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_17"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1092,7 +1093,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_18"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1110,7 +1111,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p1_book1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1133,7 +1134,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_0"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1151,7 +1152,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1169,7 +1170,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1189,7 +1190,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1207,7 +1208,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1225,7 +1226,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1243,7 +1244,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_6"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1261,7 +1262,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_7"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1281,7 +1282,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_8"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1299,7 +1300,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_9"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1317,7 +1318,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_10"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1335,7 +1336,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_11"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1353,7 +1354,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_12"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1371,7 +1372,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_13"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1391,7 +1392,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_14"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1409,7 +1410,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_15"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1427,7 +1428,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_16"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1445,7 +1446,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="topic_p2_book1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1468,7 +1469,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1486,7 +1487,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1504,7 +1505,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1527,7 +1528,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_P1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1545,7 +1546,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_P2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1563,7 +1564,7 @@ export default function MathPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>

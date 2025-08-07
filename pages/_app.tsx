@@ -1,6 +1,24 @@
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
 import Head from 'next/head'
+import {
+  BiHomeAlt,
+  BiTimeFive,
+  BiChat,
+  BiBook,
+  BiCalculator,
+  BiBot,
+  BiTestTube,
+  BiLeaf,
+  BiLaptop,
+  BiGlobe,
+  BiMoney,
+  BiBriefcase,
+  BiInfoCircle,
+  BiSupport,
+  BiError,
+  BiShieldAlt
+} from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
 import usePageInitialization from '../hooks/usePageInitialization'
@@ -63,37 +81,20 @@ export default function App({ Component, pageProps }: AppProps) {
                 className="nav-link dropdown-toggle dropdown-toggle-nocaret" 
                 href="#" 
                 data-bs-toggle="dropdown"
+                aria-label="Language Selector"
               >
-                <img 
-                  src="/assets/images/county/06.webp" 
-                  width="22" 
-                  height="22" 
-                  alt="cn-icon" 
-                  loading="lazy"
-                />
+                <span style={{fontSize: 22}}>🌏</span>
               </a>
               <ul className="dropdown-menu dropdown-menu-end">
                 <li>
                   <a className="dropdown-item d-flex align-items-center py-2" href="#">
-                    <img 
-                      src="/assets/images/county/06.webp" 
-                      width="20" 
-                      height="20" 
-                      alt="cn-icon" 
-                      loading="lazy"
-                    />
+                    <span style={{fontSize: 20}}>🇨🇳</span>
                     <span className="ms-2">中文</span>
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item d-flex align-items-center py-2" href="#">
-                    <img 
-                      src="/assets/images/county/05.webp" 
-                      width="20" 
-                      height="20" 
-                      alt="us-icon" 
-                      loading="lazy"
-                    />
+                    <span style={{fontSize: 20}}>🇺🇸</span>
                     <span className="ms-2">English</span>
                   </a>
                 </li>
@@ -126,8 +127,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <ul className="sidebar-menu" id="sidenav" suppressHydrationWarning>
             <li>
               <Link href="/">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#007bff'}}>home</i>
-                </div>
+                <div className="parent-icon"><BiHomeAlt style={{color: '#00bfff', fontSize: 24}} /></div>
                 <div className="menu-title">主頁</div>
               </Link>
             </li>
@@ -139,35 +139,32 @@ export default function App({ Component, pageProps }: AppProps) {
             </li> */}
             <li>
               <Link href="/countdown">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#dc3545'}}>schedule</i></div>
+                <div className="parent-icon"><BiTimeFive style={{color: '#ff5252', fontSize: 24}} /></div>
                 <div className="menu-title">DSE 2026 倒數</div>
               </Link>
             </li>
             <li>
               <Link href="/chat">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#1976d2'}}>chat</i></div>
+                <div className="parent-icon"><BiChat style={{color: '#00e5ff', fontSize: 24}} /></div>
                 <div className="menu-title">聊天室 Chatroom</div>
               </Link>
             </li>
             <li className="menu-label">核心科目</li>
             <li>
               <Link href="/chinese">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#e83e8c'}}>book</i>
-                </div>
+                <div className="parent-icon"><BiBook style={{color: '#ff69b4', fontSize: 24}} /></div>
                 <div className="menu-title">中文</div>
               </Link>
             </li>
             <li>
               <Link href="/english">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#00bcd4'}}>book</i>
-                </div>
+                <div className="parent-icon"><BiBook style={{color: '#40c4ff', fontSize: 24}} /></div>
                 <div className="menu-title">英文 English</div>
               </Link>
             </li>
             <li>
               <Link href="/math">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#ff9800'}}>calculate</i>
-                </div>
+                <div className="parent-icon"><BiCalculator style={{color: '#ffd600', fontSize: 24}} /></div>
                 <div className="menu-title">數學 Math</div>
               </Link>
             </li>
@@ -181,78 +178,67 @@ export default function App({ Component, pageProps }: AppProps) {
             <li className="menu-label">選修科目</li>
             <li>
               <Link href="/physics">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#ffc107'}}>bolt</i>
-                </div>
+                <div className="parent-icon"><BiBot style={{color: '#ffd600', fontSize: 24}} /></div>
                 <div className="menu-title">物理 Physics</div>
               </Link>
             </li>
             <li>
               <Link href="/chemistry">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#43a047'}}>biotech</i>
-                </div>
+                <div className="parent-icon"><BiTestTube style={{color: '#00e676', fontSize: 24}} /></div>
                 <div className="menu-title">化學 Chemistry</div>
               </Link>
             </li>
             <li>
               <Link href="/biology">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#1976d2'}}>eco</i>
-                </div>
+                <div className="parent-icon"><BiLeaf style={{color: '#00c853', fontSize: 24}} /></div>
                 <div className="menu-title">生物 Biology</div>
               </Link>
             </li>
             <li>
               <Link href="/ict">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#212529'}}>computer</i>
-                </div>
+                <div className="parent-icon"><BiLaptop style={{color: '#ff3d00', fontSize: 24}} /></div>
                 <div className="menu-title">資訊及通訊科技 ICT</div>
               </Link>
             </li>
             <li>
               <Link href="/m1">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#7c4dff'}}>functions</i>
-                </div>
+                <div className="parent-icon"><BiCalculator style={{color: '#b388ff', fontSize: 24}} /></div>
                 <div className="menu-title">M1</div>
               </Link>
             </li>
             <li>
               <Link href="/m2">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#009688'}}>functions</i>
-                </div>
+                <div className="parent-icon"><BiCalculator style={{color: '#64ffda', fontSize: 24}} /></div>
                 <div className="menu-title">M2</div>
               </Link>
             </li>
             <li>
               <Link href="/geography">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#0097a7'}}>public</i>
-                </div>
+                <div className="parent-icon"><BiGlobe style={{color: '#00bfae', fontSize: 24}} /></div>
                 <div className="menu-title">地理 Geography</div>
               </Link>
             </li>
             <li>
               <Link href="/history">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#6d4c41'}}>book</i>
-                </div>
+                <div className="parent-icon"><BiBook style={{color: '#ffab91', fontSize: 24}} /></div>
                 <div className="menu-title">歷史 History</div>
               </Link>
             </li>
             <li>
               <Link href="/chinese-history">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#c62828'}}>book</i>
-                </div>
+                <div className="parent-icon"><BiBook style={{color: '#ff1744', fontSize: 24}} /></div>
                 <div className="menu-title">中國歷史 Chinese History</div>
               </Link>
             </li>
             <li>
               <Link href="/economics">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#6c757d'}}>attach_money</i>
-                </div>
+                <div className="parent-icon"><BiMoney style={{color: '#ffd600', fontSize: 24}} /></div>
                 <div className="menu-title">經濟 Economics</div>
               </Link>
             </li>
             <li>
               <Link href="/bafs">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#ffb300'}}>business</i>
-                </div>
+                <div className="parent-icon"><BiBriefcase style={{color: '#ffea00', fontSize: 24}} /></div>
                 <div className="menu-title">企業、會計與財務概論 BAFS</div>
               </Link>
             </li>
@@ -268,29 +254,25 @@ export default function App({ Component, pageProps }: AppProps) {
             <li className="menu-label">其他</li>
             <li>
               <Link href="/about">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#e8eaf6'}}>info</i>
-                </div>
+                <div className="parent-icon"><BiInfoCircle style={{color: '#e8eaf6', fontSize: 24}} /></div>
                 <div className="menu-title">關於我們</div>
               </Link>
             </li>
             <li>
               <Link href="/contact">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#e8eaf6'}}>contact_support</i>
-                </div>
+                <div className="parent-icon"><BiSupport style={{color: '#e8eaf6', fontSize: 24}} /></div>
                 <div className="menu-title">聯絡我們</div>
               </Link>
             </li>
             <li>
               <Link href="/disclaimer">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#e8eaf6'}}>warning</i>
-                </div>
+                <div className="parent-icon"><BiError style={{color: '#e8eaf6', fontSize: 24}} /></div>
                 <div className="menu-title">免責聲明</div>
               </Link>
             </li>
             <li>
               <Link href="/privacy-policy">
-                <div className="parent-icon"><i className="material-icons-outlined" style={{color: '#e8eaf6'}}>security</i>
-                </div>
+                <div className="parent-icon"><BiShieldAlt style={{color: '#e8eaf6', fontSize: 24}} /></div>
                 <div className="menu-title">私隱政策</div>
               </Link>
             </li>
@@ -355,7 +337,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="BlueTheme"
                 >
-                  <span className="material-icons-outlined">contactless</span>
+                  <span><BiHomeAlt style={{fontSize: 22}} /></span>
                   <span>藍色</span>
                 </label>
               </div>
@@ -365,7 +347,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="LightTheme"
                 >
-                  <span className="material-icons-outlined">light_mode</span>
+                  <span><BiTimeFive style={{fontSize: 22}} /></span>
                   <span>淺色</span>
                 </label>
               </div>
@@ -375,7 +357,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="DarkTheme"
                 >
-                  <span className="material-icons-outlined">dark_mode</span>
+                  <span><BiError style={{fontSize: 22}} /></span>
                   <span>深色</span>
                 </label>
               </div>
@@ -385,7 +367,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="SemiDarkTheme"
                 >
-                  <span className="material-icons-outlined">contrast</span>
+                  <span><BiShieldAlt style={{fontSize: 22}} /></span>
                   <span>半深色</span>
                 </label>
               </div>
@@ -395,7 +377,7 @@ export default function App({ Component, pageProps }: AppProps) {
                   className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="BoderedTheme"
                 >
-                  <span className="material-icons-outlined">border_style</span>
+                  <span><BiBriefcase style={{fontSize: 22}} /></span>
                   <span>邊框</span>
                 </label>
               </div>

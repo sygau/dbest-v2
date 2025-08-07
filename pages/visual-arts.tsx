@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { BiDownload } from 'react-icons/bi';
 
 export default function VisualArtsPage() {
     return (

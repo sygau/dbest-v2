@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import { BiDownload } from 'react-icons/bi';
 export default function HistoryPage() {
     return (
         <>
@@ -76,7 +76,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syll_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syll_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -118,7 +118,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_exam_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_exam_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -188,7 +188,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -206,7 +206,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -224,7 +224,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -244,7 +244,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -269,7 +269,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -287,7 +287,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -307,7 +307,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -332,7 +332,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -349,7 +349,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -366,7 +366,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -383,7 +383,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -401,7 +401,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -419,7 +419,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -437,7 +437,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -462,7 +462,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -479,7 +479,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -496,7 +496,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -513,7 +513,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -531,7 +531,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -549,7 +549,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -567,7 +567,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -587,7 +587,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -605,7 +605,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -623,7 +623,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_sample2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -648,7 +648,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -665,7 +665,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -682,7 +682,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -699,7 +699,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -717,7 +717,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -735,7 +735,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -753,7 +753,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -773,7 +773,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -791,7 +791,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -809,7 +809,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_sample2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -834,7 +834,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -851,7 +851,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -868,7 +868,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -885,7 +885,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -903,7 +903,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -921,7 +921,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -939,7 +939,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -959,7 +959,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -977,7 +977,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -995,7 +995,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_sample2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1020,7 +1020,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1037,7 +1037,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1054,7 +1054,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1071,7 +1071,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1089,7 +1089,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1107,7 +1107,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1125,7 +1125,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1145,7 +1145,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1163,7 +1163,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1181,7 +1181,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_sample2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1206,7 +1206,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1223,7 +1223,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1240,7 +1240,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1258,7 +1258,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1276,7 +1276,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1294,7 +1294,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1314,7 +1314,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1332,7 +1332,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1350,7 +1350,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_sample2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1375,7 +1375,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1392,7 +1392,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1409,7 +1409,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1426,7 +1426,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1444,7 +1444,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1462,7 +1462,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1480,7 +1480,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1500,7 +1500,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1518,7 +1518,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1536,7 +1536,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_sample2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1561,7 +1561,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1578,7 +1578,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1595,7 +1595,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1612,7 +1612,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1630,7 +1630,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1648,7 +1648,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1666,7 +1666,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1686,7 +1686,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1704,7 +1704,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1722,7 +1722,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_sample2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1747,7 +1747,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1764,7 +1764,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1781,7 +1781,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1798,7 +1798,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1816,7 +1816,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1834,7 +1834,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1852,7 +1852,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1870,7 +1870,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1895,7 +1895,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1912,7 +1912,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1929,7 +1929,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1946,7 +1946,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1964,7 +1964,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1982,7 +1982,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2000,7 +2000,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2020,7 +2020,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2038,7 +2038,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_sample1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2063,7 +2063,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2080,7 +2080,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2097,7 +2097,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2114,7 +2114,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2132,7 +2132,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2150,7 +2150,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2170,7 +2170,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2190,7 +2190,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2215,7 +2215,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2232,7 +2232,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2250,7 +2250,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2268,7 +2268,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2286,7 +2286,7 @@ export default function HistoryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>

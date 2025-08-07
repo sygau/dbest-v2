@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import { BiDownload } from 'react-icons/bi';
 export default function BAFSPage() {
     return (
         <>
@@ -95,7 +95,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syll_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -147,7 +147,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2025_acct_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -165,7 +165,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2025_bm_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -259,7 +259,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2025_p1a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -277,7 +277,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2025_p1b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -295,7 +295,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2025_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -315,7 +315,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2025_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -340,7 +340,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_exam_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -357,7 +357,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -374,7 +374,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -391,7 +391,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -408,7 +408,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -425,7 +425,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -443,7 +443,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_exam_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -461,7 +461,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -479,7 +479,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -499,7 +499,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -517,7 +517,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -537,7 +537,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -562,7 +562,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -579,7 +579,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -596,7 +596,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -613,7 +613,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -630,7 +630,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -648,7 +648,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -666,7 +666,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -686,7 +686,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -704,7 +704,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -724,7 +724,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -749,7 +749,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -766,7 +766,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -783,7 +783,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -800,7 +800,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -817,7 +817,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -835,7 +835,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -853,7 +853,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -873,7 +873,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -891,7 +891,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -911,7 +911,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -936,7 +936,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -953,7 +953,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -970,7 +970,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -987,7 +987,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1004,7 +1004,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1022,7 +1022,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1040,7 +1040,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1060,7 +1060,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1078,7 +1078,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1098,7 +1098,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1123,7 +1123,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1140,7 +1140,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1157,7 +1157,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1174,7 +1174,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1191,7 +1191,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1209,7 +1209,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1227,7 +1227,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1247,7 +1247,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1265,7 +1265,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1285,7 +1285,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1310,7 +1310,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1327,7 +1327,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1344,7 +1344,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1361,7 +1361,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1378,7 +1378,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1396,7 +1396,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1414,7 +1414,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1434,7 +1434,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1452,7 +1452,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1472,7 +1472,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1497,7 +1497,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1514,7 +1514,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1531,7 +1531,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1548,7 +1548,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1565,7 +1565,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1583,7 +1583,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1601,7 +1601,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1621,7 +1621,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1639,7 +1639,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1659,7 +1659,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1684,7 +1684,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1701,7 +1701,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1718,7 +1718,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1735,7 +1735,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1752,7 +1752,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1770,7 +1770,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1788,7 +1788,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1808,7 +1808,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1826,7 +1826,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1846,7 +1846,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1871,7 +1871,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1888,7 +1888,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1905,7 +1905,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1922,7 +1922,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1939,7 +1939,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1957,7 +1957,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1975,7 +1975,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1995,7 +1995,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2013,7 +2013,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2033,7 +2033,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2058,7 +2058,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2075,7 +2075,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2092,7 +2092,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2109,7 +2109,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2127,7 +2127,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2145,7 +2145,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2165,7 +2165,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2183,7 +2183,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2203,7 +2203,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2228,7 +2228,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2245,7 +2245,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2262,7 +2262,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2279,7 +2279,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2296,7 +2296,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2314,7 +2314,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2332,7 +2332,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2352,7 +2352,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2370,7 +2370,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2390,7 +2390,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2415,7 +2415,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2432,7 +2432,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2449,7 +2449,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2466,7 +2466,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2483,7 +2483,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2501,7 +2501,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2519,7 +2519,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2539,7 +2539,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2557,7 +2557,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2577,7 +2577,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2604,7 +2604,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2621,7 +2621,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2638,7 +2638,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_3_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2655,7 +2655,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_4_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2672,7 +2672,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_all_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2690,7 +2690,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2708,7 +2708,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2726,7 +2726,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_3_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2744,7 +2744,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_4_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2762,7 +2762,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_5_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2780,7 +2780,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_6_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2807,7 +2807,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2824,7 +2824,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2841,7 +2841,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_3_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2858,7 +2858,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_4_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2875,7 +2875,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_5_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2892,7 +2892,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_6_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2909,7 +2909,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_7_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2926,7 +2926,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_8_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2943,7 +2943,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_9_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2960,7 +2960,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_10_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2977,7 +2977,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_all_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2995,7 +2995,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3013,7 +3013,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3031,7 +3031,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_3_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3049,7 +3049,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_4_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3067,7 +3067,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_5_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3085,7 +3085,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_6_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3103,7 +3103,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_7_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3121,7 +3121,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_8_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3139,7 +3139,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_9_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3159,7 +3159,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2a_10_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3188,7 +3188,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2b_all_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3206,7 +3206,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2b_case_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3231,7 +3231,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3248,7 +3248,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3265,7 +3265,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3282,7 +3282,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3300,7 +3300,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3320,7 +3320,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3340,7 +3340,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3360,7 +3360,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3385,7 +3385,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3402,7 +3402,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2a_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3419,7 +3419,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2b_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3436,7 +3436,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3454,7 +3454,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3472,7 +3472,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2a_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3492,7 +3492,7 @@ export default function BAFSPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2b_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>

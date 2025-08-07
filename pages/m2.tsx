@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { BiDownload } from 'react-icons/bi';
 
 export default function M2Page() {
     return (
@@ -81,7 +82,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syll"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -105,7 +106,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_bk1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -123,7 +124,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -141,7 +142,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -161,7 +162,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -179,7 +180,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -197,7 +198,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -217,7 +218,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_6"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -235,7 +236,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_7"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -253,7 +254,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_8"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -273,7 +274,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_9"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -291,7 +292,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_10"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -311,7 +312,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_11"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -329,7 +330,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_12"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -347,7 +348,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_13"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -374,7 +375,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -397,7 +398,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -415,7 +416,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -438,7 +439,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -456,7 +457,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -479,7 +480,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -497,7 +498,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -515,7 +516,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -538,7 +539,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -556,7 +557,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -574,7 +575,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -597,7 +598,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -615,7 +616,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -633,7 +634,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -656,7 +657,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -674,7 +675,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -692,7 +693,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -715,7 +716,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -733,7 +734,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -751,7 +752,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -774,7 +775,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -792,7 +793,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -810,7 +811,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -833,7 +834,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -851,7 +852,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -869,7 +870,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -892,7 +893,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -910,7 +911,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -928,7 +929,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -951,7 +952,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -969,7 +970,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -987,7 +988,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1011,7 +1012,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1035,7 +1036,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1053,7 +1054,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1077,7 +1078,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2011_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1097,7 +1098,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2011_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1115,7 +1116,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2009_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1135,7 +1136,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2009_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1153,7 +1154,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2008_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1173,7 +1174,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2008_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1191,7 +1192,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2007_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1211,7 +1212,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2007_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1229,7 +1230,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2006_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1249,7 +1250,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2006_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1267,7 +1268,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2005_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1285,7 +1286,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2004_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1305,7 +1306,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2004_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1323,7 +1324,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2003_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1343,7 +1344,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2003_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1361,7 +1362,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2002_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1381,7 +1382,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2002_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1399,7 +1400,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2001_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1419,7 +1420,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2001_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1437,7 +1438,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2000_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1457,7 +1458,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2000_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1475,7 +1476,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2000_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1495,7 +1496,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_2000_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1513,7 +1514,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1999_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1533,7 +1534,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1999_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1551,7 +1552,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1999_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1571,7 +1572,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1999_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1589,7 +1590,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1998_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1609,7 +1610,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1998_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1627,7 +1628,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1998_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1647,7 +1648,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1998_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1665,7 +1666,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1997_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1685,7 +1686,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1997_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1703,7 +1704,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1997_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1723,7 +1724,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1997_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1741,7 +1742,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1996_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1761,7 +1762,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1996_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1779,7 +1780,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1996_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1799,7 +1800,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1996_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1817,7 +1818,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1995_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1837,7 +1838,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1995_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1855,7 +1856,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1995_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1875,7 +1876,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1995_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1893,7 +1894,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1994_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1913,7 +1914,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1994_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1931,7 +1932,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1994_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1951,7 +1952,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1994_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1969,7 +1970,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1993_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1989,7 +1990,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1993_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2007,7 +2008,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1993_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2027,7 +2028,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1993_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2045,7 +2046,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1992_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2065,7 +2066,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1992_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2083,7 +2084,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1992_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2103,7 +2104,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1992_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2121,7 +2122,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1991_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2141,7 +2142,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1991_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2159,7 +2160,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1991_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2179,7 +2180,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1991_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2197,7 +2198,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1990_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2217,7 +2218,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1990_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2235,7 +2236,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1990_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2255,7 +2256,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1990_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2274,7 +2275,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1989_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2294,7 +2295,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1989_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2312,7 +2313,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1989_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2332,7 +2333,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1989_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2351,7 +2352,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1988_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2371,7 +2372,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1988_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2389,7 +2390,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1988_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2409,7 +2410,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1988_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2428,7 +2429,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1987_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2448,7 +2449,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1987_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2466,7 +2467,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1987_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2486,7 +2487,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1987_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2505,7 +2506,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1986_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2525,7 +2526,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1986_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2543,7 +2544,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1986_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2563,7 +2564,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1986_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2582,7 +2583,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1985_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2602,7 +2603,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1985_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2620,7 +2621,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1985_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2640,7 +2641,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1985_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2659,7 +2660,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1984_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2679,7 +2680,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1984_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2697,7 +2698,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1984_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2717,7 +2718,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1984_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2736,7 +2737,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1983_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2756,7 +2757,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1983_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2774,7 +2775,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1983_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2794,7 +2795,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1983_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2813,7 +2814,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1982_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2833,7 +2834,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1982_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2851,7 +2852,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1982_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2871,7 +2872,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1982_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2889,7 +2890,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1981_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2909,7 +2910,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1981_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2927,7 +2928,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1981_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2947,7 +2948,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1981_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2965,7 +2966,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1980_p1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2985,7 +2986,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1980_p1ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3003,7 +3004,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1980_p2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3023,7 +3024,7 @@ export default function M2Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="amaths_1980_p2ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>

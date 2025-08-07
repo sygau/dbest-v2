@@ -1,6 +1,16 @@
-import Head from 'next/head'
-import Link from 'next/link'
-
+import Head from 'next/head';
+import Link from 'next/link';
+import {
+  BiBook,
+  BiCalculator,
+  BiBot,
+  BiTestTube,
+  BiLeaf,
+  BiLaptop,
+  BiGlobe,
+  BiMoney,
+  BiBriefcase
+} from 'react-icons/bi';
 export default function HomePage() {
   return (
     <>
@@ -8,7 +18,7 @@ export default function HomePage() {
         <title>HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2等 - dse.best</title>
         <meta name="description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。" />
         <meta name="robots" content="index, follow" />
-        
+
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content="HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2等 - dse.best" />
         <meta property="og:description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。" />
@@ -35,10 +45,10 @@ export default function HomePage() {
       </div>
 
       {/* Main Content Card */}
-      <div className="card rounded-4" style={{height: 'auto', padding: '20px'}}>
+      <div className="card rounded-4" style={{ height: 'auto', padding: '20px' }}>
         <div className="card-body text-center">
           {/* Hero Section */}
-          <h1 className="fw-bold mb-4" style={{marginTop: '50px', fontSize: '3.0rem'}}>
+          <h1 className="fw-bold mb-4" style={{ marginTop: '50px', fontSize: '3.0rem' }}>
             <span style={{
               background: 'linear-gradient(to right, #663399, #007bff)',
               WebkitBackgroundClip: 'text',
@@ -48,11 +58,11 @@ export default function HomePage() {
               歡迎來到 DSE.BEST
             </span>
           </h1>
-          
-          <p className="mb-4" style={{marginTop: '40px', fontSize: '1.4rem'}}>
-            本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。 
+
+          <p className="mb-4" style={{ marginTop: '40px', fontSize: '1.4rem' }}>
+            本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。
           </p>
-          
+
           <br />
           <hr className="my-4" />
           <br />
@@ -60,14 +70,14 @@ export default function HomePage() {
 
           {/* Past Papers Section */}
           <h1 className="fw-bold mb-4">歷屆試題</h1>
-          <p className="mb-4" style={{fontSize: '1.5rem'}}>
+          <p className="mb-4" style={{ fontSize: '1.5rem' }}>
             以下是按科目和年份分類的歷屆試題資源，點擊連結即可查看詳細內容。
           </p>
-          <p className="mb-4" style={{fontSize: '1rem'}}>
+          <p className="mb-4" style={{ fontSize: '1rem' }}>
             原 <strong>dse.life</strong> 站內的資源現已整合Backup至{' '}
             <a href="https://dse.best/">dse.best</a>，歡迎繼續使用！
           </p>
-          
+
           <br />
           <br />
 
@@ -78,16 +88,16 @@ export default function HomePage() {
             {/* Chinese Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined text-primary mb-3" style={{fontSize: '48px'}}>language</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>中文 Chinese Language</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiBook style={{ color: '#ff69b4', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>中文 Chinese Language</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中</li>
                     </ul>
                   </div>
-                  <Link href="chinese" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="chinese" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -95,16 +105,16 @@ export default function HomePage() {
             {/* English Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined text-success mb-3" style={{fontSize: '48px'}}>translate</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>英文 English Language</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiBook style={{ color: '#40c4ff', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>英文 English Language</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>英</li>
                     </ul>
                   </div>
-                  <Link href="english" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="english" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -112,26 +122,26 @@ export default function HomePage() {
             {/* Mathematics Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined text-warning mb-3" style={{fontSize: '48px'}}>calculate</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>數學 Mathematics</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiCalculator style={{ color: '#ffd600', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>數學 Mathematics</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="math" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="math" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
 
             {/* Liberal Studies / Citizenship Card */}
-            <div className="col">
+            {/* <div className="col">
               <div className="card h-100 shadow-sm rounded">
                 <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#ff9800'}}>school</i>
+                    <BiBook style={{color: '#8e24aa', fontSize: 48}} className="mb-3" />
                     <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>公民與社會發展科 Citizenship and Social Development</h2>
                     <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
                       <li>年份: 2025</li>
@@ -141,7 +151,7 @@ export default function HomePage() {
                   <Link href="citizen" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Electives Section */}
@@ -151,16 +161,16 @@ export default function HomePage() {
             {/* Physics Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined text-danger mb-3" style={{fontSize: '48px'}}>bolt</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>物理 Physics</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiBot style={{ color: '#ffd600', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>物理 Physics</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="physics" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="physics" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -168,16 +178,16 @@ export default function HomePage() {
             {/* Chemistry Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#6f42c1'}}>biotech</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>化學 Chemistry</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiTestTube style={{ color: '#00e676', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>化學 Chemistry</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="chemistry" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="chemistry" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -185,16 +195,16 @@ export default function HomePage() {
             {/* Biology Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#4CAF50'}}>eco</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>生物 Biology</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiLeaf style={{ color: '#00c853', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>生物 Biology</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="biology" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="biology" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -202,16 +212,16 @@ export default function HomePage() {
             {/* ICT Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#007bff'}}>computer</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>資訊及通訊技術 ICT</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiLaptop style={{ color: '#ff3d00', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>資訊及通訊技術 ICT</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="ict" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="ict" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -219,16 +229,16 @@ export default function HomePage() {
             {/* M1 Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#8bc34a'}}>functions</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>數學延伸部分 (M1)</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiCalculator style={{ color: '#b388ff', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>數學延伸部分 (M1)</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>英</li>
                     </ul>
                   </div>
-                  <Link href="m1" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="m1" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -236,16 +246,16 @@ export default function HomePage() {
             {/* M2 Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#cddc39'}}>functions</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>數學延伸部分 (M2)</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiCalculator style={{ color: '#64ffda', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>數學延伸部分 (M2)</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>英</li>
                     </ul>
                   </div>
-                  <Link href="m2" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="m2" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -253,16 +263,16 @@ export default function HomePage() {
             {/* Geography Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#009688'}}>public</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>地理 Geography</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiGlobe style={{ color: '#00bfae', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>地理 Geography</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="geography" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="geography" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -270,16 +280,16 @@ export default function HomePage() {
             {/* History Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#607d8b'}}>history</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>歷史 History</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiBook style={{ color: '#ffab91', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>歷史 History</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="history" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="history" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -287,16 +297,16 @@ export default function HomePage() {
             {/* Chinese History Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#795548'}}>book</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>中國歷史 Chinese History</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiBook style={{ color: '#ff1744', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>中國歷史 Chinese History</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中</li>
                     </ul>
                   </div>
-                  <Link href="chinese-history" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="chinese-history" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -304,16 +314,16 @@ export default function HomePage() {
             {/* Economics Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#ff5722'}}>attach_money</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>經濟 Economics</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiMoney style={{ color: '#ffd600', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>經濟 Economics</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="economics" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="economics" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>
@@ -321,16 +331,16 @@ export default function HomePage() {
             {/* BAFS Card */}
             <div className="col">
               <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
+                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
                   <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#ffb300'}}>business</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>企業、會計與財務概論 BAFS</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
+                    <BiBriefcase style={{ color: '#ffea00', fontSize: 48 }} className="mb-3" />
+                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>企業、會計與財務概論 BAFS</h2>
+                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
                       <li>年份: 2025</li>
                       <li>中/英</li>
                     </ul>
                   </div>
-                  <Link href="bafs" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
+                  <Link href="bafs" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
                 </div>
               </div>
             </div>

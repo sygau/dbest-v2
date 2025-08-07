@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import { BiDownload } from 'react-icons/bi';
 export default function ChemistryPage() {
     return (
         <>
@@ -74,7 +74,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syllabus_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syllabus_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -138,7 +138,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -224,7 +224,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -242,7 +242,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -262,7 +262,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -286,7 +286,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -303,7 +303,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -320,7 +320,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -337,7 +337,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -372,7 +372,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -390,7 +390,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -414,7 +414,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -431,7 +431,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -448,7 +448,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -465,7 +465,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -483,7 +483,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -501,7 +501,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -525,7 +525,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -542,7 +542,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -559,7 +559,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -576,7 +576,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -594,7 +594,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -612,7 +612,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -636,7 +636,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -653,7 +653,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -670,7 +670,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -687,7 +687,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -705,7 +705,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -723,7 +723,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -747,7 +747,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -764,7 +764,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -781,7 +781,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -798,7 +798,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -816,7 +816,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -834,7 +834,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -858,7 +858,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -875,7 +875,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -892,7 +892,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -909,7 +909,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -926,7 +926,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -944,7 +944,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -962,7 +962,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -982,7 +982,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1006,7 +1006,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1023,7 +1023,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1040,7 +1040,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1057,7 +1057,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1074,7 +1074,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1092,7 +1092,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1110,7 +1110,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1130,7 +1130,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1154,7 +1154,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1171,7 +1171,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1188,7 +1188,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1205,7 +1205,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1222,7 +1222,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1240,7 +1240,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1258,7 +1258,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1278,7 +1278,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1302,7 +1302,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1319,7 +1319,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1336,7 +1336,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1353,7 +1353,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1370,7 +1370,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1388,7 +1388,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1406,7 +1406,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1426,7 +1426,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1450,7 +1450,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1467,7 +1467,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1484,7 +1484,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1501,7 +1501,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1518,7 +1518,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1536,7 +1536,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1554,7 +1554,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1574,7 +1574,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1598,7 +1598,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1615,7 +1615,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1632,7 +1632,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1649,7 +1649,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1666,7 +1666,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1684,7 +1684,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1702,7 +1702,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1722,7 +1722,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1745,7 +1745,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1762,7 +1762,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1779,7 +1779,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_3_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1796,7 +1796,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_4_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1813,7 +1813,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_5_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1830,7 +1830,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_6_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1847,7 +1847,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_7_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1864,7 +1864,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_8_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1881,7 +1881,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_9_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1898,7 +1898,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_10_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1915,7 +1915,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_11_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1932,7 +1932,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_12_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1949,7 +1949,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_13_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1966,7 +1966,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_14_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1983,7 +1983,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_15_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2000,7 +2000,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_16_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2017,7 +2017,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_17_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2034,7 +2034,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_18_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2051,7 +2051,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_19_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2068,7 +2068,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_20_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2085,7 +2085,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_21_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2102,7 +2102,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_22_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2119,7 +2119,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_all_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2141,7 +2141,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2159,7 +2159,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2177,7 +2177,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_3_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2195,7 +2195,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_4_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2213,7 +2213,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_5_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2231,7 +2231,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_6_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2249,7 +2249,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_7_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2267,7 +2267,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_8_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2285,7 +2285,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_9_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2303,7 +2303,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_10_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2321,7 +2321,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_11_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2339,7 +2339,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_12_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2357,7 +2357,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_13_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2375,7 +2375,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_14_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2393,7 +2393,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_15_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2411,7 +2411,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_bk1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2429,7 +2429,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_bk2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2447,7 +2447,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_bk3_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2471,7 +2471,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2488,7 +2488,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2505,7 +2505,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2523,7 +2523,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2541,7 +2541,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2559,7 +2559,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2583,7 +2583,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2600,7 +2600,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2618,7 +2618,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2636,7 +2636,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2654,7 +2654,7 @@ export default function ChemistryPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import { BiDownload } from 'react-icons/bi';
 export default function BiologyPage() {
     return (
         <>
@@ -74,7 +74,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syll_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -91,7 +91,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syll_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -118,7 +118,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -187,7 +187,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -205,7 +205,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -223,7 +223,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -241,7 +241,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -266,7 +266,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -283,7 +283,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -300,7 +300,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -317,7 +317,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -335,7 +335,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -353,7 +353,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -371,7 +371,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -389,7 +389,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -414,7 +414,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -431,7 +431,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -448,7 +448,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -465,7 +465,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -483,7 +483,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -501,7 +501,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -519,7 +519,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -537,7 +537,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -562,7 +562,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -579,7 +579,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -596,7 +596,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -613,7 +613,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -631,7 +631,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -649,7 +649,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -667,7 +667,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -685,7 +685,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -710,7 +710,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -727,7 +727,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -744,7 +744,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -761,7 +761,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -779,7 +779,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -797,7 +797,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -815,7 +815,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -833,7 +833,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -858,7 +858,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -875,7 +875,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -892,7 +892,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -909,7 +909,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -927,7 +927,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -945,7 +945,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -963,7 +963,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -981,7 +981,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1006,7 +1006,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1023,7 +1023,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1040,7 +1040,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1057,7 +1057,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1075,7 +1075,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1093,7 +1093,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1111,7 +1111,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1129,7 +1129,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1154,7 +1154,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1171,7 +1171,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1188,7 +1188,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1205,7 +1205,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1223,7 +1223,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1241,7 +1241,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1259,7 +1259,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1277,7 +1277,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1302,7 +1302,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1319,7 +1319,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1336,7 +1336,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1353,7 +1353,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1371,7 +1371,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1389,7 +1389,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1407,7 +1407,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1425,7 +1425,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1450,7 +1450,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1467,7 +1467,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1484,7 +1484,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1501,7 +1501,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1519,7 +1519,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1537,7 +1537,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1555,7 +1555,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1573,7 +1573,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1598,7 +1598,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1615,7 +1615,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1632,7 +1632,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1649,7 +1649,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1667,7 +1667,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1685,7 +1685,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1703,7 +1703,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1721,7 +1721,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1746,7 +1746,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1763,7 +1763,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1780,7 +1780,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1797,7 +1797,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -1815,7 +1815,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1833,7 +1833,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1851,7 +1851,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1869,7 +1869,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1892,7 +1892,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_all_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1912,7 +1912,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1930,7 +1930,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1948,7 +1948,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_3_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1966,7 +1966,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_4_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1984,7 +1984,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_5_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2004,7 +2004,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_6_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2026,7 +2026,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_7_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2046,7 +2046,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_8_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2064,7 +2064,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_9_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2084,7 +2084,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_10_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2102,7 +2102,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_11_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2120,7 +2120,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_12_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2138,7 +2138,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_13_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2156,7 +2156,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_14_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2174,7 +2174,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_15_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2192,7 +2192,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_16_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2210,7 +2210,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_17_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2228,7 +2228,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_18_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2250,7 +2250,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_19_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2268,7 +2268,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p1_20_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2291,7 +2291,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_all_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2309,7 +2309,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2327,7 +2327,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2345,7 +2345,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_3_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2367,7 +2367,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_4_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2389,7 +2389,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_5_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2407,7 +2407,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_6_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2425,7 +2425,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_7_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2445,7 +2445,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_8_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2463,7 +2463,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_9_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2483,7 +2483,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_10_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2501,7 +2501,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_11_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2519,7 +2519,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_12_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2537,7 +2537,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_13_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2555,7 +2555,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_14_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2573,7 +2573,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_15_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2591,7 +2591,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_16_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2611,7 +2611,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_17_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2629,7 +2629,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_18_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2651,7 +2651,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_19_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2669,7 +2669,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_20_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2687,7 +2687,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_21_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2705,7 +2705,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_22_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2723,7 +2723,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_23_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2741,7 +2741,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_24_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2761,7 +2761,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_25_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2779,7 +2779,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_26_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2797,7 +2797,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_27_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2815,7 +2815,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_28_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2833,7 +2833,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_29_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2851,7 +2851,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_p2_30_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -2878,7 +2878,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2895,7 +2895,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2912,7 +2912,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2949,7 +2949,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2966,7 +2966,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -2983,7 +2983,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans_chi"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>下載
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
@@ -3001,7 +3001,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3019,7 +3019,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3037,7 +3037,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3055,7 +3055,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p1_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3073,7 +3073,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3091,7 +3091,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -3109,7 +3109,7 @@ export default function BiologyPage() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_per_eng"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>

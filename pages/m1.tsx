@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { BiDownload } from 'react-icons/bi';
 
 export default function M1Page() {
     return (
@@ -76,7 +77,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="syll"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -101,7 +102,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_bk1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -119,7 +120,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_bk2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -138,7 +139,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_1"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -158,7 +159,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_2"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -178,7 +179,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_3"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -198,7 +199,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_4"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -216,7 +217,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_5"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -234,7 +235,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_6"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -252,7 +253,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_7"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -270,7 +271,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_8"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -290,7 +291,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_9"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -308,7 +309,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_10"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -328,7 +329,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="bytopic_11"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -355,7 +356,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2023_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -379,7 +380,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -397,7 +398,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2022_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -421,7 +422,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -439,7 +440,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -457,7 +458,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2021_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -481,7 +482,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -499,7 +500,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -517,7 +518,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2020_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -541,7 +542,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -559,7 +560,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -577,7 +578,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2019_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -601,7 +602,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -619,7 +620,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -637,7 +638,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2018_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -661,7 +662,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -679,7 +680,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -697,7 +698,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2017_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -721,7 +722,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -739,7 +740,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -757,7 +758,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2016_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -781,7 +782,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -799,7 +800,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -817,7 +818,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2015_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -841,7 +842,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -859,7 +860,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -877,7 +878,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2014_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -901,7 +902,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -919,7 +920,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -937,7 +938,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2013_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -961,7 +962,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -979,7 +980,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -997,7 +998,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1021,7 +1022,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1039,7 +1040,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="pp_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1063,7 +1064,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_pp"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1081,7 +1082,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_ans"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1108,7 +1109,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2013"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1128,7 +1129,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2013_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1147,7 +1148,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2012"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1167,7 +1168,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2012_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1186,7 +1187,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2011"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1206,7 +1207,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2011_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1225,7 +1226,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2010"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1245,7 +1246,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2010_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1264,7 +1265,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2009"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1284,7 +1285,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2009_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1303,7 +1304,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2008"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1323,7 +1324,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2008_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1342,7 +1343,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2007"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1362,7 +1363,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2007_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1381,7 +1382,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2006"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1401,7 +1402,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2006_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1420,7 +1421,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2005"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1440,7 +1441,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2005_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1459,7 +1460,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2004"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1479,7 +1480,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2004_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1498,7 +1499,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2003"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1518,7 +1519,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2003_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1537,7 +1538,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2002"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1557,7 +1558,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2002_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1576,7 +1577,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2001"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1596,7 +1597,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2001_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1615,7 +1616,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2000"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1635,7 +1636,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_2000_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1654,7 +1655,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1999"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1674,7 +1675,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1999_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1693,7 +1694,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1998"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1713,7 +1714,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1998_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1732,7 +1733,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1997"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1752,7 +1753,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1997_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1771,7 +1772,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1996"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
@@ -1791,7 +1792,7 @@ export default function M1Page() {
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="mands_1996_ms"
                                     >
-                                        <i className="material-icons-outlined">cloud_download</i>
+                                        <BiDownload style={{ fontSize: 22 }} />
                                         Download
                                     </a>
                                 </div>
