@@ -85,10 +85,7 @@ function detectDevice(userAgent) {
 // IP geolocation helper using fetch
 async function getGeolocation(ip) {
   try {
-    // Skip private/local IPs
-    if (ip === '127.0.0.1' || ip === '::1' || ip.startsWith('192.168.') || ip.startsWith('10.') || ip.startsWith('172.')) {
-      return { country: 'Local', region: 'Local', city: 'Local' };
-    }
+    // Proceed with lookup for all IPs (no private IP short-circuit)
     
     // Create AbortController for timeout
     const controller = new AbortController();
@@ -869,7 +866,9 @@ export default async function handler(req, res) {
     let cleanUsername = String(username || '').trim();
     
     // Get client IP and additional request info
-    const ip = req.headers['x-forwarded-for']?.split(',')[0] || 
+    const ip = req.headers['cf-connecting-ip'] ||
+               req.headers['true-client-ip'] ||
+               req.headers['x-forwarded-for']?.split(',')[0] || 
                req.headers['x-real-ip'] || 
                req.socket.remoteAddress;
     
