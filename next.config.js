@@ -33,12 +33,6 @@ const nextConfig = {
   // Explicitly disable assetPrefix for all deployments
   assetPrefix: '',
   
-  // Environment variables for build
-  env: {
-    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID || 'fqnskombkl24',
-    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN || 'VGIR_FUs5N8woFJ4K47tm-JWr2YVbAe521Ev4oAWVc0',
-    CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT || 'master',
-  },
   
   // Clean URLs like your current setup
   async redirects() {

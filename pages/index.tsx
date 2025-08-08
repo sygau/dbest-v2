@@ -11,6 +11,9 @@ import {
   BiMoney,
   BiBriefcase
 } from 'react-icons/bi';
+import {
+  UnifiedSubjectCard,
+} from '../components/SubjectCardVariants'
 export default function HomePage() {
   return (
     <>
@@ -80,283 +83,122 @@ export default function HomePage() {
           <h2 className="fw-bold mb-4">核心科目 Core</h2>
           <br />
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {/* Chinese Card */}
+            {/* Chinese */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiBook style={{ color: '#ff69b4', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>中文 Chinese Language</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中</li>
-                    </ul>
-                  </div>
-                  <Link href="chinese" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="中文 Chinese Language"
+                href="/chinese"
+                icon={<BiBook style={{ color: '#ff69b4', fontSize: 40 }} />}
+                accent="#ff69b4"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中' }]}
+              />
             </div>
 
-            {/* English Card */}
+            {/* English */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiBook style={{ color: '#40c4ff', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>英文 English Language</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>英</li>
-                    </ul>
-                  </div>
-                  <Link href="english" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="英文 English Language"
+                href="/english"
+                icon={<BiBook style={{ color: '#40c4ff', fontSize: 40 }} />}
+                accent="#40c4ff"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '英' }]}
+              />
             </div>
 
-            {/* Mathematics Card */}
+            {/* Mathematics */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiCalculator style={{ color: '#ffd600', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>數學 Mathematics</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="math" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="數學 Mathematics"
+                href="/math"
+                icon={<BiCalculator style={{ color: '#ffd600', fontSize: 40 }} />}
+                accent="#ffd600"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
             </div>
-
-            {/* Liberal Studies / Citizenship Card */}
-            {/* <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
-                  <div>
-                    <BiBook style={{color: '#8e24aa', fontSize: 48}} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>公民與社會發展科 Citizenship and Social Development</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="citizen" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</Link>
-                </div>
-              </div>
-            </div> */}
           </div>
 
           {/* Electives Section */}
           <h2 className="fw-bold mb-4 mt-5">選修科目 Electives</h2>
           <br />
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {/* Physics Card */}
+            {/* Physics */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiBot style={{ color: '#ffd600', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>物理 Physics</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="physics" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="物理 Physics"
+                href="/physics"
+                icon={<BiBot style={{ color: '#ffd600', fontSize: 40 }} />}
+                accent="#ffd600"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
             </div>
 
-            {/* Chemistry Card */}
+            {/* Chemistry */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiTestTube style={{ color: '#00e676', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>化學 Chemistry</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="chemistry" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="化學 Chemistry"
+                href="/chemistry"
+                icon={<BiTestTube style={{ color: '#00e676', fontSize: 40 }} />}
+                accent="#00e676"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
             </div>
 
-            {/* Biology Card */}
+            {/* Biology */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiLeaf style={{ color: '#00c853', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>生物 Biology</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="biology" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="生物 Biology"
+                href="/biology"
+                icon={<BiLeaf style={{ color: '#00c853', fontSize: 40 }} />}
+                accent="#00c853"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
             </div>
 
-            {/* ICT Card */}
+            {/* ICT */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiLaptop style={{ color: '#ff3d00', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>資訊及通訊技術 ICT</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="ict" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="資訊及通訊技術 ICT"
+                href="/ict"
+                icon={<BiLaptop style={{ color: '#ff3d00', fontSize: 40 }} />}
+                accent="#ff3d00"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
             </div>
 
-            {/* M1 Card */}
+            {/* M1 */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiCalculator style={{ color: '#b388ff', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>數學延伸部分 (M1)</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>英</li>
-                    </ul>
-                  </div>
-                  <Link href="m1" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="數學延伸部分 (M1)"
+                href="/m1"
+                icon={<BiCalculator style={{ color: '#b388ff', fontSize: 40 }} />}
+                accent="#b388ff"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '英' }]}
+              />
             </div>
 
-            {/* M2 Card */}
+            {/* M2 */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiCalculator style={{ color: '#64ffda', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>數學延伸部分 (M2)</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>英</li>
-                    </ul>
-                  </div>
-                  <Link href="m2" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="數學延伸部分 (M2)"
+                href="/m2"
+                icon={<BiCalculator style={{ color: '#64ffda', fontSize: 40 }} />}
+                accent="#64ffda"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '英' }]}
+              />
             </div>
 
-            {/* Geography Card */}
+            {/* Geography */}
             <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiGlobe style={{ color: '#00bfae', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>地理 Geography</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="geography" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
+              <UnifiedSubjectCard
+                title="地理 Geography"
+                href="/geography"
+                icon={<BiGlobe style={{ color: '#00bfae', fontSize: 40 }} />}
+                accent="#00bfae"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
             </div>
-
-            {/* History Card */}
-            <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiBook style={{ color: '#ffab91', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>歷史 History</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="history" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Chinese History Card */}
-            <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiBook style={{ color: '#ff1744', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>中國歷史 Chinese History</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中</li>
-                    </ul>
-                  </div>
-                  <Link href="chinese-history" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Economics Card */}
-            <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiMoney style={{ color: '#ffd600', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>經濟 Economics</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="economics" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* BAFS Card */}
-            <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{ minHeight: '300px', padding: '1.5rem' }}>
-                  <div>
-                    <BiBriefcase style={{ color: '#ffea00', fontSize: 48 }} className="mb-3" />
-                    <h2 className="card-title mt-3" style={{ fontSize: '1.3rem' }}>企業、會計與財務概論 BAFS</h2>
-                    <ul className="mb-3" style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem' }}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <Link href="bafs" className="btn btn-primary w-100 mt-auto" style={{ padding: '0.6rem 1.2rem' }}>查看</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Visual Arts Card */}
-            {/* <div className="col">
-              <div className="card h-100 shadow-sm rounded">
-                <div className="card-body text-center d-flex flex-column" style={{minHeight: '300px', padding: '1.5rem'}}>
-                  <div>
-                    <i className="material-icons-outlined mb-3" style={{fontSize: '48px', color: '#03a9f4'}}>palette</i>
-                    <h2 className="card-title mt-3" style={{fontSize: '1.3rem'}}>視覺藝術 Visual Arts</h2>
-                    <ul className="mb-3" style={{listStyle: 'none', padding: 0, margin: 0, fontSize: '1.1rem'}}>
-                      <li>年份: 2025</li>
-                      <li>中/英</li>
-                    </ul>
-                  </div>
-                  <a href="visual-arts" className="btn btn-primary w-100 mt-auto" style={{padding: '0.6rem 1.2rem'}}>查看</a>
-                </div>
-              </div>
-            </div> */}
           </div>
+
         </div>
 
         {/* FAQ Section */}
@@ -432,5 +274,5 @@ export default function HomePage() {
         </section>
       </div>
     </>
-  )
+  );
 }

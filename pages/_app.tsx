@@ -31,10 +31,17 @@ import {
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
 import usePageInitialization from '../hooks/usePageInitialization'
+import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
   // Initialize page-specific JavaScript functionality
   usePageInitialization()
+
+  // Render a minimal layout for the maintenance page (no header/sidebar/footer)
+  if (router.pathname === '/maintenance') {
+    return <Component {...pageProps} />
+  }
 
   return (
     <>
