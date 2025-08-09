@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>速成輸入法練習 | Sucheng Quick Practice</title>
+    <style>
+      :root {
+        --bg: #0f172a; /* slate-900 */
+        --panel: #111827; /* gray-900 */
+        --text: #e5e7eb; /* gray-200 */
+        --muted: #9ca3af; /* gray-400 */
+        --accent: #22c55e; /* green-500 */
+        --danger: #ef4444; /* red-500 */
+        --brand: #60a5fa; /* blue-400 */
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: radial-gradient(1200px 800px at 70% 10%, #0b1224 0%, var(--bg) 40%, #0b1224 100%);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "PingFang HK", "Noto Sans CJK HK", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 32px 20px 56px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .title {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .title h1 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+      .title .sub {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      button, .btn {
+        background: #1f2937;
+        color: var(--text);
+        border: 1px solid #374151;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      button[disabled] { opacity: 0.6; cursor: not-allowed; }
+      button:hover:not([disabled]), .btn:hover:not([disabled]) { background: #273244; }
+      .kbd {
+        display: inline-block;
+        border: 1px solid #374151;
+        border-bottom-width: 3px;
+        border-radius: 6px;
+        padding: 2px 6px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 12px;
+        background: #0b1220;
+        color: #cbd5e1;
+      }
+      main.panel {
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+        border: 1px solid #1f2937;
+        border-radius: 14px;
+        padding: 24px;
+      }
+      .prompt {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        justify-items: center;
+        row-gap: 20px;
+        text-align: center;
+        min-height: 260px;
+      }
+      .radical {
+        font-size: clamp(80px, 12vw, 160px);
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-shadow: 0 6px 28px rgba(96,165,250,0.2), 0 2px 10px rgba(0,0,0,0.4);
+      }
+      .progress {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .input-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      #answerInput {
+        width: 200px;
+        max-width: 70vw;
+        height: 52px;
+        font-size: 22px;
+        padding: 0 14px;
+        text-align: center;
+        border-radius: 10px;
+        border: 1px solid #334155;
+        background: #0b1220;
+        color: var(--text);
+        outline: none;
+      }
+      #answerInput:focus { box-shadow: 0 0 0 3px rgba(96,165,250,0.25); border-color: #60a5fa; }
+
+      .status { min-height: 24px; font-size: 14px; }
+      .status.ok { color: var(--accent); }
+      .status.err { color: var(--danger); }
+
+      .footer-note {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 4px;
+        text-align: center;
+      }
+
+      /* Overlay base */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2,6,23,0.78);
+        backdrop-filter: blur(6px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 50;
+      }
+      .overlay.show { display: flex; }
+      .sheet {
+        width: min(940px, 96vw);
+        background: #0b1220;
+        border: 1px solid #1f2937;
+        border-radius: 14px;
+        padding: 20px;
+        box-shadow: 0 20px 80px rgba(0,0,0,0.45);
+      }
+      .sheet h3 { margin: 0 0 14px; font-size: 18px; }
+
+      /* Cheat sheet */
+      .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+      .cell {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 8px;
+        align-items: center;
+        background: #0f172a;
+        border: 1px solid #1f2937;
+        border-radius: 10px;
+        padding: 10px;
+      }
+      .cell .rad { font-size: 28px; text-align: center; }
+      .cell .lab { color: var(--muted); font-size: 13px; }
+
+      /* Results */
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-top: 8px;
+        margin-bottom: 14px;
+      }
+      .stat {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #0f172a;
+        border: 1px solid #1f2937;
+        padding: 10px 12px;
+        border-radius: 10px;
+      }
+      .stat span { color: var(--muted); font-size: 13px; }
+      .stat strong { font-size: 16px; }
+      .actions { display: flex; gap: 10px; justify-content: flex-end; }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        left: 50%;
+        top: 24px;
+        transform: translateX(-50%);
+        background: #0b1220;
+        border: 1px solid #374151;
+        color: var(--text);
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-size: 14px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 120ms ease;
+        z-index: 60;
+      }
+      .toast.show { opacity: 1; }
+
+      @media (max-width: 560px) {
+        .grid { grid-template-columns: repeat(3, 1fr); }
+        .cell { grid-template-columns: 44px 1fr; }
+        .cell .rad { font-size: 22px; }
+        .stats { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title">
+          <h1>速成輸入法練習</h1>
+          <div class="sub">Quick (Sucheng) A–Y key radicals — Z not used</div>
+        </div>
+        <div class="controls">
+          <button id="startBtn" title="Start a new round">開始 Start</button>
+          <button id="restartBtn" title="Shuffle and restart (R)" disabled>重來 Restart</button>
+          <button id="toggleSheetBtn" title="Toggle cheat sheet (press ?)">速成對照表 <span class="kbd">?</span></button>
+        </div>
+      </header>
+
+      <main class="panel">
+        <div class="prompt">
+          <div class="progress" id="progress">0 / 25</div>
+          <div class="radical" id="radical">—</div>
+          <div class="input-row">
+            <input id="answerInput" type="text" inputmode="latin" autocomplete="off" autocapitalize="characters" maxlength="3" placeholder="Type letter (A–Y) and Enter" disabled />
+            <button id="submitBtn" class="btn" disabled>Enter</button>
+          </div>
+          <div id="status" class="status" aria-live="polite">按「開始」開始測試</div>
+        </div>
+        <div class="footer-note">
+          按 <span class="kbd">Enter</span> 送出；<span class="kbd">Space</span> 顯示此題答案；<span class="kbd">?</span> 對照表；<span class="kbd">R</span> 重來
+        </div>
+      </main>
+    </div>
+
+    <div id="overlay" class="overlay" aria-hidden="true">
+      <div class="sheet">
+        <h3>速成 25 鍵對照表（Z 不使用）</h3>
+        <div id="sheetGrid" class="grid"></div>
+      </div>
+    </div>
+
+    <div id="resultsOverlay" class="overlay" aria-hidden="true">
+      <div class="sheet">
+        <h3>完成一輪</h3>
+        <div class="stats">
+          <div class="stat"><span>時間</span><strong id="statTime">--</strong></div>
+          <div class="stat"><span>正確</span><strong id="statCorrect">--</strong></div>
+          <div class="stat"><span>錯誤</span><strong id="statWrong">--</strong></div>
+          <div class="stat"><span>準確率</span><strong id="statAcc">--</strong></div>
+        </div>
+        <div class="actions">
+          <button id="playAgainBtn">再來一輪</button>
+          <button id="closeResultsBtn">關閉</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+      // Sucheng (Quick) / Cangjie key-to-radical mapping (Z not used)
+      const KEY_TO_RADICAL = {
+        A: '日',
+        B: '月',
+        C: '金',
+        D: '木',
+        E: '水',
+        F: '火',
+        G: '土',
+        H: '竹',
+        I: '戈',
+        J: '十',
+        K: '大',
+        L: '中',
+        M: '一',
+        N: '弓',
+        O: '人',
+        P: '心',
+        Q: '手',
+        R: '口',
+        S: '尸',
+        T: '廿',
+        U: '山',
+        V: '女',
+        W: '田',
+        X: '難',
+        Y: '卜',
+      };
+
+      const RADICAL_TO_KEY = Object.fromEntries(
+        Object.entries(KEY_TO_RADICAL).map(([k, v]) => [v, k])
+      );
+
+      const radicalEl = document.getElementById('radical');
+      const progressEl = document.getElementById('progress');
+      const inputEl = document.getElementById('answerInput');
+      const statusEl = document.getElementById('status');
+      const submitBtn = document.getElementById('submitBtn');
+      const startBtn = document.getElementById('startBtn');
+      const restartBtn = document.getElementById('restartBtn');
+      const toggleSheetBtn = document.getElementById('toggleSheetBtn');
+      const overlay = document.getElementById('overlay');
+      const sheetGrid = document.getElementById('sheetGrid');
+      const toastEl = document.getElementById('toast');
+
+      const resultsOverlay = document.getElementById('resultsOverlay');
+      const playAgainBtn = document.getElementById('playAgainBtn');
+      const closeResultsBtn = document.getElementById('closeResultsBtn');
+      const statTime = document.getElementById('statTime');
+      const statCorrect = document.getElementById('statCorrect');
+      const statWrong = document.getElementById('statWrong');
+      const statAcc = document.getElementById('statAcc');
+
+      let sequence = [];
+      let idx = 0;
+      let currentRadical = '';
+      let allowInput = false;
+      let started = false;
+
+      let totalCorrect = 0;
+      let totalWrong = 0;
+      let startTimeMs = 0;
+
+      function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      }
+
+      function prepareRound() {
+        sequence = shuffle([...Object.values(KEY_TO_RADICAL)]);
+        idx = 0;
+        currentRadical = '';
+        totalCorrect = 0;
+        totalWrong = 0;
+        started = false;
+        allowInput = false;
+        startTimeMs = 0;
+        statusEl.textContent = '按「開始」開始測試';
+        statusEl.className = 'status';
+        radicalEl.textContent = '—';
+        progressEl.textContent = `0 / ${sequence.length}`;
+        inputEl.value = '';
+        inputEl.disabled = true;
+        submitBtn.disabled = true;
+        startBtn.disabled = false;
+        restartBtn.disabled = true;
+        focusInput();
+      }
+
+      function startGame() {
+        if (started) return;
+        started = true;
+        allowInput = true;
+        startTimeMs = performance.now();
+        startBtn.disabled = true;
+        restartBtn.disabled = false;
+        inputEl.disabled = false;
+        submitBtn.disabled = false;
+        statusEl.textContent = '';
+        showCurrent();
+        focusInput();
+      }
+
+      function showCurrent() {
+        currentRadical = sequence[idx];
+        radicalEl.textContent = currentRadical ?? '?';
+        progressEl.textContent = `${Math.min(idx + 1, sequence.length)} / ${sequence.length}`;
+        inputEl.value = '';
+      }
+
+      function showToast(text, ms = 1200) {
+        toastEl.textContent = text;
+        toastEl.classList.add('show');
+        window.setTimeout(() => toastEl.classList.remove('show'), ms);
+      }
+
+      function focusInput() {
+        if (!overlay.classList.contains('show') && !resultsOverlay.classList.contains('show')) {
+          inputEl.focus({ preventScroll: true });
+        }
+      }
+
+      function sanitizeToLetterAY(value) {
+        const upper = (value || '').toUpperCase();
+        for (let i = 0; i < upper.length; i++) {
+          const ch = upper[i];
+          if (ch >= 'A' && ch <= 'Y') return ch; // Z intentionally excluded
+        }
+        return '';
+      }
+
+      function submitAnswer() {
+        if (!allowInput || !started) return;
+        const letter = sanitizeToLetterAY(inputEl.value);
+        if (!letter) {
+          statusEl.textContent = '請輸入 A–Y 之間的字母';
+          statusEl.className = 'status err';
+          focusInput();
+          return;
+        }
+        const correctLetter = RADICAL_TO_KEY[currentRadical];
+        if (letter === correctLetter) {
+          totalCorrect += 1;
+          statusEl.textContent = `✔ 正確：${currentRadical} → ${letter}`;
+          statusEl.className = 'status ok';
+          idx++;
+          if (idx >= sequence.length) {
+            finishRound();
+          } else {
+            showCurrent();
+          }
+        } else {
+          totalWrong += 1;
+          statusEl.textContent = `✘ 錯誤：應為 ${correctLetter}`;
+          statusEl.className = 'status err';
+          inputEl.select();
+        }
+        focusInput();
+      }
+
+      function finishRound() {
+        allowInput = false;
+        started = false;
+        const elapsedMs = Math.max(0, performance.now() - startTimeMs);
+        radicalEl.textContent = '完成';
+        progressEl.textContent = `${sequence.length} / ${sequence.length}`;
+        showResults(elapsedMs, totalCorrect, totalWrong);
+        startBtn.disabled = false;
+        restartBtn.disabled = false; // allow immediate restart
+        inputEl.disabled = true;
+        submitBtn.disabled = true;
+      }
+
+      // Cheat sheet
+      function renderSheet() {
+        const pairs = Object.entries(KEY_TO_RADICAL)
+          .sort((a, b) => a[0].localeCompare(b[0]));
+        sheetGrid.innerHTML = '';
+        for (const [key, radical] of pairs) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          const rad = document.createElement('div');
+          rad.className = 'rad';
+          rad.textContent = radical;
+          const lab = document.createElement('div');
+          lab.className = 'lab';
+          lab.innerHTML = `<strong>${key}</strong>`;
+          cell.appendChild(rad);
+          cell.appendChild(lab);
+          sheetGrid.appendChild(cell);
+        }
+      }
+
+      function toggleOverlay(force) {
+        const want = typeof force === 'boolean' ? force : !overlay.classList.contains('show');
+        overlay.classList.toggle('show', want);
+        overlay.setAttribute('aria-hidden', String(!want));
+        if (!want) focusInput();
+      }
+
+      // Results overlay
+      function msToText(ms) {
+        const s = ms / 1000;
+        return s.toFixed(2) + ' 秒';
+      }
+
+      function showResults(ms, correct, wrong) {
+        statTime.textContent = msToText(ms);
+        statCorrect.textContent = String(correct);
+        statWrong.textContent = String(wrong);
+        const total = correct + wrong;
+        const acc = total > 0 ? (correct / total) * 100 : 100;
+        statAcc.textContent = acc.toFixed(1) + '%';
+        resultsOverlay.classList.add('show');
+        resultsOverlay.setAttribute('aria-hidden', 'false');
+      }
+
+      function hideResults() {
+        resultsOverlay.classList.remove('show');
+        resultsOverlay.setAttribute('aria-hidden', 'true');
+        focusInput();
+      }
+
+      // Event wiring
+      submitBtn.addEventListener('click', submitAnswer);
+      startBtn.addEventListener('click', () => {
+        if (!started) startGame();
+      });
+      restartBtn.addEventListener('click', () => {
+        prepareRound();
+        startGame();
+        showToast('已重洗次序');
+      });
+      toggleSheetBtn.addEventListener('click', () => toggleOverlay());
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) toggleOverlay(false);
+      });
+      playAgainBtn.addEventListener('click', () => {
+        hideResults();
+        prepareRound();
+        startGame();
+      });
+      closeResultsBtn.addEventListener('click', () => {
+        hideResults();
+        prepareRound();
+      });
+
+      inputEl.addEventListener('input', () => {
+        const letter = sanitizeToLetterAY(inputEl.value);
+        inputEl.value = letter;
+      });
+
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          submitAnswer();
+        }
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+          e.preventDefault();
+          toggleOverlay();
+          return;
+        }
+        if (e.key === ' ' && !overlay.classList.contains('show') && !resultsOverlay.classList.contains('show')) {
+          if (!started) return; // only during game
+          e.preventDefault();
+          const ans = RADICAL_TO_KEY[currentRadical];
+          if (ans) showToast(`提示：${currentRadical} → ${ans}`);
+          focusInput();
+          return;
+        }
+        if ((e.key === 'r' || e.key === 'R') && !overlay.classList.contains('show')) {
+          e.preventDefault();
+          prepareRound();
+          startGame();
+          return;
+        }
+        if (!overlay.classList.contains('show') && !resultsOverlay.classList.contains('show')) {
+          focusInput();
+        }
+      });
+
+      window.addEventListener('click', () => focusInput());
+      window.addEventListener('touchstart', () => focusInput(), { passive: true });
+
+      // Init
+      renderSheet();
+      prepareRound();
+      focusInput();
+    </script>
+  </body>
+</html> 

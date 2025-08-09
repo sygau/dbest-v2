@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>速成輸入法 Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                            600: '#475569',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-900 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-dark-800 rounded-2xl shadow-2xl p-8 w-full max-w-md">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-white mb-2">速成輸入法練習</h1>
+            <p class="text-gray-400">Type the corresponding letter and press Enter</p>
+        </div>
+        
+        <div class="flex justify-between bg-dark-700 rounded-lg p-4 mb-6">
+            <div class="text-center">
+                <div class="text-2xl font-bold text-blue-400" id="current-num">1</div>
+                <div class="text-sm text-gray-400">Current</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl font-bold text-green-400" id="correct-num">0</div>
+                <div class="text-sm text-gray-400">Correct</div>
+            </div>
+            <div class="text-center">
+                <div class="text-2xl font-bold text-purple-400" id="total-num">25</div>
+                <div class="text-sm text-gray-400">Total</div>
+            </div>
+        </div>
+        
+        <div class="bg-dark-700 rounded-xl p-8 mb-6 flex items-center justify-center min-h-32">
+            <div class="text-5xl font-bold text-white" id="character-display">日</div>
+        </div>
+        
+        <div class="mb-6">
+            <input 
+                type="text" 
+                id="answer-input" 
+                placeholder="Type the letter..."
+                class="w-full bg-dark-700 border border-dark-600 rounded-lg px-4 py-3 text-white text-center text-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                autocomplete="off"
+                autocapitalize="off"
+            >
+        </div>
+        
+        <div id="message" class="mb-6 p-3 rounded-lg text-center font-semibold opacity-0 transition-opacity duration-300"></div>
+        
+        <button id="restart-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center">
+            <i class="fas fa-redo mr-2"></i>
+            Restart Game
+        </button>
+        
+        <div class="mt-6 text-center text-gray-400 text-sm">
+            <p>Type the corresponding English letter for the displayed Chinese character</p>
+            <p class="mt-1">Both uppercase and lowercase are accepted</p>
+        </div>
+    </div>
+
+    <script>
+        // Character to key mapping (based on Cangjie input method)
+        const charMap = {
+            '日': 'A', '月': 'B', '金': 'C', '木': 'D', '水': 'E',
+            '火': 'F', '土': 'G', '竹': 'H', '戈': 'I', '十': 'J',
+            '大': 'K', '中': 'L', '一': 'M', '弓': 'N', '人': 'O',
+            '心': 'P', '手': 'Q', '口': 'R', '尸': 'S', '廿': 'T',
+            '山': 'U', '女': 'V', '田': 'W', '難': 'X', '卜': 'Y'
+        };
+
+        // Game state
+        let characters = Object.keys(charMap);
+        let currentCharacter = '';
+        let currentIndex = 0;
+        let correctCount = 0;
+        let gameCharacters = [];
+
+        // DOM elements
+        const characterDisplay = document.getElementById('character-display');
+        const answerInput = document.getElementById('answer-input');
+        const messageElement = document.getElementById('message');
+        const currentNumElement = document.getElementById('current-num');
+        const correctNumElement = document.getElementById('correct-num');
+        const totalNumElement = document.getElementById('total-num');
+        const restartBtn = document.getElementById('restart-btn');
+
+        // Initialize game
+        function initGame() {
+            // Shuffle characters
+            gameCharacters = [...characters].sort(() => Math.random() - 0.5);
+            currentIndex = 0;
+            correctCount = 0;
+            updateStats();
+            nextCharacter();
+            answerInput.focus();
+        }
+
+        // Show next character
+        function nextCharacter() {
+            if (currentIndex >= gameCharacters.length) {
+                showMessage('恭喜！你完成了所有練習！', 'bg-green-900 text-green-300');
+                answerInput.disabled = true;
+                return;
+            }
+            
+            currentCharacter = gameCharacters[currentIndex];
+            characterDisplay.textContent = currentCharacter;
+            answerInput.value = '';
+            answerInput.disabled = false;
+            answerInput.focus();
+            updateStats();
+        }
+
+        // Update statistics display
+        function updateStats() {
+            currentNumElement.textContent = currentIndex + 1;
+            correctNumElement.textContent = correctCount;
+            totalNumElement.textContent = gameCharacters.length;
+        }
+
+        // Show message
+        function showMessage(text, styleClass) {
+            messageElement.textContent = text;
+            messageElement.className = `p-3 rounded-lg text-center font-semibold ${styleClass} opacity-100`;
+            
+            setTimeout(() => {
+                messageElement.classList.remove('opacity-100');
+                messageElement.classList.add('opacity-0');
+            }, 2000);
+        }
+
+        // Check answer
+        function checkAnswer() {
+            const userAnswer = answerInput.value.trim().toUpperCase();
+            const correctAnswer = charMap[currentCharacter];
+            
+            if (userAnswer === correctAnswer) {
+                correctCount++;
+                showMessage('正確！', 'bg-green-900 text-green-300');
+                currentIndex++;
+                setTimeout(nextCharacter, 1000);
+            } else {
+                showMessage(`錯誤！正確答案是 ${correctAnswer}`, 'bg-red-900 text-red-300');
+                answerInput.value = '';
+                answerInput.focus();
+            }
+        }
+
+        // Event listeners
+        answerInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (answerInput.value.trim() !== '') {
+                    checkAnswer();
+                }
+            }
+        });
+
+        restartBtn.addEventListener('click', () => {
+            initGame();
+        });
+
+        // Initialize the game
+        initGame();
+    </script>
+</body>
+</html>
