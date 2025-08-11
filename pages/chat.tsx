@@ -128,8 +128,6 @@ export default function ChatPage() {
                             id="rulesBtn"
                             type="button"
                             title="Chat Rules"
-                            data-bs-toggle="modal"
-                            data-bs-target="#rulesModal"
                         >
                             <BiBook size={24} />
                         </button>

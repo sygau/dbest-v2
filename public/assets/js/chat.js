@@ -372,7 +372,9 @@ class DSEChat {
   showRulesModal() {
     const rulesModal = document.getElementById('rulesModal');
     if (rulesModal) {
-      const modal = new bootstrap.Modal(rulesModal);
+      const modal = (bootstrap.Modal.getOrCreateInstance
+        ? bootstrap.Modal.getOrCreateInstance(rulesModal)
+        : new bootstrap.Modal(rulesModal));
       modal.show();
     }
   }
