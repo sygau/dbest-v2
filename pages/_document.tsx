@@ -5,7 +5,9 @@ export default function Document() {
   return (
     <Html lang="zh-Hant" data-bs-theme="blue-theme">
       <Head>
-        <meta charSet="utf-8" />
+        <meta property="og:site_name" content="dse.best" />
+        <meta property="og:locale" content="zh_HK" />
+        <meta property="og:locale:alternate" content="en_US" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
