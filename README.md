@@ -497,10 +497,11 @@ Paper Preferences:
 ### 🔥 High Priority (Do Now)
 - More Subjects
 - UI Improvement
+- Schema / Google Rich Results optimizations/FAQ?/Breadcrumbs ETC
 - Validate all downloads (Anti Scraping)
 - Block scraping of PDFs (Anti Scraping)
 - Signed URLs for downloading with expiry (Anti Scraping)
-- PageSpeed improvements (33x33 cn logo)
+- PageSpeed improvements 
 
 ### 🚀 Medium Priority (Next 2-4 weeks)
 - Add topic names for ByTopics

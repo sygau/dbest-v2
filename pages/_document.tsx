@@ -31,6 +31,7 @@ export default function Document() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "DSEBest",
+            "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案，涵蓋中文、英文、數學、物理、化學等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。",
             "url": "https://dse.best/",
             "inLanguage": ["zh-HK", "en-HK"],
           })
