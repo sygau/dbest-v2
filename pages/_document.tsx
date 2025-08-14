@@ -31,7 +31,8 @@ export default function Document() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "DSEBest",
-            "url": "https://dse.best/"
+            "url": "https://dse.best/",
+            "inLanguage": ["zh-HK", "en-HK"],
           })
         }} />
         
