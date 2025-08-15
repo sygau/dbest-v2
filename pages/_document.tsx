@@ -36,8 +36,11 @@ export default function Document() {
             "inLanguage": ["zh-HK", "en-HK"],
           })
         }} />
-        
-        {/* Analytics */}
+
+        {/* Google AdSense */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
+
+        {/* Google Analytics */}
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
         <script defer dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
         
