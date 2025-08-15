@@ -3374,58 +3374,59 @@ export default function PhysicsPage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col">
-                        <div className="card h-100 d-flex flex-column">
-                            <div className="card-body">
-                                <h5 className="card-title">Sample Paper 1A (Eng)</h5>
-                                <p className="card-text">Sample Paper 1A (English)</p>
-                            </div>
-                            <div className="card-footer bg-transparent border-0">
-                                <a
-                                    href="#"
-                                    className="btn btn-info px-4 d-inline-flex gap-2"
-                                    data-paper-id="sp_p1a_eng"
-                                >
-                                    <BiDownload style={{ fontSize: 22 }} />
-                                    Download
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col">
-                        <div className="card h-100 d-flex flex-column">
-                            <div className="card-body">
-                                <h5 className="card-title">Sample Paper 1B (Eng)</h5>
-                                <p className="card-text">Sample Paper 1B (English)</p>
-                            </div>
-                            <div className="card-footer bg-transparent border-0">
-                                <a
-                                    href="#"
-                                    className="btn btn-info px-4 d-inline-flex gap-2"
-                                    data-paper-id="sp_p1b_eng"
-                                >
-                                    <BiDownload style={{ fontSize: 22 }} />
-                                    Download
-                                </a>
+
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Sample Paper 1A (Eng)</h5>
+                                    <p className="card-text">Sample Paper 1A (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="sp_p1a_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="col">
-                        <div className="card h-100 d-flex flex-column">
-                            <div className="card-body">
-                                <h5 className="card-title">Sample Paper 2 (Eng)</h5>
-                                <p className="card-text">Sample Paper 2 (English)</p>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Sample Paper 1B (Eng)</h5>
+                                    <p className="card-text">Sample Paper 1B (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="sp_p1b_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
                             </div>
-                            <div className="card-footer bg-transparent border-0">
-                                <a
-                                    href="#"
-                                    className="btn btn-info px-4 d-inline-flex gap-2"
-                                    data-paper-id="sp_p2_eng"
-                                >
-                                    <BiDownload style={{ fontSize: 22 }} />
-                                    Download
-                                </a>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Sample Paper 2 (Eng)</h5>
+                                    <p className="card-text">Sample Paper 2 (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="sp_p2_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
