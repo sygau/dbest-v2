@@ -8,6 +8,7 @@ declare global {
     countdownInterval?: NodeJS.Timeout
     blogPagination?: any
     initializePage?: () => void
+    adsbygoogle?: unknown[]
   }
 }
 
@@ -15,36 +16,36 @@ const usePageInitialization = () => {
   const router = useRouter()
 
   const initializePage = () => {
-    // Call the global initialization functions defined in _document.tsx
     if (typeof window !== 'undefined') {
-      // Main page initialization (only for general paper links functionality)
+      // Main page initialization
       if (typeof window.initializePage === 'function') {
         window.initializePage()
       }
-      // Note: Page-specific scripts (countdown, chat, blog) are now handled 
-      // directly in their respective TSX components via useEffect
+
+      // Re-trigger Google AdSense Auto Ads
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({})
+        console.log('AdSense re-triggered.')
+      } catch (e) {
+        console.warn('AdSense reload failed:', e)
+      }
     }
   }
 
   useEffect(() => {
-    // Initialize page when route changes
     const handleRouteChangeComplete = () => {
-      console.log('Route change completed, scheduling page initialization...');
-      // Shorter delay since we only need to initialize paper links
-      setTimeout(initializePage, 200)
+      console.log('Route change completed, scheduling page initialization...')
+      setTimeout(initializePage, 500) // Slightly longer delay for layout stabilization
     }
 
-    // Initialize on mount with delay
-    console.log('usePageInitialization mounted, scheduling initial page setup...');
-    setTimeout(initializePage, 200)
+    console.log('usePageInitialization mounted, scheduling initial page setup...')
+    setTimeout(initializePage, 500)
 
-    // Listen for route changes
     router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
     return () => {
       router.events.off('routeChangeComplete', handleRouteChangeComplete)
-      
-      // Cleanup on unmount - call any global cleanup if needed
+
       if (typeof window !== 'undefined') {
         if (window.countdownInterval) {
           clearInterval(window.countdownInterval)
