@@ -21,23 +21,26 @@
     {
       "source": "/jable",
       "destination": "https://jable.tv/",
-      "permanent": false
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "User-Agent",
+          "value": ".*[Bb]yte[Ss]pider.*"
+        }
+      ],
+      "destination": "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre",
+      "permanent": true
     }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "has": [
-        { "type": "host", "value": "dbest-v1-git-main-1fus-projects.vercel.app" }
-      ],
-      "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex" }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        { "type": "host", "value": "dbest-v1-gsqxylviq-1fus-projects.vercel.app" }
+        { "type": "host", "value": ".*\\.vercel\\.app" }
       ],
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex" }
