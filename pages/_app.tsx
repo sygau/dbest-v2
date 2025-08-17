@@ -57,9 +57,13 @@ export default function App({ Component, pageProps }: AppProps) {
       <header className="top-header">
         <nav className="navbar navbar-expand align-items-center gap-4">
           <div className="btn-toggle">
-            <a href="#" aria-label="menu">
+            <button 
+              type="button" 
+              className="btn p-0 border-0 bg-transparent" 
+              aria-label="Toggle sidebar menu"
+            >
               <BiMenu style={{ fontSize: 24 }} />
-            </a>
+            </button>
           </div>
           <div className="search-bar flex-grow-1">
             <div className="position-relative">
