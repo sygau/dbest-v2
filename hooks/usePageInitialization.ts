@@ -24,10 +24,35 @@ const usePageInitialization = () => {
 
       // Re-trigger Google AdSense Auto Ads
       try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({})
-        console.log('AdSense re-triggered.')
+        // Clean up any existing AdSense instances
+        if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
+          // Find all ad containers
+          const adsenseElements = document.querySelectorAll('ins.adsbygoogle');
+          
+          // Clear and prepare for re-initialization
+          adsenseElements.forEach(element => {
+            // Clear the inner HTML of the ad container
+            element.innerHTML = '';
+            
+            // Remove the data-ad-status attribute completely
+            element.removeAttribute('data-ad-status');
+            
+            // Force browser to recognize the element as "new"
+            const parent = element.parentNode;
+            if (parent) {
+              const newAdElement = element.cloneNode(true);
+              parent.replaceChild(newAdElement, element);
+            }
+          });
+          
+          console.log('Cleaned up existing AdSense instances');
+        }
+        
+        // Initialize new AdSense instances
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        console.log('AdSense re-triggered.');
       } catch (e) {
-        console.warn('AdSense reload failed:', e)
+        console.warn('AdSense reload failed:', e);
       }
     }
   }
