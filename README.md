@@ -493,8 +493,6 @@ Paper Preferences:
 
 
 ## TODO
-
-### 🔥 High Priority (Do Now)
 - More Subjects
 - UI Improvement
 - Schema / Google Rich Results optimizations/FAQ?/Breadcrumbs ETC
@@ -502,22 +500,12 @@ Paper Preferences:
 - Block scraping of PDFs (Anti Scraping)
 - Signed URLs for downloading with expiry (Anti Scraping)
 - PageSpeed improvements 
-
-### 🚀 Medium Priority (Next 2-4 weeks)
 - Add topic names for ByTopics
 - Sitemap.xml generation
 - Search (Fuse?)
-- Per-Page JS Registry
-- Advanced caching
-
-### 💡 Lower Priority (Future)
 - Multilingual support
-- EJS/ES6 templates for shared layout/components
-- Google Ads
-- AI Mock Papers Section
-- Alternative analytics platform (Mixpanel?)
-
-### 🤔 Consider Carefully
-- Add a chat room/box
 - Codebase revamp (remove comments)
-- NextJS evolution"# Test commit" 
+
+### Pages suggestions
+- AI Mock Papers Section
+- Study Locations Google Maps

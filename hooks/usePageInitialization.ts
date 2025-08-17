@@ -8,7 +8,7 @@ declare global {
     countdownInterval?: NodeJS.Timeout
     blogPagination?: any
     initializePage?: () => void
-    adsbygoogle?: unknown[]
+    adsbygoogle?: any[]
   }
 }
 
@@ -24,35 +24,49 @@ const usePageInitialization = () => {
 
       // Re-trigger Google AdSense Auto Ads
       try {
-        // Clean up any existing AdSense instances
-        if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
-          // Find all ad containers
-          const adsenseElements = document.querySelectorAll('ins.adsbygoogle');
-          
-          // Clear and prepare for re-initialization
-          adsenseElements.forEach(element => {
-            // Clear the inner HTML of the ad container
-            element.innerHTML = '';
-            
-            // Remove the data-ad-status attribute completely
-            element.removeAttribute('data-ad-status');
-            
-            // Force browser to recognize the element as "new"
-            const parent = element.parentNode;
-            if (parent) {
-              const newAdElement = element.cloneNode(true);
-              parent.replaceChild(newAdElement, element);
-            }
+        // Check if AdSense script is loaded
+        if (!window.adsbygoogle) {
+          console.warn('AdSense script not loaded yet');
+          return;
+        }
+
+        // Find all ad containers that haven't been processed
+        const adsenseElements = document.querySelectorAll('ins.adsbygoogle:not([data-adsbygoogle-status])');
+        
+        if (adsenseElements.length > 0) {
+          // Push to AdSense queue for each unprocessed ad
+          adsenseElements.forEach(() => {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
           });
           
-          console.log('Cleaned up existing AdSense instances');
+          console.log(`AdSense re-triggered for ${adsenseElements.length} ads`);
+        } else {
+          // If no unprocessed ads found, try to refresh existing ones
+          const allAdsenseElements = document.querySelectorAll('ins.adsbygoogle');
+          allAdsenseElements.forEach(element => {
+            // Remove processing status to allow re-initialization
+            element.removeAttribute('data-adsbygoogle-status');
+            element.removeAttribute('data-ad-status');
+            // Clear the content
+            element.innerHTML = '';
+          });
+          
+          // Push to queue once for all refreshed ads
+          if (allAdsenseElements.length > 0) {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            console.log(`AdSense refreshed for ${allAdsenseElements.length} existing ads`);
+          }
         }
-        
-        // Initialize new AdSense instances
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-        console.log('AdSense re-triggered.');
       } catch (e) {
         console.warn('AdSense reload failed:', e);
+        // Retry mechanism
+        setTimeout(() => {
+          try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          } catch (retryError) {
+            console.warn('AdSense retry failed:', retryError);
+          }
+        }, 1000);
       }
     }
   }
@@ -60,11 +74,11 @@ const usePageInitialization = () => {
   useEffect(() => {
     const handleRouteChangeComplete = () => {
       console.log('Route change completed, scheduling page initialization...')
-      setTimeout(initializePage, 500) // Slightly longer delay for layout stabilization
+      setTimeout(initializePage, 1000) // Longer delay for better stability
     }
 
     console.log('usePageInitialization mounted, scheduling initial page setup...')
-    setTimeout(initializePage, 500)
+    setTimeout(initializePage, 1000)
 
     router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
@@ -77,7 +91,7 @@ const usePageInitialization = () => {
         }
       }
     }
-  }, [router.pathname])
+  }, [router.asPath]) // Changed from router.pathname to router.asPath
 
   return null
 }
