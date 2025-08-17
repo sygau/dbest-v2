@@ -17,10 +17,10 @@ export default function Document() {
         {/* Bootstrap CSS */}
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-        
+
         {/* Fonts */}
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" />
-        
+
         {/* Combined CSS - All themes and styles in one file */}
         <link rel="preload" href="/assets/css/combined.min.css" as="style" />
         <link href="/assets/css/combined.min.css" rel="stylesheet" />
@@ -38,16 +38,18 @@ export default function Document() {
 
         {/* Google AdSense */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
+        <script async src="https://fundingchoicesmessages.google.com/i/pub-9807119599898921?ers=1" />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){function a(){if(!window.frames.googlefcPresent)if(document.body){const b=document.createElement("iframe");b.style.cssText="width:0;height:0;border:none;z-index:-1000;left:-1000px;top:-1000px;display:none",b.name="googlefcPresent",document.body.appendChild(b)}else setTimeout(a,0)}a()})();` }} />
 
         {/* Google Analytics */}
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
         <script defer dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
-        
+
         {/* Vercel Analytics */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.vercel }} />
         <script defer src="/_vercel/insights/script.js"></script>
         <script defer src="/_vercel/speed-insights/script.js"></script>
-        
+
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -57,10 +59,10 @@ export default function Document() {
         <meta name="format-detection" content="telephone=no, email=no" />
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-touch-callout" content="none" />
-        
+
         {/* PWA iOS Styles */}
         <style dangerouslySetInnerHTML={{ __html: pwaStyles }} />
-        
+
         {/* Consolidated Main Script */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.mainScript }} />
       </Head>
