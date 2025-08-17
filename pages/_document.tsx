@@ -14,7 +14,6 @@ export default function Document() {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#0f1535" />
-        <link rel="canonical" href="https://dse.best" />
         {/* Bootstrap CSS */}
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
