@@ -280,8 +280,6 @@ export default function PhysicsPage() {
                             </div>
                         </div>
                     </div>
-                    <hr className="my-4" />
-
                     {/* Google Ad */}
                     <div className="text-center my-4">
                         <ins className="adsbygoogle"
@@ -291,7 +289,7 @@ export default function PhysicsPage() {
                             data-ad-format="auto"
                             data-full-width-responsive="true"></ins>
                     </div>
-
+                    <hr className="my-4" />
                     {/* 2022 */}
                     <h2 style={{ textAlign: "center" }}>2022</h2>
                     <br />
@@ -476,17 +474,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2020 */}
                     <h2 style={{ textAlign: "center" }}>2020</h2>
                     <br />
@@ -672,17 +659,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2021 */}
                     <h2 style={{ textAlign: "center" }}>2021</h2>
                     <br />
@@ -867,17 +843,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2019 */}
                     <h2 style={{ textAlign: "center" }}>2019</h2>
                     <br />
@@ -1063,17 +1028,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2018 */}
                     <h2 style={{ textAlign: "center" }}>2018</h2>
                     <br />
@@ -1259,17 +1213,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2017 */}
                     <h2 style={{ textAlign: "center" }}>2017</h2>
                     <br />
@@ -1454,17 +1397,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2016 */}
                     <h2 style={{ textAlign: "center" }}>2016</h2>
                     <br />
@@ -1649,17 +1581,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2015 */}
                     <h2 style={{ textAlign: "center" }}>2015</h2>
                     <br />
@@ -1844,17 +1765,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2014 */}
                     <h2 style={{ textAlign: "center" }}>2014</h2>
                     <br />
@@ -2039,17 +1949,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2013 */}
                     <h2 style={{ textAlign: "center" }}>2013</h2>
                     <br />
@@ -2234,17 +2133,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* 2012 */}
                     <h2 style={{ textAlign: "center" }}>2012</h2>
                     <br />
@@ -2429,17 +2317,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* By Topic (中文) */}
                     <h2 style={{ textAlign: "center" }}>主題練習（中文）</h2>
                     <br />
@@ -2718,17 +2595,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* By Topic (English) */}
                     <h2 style={{ textAlign: "center" }}>By Topic (English)</h2>
                     <br />
@@ -3391,17 +3257,6 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
-
                     {/* Practice/Sample/Special Papers */}
                     <h2 style={{ textAlign: "center" }}>練習卷 / Practice Papers</h2>
                     <br />
