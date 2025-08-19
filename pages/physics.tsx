@@ -3433,9 +3433,6 @@ export default function PhysicsPage() {
                 </div>
                 <hr className="my-4" />
             </div>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({ });
-            </script>
         </>
     )
 }
