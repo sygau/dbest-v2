@@ -96,7 +96,12 @@ export default function BiologyPage() {
                     </div>
                     <hr className="my-4" />
                     {/* DSE Papers by Year */}
-                    {/* YEARLY CARDS WILL BE INSERTED HERE */}
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2023 */}
                     <h2 style={{ textAlign: "center" }}>2023</h2>
                     <br />
@@ -245,6 +250,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2022 */}
                     <h2 style={{ textAlign: "center" }}>2022</h2>
                     <br />
@@ -393,6 +404,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2021 */}
                     <h2 style={{ textAlign: "center" }}>2021</h2>
                     <br />
@@ -541,6 +558,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2020 */}
                     <h2 style={{ textAlign: "center" }}>2020</h2>
                     <br />
@@ -689,6 +712,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2019 */}
                     <h2 style={{ textAlign: "center" }}>2019</h2>
                     <br />
@@ -837,6 +866,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2018 */}
                     <h2 style={{ textAlign: "center" }}>2018</h2>
                     <br />
@@ -985,6 +1020,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2017 */}
                     <h2 style={{ textAlign: "center" }}>2017</h2>
                     <br />
@@ -1133,6 +1174,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2016 */}
                     <h2 style={{ textAlign: "center" }}>2016</h2>
                     <br />
@@ -1281,6 +1328,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2015 */}
                     <h2 style={{ textAlign: "center" }}>2015</h2>
                     <br />
@@ -1429,6 +1482,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2014 */}
                     <h2 style={{ textAlign: "center" }}>2014</h2>
                     <br />
@@ -1577,6 +1636,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2013 */}
                     <h2 style={{ textAlign: "center" }}>2013</h2>
                     <br />
@@ -1725,6 +1790,12 @@ export default function BiologyPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <ins className="adsbygoogle"
+                        style={{ display: "block", textAlign: "center" }}
+                        data-ad-layout="in-article"
+                        data-ad-format="fluid"
+                        data-ad-client="ca-pub-9807119599898921"
+                        data-ad-slot="9848140597"></ins>
                     {/* 2012 */}
                     <h2 style={{ textAlign: "center" }}>2012</h2>
                     <br />
@@ -2928,8 +2999,8 @@ export default function BiologyPage() {
                                         data-paper-id="pp_per_chi"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
-  下載
-</a>
+                                        下載
+                                    </a>
                                 </div>
                             </div>
                         </div>
