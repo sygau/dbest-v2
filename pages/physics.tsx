@@ -280,15 +280,6 @@ export default function PhysicsPage() {
                             </div>
                         </div>
                     </div>
-                    {/* Google Ad */}
-                    <div className="text-center my-4">
-                        <ins className="adsbygoogle"
-                            style={{ display: "block" }}
-                            data-ad-client="ca-pub-9807119599898921"
-                            data-ad-slot="8206921713"
-                            data-ad-format="auto"
-                            data-full-width-responsive="true"></ins>
-                    </div>
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 style={{ textAlign: "center" }}>2022</h2>
