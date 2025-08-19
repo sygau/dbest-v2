@@ -22,40 +22,18 @@ const usePageInitialization = () => {
         window.initializePage()
       }
 
-      // Improved AdSense initialization for auto ads
-      const initializeAdSense = () => {
-        try {
-          // Check if AdSense script is loaded
-          if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
-            // For auto ads, we don't need to manually push - it should work automatically
-            // But we can signal AdSense to scan for new content if needed
-            console.log('AdSense script loaded, auto ads should work automatically')
-            
-            // Only push if there are unprocessed ad slots (for manual ads, not auto ads)
-            // For auto ads, this is usually not necessary
-            // window.adsbygoogle.push({})
-          } else {
-            console.warn('AdSense script not loaded yet, retrying...')
-            // Retry after a short delay
-            setTimeout(initializeAdSense, 500)
-          }
-        } catch (e) {
-          console.warn('AdSense initialization failed:', e)
-        }
-      }
-
-      // Initialize AdSense with a slight delay to ensure DOM is ready
-      setTimeout(initializeAdSense, 100)
+      // Auto ads work automatically - no manual intervention needed
+      // The AdSense script in _document.tsx handles everything
     }
   }
 
   useEffect(() => {
     const handleRouteChangeComplete = () => {
-      // Increased delay for route changes to ensure content is fully loaded
-      setTimeout(initializePage, 1500)
+      // Delay for layout/content to settle
+      setTimeout(initializePage, 1000)
     }
 
-    // Initial page load with shorter delay
+    // Initial page load
     setTimeout(initializePage, 1000)
 
     router.events.on('routeChangeComplete', handleRouteChangeComplete)

@@ -3115,6 +3115,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                 </div>
             </div>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({ });
+            </script>
         </>
     )
 }
