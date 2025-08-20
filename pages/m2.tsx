@@ -3032,7 +3032,582 @@ export default function M2Page() {
                     <h2 style={{ textAlign: "center" }}>Pure Mathematics</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
-                        {/* Cards for PMaths will be inserted here */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1995 Paper</h5>
+                                    <p className="card-text">1995 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1995"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1995 Marking Scheme</h5>
+                                    <p className="card-text">1995 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1995_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1994 Paper</h5>
+                                    <p className="card-text">1994 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1994"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1994 Marking Scheme</h5>
+                                    <p className="card-text">1994 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1994_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1993 Paper</h5>
+                                    <p className="card-text">1993 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1993"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1993 Marking Scheme</h5>
+                                    <p className="card-text">1993 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1993_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1992 Paper</h5>
+                                    <p className="card-text">1992 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1992"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1992 Marking Scheme</h5>
+                                    <p className="card-text">1992 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1992_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1991 Paper</h5>
+                                    <p className="card-text">1991 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1991"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1991 Marking Scheme</h5>
+                                    <p className="card-text">1991 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1991_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1990 Paper</h5>
+                                    <p className="card-text">1990 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1990"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1990 Marking Scheme</h5>
+                                    <p className="card-text">1990 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1990_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1989 Paper</h5>
+                                    <p className="card-text">1989 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1989"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1989 Marking Scheme</h5>
+                                    <p className="card-text">1989 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1989_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1988 Paper</h5>
+                                    <p className="card-text">1988 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1988"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1988 Marking Scheme</h5>
+                                    <p className="card-text">1988 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1988_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1987 Paper</h5>
+                                    <p className="card-text">1987 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1987"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1987 Marking Scheme</h5>
+                                    <p className="card-text">1987 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1987_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1986 Paper</h5>
+                                    <p className="card-text">1986 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1986"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1986 Marking Scheme</h5>
+                                    <p className="card-text">1986 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1986_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1985 Paper</h5>
+                                    <p className="card-text">1985 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1985"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1985 Marking Scheme</h5>
+                                    <p className="card-text">1985 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1985_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1984 Paper</h5>
+                                    <p className="card-text">1984 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1984"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1984 Marking Scheme</h5>
+                                    <p className="card-text">1984 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1984_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1983 Paper</h5>
+                                    <p className="card-text">1983 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1983"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1983 Marking Scheme</h5>
+                                    <p className="card-text">1983 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1983_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1982 Paper</h5>
+                                    <p className="card-text">1982 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1982"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1982 Marking Scheme</h5>
+                                    <p className="card-text">1982 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1982_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1981 Paper</h5>
+                                    <p className="card-text">1981 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1981"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1981 Marking Scheme</h5>
+                                    <p className="card-text">1981 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1981_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1980 Paper</h5>
+                                    <p className="card-text">1980 Pure Mathematics Paper</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1980"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">1980 Marking Scheme</h5>
+                                    <p className="card-text">1980 Pure Mathematics Marking Scheme</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pmaths_1980_ms"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
