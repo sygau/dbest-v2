@@ -15,13 +15,6 @@ export default function M2Page() {
                 <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
                 <meta property="og:url" content="https://dse.best/m2" />
                 <meta property="og:type" content="website" />
-                
-                {/* AdSense Auto Ads Exclusion CSS */}
-                <style jsx>{`
-                    .adsense-auto-ads-ignore {
-                        google-auto-ads: ignore;
-                    }
-                `}</style>
             </Head>
 
             {/*breadcrumb*/}
@@ -74,7 +67,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Syllabus</h5>
                                     <p className="card-text">Mathematics Module 2 Syllabus</p>
@@ -98,7 +91,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 1-13</h5>
                                     <p className="card-text">By Topic Book 1</p>
@@ -116,7 +109,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 1 Mathematical Induction</h5>
                                     <p className="card-text">By Topic 1</p>
@@ -134,7 +127,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 2 Binomial Theorem</h5>
                                     <p className="card-text">By Topic 2</p>
@@ -152,7 +145,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">
                                         Topic 3 More about Trigonometric Functions
@@ -172,7 +165,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 4 Limits and Derivatives</h5>
                                     <p className="card-text">By Topic 4</p>
@@ -190,7 +183,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 5 Differentiation</h5>
                                     <p className="card-text">By Topic 5</p>
@@ -208,7 +201,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">
                                         Topic 6 Applications of Differentiation
@@ -228,7 +221,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 7 Indefinite Integrals</h5>
                                     <p className="card-text">By Topic 7</p>
@@ -246,7 +239,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 8 Definite Integrals</h5>
                                     <p className="card-text">By Topic 8</p>
@@ -264,7 +257,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">
                                         Topic 9 Applications of Definite Integrals
@@ -284,7 +277,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 10 Matrices and Determinants</h5>
                                     <p className="card-text">By Topic 10</p>
@@ -302,7 +295,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">
                                         Topic 11 System of Linear Equations
@@ -322,7 +315,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 12 Vectors</h5>
                                     <p className="card-text">By Topic 12</p>
@@ -340,7 +333,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 13 Product of Vectors</h5>
                                     <p className="card-text">By Topic 13</p>
@@ -367,7 +360,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2023 Paper</h5>
                                     <p className="card-text">2023 DSE Paper</p>
@@ -390,7 +383,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2022 Paper</h5>
                                     <p className="card-text">2022 DSE Paper</p>
@@ -408,7 +401,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2022 Marking Scheme</h5>
                                     <p className="card-text">2022 Marking Scheme</p>
@@ -431,7 +424,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2021 Paper</h5>
                                     <p className="card-text">2021 DSE Paper</p>
@@ -449,7 +442,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2021 Marking Scheme</h5>
                                     <p className="card-text">2021 Marking Scheme</p>
@@ -472,7 +465,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2020 Paper</h5>
                                     <p className="card-text">2020 DSE Paper</p>
@@ -490,7 +483,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2020 Marking Scheme</h5>
                                     <p className="card-text">2020 Marking Scheme</p>
@@ -508,7 +501,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2020 Performance</h5>
                                     <p className="card-text">2020 Performance Report</p>
@@ -531,7 +524,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2019 Paper</h5>
                                     <p className="card-text">2019 DSE Paper</p>
@@ -549,7 +542,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2019 Marking Scheme</h5>
                                     <p className="card-text">2019 Marking Scheme</p>
@@ -567,7 +560,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2019 Performance</h5>
                                     <p className="card-text">2019 Performance Report</p>
@@ -590,7 +583,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2018 Paper</h5>
                                     <p className="card-text">2018 DSE Paper</p>
@@ -608,7 +601,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2018 Marking Scheme</h5>
                                     <p className="card-text">2018 Marking Scheme</p>
@@ -626,7 +619,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2018 Performance</h5>
                                     <p className="card-text">2018 Performance Report</p>
@@ -649,7 +642,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2017 Paper</h5>
                                     <p className="card-text">2017 DSE Paper</p>
@@ -667,7 +660,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2017 Marking Scheme</h5>
                                     <p className="card-text">2017 Marking Scheme</p>
@@ -685,7 +678,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2017 Performance</h5>
                                     <p className="card-text">2017 Performance Report</p>
@@ -708,7 +701,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2016 Paper</h5>
                                     <p className="card-text">2016 DSE Paper</p>
@@ -726,7 +719,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2016 Marking Scheme</h5>
                                     <p className="card-text">2016 Marking Scheme</p>
@@ -744,7 +737,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2016 Performance</h5>
                                     <p className="card-text">2016 Performance Report</p>
@@ -767,7 +760,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2015 Paper</h5>
                                     <p className="card-text">2015 DSE Paper</p>
@@ -785,7 +778,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2015 Marking Scheme</h5>
                                     <p className="card-text">2015 Marking Scheme</p>
@@ -803,7 +796,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2015 Performance</h5>
                                     <p className="card-text">2015 Performance Report</p>
@@ -826,7 +819,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2014 Paper</h5>
                                     <p className="card-text">2014 DSE Paper</p>
@@ -844,7 +837,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2014 Marking Scheme</h5>
                                     <p className="card-text">2014 Marking Scheme</p>
@@ -862,7 +855,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2014 Performance</h5>
                                     <p className="card-text">2014 Performance Report</p>
@@ -885,7 +878,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2013 Paper</h5>
                                     <p className="card-text">2013 DSE Paper</p>
@@ -903,7 +896,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2013 Marking Scheme</h5>
                                     <p className="card-text">2013 Marking Scheme</p>
@@ -921,7 +914,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2013 Performance</h5>
                                     <p className="card-text">2013 Performance Report</p>
@@ -944,7 +937,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2012 Paper</h5>
                                     <p className="card-text">2012 DSE Paper</p>
@@ -962,7 +955,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2012 Marking Scheme</h5>
                                     <p className="card-text">2012 Marking Scheme</p>
@@ -980,7 +973,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2012 Performance</h5>
                                     <p className="card-text">2012 Performance Report</p>
@@ -1004,7 +997,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Sample Paper</h5>
                                     <p className="card-text">Sample Paper</p>
@@ -1028,7 +1021,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Practice Paper</h5>
                                     <p className="card-text">Practice Paper</p>
@@ -1046,7 +1039,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Practice Marking Scheme</h5>
                                     <p className="card-text">Practice Marking Scheme</p>
@@ -1070,7 +1063,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2011 Paper</h5>
                                     <p className="card-text">2011 Additional Mathematics Paper</p>
@@ -1088,7 +1081,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2011 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1108,7 +1101,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2009 Paper</h5>
                                     <p className="card-text">2009 Additional Mathematics Paper</p>
@@ -1126,7 +1119,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2009 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1146,7 +1139,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2008 Paper</h5>
                                     <p className="card-text">2008 Additional Mathematics Paper</p>
@@ -1164,7 +1157,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2008 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1184,7 +1177,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2007 Paper</h5>
                                     <p className="card-text">2007 Additional Mathematics Paper</p>
@@ -1202,7 +1195,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2007 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1222,7 +1215,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2006 Paper</h5>
                                     <p className="card-text">2006 Additional Mathematics Paper</p>
@@ -1240,7 +1233,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2006 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1260,7 +1253,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2005 Paper</h5>
                                     <p className="card-text">2005 Additional Mathematics Paper</p>
@@ -1278,7 +1271,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2004 Paper</h5>
                                     <p className="card-text">2004 Additional Mathematics Paper</p>
@@ -1296,7 +1289,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2004 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1316,7 +1309,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2003 Paper</h5>
                                     <p className="card-text">2003 Additional Mathematics Paper</p>
@@ -1334,7 +1327,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2003 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1354,7 +1347,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2002 Paper</h5>
                                     <p className="card-text">2002 Additional Mathematics Paper</p>
@@ -1372,7 +1365,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2002 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1392,7 +1385,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2001 Paper</h5>
                                     <p className="card-text">2001 Additional Mathematics Paper</p>
@@ -1410,7 +1403,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2001 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1430,7 +1423,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2000 Paper 1</h5>
                                     <p className="card-text">2000 Additional Mathematics Paper 1</p>
@@ -1448,7 +1441,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2000 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1468,7 +1461,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2000 Paper 2</h5>
                                     <p className="card-text">2000 Additional Mathematics Paper 2</p>
@@ -1486,7 +1479,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">2000 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1506,7 +1499,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1999 Paper 1</h5>
                                     <p className="card-text">1999 Additional Mathematics Paper 1</p>
@@ -1524,7 +1517,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1999 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1544,7 +1537,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1999 Paper 2</h5>
                                     <p className="card-text">1999 Additional Mathematics Paper 2</p>
@@ -1562,7 +1555,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1999 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1582,7 +1575,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1998 Paper 1</h5>
                                     <p className="card-text">1998 Additional Mathematics Paper 1</p>
@@ -1600,7 +1593,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1998 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1620,7 +1613,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1998 Paper 2</h5>
                                     <p className="card-text">1998 Additional Mathematics Paper 2</p>
@@ -1638,7 +1631,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1998 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1658,7 +1651,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1997 Paper 1</h5>
                                     <p className="card-text">1997 Additional Mathematics Paper 1</p>
@@ -1676,7 +1669,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1997 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1696,7 +1689,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1997 Paper 2</h5>
                                     <p className="card-text">1997 Additional Mathematics Paper 2</p>
@@ -1714,7 +1707,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1997 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1734,7 +1727,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1996 Paper 1</h5>
                                     <p className="card-text">1996 Additional Mathematics Paper 1</p>
@@ -1752,7 +1745,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1996 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1772,7 +1765,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1996 Paper 2</h5>
                                     <p className="card-text">1996 Additional Mathematics Paper 2</p>
@@ -1790,7 +1783,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1996 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1810,7 +1803,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1995 Paper 1</h5>
                                     <p className="card-text">1995 Additional Mathematics Paper 1</p>
@@ -1828,7 +1821,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1995 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1848,7 +1841,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1995 Paper 2</h5>
                                     <p className="card-text">1995 Additional Mathematics Paper 2</p>
@@ -1866,7 +1859,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1995 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1886,7 +1879,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1994 Paper 1</h5>
                                     <p className="card-text">1994 Additional Mathematics Paper 1</p>
@@ -1904,7 +1897,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1994 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1924,7 +1917,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1994 Paper 2</h5>
                                     <p className="card-text">1994 Additional Mathematics Paper 2</p>
@@ -1942,7 +1935,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1994 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -1962,7 +1955,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1993 Paper 1</h5>
                                     <p className="card-text">1993 Additional Mathematics Paper 1</p>
@@ -1980,7 +1973,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1993 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2000,7 +1993,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1993 Paper 2</h5>
                                     <p className="card-text">1993 Additional Mathematics Paper 2</p>
@@ -2018,7 +2011,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1993 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2038,7 +2031,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1992 Paper 1</h5>
                                     <p className="card-text">1992 Additional Mathematics Paper 1</p>
@@ -2056,7 +2049,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1992 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2076,7 +2069,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1992 Paper 2</h5>
                                     <p className="card-text">1992 Additional Mathematics Paper 2</p>
@@ -2094,7 +2087,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1992 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2114,7 +2107,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1991 Paper 1</h5>
                                     <p className="card-text">1991 Additional Mathematics Paper 1</p>
@@ -2132,7 +2125,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1991 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2152,7 +2145,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1991 Paper 2</h5>
                                     <p className="card-text">1991 Additional Mathematics Paper 2</p>
@@ -2170,7 +2163,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1991 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2190,7 +2183,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1990 Paper 1</h5>
                                     <p className="card-text">1990 Additional Mathematics Paper 1</p>
@@ -2208,7 +2201,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1990 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2228,7 +2221,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1990 Paper 2</h5>
                                     <p className="card-text">1990 Additional Mathematics Paper 2</p>
@@ -2246,7 +2239,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1990 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2267,7 +2260,7 @@ export default function M2Page() {
                         </div>
                         {/* 1989 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1989 Paper 1</h5>
                                     <p className="card-text">1989 Additional Mathematics Paper 1</p>
@@ -2285,7 +2278,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1989 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2305,7 +2298,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1989 Paper 2</h5>
                                     <p className="card-text">1989 Additional Mathematics Paper 2</p>
@@ -2323,7 +2316,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1989 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2344,7 +2337,7 @@ export default function M2Page() {
                         </div>
                         {/* 1988 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1988 Paper 1</h5>
                                     <p className="card-text">1988 Additional Mathematics Paper 1</p>
@@ -2362,7 +2355,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1988 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2382,7 +2375,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1988 Paper 2</h5>
                                     <p className="card-text">1988 Additional Mathematics Paper 2</p>
@@ -2400,7 +2393,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1988 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2421,7 +2414,7 @@ export default function M2Page() {
                         </div>
                         {/* 1987 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1987 Paper 1</h5>
                                     <p className="card-text">1987 Additional Mathematics Paper 1</p>
@@ -2439,7 +2432,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1987 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2459,7 +2452,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1987 Paper 2</h5>
                                     <p className="card-text">1987 Additional Mathematics Paper 2</p>
@@ -2477,7 +2470,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1987 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2498,7 +2491,7 @@ export default function M2Page() {
                         </div>
                         {/* 1986 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1986 Paper 1</h5>
                                     <p className="card-text">1986 Additional Mathematics Paper 1</p>
@@ -2516,7 +2509,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1986 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2536,7 +2529,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1986 Paper 2</h5>
                                     <p className="card-text">1986 Additional Mathematics Paper 2</p>
@@ -2554,7 +2547,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1986 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2575,7 +2568,7 @@ export default function M2Page() {
                         </div>
                         {/* 1985 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1985 Paper 1</h5>
                                     <p className="card-text">1985 Additional Mathematics Paper 1</p>
@@ -2593,7 +2586,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1985 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2613,7 +2606,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1985 Paper 2</h5>
                                     <p className="card-text">1985 Additional Mathematics Paper 2</p>
@@ -2631,7 +2624,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1985 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2652,7 +2645,7 @@ export default function M2Page() {
                         </div>
                         {/* 1984 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1984 Paper 1</h5>
                                     <p className="card-text">1984 Additional Mathematics Paper 1</p>
@@ -2670,7 +2663,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1984 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2690,7 +2683,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1984 Paper 2</h5>
                                     <p className="card-text">1984 Additional Mathematics Paper 2</p>
@@ -2708,7 +2701,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1984 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2729,7 +2722,7 @@ export default function M2Page() {
                         </div>
                         {/* 1983 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1983 Paper 1</h5>
                                     <p className="card-text">1983 Additional Mathematics Paper 1</p>
@@ -2747,7 +2740,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1983 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2767,7 +2760,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1983 Paper 2</h5>
                                     <p className="card-text">1983 Additional Mathematics Paper 2</p>
@@ -2785,7 +2778,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1983 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2806,7 +2799,7 @@ export default function M2Page() {
                         </div>
                         {/* 1982 */}
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1982 Paper 1</h5>
                                     <p className="card-text">1982 Additional Mathematics Paper 1</p>
@@ -2824,7 +2817,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1982 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2844,7 +2837,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1982 Paper 2</h5>
                                     <p className="card-text">1982 Additional Mathematics Paper 2</p>
@@ -2862,7 +2855,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1982 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2882,7 +2875,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1981 Paper 1</h5>
                                     <p className="card-text">1981 Additional Mathematics Paper 1</p>
@@ -2900,7 +2893,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1981 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2920,7 +2913,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1981 Paper 2</h5>
                                     <p className="card-text">1981 Additional Mathematics Paper 2</p>
@@ -2938,7 +2931,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1981 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2958,7 +2951,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1980 Paper 1</h5>
                                     <p className="card-text">1980 Additional Mathematics Paper 1</p>
@@ -2976,7 +2969,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1980 Paper 1 Marking Scheme</h5>
                                     <p className="card-text">
@@ -2996,7 +2989,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1980 Paper 2</h5>
                                     <p className="card-text">1980 Additional Mathematics Paper 2</p>
@@ -3014,7 +3007,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1980 Paper 2 Marking Scheme</h5>
                                     <p className="card-text">
@@ -3040,7 +3033,7 @@ export default function M2Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1995 Paper</h5>
                                     <p className="card-text">1995 Pure Mathematics Paper</p>
@@ -3058,7 +3051,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1995 Marking Scheme</h5>
                                     <p className="card-text">1995 Pure Mathematics Marking Scheme</p>
@@ -3076,7 +3069,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1994 Paper</h5>
                                     <p className="card-text">1994 Pure Mathematics Paper</p>
@@ -3094,7 +3087,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1994 Marking Scheme</h5>
                                     <p className="card-text">1994 Pure Mathematics Marking Scheme</p>
@@ -3112,7 +3105,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1993 Paper</h5>
                                     <p className="card-text">1993 Pure Mathematics Paper</p>
@@ -3130,7 +3123,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1993 Marking Scheme</h5>
                                     <p className="card-text">1993 Pure Mathematics Marking Scheme</p>
@@ -3148,7 +3141,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1992 Paper</h5>
                                     <p className="card-text">1992 Pure Mathematics Paper</p>
@@ -3166,7 +3159,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1992 Marking Scheme</h5>
                                     <p className="card-text">1992 Pure Mathematics Marking Scheme</p>
@@ -3184,7 +3177,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1991 Paper</h5>
                                     <p className="card-text">1991 Pure Mathematics Paper</p>
@@ -3202,7 +3195,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1991 Marking Scheme</h5>
                                     <p className="card-text">1991 Pure Mathematics Marking Scheme</p>
@@ -3220,7 +3213,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1990 Paper</h5>
                                     <p className="card-text">1990 Pure Mathematics Paper</p>
@@ -3238,7 +3231,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1990 Marking Scheme</h5>
                                     <p className="card-text">1990 Pure Mathematics Marking Scheme</p>
@@ -3256,7 +3249,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1989 Paper</h5>
                                     <p className="card-text">1989 Pure Mathematics Paper</p>
@@ -3274,7 +3267,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1989 Marking Scheme</h5>
                                     <p className="card-text">1989 Pure Mathematics Marking Scheme</p>
@@ -3292,7 +3285,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1988 Paper</h5>
                                     <p className="card-text">1988 Pure Mathematics Paper</p>
@@ -3310,7 +3303,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1988 Marking Scheme</h5>
                                     <p className="card-text">1988 Pure Mathematics Marking Scheme</p>
@@ -3328,7 +3321,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1987 Paper</h5>
                                     <p className="card-text">1987 Pure Mathematics Paper</p>
@@ -3346,7 +3339,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1987 Marking Scheme</h5>
                                     <p className="card-text">1987 Pure Mathematics Marking Scheme</p>
@@ -3364,7 +3357,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1986 Paper</h5>
                                     <p className="card-text">1986 Pure Mathematics Paper</p>
@@ -3382,7 +3375,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1986 Marking Scheme</h5>
                                     <p className="card-text">1986 Pure Mathematics Marking Scheme</p>
@@ -3400,7 +3393,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1985 Paper</h5>
                                     <p className="card-text">1985 Pure Mathematics Paper</p>
@@ -3418,7 +3411,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1985 Marking Scheme</h5>
                                     <p className="card-text">1985 Pure Mathematics Marking Scheme</p>
@@ -3436,7 +3429,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1984 Paper</h5>
                                     <p className="card-text">1984 Pure Mathematics Paper</p>
@@ -3454,7 +3447,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1984 Marking Scheme</h5>
                                     <p className="card-text">1984 Pure Mathematics Marking Scheme</p>
@@ -3472,7 +3465,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1983 Paper</h5>
                                     <p className="card-text">1983 Pure Mathematics Paper</p>
@@ -3490,7 +3483,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1983 Marking Scheme</h5>
                                     <p className="card-text">1983 Pure Mathematics Marking Scheme</p>
@@ -3508,7 +3501,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1982 Paper</h5>
                                     <p className="card-text">1982 Pure Mathematics Paper</p>
@@ -3526,7 +3519,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1982 Marking Scheme</h5>
                                     <p className="card-text">1982 Pure Mathematics Marking Scheme</p>
@@ -3544,7 +3537,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1981 Paper</h5>
                                     <p className="card-text">1981 Pure Mathematics Paper</p>
@@ -3562,7 +3555,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1981 Marking Scheme</h5>
                                     <p className="card-text">1981 Pure Mathematics Marking Scheme</p>
@@ -3580,7 +3573,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1980 Paper</h5>
                                     <p className="card-text">1980 Pure Mathematics Paper</p>
@@ -3598,7 +3591,7 @@ export default function M2Page() {
                             </div>
                         </div>
                         <div className="col">
-                            <div className="card h-100 d-flex flex-column adsense-auto-ads-ignore">
+                            <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">1980 Marking Scheme</h5>
                                     <p className="card-text">1980 Pure Mathematics Marking Scheme</p>

@@ -15,15 +15,23 @@ declare global {
 const usePageInitialization = () => {
   const router = useRouter()
 
+  const reloadAds = () => {
+    if (typeof window !== 'undefined' && window.adsbygoogle) {
+      try {
+        window.adsbygoogle.push({})
+      } catch (error) {
+        console.error('Error reloading AdSense ads:', error)
+      }
+    }
+  }
+
   const initializePage = () => {
     if (typeof window !== 'undefined') {
       // Main page initialization (custom logic)
       if (typeof window.initializePage === 'function') {
         window.initializePage()
       }
-
-      // Auto ads work automatically - no manual intervention needed
-      // The AdSense script in _document.tsx handles everything
+      reloadAds()
     }
   }
 
