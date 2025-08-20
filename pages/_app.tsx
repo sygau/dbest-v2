@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import Link from 'next/link'
 import Head from 'next/head'
+import NavigationLink from '../components/NavigationLink'
 import {
   BiHomeAlt,
   BiTimeFive,
@@ -130,7 +131,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <aside className="sidebar-wrapper">
         <div className="sidebar-header">
           <div className="logo-icon">
-            <Link href="/" aria-label="DSEBest 主頁 Home">
+            <NavigationLink href="/" aria-label="DSEBest 主頁 Home">
               {/* <?xml version="1.0" encoding="UTF-8"?> */}
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 192 192" role="img" aria-labelledby="logoTitle">
                 <title id="logoTitle">DSEBest Logo</title>
@@ -142,12 +143,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <path d="M0 0 C11.55 0 23.1 0 35 0 C35.495 0.99 35.495 0.99 36 2 C24.78 2.33 13.56 2.66 2 3 C1.67 19.5 1.34 36 1 53 C0.67 53 0.34 53 0 53 C0 35.51 0 18.02 0 0 Z " fill="#7352F1" transform="translate(32,51)" />
               </svg>
 
-            </Link>
+            </NavigationLink>
           </div>
           <div className="logo-name flex-grow-1">
-            <Link href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <NavigationLink href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
               <h5 className="mb-0">DSEBest</h5>
-            </Link>
+            </NavigationLink>
           </div>
           <div className="sidebar-close">
             <BiX style={{ fontSize: 24 }} />
@@ -157,10 +158,10 @@ export default function App({ Component, pageProps }: AppProps) {
           {/* navigation */}
           <ul className="sidebar-menu" id="sidenav" suppressHydrationWarning>
             <li>
-              <Link href="/">
+              <NavigationLink href="/">
                 <div className="parent-icon"><BiHomeAlt style={{ color: '#00bfff', fontSize: 24 }} /></div>
                 <div className="menu-title">主頁</div>
-              </Link>
+              </NavigationLink>
             </li>
             {/* <li>
               <Link href="/blog/">
@@ -169,35 +170,35 @@ export default function App({ Component, pageProps }: AppProps) {
               </Link>
             </li> */}
             <li>
-              <Link href="/countdown">
+              <NavigationLink href="/countdown">
                 <div className="parent-icon"><BiTimeFive style={{ color: '#ff5252', fontSize: 24 }} /></div>
                 <div className="menu-title">DSE 2026 倒數</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/chat">
+              <NavigationLink href="/chat">
                 <div className="parent-icon"><BiChat style={{ color: '#00e5ff', fontSize: 24 }} /></div>
                 <div className="menu-title">聊天室 Chatroom</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li className="menu-label">核心科目</li>
             <li>
-              <Link href="/chinese">
+              <NavigationLink href="/chinese">
                 <div className="parent-icon"><BiBook style={{ color: '#ff69b4', fontSize: 24 }} /></div>
                 <div className="menu-title">中文</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/english">
+              <NavigationLink href="/english">
                 <div className="parent-icon"><BiBook style={{ color: '#40c4ff', fontSize: 24 }} /></div>
                 <div className="menu-title">英文 English</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/math">
+              <NavigationLink href="/math">
                 <div className="parent-icon"><BiCalculator style={{ color: '#ffd600', fontSize: 24 }} /></div>
                 <div className="menu-title">數學 Math</div>
-              </Link>
+              </NavigationLink>
             </li>
             {/* <li>
               <Link href="/citizen">
@@ -207,70 +208,70 @@ export default function App({ Component, pageProps }: AppProps) {
             </li> */}
             <li className="menu-label">選修科目</li>
             <li>
-              <Link href="/physics">
+              <NavigationLink href="/physics">
                 <div className="parent-icon"><BiBot style={{ color: '#ffd600', fontSize: 24 }} /></div>
                 <div className="menu-title">物理 Physics</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/chemistry">
+              <NavigationLink href="/chemistry">
                 <div className="parent-icon"><BiTestTube style={{ color: '#00e676', fontSize: 24 }} /></div>
                 <div className="menu-title">化學 Chemistry</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/biology">
+              <NavigationLink href="/biology">
                 <div className="parent-icon"><BiLeaf style={{ color: '#00c853', fontSize: 24 }} /></div>
                 <div className="menu-title">生物 Biology</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/ict">
+              <NavigationLink href="/ict">
                 <div className="parent-icon"><BiLaptop style={{ color: '#ff3d00', fontSize: 24 }} /></div>
                 <div className="menu-title">資訊及通訊科技 ICT</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/m1">
+              <NavigationLink href="/m1">
                 <div className="parent-icon"><BiCalculator style={{ color: '#b388ff', fontSize: 24 }} /></div>
                 <div className="menu-title">M1</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/m2">
+              <NavigationLink href="/m2">
                 <div className="parent-icon"><BiCalculator style={{ color: '#64ffda', fontSize: 24 }} /></div>
                 <div className="menu-title">M2</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/geography">
+              <NavigationLink href="/geography">
                 <div className="parent-icon"><BiGlobe style={{ color: '#00bfae', fontSize: 24 }} /></div>
                 <div className="menu-title">地理 Geography</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/history">
+              <NavigationLink href="/history">
                 <div className="parent-icon"><BiBook style={{ color: '#ffab91', fontSize: 24 }} /></div>
                 <div className="menu-title">歷史 History</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/chinese-history">
+              <NavigationLink href="/chinese-history">
                 <div className="parent-icon"><BiBook style={{ color: '#ff1744', fontSize: 24 }} /></div>
                 <div className="menu-title">中國歷史 Chinese History</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/economics">
+              <NavigationLink href="/economics">
                 <div className="parent-icon"><BiMoney style={{ color: '#ffd600', fontSize: 24 }} /></div>
                 <div className="menu-title">經濟 Economics</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/bafs">
+              <NavigationLink href="/bafs">
                 <div className="parent-icon"><BiBriefcase style={{ color: '#ffea00', fontSize: 24 }} /></div>
                 <div className="menu-title">企業、會計與財務概論 BAFS</div>
-              </Link>
+              </NavigationLink>
             </li>
             {/*
             <li>
@@ -282,28 +283,28 @@ export default function App({ Component, pageProps }: AppProps) {
             */}
             <li className="menu-label">其他</li>
             <li>
-              <Link href="/about">
+              <NavigationLink href="/about">
                 <div className="parent-icon"><BiInfoCircle style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
                 <div className="menu-title">關於我們</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/contact">
+              <NavigationLink href="/contact">
                 <div className="parent-icon"><BiSupport style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
                 <div className="menu-title">聯絡我們</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/disclaimer">
+              <NavigationLink href="/disclaimer">
                 <div className="parent-icon"><BiError style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
                 <div className="menu-title">免責聲明</div>
-              </Link>
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/privacy-policy">
+              <NavigationLink href="/privacy-policy">
                 <div className="parent-icon"><BiShieldAlt style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
                 <div className="menu-title">私隱政策</div>
-              </Link>
+              </NavigationLink>
             </li>
           </ul>
           {/* end navigation */}
@@ -327,7 +328,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <footer className="page-footer">
         <p className="mb-0">
           © 2024 版權所有。如發現本網站內容有任何侵權或違規情況，請
-          <Link href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>聯絡我們</Link>。
+          <NavigationLink href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>聯絡我們</NavigationLink>。
         </p>
       </footer>
 

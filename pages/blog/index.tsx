@@ -5,6 +5,7 @@ import fs from 'fs'
 import path from 'path'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import NavigationLink from '../../components/NavigationLink'
 
 // Define types
 interface BlogPost {
@@ -599,7 +600,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                         data-popularity="50"
                         suppressHydrationWarning={true}
                       >
-                        <Link href={`/blog/${post.slug}`} className="text-decoration-none">
+                        <NavigationLink href={`/blog/${post.slug}`} className="text-decoration-none">
                           <div className="card blog-card border-0 shadow position-relative mb-3 h-100" style={{ cursor: 'pointer', alignItems: 'stretch' }}>
                             <div className="position-absolute top-0 start-0 w-100" style={{ height: '6px', borderRadius: '1.5rem 1.5rem 0 0', zIndex: 2 }}>
                               <div className={`${categoryColorClass} w-100 h-100`} style={{ borderRadius: '1.5rem 1.5rem 0 0' }}></div>
@@ -633,7 +634,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                               <p className="card-text mb-1">{post.excerpt}</p>
                             </div>
                           </div>
-                        </Link>
+                        </NavigationLink>
                       </div>
                     );
                   })

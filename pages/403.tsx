@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import NavigationLink from '../components/NavigationLink'
 
 export default function Custom403() {
     return (
@@ -51,7 +52,7 @@ export default function Custom403() {
                     <p className="mb-4" style={{ marginTop: 40, fontSize: "1.4rem" }}>
                         很抱歉，您沒有權限存取此頁面。
                     </p>
-                    <a href="https://dse.best/">返回主頁</a>
+                    <NavigationLink href="/">返回主頁</NavigationLink>
                     <br />
                     <hr className="my-4" />
                     <br />

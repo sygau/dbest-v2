@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import NavigationLink from '../components/NavigationLink'
 
 export default function Custom404() {
     return (
@@ -51,9 +52,9 @@ export default function Custom404() {
                     <p className="mb-4" style={{ marginTop: 40, fontSize: "1.4rem" }}>
                         抱歉，找不到您要訪問的頁面。
                     </p>
-                    <Link href="/" className="btn btn-primary">
+                    <NavigationLink href="/" className="btn btn-primary">
                         返回主頁
-                    </Link>
+                    </NavigationLink>
                     <br />
                     <hr className="my-4" />
                     <br />

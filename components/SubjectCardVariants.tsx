@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ReactNode, useRef } from 'react'
 import { motion } from 'framer-motion'
+import NavigationLink from './NavigationLink'
 
 export type SubjectCardProps = {
   title: string
@@ -61,7 +62,7 @@ const renderDetailsInline = (
 // Unified card: English centered layout + Chemistry mesh background
 export function UnifiedSubjectCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ scale: 1.02, y: -2 }} transition={{ duration: 0.15 }} style={{ position: 'relative', borderRadius: 16, overflow: 'hidden' }}>
         {/* Mesh background overlay (Chemistry style) */}
         <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(600px circle at 0% 0%, ${accent}22, transparent 40%), radial-gradient(600px circle at 100% 100%, #00d4ff22, transparent 40%)` }} />
@@ -77,14 +78,14 @@ export function UnifiedSubjectCard({ title, href, icon, accent, details }: Subje
           </div>
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 1: GlassTilt (stacked, default) — UPDATED: inline details left
 export function GlassTiltCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ type: 'spring', stiffness: 260, damping: 18 }}
@@ -109,14 +110,14 @@ export function GlassTiltCard({ title, href, icon, accent, details }: SubjectCar
         {renderDetailsInline(details, { align: 'left', separator: ' · ' })}
         <div style={{ display: 'flex', justifyContent: 'flex-end', fontSize: 13, opacity: 0.85 }}>查看</div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 2: GradientBorder (English) — centered layout + inline separators + slight accent border
 export function GradientBorderCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.15 }} style={{ position: 'relative', borderRadius: 16, overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: `conic-gradient(from 180deg at 50% 50%, ${accent}, transparent 60%)`, filter: 'blur(14px)', opacity: 0.45 }} />
         <div style={{ position: 'relative', padding: 18, border: `1px solid ${accent}44`, boxShadow: '0 0 0 1px rgba(255,255,255,0.12) inset, 0 12px 30px rgba(0,0,0,0.20)', borderRadius: 16, background: 'linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04))' }}>
@@ -130,14 +131,14 @@ export function GradientBorderCard({ title, href, icon, accent, details }: Subje
           </div>
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 3: HoloSheen — inline details left
 export function HoloSheenCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ rotate: -0.25, y: -3 }} transition={{ type: 'spring', stiffness: 220, damping: 18 }}
         style={{ position: 'relative', borderRadius: 16, padding: 20, minHeight: 220, border: '1px solid rgba(255,255,255,0.14)', overflow: 'hidden', background: 'linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06))' }}>
         <div style={{ position: 'absolute', right: -16, top: -16, fontSize: 96, opacity: 0.07 }}>{icon}</div>
@@ -148,14 +149,14 @@ export function HoloSheenCard({ title, href, icon, accent, details }: SubjectCar
           <div style={{ marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 13, padding: '6px 10px', borderRadius: 999, background: `${accent}25`, border: '1px solid rgba(255,255,255,0.18)' }}>查看 <span>↗</span></div>
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 4: Neumorph — inline details left
 export function NeumorphCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.15 }}
         style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: 14, alignItems: 'center', borderRadius: 16, padding: 20, minHeight: 180, background: 'linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.04))', boxShadow: '10px 10px 24px rgba(0,0,0,0.35), -10px -10px 24px rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)' }}>
         <div style={{ width: 64, height: 64, borderRadius: 16, display: 'grid', placeItems: 'center', background: `${accent}22`, border: '1px solid #ffffff26' }}>{icon}</div>
@@ -167,14 +168,14 @@ export function NeumorphCard({ title, href, icon, accent, details }: SubjectCard
           {renderDetailsInline(details, { align: 'left', separator: ' | ' })}
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 5: MeshGradient — inline details centered
 export function MeshGradientCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ scale: 1.015 }} transition={{ duration: 0.15 }} style={{ position: 'relative', borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.12)', background: 'rgba(255,255,255,0.05)' }}>
         <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(600px circle at 0% 0%, ${accent}25, transparent 40%), radial-gradient(600px circle at 100% 100%, #00d4ff25, transparent 40%)` }} />
         <div style={{ position: 'relative', padding: 18 }}>
@@ -188,14 +189,14 @@ export function MeshGradientCard({ title, href, icon, accent, details }: Subject
           <div style={{ position: 'absolute', right: 14, bottom: 14, width: 36, height: 36, borderRadius: '50%', display: 'grid', placeItems: 'center', background: `${accent}30`, border: '1px solid rgba(255,255,255,0.18)' }}>→</div>
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 6: AuroraGlow — inline details centered
 export function AuroraGlowCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 260, damping: 18 }} style={{ position: 'relative', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 16, overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: -1, background: `linear-gradient(90deg, ${accent}33, transparent 40%, #00ffa833)` }} />
         <div style={{ position: 'relative', padding: 18 }}>
@@ -209,14 +210,14 @@ export function AuroraGlowCard({ title, href, icon, accent, details }: SubjectCa
           <div style={{ marginTop: 10, fontSize: 13, opacity: 0.85, textDecoration: 'underline', textUnderlineOffset: 4 }}>查看詳情</div>
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 7: DiagonalGlass (ICT) — left-aligned inline separators
 export function DiagonalGlassCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ rotate: 0.2, y: -2 }} transition={{ duration: 0.15 }} style={{ position: 'relative', borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.12)', backdropFilter: 'blur(8px)' }}>
         <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(135deg, ${accent}26 0%, transparent 55%)` }} />
         <div style={{ position: 'relative', padding: 18 }}>
@@ -230,14 +231,14 @@ export function DiagonalGlassCard({ title, href, icon, accent, details }: Subjec
           <div style={{ marginTop: 12, padding: '8px 10px', borderRadius: 10, border: '1px dashed rgba(255,255,255,0.2)', textAlign: 'center', fontSize: 13, opacity: 0.9 }}>立即查看</div>
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
 // Variant 8: OutlineGlow — inline details left
 export function OutlineGlowCard({ title, href, icon, accent, details }: SubjectCardProps) {
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.16 }} style={{ position: 'relative', borderRadius: 16, padding: 18, border: `1px solid ${accent}66`, boxShadow: `0 0 0 1px ${accent}33 inset, 0 10px 26px ${accent}22`, background: 'rgba(255,255,255,0.05)', minHeight: 200 }}>
         <div style={{ position: 'absolute', top: 12, left: -6, width: 6, height: 40, borderRadius: 3, background: accent, opacity: 0.6 }} />
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -249,7 +250,7 @@ export function OutlineGlowCard({ title, href, icon, accent, details }: SubjectC
         </div>
         <div style={{ position: 'absolute', right: 14, bottom: 12, fontSize: 13, opacity: 0.9 }}>→</div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )
 }
 
@@ -257,7 +258,7 @@ export function OutlineGlowCard({ title, href, icon, accent, details }: SubjectC
 export function SpotlightHoverCard({ title, href, icon, accent, details }: SubjectCardProps) {
   const ref = useRef<HTMLDivElement | null>(null)
   return (
-    <Link href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <NavigationLink href={href} style={{ textDecoration: 'none', color: 'inherit' }}>
       <motion.div
         ref={ref as any}
         onMouseMove={e => {
@@ -283,5 +284,5 @@ export function SpotlightHoverCard({ title, href, icon, accent, details }: Subje
           <div style={{ width: 34, height: 34, borderRadius: 999, display: 'grid', placeItems: 'center', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', fontSize: 14, opacity: 0.9 }}>→</div>
         </div>
       </motion.div>
-    </Link>
+    </NavigationLink>
   )} 

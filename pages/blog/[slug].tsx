@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
+import NavigationLink from '../../components/NavigationLink'
 
 // Define types
 interface BlogPost {
@@ -315,12 +316,12 @@ export default function BlogPost({ post }: BlogPostProps) {
           <div className="post-footer mt-5 pt-4 border-top">
             <div className="row">
               <div className="col-md-12 text-md-end">
-                <Link href="/blog/" className="btn btn-outline-primary back-to-blog">
+                <NavigationLink href="/blog/" className="btn btn-outline-primary back-to-blog">
                   <span className="d-flex align-items-center">
                     <span className="me-2" style={{ fontSize: '1.2em' }}>←</span>
                     返回主頁
                   </span>
-                </Link>
+                </NavigationLink>
               </div>
             </div>
           </div>
