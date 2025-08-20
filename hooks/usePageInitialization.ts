@@ -18,6 +18,9 @@ const usePageInitialization = () => {
   const reloadAds = () => {
     if (typeof window !== 'undefined' && window.adsbygoogle) {
       try {
+        // Force AdSense to re-evaluate all ad containers on the page
+        // This ensures ads below the fold also load
+        window.adsbygoogle = window.adsbygoogle || []
         window.adsbygoogle.push({})
       } catch (error) {
         console.error('Error reloading AdSense ads:', error)
@@ -38,11 +41,11 @@ const usePageInitialization = () => {
   useEffect(() => {
     const handleRouteChangeComplete = () => {
       // Delay for layout/content to settle
-      setTimeout(initializePage, 1000)
+      setTimeout(initializePage, 300)
     }
 
     // Initial page load
-    setTimeout(initializePage, 1000)
+    setTimeout(initializePage, 300)
 
     router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
