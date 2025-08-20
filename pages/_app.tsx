@@ -416,6 +416,14 @@ export default function App({ Component, pageProps }: AppProps) {
           </div>
         </div>
       </div>
+
+      {/* adsense reload */}
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          window.adsbygoogle = window.adsbygoogle || []
+          window.adsbygoogle.push({})
+        `
+      }} />
     </>
   )
 }
