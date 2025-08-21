@@ -1,19 +1,22 @@
 import Head from 'next/head'
+import { getMainPageMetadata } from '../utils/structuredData';
 
 export default function AboutPage() {
+  const metadata = getMainPageMetadata('about');
+
     return (
         <>
             <Head>
-                <title>關於我們 - dse.best</title>
-                <meta name="description" content="DSEBest 介紹 - 我們是一群熱衷於教育的專業人士，致力於為香港DSE考生提供最優質的學習資源，包括歷屆試題、考試技巧和學習指南。" />
-                <meta name="robots" content="index" />
+                <title>{metadata?.title}</title>
+                <meta name="description" content={metadata?.description} />
+                <meta name="robots" content={metadata?.robots} />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="關於我們 - dse.best" />
-                <meta property="og:description" content="認識 DSEBest 團隊 - 我們由教育專家和前DSE考生組成，致力於為香港學生提供最全面的DSE備考資源和支援。" />
-                <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-                <meta property="og:url" content="https://dse.best/about" />
-                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.ogTitle} />
+                <meta property="og:description" content={metadata?.ogDescription} />
+                <meta property="og:image" content={metadata?.ogImage} />
+                <meta property="og:url" content={metadata?.ogUrl} />
+                <meta property="og:type" content={metadata?.ogType} />
             </Head>
 
                 {/*breadcrumb*/}

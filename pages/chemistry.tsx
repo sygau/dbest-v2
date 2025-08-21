@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
+import { getSubjectMetadata } from '../utils/structuredData';
 export default function ChemistryPage() {
+  const metadata = getSubjectMetadata('chemistry');
+
     const subjectKey = 'chemistry';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
@@ -9,16 +12,16 @@ export default function ChemistryPage() {
     return (
         <>
             <Head>
-                <title>DSE Chemistry Past Paper | 歷屆試題及答案 - dse.best</title>
-                <meta name="description" content="DSE 化學科歷屆試題及答案，涵蓋無機化學、有機化學、物理化學等課題。提供完整試卷下載，助您掌握化學科考試重點。" />
-                <meta name="robots" content="index, follow" />
+                <title>{metadata?.title}</title>
+                <meta name="description" content={metadata?.description} />
+                <meta name="robots" content={metadata?.robots} />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="DSE Chemistry 歷屆試題 Past Papers | 化學試卷及答案 - dse.best" />
-                <meta property="og:description" content="DSE 化學科歷屆試題及答案，涵蓋無機化學、有機化學、物理化學等課題。提供完整試卷下載，助您掌握化學科考試重點。" />
-                <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-                <meta property="og:url" content="https://dse.best/chemistry" />
-                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.ogTitle} />
+                <meta property="og:description" content={metadata?.ogDescription} />
+                <meta property="og:image" content={metadata?.ogImage} />
+                <meta property="og:url" content={metadata?.ogUrl} />
+                <meta property="og:type" content={metadata?.ogType} />
 
                 {/* Structured Data */}
                 {structuredData && (

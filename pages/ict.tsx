@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
+import { getSubjectMetadata } from '../utils/structuredData';
 export default function ICTPage() {
+  const metadata = getSubjectMetadata('ict');
+
     const subjectKey = 'ict';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
@@ -9,16 +12,16 @@ export default function ICTPage() {
     return (
         <>
             <Head>
-                <title>DSE ICT Past Paper | 歷屆試題及答案 - dse.best</title>
-                <meta name="description" content="DSE ICT 歷屆試題及答案，涵蓋資訊處理、程式編寫、數據庫、網絡等課題。提供完整試卷下載。" />
-                <meta name="robots" content="index, follow" />
+                <title>{metadata?.title}</title>
+                <meta name="description" content={metadata?.description} />
+                <meta name="robots" content={metadata?.robots} />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="DSE ICT 歷屆試題 Past Papers | 資訊及通訊科技試卷及答案 - dse.best" />
-                <meta property="og:description" content="DSE ICT 歷屆試題及答案，涵蓋資訊處理、程式編寫、數據庫、網絡等課題。提供完整試卷下載。" />
-                <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-                <meta property="og:url" content="https://dse.best/ict" />
-                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.ogTitle} />
+                <meta property="og:description" content={metadata?.ogDescription} />
+                <meta property="og:image" content={metadata?.ogImage} />
+                <meta property="og:url" content={metadata?.ogUrl} />
+                <meta property="og:type" content={metadata?.ogType} />
 
                 {/* Structured Data */}
                 {structuredData && (

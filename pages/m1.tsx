@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
+import { getSubjectMetadata } from '../utils/structuredData';
 
 export default function M1Page() {
+  const metadata = getSubjectMetadata('m1');
+
     const subjectKey = 'm1';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
@@ -10,16 +13,16 @@ export default function M1Page() {
     return (
         <>
             <Head>
-                <title>DSE M1 數學延伸部分 Past Paper | 歷屆試題及答案 - dse.best</title>
-                <meta name="description" content="DSE 數學延伸部分 M1 (微積分與統計) 歷屆試題及答案。提供完整試卷下載，助您掌握微積分與統計學重點。" />
-                <meta name="robots" content="index, follow" />
+                <title>{metadata?.title}</title>
+                <meta name="description" content={metadata?.description} />
+                <meta name="robots" content={metadata?.robots} />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="DSE M1 數學延伸部分 歷屆試題 Past Papers | 微積分與統計 - dse.best" />
-                <meta property="og:description" content="DSE 數學延伸部分 M1 (微積分與統計) 歷屆試題及答案。提供完整試卷下載，助您掌握微積分與統計學重點。" />
-                <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-                <meta property="og:url" content="https://dse.best/m1" />
-                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.ogTitle} />
+                <meta property="og:description" content={metadata?.ogDescription} />
+                <meta property="og:image" content={metadata?.ogImage} />
+                <meta property="og:url" content={metadata?.ogUrl} />
+                <meta property="og:type" content={metadata?.ogType} />
 
                 {/* Structured Data */}
                 {structuredData && (

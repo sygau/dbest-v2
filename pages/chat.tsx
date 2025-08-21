@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import { getMainPageMetadata } from '../utils/structuredData';
 import { 
   BiHomeAlt, 
   BiBook, 
@@ -18,6 +19,8 @@ import {
 } from 'react-icons/bi'
 
 export default function ChatPage() {
+  const metadata = getMainPageMetadata('chat');
+
     useEffect(() => {
         // Destroy existing chat instance if it exists
         if ((window as any).dseChat) {
@@ -86,16 +89,16 @@ export default function ChatPage() {
     return (
         <>
             <Head>
-                <title>Chatroom 聊天室 - dse.best</title>
-                <meta name="description" content="DSE Best學習交流聊天室，與其他同學一起討論學習心得，分享DSE備考經驗。" />
-                <meta name="robots" content="noindex, nofollow" />
+                <title>{metadata?.title}</title>
+                <meta name="description" content={metadata?.description} />
+                <meta name="robots" content={metadata?.robots} />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="Chatroom 聊天室 - dse.best" />
-                <meta property="og:description" content="DSE Best學習交流聊天室，與其他同學一起討論學習心得，分享DSE備考經驗。" />
-                <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-                <meta property="og:url" content="https://dse.best/chat" />
-                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.ogTitle} />
+                <meta property="og:description" content={metadata?.ogDescription} />
+                <meta property="og:image" content={metadata?.ogImage} />
+                <meta property="og:url" content={metadata?.ogUrl} />
+                <meta property="og:type" content={metadata?.ogType} />
             </Head>
             {/*breadcrumb*/}
             <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">

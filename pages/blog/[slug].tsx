@@ -6,8 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
 import NavigationLink from '../../components/NavigationLink'
-import { useViewCount } from '../../hooks/useViewCount'
-
+import { useViewCount } from '@/hooks/useViewCount'
 // Define types
 interface BlogPost {
   id: string;
@@ -63,6 +62,7 @@ function getCategoryDisplayName(category: string): string {
 }
 
 export default function BlogPost({ post }: BlogPostProps) {
+
   const categoryDisplayName = getCategoryDisplayName(post.category);
   const featuredImageUrl = post.featuredImage || 'https://dse.best/assets/images/logo-icon.webp';
   const { viewCount, isLoading } = useViewCount(post.slug);

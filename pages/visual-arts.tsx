@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import { BiDownload } from 'react-icons/bi';
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData';
+import { getSubjectMetadata } from '../utils/structuredData';
 
 export default function VisualArtsPage() {
+  const metadata = getSubjectMetadata('visual-arts');
+
     const subjectKey = 'visual-arts';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
@@ -10,16 +13,16 @@ export default function VisualArtsPage() {
     return (
         <>
             <Head>
-                <title>DSE Visual Arts 視覺藝術 Past Paper | 歷屆試題及答案 - dse.best</title>
-                <meta name="description" content="下載DSE視覺藝術科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供2012-2024年完整試卷。" />
-                <meta name="robots" content="index, follow" />
+                <title>{metadata?.title}</title>
+                <meta name="description" content={metadata?.description} />
+                <meta name="robots" content={metadata?.robots} />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="DSE Visual Arts 視覺藝術 歷屆試題 Past Papers | 視覺藝術試卷及答案 - dse.best" />
-                <meta property="og:description" content="下載DSE視覺藝術科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供2012-2024年完整試卷。" />
-                <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-                <meta property="og:url" content="https://dse.best/visual-arts" />
-                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.ogTitle} />
+                <meta property="og:description" content={metadata?.ogDescription} />
+                <meta property="og:image" content={metadata?.ogImage} />
+                <meta property="og:url" content={metadata?.ogUrl} />
+                <meta property="og:type" content={metadata?.ogType} />
 
                 {/* Structured Data */}
                 {structuredData && (

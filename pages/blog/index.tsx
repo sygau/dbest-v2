@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { BiUserCircle, BiCalendarEvent, BiTimeFive, BiComment, BiFileBlank, BiSort } from 'react-icons/bi';
+import { BiUserCircle, BiCalendarEvent, BiTimeFive, BiComment, BiFileBlank, BiSort, BiShow } from 'react-icons/bi';
 import { GetStaticProps } from 'next'
 import fs from 'fs'
 import path from 'path'
@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import NavigationLink from '../../components/NavigationLink'
 import { generateBlogStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData'
+import { getMainPageMetadata } from '../../utils/structuredData';
+import { useViewCount } from '@/hooks/useViewCount';
 
 // Define types
 interface BlogPost {
@@ -123,7 +125,79 @@ function getCategoryDisplayName(category: string): string {
   return categoryMap[category] || category;
 }
 
+// Individual blog card component that uses view count
+function BlogCard({ post, index }: { post: BlogPost, index: number }) {
+  const { viewCount, isLoading } = useViewCount(post.slug);
+  
+  const categoryColorClass = getCategoryColorClass(post.category);
+  const categoryColorCode = getCategoryColorCode(post.category);
+  const categoryTextColor = getCategoryTextColor(post.category);
+  const categoryDisplayName = getCategoryDisplayName(post.category);
+  
+  // Get featured image or fallback
+  let featuredImageUrl;
+  if (post.featuredImage) {
+    featuredImageUrl = post.featuredImage;
+  } else {
+    const categoryName = post.category || 'Uncategorized';
+    featuredImageUrl = `https://dummyimage.com/200x200/${categoryColorCode}/${categoryTextColor}&text=${encodeURIComponent(categoryName)}`;
+  }
+
+  return (
+    <div 
+      key={post.id} 
+      className="col-12 blog-card-wrapper" 
+      data-category={post.category || 'Uncategorized'}
+      data-date={post.date}
+      data-popularity="50"
+      suppressHydrationWarning={true}
+    >
+      <NavigationLink href={`/blog/${post.slug}`} className="text-decoration-none">
+        <div className="card blog-card border-0 shadow position-relative mb-3 h-100" style={{ cursor: 'pointer', alignItems: 'stretch' }}>
+          <div className="position-absolute top-0 start-0 w-100" style={{ height: '6px', borderRadius: '1.5rem 1.5rem 0 0', zIndex: 2 }}>
+            <div className={`${categoryColorClass} w-100 h-100`} style={{ borderRadius: '1.5rem 1.5rem 0 0' }}></div>
+          </div>
+          <img src={featuredImageUrl} className="img-fluid blog-card-img h-100" alt={post.category || 'Uncategorized'} />
+          <div className="card-body blog-card-body" style={{ zIndex: 1 }}>
+            <span className={`badge ${categoryColorClass.replace('bg-', 'bg-')} mb-2`} style={{ fontSize: '0.9rem', padding: '0.4em 0.6em' }}>
+              {categoryDisplayName}
+            </span>
+            <h2 className="card-title blog-card-title mb-2">{post.title}</h2>
+            <div className="d-flex blog-meta mb-2 flex-wrap">
+              <span className="blog-meta-item d-flex align-items-center">
+                <BiUserCircle className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                {post.author || 'DSEBest'}
+              </span>
+              <span className="blog-meta-item d-flex align-items-center">
+                <BiCalendarEvent className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                {post.date}
+              </span>
+              <span className="blog-meta-item d-flex align-items-center">
+                <BiTimeFive className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                {post.readingTime ? post.readingTime + ' min' : ''}
+              </span>
+              <span className="blog-meta-item d-flex align-items-center">
+                <BiShow className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                {isLoading ? '...' : (viewCount || 0)} 次瀏覽
+              </span>
+              {post.comments ? (
+                <span className="blog-meta-item d-flex align-items-center">
+                  <BiComment className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
+                  <span className="disqus-comment-count" data-disqus-identifier={post.slug}>0</span>
+                </span>
+              ) : null}
+            </div>
+            <p className="card-text mb-1">{post.excerpt}</p>
+          </div>
+        </div>
+      </NavigationLink>
+    </div>
+  );
+}
+
 export default function BlogIndex({ posts }: BlogIndexProps) {
+  const metadata = getMainPageMetadata('blog');
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
@@ -394,16 +468,16 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
   return (
     <>
       <Head>
-        <title>DSEBest Blog | 最新DSE考試資訊與學習資源</title>
-        <meta name="description" content="DSEBest Blog - 提供最新DSE考試資訊、學習資源、溫習心得、考生經驗分享，助你掌握DSE動向。" />
-        <meta name="robots" content="index, follow" />
+        <title>{metadata?.title}</title>
+        <meta name="description" content={metadata?.description} />
+        <meta name="robots" content={metadata?.robots} />
 
         {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="DSEBest Blog | 最新DSE考試資訊與學習資源" />
-        <meta property="og:description" content="DSEBest Blog - 提供最新DSE考試資訊、學習資源、溫習心得、考生經驗分享，助你掌握DSE動向。" />
-        <meta property="og:image" content="https://dse.best/assets/images/logo-icon.webp" />
-        <meta property="og:url" content="https://dse.best/blog/" />
-        <meta property="og:type" content="website" />
+        <meta property="og:title" content={metadata?.ogTitle} />
+        <meta property="og:description" content={metadata?.ogDescription} />
+        <meta property="og:image" content={metadata?.ogImage} />
+        <meta property="og:url" content={metadata?.ogUrl} />
+        <meta property="og:type" content={metadata?.ogType} />
         
         {/* Blog Index Styles */}
         <style dangerouslySetInnerHTML={{
@@ -592,66 +666,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                 ) : (
                   posts.map((post, index) => {
                     console.log(`Rendering post ${index + 1}:`, post.title, 'Category:', post.category);
-                    const categoryColorClass = getCategoryColorClass(post.category);
-                    const categoryColorCode = getCategoryColorCode(post.category);
-                    const categoryTextColor = getCategoryTextColor(post.category);
-                    const categoryDisplayName = getCategoryDisplayName(post.category);
-                    
-                    // Get featured image or fallback
-                    let featuredImageUrl;
-                    if (post.featuredImage) {
-                      featuredImageUrl = post.featuredImage;
-                    } else {
-                      const categoryName = post.category || 'Uncategorized';
-                      featuredImageUrl = `https://dummyimage.com/200x200/${categoryColorCode}/${categoryTextColor}&text=${encodeURIComponent(categoryName)}`;
-                    }
-
-                    return (
-                      <div 
-                        key={post.id} 
-                        className="col-12 blog-card-wrapper" 
-                        data-category={post.category || 'Uncategorized'}
-                        data-date={post.date}
-                        data-popularity="50"
-                        suppressHydrationWarning={true}
-                      >
-                        <NavigationLink href={`/blog/${post.slug}`} className="text-decoration-none">
-                          <div className="card blog-card border-0 shadow position-relative mb-3 h-100" style={{ cursor: 'pointer', alignItems: 'stretch' }}>
-                            <div className="position-absolute top-0 start-0 w-100" style={{ height: '6px', borderRadius: '1.5rem 1.5rem 0 0', zIndex: 2 }}>
-                              <div className={`${categoryColorClass} w-100 h-100`} style={{ borderRadius: '1.5rem 1.5rem 0 0' }}></div>
-                            </div>
-                            <img src={featuredImageUrl} className="img-fluid blog-card-img h-100" alt={post.category || 'Uncategorized'} />
-                            <div className="card-body blog-card-body" style={{ zIndex: 1 }}>
-                              <span className={`badge ${categoryColorClass.replace('bg-', 'bg-')} mb-2`} style={{ fontSize: '0.9rem', padding: '0.4em 0.6em' }}>
-                                {categoryDisplayName}
-                              </span>
-                              <h2 className="card-title blog-card-title mb-2">{post.title}</h2>
-                              <div className="d-flex blog-meta mb-2 flex-wrap">
-                                <span className="blog-meta-item d-flex align-items-center">
-                                  <BiUserCircle className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                                  {post.author || 'DSEBest'}
-                                </span>
-                                <span className="blog-meta-item d-flex align-items-center">
-                                  <BiCalendarEvent className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                                  {post.date}
-                                </span>
-                                <span className="blog-meta-item d-flex align-items-center">
-                                  <BiTimeFive className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                                  {post.readingTime ? post.readingTime + ' min' : ''}
-                                </span>
-                                {post.comments ? (
-                                  <span className="blog-meta-item d-flex align-items-center">
-                                    <BiComment className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                                    <span className="disqus-comment-count" data-disqus-identifier={post.slug}>0</span>
-                                  </span>
-                                ) : null}
-                              </div>
-                              <p className="card-text mb-1">{post.excerpt}</p>
-                            </div>
-                          </div>
-                        </NavigationLink>
-                      </div>
-                    );
+                    return <BlogCard key={post.id} post={post} index={index} />;
                   })
                 );
               })()}
@@ -674,6 +689,8 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
           )}
         </div>
       </div>
+
+      {/* FAQ Section */}
       </div>
     </>
   )

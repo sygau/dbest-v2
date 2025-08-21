@@ -1,5 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { createClient } from 'redis'
+const { createClient } = require('redis')
 
 // Create Redis client
 const client = createClient({
@@ -9,7 +8,7 @@ const client = createClient({
 // Connect to Redis
 client.on('error', (err) => console.error('Redis Client Error', err))
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
@@ -27,7 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     const { slug } = req.query
     
-    if (!slug || typeof slug !== 'string') {
+    if (!slug) {
       return res.status(400).json({ error: 'Slug is required' })
     }
 
@@ -46,7 +45,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'POST') {
     const { slug } = req.body
     
-    if (!slug || typeof slug !== 'string') {
+    if (!slug) {
       return res.status(400).json({ error: 'Slug is required' })
     }
 

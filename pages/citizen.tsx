@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload, BiWrench } from 'react-icons/bi';
+import { getSubjectMetadata } from '../utils/structuredData';
 
 export default function CitizenPage() {
+  const metadata = getSubjectMetadata('citizen');
+
     const subjectKey = 'citizen';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
@@ -10,16 +13,16 @@ export default function CitizenPage() {
     return (
         <>
             <Head>
-                <title>DSE Citizenship and Social Development 公民與社會發展 Past Paper - dse.best</title>
-                <meta name="description" content="下載DSE公民與社會發展科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供完整試卷。" />
-                <meta name="robots" content="noindex, nofollow" />
+                <title>{metadata?.title}</title>
+                <meta name="description" content={metadata?.description} />
+                <meta name="robots" content={metadata?.robots} />
 
                 {/* Open Graph Meta Tags */}
-                <meta property="og:title" content="DSE 公民與社會發展 歷屆試題 Past Papers | 公民科試卷及答案 - dse.best" />
-                <meta property="og:description" content="下載DSE公民與社會發展科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供完整試卷。" />
-                <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-                <meta property="og:url" content="https://dse.best/citizen" />
-                <meta property="og:type" content="website" />
+                <meta property="og:title" content={metadata?.ogTitle} />
+                <meta property="og:description" content={metadata?.ogDescription} />
+                <meta property="og:image" content={metadata?.ogImage} />
+                <meta property="og:url" content={metadata?.ogUrl} />
+                <meta property="og:type" content={metadata?.ogType} />
 
                 {/* Structured Data */}
                 {structuredData && (
