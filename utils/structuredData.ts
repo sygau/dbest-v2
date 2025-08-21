@@ -609,159 +609,80 @@ export function generateHomepageStructuredData() {
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Core Subjects",
-          "item": {
-            "@type": "ItemList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Chinese Language", "url": "https://dse.best/chinese" },
-              { "@type": "ListItem", "position": 2, "name": "English Language", "url": "https://dse.best/english" },
-              { "@type": "ListItem", "position": 3, "name": "Mathematics", "url": "https://dse.best/math" }
-            ]
-          }
+          "name": "中文 Chinese",
+          "url": "https://dse.best/chinese"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "英文 English",
+          "url": "https://dse.best/english"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "數學 Mathematics",
+          "url": "https://dse.best/math"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "DSE 2026 Countdown",
+          "url": "https://dse.best/countdown"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "資訊及通訊科技 ICT",
+          "url": "https://dse.best/ict"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "數學延伸部分 M1",
+          "url": "https://dse.best/m1"
         },
         {
           "@type": "ListItem",
           "position": 7,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/ict",
-            "name": "資訊及通訊科技 ICT",
-            "description": "DSE ICT 歷屆試題及答案，涵蓋資訊處理、程式編寫、數據庫、網絡等課題",
-            "courseCode": "ICT",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
+          "name": "數學延伸部分 M2",
+          "url": "https://dse.best/m2"
         },
         {
           "@type": "ListItem",
           "position": 8,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/m1",
-            "name": "數學延伸部分 M1",
-            "description": "DSE 數學延伸部分 M1 (微積分與統計) 歷屆試題及答案",
-            "courseCode": "M1",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
+          "name": "地理 Geography",
+          "url": "https://dse.best/geography"
         },
         {
           "@type": "ListItem",
           "position": 9,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/m2",
-            "name": "數學延伸部分 M2",
-            "description": "DSE 數學延伸部分 M2 (代數與微積分) 歷屆試題及答案",
-            "courseCode": "M2",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
+          "name": "歷史 History",
+          "url": "https://dse.best/history"
         },
         {
           "@type": "ListItem",
           "position": 10,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/geography",
-            "name": "地理 Geography",
-            "description": "DSE 地理科歷屆試題及答案，涵蓋自然環境、人文環境、全球相互依存等課題",
-            "courseCode": "GEO",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
+          "name": "中國歷史 Chinese History",
+          "url": "https://dse.best/chinese-history"
         },
         {
           "@type": "ListItem",
           "position": 11,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/history",
-            "name": "歷史 History",
-            "description": "DSE 歷史科歷屆試題及答案，涵蓋現代世界、現代中國等課題",
-            "courseCode": "HIST",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
+          "name": "經濟 Economics",
+          "url": "https://dse.best/economics"
         },
         {
           "@type": "ListItem",
           "position": 12,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/chinese-history",
-            "name": "中國歷史 Chinese History",
-            "description": "DSE 中國歷史科歷屆試題及答案，涵蓋古代史、近現代史等課題",
-            "courseCode": "CHIST",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
+          "name": "企業、會計與財務概論 BAFS",
+          "url": "https://dse.best/bafs"
         },
         {
           "@type": "ListItem",
           "position": 13,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/economics",
-            "name": "經濟 Economics",
-            "description": "DSE 經濟科歷屆試題及答案，涵蓋微觀經濟學、宏觀經濟學等課題",
-            "courseCode": "ECON",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 14,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/bafs",
-            "name": "企業、會計與財務概論 BAFS",
-            "description": "DSE BAFS 歷屆試題及答案，涵蓋會計、商業管理、財務管理等課題",
-            "courseCode": "BAFS",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 15,
-          "item": {
-            "@type": "Course",
-            "@id": "https://dse.best/visual-arts",
-            "name": "視覺藝術 Visual Arts",
-            "description": "DSE 視覺藝術科歷屆試題及答案，涵蓋藝術創作和藝術評賞",
-            "courseCode": "VA",
-            "educationalLevel": "Secondary",
-            "provider": {
-              "@type": "Organization",
-              "name": "DSEBest"
-            }
-          }
+          "name": "視覺藝術 Visual Arts",
+          "url": "https://dse.best/visual-arts"
         }
       ]
     }
