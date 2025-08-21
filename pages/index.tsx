@@ -15,7 +15,7 @@ import {
   UnifiedSubjectCard,
 } from '../components/SubjectCardVariants'
 import FAQSection from '../components/FAQSection'
-import { homepageFAQs } from '../data/faqData'
+import { homepageFAQs } from '@/data/faqData'
 import { 
   generateWebsiteStructuredData, 
   generateHomepageStructuredData, 
