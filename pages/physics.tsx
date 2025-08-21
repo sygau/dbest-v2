@@ -1,6 +1,11 @@
 import Head from 'next/head'
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 export default function PhysicsPage() {
+    const subjectKey = 'physics';
+    const structuredData = generateSubjectStructuredData(subjectKey);
+    const faqData = generateSubjectFAQStructuredData(subjectKey);
+
     return (
         <>
             <Head>
@@ -14,7 +19,25 @@ export default function PhysicsPage() {
                 <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
                 <meta property="og:url" content="https://dse.best/physics" />
                 <meta property="og:type" content="website" />
-            </Head>
+
+                {/* Structured Data */}
+                {structuredData && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(structuredData)
+                        }}
+                    />
+                )}
+                {faqData && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(faqData)
+                        }}
+                    />
+                )}
+                        </Head>
 
             {/*breadcrumb*/}
             <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">

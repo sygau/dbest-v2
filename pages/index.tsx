@@ -14,6 +14,11 @@ import {
 import {
   UnifiedSubjectCard,
 } from '../components/SubjectCardVariants'
+import { 
+  generateWebsiteStructuredData, 
+  generateHomepageStructuredData, 
+  generatePageFAQStructuredData 
+} from '../utils/structuredData'
 export default function HomePage() {
   return (
     <>
@@ -28,6 +33,26 @@ export default function HomePage() {
         <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
         <meta property="og:url" content="https://dse.best/" />
         <meta property="og:type" content="website" />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateWebsiteStructuredData())
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateHomepageStructuredData())
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generatePageFAQStructuredData('homepage'))
+          }}
+        />
       </Head>
 
       {/* Breadcrumb */}

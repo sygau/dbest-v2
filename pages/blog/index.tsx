@@ -6,6 +6,7 @@ import path from 'path'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import NavigationLink from '../../components/NavigationLink'
+import { generateBlogStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData'
 
 // Define types
 interface BlogPost {
@@ -488,6 +489,20 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
             }
           `
         }} />
+
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateBlogStructuredData(posts))
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generatePageFAQStructuredData('blog'))
+          }}
+        />
       </Head>
 
       <div className={`blog-loading ${isLoaded ? 'blog-loaded' : ''}`}>

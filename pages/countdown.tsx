@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import { generateCountdownStructuredData, generatePageFAQStructuredData } from '../utils/structuredData'
 
 export default function CountdownPage() {
     useEffect(() => {
@@ -54,6 +55,20 @@ export default function CountdownPage() {
                 <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
                 <meta property="og:url" content="https://dse.best/countdown" />
                 <meta property="og:type" content="website" />
+
+                {/* Structured Data */}
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(generateCountdownStructuredData())
+                  }}
+                />
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(generatePageFAQStructuredData('countdown'))
+                  }}
+                />
             </Head>
 
             {/*breadcrumb*/}

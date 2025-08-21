@@ -1,20 +1,43 @@
 import Head from 'next/head'
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 export default function ChemistryPage() {
+    const subjectKey = 'chemistry';
+    const structuredData = generateSubjectStructuredData(subjectKey);
+    const faqData = generateSubjectFAQStructuredData(subjectKey);
+
     return (
         <>
             <Head>
                 <title>DSE Chemistry Past Paper | 歷屆試題及答案 - dse.best</title>
-                <meta name="description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。" />
+                <meta name="description" content="DSE 化學科歷屆試題及答案，涵蓋無機化學、有機化學、物理化學等課題。提供完整試卷下載，助您掌握化學科考試重點。" />
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph Meta Tags */}
                 <meta property="og:title" content="DSE Chemistry 歷屆試題 Past Papers | 化學試卷及答案 - dse.best" />
-                <meta property="og:description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。" />
+                <meta property="og:description" content="DSE 化學科歷屆試題及答案，涵蓋無機化學、有機化學、物理化學等課題。提供完整試卷下載，助您掌握化學科考試重點。" />
                 <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
                 <meta property="og:url" content="https://dse.best/chemistry" />
                 <meta property="og:type" content="website" />
-            </Head>
+
+                {/* Structured Data */}
+                {structuredData && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(structuredData)
+                        }}
+                    />
+                )}
+                {faqData && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(faqData)
+                        }}
+                    />
+                )}
+                        </Head>
 
             {/*breadcrumb*/}
             <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">

@@ -1,20 +1,43 @@
 import Head from 'next/head'
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 export default function ICTPage() {
+    const subjectKey = 'ict';
+    const structuredData = generateSubjectStructuredData(subjectKey);
+    const faqData = generateSubjectFAQStructuredData(subjectKey);
+
     return (
         <>
             <Head>
                 <title>DSE ICT Past Paper | 歷屆試題及答案 - dse.best</title>
-                <meta name="description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。" />
+                <meta name="description" content="DSE ICT 歷屆試題及答案，涵蓋資訊處理、程式編寫、數據庫、網絡等課題。提供完整試卷下載。" />
                 <meta name="robots" content="index, follow" />
 
                 {/* Open Graph Meta Tags */}
                 <meta property="og:title" content="DSE ICT 歷屆試題 Past Papers | 資訊及通訊科技試卷及答案 - dse.best" />
-                <meta property="og:description" content="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。" />
+                <meta property="og:description" content="DSE ICT 歷屆試題及答案，涵蓋資訊處理、程式編寫、數據庫、網絡等課題。提供完整試卷下載。" />
                 <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
                 <meta property="og:url" content="https://dse.best/ict" />
                 <meta property="og:type" content="website" />
-            </Head>
+
+                {/* Structured Data */}
+                {structuredData && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(structuredData)
+                        }}
+                    />
+                )}
+                {faqData && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(faqData)
+                        }}
+                    />
+                )}
+                        </Head>
 
             {/*breadcrumb*/}
             <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">

@@ -6,6 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
 import NavigationLink from '../../components/NavigationLink'
+import { useViewCount } from '../../hooks/useViewCount'
 
 // Define types
 interface BlogPost {
@@ -64,18 +65,9 @@ function getCategoryDisplayName(category: string): string {
 export default function BlogPost({ post }: BlogPostProps) {
   const categoryDisplayName = getCategoryDisplayName(post.category);
   const featuredImageUrl = post.featuredImage || 'https://dse.best/assets/images/logo-icon.webp';
+  const { viewCount, isLoading } = useViewCount(post.slug);
 
   useEffect(() => {
-    // Load Busuanzi view counter script if not already loaded
-    if (!(window as any).BusuanziLoaded) {
-      const busuanziScript = document.createElement('script');
-      busuanziScript.src = 'https://busuanzi.icodeq.com/busuanzi.pure.mini.js';
-      busuanziScript.async = true;
-      busuanziScript.defer = true;
-      busuanziScript.onload = () => { (window as any).BusuanziLoaded = true; };
-      document.head.appendChild(busuanziScript);
-    }
-    
     // Load Disqus comments script if comments section exists and not already loaded
     setTimeout(() => {
       const disqusThread = document.getElementById('disqus_thread');
@@ -221,7 +213,9 @@ export default function BlogPost({ post }: BlogPostProps) {
                     padding: '0.18em',
                     boxShadow: '0 1px 4px rgba(255,193,7,0.10)'
                   }} />
-                  <span id="busuanzi_value_page_pv"></span>
+                  <span>
+                    {isLoading ? '...' : (viewCount || 0)} 
+                  </span>
                 </div>
               </div>
               {post.tags && post.tags.length > 0 && (
@@ -328,12 +322,7 @@ export default function BlogPost({ post }: BlogPostProps) {
         </div>
       </div>
 
-      {/* Busuanzi Page View Counter Script */}
-      <script 
-        src="https://busuanzi.icodeq.com/busuanzi.pure.mini.js" 
-        async 
-        defer
-      />
+
     </>
   )
 }

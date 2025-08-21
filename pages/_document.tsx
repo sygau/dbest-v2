@@ -25,17 +25,6 @@ export default function Document() {
         <link rel="preload" href="/assets/css/combined.min.css" as="style" />
         <link href="/assets/css/combined.min.css" rel="stylesheet" />
 
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "DSEBest",
-            "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案，涵蓋中文、英文、數學、物理、化學等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。",
-            "url": "https://dse.best/",
-            "inLanguage": ["zh-HK", "en-HK"],
-          })
-        }} />
-
         {/* Google AdSense */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
 
