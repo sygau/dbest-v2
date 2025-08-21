@@ -178,7 +178,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
               </span>
               <span className="blog-meta-item d-flex align-items-center">
                 <BiShow className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                {isLoading ? '...' : (viewCount || 0)} 次瀏覽
+                {isLoading ? '...' : (viewCount || 0)}
               </span>
               {post.comments ? (
                 <span className="blog-meta-item d-flex align-items-center">
