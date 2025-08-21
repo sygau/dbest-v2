@@ -601,88 +601,32 @@ export function generateHomepageStructuredData() {
       "url": "https://dse.best/",
       "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案"
     },
-    "mainEntity": {
-      "@type": "ItemList",
-      "name": "DSE Subject Categories",
-      "description": "Complete list of DSE subjects with past papers",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "中文 Chinese",
-          "url": "https://dse.best/chinese"
+          "name": "2026 DSE Countdown Timer 倒數計時器",
+          "item": "https://dse.best/countdown"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "英文 English",
-          "url": "https://dse.best/english"
+          "name": "中文 歷屆試題 Chinese Past Papers",
+          "item": "https://dse.best/chinese"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "數學 Mathematics",
-          "url": "https://dse.best/math"
+          "name": "英文 歷屆試題 English Past Papers",
+          "item": "https://dse.best/english"
         },
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "DSE 2026 Countdown",
-          "url": "https://dse.best/countdown"
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "資訊及通訊科技 ICT",
-          "url": "https://dse.best/ict"
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "name": "數學延伸部分 M1",
-          "url": "https://dse.best/m1"
-        },
-        {
-          "@type": "ListItem",
-          "position": 7,
-          "name": "數學延伸部分 M2",
-          "url": "https://dse.best/m2"
-        },
-        {
-          "@type": "ListItem",
-          "position": 8,
-          "name": "地理 Geography",
-          "url": "https://dse.best/geography"
-        },
-        {
-          "@type": "ListItem",
-          "position": 9,
-          "name": "歷史 History",
-          "url": "https://dse.best/history"
-        },
-        {
-          "@type": "ListItem",
-          "position": 10,
-          "name": "中國歷史 Chinese History",
-          "url": "https://dse.best/chinese-history"
-        },
-        {
-          "@type": "ListItem",
-          "position": 11,
-          "name": "經濟 Economics",
-          "url": "https://dse.best/economics"
-        },
-        {
-          "@type": "ListItem",
-          "position": 12,
-          "name": "企業、會計與財務概論 BAFS",
-          "url": "https://dse.best/bafs"
-        },
-        {
-          "@type": "ListItem",
-          "position": 13,
-          "name": "視覺藝術 Visual Arts",
-          "url": "https://dse.best/visual-arts"
+          "name": "數學 歷屆試題 Mathematics Past Papers",
+          "item": "https://dse.best/math"
         }
       ]
     }
