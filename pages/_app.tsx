@@ -159,7 +159,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <ul className="sidebar-menu" id="sidenav" suppressHydrationWarning>
             <li>
               <NavigationLink href="/">
-                <div className="parent-icon"><BiHomeAlt style={{ color: '#00bfff', fontSize: 24 }} /></div>
+                <div className="parent-icon"><BiHomeAlt style={{ color: '#a78bfa', fontSize: 24 }} /></div>
                 <div className="menu-title">主頁</div>
               </NavigationLink>
             </li>
@@ -171,13 +171,13 @@ export default function App({ Component, pageProps }: AppProps) {
             </li> */}
             <li>
               <NavigationLink href="/countdown">
-                <div className="parent-icon"><BiTimeFive style={{ color: '#ff5252', fontSize: 24 }} /></div>
+                <div className="parent-icon"><BiTimeFive style={{ color: '#f9a8d4', fontSize: 24 }} /></div>
                 <div className="menu-title">DSE 2026 倒數</div>
               </NavigationLink>
             </li>
             <li>
               <NavigationLink href="/chat">
-                <div className="parent-icon"><BiChat style={{ color: '#00e5ff', fontSize: 24 }} /></div>
+                <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
                 <div className="menu-title">聊天室 Chatroom</div>
               </NavigationLink>
             </li>
@@ -439,14 +439,14 @@ export default function App({ Component, pageProps }: AppProps) {
           font-size: 1rem;
           letter-spacing: 0.5px;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          background: #4361ee;
           color: white;
           border-color: rgba(255, 255, 255, 0.2);
           z-index: 1000;
         }
 
         .theme-switcher-btn:hover {
-          background: linear-gradient(135deg, #4895ef 0%, #3a0ca3 100%);
+          background: #3a0ca3;
           transform: translateY(-2px);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
           color: white;
@@ -479,7 +479,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
 
         .btn-check:checked + .theme-option-btn {
-          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          background: #4361ee;
           color: white;
           border-color: rgba(255, 255, 255, 0.3);
           transform: translateY(-3px);
@@ -500,7 +500,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
 
         [data-bs-theme="dark"] .btn-check:checked + .theme-option-btn {
-          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          background: #4361ee;
           color: white;
         }
 
@@ -516,7 +516,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
 
         [data-bs-theme="light"] .btn-check:checked + .theme-option-btn {
-          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          background: #4361ee;
           color: white;
         }
 
@@ -598,13 +598,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
         /* Semi-dark theme adjustments for back-to-top button */
         [data-bs-theme="semi-dark"] .back-to-top-btn-modern {
-          background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
-          color: #ffffff;
+          background: rgba(0, 0, 0, 0.1) !important;
+          border-color: rgba(0, 0, 0, 0.2) !important;
+          color: #333333 !important;
         }
 
         [data-bs-theme="semi-dark"] .back-to-top-btn-modern:hover {
-          background: rgba(255, 255, 255, 0.2);
+          background: rgba(0, 0, 0, 0.2) !important;
+        }
+
+        [data-bs-theme="semi-dark"] .back-to-top-btn-modern svg {
+          color: #333333 !important;
         }
 
         /* Bordered theme adjustments for back-to-top button */
