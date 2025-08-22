@@ -334,7 +334,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
             {/* Theme Switcher Button */}
       <button 
-        className="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
+        className="theme-switcher-btn position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
         type="button" 
         data-bs-toggle="offcanvas" 
         data-bs-target="#staticBackdrop"
@@ -345,8 +345,8 @@ export default function App({ Component, pageProps }: AppProps) {
       </button>
 
       {/* Back to Top Button */}
-      <button id="backToTopBtn" className="back-to-top-btn" aria-label="Back to top" title="Back to top" tabIndex={0}>
-        <BiUpArrowAlt style={{ fontSize: 24 }} />
+      <button id="backToTopBtn" className="back-to-top-btn-modern" aria-label="Back to top" title="Back to top" tabIndex={0}>
+        <BiUpArrowAlt style={{ fontSize: 20 }} />
       </button>
 
       {/* Theme Customizer Offcanvas */}
@@ -366,7 +366,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <div className="col-12 col-xl-6">
                 <input type="radio" className="btn-check" name="theme-options" id="BlueTheme" />
                 <label
-                  className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                  className="theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="BlueTheme"
                 >
                   <span><BiHomeAlt style={{ fontSize: 22 }} /></span>
@@ -376,7 +376,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <div className="col-12 col-xl-6">
                 <input type="radio" className="btn-check" name="theme-options" id="LightTheme" />
                 <label
-                  className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                  className="theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="LightTheme"
                 >
                   <span><BiTimeFive style={{ fontSize: 22 }} /></span>
@@ -386,7 +386,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <div className="col-12 col-xl-6">
                 <input type="radio" className="btn-check" name="theme-options" id="DarkTheme" />
                 <label
-                  className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                  className="theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="DarkTheme"
                 >
                   <span><BiError style={{ fontSize: 22 }} /></span>
@@ -396,7 +396,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <div className="col-12 col-xl-6">
                 <input type="radio" className="btn-check" name="theme-options" id="SemiDarkTheme" />
                 <label
-                  className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                  className="theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="SemiDarkTheme"
                 >
                   <span><BiShieldAlt style={{ fontSize: 22 }} /></span>
@@ -406,7 +406,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <div className="col-12 col-xl-6">
                 <input type="radio" className="btn-check" name="theme-options" id="BoderedTheme" />
                 <label
-                  className="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                  className="theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4"
                   htmlFor="BoderedTheme"
                 >
                   <span><BiBriefcase style={{ fontSize: 22 }} /></span>
@@ -425,6 +425,210 @@ export default function App({ Component, pageProps }: AppProps) {
           window.adsbygoogle.push({})
         `
       }} />
+
+      {/* Theme Switcher Styles */}
+      <style jsx global>{`
+        .theme-switcher-btn {
+          padding: 0.75rem 1rem;
+          border-radius: 12px;
+          font-family: 'Inter', 'Noto Sans TC', sans-serif;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          border: 1px solid transparent;
+          font-size: 1rem;
+          letter-spacing: 0.5px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          color: white;
+          border-color: rgba(255, 255, 255, 0.2);
+          z-index: 1000;
+        }
+
+        .theme-switcher-btn:hover {
+          background: linear-gradient(135deg, #4895ef 0%, #3a0ca3 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+          color: white;
+        }
+
+        .theme-switcher-btn:focus {
+          outline: none;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 0 0 2px rgba(255, 255, 255, 0.2);
+        }
+
+        .theme-option-btn {
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(15px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 20px;
+          transition: all 0.3s ease;
+          box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+          color: var(--bs-body-color);
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+        }
+
+
+
+        .theme-option-btn:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: translateY(-5px);
+          box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-check:checked + .theme-option-btn {
+          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          color: white;
+          border-color: rgba(255, 255, 255, 0.3);
+          transform: translateY(-3px);
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+
+
+        /* Dark theme adjustments */
+        [data-bs-theme="dark"] .theme-option-btn {
+          background: rgba(255, 255, 255, 0.05);
+          border-color: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .theme-option-btn:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-bs-theme="dark"] .btn-check:checked + .theme-option-btn {
+          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          color: white;
+        }
+
+        /* Light theme adjustments */
+        [data-bs-theme="light"] .theme-option-btn {
+          background: rgba(0, 0, 0, 0.05);
+          border-color: rgba(0, 0, 0, 0.1);
+          color: #333333;
+        }
+
+        [data-bs-theme="light"] .theme-option-btn:hover {
+          background: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-bs-theme="light"] .btn-check:checked + .theme-option-btn {
+          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          color: white;
+        }
+
+        /* Modern Back to Top Button */
+        .back-to-top-btn-modern {
+          position: fixed;
+          bottom: 80px;
+          right: 22px;
+          width: 45px;
+          height: 45px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          color: var(--bs-body-color);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 12px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          z-index: 999;
+          transition: all 0.3s ease;
+          opacity: 0;
+          transform: translateY(20px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          outline: none;
+          pointer-events: none;
+        }
+
+        .back-to-top-btn-modern.show {
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
+        }
+
+        .back-to-top-btn-modern:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .back-to-top-btn-modern:focus {
+          outline: none;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Dark theme adjustments for back-to-top button */
+        [data-bs-theme="dark"] .back-to-top-btn-modern {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.2);
+          color: #ffffff;
+        }
+
+        [data-bs-theme="dark"] .back-to-top-btn-modern:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Light theme adjustments for back-to-top button */
+        [data-bs-theme="light"] .back-to-top-btn-modern {
+          background: rgba(0, 0, 0, 0.1);
+          border-color: rgba(0, 0, 0, 0.2);
+          color: #333333;
+        }
+
+        [data-bs-theme="light"] .back-to-top-btn-modern:hover {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Blue theme adjustments for back-to-top button */
+        [data-bs-theme="blue-theme"] .back-to-top-btn-modern {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.3);
+          color: #ffffff;
+        }
+
+        [data-bs-theme="blue-theme"] .back-to-top-btn-modern:hover {
+          background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Semi-dark theme adjustments for back-to-top button */
+        [data-bs-theme="semi-dark"] .back-to-top-btn-modern {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.2);
+          color: #ffffff;
+        }
+
+        [data-bs-theme="semi-dark"] .back-to-top-btn-modern:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Bordered theme adjustments for back-to-top button */
+        [data-bs-theme="bodered-theme"] .back-to-top-btn-modern {
+          background: rgba(0, 0, 0, 0.1);
+          border-color: rgba(0, 0, 0, 0.2);
+          color: #333333;
+        }
+
+        [data-bs-theme="bodered-theme"] .back-to-top-btn-modern:hover {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+          .back-to-top-btn-modern {
+            bottom: 75px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+          }
+        }
+      `}</style>
     </>
   )
 }
