@@ -86,17 +86,17 @@ export const subjectData: Record<string, SubjectData> = {
   },
   m1: {
     name: '數學延伸部分 M1',
-    englishName: 'Mathematics Extended Part M1',
+    englishName: 'Mathematics Module 1',
     description: 'DSE 數學延伸部分 M1 (微積分與統計) 歷屆試題及答案。提供完整試卷下載，助您掌握微積分與統計學重點。',
-    englishDescription: 'DSE Mathematics Extended Part M1 (Calculus and Statistics) past papers and answers. Complete exam papers available for download to master calculus and statistics.',
+    englishDescription: 'DSE Mathematics Module 1 (Calculus and Statistics) past papers and answers. Complete exam papers available for download to master calculus and statistics.',
     category: 'elective',
     url: 'https://dse.best/m1'
   },
   m2: {
     name: '數學延伸部分 M2',
-    englishName: 'Mathematics Extended Part M2',
+    englishName: 'Mathematics Module 2',
     description: 'DSE 數學延伸部分 M2 (代數與微積分) 歷屆試題及答案。提供完整試卷下載，助您掌握代數與微積分重點。',
-    englishDescription: 'DSE Mathematics Extended Part M2 (Algebra and Calculus) past papers and answers. Complete exam papers available for download to master algebra and calculus.',
+    englishDescription: 'DSE Mathematics Module 2 (Algebra and Calculus) past papers and answers. Complete exam papers available for download to master algebra and calculus.',
     category: 'elective',
     url: 'https://dse.best/m2'
   },
@@ -168,7 +168,7 @@ export function generateSubjectStructuredData(subjectKey: string) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": `DSE ${subject.name} ${subject.englishName} Past Papers`,
+    "name": `DSE ${subject.name} ${subject.englishName} Past Papers 歷屆試題`,
     "description": subject.description,
     "url": subject.url,
     "inLanguage": ["zh-HK", "en-HK"],
@@ -177,29 +177,6 @@ export function generateSubjectStructuredData(subjectKey: string) {
       "name": "DSEBest",
       "url": "https://dse.best/",
       "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案"
-    },
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://dse.best/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": subject.category === 'core' ? 'Core Subjects' : 'Elective Subjects',
-          "item": `https://dse.best/#${subject.category === 'core' ? 'core' : 'electives'}`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": `${subject.name} ${subject.englishName}`,
-          "item": subject.url
-        }
-      ]
     },
     "mainEntity": {
       "@type": "EducationalResource",
@@ -580,7 +557,6 @@ export function generateWebsiteStructuredData() {
     "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案，涵蓋中文、英文、數學、物理、化學等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。",
     "url": "https://dse.best/",
     "inLanguage": ["zh-HK", "en-HK"]
-    // Note: Search functionality is not implemented, so potentialAction is omitted
   };
 }
 
@@ -627,6 +603,84 @@ export function generateHomepageStructuredData() {
           "position": 4,
           "name": "數學 歷屆試題 Mathematics Past Papers",
           "item": "https://dse.best/math"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "物理 歷屆試題 Physics Past Papers",
+          "item": "https://dse.best/physics"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "化學 歷屆試題 Chemistry Past Papers",
+          "item": "https://dse.best/chemistry"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "生物 歷屆試題 Biology Past Papers",
+          "item": "https://dse.best/biology"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "資訊及通訊科技 ICT Past Papers",
+          "item": "https://dse.best/ict"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "數學延伸部分 M1 Past Papers",
+          "item": "https://dse.best/m1"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "數學延伸部分 M2 Past Papers",
+          "item": "https://dse.best/m2"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "地理 歷屆試題 Geography Past Papers",
+          "item": "https://dse.best/geography"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "歷史 歷屆試題 History Past Papers",
+          "item": "https://dse.best/history"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "中國歷史 歷屆試題 Chinese History Past Papers",
+          "item": "https://dse.best/chinese-history"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "經濟 歷屆試題 Economics Past Papers",
+          "item": "https://dse.best/economics"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "企業、會計與財務概論 BAFS Past Papers",
+          "item": "https://dse.best/bafs"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "公民與社會發展 Citizenship Past Papers",
+          "item": "https://dse.best/citizen"
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "name": "視覺藝術 Visual Arts Past Papers",
+          "item": "https://dse.best/visual-arts"
         }
       ]
     }
