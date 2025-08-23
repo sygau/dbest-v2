@@ -177,18 +177,20 @@ export default function ChatPage() {
                             </div>
                             <span className="status-text">{statusText}</span>
                         </div>
-                        {isModerator && (
-                            <div className="mod-indicator" title="Moderator">
-                                <BiShield style={{ color: '#28a745', fontSize: '18px' }} />
-                            </div>
-                        )}
-                        <button
-                            className="rules-button"
-                            onClick={() => setShowRules(true)}
-                            title="Chat Rules"
-                        >
-                            <BiBook />
-                        </button>
+                        <div className="header-buttons">
+                            {isModerator && (
+                                <div className="mod-indicator" title="Moderator">
+                                    <BiShield style={{ color: '#ffffff', fontSize: '18px' }} />
+                                </div>
+                            )}
+                            <button
+                                className="rules-button"
+                                onClick={() => setShowRules(true)}
+                                title="Chat Rules"
+                            >
+                                <BiBook />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -497,6 +499,12 @@ export default function ChatPage() {
                     justify-content: space-between;
                 }
 
+                .header-buttons {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
                 .mod-indicator {
                     display: flex;
                     align-items: center;
@@ -504,10 +512,10 @@ export default function ChatPage() {
                     width: 40px;
                     height: 40px;
                     border-radius: 12px;
-                    border: 2px solid #28a745;
-                    background: rgba(40, 167, 69, 0.1);
+                    background: #28a745;
                     cursor: default;
                     transition: all 0.2s ease;
+                    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
                 }
 
                 .chat-title {
