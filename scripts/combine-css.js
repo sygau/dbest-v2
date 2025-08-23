@@ -18,9 +18,6 @@ const config = {
     
     // Additional CSS files (if needed)
     'public/assets/css/bootstrap-extended.css',
-    
-    // Icon styles - these are still needed for boxicons
-    'public/assets/css/extra-icons.css',
   ],
   
   // Output file
@@ -50,9 +47,37 @@ function combineAndMinifyCSS() {
   
   // Create backup of existing file if needed
   if (config.backupOriginal && fs.existsSync(config.outputFile)) {
-    const backupFile = `${config.outputFile}.backup-${Date.now()}`;
+    // Create backup directory if it doesn't exist
+    const backupDir = path.join(path.dirname(config.outputFile), 'backups');
+    if (!fs.existsSync(backupDir)) {
+      fs.mkdirSync(backupDir, { recursive: true });
+    }
+    
+    const backupFile = path.join(backupDir, `combined.min.css.backup-${Date.now()}`);
     fs.copyFileSync(config.outputFile, backupFile);
     console.log(`Created backup at ${backupFile}`);
+    
+    // Clean up old backups (keep only latest 5)
+    try {
+      const backupFiles = fs.readdirSync(backupDir)
+        .filter(file => file.startsWith('combined.min.css.backup-'))
+        .map(file => ({
+          name: file,
+          path: path.join(backupDir, file),
+          time: fs.statSync(path.join(backupDir, file)).mtime
+        }))
+        .sort((a, b) => b.time - a.time);
+      
+      if (backupFiles.length > 5) {
+        const filesToDelete = backupFiles.slice(5);
+        filesToDelete.forEach(file => {
+          fs.unlinkSync(file.path);
+          console.log(`Cleaned up old backup: ${file.name}`);
+        });
+      }
+    } catch (cleanupError) {
+      console.warn(`Warning: Could not clean up old backups: ${cleanupError.message}`);
+    }
   }
   
   // Read and combine all source files
