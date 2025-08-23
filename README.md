@@ -271,11 +271,10 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 
 
 ## TODO
+- Enrich index features (Daily Quote)
 - More Subjects
 - UI Improvement (Blog, Download cards etc)
 - Completely redesign countdown with all subjects
-- Meta management with ease
-- Redirect to homepage if direct connection/not from google
 - Improve SEO meta descriptions and titles
 - Fix material icon and button shortcodes in BlogGeneration
 - Schema / Google Rich Results optimizations/FAQ?/Breadcrumbs ETC
@@ -287,9 +286,13 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - Sitemap.xml generation
 - Search (Fuse?)
 - Multilingual support
-- Codebase revamp (remove comments)
+- Codebase revamp 
 - Disqus comment count in blog
+- Generative Engine Optimization (GEO)
+- CF Plugins
 
 ### Pages suggestions
 - AI Mock Papers Section
 - Study Locations Google Maps
+- Countdown timer for each subjects
+- Random Speaking Question Trainer

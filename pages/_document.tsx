@@ -34,8 +34,8 @@ export default function Document() {
         
         {/* Vercel Analytics */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.vercel }} />
-        <script defer src="/_vercel/insights/script.js"></script>
-        <script defer src="/_vercel/speed-insights/script.js"></script>
+        <script defer src="/vcli_alytc/script.js"></script>
+        <script defer src="/vclii_speed/script.js"></script>
         
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />

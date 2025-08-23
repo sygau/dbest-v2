@@ -36,6 +36,16 @@
       "permanent": true
     }
   ],
+  "rewrites": [
+    {
+      "source": "/vcli_alytc/:path*",
+      "destination": "/_vercel/insights/:path*"
+    },
+    {
+      "source": "/vclii_speed/:path*",
+      "destination": "/_vercel/speed-insights/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
