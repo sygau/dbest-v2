@@ -536,36 +536,18 @@ class DSEChat {
 
   // Update connection status indicator
   setStatus(text, connected, onlineCount = 0) {
-    // Check if status elements exist before using them
-    if (!this.statusText || !this.statusDot) {
-      console.warn('Status elements not found, skipping status update');
-      return;
-    }
+    // Status is managed by React component, so we'll just log it
+    console.log(`Status: [${text}] | ${onlineCount} ${onlineCount === 1 ? 'User' : 'Users'} Online`);
     
-    // Clear existing content
-    this.statusText.textContent = '';
-    
-    // Add status in brackets
-    const statusSpan = document.createElement('span');
-    statusSpan.textContent = `[${text}]`;
-    this.statusText.appendChild(statusSpan);
-    
-    // Add separator
-    const separator = document.createElement('span');
-    separator.className = 'text-muted';
-    separator.textContent = ' | ';
-    this.statusText.appendChild(separator);
-    
-    // Add online count
-    const countSpan = document.createElement('strong');
-    countSpan.textContent = onlineCount.toString();
-    this.statusText.appendChild(countSpan);
-    
-    // Add "Users Online" text
-    this.statusText.appendChild(document.createTextNode(` ${onlineCount === 1 ? 'User' : 'Users'} Online`));
-    
-    this.statusDot.classList.toggle('bg-success', connected);
-    this.statusDot.classList.toggle('bg-danger', !connected);
+    // Dispatch custom event for React component to listen to
+    const statusEvent = new CustomEvent('chatStatusUpdate', {
+      detail: {
+        status: text,
+        connected: connected,
+        onlineCount: onlineCount
+      }
+    });
+    document.dispatchEvent(statusEvent);
   }
 
   // Generate a unique client ID

@@ -44,6 +44,19 @@ export default function ChatPage() {
             chatMessages.appendChild(welcomeDiv);
         }
 
+        // Listen for status updates from chat.js
+        const handleStatusUpdate = (event: CustomEvent) => {
+            const { status, connected, onlineCount } = event.detail;
+            setConnectionStatus(connected ? 'connected' : 'connecting');
+            setStatusText(`[${status}] | ${onlineCount} ${onlineCount === 1 ? 'User' : 'Users'} Online`);
+        };
+
+        document.addEventListener('chatStatusUpdate', handleStatusUpdate as EventListener);
+
+        return () => {
+            document.removeEventListener('chatStatusUpdate', handleStatusUpdate as EventListener);
+        };
+
         // Load Ably script if not already loaded
         if (!(window as any).Ably && !(window as any).AblyLoading) {
             (window as any).AblyLoading = true;
@@ -91,32 +104,6 @@ export default function ChatPage() {
                 try {
                     (window as any).dseChat = new (window as any).DSEChat();
                     (window as any).dseChat.init();
-                    
-                    // Listen for status changes
-                    const statusDot = document.getElementById('statusDot');
-                    const statusTextEl = document.getElementById('statusText');
-                    
-                    if (statusDot && statusTextEl) {
-                        const observer = new MutationObserver(() => {
-                            const isConnected = statusDot.classList.contains('bg-success');
-                            const isConnecting = statusDot.classList.contains('bg-warning');
-                            const isError = statusDot.classList.contains('bg-danger');
-                            
-                            if (isConnected) {
-                                setConnectionStatus('connected');
-                                setStatusText('Connected');
-                            } else if (isConnecting) {
-                                setConnectionStatus('connecting');
-                                setStatusText('Connecting...');
-                            } else if (isError) {
-                                setConnectionStatus('error');
-                                setStatusText('Connection failed');
-                            }
-                        });
-                        
-                        observer.observe(statusDot, { attributes: true, attributeFilter: ['class'] });
-                        observer.observe(statusTextEl, { childList: true, subtree: true });
-                    }
                 } catch (error) {
                     console.error('Failed to initialize chat:', error);
                     setConnectionStatus('error');
