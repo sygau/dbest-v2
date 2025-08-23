@@ -54,14 +54,17 @@ export default function ChatPage() {
             (window as any).dseChat = null;
         }
 
-        // Add welcome message to chat
-        const chatMessages = document.getElementById('chatMessages');
-        if (chatMessages) {
-            const welcomeDiv = document.createElement('div');
-            welcomeDiv.className = 'chat-system-message text-center my-2 small';
-            welcomeDiv.textContent = 'Welcome to DSEBest Chatroom! Start chatting with other students.';
-            chatMessages.appendChild(welcomeDiv);
-        }
+        // Add event listener for showing rules modal from JavaScript
+        const handleShowRulesModal = (event: CustomEvent) => {
+            setShowRules(true);
+        };
+
+        document.addEventListener('showRulesModal', handleShowRulesModal as EventListener);
+
+        // Cleanup event listener
+        return () => {
+            document.removeEventListener('showRulesModal', handleShowRulesModal as EventListener);
+        };
 
         // Load Ably script if not already loaded
         if (!(window as any).Ably && !(window as any).AblyLoading) {
@@ -225,7 +228,7 @@ export default function ChatPage() {
                                 type="text"
                                 id="messageInput"
                                 className="message-field"
-                                placeholder="Type a message... (max 150 chars)"
+                                placeholder="Type a message..."
                                 autoComplete="off"
                                 maxLength={150}
                             />
@@ -1150,10 +1153,11 @@ export default function ChatPage() {
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
-                    margin-left: 4px;
+                    margin-left: 3px;
                     width: 18px;
                     height: 18px;
                     animation: badge-glow 2s ease-in-out infinite alternate;
+                    margin-top: 4px;
                 }
 
                 :global(.moderator-badge svg) {

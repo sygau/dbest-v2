@@ -402,13 +402,11 @@ class DSEChat {
 
   // Show rules modal
   showRulesModal() {
-    const rulesModal = document.getElementById('rulesModal');
-    if (rulesModal) {
-      const modal = (bootstrap.Modal.getOrCreateInstance
-        ? bootstrap.Modal.getOrCreateInstance(rulesModal)
-        : new bootstrap.Modal(rulesModal));
-      modal.show();
-    }
+    // Dispatch custom event to trigger React modal
+    const event = new CustomEvent('showRulesModal', {
+      detail: { show: true }
+    });
+    document.dispatchEvent(event);
   }
 
   // Check if user should see welcome message with rules
@@ -427,47 +425,31 @@ class DSEChat {
 
   // Add special welcome message with clickable rules link
   addWelcomeMessage() {
+    // Create a simple system message with clickable rules link
     const wrap = document.createElement('div');
-    wrap.className = 'chat-system-message text-center my-3 p-3 border rounded-3 bg-primary bg-opacity-10';
+    wrap.className = 'chat-system-message text-center my-2';
     
-    // Create elements safely instead of using innerHTML
-    const iconDiv = document.createElement('div');
-    iconDiv.className = 'mb-2';
-    const icon = document.createElement('i');
-    icon.textContent = '👋';
-    icon.style.fontSize = '24px';
-    iconDiv.appendChild(icon);
+    // Create welcome text
+    const welcomeText = document.createElement('div');
+    welcomeText.className = 'mb-1';
+    welcomeText.textContent = '👋 Welcome to DSE Best Chatroom!';
     
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'text-primary fw-bold mb-2';
-    titleDiv.textContent = '歡迎來到 DSE Best 聊天室！ Welcome to DSE Best Chatroom!';
+    // Create rules link
+    const rulesLink = document.createElement('a');
+    rulesLink.href = '#';
+    rulesLink.className = 'text-primary text-decoration-none fw-bold';
+    rulesLink.textContent = '📖 Read Rules';
+    rulesLink.style.cursor = 'pointer';
+    rulesLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.showRulesModal();
+    });
     
-    const descDiv = document.createElement('div');
-    descDiv.className = 'small mb-2';
-    descDiv.textContent = '請花一分鐘閱讀聊天室規則，確保大家都有良好的交流體驗。Please take a moment to read the chat rules to ensure a positive experience for everyone.';
-    
-    const button = document.createElement('button');
-    button.className = 'btn btn-primary btn-sm';
-    button.id = 'welcomeRulesBtn';
-    const buttonIcon = document.createElement('i');
-    buttonIcon.textContent = '📖';
-    buttonIcon.style.fontSize = '16px';
-    button.appendChild(buttonIcon);
-    button.appendChild(document.createTextNode(' 閱讀規則 Read Rules'));
-    
-    wrap.appendChild(iconDiv);
-    wrap.appendChild(titleDiv);
-    wrap.appendChild(descDiv);
-    wrap.appendChild(button);
+    wrap.appendChild(welcomeText);
+    wrap.appendChild(rulesLink);
     
     this.chatMessages.appendChild(wrap);
     this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-    
-    // Add click handler for the welcome rules button
-    const welcomeRulesBtn = document.getElementById('welcomeRulesBtn');
-    if (welcomeRulesBtn) {
-      welcomeRulesBtn.addEventListener('click', this.showRulesModal.bind(this));
-    }
   }
 
   // Update character counter
@@ -565,7 +547,7 @@ class DSEChat {
     const statusIndicator = document.querySelector('.status-indicator');
     
     if (statusTextEl) {
-      statusTextEl.innerHTML = `${text} <span style="color: #6c757d;">|</span> <strong>${onlineCount}</strong> ${onlineCount === 1 ? 'User' : 'Users'} Online`;
+      statusTextEl.innerHTML = `${text} <span style="color: #bababa;">|</span> <strong>${onlineCount}</strong> ${onlineCount === 1 ? 'User' : 'Users'} Online`;
     }
     
     if (statusIndicator) {
