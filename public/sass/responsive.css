@@ -53,40 +53,7 @@
     cursor: move;
     transition: all 0.3s ease-out;
   }
-  .chat-header {
-    border-top-left-radius: 0.25rem;
-  }
-  .chat-footer {
-    border-bottom-left-radius: 0.25rem;
-  }
-  .chat-sidebar {
-    left: -370px;
-  }
-  .chat-content {
-    margin-left: 0;
-  }
-  .chat-header {
-    left: 0;
-  }
-  .chat-footer {
-    left: 0;
-  }
-  .chat-toggled .chat-sidebar {
-    left: 0;
-  }
-  .chat-toggled .overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 340px;
-    background: #000;
-    opacity: 0.5;
-    z-index: 11;
-    display: block;
-    cursor: move;
-    transition: all 0.3s ease-out;
-  }
+  /* Old chat sidebar CSS removed - replaced with modern chat implementation */
 }
 
 /* Toogle in responsive */

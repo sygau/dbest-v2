@@ -301,6 +301,14 @@ class DSEChat {
   }
 
   // Event handler methods
+  // Helper function to safely set edit button icon
+  setEditButtonIcon(iconClass) {
+    this.editNameBtn.textContent = '';
+    const icon = document.createElement('i');
+    icon.className = iconClass;
+    this.editNameBtn.appendChild(icon);
+  }
+
   handleEditName() {
     const isEditing = this.userNameInput.disabled;
     if (!isEditing) {
@@ -308,7 +316,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.editNameBtn.innerHTML = '<i class="bi bi-pencil"></i>';
+        this.setEditButtonIcon('bi bi-pencil');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
         // Sync with mobile input
@@ -321,7 +329,7 @@ class DSEChat {
       // Start editing
       this.userNameInput.disabled = false;
       this.userNameInput.focus();
-      this.editNameBtn.innerHTML = '<i class="bi bi-check"></i>';
+      this.setEditButtonIcon('bi bi-check');
     }
   }
 
@@ -330,7 +338,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.editNameBtn.innerHTML = '<i class="bi bi-pencil"></i>';
+        this.setEditButtonIcon('bi bi-pencil');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
       }
@@ -398,20 +406,35 @@ class DSEChat {
     const wrap = document.createElement('div');
     wrap.className = 'chat-system-message text-center my-3 p-3 border rounded-3 bg-primary bg-opacity-10';
     
-    wrap.innerHTML = `
-      <div class="mb-2">
-        <i class="bi bi-hand-index-thumb text-primary" style="font-size: 24px;"></i>
-      </div>
-      <div class="text-primary fw-bold mb-2">歡迎來到 DSE Best 聊天室！ Welcome to DSE Best Chatroom!</div>
-      <div class="small mb-2">
-        請花一分鐘閱讀聊天室規則，確保大家都有良好的交流體驗。<br>
-        Please take a moment to read the chat rules to ensure a positive experience for everyone.
-      </div>
-      <button class="btn btn-primary btn-sm" id="welcomeRulesBtn">
-        <i class="bi bi-book me-1" style="font-size: 16px;"></i>
-        閱讀規則 Read Rules
-      </button>
-    `;
+    // Create elements safely instead of using innerHTML
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'mb-2';
+    const icon = document.createElement('i');
+    icon.className = 'bi bi-hand-index-thumb text-primary';
+    icon.style.fontSize = '24px';
+    iconDiv.appendChild(icon);
+    
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'text-primary fw-bold mb-2';
+    titleDiv.textContent = '歡迎來到 DSE Best 聊天室！ Welcome to DSE Best Chatroom!';
+    
+    const descDiv = document.createElement('div');
+    descDiv.className = 'small mb-2';
+    descDiv.textContent = '請花一分鐘閱讀聊天室規則，確保大家都有良好的交流體驗。Please take a moment to read the chat rules to ensure a positive experience for everyone.';
+    
+    const button = document.createElement('button');
+    button.className = 'btn btn-primary btn-sm';
+    button.id = 'welcomeRulesBtn';
+    const buttonIcon = document.createElement('i');
+    buttonIcon.className = 'bi bi-book me-1';
+    buttonIcon.style.fontSize = '16px';
+    button.appendChild(buttonIcon);
+    button.appendChild(document.createTextNode(' 閱讀規則 Read Rules'));
+    
+    wrap.appendChild(iconDiv);
+    wrap.appendChild(titleDiv);
+    wrap.appendChild(descDiv);
+    wrap.appendChild(button);
     
     this.chatMessages.appendChild(wrap);
     this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
@@ -465,8 +488,11 @@ class DSEChat {
     if (isModerator) {
       const badge = document.createElement('span');
       badge.className = 'moderator-badge';
-      badge.innerHTML = '<i class="bi bi-patch-check-fill" style="font-size: 16px;"></i>';
       badge.title = 'Moderator';
+      const badgeIcon = document.createElement('i');
+      badgeIcon.className = 'bi bi-patch-check-fill';
+      badgeIcon.style.fontSize = '16px';
+      badge.appendChild(badgeIcon);
       nameLine.appendChild(badge);
     }
     
@@ -513,7 +539,26 @@ class DSEChat {
 
   // Update connection status indicator
   setStatus(text, connected, onlineCount = 0) {
-    this.statusText.innerHTML = `${text} <span class="text-muted">|</span> <strong>${onlineCount}</strong> ${onlineCount === 1 ? 'User' : 'Users'} Online`;
+    // Clear existing content
+    this.statusText.textContent = '';
+    
+    // Add text safely
+    this.statusText.appendChild(document.createTextNode(text));
+    
+    // Add separator
+    const separator = document.createElement('span');
+    separator.className = 'text-muted';
+    separator.textContent = ' | ';
+    this.statusText.appendChild(separator);
+    
+    // Add online count
+    const countSpan = document.createElement('strong');
+    countSpan.textContent = onlineCount.toString();
+    this.statusText.appendChild(countSpan);
+    
+    // Add "Users Online" text
+    this.statusText.appendChild(document.createTextNode(` ${onlineCount === 1 ? 'User' : 'Users'} Online`));
+    
     this.statusDot.classList.toggle('bg-success', connected);
     this.statusDot.classList.toggle('bg-danger', !connected);
   }
@@ -530,7 +575,7 @@ class DSEChat {
     return {
       ':heart:': '❤️',
       ':love:': '💕',
-      ':smile:': '😊',
+      ':smile:': '😊',  
       ':laugh:': '😂',
       ':cry:': '😢',
       ':angry:': '😠',
@@ -729,7 +774,8 @@ class DSEChat {
       authMethod: 'POST',
       authParams: {
         clientId: clientId,
-        username: localStorage.getItem('chatUsername') || this.randomUsername()
+        username: localStorage.getItem('chatUsername') || this.randomUsername(),
+        secretmodkey: this.getSecretKey() // Include mod key if available
       }
     });
 
@@ -740,7 +786,7 @@ class DSEChat {
       // Check and show welcome message for new users
       this.checkAndShowWelcomeMessage();
       
-      // Check if user is a moderator
+      // Check if user is a moderator (API may not support check_mod, so we'll handle gracefully)
       fetch('/api/chat-auth', {
         method: 'POST',
         headers: {
@@ -749,17 +795,27 @@ class DSEChat {
         body: JSON.stringify({
           action: 'check_mod',
           clientId: this.ably.auth.clientId,
-          username: this.userNameInput.value.trim()
+          username: this.userNameInput.value.trim(),
+          secretmodkey: this.getSecretKey() // Include mod key if available
         })
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          // API doesn't support check_mod, that's okay
+          return { isModerator: false };
+        }
+        return response.json();
+      })
       .then(data => {
         this.isUserModerator = !!data.isModerator;
         if (this.isUserModerator) {
           this.addSystemMessage('Welcome, Moderator! Type /help to see available commands.');
         }
       })
-      .catch(() => {/* Silently fail */});
+      .catch(() => {
+        // Silently fail - moderator check is not critical
+        this.isUserModerator = false;
+      });
     });
 
     this.ably.connection.on('disconnected', () => { 
@@ -810,7 +866,7 @@ class DSEChat {
         if (type === 'purge') {
           if (count === 'all') {
             // Clear all messages
-            this.chatMessages.innerHTML = '';
+            this.chatMessages.textContent = '';
             this.addSystemMessage(`All messages were purged by moderator ${moderator}`);
           } else {
             // Clear last N messages
