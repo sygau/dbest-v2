@@ -156,12 +156,12 @@ export default function BlogPost({ post }: BlogPostProps) {
         <div className="card-body">
           {/* Post Header */}
           <div className="post-header mb-4">
-            <h1 className="fw-bold mb-3" style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
+            <h1 className="display-6">
               {post.title}
             </h1>
 
             {/* Post Meta */}
-            <div className="post-meta d-flex flex-wrap align-items-center gap-3 mb-4 justify-content-between">
+            <div className="post-meta d-flex flex-wrap align-items-center gap-3 justify-content-between">
               <div className="d-flex align-items-center gap-3">
                 <div className="d-flex align-items-center">
                   <BiUserCircle style={{
