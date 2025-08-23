@@ -470,20 +470,149 @@ async function moderateUsername(username, clientId, ip) {
     }
   }
 
-  // HTML entity encode the username for extra safety
-  const safeUsername = cleanUsername
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;');
+  // Comprehensive XSS protection for username
+  const safeUsername = sanitizeForXSS(cleanUsername);
   
   return {
     isClean: true,
     reason: null,
     cleanUsername: safeUsername
   };
+}
+
+// Comprehensive XSS sanitization function
+function sanitizeForXSS(input) {
+  if (!input || typeof input !== 'string') {
+    return '';
+  }
+
+  // Step 1: Remove null bytes and control characters
+  let sanitized = input.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '');
+  
+  // Step 2: Remove Unicode control characters and invisible characters
+  sanitized = sanitized.replace(/[\u200B-\u200D\uFEFF\u00AD\u061C\u180E\u2060-\u2069]/g, '');
+  
+  // Step 3: HTML entity encoding for dangerous characters
+  const htmlEntities = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#x27;',
+    '/': '&#x2F;',
+    '\\': '&#x5C;',
+    '`': '&#x60;',
+    '=': '&#x3D;',
+    '+': '&#x2B;',
+    '-': '&#x2D;',
+    ';': '&#x3B;',
+    ':': '&#x3A;',
+    '!': '&#x21;',
+    '@': '&#x40;',
+    '#': '&#x23;',
+    '$': '&#x24;',
+    '%': '&#x25;',
+    '^': '&#x5E;',
+    '*': '&#x2A;',
+    '(': '&#x28;',
+    ')': '&#x29;',
+    '_': '&#x5F;',
+    '[': '&#x5B;',
+    ']': '&#x5D;',
+    '{': '&#x7B;',
+    '}': '&#x7D;',
+    '|': '&#x7C;',
+    '~': '&#x7E;'
+  };
+  
+  // Step 4: Replace dangerous characters with HTML entities
+  sanitized = sanitized.replace(/[&<>"'\/\\`=+\-;:!@#$%^&*()_\[\]{}|~]/g, (match) => {
+    return htmlEntities[match] || match;
+  });
+  
+  // Step 5: Remove any remaining script-like patterns
+  const scriptPatterns = [
+    /javascript:/gi,
+    /vbscript:/gi,
+    /onload/gi,
+    /onerror/gi,
+    /onclick/gi,
+    /onmouseover/gi,
+    /onfocus/gi,
+    /onblur/gi,
+    /onchange/gi,
+    /onsubmit/gi,
+    /onreset/gi,
+    /onselect/gi,
+    /onunload/gi,
+    /onabort/gi,
+    /onbeforeunload/gi,
+    /onerror/gi,
+    /onhashchange/gi,
+    /onmessage/gi,
+    /onoffline/gi,
+    /ononline/gi,
+    /onpagehide/gi,
+    /onpageshow/gi,
+    /onpopstate/gi,
+    /onresize/gi,
+    /onstorage/gi,
+    /oncontextmenu/gi,
+    /oninput/gi,
+    /oninvalid/gi,
+    /onsearch/gi,
+    /onkeydown/gi,
+    /onkeypress/gi,
+    /onkeyup/gi,
+    /onmousedown/gi,
+    /onmousemove/gi,
+    /onmouseout/gi,
+    /onmouseup/gi,
+    /onwheel/gi,
+    /ondrag/gi,
+    /ondragend/gi,
+    /ondragenter/gi,
+    /ondragleave/gi,
+    /ondragover/gi,
+    /ondragstart/gi,
+    /ondrop/gi,
+    /oncopy/gi,
+    /oncut/gi,
+    /onpaste/gi,
+    /onbeforecopy/gi,
+    /onbeforecut/gi,
+    /onbeforepaste/gi,
+    /onselectstart/gi,
+    /onselectionchange/gi,
+    /onfullscreenchange/gi,
+    /onfullscreenerror/gi,
+    /onwebkitfullscreenchange/gi,
+    /onwebkitfullscreenerror/gi,
+    /onmozfullscreenchange/gi,
+    /onmozfullscreenerror/gi,
+    /onmsfullscreenchange/gi,
+    /onmsfullscreenerror/gi
+  ];
+  
+  scriptPatterns.forEach(pattern => {
+    sanitized = sanitized.replace(pattern, '');
+  });
+  
+  // Step 6: Remove any data URLs
+  sanitized = sanitized.replace(/data:/gi, '');
+  
+  // Step 7: Remove any remaining HTML tags
+  sanitized = sanitized.replace(/<[^>]*>/g, '');
+  
+  // Step 8: Normalize whitespace and trim
+  sanitized = sanitized.replace(/\s+/g, ' ').trim();
+  
+  // Step 9: Limit length to prevent buffer overflow attacks
+  if (sanitized.length > 50) {
+    sanitized = sanitized.substring(0, 50);
+  }
+  
+  return sanitized;
 }
 
 // Modular spam detection system
@@ -854,6 +983,35 @@ function moderateContent(text, clientId, ip, username) {
 }
 
 export default async function handler(req, res) {
+  // CORS Configuration
+  const allowedOrigins = [
+    'https://dse.best',
+    'https://www.dse.best',
+    'https://dbest-cdn.pages.dev'
+  ];
+  
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+
+  // Handle preflight OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  // Security headers
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Content-Security-Policy', "default-src 'none'; script-src 'self'");
+
   try {
     if (req.method !== 'POST') {
       return res.status(405).json({ error: 'Method not allowed' });
