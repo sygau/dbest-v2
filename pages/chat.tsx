@@ -30,6 +30,7 @@ export default function ChatPage() {
   const [isClosingUsernameModal, setIsClosingUsernameModal] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState('connecting');
   const [statusText, setStatusText] = useState('Connecting...');
+  const [isModerator, setIsModerator] = useState(false);
 
   const handleCloseRules = () => {
     setIsClosingRules(true);
@@ -59,7 +60,13 @@ export default function ChatPage() {
             setShowRules(true);
         };
 
+        // Add event listener for moderator status updates
+        const handleModeratorStatus = (event: CustomEvent) => {
+            setIsModerator(event.detail.isModerator);
+        };
+
         document.addEventListener('showRulesModal', handleShowRulesModal as EventListener);
+        document.addEventListener('moderatorStatusUpdate', handleModeratorStatus as EventListener);
 
         // Load Ably script if not already loaded
         if (!(window as any).Ably && !(window as any).AblyLoading) {
@@ -119,6 +126,7 @@ export default function ChatPage() {
         // Cleanup function
         return () => {
             document.removeEventListener('showRulesModal', handleShowRulesModal as EventListener);
+            document.removeEventListener('moderatorStatusUpdate', handleModeratorStatus as EventListener);
             if ((window as any).dseChat) {
                 (window as any).dseChat.destroy();
                 (window as any).dseChat = null;
@@ -169,6 +177,11 @@ export default function ChatPage() {
                             </div>
                             <span className="status-text">{statusText}</span>
                         </div>
+                        {isModerator && (
+                            <div className="mod-indicator" title="Moderator">
+                                <BiShield style={{ color: '#28a745', fontSize: '18px' }} />
+                            </div>
+                        )}
                         <button
                             className="rules-button"
                             onClick={() => setShowRules(true)}
@@ -482,6 +495,19 @@ export default function ChatPage() {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+                }
+
+                .mod-indicator {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 12px;
+                    border: 2px solid #28a745;
+                    background: rgba(40, 167, 69, 0.1);
+                    cursor: default;
+                    transition: all 0.2s ease;
                 }
 
                 .chat-title {

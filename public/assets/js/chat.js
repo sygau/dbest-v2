@@ -432,13 +432,13 @@ class DSEChat {
     // Create welcome text
     const welcomeText = document.createElement('div');
     welcomeText.className = 'mb-1';
-    welcomeText.textContent = '👋 Welcome to DSE Best Chatroom!';
+    welcomeText.textContent = '👋 Welcome to DSEBest Chatroom!';
     
     // Create rules link
     const rulesLink = document.createElement('a');
     rulesLink.href = '#';
     rulesLink.className = 'text-primary text-decoration-none fw-bold';
-    rulesLink.textContent = '📖 Read Rules';
+    rulesLink.textContent = 'Chatroom Rules';
     rulesLink.style.cursor = 'pointer';
     rulesLink.addEventListener('click', (e) => {
       e.preventDefault();
@@ -811,6 +811,12 @@ class DSEChat {
         if (this.isUserModerator) {
           this.addSystemMessage('Welcome, Moderator! Type /help to see available commands.');
         }
+        
+        // Dispatch event to React component
+        const event = new CustomEvent('moderatorStatusUpdate', {
+          detail: { isModerator: this.isUserModerator }
+        });
+        document.dispatchEvent(event);
       })
       .catch(() => {
         // Silently fail - moderator check is not critical
