@@ -303,10 +303,7 @@ class DSEChat {
   // Event handler methods
   // Helper function to safely set edit button icon
   setEditButtonIcon(iconClass) {
-    this.editNameBtn.textContent = '';
-    const icon = document.createElement('i');
-    icon.className = iconClass;
-    this.editNameBtn.appendChild(icon);
+    this.editNameBtn.textContent = iconClass;
   }
 
   handleEditName() {
@@ -316,7 +313,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.setEditButtonIcon('bi bi-pencil');
+        this.setEditButtonIcon('✏️');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
         // Sync with mobile input
@@ -329,7 +326,7 @@ class DSEChat {
       // Start editing
       this.userNameInput.disabled = false;
       this.userNameInput.focus();
-      this.setEditButtonIcon('bi bi-check');
+      this.setEditButtonIcon('✅');
     }
   }
 
@@ -338,7 +335,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.setEditButtonIcon('bi bi-pencil');
+        this.setEditButtonIcon('✏️');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
       }
@@ -410,7 +407,7 @@ class DSEChat {
     const iconDiv = document.createElement('div');
     iconDiv.className = 'mb-2';
     const icon = document.createElement('i');
-    icon.className = 'bi bi-hand-index-thumb text-primary';
+    icon.textContent = '👋';
     icon.style.fontSize = '24px';
     iconDiv.appendChild(icon);
     
@@ -426,7 +423,7 @@ class DSEChat {
     button.className = 'btn btn-primary btn-sm';
     button.id = 'welcomeRulesBtn';
     const buttonIcon = document.createElement('i');
-    buttonIcon.className = 'bi bi-book me-1';
+    buttonIcon.textContent = '📖';
     buttonIcon.style.fontSize = '16px';
     button.appendChild(buttonIcon);
     button.appendChild(document.createTextNode(' 閱讀規則 Read Rules'));
@@ -490,7 +487,7 @@ class DSEChat {
       badge.className = 'moderator-badge';
       badge.title = 'Moderator';
       const badgeIcon = document.createElement('i');
-      badgeIcon.className = 'bi bi-patch-check-fill';
+      badgeIcon.textContent = '🛡️';
       badgeIcon.style.fontSize = '16px';
       badge.appendChild(badgeIcon);
       nameLine.appendChild(badge);
@@ -539,11 +536,19 @@ class DSEChat {
 
   // Update connection status indicator
   setStatus(text, connected, onlineCount = 0) {
+    // Check if status elements exist before using them
+    if (!this.statusText || !this.statusDot) {
+      console.warn('Status elements not found, skipping status update');
+      return;
+    }
+    
     // Clear existing content
     this.statusText.textContent = '';
     
-    // Add text safely
-    this.statusText.appendChild(document.createTextNode(text));
+    // Add status in brackets
+    const statusSpan = document.createElement('span');
+    statusSpan.textContent = `[${text}]`;
+    this.statusText.appendChild(statusSpan);
     
     // Add separator
     const separator = document.createElement('span');
