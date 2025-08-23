@@ -431,7 +431,7 @@ export default function App({ Component, pageProps }: AppProps) {
         .theme-switcher-btn {
           padding: 0.75rem 1rem;
           border-radius: 12px;
-          font-family: 'Inter', 'Noto Sans TC', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-weight: 600;
           text-decoration: none;
           transition: all 0.3s ease;
