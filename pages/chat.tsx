@@ -44,19 +44,6 @@ export default function ChatPage() {
             chatMessages.appendChild(welcomeDiv);
         }
 
-        // Listen for status updates from chat.js
-        const handleStatusUpdate = (event: CustomEvent) => {
-            const { status, connected, onlineCount } = event.detail;
-            setConnectionStatus(connected ? 'connected' : 'connecting');
-            setStatusText(`[${status}] | ${onlineCount} ${onlineCount === 1 ? 'User' : 'Users'} Online`);
-        };
-
-        document.addEventListener('chatStatusUpdate', handleStatusUpdate as EventListener);
-
-        return () => {
-            document.removeEventListener('chatStatusUpdate', handleStatusUpdate as EventListener);
-        };
-
         // Load Ably script if not already loaded
         if (!(window as any).Ably && !(window as any).AblyLoading) {
             (window as any).AblyLoading = true;

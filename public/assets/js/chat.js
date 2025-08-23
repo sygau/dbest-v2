@@ -536,18 +536,17 @@ class DSEChat {
 
   // Update connection status indicator
   setStatus(text, connected, onlineCount = 0) {
-    // Status is managed by React component, so we'll just log it
-    console.log(`Status: [${text}] | ${onlineCount} ${onlineCount === 1 ? 'User' : 'Users'} Online`);
+    // Try to find status elements
+    const statusTextEl = document.querySelector('.status-text');
+    const statusIndicator = document.querySelector('.status-indicator');
     
-    // Dispatch custom event for React component to listen to
-    const statusEvent = new CustomEvent('chatStatusUpdate', {
-      detail: {
-        status: text,
-        connected: connected,
-        onlineCount: onlineCount
-      }
-    });
-    document.dispatchEvent(statusEvent);
+    if (statusTextEl) {
+      statusTextEl.innerHTML = `[${text}] | ${onlineCount} ${onlineCount === 1 ? 'User' : 'Users'} Online`;
+    }
+    
+    if (statusIndicator) {
+      statusIndicator.className = `status-indicator ${connected ? 'connected' : 'connecting'}`;
+    }
   }
 
   // Generate a unique client ID
