@@ -1139,6 +1139,14 @@ export default async function handler(req, res) {
 
     const ably = new Ably.Rest(process.env.ABLY_API_KEY);
 
+    // Check moderator status
+    if (req.body.action === 'check_mod') {
+      const isMod = isModerator(cleanClientId, ip, secretmodkey);
+      return res.status(200).json({ 
+        isModerator: isMod 
+      });
+    }
+
     // Handle commands or moderation
     if (req.body.action === 'moderate') {
       const text = message;

@@ -813,6 +813,7 @@ class DSEChat {
         }
         
         // Dispatch event to React component
+        console.log('Dispatching moderator status event:', this.isUserModerator);
         const event = new CustomEvent('moderatorStatusUpdate', {
           detail: { isModerator: this.isUserModerator }
         });
