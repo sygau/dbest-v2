@@ -39,11 +39,11 @@
   "rewrites": [
     {
       "source": "/vcli_alytc/:path*",
-      "destination": "/_vercel/insights/:path*"
+      "destination": "https://dse.best/_vercel/insights/:path*"
     },
     {
       "source": "/vclii_speed/:path*",
-      "destination": "/_vercel/speed-insights/:path*"
+      "destination": "https://dse.best/_vercel/speed-insights/:path*"
     }
   ],
   "headers": [
@@ -54,6 +54,20 @@
       ],
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
+    },
+    {
+      "source": "/vcli_alytc/:path*",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/vclii_speed/:path*",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
       ]
     }
   ]
