@@ -51,18 +51,27 @@
    */
   async function loadData(subject) {
     try {
-      // Simple ping to check if cdn.dse.best is online
-      let fileHost = 'https://cdn.dse.best';
+      // Check localStorage first
+      let fileHost = localStorage.getItem('cdn_host'); 
       
-      try {
-        const response = await fetch('https://cdn.dse.best', { 
-          method: 'HEAD',
-          mode: 'no-cors'
-        });
-        console.log('✅ cdn.dse.best is online');
-      } catch (error) {
-        console.log('❌ cdn.dse.best is offline, using fallback');
-        fileHost = 'https://dbest-cdn.pages.dev';
+      if (!fileHost) {
+        // Check CDN availability and save to localStorage
+        try {
+          const response = await fetch('https://cdn.dse.best', { 
+            method: 'HEAD',
+            mode: 'no-cors'
+          });
+          console.log('✅ cdn.dse.best is online');
+          fileHost = 'https://cdn.dse.best';
+        } catch (error) {
+          console.log('❌ cdn.dse.best is offline, using fallback');
+          fileHost = 'https://dbest-cdn.pages.dev';
+        }
+        
+        // Save to localStorage for future use
+        localStorage.setItem('cdn_host', fileHost);
+      } else {
+        console.log(`📋 Using cached CDN: ${fileHost}`);
       }
 
       const baseUrls = [
