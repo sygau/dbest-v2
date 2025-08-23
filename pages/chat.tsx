@@ -61,11 +61,6 @@ export default function ChatPage() {
 
         document.addEventListener('showRulesModal', handleShowRulesModal as EventListener);
 
-        // Cleanup event listener
-        return () => {
-            document.removeEventListener('showRulesModal', handleShowRulesModal as EventListener);
-        };
-
         // Load Ably script if not already loaded
         if (!(window as any).Ably && !(window as any).AblyLoading) {
             (window as any).AblyLoading = true;
@@ -123,6 +118,7 @@ export default function ChatPage() {
 
         // Cleanup function
         return () => {
+            document.removeEventListener('showRulesModal', handleShowRulesModal as EventListener);
             if ((window as any).dseChat) {
                 (window as any).dseChat.destroy();
                 (window as any).dseChat = null;
