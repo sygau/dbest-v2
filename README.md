@@ -290,6 +290,7 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - Disqus comment count in blog
 - Generative Engine Optimization (GEO)
 - CF Plugins
+- Chat Auth Vulne improvement
 
 ### Pages suggestions
 - AI Mock Papers Section

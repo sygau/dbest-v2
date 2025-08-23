@@ -1,52 +1,52 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { getMainPageMetadata } from '../utils/structuredData';
-import { 
-  BiHomeAlt, 
-  BiBook, 
-  BiEditAlt, 
-  BiSend, 
-  BiCheck, 
-  BiUserCircle,
-  BiShield,
-  BiBlock, 
-  BiTime,
-  BiText,
-  BiIdCard,
-  BiSmile,
-  BiInfoCircle,
-  BiX,
-  BiMessageRounded,
-  BiWifi,
-  BiWifiOff,
-  BiPencil
+import {
+    BiHomeAlt,
+    BiBook,
+    BiEditAlt,
+    BiSend,
+    BiCheck,
+    BiUserCircle,
+    BiShield,
+    BiBlock,
+    BiTime,
+    BiText,
+    BiIdCard,
+    BiSmile,
+    BiInfoCircle,
+    BiX,
+    BiMessageRounded,
+    BiWifi,
+    BiWifiOff,
+    BiPencil
 } from 'react-icons/bi'
 
 export default function ChatPage() {
-  const metadata = getMainPageMetadata('chat');
-  const [showRules, setShowRules] = useState(false);
-  const [isClosingRules, setIsClosingRules] = useState(false);
-  const [showUsernameModal, setShowUsernameModal] = useState(false);
-  const [isClosingUsernameModal, setIsClosingUsernameModal] = useState(false);
-  const [connectionStatus, setConnectionStatus] = useState('connecting');
-  const [statusText, setStatusText] = useState('Connecting...');
-  const [isModerator, setIsModerator] = useState(false);
+    const metadata = getMainPageMetadata('chat');
+    const [showRules, setShowRules] = useState(false);
+    const [isClosingRules, setIsClosingRules] = useState(false);
+    const [showUsernameModal, setShowUsernameModal] = useState(false);
+    const [isClosingUsernameModal, setIsClosingUsernameModal] = useState(false);
+    const [connectionStatus, setConnectionStatus] = useState('connecting');
+    const [statusText, setStatusText] = useState('Connecting...');
+    const [isModerator, setIsModerator] = useState(false);
 
-  const handleCloseRules = () => {
-    setIsClosingRules(true);
-    setTimeout(() => {
-      setShowRules(false);
-      setIsClosingRules(false);
-    }, 300);
-  };
+    const handleCloseRules = () => {
+        setIsClosingRules(true);
+        setTimeout(() => {
+            setShowRules(false);
+            setIsClosingRules(false);
+        }, 300);
+    };
 
-  const handleCloseUsernameModal = () => {
-    setIsClosingUsernameModal(true);
-    setTimeout(() => {
-      setShowUsernameModal(false);
-      setIsClosingUsernameModal(false);
-    }, 300);
-  };
+    const handleCloseUsernameModal = () => {
+        setIsClosingUsernameModal(true);
+        setTimeout(() => {
+            setShowUsernameModal(false);
+            setIsClosingUsernameModal(false);
+        }, 300);
+    };
 
     useEffect(() => {
         // Destroy existing chat instance if it exists
@@ -171,9 +171,9 @@ export default function ChatPage() {
                     <div className="chat-header-content">
                         <div className="chat-status">
                             <div className={`status-indicator ${connectionStatus}`}>
-                                {connectionStatus === 'connected' ? '🟢' : 
-                                 connectionStatus === 'connecting' ? '🟡' : 
-                                 '🔴'}
+                                {connectionStatus === 'connected' ? '🟢' :
+                                    connectionStatus === 'connecting' ? '🟡' :
+                                        '🔴'}
                             </div>
                             <span className="status-text">{statusText}</span>
                         </div>
@@ -226,12 +226,12 @@ export default function ChatPage() {
                         </div>
 
                         {/* Username Button - Mobile */}
-                            <button
+                        <button
                             className="username-button-mobile"
                             onClick={() => setShowUsernameModal(true)}
                         >
                             <BiPencil style={{ fontSize: '16px', marginTop: '0.1rem' }} />
-                            </button>
+                        </button>
 
                         {/* Message Input */}
                         <div className="message-input-wrapper">
@@ -250,8 +250,8 @@ export default function ChatPage() {
                                 aria-label="Send message"
                             >
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M12 19V5"/>
-                                    <path d="m5 12 7-7 7 7"/>
+                                    <path d="M12 19V5" />
+                                    <path d="m5 12 7-7 7 7" />
                                 </svg>
                             </button>
                         </div>
@@ -509,13 +509,13 @@ export default function ChatPage() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 40px;
-                    height: 40px;
+                    width: 36px;
+                    height: 36px;
                     border-radius: 12px;
-                    background: #28a745;
+                    background: #68c07c;
                     cursor: default;
                     transition: all 0.2s ease;
-                    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+                    box-shadow: 0 2px 8px rgba(123, 242, 150, 0.3);
                 }
 
                 .chat-title {
