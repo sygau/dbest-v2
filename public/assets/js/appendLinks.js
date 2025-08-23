@@ -51,10 +51,20 @@
    */
   async function loadData(subject) {
     try {
-      // Direct CDN URL - no need for main.json
-      const fileHost = 'https://cdn.dse.best';
+      // Simple ping to check if cdn.dse.best is online
+      let fileHost = 'https://cdn.dse.best';
       
-      // Try local files first (for development), then fallback to CDN
+      try {
+        const response = await fetch('https://cdn.dse.best', { 
+          method: 'HEAD',
+          mode: 'no-cors'
+        });
+        console.log('✅ cdn.dse.best is online');
+      } catch (error) {
+        console.log('❌ cdn.dse.best is offline, using fallback');
+        fileHost = 'https://dbest-cdn.pages.dev';
+      }
+
       const baseUrls = [
         window.location.origin, // Local development
         'https://dse.best'       // Production CDN
