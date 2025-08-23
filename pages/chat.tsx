@@ -18,15 +18,34 @@ import {
   BiX,
   BiMessageRounded,
   BiWifi,
-  BiWifiOff
+  BiWifiOff,
+  BiPencil
 } from 'react-icons/bi'
 
 export default function ChatPage() {
   const metadata = getMainPageMetadata('chat');
   const [showRules, setShowRules] = useState(false);
+  const [isClosingRules, setIsClosingRules] = useState(false);
   const [showUsernameModal, setShowUsernameModal] = useState(false);
+  const [isClosingUsernameModal, setIsClosingUsernameModal] = useState(false);
   const [connectionStatus, setConnectionStatus] = useState('connecting');
   const [statusText, setStatusText] = useState('Connecting...');
+
+  const handleCloseRules = () => {
+    setIsClosingRules(true);
+    setTimeout(() => {
+      setShowRules(false);
+      setIsClosingRules(false);
+    }, 300);
+  };
+
+  const handleCloseUsernameModal = () => {
+    setIsClosingUsernameModal(true);
+    setTimeout(() => {
+      setShowUsernameModal(false);
+      setIsClosingUsernameModal(false);
+    }, 300);
+  };
 
     useEffect(() => {
         // Destroy existing chat instance if it exists
@@ -39,7 +58,7 @@ export default function ChatPage() {
         const chatMessages = document.getElementById('chatMessages');
         if (chatMessages) {
             const welcomeDiv = document.createElement('div');
-            welcomeDiv.className = 'chat-system-message text-center my-2 small fst-italic';
+            welcomeDiv.className = 'chat-system-message text-center my-2 small';
             welcomeDiv.textContent = 'Welcome to DSEBest Chatroom! Start chatting with other students.';
             chatMessages.appendChild(welcomeDiv);
         }
@@ -188,7 +207,7 @@ export default function ChatPage() {
                                 type="button"
                                 aria-label="Edit username"
                             >
-                                ✏️
+                                <BiPencil style={{ fontSize: '16px', marginTop: '0.1rem' }} />
                             </button>
                         </div>
 
@@ -197,7 +216,7 @@ export default function ChatPage() {
                             className="username-button-mobile"
                             onClick={() => setShowUsernameModal(true)}
                         >
-                            <BiUserCircle />
+                            <BiPencil style={{ fontSize: '16px', marginTop: '0.1rem' }} />
                             </button>
 
                         {/* Message Input */}
@@ -227,34 +246,35 @@ export default function ChatPage() {
             </div>
 
             {/* Username Modal */}
-            {showUsernameModal && (
-                <div className="modal-overlay" onClick={() => setShowUsernameModal(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                                <div className="modal-header">
+            {(showUsernameModal || isClosingUsernameModal) && (
+                <div className={`modal-overlay ${isClosingUsernameModal ? 'hide' : 'show'}`} onClick={handleCloseUsernameModal}>
+                    <div className={`modal-content ${isClosingUsernameModal ? 'hide' : 'show'}`} onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header">
                             <h3>Change Username</h3>
-                                    <button
+                            <button
                                 className="modal-close"
-                                onClick={() => setShowUsernameModal(false)}
+                                onClick={handleCloseUsernameModal}
                             >
                                 <BiX />
                             </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div className="input-group">
-                                        <input
-                                            type="text"
-                                            id="userNameInputMobile"
-                                            className="form-control"
-                                            maxLength={14}
-                                            placeholder="Your name"
-                                        />
-                                        <button
-                                            className="btn btn-primary"
-                                            id="saveUsernameBtn"
-                                            type="button"
-                                        >
-                                    <BiCheck />
-                                        </button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="input-group">
+                                <input
+                                    type="text"
+                                    id="userNameInputMobile"
+                                    className="form-control"
+                                    maxLength={14}
+                                    placeholder="Your name"
+                                />
+                                <button
+                                    className="btn btn-primary"
+                                    id="saveUsernameBtn"
+                                    type="button"
+                                    style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', border: 'none' }}
+                                >
+                                    <BiCheck style={{ fontSize: '28px', marginBottom: '0.1rem', marginRight: '0.1rem' }} />
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -262,144 +282,136 @@ export default function ChatPage() {
             )}
 
             {/* Rules Modal */}
-            {showRules && (
-                <div className="modal-overlay" onClick={() => setShowRules(false)}>
-                    <div className="modal-content large" onClick={(e) => e.stopPropagation()}>
-                                <div className="modal-header">
+            {(showRules || isClosingRules) && (
+                <div className={`modal-overlay ${isClosingRules ? 'hide' : 'show'}`} onClick={handleCloseRules}>
+                    <div className={`modal-content large ${isClosingRules ? 'hide' : 'show'}`} onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header">
                             <h3>
-                                        <BiBook className="me-2" />
-                                        DSEBest 聊天室規則 Chatroom Rules
+                                <BiBook className="me-2" />
+                                DSEBest 聊天室規則 Chatroom Rules
                             </h3>
-                                    <button
+                            <button
                                 className="modal-close"
-                                onClick={() => setShowRules(false)}
+                                onClick={handleCloseRules}
                             >
                                 <BiX />
                             </button>
-                                </div>
-                                <div className="modal-body">
-                                    <div className="rules-content">
-                                <h6 className="rules-section">
+                        </div>
+                        <div className="modal-body">
+                            <div className="rules-content">
+                                <h6 className="rules-section info">
                                     <BiShield />
-                                            基本規則 Basic Rules
-                                        </h6>
+                                    基本規則 Basic Rules
+                                </h6>
                                 <ul className="rules-list">
                                     <li>
-                                        <BiCheck className="rule-icon success" />
-                                                <span>
-                                                    <strong>保持尊重</strong> - 請以禮待人，尊重所有用戶 Be
-                                                    respectful to all users
-                                                </span>
-                                            </li>
+                                        <BiCheck className="rule-icon success" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>保持尊重</strong> - 請以禮待人，尊重所有用戶 Be
+                                            respectful to all users
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiCheck className="rule-icon success" />
-                                                <span>
-                                                    <strong>學術討論</strong> - 歡迎分享學習心得和DSE相關話題
-                                                    Focus on academic discussions and DSE topics
-                                                </span>
-                                            </li>
+                                        <BiCheck className="rule-icon success" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>學術討論</strong> - 歡迎分享學習心得和DSE相關話題
+                                            Focus on academic discussions and DSE topics
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiCheck className="rule-icon success" />
-                                                <span>
-                                                    <strong>互相幫助</strong> - 鼓勵解答疑問和分享資源 Help each
-                                                    other with questions and share resources
-                                                </span>
-                                            </li>
+                                        <BiCheck className="rule-icon success" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>互相幫助</strong> - 鼓勵解答疑問和分享資源 Help each
+                                            other with questions and share resources
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiCheck className="rule-icon success" />
-                                                <span>
-                                                    <strong>適當用戶名</strong> - 請使用合適的用戶名稱 Use
-                                                    appropriate usernames
-                                                </span>
-                                            </li>
-                                        </ul>
+                                        <BiCheck className="rule-icon success" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>適當用戶名</strong> - 請使用合適的用戶名稱 Use
+                                            appropriate usernames
+                                        </span>
+                                    </li>
+                                </ul>
 
                                 <h6 className="rules-section danger">
                                     <BiBlock />
-                                            禁止行為 Prohibited Behavior
-                                        </h6>
+                                    禁止行為 Prohibited Behavior
+                                </h6>
                                 <ul className="rules-list">
                                     <li>
-                                        <BiX className="rule-icon danger" />
-                                                <span>
-                                                    <strong>粗言穢語</strong> - 嚴禁使用不當言語或仇恨言論 No
-                                                    profanity, hate speech, or offensive language
-                                                </span>
-                                            </li>
+                                        <BiX className="rule-icon danger" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>粗言穢語</strong> - 嚴禁使用不當言語或仇恨言論 No
+                                            profanity, hate speech, or offensive language
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiX className="rule-icon danger" />
-                                                <span>
-                                                    <strong>垃圾訊息</strong> - 禁止發送重複或無意義的訊息 No
-                                                    spam, repetitive, or meaningless messages
-                                                </span>
-                                            </li>
+                                        <BiX className="rule-icon danger" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>垃圾訊息</strong> - 禁止發送重複或無意義的訊息 No
+                                            spam, repetitive, or meaningless messages
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiX className="rule-icon danger" />
-                                                <span>
-                                                    <strong>分享連結</strong> - 禁止分享外部連結或個人聯絡方式
-                                                    No external links or personal contact information
-                                                </span>
-                                            </li>
+                                        <BiX className="rule-icon danger" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>分享連結</strong> - 禁止分享外部連結或個人聯絡方式
+                                            No external links or personal contact information
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiX className="rule-icon danger" />
-                                                <span>
-                                                    <strong>騷擾行為</strong> - 禁止騷擾、欺凌或針對特定用戶 No
-                                                    harassment, bullying, or targeting specific users
-                                                </span>
-                                            </li>
+                                        <BiX className="rule-icon danger" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>騷擾行為</strong> - 禁止騷擾、欺凌或針對特定用戶 No
+                                            harassment, bullying, or targeting specific users
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiX className="rule-icon danger" />
-                                                <span>
-                                                    <strong>不當內容</strong> - 禁止分享不當或成人內容 No
-                                                    inappropriate or adult content
-                                                </span>
-                                            </li>
+                                        <BiX className="rule-icon danger" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>不當內容</strong> - 禁止分享不當或成人內容 No
+                                            inappropriate or adult content
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiX className="rule-icon danger" />
-                                                <span>
-                                                    <strong>廣告宣傳</strong> - 禁止商業廣告或推廣活動 No
-                                                    commercial advertising or promotional content
-                                                </span>
-                                            </li>
-                                        </ul>
+                                        <BiX className="rule-icon danger" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>廣告宣傳</strong> - 禁止商業廣告或推廣活動 No
+                                            commercial advertising or promotional content
+                                        </span>
+                                    </li>
+                                </ul>
 
                                 <h6 className="rules-section warning">
                                     <BiTime />
-                                            技術限制 Technical Limits
-                                        </h6>
+                                    技術限制 Technical Limits
+                                </h6>
                                 <ul className="rules-list">
                                     <li>
-                                        <BiTime className="rule-icon warning" />
-                                                <span>
-                                                    <strong>發送頻率</strong> -
-                                                    每條訊息間隔15秒，每分鐘最多8條訊息 15-second cooldown
-                                                    between messages, max 8 per minute
-                                                </span>
-                                            </li>
+                                        <BiTime className="rule-icon warning" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>發送頻率</strong> -
+                                            每條訊息間隔15秒，每分鐘最多8條訊息 15-second cooldown
+                                            between messages, max 8 per minute
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiText className="rule-icon warning" />
-                                                <span>
-                                                    <strong>訊息長度</strong> - 每條訊息最多150字符 Maximum 150
-                                                    characters per message
-                                                </span>
-                                            </li>
+                                        <BiText className="rule-icon warning" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>訊息長度</strong> - 每條訊息最多150字符 Maximum 150
+                                            characters per message
+                                        </span>
+                                    </li>
                                     <li>
-                                        <BiIdCard className="rule-icon warning" />
-                                                <span>
-                                                    <strong>用戶名長度</strong> - 用戶名需3-14字符 Username must
-                                                    be 3-14 characters
-                                                </span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="modal-footer">
-                                    <button
-                                        className="btn btn-secondary"
-                                onClick={() => setShowRules(false)}
-                                    >
-                                        關閉 Close
-                                    </button>
+                                        <BiIdCard className="rule-icon warning" style={{ width: '24px', height: '28px' }} />
+                                        <span>
+                                            <strong>用戶名長度</strong> - 用戶名需3-14字符 Username must
+                                            be 3-14 characters
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -462,7 +474,7 @@ export default function ChatPage() {
                 .chat-header {
                     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                     color: white;
-                    padding: 0.75rem 1.5rem;
+                    padding: 0.5rem 1.5rem;
                     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 }
 
@@ -493,17 +505,9 @@ export default function ChatPage() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 18px;
-                    height: 18px;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.2);
-                }
-
-                .status-indicator svg {
-                    width: 0.9em !important;
-                    height: 0.9em !important;
-                    font-size: 0.9em !important;
-                    font-weight: bold !important;
+                    font-size: 14px;
+                    width: 20px;
+                    height: 20px;
                 }
 
                 .status-indicator.connected {
@@ -551,7 +555,6 @@ export default function ChatPage() {
 
                 .rules-button:hover {
                     background: rgba(255, 255, 255, 0.3);
-                    transform: translateY(-1px);
                 }
 
                 .messages-container {
@@ -609,6 +612,14 @@ export default function ChatPage() {
                     cursor: not-allowed;
                 }
 
+                .username-field:focus {
+                    outline: none;
+                }
+
+                .username-field:enabled {
+                    box-shadow: none;
+                }
+
                 .edit-name-btn {
                     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                     border: none;
@@ -642,10 +653,12 @@ export default function ChatPage() {
                     background: var(--bs-secondary);
                     border: none;
                     color: white;
-                    padding: 0.75rem;
+                    padding: 0;
                     border-radius: 8px;
                     cursor: pointer;
                     transition: all 0.2s ease;
+                    height: 40px;
+                    width: 40px;
                 }
 
                 .message-input-wrapper {
@@ -715,35 +728,81 @@ export default function ChatPage() {
                     justify-content: center;
                     z-index: 1000;
                     padding: 1rem;
+                    animation: fadeIn 0.3s ease-out;
+                }
+
+                .modal-overlay.hide {
+                    animation: fadeOut 0.3s ease-out forwards;
+                }
+
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
                 }
 
                 .modal-content {
                     background: var(--bs-body-bg);
-                    border-radius: 12px;
-                    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+                    border-radius: 16px;
+                    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
                     max-width: 500px;
                     width: 100%;
                     max-height: 90vh;
                     overflow: hidden;
                     display: flex;
                     flex-direction: column;
+                    animation: fadeIn 0.3s ease-out;
+                }
+
+                .modal-content.hide {
+                    animation: slideOut 0.3s ease-out forwards;
+                }
+
+                @keyframes fadeIn {
+                    from { 
+                        opacity: 0; 
+                    }
+                    to { 
+                        opacity: 1; 
+                    }
+                }
+
+                @keyframes slideOut {
+                    from { 
+                        opacity: 1; 
+                        transform: translateY(0) scale(1);
+                    }
+                    to { 
+                        opacity: 0; 
+                        transform: translateY(-20px) scale(0.95);
+                    }
                 }
 
                 .modal-content.large {
                     max-width: 700px;
                 }
 
+                .modal-content.modern {
+                    max-width: 800px;
+                    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                }
+
                 .modal-header {
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
-                    padding: 1.5rem;
+                    padding: 1rem 1.5rem;
                     border-bottom: 1px solid var(--bs-border-color);
                 }
 
                 .modal-header h3 {
                     margin: 0;
-                    font-size: 1.25rem;
+                    font-size: 1.1rem;
                     font-weight: 600;
                     display: flex;
                     align-items: center;
@@ -761,10 +820,6 @@ export default function ChatPage() {
                     transition: all 0.2s ease;
                 }
 
-                .modal-close:hover {
-                    background: var(--bs-secondary-bg-subtle);
-                    color: var(--bs-secondary);
-                }
 
                 .modal-body {
                     padding: 1.5rem;
@@ -780,28 +835,30 @@ export default function ChatPage() {
                 }
 
                 .rules-content {
-                    color: var(--bs-body-color);
+                    color: white;
                 }
 
                 .rules-section {
+                    color: #333;
+                    margin-top: 1.5rem;
+                    margin-bottom: 1rem;
+                    font-size: 1rem;
+                    font-weight: 600;
                     display: flex;
                     align-items: center;
                     gap: 0.5rem;
-                    margin: 1.5rem 0 1rem 0;
-                    font-size: 1rem;
-                    font-weight: 600;
+                    padding: 0.5rem 0;
+                    border-bottom: 2px solid var(--bs-border-color);
                 }
 
-                .rules-section:first-child {
-                    margin-top: 0;
-                }
+
 
                 .rules-section.danger {
-                    color: #dc3545;
+                    border-left-color: #dc3545;
                 }
 
                 .rules-section.warning {
-                    color: #ffc107;
+                    border-left-color: #ffc107;
                 }
 
                 .rules-list {
@@ -815,20 +872,38 @@ export default function ChatPage() {
                     align-items: flex-start;
                     gap: 0.75rem;
                     margin-bottom: 0.75rem;
-                    padding: 0.75rem;
-                    background: var(--bs-secondary-bg);
-                    border-radius: 8px;
-                    border-left: 3px solid var(--bs-border-color);
+                    color: white;
+                    background: none !important;
+                    padding: 0.5rem 0;
+                    border-radius: 0;
+                    box-shadow: none !important;
+                    border: none !important;
                 }
 
                 .rule-icon {
                     flex-shrink: 0;
-                    margin-top: 0.125rem;
-                    font-size: 1.125rem;
+                    margin-top: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .rule-icon svg {
+                    width: 48px !important;
+                    height: 48px !important;
+                }
+
+                /* Target specific React Icons */
+                .rule-icon .bi-check,
+                .rule-icon .bi-x,
+                .rule-icon .bi-time,
+                .rule-icon .bi-text {
+                    width: 48px !important;
+                    height: 48px !important;
                 }
 
                 .rule-icon.success {
-                    color: #198754;
+                    color: #28a745;
                 }
 
                 .rule-icon.danger {
@@ -839,8 +914,61 @@ export default function ChatPage() {
                     color: #ffc107;
                 }
 
+
+
+                /* Legacy styles for backward compatibility */
+                .rules-section {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    margin: 1.5rem 0 0.2rem 0;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    color: #212529;
+                }
+
+                .rules-section:first-child {
+                    margin-top: 0;
+                }
+
+                .rules-section.danger {
+                    color: #dc3545 !important;
+                    border-bottom-color: #dc3545 !important;
+                }
+
+                .rules-section.warning {
+                    color: #ffc107 !important;
+                    border-bottom-color: #ffc107 !important;
+                }
+
+                .rules-section.info {
+                    color: #0dcaf0 !important;
+                    border-bottom-color: #0dcaf0 !important;
+                }
+
+                .rules-list {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .rules-list li {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    margin-bottom: -0.50rem;
+                    padding: 0.5rem 0;
+                    background: transparent !important;
+                    border-radius: 0;
+                    border-left: none !important;
+                    color: white;
+                }
+
+
+
                 .rules-list li span {
                     line-height: 1.5;
+                    color: var(--bs-body-color);
                 }
 
                 @media (max-width: 768px) {
@@ -879,13 +1007,33 @@ export default function ChatPage() {
                     .modal-content {
                         margin: 0;
                         max-height: 100vh;
-                        border-radius: 0;
+                        border-radius: 16px !important;
+                    }
+
+                    .modal-content.large {
+                        border-radius: 16px !important;
                     }
 
                     .modal-header,
                     .modal-body,
                     .modal-footer {
                         padding: 1rem;
+                    }
+
+                    .btn-primary {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                        border: none !important;
+                    }
+
+                    #saveUsernameBtn {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                        border: none !important;
+                    }
+
+                    .username-button-mobile {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                        border: none !important;
+                        color: white !important;
                     }
                 }
 

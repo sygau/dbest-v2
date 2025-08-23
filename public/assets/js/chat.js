@@ -250,6 +250,19 @@ class DSEChat {
     window.addEventListener('beforeunload', this.handleBeforeUnload);
     window.addEventListener('pagehide', this.handleBeforeUnload);
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
+
+    // "/" hotkey to focus message input
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '/' && !e.ctrlKey && !e.altKey && !e.metaKey) {
+        // Only trigger if not typing in an input field
+        if (document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          if (this.messageInput) {
+            this.messageInput.focus();
+          }
+        }
+      }
+    });
   }
 
   // Remove event listeners
@@ -303,7 +316,21 @@ class DSEChat {
   // Event handler methods
   // Helper function to safely set edit button icon
   setEditButtonIcon(iconClass) {
-    this.editNameBtn.textContent = iconClass;
+    if (iconClass === 'bi-pencil') {
+      // Custom SVG for edit (pencil)
+      this.editNameBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 0.1rem; color: white;">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+        <path d="m18.5 2.5 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+      </svg>`;
+    } else if (iconClass === 'bi-check') {
+      // Custom SVG for check
+      this.editNameBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top: 0.1rem; color: white;">
+        <polyline points="20,6 9,17 4,12"></polyline>
+      </svg>`;
+    } else {
+      // Fallback to Bootstrap Icons
+      this.editNameBtn.innerHTML = `<i class="bi ${iconClass}" style="font-size: 16px; margin-top: 0.1rem; color: white;"></i>`;
+    }
   }
 
   handleEditName() {
@@ -313,7 +340,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.setEditButtonIcon('✏️');
+        this.setEditButtonIcon('bi-pencil');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
         // Sync with mobile input
@@ -326,7 +353,7 @@ class DSEChat {
       // Start editing
       this.userNameInput.disabled = false;
       this.userNameInput.focus();
-      this.setEditButtonIcon('✅');
+      this.setEditButtonIcon('bi-check');
     }
   }
 
@@ -335,7 +362,7 @@ class DSEChat {
       const newUsername = this.userNameInput.value.trim();
       if (this.validateUsername(newUsername)) {
         this.userNameInput.disabled = true;
-        this.setEditButtonIcon('✏️');
+        this.setEditButtonIcon('bi-pencil');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
       }
@@ -541,11 +568,19 @@ class DSEChat {
     const statusIndicator = document.querySelector('.status-indicator');
     
     if (statusTextEl) {
-      statusTextEl.innerHTML = `[${text}] | ${onlineCount} ${onlineCount === 1 ? 'User' : 'Users'} Online`;
+      statusTextEl.innerHTML = `${text} <span class="text-muted">|</span> <strong>${onlineCount}</strong> ${onlineCount === 1 ? 'User' : 'Users'} Online`;
     }
     
     if (statusIndicator) {
       statusIndicator.className = `status-indicator ${connected ? 'connected' : 'connecting'}`;
+      // Update the emoji based on status
+      if (connected) {
+        statusIndicator.innerHTML = '🟢'; // Green circle for connected
+      } else if (text === 'Connecting') {
+        statusIndicator.innerHTML = '🟡'; // Yellow circle for connecting
+      } else {
+        statusIndicator.innerHTML = '🔴'; // Red circle for disconnected/failed
+      }
     }
   }
 
