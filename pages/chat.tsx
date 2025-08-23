@@ -164,9 +164,9 @@ export default function ChatPage() {
                     <div className="chat-header-content">
                         <div className="chat-status">
                             <div className={`status-indicator ${connectionStatus}`}>
-                                {connectionStatus === 'connected' ? <BiWifi /> : 
-                                 connectionStatus === 'connecting' ? <BiWifi className="pulse" /> : 
-                                 <BiWifiOff />}
+                                {connectionStatus === 'connected' ? '🟢' : 
+                                 connectionStatus === 'connecting' ? '🟡' : 
+                                 '🔴'}
                             </div>
                             <span className="status-text">{statusText}</span>
                         </div>
@@ -469,6 +469,7 @@ export default function ChatPage() {
                     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
                     overflow: hidden;
                     border: 1px solid var(--bs-border-color);
+                    color: rgba(255, 255, 255, 0.9);
                 }
 
                 .chat-header {
@@ -1037,13 +1038,174 @@ export default function ChatPage() {
                     }
                 }
 
-                /* Message styling - using original CSS from main.css */
-                .messages-list :global(.chat-bubble) {
-                    /* Original styles are already in main.css */
+                /* Chat bubbles - Enhanced styling */
+                :global(.chat-bubble) {
+                    max-width: 80%;
+                    padding: 1rem 1.25rem;
+                    border-radius: 1.25rem;
+                    color: #fff;
+                    word-break: break-word;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                    margin-bottom: 0.70rem;
+                    position: relative;
+                    transition: all 0.2s ease;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    animation: message-slide-in 0.3s ease-out;
                 }
 
-                .messages-list :global(.chat-system-message) {
-                    /* Original styles are already in main.css */
+                :global(.chat-bubble:hover) {
+                    transform: translateY(-1px);
+                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+                }
+
+                :global(.chat-bubble.other) {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-color: rgba(102, 126, 234, 0.3);
+                }
+
+                :global(.chat-bubble.mine) {
+                    background: linear-gradient(135deg, #1146df 0%, #434a60 100%);
+                    border-color: rgba(30, 58, 138, 0.3);
+                }
+
+                /* Message time styling - Enhanced */
+                :global(.chat-bubble .message-time) {
+                    opacity: 0.85;
+                    color: rgba(255, 255, 255, 0.9);
+                    font-size: 0.75em;
+                    font-weight: 500;
+                    letter-spacing: 0.5px;
+                }
+
+                /* System message styling - Enhanced */
+                :global(.chat-system-message) {
+                    color: var(--bs-secondary-color);
+                    font-style: normal;
+                    padding: 0.2rem 0;
+                    margin: 0.4rem 0;
+                    text-align: center;
+                    font-size: 0.85rem;
+                    opacity: 0.8;
+                    transition: opacity 0.2s ease;
+                }
+
+                /* Moderator styles - Enhanced */
+                :global(.chat-bubble.moderator) {
+                    background: linear-gradient(145deg,
+                        #6d5000 0%,           /* Very dark gold - almost black */
+                        #8b6900 25%,          /* Deep warm gold */
+                        #b8860b 60%,          /* Goldenrod - warm but not yellow */
+                        #7c5a00 100%          /* Dark gold shadow */
+                    );
+                    color: #f5f5f5;         /* Light gray text */
+                    font-weight: 500;
+                    border-radius: 1.3rem;
+                    padding: 14px 18px;
+                    position: relative;
+                    max-width: 80%;
+                    box-shadow:
+                        0 6px 16px rgba(90, 60, 0, 0.3),
+                        0 2px 6px rgba(0, 0, 0, 0.2);
+                    border: 1px solid rgba(80, 50, 0, 0.5);
+                }
+
+                /* Inner glow - subtle metallic shine */
+                :global(.chat-bubble.moderator::before) {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: radial-gradient(circle at 20% 20%,
+                        rgba(255, 255, 255, 0.1),
+                        transparent 70%
+                    );
+                    z-index: -1;
+                    border-radius: inherit;
+                    opacity: 0.4;
+                    pointer-events: none;
+                }
+
+                /* Outer glow - deep gold tone */
+                :global(.chat-bubble.moderator::after) {
+                    content: '';
+                    position: absolute;
+                    top: -4px;
+                    left: -4px;
+                    right: -4px;
+                    bottom: -4px;
+                    background: linear-gradient(145deg,
+                        rgba(120, 80, 0, 0.3),
+                        rgba(100, 70, 0, 0.2),
+                        rgba(120, 80, 0, 0.3)
+                    );
+                    z-index: -2;
+                    border-radius: 1.5rem;
+                    filter: blur(4px);
+                    opacity: 0.8;
+                }
+
+                :global(.moderator-badge) {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 4px;
+                    width: 18px;
+                    height: 18px;
+                    animation: badge-glow 2s ease-in-out infinite alternate;
+                }
+
+                :global(.moderator-badge svg) {
+                    width: 18px;
+                    height: 18px;
+                    fill: #fff;
+                    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+                }
+
+                @keyframes badge-glow {
+                    from { 
+                        filter: brightness(1) drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+                    }
+                    to { 
+                        filter: brightness(1.2) drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+                    }
+                }
+
+                :global(.chat-bubble.moderator .moderator-badge) {
+                    /* Styles handled by general .moderator-badge */
+                }
+
+                /* Username styling in chat bubbles */
+                :global(.chat-bubble strong) {
+                    font-weight: 600;
+                    color: rgba(255, 255, 255, 0.85);
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                }
+
+                /* Client ID styling for moderators */
+                :global(.chat-bubble .text-warning) {
+                    color: #ffc107 !important;
+                    font-family: 'Courier New', monospace;
+                    font-size: 0.75em;
+                    opacity: 0.8;
+                }
+
+                /* Smooth scrolling for messages */
+                :global(.messages-list) {
+                    scroll-behavior: smooth;
+                }
+
+                /* Loading animation for new messages */
+                @keyframes message-slide-in {
+                    from {
+                        opacity: 0;
+                        transform: translateY(10px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
                 }
             `}</style>
         </>
