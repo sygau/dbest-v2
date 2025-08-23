@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
-import { getSubjectMetadata } from '../utils/structuredData';
+import { getSubjectMetadata } from '../../utils/structuredData';
 export default function PhysicsPage() {
   const metadata = getSubjectMetadata('physics');
 
@@ -65,6 +65,9 @@ export default function PhysicsPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE Physics 物理歷屆試題。
                         在此，您可以找到按年份排列的試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Physics past papers. Here you can find comprehensive Physics examination materials including mechanics, electricity, waves, and modern physics topics arranged by year, along with practical examination papers, topic-based practice exercises, and detailed marking schemes to help you master DSE Physics concepts and achieve excellent results in your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

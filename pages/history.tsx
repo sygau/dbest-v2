@@ -66,6 +66,9 @@ export default function HistoryPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE 歷史 History
                         歷屆試題。在此，您可以找到按年份排列的試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE History past papers. Here you can find comprehensive History examination materials including world history, local history, and historical skills topics arranged by year, along with source-based questions, essay questions, and detailed marking schemes to help you understand DSE History concepts and prepare effectively for your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

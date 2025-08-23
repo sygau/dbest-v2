@@ -63,6 +63,9 @@ export default function ChinesePage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE中文歷屆試題。
                         在此，您可以找到按年份排列的試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Chinese Language past papers. Here you can find Chinese Language examination papers, answers, and marking schemes arranged by year, including reading comprehension, writing, listening, and speaking components to help you prepare for the DSE Chinese Language examination effectively.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

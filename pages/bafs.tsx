@@ -66,6 +66,9 @@ export default function BAFSPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE 企業、會計與財務概論 BAFS
                         歷屆試題。在此，您可以找到按年份排列的試題、按主題分類的練習、練習卷及樣本試卷，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Business, Accounting and Financial Studies (BAFS) past papers. Here you can find comprehensive BAFS examination materials including business management, accounting principles, financial analysis, and business ethics topics arranged by year, along with topic-based practice exercises, sample papers, and detailed marking schemes to help you master DSE BAFS concepts and prepare effectively for your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

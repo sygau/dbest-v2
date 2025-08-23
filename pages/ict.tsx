@@ -66,6 +66,9 @@ export default function ICTPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE 資訊及通訊科技 ICT
                         歷屆試題。在此，您可以找到按年份排列的試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Information and Communication Technology (ICT) past papers. Here you can find comprehensive ICT examination materials including database management, programming, networking, multimedia, and information processing topics arranged by year, along with practical examination papers, topic-based practice exercises, and detailed marking schemes to help you master DSE ICT concepts and prepare effectively for your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

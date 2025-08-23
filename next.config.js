@@ -78,14 +78,87 @@ const nextConfig = {
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
+            value: 'strict-origin-when-cross-origin'
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+            value: 'camera=(), microphone=(), geolocation=()'
           },
+          {
+            key: 'Content-Security-Policy-Report-Only',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://cdn.jsdelivr.net https://code.jquery.com https://vercel.com https://cdn.ably.com https://rest.ably.io https://cdn.dse.best https://*.disqus.com https://*.liadm.com https://*.privacymanager.io; style-src 'self' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com https://*.googleadservices.com https://cdn.jsdelivr.net https://cdn.dse.best; font-src 'self' https://*.gstatic.com https://*.googleapis.com https://cdn.jsdelivr.net https://cdn.dse.best; img-src 'self' data: https: https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://images.ctfassets.net https://cdn.dse.best https://dummyimage.com https://*.disqus.com https://*.liadm.com https://*.privacymanager.io; connect-src 'self' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://dse.best https://cdn.dse.best https://vercel.com https://cdn.ably.com https://rest.ably.io https://api.web3forms.com https://*.disqus.com https://disqus.com https://*.liadm.com https://*.privacymanager.io; frame-src 'self' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://cdn.dse.best https://*.disqus.com https://disqus.com https://*.liadm.com https://*.privacymanager.io; frame-ancestors 'none';"
+          }
         ],
       },
+      // Exclude CSP for personal projects in public and dev folders
+      {
+        source: '/dev/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
+          // No CSP header for dev projects
+        ],
+      },
+      {
+        source: '/bustime/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
+          // No CSP header for bustime project
+        ],
+      }
     ]
   },
 }

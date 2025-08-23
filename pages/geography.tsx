@@ -65,6 +65,9 @@ export default function GeographyPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE Geography 地理歷屆試題。
                         在此，您可以找到按年份排列的試題、地圖冊及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Geography past papers. Here you can find comprehensive Geography examination materials including physical geography, human geography, regional geography, and geographical skills topics arranged by year, along with atlas materials, fieldwork exercises, data analysis questions, and detailed marking schemes to help you understand DSE Geography concepts and prepare effectively for your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

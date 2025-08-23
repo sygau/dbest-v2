@@ -65,6 +65,9 @@ export default function VisualArtsPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE Visual Arts 視覺藝術歷屆試題。
                         在此，您可以找到按年份排列的試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Visual Arts past papers and resources. Here you can find comprehensive Visual Arts examination materials including art creation portfolios, art appreciation exercises, and artistic analysis topics arranged by year, along with School-based Assessment (SBA) guidelines, sample portfolios, and detailed marking criteria to help you excel in DSE Visual Arts examination preparation.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

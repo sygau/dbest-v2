@@ -91,7 +91,8 @@ async function generatePostHTML(post, blogDir) {
     '{{content}}': fields.content ? replaceButtonShortcodes(replaceYouTubeMarkers(documentToHtmlString(fields.content, {
       renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
-          const url = node.data.target.fields.file.url;
+          const rawUrl = node.data.target.fields.file.url;
+          const url = rawUrl.startsWith('http') ? rawUrl : 'https:' + rawUrl;
           const alt = node.data.target.fields.title || '';
           const caption = node.data.target.fields.description || ''; // or .caption if you have a custom field
           return `

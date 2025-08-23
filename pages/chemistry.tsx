@@ -65,6 +65,9 @@ export default function ChemistryPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE Chemistry 化學歷屆試題。
                         在此，您可以找到按年份排列的試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Chemistry past papers. Here you can find comprehensive Chemistry examination materials including organic chemistry, inorganic chemistry, physical chemistry, and analytical chemistry topics arranged by year, along with practical examination papers, topic-based practice exercises, and detailed solutions to help you understand DSE Chemistry concepts and prepare effectively for your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

@@ -65,6 +65,9 @@ export default function EconomicsPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE Economics 經濟歷屆試題。
                         在此，您可以找到按年份排列的經濟科試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Economics past papers. Here you can find comprehensive Economics examination materials including microeconomics, macroeconomics, international trade, and economic development topics arranged by year, along with data response questions, essay questions, and detailed marking schemes to help you master DSE Economics concepts and achieve excellent results in your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

@@ -65,6 +65,9 @@ export default function EnglishPage() {
                     <p className="mb-4">
                         歡迎瀏覽DSE English 英文歷屆試題。
                         在此，您可以找到按年份排列的試題及答案，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE English Language past papers. Here you can find comprehensive English Language examination materials including reading comprehension, writing tasks, listening exercises, and speaking assessments arranged by year, along with detailed marking schemes and sample answers to enhance your DSE English Language preparation.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">

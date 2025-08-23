@@ -67,6 +67,9 @@ export default function M1Page() {
                     <p className="mb-4">
                         歡迎瀏覽DSE Module 1
                         數學延伸單元一歷屆試題。在此，您可以找到按年份排列的M1試題、答案及評分準則，以及分類練習和舊制M&amp;S試題，助您備考。
+                        <br />
+                        <br />
+                        Welcome to browse DSE Mathematics Extended Part Module 1 (M1) past papers. Here you can find comprehensive M1 examination materials including statistics, probability, and calculus topics arranged by year, along with topic-based practice exercises and historical Mathematics & Statistics (M&S) papers to help you excel in DSE M1 examination preparation.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">
