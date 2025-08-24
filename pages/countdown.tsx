@@ -193,8 +193,9 @@ export default function CountdownPage() {
                                     <h4>完整考試時間表</h4>
                                     <p>查看 2026 年 DSE 各科目詳細考試時間安排</p>
                                     <NavigationLink 
-                                        href="/timetable" 
+                                        href="https://www.hkeaa.edu.hk/doclibrary/hkdse/exam_timetable/2026_dse_timetable.pdf" 
                                         className="timetable-link"
+                                        target="_blank"
                                     >
                                         查看完整考試時間表
                                     </NavigationLink>
