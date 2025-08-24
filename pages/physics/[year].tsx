@@ -4,8 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import fs from 'fs'
 import path from 'path'
 import NavigationLink from '../../components/NavigationLink'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
-import { getSubjectMetadata } from '../../utils/structuredData';
+import { generateYearMeta } from '../../utils/yearSlugSEO'
 
 // Define types
 interface YearPageProps {
@@ -62,30 +61,20 @@ function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
   };
 }
 
-// Helper function to generate SEO title
-function generateSEOTitle(year: string, availableFiles: string[]): string {
-  return `DSE Physics ${year} Past Papers | Paper 1, Paper 2, Answers, Marking Scheme (中/英)`;
-}
-
-// Helper function to generate SEO description
-function generateSEODescription(year: string): string {
-  return `Download DSE 物理 Physics ${year} past papers (PP), including Paper 1, Paper 2, MC answers, detailed marking schemes, and performance report in PDF format. Essential resources for Hong Kong DSE Physics exam preparation and revision.`;
-}
-
 export default function PhysicsYearPage({ subject, year, papers, availableFiles }: YearPageProps) {
-  const seoTitle = generateSEOTitle(year, availableFiles);
-  const seoDescription = generateSEODescription(year);
+  // Use the clean single function approach
+  const meta = generateYearMeta('physics', year);
 
   return (
     <>
       <Head>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDescription} />
+        <title>{meta.seoTitle}</title>
+        <meta name="description" content={meta.seoDescription} />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph Meta Tags */}
-        <meta property="og:title" content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
+        <meta property="og:title" content={meta.seoTitle} />
+        <meta property="og:description" content={meta.seoDescription} />
         <meta property="og:image" content="https://dse.best/assets/images/logo-icon.webp" />
         <meta property="og:url" content={`https://dse.best/physics/${year}`} />
         <meta property="og:type" content="website" />
@@ -97,13 +86,13 @@ export default function PhysicsYearPage({ subject, year, papers, availableFiles 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebPage",
-              "name": seoTitle,
-              "description": seoDescription,
+              "name": meta.seoTitle,
+              "description": meta.seoDescription,
               "url": `https://dse.best/physics/${year}`,
               "mainEntity": {
                 "@type": "EducationalResource",
-                "name": seoTitle,
-                "description": seoDescription,
+                "name": meta.seoTitle,
+                "description": meta.seoDescription,
                 "educationalLevel": "Secondary Education",
                 "inLanguage": ["zh-HK", "en-HK"]
               }
@@ -130,13 +119,13 @@ export default function PhysicsYearPage({ subject, year, papers, availableFiles 
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
-          <h1 className="mb-4">DSE Physics 物理 {year} Past Papers 歷屆試題</h1>
+          <h1 className="mb-4">{meta.pageTitle}</h1>
 
           <p className="mb-4">
-            瀏覽我們完整的DSE Physics {year} 物理歷屆試題合集，包括卷一甲、卷一乙、卷二、MC答案、詳細評分準則及表現報告PDF格式。這套完整的試題集合是香港中學文憑試物理科考試準備及溫習的重要資源，涵蓋力學、電學、波動及現代物理等核心課題，助您掌握DSE物理概念並在考試中取得優異成績。
+            {meta.pageDescriptionChi}
             <br />
             <br />
-            Browse our complete collection of DSE Physics {year} past papers, including Paper 1A, Paper 1B, Paper 2, MC answers, detailed marking schemes, and performance reports in PDF format. This comprehensive collection serves as essential resources for Hong Kong DSE Physics exam preparation and revision, covering core topics such as mechanics, electricity, waves, and modern physics to help you master DSE Physics concepts and achieve excellent results in your examination.
+            {meta.pageDescriptionEng}
           </p>
 
           <div className="alert alert-border-primary alert-dismissible fade show">
@@ -236,39 +225,47 @@ export default function PhysicsYearPage({ subject, year, papers, availableFiles 
           {/* Related Years */}
           <div className="mt-5 text-center">
             <h3 className="mb-4">其他年份 / Other Years</h3>
-            <div className="d-flex flex-wrap justify-content-center gap-3 mb-4">
+            <div className="d-flex flex-wrap justify-content-center gap-2">
               {[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023].map((yearNum) => {
                 const isCurrentYear = yearNum === parseInt(year);
                 return (
                   <NavigationLink
                     key={yearNum}
                     href={`/physics/${yearNum}`}
-                    className={`btn ${isCurrentYear ? 'btn-primary' : 'btn-outline-primary'}`}
+                    className={`btn ${isCurrentYear ? 'btn-active' : 'btn-inactive'}`}
                     style={{
-                      borderRadius: '8px',
-                      border: isCurrentYear ? 'none' : '1px solid #0d6efd',
-                      transition: 'all 0.2s ease',
-                      fontSize: '1rem',
-                      padding: '0.5rem 1rem',
+                      borderRadius: '10px',
+                      padding: '10px 20px',
+                      fontSize: '0.875rem',
                       fontWeight: '500',
-                      minWidth: '60px',
-                      boxShadow: isCurrentYear ? '0 2px 8px rgba(13, 110, 253, 0.2)' : 'none',
+                      border: 'none',
+                      backgroundColor: isCurrentYear ? 'linear-gradient(135deg, rgb(38, 111, 201), rgb(26, 79, 138))' : '#1e293b',
+                      color: isCurrentYear ? '#ffffff' : '#d1d5db',
                       textDecoration: 'none',
-                      lineHeight: '1.2'
+                      transition: 'all 0.2s ease',
+                      minWidth: '60px',
+                      textAlign: 'center',
+                      boxShadow: isCurrentYear ? '0 4px 12px rgba(0, 0, 0, 0.2)' : '0 2px 6px rgba(0, 0, 0, 0.1)',
+                      cursor: 'pointer',
+                      outline: 'none',
                     }}
-                    onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => {
                       if (!isCurrentYear) {
-                        e.currentTarget.style.backgroundColor = '#f8f9ff';
-                        e.currentTarget.style.borderColor = '#0b5ed7';
-                        e.currentTarget.style.color = '#0b5ed7';
+                        e.currentTarget.style.backgroundColor = '#334155';
+                        e.currentTarget.style.color = '#f3f4f6';
                       }
                     }}
-                    onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => {
                       if (!isCurrentYear) {
-                        e.currentTarget.style.backgroundColor = 'transparent';
-                        e.currentTarget.style.borderColor = '#0d6efd';
-                        e.currentTarget.style.color = '#0d6efd';
+                        e.currentTarget.style.backgroundColor = '#1e293b';
+                        e.currentTarget.style.color = '#d1d5db';
                       }
+                    }}
+                    onFocus={(e: React.FocusEvent<HTMLAnchorElement>) => {
+                      e.currentTarget.style.outline = '2px solid #93c5fd';
+                    }}
+                    onBlur={(e: React.FocusEvent<HTMLAnchorElement>) => {
+                      e.currentTarget.style.outline = 'none';
                     }}
                   >
                     {yearNum}

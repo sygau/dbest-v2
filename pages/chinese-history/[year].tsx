@@ -18,37 +18,38 @@ interface PaperData {
   paperId: string;
   title: string;
   description: string;
-  language: 'chi' | 'eng';
+  language: 'chi';
   paperType: string;
 }
 
 // Helper function to get paper display info
 function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
-  const englishPaperTypeMap: Record<string, string> = {
-    'P1': 'Paper 1',
-    'P2': 'Paper 2',
-    'ans': 'Answers / Marking Scheme'
+  const chineseHistoryPaperTypeMap: Record<string, string> = {
+    'p1': '卷一 資料回應題',
+    'p2': '卷二 論文題',
+    'ans': '參考答案',
+    'per': '考生表現報告'
   };
 
-  // Extract paper type from paperId (format: "2012_P1", "2012_P2", "2012_ans")
-  const match = paperId.match(new RegExp(`${year}_(.+)`));
+  // Extract paper type from paperId (format: "2012_p1_chi", "2012_p2_chi", "2012_ans_chi", etc.)
+  const match = paperId.match(new RegExp(`${year}_(.+)_chi`));
   if (!match) return null;
 
   const [, paperType] = match;
-  const displayType = englishPaperTypeMap[paperType] || paperType.toUpperCase();
+  const displayType = chineseHistoryPaperTypeMap[paperType] || paperType.toUpperCase();
 
   return {
     paperId,
     title: displayType,
     description: `${year} ${displayType}`,
-    language: 'eng' as 'chi' | 'eng', // Math papers are English only
+    language: 'chi' as 'chi',
     paperType: displayType
   };
 }
 
-export default function MathYearPage({ subject, year, papers, availableFiles }: YearPageProps) {
+export default function ChineseHistoryYearPage({ subject, year, papers, availableFiles }: YearPageProps) {
   // Use the clean single function approach
-  const meta = generateYearMeta('math', year);
+  const meta = generateYearMeta('chinese-history', year);
 
   return (
     <>
@@ -61,7 +62,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
         <meta property="og:title" content={meta.seoTitle} />
         <meta property="og:description" content={meta.seoDescription} />
         <meta property="og:image" content="https://dse.best/assets/images/logo-icon.webp" />
-        <meta property="og:url" content={`https://dse.best/math/${year}`} />
+        <meta property="og:url" content={`https://dse.best/chinese-history/${year}`} />
         <meta property="og:type" content="website" />
 
         {/* Structured Data */}
@@ -73,13 +74,13 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
               "@type": "WebPage",
               "name": meta.seoTitle,
               "description": meta.seoDescription,
-              "url": `https://dse.best/math/${year}`,
+              "url": `https://dse.best/chinese-history/${year}`,
               "mainEntity": {
                 "@type": "EducationalResource",
                 "name": meta.seoTitle,
                 "description": meta.seoDescription,
                 "educationalLevel": "Secondary Education",
-                "inLanguage": ["zh-HK", "en-HK"]
+                "inLanguage": ["zh-HK"]
               }
             })
           }}
@@ -88,7 +89,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
 
       {/*breadcrumb*/}
       <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">數學</div>
+        <div className="breadcrumb-title pe-3">中史</div>
         <div className="ps-3">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 p-0">
@@ -128,21 +129,26 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
           <hr className="my-4" />
           <br />
 
-          {/* Papers Section */}
+          {/* Chinese Papers Section */}
           <div className="mb-5">
             <h3 className="text-center mb-4">
-              <span style={{ color: '#0d6efd' }}>English Past Papers</span>
+              <span style={{ color: '#dc3545' }}>中史試題</span>
             </h3>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
               {papers
                 .sort((a, b) => {
-                  // Sort order: Paper 1, Paper 2, then Answers
-                  const order: Record<string, number> = { 'Paper 1': 1, 'Paper 2': 2, 'Answers / Marking Scheme': 3 };
+                  // Sort order: Paper 1, Paper 2, then Answers, then Performance
+                  const order: Record<string, number> = { 
+                    '卷一 資料回應題': 1, 
+                    '卷二 論文題': 2, 
+                    '參考答案': 3,
+                    '考生表現報告': 4
+                  };
                   return (order[a.paperType] || 999) - (order[b.paperType] || 999);
                 })
                 .map((paper) => (
                 <div key={paper.paperId} className="col">
-                  <div className="card h-100 d-flex flex-column border-primary border-2">
+                  <div className="card h-100 d-flex flex-column border-danger border-2">
                     <div className="card-body">
                       <h5 className="card-title">{paper.title}</h5>
                       <p className="card-text">{paper.description}</p>
@@ -150,11 +156,11 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                     <div className="card-footer bg-transparent border-0">
                       <a
                         href="#"
-                        className="btn btn-primary px-4 d-inline-flex gap-2"
+                        className="btn btn-danger px-4 d-inline-flex gap-2"
                         data-paper-id={paper.paperId}
                       >
                         <BiDownload style={{ fontSize: 22 }} />
-                        Download
+                        下載
                       </a>
                     </div>
                   </div>
@@ -174,7 +180,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                 return (
                   <NavigationLink
                     key={yearNum}
-                    href={`/math/${yearNum}`}
+                    href={`/chinese-history/${yearNum}`}
                     className={`btn ${isCurrentYear ? 'btn-active' : 'btn-inactive'}`}
                     style={{
                       borderRadius: '10px',
@@ -216,15 +222,14 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                 );
               })}
             </div>
-
           </div>
 
           {/* CTA to Main Page */}
           <div className="text-center mt-5 mb-5">
-            <h3>Need More Mathematics Papers?</h3>
+            <h3>Need More Chinese History Papers?</h3>
             <p className="mb-4">Access all years (2012-2023), topic-based practice, and comprehensive study materials.</p>
             <NavigationLink 
-              href="/math" 
+              href="/chinese-history" 
               className="btn btn-primary btn-lg d-inline-flex align-items-center gap-3"
               style={{
                 borderRadius: '25px',
@@ -247,10 +252,10 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                 e.currentTarget.style.boxShadow = '0 8px 25px rgba(13, 110, 253, 0.3)';
               }}
             >
-              <span>View All Mathematics Papers (2012-2023)</span>
+              <span>View All Chinese History Papers (2012-2023)</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
               </svg>
             </NavigationLink>
           </div>
@@ -283,8 +288,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   try {
-    // Read math config file
-    const configPath = path.join(process.cwd(), 'public', 'config', 'math.json');
+    // Read chinese-history config file
+    const configPath = path.join(process.cwd(), 'public', 'config', 'chinese-history.json');
     const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
     // Filter papers for the specific year
@@ -299,14 +304,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
       props: {
-        subject: 'math',
+        subject: 'chinese-history',
         year,
         papers,
         availableFiles
       }
     };
   } catch (error) {
-    console.error(`Error loading math ${year}:`, error);
+    console.error(`Error loading chinese-history ${year}:`, error);
     return {
       notFound: true
     };

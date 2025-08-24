@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
-import { getSubjectMetadata } from '../utils/structuredData';
+import { getSubjectMetadata } from '../../utils/structuredData';
 export default function ICTPage() {
   const metadata = getSubjectMetadata('ict');
 

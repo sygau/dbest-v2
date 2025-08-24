@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { BiDownload } from 'react-icons/bi';
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData';
-import { getSubjectMetadata } from '../utils/structuredData';
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
+import { getSubjectMetadata } from '../../utils/structuredData';
 
 export default function ChinesePage() {
   const metadata = getSubjectMetadata('chinese');

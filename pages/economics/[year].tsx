@@ -24,31 +24,45 @@ interface PaperData {
 
 // Helper function to get paper display info
 function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
-  const englishPaperTypeMap: Record<string, string> = {
-    'P1': 'Paper 1',
-    'P2': 'Paper 2',
-    'ans': 'Answers / Marking Scheme'
+  const economicsPaperTypeMapEng: Record<string, string> = {
+    'p1': 'Paper 1',
+    'p2': 'Paper 2',
+    'ans': 'Answers / Marking Scheme',
+    'per': 'Performance Report'
   };
 
-  // Extract paper type from paperId (format: "2012_P1", "2012_P2", "2012_ans")
-  const match = paperId.match(new RegExp(`${year}_(.+)`));
+  const economicsPaperTypeMapChi: Record<string, string> = {
+    'p1': '卷一',
+    'p2': '卷二',
+    'ans': '參考答案',
+    'per': '考生表現報告'
+  };
+
+  // Extract paper type and language from paperId (format: "2012_p1_chi", "2012_p2_eng", etc.)
+  const match = paperId.match(new RegExp(`${year}_(.+)_(chi|eng)`));
   if (!match) return null;
 
-  const [, paperType] = match;
-  const displayType = englishPaperTypeMap[paperType] || paperType.toUpperCase();
+  const [, paperType, language] = match;
+  const displayType = language === 'chi' 
+    ? economicsPaperTypeMapChi[paperType] || paperType.toUpperCase()
+    : economicsPaperTypeMapEng[paperType] || paperType.toUpperCase();
 
   return {
     paperId,
     title: displayType,
     description: `${year} ${displayType}`,
-    language: 'eng' as 'chi' | 'eng', // Math papers are English only
+    language: language as 'chi' | 'eng',
     paperType: displayType
   };
 }
 
-export default function MathYearPage({ subject, year, papers, availableFiles }: YearPageProps) {
+export default function EconomicsYearPage({ subject, year, papers, availableFiles }: YearPageProps) {
   // Use the clean single function approach
-  const meta = generateYearMeta('math', year);
+  const meta = generateYearMeta('economics', year);
+
+  // Separate papers by language
+  const chinesePapers = papers.filter(paper => paper.language === 'chi');
+  const englishPapers = papers.filter(paper => paper.language === 'eng');
 
   return (
     <>
@@ -61,7 +75,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
         <meta property="og:title" content={meta.seoTitle} />
         <meta property="og:description" content={meta.seoDescription} />
         <meta property="og:image" content="https://dse.best/assets/images/logo-icon.webp" />
-        <meta property="og:url" content={`https://dse.best/math/${year}`} />
+        <meta property="og:url" content={`https://dse.best/economics/${year}`} />
         <meta property="og:type" content="website" />
 
         {/* Structured Data */}
@@ -73,7 +87,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
               "@type": "WebPage",
               "name": meta.seoTitle,
               "description": meta.seoDescription,
-              "url": `https://dse.best/math/${year}`,
+              "url": `https://dse.best/economics/${year}`,
               "mainEntity": {
                 "@type": "EducationalResource",
                 "name": meta.seoTitle,
@@ -88,7 +102,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
 
       {/*breadcrumb*/}
       <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">數學</div>
+        <div className="breadcrumb-title pe-3">經濟</div>
         <div className="ps-3">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 p-0">
@@ -128,40 +142,79 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
           <hr className="my-4" />
           <br />
 
-          {/* Papers Section */}
-          <div className="mb-5">
-            <h3 className="text-center mb-4">
-              <span style={{ color: '#0d6efd' }}>English Past Papers</span>
-            </h3>
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-              {papers
-                .sort((a, b) => {
-                  // Sort order: Paper 1, Paper 2, then Answers
-                  const order: Record<string, number> = { 'Paper 1': 1, 'Paper 2': 2, 'Answers / Marking Scheme': 3 };
-                  return (order[a.paperType] || 999) - (order[b.paperType] || 999);
-                })
-                .map((paper) => (
-                <div key={paper.paperId} className="col">
-                  <div className="card h-100 d-flex flex-column border-primary border-2">
-                    <div className="card-body">
-                      <h5 className="card-title">{paper.title}</h5>
-                      <p className="card-text">{paper.description}</p>
-                    </div>
-                    <div className="card-footer bg-transparent border-0">
-                      <a
-                        href="#"
-                        className="btn btn-primary px-4 d-inline-flex gap-2"
-                        data-paper-id={paper.paperId}
-                      >
-                        <BiDownload style={{ fontSize: 22 }} />
-                        Download
-                      </a>
+          {/* Chinese Papers Section */}
+          {chinesePapers.length > 0 && (
+            <div className="mb-5">
+              <h3 className="text-center mb-4">
+                <span style={{ color: '#dc3545' }}>中文試題</span>
+              </h3>
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {chinesePapers
+                  .sort((a, b) => {
+                    // Sort order: Paper 1, Paper 2, then Answers, then Performance
+                    const order: Record<string, number> = { '卷一': 1, '卷二': 2, '參考答案': 3, '考生表現報告': 4 };
+                    return (order[a.paperType] || 999) - (order[b.paperType] || 999);
+                  })
+                  .map((paper) => (
+                  <div key={paper.paperId} className="col">
+                    <div className="card h-100 d-flex flex-column border-danger border-2">
+                      <div className="card-body">
+                        <h5 className="card-title">{paper.title}</h5>
+                        <p className="card-text">{paper.description}</p>
+                      </div>
+                      <div className="card-footer bg-transparent border-0">
+                        <a
+                          href="#"
+                          className="btn btn-danger px-4 d-inline-flex gap-2"
+                          data-paper-id={paper.paperId}
+                        >
+                          <BiDownload style={{ fontSize: 22 }} />
+                          下載
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* English Papers Section */}
+          {englishPapers.length > 0 && (
+            <div className="mb-5">
+              <h3 className="text-center mb-4">
+                <span style={{ color: '#0d6efd' }}>English Papers</span>
+              </h3>
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {englishPapers
+                  .sort((a, b) => {
+                    // Sort order: Paper 1, Paper 2, then Answers, then Performance
+                    const order: Record<string, number> = { 'Paper 1': 1, 'Paper 2': 2, 'Answers / Marking Scheme': 3, 'Performance Report': 4 };
+                    return (order[a.paperType] || 999) - (order[b.paperType] || 999);
+                  })
+                  .map((paper) => (
+                  <div key={paper.paperId} className="col">
+                    <div className="card h-100 d-flex flex-column border-primary border-2">
+                      <div className="card-body">
+                        <h5 className="card-title">{paper.title}</h5>
+                        <p className="card-text">{paper.description}</p>
+                      </div>
+                      <div className="card-footer bg-transparent border-0">
+                        <a
+                          href="#"
+                          className="btn btn-primary px-4 d-inline-flex gap-2"
+                          data-paper-id={paper.paperId}
+                        >
+                          <BiDownload style={{ fontSize: 22 }} />
+                          Download
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <hr className="my-4" />
 
@@ -174,7 +227,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                 return (
                   <NavigationLink
                     key={yearNum}
-                    href={`/math/${yearNum}`}
+                    href={`/economics/${yearNum}`}
                     className={`btn ${isCurrentYear ? 'btn-active' : 'btn-inactive'}`}
                     style={{
                       borderRadius: '10px',
@@ -216,15 +269,14 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                 );
               })}
             </div>
-
           </div>
 
           {/* CTA to Main Page */}
           <div className="text-center mt-5 mb-5">
-            <h3>Need More Mathematics Papers?</h3>
+            <h3>Need More Economics Papers?</h3>
             <p className="mb-4">Access all years (2012-2023), topic-based practice, and comprehensive study materials.</p>
             <NavigationLink 
-              href="/math" 
+              href="/economics" 
               className="btn btn-primary btn-lg d-inline-flex align-items-center gap-3"
               style={{
                 borderRadius: '25px',
@@ -247,10 +299,10 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                 e.currentTarget.style.boxShadow = '0 8px 25px rgba(13, 110, 253, 0.3)';
               }}
             >
-              <span>View All Mathematics Papers (2012-2023)</span>
+              <span>View All Economics Papers (2012-2023)</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14"/>
-                <path d="m12 5 7 7-7 7"/>
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
               </svg>
             </NavigationLink>
           </div>
@@ -283,8 +335,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   try {
-    // Read math config file
-    const configPath = path.join(process.cwd(), 'public', 'config', 'math.json');
+    // Read economics config file
+    const configPath = path.join(process.cwd(), 'public', 'config', 'economics.json');
     const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
     // Filter papers for the specific year
@@ -299,14 +351,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     return {
       props: {
-        subject: 'math',
+        subject: 'economics',
         year,
         papers,
         availableFiles
       }
     };
   } catch (error) {
-    console.error(`Error loading math ${year}:`, error);
+    console.error(`Error loading economics ${year}:`, error);
     return {
       notFound: true
     };

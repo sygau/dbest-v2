@@ -1187,7 +1187,7 @@ export default function ChatPage() {
                     width: 18px;
                     height: 18px;
                     animation: badge-glow 2s ease-in-out infinite alternate;
-                    margin-top: 4px;
+                    margin-top: -4px;
                 }
 
                 :global(.moderator-badge svg) {

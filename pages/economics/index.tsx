@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
-import { getSubjectMetadata } from '../utils/structuredData';
-export default function ChemistryPage() {
-  const metadata = getSubjectMetadata('chemistry');
+import { getSubjectMetadata } from '../../utils/structuredData';
+export default function EconomicsPage() {
+  const metadata = getSubjectMetadata('economics');
 
-    const subjectKey = 'chemistry';
+    const subjectKey = 'economics';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
 
@@ -44,7 +44,7 @@ export default function ChemistryPage() {
 
             {/*breadcrumb*/}
             <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">化學</div>
+                <div className="breadcrumb-title pe-3">經濟</div>
                 <div className="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol className="breadcrumb mb-0 p-0">
@@ -60,14 +60,14 @@ export default function ChemistryPage() {
             <div className="card rounded-4" style={{ height: "auto" }}>
                 <div className="card-body">
                     <h1 className="mb-4">
-                        DSE 化學 歷屆試題 Past Papers (By year + By topic + Practice Papers)
+                        DSE 經濟 歷屆試題 Past Papers (By year + By topic + Practice Papers)
                     </h1>
                     <p className="mb-4">
-                        歡迎瀏覽DSE Chemistry 化學歷屆試題。
-                        在此，您可以找到按年份排列的試題及答案，助您備考。
+                        歡迎瀏覽DSE Economics 經濟歷屆試題。
+                        在此，您可以找到按年份排列的經濟科試題及答案，助您備考。
                         <br />
                         <br />
-                        Welcome to browse DSE Chemistry past papers. Here you can find comprehensive Chemistry examination materials including organic chemistry, inorganic chemistry, physical chemistry, and analytical chemistry topics arranged by year, along with practical examination papers, topic-based practice exercises, and detailed solutions to help you understand DSE Chemistry concepts and prepare effectively for your examination.
+                        Welcome to browse DSE Economics past papers. Here you can find comprehensive Economics examination materials including microeconomics, macroeconomics, international trade, and economic development topics arranged by year, along with data response questions, essay questions, and detailed marking schemes to help you master DSE Economics concepts and achieve excellent results in your examination.
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">
@@ -82,22 +82,21 @@ export default function ChemistryPage() {
                     </div>
                     <br />
                     <hr className="my-4" />
-                    <br />
                     {/* Syllabus */}
-                    <h2 style={{ textAlign: "center" }}>評核內容 / Syllabus</h2>
+                    <h2 style={{ textAlign: "center" }}>課程及評估指引 / Syllabus</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">中文 評核內容</h5>
-                                    <p className="card-text">DSE化學 評核內容 (中文)</p>
+                                    <h5 className="card-title">課程及評估指引</h5>
+                                    <p className="card-text">DSE Economics Syllabus (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="syllabus_chi"
+                                        data-paper-id="syll_chi"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
@@ -108,13 +107,13 @@ export default function ChemistryPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">English Syllabus</h5>
-                                    <p className="card-text">DSE Chemistry Syllabus (English)</p>
+                                    <p className="card-text">DSE Economics Syllabus (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="syllabus_eng"
+                                        data-paper-id="syll_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -124,10 +123,670 @@ export default function ChemistryPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    {/* By Topic (Chinese) */}
+                    <h2 style={{ textAlign: "center" }}>分類練習 / By Topic (中文)</h2>
+                    <br />
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* BK1 BK2 first */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題1-7</h5>
+                                    <p className="card-text">主題1-7 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_bk1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題8-14</h5>
+                                    <p className="card-text">主題8-14 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_bk2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Numbered topics */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題1 基本經濟概念</h5>
+                                    <p className="card-text">主題1 基本經濟概念 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題2 需求及供應</h5>
+                                    <p className="card-text">主題2 需求及供應 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題3 效率與公平</h5>
+                                    <p className="card-text">主題3 效率與公平 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_3_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題4 生產要素和生產級別</h5>
+                                    <p className="card-text">主題4 生產要素和生產級別 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_4_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題5 短期與長期生產及成本</h5>
+                                    <p className="card-text">主題5 短期與長期生產及成本 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_5_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題6 廠商擁有權、握張及結合</h5>
+                                    <p className="card-text">主題6 廠商擁有權、握張及結合 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_6_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題7 競爭與市場結構</h5>
+                                    <p className="card-text">主題7 競爭與市場結構 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_7_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題8 國民收入會計</h5>
+                                    <p className="card-text">主題8 國民收入會計 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_8_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題9 失業及就業不足</h5>
+                                    <p className="card-text">主題9 失業及就業不足 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_9_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題10 總需求及總供應</h5>
+                                    <p className="card-text">主題10 總需求及總供應 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_10_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題11 公共財政</h5>
+                                    <p className="card-text">主題11 公共財政 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_11_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題12 貨幣與銀行</h5>
+                                    <p className="card-text">主題12 貨幣與銀行 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_12_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題13 匯率與國際收支平衡表</h5>
+                                    <p className="card-text">主題13 匯率與國際收支平衡表 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_13_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">主題14 國際貿易</h5>
+                                    <p className="card-text">主題14 國際貿易 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_14_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className="my-4" />
+                    {/* By Topic (English) */}
+                    <h2 style={{ textAlign: "center" }}>分類練習 / By Topic (English)</h2>
+                    <br />
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* BK1 BK2 first */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 1-9</h5>
+                                    <p className="card-text">Topic 1-9 BK1 (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_bk1_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 10-17</h5>
+                                    <p className="card-text">Topic 10-17 BK2 (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_bk2_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Numbered topics 1-18 */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 1 Basic Concept</h5>
+                                    <p className="card-text">Basic Concept</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_1_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 2 Production</h5>
+                                    <p className="card-text">Production</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_2_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 3 Input-Output Relationship</h5>
+                                    <p className="card-text">Input-Output Relationship</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_3_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Topic 4 Ownership And Expansion Of Firms
+                                    </h5>
+                                    <p className="card-text">Ownership And Expansion Of Firms</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_4_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 5 Market Structure</h5>
+                                    <p className="card-text">Market Structure</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_5_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 6 Demand And Supply I</h5>
+                                    <p className="card-text">Demand And Supply I</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_6_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 7 Demand And Supply II</h5>
+                                    <p className="card-text">Demand And Supply II</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_7_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 8 Market Intervention</h5>
+                                    <p className="card-text">Market Intervention</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_8_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 9 Roles Of Government</h5>
+                                    <p className="card-text">Roles Of Government</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_9_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 10 National Income</h5>
+                                    <p className="card-text">National Income</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_10_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 11 Macroeconomics Problems</h5>
+                                    <p className="card-text">Macroeconomics Problems</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_11_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Topic 12 The Budget And Fiscal Policy
+                                    </h5>
+                                    <p className="card-text">The Budget And Fiscal Policy</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_12_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 13 Money And Banking I</h5>
+                                    <p className="card-text">Money And Banking I</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_13_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 14 Money And Banking II</h5>
+                                    <p className="card-text">Money And Banking II</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_14_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Topic 15 Aggregate Demand And Aggregate Supply
+                                    </h5>
+                                    <p className="card-text">Aggregate Demand And Aggregate Supply</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_15_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 16 International Trade</h5>
+                                    <p className="card-text">International Trade</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_16_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 17 International Finance</h5>
+                                    <p className="card-text">International Finance</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_17_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Elective 2 Extension of Trade Theory and Economic Development
+                                    </h5>
+                                    <p className="card-text">
+                                        Extension of Trade Theory and Economic Development
+                                    </p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_18_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className="my-4" />
+                    {/* DSE Papers by Year */}
                     {/* 2023 */}
                     <h2 style={{ textAlign: "center" }}>2023</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -162,40 +821,7 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">參考答案</h5>
-                                    <p className="card-text">2023 參考答案 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">考生表現</h5>
-                                    <p className="card-text">2023 考生表現 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -232,118 +858,13 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2023 Answer Booklet (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">
-                                        2023 Performance Descriptors (English)
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 style={{ textAlign: "center" }}>2022</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2022 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2022 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">參考答案</h5>
-                                    <p className="card-text">2022 參考答案 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">考生表現</h5>
-                                    <p className="card-text">2022 考生表現 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        {/* English only for 2022 */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -380,30 +901,13 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2022 Answer Booklet (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2021 */}
                     <h2 style={{ textAlign: "center" }}>2021</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -458,6 +962,24 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">考生表現</h5>
+                                    <p className="card-text">2021 考生表現 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2021_per_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* English */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
                                     <p className="card-text">2021 Paper 1 (English)</p>
                                 </div>
@@ -509,12 +1031,33 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Performance</h5>
+                                    <p className="card-text">
+                                        2021 Performance Descriptors (English)
+                                    </p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2021_per_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2020 */}
                     <h2 style={{ textAlign: "center" }}>2020</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -553,7 +1096,7 @@ export default function ChemistryPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">參考答案</h5>
-                                    <p className="card-text">2020 參考答案 (中文)(中文)</p>
+                                    <p className="card-text">2020 參考答案 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -566,6 +1109,24 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">考生表現</h5>
+                                    <p className="card-text">2020 考生表現 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2020_per_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -620,12 +1181,33 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Performance</h5>
+                                    <p className="card-text">
+                                        2020 Performance Descriptors (English)
+                                    </p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2020_per_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2019 */}
                     <h2 style={{ textAlign: "center" }}>2019</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -680,6 +1262,24 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">考生表現</h5>
+                                    <p className="card-text">2019 考生表現 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2019_per_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* English */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
                                     <p className="card-text">2019 Paper 1 (English)</p>
                                 </div>
@@ -731,12 +1331,33 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Performance</h5>
+                                    <p className="card-text">
+                                        2019 Performance Descriptors (English)
+                                    </p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2019_per_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2018 */}
                     <h2 style={{ textAlign: "center" }}>2018</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -791,6 +1412,24 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">考生表現</h5>
+                                    <p className="card-text">2018 考生表現 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2018_per_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {/* English */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
                                     <p className="card-text">2018 Paper 1 (English)</p>
                                 </div>
@@ -842,12 +1481,33 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Performance</h5>
+                                    <p className="card-text">
+                                        2018 Performance Descriptors (English)
+                                    </p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2018_per_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2017 */}
                     <h2 style={{ textAlign: "center" }}>2017</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -916,6 +1576,7 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -970,32 +1631,13 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">
-                                        2017 Performance Descriptors (English)
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2016 */}
                     <h2 style={{ textAlign: "center" }}>2016</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1064,6 +1706,7 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1144,6 +1787,7 @@ export default function ChemistryPage() {
                     <h2 style={{ textAlign: "center" }}>2015</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1212,6 +1856,7 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1292,6 +1937,7 @@ export default function ChemistryPage() {
                     <h2 style={{ textAlign: "center" }}>2014</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1360,6 +2006,7 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1440,6 +2087,7 @@ export default function ChemistryPage() {
                     <h2 style={{ textAlign: "center" }}>2013</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1508,6 +2156,7 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1588,6 +2237,7 @@ export default function ChemistryPage() {
                     <h2 style={{ textAlign: "center" }}>2012</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1656,6 +2306,7 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
+                        {/* English */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -1732,757 +2383,16 @@ export default function ChemistryPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>主題練習（中文）</h2>
+                    {/* Practice Papers */}
+                    <h2 style={{ textAlign: "center" }}>練習卷 / Practice Papers</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese Practice Papers */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題一</h5>
-                                    <p className="card-text">By Topic 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題二</h5>
-                                    <p className="card-text">By Topic 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題三</h5>
-                                    <p className="card-text">By Topic 3 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_3_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題四</h5>
-                                    <p className="card-text">By Topic 4 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_4_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題五</h5>
-                                    <p className="card-text">By Topic 5 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_5_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題六</h5>
-                                    <p className="card-text">By Topic 6 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_6_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題七</h5>
-                                    <p className="card-text">By Topic 7 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_7_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題八</h5>
-                                    <p className="card-text">By Topic 8 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_8_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題九</h5>
-                                    <p className="card-text">By Topic 9 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_9_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十</h5>
-                                    <p className="card-text">By Topic 10 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_10_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十一</h5>
-                                    <p className="card-text">By Topic 11 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_11_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十二</h5>
-                                    <p className="card-text">By Topic 12 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_12_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十三</h5>
-                                    <p className="card-text">By Topic 13 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_13_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十四</h5>
-                                    <p className="card-text">By Topic 14 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_14_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十五</h5>
-                                    <p className="card-text">By Topic 15 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_15_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十六</h5>
-                                    <p className="card-text">By Topic 16 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_16_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十七</h5>
-                                    <p className="card-text">By Topic 17 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_17_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十八</h5>
-                                    <p className="card-text">By Topic 18 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_18_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題十九</h5>
-                                    <p className="card-text">By Topic 19 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_19_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題二十</h5>
-                                    <p className="card-text">By Topic 20 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_20_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題二十一</h5>
-                                    <p className="card-text">By Topic 21 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_21_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題二十二</h5>
-                                    <p className="card-text">By Topic 22 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_22_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">主題 ALL</h5>
-                                    <p className="card-text">By Topic ALL (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_all_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>By Topic (English)</h2>
-                    <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 1</h5>
-                                    <p className="card-text">By Topic 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 2</h5>
-                                    <p className="card-text">By Topic 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 3</h5>
-                                    <p className="card-text">By Topic 3 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_3_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 4</h5>
-                                    <p className="card-text">By Topic 4 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_4_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 5</h5>
-                                    <p className="card-text">By Topic 5 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_5_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 6</h5>
-                                    <p className="card-text">By Topic 6 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_6_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 7</h5>
-                                    <p className="card-text">By Topic 7 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_7_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 8</h5>
-                                    <p className="card-text">By Topic 8 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_8_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 9</h5>
-                                    <p className="card-text">By Topic 9 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_9_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 10</h5>
-                                    <p className="card-text">By Topic 10 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_10_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 11</h5>
-                                    <p className="card-text">By Topic 11 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_11_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 12</h5>
-                                    <p className="card-text">By Topic 12 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_12_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 13</h5>
-                                    <p className="card-text">By Topic 13 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_13_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 14</h5>
-                                    <p className="card-text">By Topic 14 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_14_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 15</h5>
-                                    <p className="card-text">By Topic 15 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_15_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">BK1</h5>
-                                    <p className="card-text">By Topic BK1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_bk1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">BK2</h5>
-                                    <p className="card-text">By Topic BK2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_bk2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">BK3</h5>
-                                    <p className="card-text">By Topic BK3 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_bk3_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>練習卷 / Practice Paper</h2>
-                    <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        {/* Practice Papers (Chinese) */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">練習卷 答案</h5>
-                                    <p className="card-text">練習卷 Answers (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">練習卷 1</h5>
-                                    <p className="card-text">練習卷 1 (中文)</p>
+                                    <h5 className="card-title">練習卷一</h5>
+                                    <p className="card-text">Practice Paper 1 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2498,8 +2408,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">練習卷 2</h5>
-                                    <p className="card-text">練習卷 2 (中文)</p>
+                                    <h5 className="card-title">練習卷二</h5>
+                                    <p className="card-text">Practice Paper 2 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2512,25 +2422,24 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
-                        {/* Practice Papers (English) */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Practice Paper Answers</h5>
-                                    <p className="card-text">Practice Paper Answers (English)</p>
+                                    <h5 className="card-title">練習卷答案</h5>
+                                    <p className="card-text">Practice Paper Answer (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_ans_eng"
+                                        data-paper-id="pp_ans_chi"
                                     >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        {/* English Practice Papers */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -2567,17 +2476,38 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>樣本卷 / Sample Paper</h2>
-                    <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        {/* Sample Papers (Chinese) */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">樣本卷 1</h5>
-                                    <p className="card-text">樣本卷 1 (中文)</p>
+                                    <h5 className="card-title">Practice Paper Answers</h5>
+                                    <p className="card-text">
+                                        Practice Paper Answer Booklet (English)
+                                    </p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pp_ans_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className="my-4" />
+                    {/* Sample Papers */}
+                    <h2 style={{ textAlign: "center" }}>樣本試卷 / Sample Papers</h2>
+                    <br />
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* Chinese Sample Papers */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">樣本試卷一</h5>
+                                    <p className="card-text">Sample Paper 1 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2593,8 +2523,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">樣本卷 2</h5>
-                                    <p className="card-text">樣本卷 2 (中文)</p>
+                                    <h5 className="card-title">樣本試卷二</h5>
+                                    <p className="card-text">Sample Paper 2 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2607,25 +2537,24 @@ export default function ChemistryPage() {
                                 </div>
                             </div>
                         </div>
-                        {/* Sample Papers (English) */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Sample Paper Answers</h5>
-                                    <p className="card-text">Sample Paper Answers (English)</p>
+                                    <h5 className="card-title">樣本試卷答案</h5>
+                                    <p className="card-text">Sample Paper Answer (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_ans_eng"
+                                        data-paper-id="sp_ans_chi"
                                     >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
+                                        <BiDownload style={{ fontSize: 22 }} />下載
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        {/* English Sample Papers */}
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
@@ -2655,6 +2584,24 @@ export default function ChemistryPage() {
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="sp_p2_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Sample Paper Answers</h5>
+                                    <p className="card-text">Sample Paper Answer Booklet (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="sp_ans_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
