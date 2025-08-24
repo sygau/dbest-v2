@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>DSE Best - Sitemap Viewer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .sections {
+            padding: 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #495057;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .url-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        
+        .url-item {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #667eea;
+            transition: all 0.2s ease;
+        }
+        
+        .url-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .url-link {
+            color: #495057;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        
+        .url-link:hover {
+            color: #667eea;
+        }
+        
+        .url-meta {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #6c757d;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .url-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DSE Best Sitemap</h1>
+            <p>Complete list of all pages on dse.best</p>
+        </div>
+        
+        <div class="stats" id="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalUrls">-</div>
+                <div class="stat-label">Total URLs</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="sections">-</div>
+                <div class="stat-label">Sections</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="yearPages">-</div>
+                <div class="stat-label">Year Pages</div>
+            </div>
+        </div>
+        
+        <div class="sections" id="sectionsContainer">
+            <div class="loading">Loading sitemap...</div>
+        </div>
+        
+        <div class="footer">
+            <p>This page is for internal use only. Not indexed by search engines.</p>
+        </div>
+    </div>
+
+    <script>
+        // Parse XML and organize URLs by section
+        function parseSitemap(xmlText) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+            const urls = xmlDoc.getElementsByTagName("url");
+            
+            const sections = {
+                'Main Domain': [],
+                'Core Subjects': [],
+                'Other Subjects': [],
+                'Information Pages': [],
+                'Blog': [],
+                'Year Pages': []
+            };
+            
+            let totalUrls = 0;
+            let yearPages = 0;
+            
+            for (let url of urls) {
+                const loc = url.getElementsByTagName("loc")[0]?.textContent;
+                const lastmod = url.getElementsByTagName("lastmod")[0]?.textContent;
+                const changefreq = url.getElementsByTagName("changefreq")[0]?.textContent;
+                const priority = url.getElementsByTagName("priority")[0]?.textContent;
+                
+                if (!loc) continue;
+                
+                totalUrls++;
+                
+                const urlData = {
+                    url: loc,
+                    lastmod: lastmod,
+                    changefreq: changefreq,
+                    priority: priority
+                };
+                
+                // Categorize URLs
+                if (loc === 'https://dse.best/') {
+                    sections['Main Domain'].push(urlData);
+                } else if (loc.match(/\/\d{4}$/)) {
+                    sections['Year Pages'].push(urlData);
+                    yearPages++;
+                } else if (loc.includes('/blog/')) {
+                    sections['Blog'].push(urlData);
+                } else if (['/about', '/contact', '/disclaimer', '/privacy-policy', '/countdown'].some(page => loc.includes(page))) {
+                    sections['Information Pages'].push(urlData);
+                } else if (['/math', '/english', '/chinese'].some(subject => loc.endsWith(subject))) {
+                    sections['Core Subjects'].push(urlData);
+                } else if (['/physics', '/biology', '/chemistry', '/bafs', '/chinese-history', '/economics', '/history', '/geography', '/m1', '/m2', '/ict'].some(subject => loc.endsWith(subject))) {
+                    sections['Other Subjects'].push(urlData);
+                } else if (loc.includes('/blog')) {
+                    sections['Blog'].push(urlData);
+                }
+            }
+            
+            return { sections, totalUrls, yearPages };
+        }
+        
+        // Create HTML for a section
+        function createSectionHTML(sectionName, urls) {
+            if (urls.length === 0) return '';
+            
+            let html = `<div class="section">
+                <h2 class="section-title">${sectionName} (${urls.length})</h2>
+                <div class="url-list">`;
+            
+            urls.forEach(urlData => {
+                const path = urlData.url.replace('https://dse.best', '');
+                html += `
+                    <div class="url-item">
+                        <a href="${urlData.url}" class="url-link" target="_blank">${path || '/'}</a>
+                        <div class="url-meta">
+                            Priority: ${urlData.priority} | 
+                            Change: ${urlData.changefreq} | 
+                            Updated: ${urlData.lastmod}
+                        </div>
+                    </div>`;
+            });
+            
+            html += `</div></div>`;
+            return html;
+        }
+        
+        // Load and display sitemap
+        async function loadSitemap() {
+            try {
+                const response = await fetch('/sitemap.xml');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const xmlText = await response.text();
+                const { sections, totalUrls, yearPages } = parseSitemap(xmlText);
+                
+                // Update stats
+                document.getElementById('totalUrls').textContent = totalUrls;
+                document.getElementById('sections').textContent = Object.keys(sections).filter(key => sections[key].length > 0).length;
+                document.getElementById('yearPages').textContent = yearPages;
+                
+                // Generate HTML
+                let sectionsHTML = '';
+                const sectionOrder = ['Main Domain', 'Core Subjects', 'Other Subjects', 'Information Pages', 'Blog', 'Year Pages'];
+                
+                sectionOrder.forEach(sectionName => {
+                    if (sections[sectionName] && sections[sectionName].length > 0) {
+                        sectionsHTML += createSectionHTML(sectionName, sections[sectionName]);
+                    }
+                });
+                
+                document.getElementById('sectionsContainer').innerHTML = sectionsHTML;
+                
+            } catch (error) {
+                console.error('Error loading sitemap:', error);
+                document.getElementById('sectionsContainer').innerHTML = `
+                    <div class="error">
+                        <strong>Error loading sitemap:</strong> ${error.message}
+                        <br><br>
+                        Make sure sitemap.xml exists in the public folder.
+                    </div>`;
+            }
+        }
+        
+        // Load sitemap when page loads
+        document.addEventListener('DOMContentLoaded', loadSitemap);
+    </script>
+</body>
+</html> 

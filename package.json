@@ -17,7 +17,8 @@
     "meta": "node scripts/updateMeta.js",
     "blog:sync": "node scripts/generate-blog-data.js",
     "css:build": "node scripts/combine-css.js",
-    "css:test": "node scripts/test-css-bundle.js"
+    "css:test": "node scripts/test-css-bundle.js",
+    "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.6.10",
