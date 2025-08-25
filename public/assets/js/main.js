@@ -362,6 +362,24 @@ $(function () {
     const cleanSubject = subject.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     const cleanLanguage = extractedLanguage.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
 
+    // Detect if this is a year slug page (e.g., /biology/2023, /math/2022)
+    const currentPath = window.location.pathname;
+    const isYearSlug = currentPath.match(/\/\d{4}$/);
+    const yearSlugValue = isYearSlug ? 1 : 0; // Use 1 for year slug pages, 0 for subject index pages
+
+    // Extract year from year slug page if available
+    let yearFromSlug = null;
+    if (isYearSlug) {
+      const yearMatch = currentPath.match(/\/(\d{4})$/);
+      yearFromSlug = yearMatch ? yearMatch[1] : null;
+    }
+
+    // Create slugName for year slug pages (e.g., "Biology 2023", "Math 2022")
+    let slugName = null;
+    if (isYearSlug && yearFromSlug) {
+      slugName = `${cleanSubject} ${yearFromSlug}`;
+    }
+
     // Send to Google Analytics with optimized parameters
     if (typeof gtag !== 'undefined') {
       // Simple approach: Subject + cleaned filename (remove underscores, keep it simple)
@@ -376,21 +394,44 @@ $(function () {
         'download_subject': cleanSubject,
         'download_language': cleanLanguage,
         'link_url': this.href,
-        'value': 1
+        'is_year_slug': yearSlugValue,      // 1 for year slug pages, 0 for subject index pages
+        'page_type': isYearSlug ? 'slug' : 'index' // 'slug' for year slug pages, 'index' for subject index pages
       };
 
+      // Only add year_from_slug and slugName if they exist (not null)
+      if (yearFromSlug) {
+        eventData.year_from_slug = yearFromSlug;
+      }
+      if (slugName) {
+        eventData.slug_name = slugName;
+      }
+
       // Debug logging for GA4 data
-      console.log('Sending to GA4:', eventData);
+      console.log('Sending to GA4 (file_download):', eventData);
 
       gtag('event', 'file_download', eventData);
 
       // Also send a simplified version for easier tracking
-      gtag('event', 'pdf_download', {
+      const simplifiedEventData = {
         'file_name': fileName,              // Full filename with .pdf
         'paper_name': paperName,            // Subject + cleaned filename
         'subject': cleanSubject,
-        'language': cleanLanguage
-      });
+        'language': cleanLanguage,
+        'is_year_slug': yearSlugValue,      // 1 for year slug pages, 0 for subject index pages
+        'page_type': isYearSlug ? 'slug' : 'index' // 'slug' for year slug pages, 'index' for subject index pages
+      };
+
+      // Only add year_from_slug and slugName if they exist (not null)
+      if (yearFromSlug) {
+        simplifiedEventData.year_from_slug = yearFromSlug;
+      }
+      if (slugName) {
+        simplifiedEventData.slug_name = slugName;
+      }
+
+      console.log('Sending to GA4 (pdf_download):', simplifiedEventData);
+
+      gtag('event', 'pdf_download', simplifiedEventData);
     }
   });
 });
