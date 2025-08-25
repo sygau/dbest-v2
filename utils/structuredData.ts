@@ -710,6 +710,7 @@ export function generateCountdownStructuredData() {
       "description": "The 2026 Hong Kong Diploma of Secondary Education (HKDSE) examination",
       "startDate": "2026-04-15",
       "endDate": "2026-05-15",
+      "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
         "name": "Hong Kong",
