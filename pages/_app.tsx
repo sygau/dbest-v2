@@ -419,12 +419,12 @@ export default function App({ Component, pageProps }: AppProps) {
       </div>
 
       {/* adsense reload */}
-      {/* <script dangerouslySetInnerHTML={{
+      <script dangerouslySetInnerHTML={{
         __html: `
           window.adsbygoogle = window.adsbygoogle || []
           window.adsbygoogle.push({}) 
         `
-      }} /> */}
+      }} />
 
       {/* Theme Switcher Styles */}
       <style jsx global>{`
