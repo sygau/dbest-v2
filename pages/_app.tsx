@@ -334,14 +334,14 @@ export default function App({ Component, pageProps }: AppProps) {
 
             {/* Theme Switcher Button */}
       <button 
-        className="theme-switcher-btn position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2"
+        className="theme-switcher-btn"
         type="button" 
         data-bs-toggle="offcanvas" 
         data-bs-target="#staticBackdrop"
         aria-label="主題設定 Theme Settings"
         title="主題設定 Theme Settings"
       >
-        <BiCog style={{ fontSize: 24 }} />
+        <BiCog style={{ fontSize: 18 }} />
       </button>
 
       {/* Back to Top Button */}
@@ -428,7 +428,83 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {/* Theme Switcher Styles */}
       <style jsx global>{`
-        .theme-switcher-btn{padding:.75rem 1rem;border-radius:12px;font-family:'Inter',sans-serif;font-weight:600;text-decoration:none;transition:all .3s ease;border:1px solid transparent;font-size:1rem;letter-spacing:.5px;box-shadow:0 4px 12px rgba(0,0,0,.15);background:#4361ee;color:white;border-color:rgba(255,255,255,.2);z-index:1000}.theme-switcher-btn:hover{background:#3a0ca3;transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25);color:white}.theme-switcher-btn:focus{outline:none;box-shadow:0 4px 12px rgba(0,0,0,.15),0 0 0 2px rgba(255,255,255,.2)}.theme-option-btn{background:rgba(255,255,255,.1);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.2);border-radius:20px;transition:all .3s ease;box-shadow:0 8px 20px -5px rgba(0,0,0,.1);color:var(--bs-body-color);cursor:pointer;position:relative;overflow:hidden}.theme-option-btn:hover{background:rgba(255,255,255,.2);transform:translateY(-5px);box-shadow:0 12px 25px -5px rgba(0,0,0,.2)}.btn-check:checked+.theme-option-btn{background:#4361ee;color:white;border-color:rgba(255,255,255,.3);transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.3)}[data-bs-theme="dark"] .theme-option-btn{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:#fff}[data-bs-theme="dark"] .theme-option-btn:hover{background:rgba(255,255,255,.1)}[data-bs-theme="dark"] .btn-check:checked+.theme-option-btn{background:#4361ee;color:white}[data-bs-theme="light"] .theme-option-btn{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.1);color:#333}[data-bs-theme="light"] .theme-option-btn:hover{background:rgba(0,0,0,.1)}[data-bs-theme="light"] .btn-check:checked+.theme-option-btn{background:#4361ee;color:white}
+        .theme-switcher-btn{
+          position: fixed;
+          bottom: 22px;
+          right: 22px;
+          width: 45px;
+          height: 45px;
+          padding: 0;
+          border-radius: 12px;
+          font-family: 'Inter', sans-serif;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          border: 1px solid transparent;
+          font-size: 18px;
+          box-shadow: 0 4px 12px rgba(0,0,0,.15);
+          background: #4361ee;
+          color: white;
+          border-color: rgba(255,255,255,.2);
+          z-index: 1000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .theme-switcher-btn:hover{
+          background: #3a0ca3;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0,0,0,.25);
+          color: white;
+        }
+        
+        .theme-switcher-btn:focus{
+          outline: none;
+          box-shadow: 0 4px 12px rgba(0,0,0,.15), 0 0 0 2px rgba(255,255,255,.3);
+        }
+        
+
+        
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+          .theme-switcher-btn {
+            bottom: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+            border-radius: 10px;
+          }
+          
+          .theme-switcher-btn svg {
+            font-size: 16px !important;
+          }
+          
+          .back-to-top-btn-modern {
+            bottom: 70px !important;
+            right: 15px !important;
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 16px !important;
+            border-radius: 10px !important;
+            transform: none !important;
+          }
+          
+          .back-to-top-btn-modern.show {
+            opacity: 1 !important;
+            transform: none !important;
+            pointer-events: auto !important;
+          }
+          
+          .back-to-top-btn-modern:hover {
+            transform: translateY(-2px) !important;
+          }
+          
+          .back-to-top-btn-modern svg {
+            font-size: 16px !important;
+          }
+        }.theme-option-btn{background:rgba(255,255,255,.1);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.2);border-radius:20px;transition:all .3s ease;box-shadow:0 8px 20px -5px rgba(0,0,0,.1);color:var(--bs-body-color);cursor:pointer;position:relative;overflow:hidden}.theme-option-btn:hover{background:rgba(255,255,255,.2);transform:translateY(-5px);box-shadow:0 12px 25px -5px rgba(0,0,0,.2)}.btn-check:checked+.theme-option-btn{background:#4361ee;color:white;border-color:rgba(255,255,255,.3);transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.3)}[data-bs-theme="dark"] .theme-option-btn{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);color:#fff}[data-bs-theme="dark"] .theme-option-btn:hover{background:rgba(255,255,255,.1)}[data-bs-theme="dark"] .btn-check:checked+.theme-option-btn{background:#4361ee;color:white}[data-bs-theme="light"] .theme-option-btn{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.1);color:#333}[data-bs-theme="light"] .theme-option-btn:hover{background:rgba(0,0,0,.1)}[data-bs-theme="light"] .btn-check:checked+.theme-option-btn{background:#4361ee;color:white}
 
         /* Modern Back to Top Button */
         .back-to-top-btn-modern {
