@@ -79,7 +79,6 @@ export default function CountdownPage() {
                 />
 
                 {/* Google Fonts */}
-                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Noto+Sans+TC:wght@500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
             </Head>
 
             {/* Breadcrumb */}
@@ -283,7 +282,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .countdown-main-title {
-          font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 3.8rem;
           font-weight: 800;
           margin: 0;
@@ -295,7 +294,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .countdown-description {
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: sans-serif;
           font-size: 1.3rem;
           font-weight: 500;
           color: #ffffff;
@@ -370,7 +369,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .card-number {
-          font-family: 'Inter', 'Noto Sans TC', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-size: 3.2rem;
           font-weight: 900;
           line-height: 1.1;
@@ -392,7 +391,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .label-zh {
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: sans-serif;
           font-size: 1.2rem;
           font-weight: 700;
           color: #ffffff;
@@ -422,7 +421,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .progress-header h3 {
-          font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+          font-family: 'Poppins', sans-serif;
           margin: 0;
           font-size: 1.4rem;
           font-weight: 700;
@@ -471,7 +470,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .progress-text {
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: sans-serif;
           text-align: center;
           font-size: 1.1rem;
           font-weight: 500;
@@ -517,7 +516,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .info-content h4 {
-          font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+          font-family: 'Poppins', sans-serif;
           margin: 0 0 0.6rem 0;
           font-size: 1.2rem;
           font-weight: 700;
@@ -525,7 +524,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .info-content p {
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: sans-serif;
           margin: 0;
           color: #ffffff;
           font-size: 1rem;
@@ -574,7 +573,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .info-content-compact p {
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: sans-serif;
           margin: 0;
           color: #ffffff;
           font-size: 0.9rem;
@@ -632,7 +631,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .timetable-content h4 {
-          font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+          font-family: 'Poppins', sans-serif;
           margin: 0 0 0.5rem 0;
           font-size: 1.3rem;
           font-weight: 700;
@@ -640,7 +639,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .timetable-content p {
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: sans-serif;
           margin: 0 0 1rem 0;
           color: #ffffff;
           font-size: 1rem;
@@ -657,7 +656,7 @@ export default function CountdownPage() {
           text-decoration: none;
           padding: 0.75rem 1.5rem;
           border-radius: 12px;
-          font-family: 'Inter', 'Noto Sans TC', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-weight: 600;
           font-size: 0.95rem;
           transition: all 0.3s ease;
@@ -679,7 +678,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .cta-content h3 {
-          font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+          font-family: 'Poppins', sans-serif;
           font-size: 2rem;
           font-weight: 800;
           margin-bottom: 0.75rem;
@@ -688,7 +687,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .cta-content p {
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: sans-serif;
           font-size: 1.2rem;
           font-weight: 500;
           color: #ffffff;
@@ -708,7 +707,7 @@ export default function CountdownPage() {
         .countdown-page .btn {
           padding: 1rem 2.5rem;
           border-radius: 16px;
-          font-family: 'Inter', 'Noto Sans TC', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-weight: 700;
           text-decoration: none;
           transition: all 0.3s ease;

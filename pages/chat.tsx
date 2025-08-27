@@ -511,7 +511,7 @@ export default function ChatPage() {
                     justify-content: center;
                     width: 36px;
                     height: 36px;
-                    border-radius: 12px;
+                    border-radius: 8px;
                     background: #68c07c;
                     cursor: default;
                     transition: all 0.2s ease;
