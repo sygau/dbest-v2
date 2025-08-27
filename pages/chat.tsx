@@ -1082,7 +1082,6 @@ export default function ChatPage() {
                     margin-bottom: 0.70rem;
                     position: relative;
                     transition: all 0.2s ease;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
                     animation: message-slide-in 0.3s ease-out;
                 }
 
@@ -1098,7 +1097,6 @@ export default function ChatPage() {
 
                 :global(.chat-bubble.mine) {
                     background: linear-gradient(135deg, #1146df 0%, #434a60 100%);
-                    border-color: rgba(30, 58, 138, 0.3);
                 }
 
                 /* Message time styling - Enhanced */
@@ -1112,13 +1110,13 @@ export default function ChatPage() {
 
                 /* System message styling - Enhanced */
                 :global(.chat-system-message) {
-                    color: var(--bs-secondary-color);
+                    color: var(--bs-body-color);
                     font-style: normal;
                     padding: 0.2rem 0;
                     margin: 0.4rem 0;
                     text-align: center;
                     font-size: 0.85rem;
-                    opacity: 0.8;
+                    opacity: 0.7;
                     transition: opacity 0.2s ease;
                 }
 
