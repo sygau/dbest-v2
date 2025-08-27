@@ -67,6 +67,7 @@ const SORT_OPTIONS = [
 function BlogCard({ post, index }: { post: BlogPost, index: number }) {
   const { viewCount, isLoading } = useViewCount(post.slug);
   const [imageUrl, setImageUrl] = useState<string>('');
+  const [isImageReady, setIsImageReady] = useState(false);
   
   // Update image URL when zoom level changes
   useEffect(() => {
@@ -74,6 +75,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
       if (!post.featuredImage) {
         const categoryName = post.category || 'Uncategorized';
         const textColor = '000000';
+        const category = CATEGORIES.find(cat => cat.value === post.category) || CATEGORIES[0];
         const colorCode = category.color.replace('#', '');
         
         // Adaptive resolution based on device pixel ratio and zoom level
@@ -89,6 +91,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
       } else {
         setImageUrl(post.featuredImage);
       }
+      setIsImageReady(true);
     };
 
     updateImageUrl();
@@ -156,25 +159,27 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
           borderTopRightRadius: '16px',
           overflow: 'hidden'
         }}>
-          <img 
-            src={imageUrl} 
-            alt={post.title}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              transition: 'transform 0.3s ease',
-              display: 'block'
-            }}
-            onError={(e) => {
-              // Fallback to a simpler dummy image if the main one fails
-              const target = e.target as HTMLImageElement;
-              const categoryName = post.category || 'Uncategorized';
-              const textColor = '000000';
-              const colorCode = category.color.replace('#', '');
-              target.src = `https://placehold.co/400x250/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`;
-            }}
-          />
+          {isImageReady && imageUrl && (
+            <img 
+              src={imageUrl} 
+              alt={post.title}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transition: 'transform 0.3s ease',
+                display: 'block'
+              }}
+              onError={(e) => {
+                // Fallback to a simpler dummy image if the main one fails
+                const target = e.target as HTMLImageElement;
+                const categoryName = post.category || 'Uncategorized';
+                const textColor = '000000';
+                const colorCode = category.color.replace('#', '');
+                target.src = `https://placehold.co/400x250/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`;
+              }}
+            />
+          )}
           {/* Category Badge */}
           <div className="blog-card-category" style={{
             position: 'absolute',
@@ -189,8 +194,8 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
             textTransform: 'uppercase',
             letterSpacing: '0.5px',
             zIndex: 2,
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            border: '2px solid rgba(255, 255, 255, 0.5)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.15)',
             backdropFilter: 'blur(4px)'
           }}>
             {category.label}
@@ -270,17 +275,15 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
             {post.comments && (
               <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <BiComment style={{ fontSize: '12px' }} />
-                <NavigationLink 
-                  href={`/blog/${post.slug}#disqus_thread`}
+                <span 
                   data-disqus-identifier={post.slug}
                   style={{ 
                     color: 'inherit', 
-                    textDecoration: 'none',
                     fontSize: 'inherit'
                   }}
                 >
                   0
-                </NavigationLink>
+                </span>
               </span>
             )}
           </div>
@@ -921,7 +924,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
               marginBottom: '0',
               textAlign: 'center'
             }}>
-              <strong>DSE.BEST</strong> 為香港中學文憑試（DSE）考生提供最全面的學習資源和最新考試資訊，包括歷屆試題、詳細答案、溫習策略和心得分享。
+              <strong>dse.best</strong> 為香港中學文憑試（DSE）考生提供最全面的學習資源和最新考試資訊，包括歷屆試題、詳細答案、溫習策略和心得分享。
             </p>
           </div>
           <hr className="my-4" style={{ marginTop: '0rem !important', marginBottom: '0.2rem !important' }} />
