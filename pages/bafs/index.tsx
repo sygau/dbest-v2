@@ -72,7 +72,7 @@ export default function BAFSPage() {
                     </p>
                     <div className="alert alert-border-primary alert-dismissible fade show">
                         <div className="">
-                            <b>最後更新: </b>1/7/2025
+                            <b>最後更新: </b>12/8/2025
                         </div>
                         <button
                             type="button"

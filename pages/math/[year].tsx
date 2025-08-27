@@ -114,7 +114,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
 
           <div className="alert alert-border-primary alert-dismissible fade show">
             <div className="">
-              <b>Last Updated: </b>1/7/2025
+              <b>Last Updated: </b>12/8/2025
             </div>
             <button
               type="button"
