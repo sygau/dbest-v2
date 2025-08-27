@@ -297,6 +297,7 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - Chat Auth Vulne improvement
 
 ### Pages suggestions
+- PRIORITY!!!!! CUT OFF  PAGE AND COLLECTIN!!!!!!!!!!!!!!!!!!!!!!!!!!! (SOURCE FROM PERPLEXITY)
 - AI Mock Papers Section
 - Study Locations Google Maps
 - Countdown timer for each subjects

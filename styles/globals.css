@@ -1994,11 +1994,11 @@ svg[style*="fontSize"] {
   --bs-disabled-bg: #4b5481;
   --bs-tertiary-bg: #181f4a;
   --bs-card-bg: #070c29;
-  background-image: url(https://dse.best/assets/images/bg-themes/body-background-1.webp);
+  background-image: linear-gradient(135deg, #0a0e1a 0%, #0f1535 25%, #181f4a 50%, #1a2340 75%, #0f1535 100%);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: #0f1535;
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg-2);
   /* aligns */
