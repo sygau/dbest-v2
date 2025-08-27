@@ -73,7 +73,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
     const updateImageUrl = () => {
       if (!post.featuredImage) {
         const categoryName = post.category || 'Uncategorized';
-        const textColor = category.value === 'Physics' || category.value === 'BAFS' ? '000000' : 'ffffff';
+        const textColor = '000000';
         const colorCode = category.color.replace('#', '');
         
         // Adaptive resolution based on device pixel ratio and zoom level
@@ -85,7 +85,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
         const baseWidth = Math.round(400 * effectiveScale);
         const baseHeight = Math.round(250 * effectiveScale);
         
-        setImageUrl(`https://dummyimage.com/${baseWidth}x${baseHeight}/${colorCode}/${textColor}&text=${encodeURIComponent(categoryName)}`);
+        setImageUrl(`https://placehold.co/${baseWidth}x${baseHeight}/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`);
       } else {
         setImageUrl(post.featuredImage);
       }
@@ -170,9 +170,9 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
               // Fallback to a simpler dummy image if the main one fails
               const target = e.target as HTMLImageElement;
               const categoryName = post.category || 'Uncategorized';
-              const textColor = category.value === 'Physics' || category.value === 'BAFS' ? '000000' : 'ffffff';
+              const textColor = '000000';
               const colorCode = category.color.replace('#', '');
-              target.src = `https://dummyimage.com/400x250/${colorCode}/${textColor}&text=${encodeURIComponent(categoryName)}`;
+              target.src = `https://placehold.co/400x250/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`;
             }}
           />
           {/* Category Badge */}
@@ -270,7 +270,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
             {post.comments && (
               <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <BiComment style={{ fontSize: '12px' }} />
-                <a 
+                <NavigationLink 
                   href={`/blog/${post.slug}#disqus_thread`}
                   data-disqus-identifier={post.slug}
                   style={{ 
@@ -280,7 +280,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
                   }}
                 >
                   0
-                </a>
+                </NavigationLink>
               </span>
             )}
           </div>
