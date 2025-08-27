@@ -273,6 +273,8 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 ## TODO
 - Enrich index features (Daily Quote)
 - More Subjects
+- Redis based chat moderation (User Data logging, bans, handle commands instead of maps which destroy upon vercel execution)
+- Third party push notif for chat
 - UI Improvement (Blog, Download cards etc)
 - Completely redesign countdown with all subjects
 - Blog post contentful react implementation 

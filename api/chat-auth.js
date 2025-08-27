@@ -53,6 +53,103 @@ async function logToLogflare(event, metadata = {}) {
   }
 }
 
+// NTFY notification helper
+async function sendNtfyNotification(messageData, userInfo = {}) {
+  const url = `https://ntfy.sh/DefinitelyWouldntbeDSEdotBESTwebsiteChatMessagingServiceEndpoint`;
+
+  // Build location info with emojis
+  let locationInfo = '';
+  if (userInfo.geography) {
+    const geo = userInfo.geography;
+    locationInfo = `🌍 ${geo.country || 'Unknown'}`;
+    if (geo.regionName) locationInfo += `/${geo.regionName}`;
+    if (geo.city) locationInfo += `, ${geo.city}`;
+  } else {
+    locationInfo = '🌍 Unknown location';
+  }
+
+  // Build device and browser info on same line
+  let deviceBrowserInfo = '';
+  if (userInfo.device) {
+    const deviceEmoji = getDeviceEmoji(userInfo.device);
+    deviceBrowserInfo = `${deviceEmoji} ${userInfo.device}`;
+    if (userInfo.browser) {
+      deviceBrowserInfo += ` | ${userInfo.browser}`;
+    }
+  } else {
+    deviceBrowserInfo = '💻 Unknown device';
+    if (userInfo.browser) {
+      deviceBrowserInfo += ` | ${userInfo.browser}`;
+    }
+  }
+
+  // Build message content with enhanced user info
+  const messageContent = `${messageData.text}\n\n${locationInfo}\n${deviceBrowserInfo}\n🔗 ${userInfo.ip || 'Unknown IP'}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'X-Title': messageData.sender,
+        'X-Priority': '3',
+        'X-Icon': 'https://dse.best/assets/images/logo-icon.png',
+        'X-Actions': `view, Chat, https://dse.best/chat; http, IP Info, https://ipinfo.io/${userInfo.ip || ''}`
+      },
+      body: messageContent
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    console.log('NTFY notification sent!', response.status);
+  } catch (error) {
+    console.error('Failed to send NTFY notification:', error);
+  }
+}
+
+// Helper function to get device emoji
+function getDeviceEmoji(device) {
+  const deviceLower = device.toLowerCase();
+  
+  if (deviceLower.includes('mobile') || deviceLower.includes('android') || deviceLower.includes('iphone')) {
+    return '📱';
+  } else if (deviceLower.includes('tablet') || deviceLower.includes('ipad')) {
+    return '📱';
+  } else if (deviceLower.includes('windows')) {
+    return '🖥️';
+  } else if (deviceLower.includes('mac')) {
+    return '🍎';
+  } else if (deviceLower.includes('linux')) {
+    return '🐧';
+  } else if (deviceLower.includes('chromeos')) {
+    return '🌐';
+  } else {
+    return '💻';
+  }
+}
+
+// Helper function to get browser emoji
+function getBrowserEmoji(browser) {
+  const browserLower = browser.toLowerCase();
+  
+  if (browserLower.includes('chrome')) {
+    return '🔴';
+  } else if (browserLower.includes('firefox')) {
+    return '🦊';
+  } else if (browserLower.includes('safari')) {
+    return '🌐';
+  } else if (browserLower.includes('edge')) {
+    return '🔵';
+  } else if (browserLower.includes('opera')) {
+    return '🔴';
+  } else if (browserLower.includes('brave')) {
+    return '🦁';
+  } else {
+    return '🌐';
+  }
+}
+
 // Device detection helper
 function detectDevice(userAgent) {
   if (!userAgent) return 'Unknown';
@@ -80,6 +177,34 @@ function detectDevice(userAgent) {
   if (ua.includes('chromeos')) return 'Chrome OS';
   
   return 'Desktop';
+}
+
+// Browser detection helper
+function detectBrowser(userAgent) {
+  if (!userAgent) return 'Unknown';
+  
+  const ua = userAgent.toLowerCase();
+  
+  // Chrome-based browsers
+  if (ua.includes('chrome') && !ua.includes('edg')) {
+    if (ua.includes('brave')) return 'Brave';
+    if (ua.includes('opera') || ua.includes('opr')) return 'Opera';
+    return 'Chrome';
+  }
+  
+  // Firefox
+  if (ua.includes('firefox')) return 'Firefox';
+  
+  // Safari
+  if (ua.includes('safari') && !ua.includes('chrome')) return 'Safari';
+  
+  // Edge
+  if (ua.includes('edg')) return 'Edge';
+  
+  // Internet Explorer (legacy)
+  if (ua.includes('msie') || ua.includes('trident')) return 'Internet Explorer';
+  
+  return 'Unknown Browser';
 }
 
 // IP geolocation helper using fetch
@@ -1831,6 +1956,21 @@ Server Uptime: ~${uptimeHours}h
         ...sanitizedMessage,
         isModerator: isMod // Server-verified moderator status
       });
+
+      // Send NTFY notification for new messages (only for non-moderator messages)
+      if (!isMod) {
+        try {
+          await sendNtfyNotification(sanitizedMessage, {
+            ip: ip,
+            geography: geoData,
+            device: deviceInfo,
+            browser: detectBrowser(userAgent)
+          });
+        } catch (error) {
+          console.error('Failed to send notification:', error);
+          // Don't fail the message send if notification fails
+        }
+      }
 
       return res.status(200).json({ status: 'published' });
     }
