@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { BiUserCircle, BiCalendarEvent, BiFileBlank, BiSort, BiShow, BiFilter, BiChevronDown, BiTimeFive, BiComment } from 'react-icons/bi';
+import { BiUserCircle, BiCalendarEvent, BiFileBlank, BiSort, BiShow, BiFilter, BiChevronDown, BiTimeFive, BiComment, BiSearch } from 'react-icons/bi';
 import { GetStaticProps } from 'next'
 import fs from 'fs'
 import path from 'path'
@@ -259,7 +259,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <BiTimeFive style={{ fontSize: '12px' }} />
-              {post.readingTime || Math.ceil(post.content.length / 500)} min read
+              {post.readingTime || Math.ceil(post.content.length / 500)}m
             </span>
             {!isLoading && (
               <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -295,12 +295,16 @@ function FilterSortBar({
   selectedCategory, 
   onCategoryChange, 
   selectedSort, 
-  onSortChange
+  onSortChange,
+  searchQuery,
+  onSearchChange
 }: {
   selectedCategory: string;
   onCategoryChange: (category: string) => void;
   selectedSort: string;
   onSortChange: (sort: string) => void;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
@@ -607,6 +611,53 @@ function FilterSortBar({
           </div>
         </div>
       </div>
+
+      {/* Search Bar - Below Category and Sort Controls */}
+      <div style={{
+        marginTop: '12px',
+        paddingTop: '12px',
+        borderTop: '1px solid var(--bs-border-color, #e5e7eb)'
+      }}>
+        <div style={{
+          position: 'relative',
+          width: '100%'
+        }}>
+          <BiSearch style={{
+            position: 'absolute',
+            left: '12px',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            fontSize: '16px',
+            color: 'var(--bs-body-color, #9ca3af)',
+            zIndex: 1
+          }} />
+          <input
+            type="text"
+            placeholder="搜尋文章... Search posts..."
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px 12px 10px 40px',
+              borderRadius: '8px',
+              border: '1px solid var(--bs-border-color, #e5e7eb)',
+              background: 'var(--bs-card-bg, #ffffff)',
+              color: 'var(--bs-body-color, #374151)',
+              fontSize: '0.875rem',
+              outline: 'none',
+              transition: 'border-color 0.2s ease, box-shadow 0.2s ease'
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = 'var(--bs-primary, #3b82f6)';
+              e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = 'var(--bs-border-color, #e5e7eb)';
+              e.target.style.boxShadow = 'none';
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 }
@@ -730,6 +781,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
   const metadata = getMainPageMetadata('blog');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedSort, setSelectedSort] = useState('newest');
+  const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6; // Show 6 posts per page
 
@@ -740,6 +792,17 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
     // Filter by category
     if (selectedCategory !== 'all') {
       filtered = posts.filter(post => post.category === selectedCategory);
+    }
+    
+    // Filter by search query
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(post => 
+        post.title.toLowerCase().includes(query) ||
+        post.seoDescription.toLowerCase().includes(query) ||
+        post.tags.some(tag => tag.toLowerCase().includes(query)) ||
+        post.category.toLowerCase().includes(query)
+      );
     }
     
     // Sort posts
@@ -758,7 +821,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
     });
     
     return sorted;
-  }, [posts, selectedCategory, selectedSort]);
+  }, [posts, selectedCategory, selectedSort, searchQuery]);
 
   // Pagination
   const totalPages = Math.ceil(filteredAndSortedPosts.length / postsPerPage);
@@ -770,7 +833,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
   // Reset to first page when filters change
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategory, selectedSort]);
+  }, [selectedCategory, selectedSort, searchQuery]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -869,6 +932,8 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
             onCategoryChange={setSelectedCategory}
             selectedSort={selectedSort}
             onSortChange={setSelectedSort}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
           />
 
           {/* Blog Posts Grid */}
@@ -921,9 +986,14 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
               color: 'var(--bs-body-color, #6b7280)'
             }}>
               <BiFileBlank style={{ fontSize: '64px', marginBottom: '16px', opacity: 0.5 }} />
-              <h3 style={{ margin: '0 0 8px 0', fontSize: '1.25rem' }}>暫無文章</h3>
+              <h3 style={{ margin: '0 0 8px 0', fontSize: '1.25rem' }}>
+                {searchQuery.trim() ? '找不到相關文章' : '暫無文章'}
+              </h3>
               <p style={{ margin: '0', fontSize: '0.875rem' }}>
-                請稍後再來查看最新內容
+                {searchQuery.trim() 
+                  ? `沒有找到包含 "${searchQuery}" 的文章，請嘗試其他關鍵字`
+                  : '請稍後再來查看最新內容'
+                }
               </p>
             </div>
           )}

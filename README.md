@@ -275,6 +275,8 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - More Subjects
 - UI Improvement (Blog, Download cards etc)
 - Completely redesign countdown with all subjects
+- Blog post contentful react implementation 
+- Blog post FAQPage JSONLD generation from CTF data
 - Improve SEO meta descriptions and titles
 - Fix material icon and button shortcodes in BlogGeneration
 - Schema / Google Rich Results optimizations/FAQ?/Breadcrumbs ETC

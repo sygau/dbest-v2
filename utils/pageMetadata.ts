@@ -265,6 +265,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/privacy-policy",
     "ogType": "website"
+  },
+  "blog": {
+    "title": "dse.best Blog | 學習資源、考試技巧、溫習策略、心得分享",
+    "description": "DSE Blog 提供2025、2026 DSE考試資訊、中文英文數學物理化學生物ICT M1 M2歷屆試題分析、溫習技巧、考生心得、JUPAS選科攻略、放榜資訊。最新DSE動向、考試趨勢、備考策略、科目指南。",
+    "robots": "index, follow",
+    "ogTitle": "dse.best Blog | 學習資源、考試技巧、溫習策略、心得分享",
+    "ogDescription": "DSE Blog 提供2025、2026 DSE考試資訊、中文英文數學物理化學生物ICT M1 M2歷屆試題分析、溫習技巧、考生心得、JUPAS選科攻略、放榜資訊。最新DSE動向、考試趨勢、備考策略、科目指南。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/blog",
+    "ogType": "website"
   }
 };
 

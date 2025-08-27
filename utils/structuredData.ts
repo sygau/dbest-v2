@@ -541,7 +541,7 @@ export const pageData: Record<string, PageData> = {
     type: 'countdown'
   },
   blog: {
-    name: 'DSE.BEST Blog',
+    name: 'dse.best Blog',
     description: 'DSE學習資源、考試技巧、科目指南和最新資訊',
     url: 'https://dse.best/blog/',
     type: 'blog'
