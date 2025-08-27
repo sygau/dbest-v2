@@ -156,7 +156,13 @@ export default function BlogPost({ post }: BlogPostProps) {
         <div className="card-body">
           {/* Post Header */}
           <div className="post-header mb-4">
-            <h1 className="display-6">
+            <h1 className="display-6" style={{
+              fontSize: '2.5rem',
+              fontWeight: 600,
+              lineHeight: '1.2',
+              marginBottom: '1.5rem',
+              color: 'var(--bs-body-color, #374151)'
+            }}>
               {post.title}
             </h1>
 
@@ -268,14 +274,9 @@ export default function BlogPost({ post }: BlogPostProps) {
               <div className="comments-section px-3 py-2">
                 <h4 className="mb-4">
                   <BiComment style={{
-                    verticalAlign: 'text-bottom',
-                    fontSize: '2em',
-                    marginRight: '0.25em',
-                    color: '#6c757d',
-                    background: 'rgba(108,117,125,0.12)',
-                    borderRadius: '50%',
-                    padding: '0.18em',
-                    boxShadow: '0 1px 4px rgba(108,117,125,0.10)'
+                    fontSize: '1.2em',
+                    marginRight: '0.5em',
+                    color: 'var(--bs-body-color, #6c757d)'
                   }} />
                   留言討論
                 </h4>
@@ -307,16 +308,46 @@ export default function BlogPost({ post }: BlogPostProps) {
           )}
 
           {/* Post Footer */}
-          <div className="post-footer mt-5 pt-4 border-top">
-            <div className="row">
-              <div className="col-md-12 text-md-end">
-                <NavigationLink href="/blog/" className="btn btn-outline-primary back-to-blog">
-                  <span className="d-flex align-items-center">
-                    <span className="me-2" style={{ fontSize: '1.2em' }}>←</span>
-                    返回主頁
-                  </span>
-                </NavigationLink>
-              </div>
+          <div style={{
+            marginTop: '3rem',
+            paddingTop: '1.5rem',
+            borderTop: '1px solid var(--bs-border-color, #e5e7eb)'
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              gap: '16px',
+              flexWrap: 'wrap'
+            }}>
+              <NavigationLink href="/blog/" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '12px 24px',
+                borderRadius: '8px',
+                border: 'none',
+                background: 'var(--bs-primary, #3b82f6)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                fontSize: '1rem',
+                fontWeight: '600',
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+                minWidth: 'fit-content',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 2px 8px rgba(59, 130, 246, 0.2)'
+              }} onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.currentTarget.style.background = 'var(--bs-primary-dark, #2563eb)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)';
+              }} onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.currentTarget.style.background = 'var(--bs-primary, #3b82f6)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(59, 130, 246, 0.2)';
+              }}>
+                <span style={{ fontSize: '1.2em', marginRight: '8px' }}>←</span>
+                返回主頁
+              </NavigationLink>
             </div>
           </div>
         </div>

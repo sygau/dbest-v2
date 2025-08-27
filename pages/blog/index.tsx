@@ -1,10 +1,9 @@
 import Head from 'next/head'
-import { BiUserCircle, BiCalendarEvent, BiTimeFive, BiComment, BiFileBlank, BiSort, BiShow } from 'react-icons/bi';
+import { BiUserCircle, BiCalendarEvent, BiFileBlank, BiSort, BiShow, BiFilter, BiChevronDown, BiTimeFive, BiComment } from 'react-icons/bi';
 import { GetStaticProps } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
+import { useEffect, useState, useMemo } from 'react'
 import NavigationLink from '../../components/NavigationLink'
 import { generateBlogStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData'
 import { getMainPageMetadata } from '../../utils/structuredData';
@@ -36,433 +35,751 @@ interface BlogIndexProps {
   posts: BlogPost[];
 }
 
-// Helper functions for category styling (from your original generateIndex.js)
-function getCategoryColorClass(category: string): string {
-  if (!category) return 'bg-secondary';
-  
-  const categoryMap: Record<string, string> = {
-    'Chinese': 'bg-danger',
-    'English': 'bg-info',
-    'Maths': 'bg-warning',
-    'CSD': 'bg-purple',
-    'Physics': 'bg-warning',
-    'Chemistry': 'bg-success',
-    'Biology': 'bg-primary',
-    'ICT': 'bg-dark',
-    'M1': 'bg-purple',
-    'M2': 'bg-teal',
-    'Geography': 'bg-cyan',
-    'History': 'bg-brown',
-    'Chinese History': 'bg-danger',
-    'Economics': 'bg-secondary',
-    'BAFS': 'bg-amber',
-    'Visual Arts': 'bg-info',
-    'DSE News': 'bg-orange',
-    'Testing': 'bg-secondary'
-  };
-  
-  return categoryMap[category] || 'bg-secondary';
-}
+// Category configuration
+const CATEGORIES = [
+  { value: 'all', label: '全部 All', color: '#5b5fc7' },
+  { value: 'DSE News', label: 'DSE News', color: '#ff6b35' },
+  { value: 'Chinese', label: '中文 Chinese', color: '#d81b60' },
+  { value: 'English', label: '英文 English', color: '#00acc1' },
+  { value: 'Maths', label: '數學 Maths', color: '#fb8c00' },
+  { value: 'CSD', label: '公民 CSD', color: '#8e24aa' },
+  { value: 'Physics', label: '物理 Physics', color: '#ffd600' },
+  { value: 'Chemistry', label: '化學 Chemistry', color: '#2e7d32' },
+  { value: 'Biology', label: '生物 Biology', color: '#1565c0' },
+  { value: 'ICT', label: '資訊 ICT', color: '#37474f' },
+  { value: 'M1', label: 'M1', color: '#673ab7' },
+  { value: 'M2', label: 'M2', color: '#00796b' },
+  { value: 'Geography', label: '地理 Geography', color: '#0288d1' },
+  { value: 'History', label: '歷史 History', color: '#795548' },
+  { value: 'Chinese History', label: '中國歷史 Chinese History', color: '#b71c1c' },
+  { value: 'Economics', label: '經濟 Economics', color: '#546e7a' },
+  { value: 'BAFS', label: '企會財 BAFS', color: '#ff8f00' },
+  { value: 'Visual Arts', label: '視藝 Visual Arts', color: '#0277bd' },
+];
 
-function getCategoryColorCode(category: string): string {
-  if (!category) return '6c757d';
-  
-  const categoryMap: Record<string, string> = {
-    'Chinese': 'dc3545',
-    'English': '17a2b8',
-    'Maths': 'ffc107',
-    'CSD': '8e24aa',
-    'Physics': 'ffc107',
-    'Chemistry': '28a745',
-    'Biology': '007bff',
-    'ICT': '343a40',
-    'M1': '7c4dff',
-    'M2': '009688',
-    'Geography': '0097a7',
-    'History': '6d4c41',
-    'Chinese History': 'c62828',
-    'Economics': '6c757d',
-    'BAFS': 'ffb300',
-    'Visual Arts': '03a9f4',
-    'DSE News': 'ff7043',
-    'Testing': '6c757d'
-  };
-  
-  return categoryMap[category] || '6c757d';
-}
+const SORT_OPTIONS = [
+  { value: 'newest', label: '最新 Newest' },
+  { value: 'oldest', label: '最舊 Oldest' },
+  { value: 'popular', label: '熱門 Popular' },
+];
 
-function getCategoryTextColor(category: string): string {
-  if (!category) return 'ffffff';
-  
-  const darkTextCategories = ['Maths', 'Physics', 'BAFS'];
-  return darkTextCategories.includes(category) ? '000000' : 'ffffff';
-}
-
-function getCategoryDisplayName(category: string): string {
-  if (!category) return 'Uncategorized';
-
-  const categoryMap: Record<string, string> = {
-    'Chinese': '中文 Chinese',
-    'English': '英文 English',
-    'Maths': '數學 Maths',
-    'CSD': '公民 CSD',
-    'Physics': '物理 Physics',
-    'Chemistry': '化學 Chemistry',
-    'Biology': '生物 Biology',
-    'ICT': '資訊 ICT',
-    'M1': 'M1',
-    'M2': 'M2',
-    'Geography': '地理 Geography',
-    'History': '歷史 History',
-    'Chinese History': '中國歷史 Chinese History',
-    'Economics': '經濟 Economics',
-    'BAFS': '企會財 BAFS',
-    'Visual Arts': '視藝 Visual Arts',
-    'DSE News': 'DSE News',
-    'Testing': 'Testing'
-  };
-
-  return categoryMap[category] || category;
-}
-
-// Individual blog card component that uses view count
+// Individual blog card component
 function BlogCard({ post, index }: { post: BlogPost, index: number }) {
   const { viewCount, isLoading } = useViewCount(post.slug);
+  const [imageUrl, setImageUrl] = useState<string>('');
   
-  const categoryColorClass = getCategoryColorClass(post.category);
-  const categoryColorCode = getCategoryColorCode(post.category);
-  const categoryTextColor = getCategoryTextColor(post.category);
-  const categoryDisplayName = getCategoryDisplayName(post.category);
+  // Update image URL when zoom level changes
+  useEffect(() => {
+    const updateImageUrl = () => {
+      if (!post.featuredImage) {
+        const categoryName = post.category || 'Uncategorized';
+        const textColor = category.value === 'Physics' || category.value === 'BAFS' ? '000000' : 'ffffff';
+        const colorCode = category.color.replace('#', '');
+        
+        // Adaptive resolution based on device pixel ratio and zoom level
+        const pixelRatio = window.devicePixelRatio || 1;
+        const zoomLevel = window.visualViewport?.scale || 1;
+        const effectiveScale = pixelRatio * zoomLevel;
+        
+        // Calculate responsive dimensions
+        const baseWidth = Math.round(400 * effectiveScale);
+        const baseHeight = Math.round(250 * effectiveScale);
+        
+        setImageUrl(`https://dummyimage.com/${baseWidth}x${baseHeight}/${colorCode}/${textColor}&text=${encodeURIComponent(categoryName)}`);
+      } else {
+        setImageUrl(post.featuredImage);
+      }
+    };
+
+    updateImageUrl();
+
+    // Listen for zoom level changes
+    const handleResize = () => {
+      updateImageUrl();
+    };
+
+    window.addEventListener('resize', handleResize);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleResize);
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', handleResize);
+      }
+    };
+  }, [post.featuredImage, post.category]);
   
-  // Get featured image or fallback
-  let featuredImageUrl;
-  if (post.featuredImage) {
-    featuredImageUrl = post.featuredImage;
-  } else {
-    const categoryName = post.category || 'Uncategorized';
-    featuredImageUrl = `https://dummyimage.com/200x200/${categoryColorCode}/${categoryTextColor}&text=${encodeURIComponent(categoryName)}`;
-  }
+  const category = CATEGORIES.find(cat => cat.value === post.category) || CATEGORIES[0];
+  
+
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('zh-HK', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  };
 
   return (
-    <div 
-      key={post.id} 
-      className="col-12 blog-card-wrapper" 
-      data-category={post.category || 'Uncategorized'}
-      data-date={post.date}
-      data-popularity="50"
-      suppressHydrationWarning={true}
-    >
-      <NavigationLink href={`/blog/${post.slug}`} className="text-decoration-none">
-        <div className="card blog-card border-0 shadow position-relative mb-3 h-100" style={{ cursor: 'pointer', alignItems: 'stretch' }}>
-          <div className="position-absolute top-0 start-0 w-100" style={{ height: '6px', borderRadius: '1.5rem 1.5rem 0 0', zIndex: 2 }}>
-            <div className={`${categoryColorClass} w-100 h-100`} style={{ borderRadius: '1.5rem 1.5rem 0 0' }}></div>
-          </div>
-          <img src={featuredImageUrl} className="img-fluid blog-card-img h-100" alt={post.category || 'Uncategorized'} />
-          <div className="card-body blog-card-body" style={{ zIndex: 1 }}>
-            <span className={`badge ${categoryColorClass.replace('bg-', 'bg-')} mb-2`} style={{ fontSize: '0.9rem', padding: '0.4em 0.6em' }}>
-              {categoryDisplayName}
-            </span>
-            <h2 className="card-title blog-card-title mb-2">{post.title}</h2>
-            <div className="d-flex blog-meta mb-2 flex-wrap">
-              <span className="blog-meta-item d-flex align-items-center">
-                <BiUserCircle className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                {post.author || 'DSEBest'}
-              </span>
-              <span className="blog-meta-item d-flex align-items-center">
-                <BiCalendarEvent className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                {post.date}
-              </span>
-              <span className="blog-meta-item d-flex align-items-center">
-                <BiTimeFive className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                {post.readingTime ? post.readingTime + ' min' : ''}
-              </span>
-              <span className="blog-meta-item d-flex align-items-center">
-                <BiShow className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                {isLoading ? '...' : (viewCount || 0)}
-              </span>
-              {post.comments ? (
-                <span className="blog-meta-item d-flex align-items-center">
-                  <BiComment className="me-1" style={{ fontSize: '1.1em', verticalAlign: 'text-bottom' }} />
-                  <span className="disqus-comment-count" data-disqus-identifier={post.slug}>0</span>
-                </span>
-              ) : null}
-            </div>
-            <p className="card-text mb-1">{post.excerpt}</p>
+    <NavigationLink href={`/blog/${post.slug}`} style={{
+      textDecoration: 'none',
+      color: 'inherit',
+      display: 'block',
+      height: '100%',
+      width: '100%'
+    }}>
+      <article className="blog-card" style={{
+        background: 'var(--bs-card-bg, #ffffff)',
+        borderRadius: '16px',
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+        transition: 'all 0.3s ease',
+        border: '1px solid var(--bs-border-color, #e5e7eb)',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        cursor: 'pointer',
+        width: '100%',
+        maxWidth: '100%',
+        boxSizing: 'border-box'
+      }}>
+        {/* Image Section */}
+        <div className="blog-card-image" style={{
+          position: 'relative',
+          height: '200px',
+          flexShrink: 0,
+          width: '100%',
+          borderTopLeftRadius: '16px',
+          borderTopRightRadius: '16px',
+          overflow: 'hidden'
+        }}>
+          <img 
+            src={imageUrl} 
+            alt={post.title}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transition: 'transform 0.3s ease',
+              display: 'block'
+            }}
+            onError={(e) => {
+              // Fallback to a simpler dummy image if the main one fails
+              const target = e.target as HTMLImageElement;
+              const categoryName = post.category || 'Uncategorized';
+              const textColor = category.value === 'Physics' || category.value === 'BAFS' ? '000000' : 'ffffff';
+              const colorCode = category.color.replace('#', '');
+              target.src = `https://dummyimage.com/400x250/${colorCode}/${textColor}&text=${encodeURIComponent(categoryName)}`;
+            }}
+          />
+          {/* Category Badge */}
+          <div className="blog-card-category" style={{
+            position: 'absolute',
+            top: '12px',
+            left: '12px',
+            background: category.color,
+            color: category.value === 'Physics' || category.value === 'BAFS' ? '#000' : '#fff',
+            padding: '4px 12px',
+            borderRadius: '20px',
+            fontSize: '0.75rem',
+            fontWeight: '600',
+            textTransform: 'uppercase',
+            letterSpacing: '0.5px',
+            zIndex: 2,
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+            backdropFilter: 'blur(4px)'
+          }}>
+            {category.label}
           </div>
         </div>
-      </NavigationLink>
+        
+        {/* Content Section */}
+        <div className="blog-card-content" style={{
+          padding: '16px',
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: 0,
+          width: '100%',
+          boxSizing: 'border-box'
+        }}>
+          {/* Title */}
+          <h3 className="blog-card-title" style={{
+            fontSize: '1.1rem',
+            fontWeight: '700',
+            lineHeight: '1.4',
+            margin: '0 0 8px 0',
+            color: 'var(--bs-heading-color, #1f2937)',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            wordWrap: 'break-word',
+            wordBreak: 'break-word'
+          }}>
+            {post.title}
+          </h3>
+          
+          {/* Excerpt */}
+          <p className="blog-card-excerpt" style={{
+            fontSize: '0.85rem',
+            lineHeight: '1.5',
+            color: 'var(--bs-body-color, #6b7280)',
+            margin: '0 0 12px 0',
+            flex: 1,
+            display: '-webkit-box',
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            minHeight: 0,
+            wordWrap: 'break-word',
+            wordBreak: 'break-word'
+          }}>
+            {post.excerpt || post.content.substring(0, 120) + '...'}
+          </p>
+          
+          {/* Meta Info - All three items */}
+          <div className="blog-card-meta" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            fontSize: '0.75rem',
+            color: 'var(--bs-body-color, #9ca3af)',
+            marginTop: 'auto',
+            flexWrap: 'wrap',
+            flexShrink: 0
+          }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <BiCalendarEvent style={{ fontSize: '12px' }} />
+              {formatDate(post.date)}
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <BiTimeFive style={{ fontSize: '12px' }} />
+              {post.readingTime || Math.ceil(post.content.length / 500)} min read
+            </span>
+            {!isLoading && (
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <BiShow style={{ fontSize: '12px' }} />
+                {viewCount || 0}
+              </span>
+            )}
+            {post.comments && (
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <BiComment style={{ fontSize: '12px' }} />
+                <a 
+                  href={`/blog/${post.slug}#disqus_thread`}
+                  data-disqus-identifier={post.slug}
+                  style={{ 
+                    color: 'inherit', 
+                    textDecoration: 'none',
+                    fontSize: 'inherit'
+                  }}
+                >
+                  0
+                </a>
+              </span>
+            )}
+          </div>
+        </div>
+      </article>
+    </NavigationLink>
+  );
+}
+
+// Filter and Sort Bar Component
+function FilterSortBar({ 
+  selectedCategory, 
+  onCategoryChange, 
+  selectedSort, 
+  onSortChange
+}: {
+  selectedCategory: string;
+  onCategoryChange: (category: string) => void;
+  selectedSort: string;
+  onSortChange: (sort: string) => void;
+}) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+
+  return (
+    <div className="filter-sort-bar" style={{
+      background: 'var(--bs-card-bg, #ffffff)',
+      borderRadius: '12px',
+      padding: '12px',
+      marginBottom: '20px',
+      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
+      border: '1px solid var(--bs-border-color, #e5e7eb)'
+    }}>
+      {/* Desktop Layout */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        gap: '12px'
+      }} className="d-none d-md-flex">
+        {/* Category Filter */}
+        <div style={{ flex: 1 }}>
+          <label style={{
+            display: 'block',
+            fontSize: '0.75rem',
+            fontWeight: '600',
+            color: 'var(--bs-body-color, #374151)',
+            marginBottom: '6px'
+          }}>
+            分類 Categories
+          </label>
+          
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '6px'
+          }}>
+            {CATEGORIES.map((category) => (
+              <button
+                key={category.value}
+                onClick={() => onCategoryChange(category.value)}
+                style={{
+                  padding: '6px 12px',
+                  borderRadius: '16px',
+                  border: selectedCategory === category.value ? '2px solid' + category.color : '2px solid var(--bs-border-color, #e5e7eb)',
+                  background: selectedCategory === category.value ? category.color : 'var(--bs-card-bg, #ffffff)',
+                  color: selectedCategory === category.value 
+                    ? (category.value === 'Physics' || category.value === 'BAFS' ? '#000' : '#fff')
+                    : 'var(--bs-body-color, #374151)',
+                  fontSize: '0.8rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Sort Controls */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-end' }}>
+          {/* Sort Dropdown */}
+          <div style={{ position: 'relative' }}>
+            <label style={{
+              display: 'block',
+              fontSize: '0.75rem',
+              fontWeight: '600',
+              color: 'var(--bs-body-color, #374151)',
+              marginBottom: '4px'
+            }}>
+              排序 Sort
+            </label>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 12px',
+                borderRadius: '8px',
+                border: '1px solid var(--bs-border-color, #e5e7eb)',
+                background: 'var(--bs-card-bg, #ffffff)',
+                color: 'var(--bs-body-color, #374151)',
+                fontSize: '0.8rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                minWidth: '120px'
+              }}
+            >
+              <BiSort style={{ fontSize: '14px' }} />
+              {SORT_OPTIONS.find(option => option.value === selectedSort)?.label}
+            </button>
+            
+            {isDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                background: 'var(--bs-card-bg, #ffffff)',
+                borderRadius: '8px',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                border: '1px solid var(--bs-border-color, #e5e7eb)',
+                zIndex: 1000,
+                marginTop: '2px'
+              }}>
+                {SORT_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => {
+                      onSortChange(option.value);
+                      setIsDropdownOpen(false);
+                    }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '8px 12px',
+                      border: 'none',
+                      background: 'transparent',
+                      color: selectedSort === option.value ? 'var(--bs-primary, #3b82f6)' : 'var(--bs-body-color, #374151)',
+                      fontSize: '0.8rem',
+                      fontWeight: selectedSort === option.value ? '600' : '400',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      transition: 'background 0.2s ease'
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div className="d-block d-md-none">
+        {/* Category Section - Horizontal */}
+        <div style={{ marginBottom: '12px' }}>
+          <label style={{
+            display: 'block',
+            fontSize: '0.75rem',
+            fontWeight: '600',
+            color: 'var(--bs-body-color, #374151)',
+            marginBottom: '6px'
+          }}>
+            分類 Categories
+          </label>
+          
+          <div style={{ position: 'relative' }}>
+            <button
+              onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 12px',
+                borderRadius: '8px',
+                border: '1px solid var(--bs-border-color, #e5e7eb)',
+                background: 'var(--bs-card-bg, #ffffff)',
+                color: 'var(--bs-body-color, #374151)',
+                fontSize: '0.8rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                width: '100%',
+                justifyContent: 'space-between'
+              }}
+            >
+              <span>
+                {CATEGORIES.find(cat => cat.value === selectedCategory)?.label || 'Select Category'}
+              </span>
+              <BiChevronDown style={{ fontSize: '14px' }} />
+            </button>
+            
+            {isCategoryDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                background: 'var(--bs-card-bg, #ffffff)',
+                borderRadius: '8px',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                border: '1px solid var(--bs-border-color, #e5e7eb)',
+                zIndex: 1000,
+                marginTop: '2px',
+                maxHeight: '200px',
+                overflowY: 'auto'
+              }}>
+                {CATEGORIES.map((category) => (
+                  <button
+                    key={category.value}
+                    onClick={() => {
+                      onCategoryChange(category.value);
+                      setIsCategoryDropdownOpen(false);
+                    }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '8px 12px',
+                      border: 'none',
+                      background: 'transparent',
+                      color: selectedCategory === category.value ? 'var(--bs-primary, #3b82f6)' : 'var(--bs-body-color, #374151)',
+                      fontSize: '0.8rem',
+                      fontWeight: selectedCategory === category.value ? '600' : '400',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      transition: 'background 0.2s ease'
+                    }}
+                  >
+                    {category.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Sort Section - Mobile Only */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-end',
+          gap: '12px'
+        }}>
+          {/* Sort Dropdown */}
+          <div style={{ position: 'relative', flex: 1 }}>
+            <label style={{
+              display: 'block',
+              fontSize: '0.75rem',
+              fontWeight: '600',
+              color: 'var(--bs-body-color, #374151)',
+              marginBottom: '4px'
+            }}>
+              排序 Sort
+            </label>
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 12px',
+                borderRadius: '8px',
+                border: '1px solid var(--bs-border-color, #e5e7eb)',
+                background: 'var(--bs-card-bg, #ffffff)',
+                color: 'var(--bs-body-color, #374151)',
+                fontSize: '0.8rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                width: '100%'
+              }}
+            >
+              <BiSort style={{ fontSize: '14px' }} />
+              {SORT_OPTIONS.find(option => option.value === selectedSort)?.label}
+            </button>
+            
+            {isDropdownOpen && (
+              <div style={{
+                position: 'absolute',
+                top: '100%',
+                left: 0,
+                right: 0,
+                background: 'var(--bs-card-bg, #ffffff)',
+                borderRadius: '8px',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                border: '1px solid var(--bs-border-color, #e5e7eb)',
+                zIndex: 1000,
+                marginTop: '2px'
+              }}>
+                {SORT_OPTIONS.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => {
+                      onSortChange(option.value);
+                      setIsDropdownOpen(false);
+                    }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      padding: '8px 12px',
+                      border: 'none',
+                      background: 'transparent',
+                      color: selectedSort === option.value ? 'var(--bs-primary, #3b82f6)' : 'var(--bs-body-color, #374151)',
+                      fontSize: '0.8rem',
+                      fontWeight: selectedSort === option.value ? '600' : '400',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      transition: 'background 0.2s ease'
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
+// Pagination Component
+function Pagination({ 
+  currentPage, 
+  totalPages, 
+  onPageChange 
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) {
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxVisible = 5;
+    
+    if (totalPages <= maxVisible) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
+        pages.push('...');
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i);
+        }
+        pages.push('...');
+        pages.push(totalPages);
+      }
+    }
+    
+    return pages;
+  };
+
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: '8px',
+      marginTop: '40px'
+    }}>
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        style={{
+          padding: '10px 16px',
+          borderRadius: '12px',
+          border: '2px solid var(--bs-border-color, #e5e7eb)',
+          background: 'var(--bs-card-bg, #ffffff)',
+          color: currentPage === 1 ? 'var(--bs-body-color, #9ca3af)' : 'var(--bs-heading-color, #1f2937)',
+          cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+          transition: 'all 0.2s ease',
+          fontSize: '0.875rem',
+          fontWeight: '600'
+        }}
+      >
+        Previous
+      </button>
+      
+      {getPageNumbers().map((page, index) => (
+        <button
+          key={index}
+          onClick={() => typeof page === 'number' && onPageChange(page)}
+          disabled={page === '...'}
+          style={{
+            padding: '10px 16px',
+            borderRadius: '12px',
+            border: page === currentPage ? '2px solid var(--bs-primary, #3b82f6)' : '2px solid var(--bs-border-color, #e5e7eb)',
+            background: page === currentPage ? 'var(--bs-primary, #3b82f6)' : 'var(--bs-card-bg, #ffffff)',
+            color: page === currentPage ? '#fff' : 'var(--bs-heading-color, #1f2937)',
+            cursor: page === '...' ? 'default' : 'pointer',
+            transition: 'all 0.2s ease',
+            fontSize: '0.875rem',
+            fontWeight: '600',
+            minWidth: '44px'
+          }}
+        >
+          {page}
+        </button>
+      ))}
+      
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        style={{
+          padding: '10px 16px',
+          borderRadius: '12px',
+          border: '2px solid var(--bs-border-color, #e5e7eb)',
+          background: 'var(--bs-card-bg, #ffffff)',
+          color: currentPage === totalPages ? 'var(--bs-body-color, #9ca3af)' : 'var(--bs-heading-color, #1f2937)',
+          cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+          transition: 'all 0.2s ease',
+          fontSize: '0.875rem',
+          fontWeight: '600'
+        }}
+      >
+        Next
+      </button>
+    </div>
+  );
+}
+
+// Main Blog Index Component
 export default function BlogIndex({ posts }: BlogIndexProps) {
   const metadata = getMainPageMetadata('blog');
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedSort, setSelectedSort] = useState('newest');
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6; // Show 6 posts per page
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  // Debug: Log posts data
-  console.log('BlogIndex component rendered with posts:', posts?.length || 0);
-  
-  useEffect(() => {
-    setIsClient(true);
-    setIsLoaded(true);
-
-    // Blog functionality - moved from script tag to useEffect
-    if (typeof window !== 'undefined') {
-      console.log('Blog initialization starting...');
-      console.log('Posts available:', posts?.length || 0);
-      
-      // Private variables
-      let categoryButtons: NodeListOf<HTMLButtonElement> | null = null;
-      let blogCards: NodeListOf<HTMLElement> | null = null;
-      let currentCategory = 'all';
-      let currentSort = 'newest';
-      let currentPage = 1;
-      const POSTS_PER_PAGE = 6;
-      
-      // Store event listeners for cleanup
-      const eventListeners: Array<{element: Element, event: string, handler: EventListener}> = [];
-      
-      // Helper function to add tracked event listeners
-      const addTrackedEventListener = (element: Element, event: string, handler: EventListener) => {
-        element.addEventListener(event, handler);
-        eventListeners.push({ element, event, handler });
-      };
-      
-      const filterAndSortCards = () => {
-        console.log('Filtering and sorting cards...', { currentCategory, currentSort });
-        if (!blogCards) {
-          console.log('No blog cards found');
-          return;
-        }
-        
-        // Filter
-        blogCards.forEach(card => {
-          const cardCategory = card.getAttribute('data-category');
-          if (currentCategory === 'all' || cardCategory === currentCategory) {
-            card.classList.add('filtered-in');
-          } else {
-            card.classList.remove('filtered-in');
-          }
-        });
-        
-        // Sort only filtered-in cards
-        const visibleCards = Array.from(blogCards).filter(card => card.classList.contains('filtered-in'));
-        console.log('Visible cards after filter:', visibleCards.length);
-        
-        visibleCards.sort((a, b) => {
-          if (currentSort === 'newest') {
-            return (b.getAttribute('data-date') || '').localeCompare(a.getAttribute('data-date') || '');
-          } else if (currentSort === 'oldest') {
-            return (a.getAttribute('data-date') || '').localeCompare(b.getAttribute('data-date') || '');
-          } else if (currentSort === 'popular') {
-            return parseInt(b.getAttribute('data-popularity') || '50') - parseInt(a.getAttribute('data-popularity') || '50');
-          }
-          return 0;
-        });
-        
-        // Re-append in sorted order
-        const blogCardRow = document.getElementById('blogCardRow');
-        if (blogCardRow) {
-          visibleCards.forEach(card => blogCardRow.appendChild(card));
-        }
-      };
-      
-      const setupCategoryButtons = () => {
-        console.log('Setting up category buttons...');
-        if (!categoryButtons) return;
-        
-        categoryButtons.forEach(btn => {
-          const handler = () => {
-            console.log('Category button clicked:', btn.getAttribute('data-category'));
-            // Remove active from all
-            categoryButtons?.forEach(b => b.classList.remove('active'));
-            // Add active to clicked
-            btn.classList.add('active');
-            // Update currentCategory and filter
-            currentCategory = btn.getAttribute('data-category') || 'all';
-            filterAndSortCards();
-            currentPage = 1;
-            showPage();
-          };
-          addTrackedEventListener(btn, 'click', handler);
-        });
-      };
-      
-      const setupSortOptions = () => {
-        console.log('Setting up sort options...');
-        const sortOptions = document.querySelectorAll('.sort-option');
-        const sortLabel = document.getElementById('sortLabel');
-        
-        if (!sortOptions.length) return;
-        
-        const setSort = (sortType: string) => {
-          console.log('Sort changed to:', sortType);
-          currentSort = sortType;
-          filterAndSortCards();
-          currentPage = 1;
-          showPage();
-        };
-        
-        sortOptions.forEach(opt => {
-          const handler = (e: Event) => {
-            e.preventDefault();
-            sortOptions.forEach(o => o.classList.remove('active'));
-            (e.target as HTMLElement).classList.add('active');
-            if (sortLabel) {
-              sortLabel.textContent = (e.target as HTMLElement).textContent;
-            }
-            setSort((e.target as HTMLElement).getAttribute('data-sort') || 'newest');
-          };
-          addTrackedEventListener(opt, 'click', handler);
-        });
-      };
-      
-      const getVisibleCards = () => {
-        if (!blogCards) return [];
-        return Array.from(blogCards).filter(card => card.classList.contains('filtered-in'));
-      };
-      
-      const renderPagination = () => {
-        const visibleCards = getVisibleCards();
-        const totalPages = Math.max(1, Math.ceil(visibleCards.length / POSTS_PER_PAGE));
-        const pagination = document.getElementById('blogPagination');
-        
-        console.log('Rendering pagination:', { visibleCards: visibleCards.length, totalPages, currentPage });
-        
-        if (!pagination) return;
-        
-        pagination.innerHTML = '';
-        
-        // Only show pagination if more than 1 page
-        if (totalPages <= 1) return;
-        
-        // Prev button
-        const prevLi = document.createElement('li');
-        prevLi.className = 'page-item' + (currentPage <= 1 ? ' disabled' : '');
-        prevLi.innerHTML = '<a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>';
-        const prevHandler = (e: Event) => { 
-          e.preventDefault(); 
-          if (currentPage > 1) { 
-            currentPage--; 
-            showPage(); 
-          } 
-        };
-        addTrackedEventListener(prevLi, 'click', prevHandler);
-        pagination.appendChild(prevLi);
-        
-        // Page numbers
-        for (let i = 1; i <= totalPages; i++) {
-          const li = document.createElement('li');
-          li.className = 'page-item' + (i === currentPage ? ' active' : '');
-          li.innerHTML = '<a class="page-link" href="#">' + i + '</a>';
-          const pageHandler = (e: Event) => { 
-            e.preventDefault(); 
-            currentPage = i; 
-            showPage(); 
-          };
-          addTrackedEventListener(li, 'click', pageHandler);
-          pagination.appendChild(li);
-        }
-        
-        // Next button
-        const nextLi = document.createElement('li');
-        nextLi.className = 'page-item' + (currentPage >= totalPages ? ' disabled' : '');
-        nextLi.innerHTML = '<a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>';
-        const nextHandler = (e: Event) => { 
-          e.preventDefault(); 
-          if (currentPage < totalPages) { 
-            currentPage++; 
-            showPage(); 
-          } 
-        };
-        addTrackedEventListener(nextLi, 'click', nextHandler);
-        pagination.appendChild(nextLi);
-      };
-      
-      const showPage = () => {
-        const visibleCards = getVisibleCards();
-        console.log('Showing page:', currentPage, 'Total visible cards:', visibleCards.length);
-        
-        // Show/hide cards based on current page
-        visibleCards.forEach((card, idx) => {
-          const shouldShow = idx >= (currentPage - 1) * POSTS_PER_PAGE && idx < currentPage * POSTS_PER_PAGE;
-          (card as HTMLElement).style.display = shouldShow ? '' : 'none';
-        });
-        
-        // Hide all non-filtered-in cards
-        if (blogCards) {
-          Array.from(blogCards).filter(card => !card.classList.contains('filtered-in')).forEach(card => {
-            (card as HTMLElement).style.display = 'none';
-          });
-        }
-        
-        renderPagination();
-      };
-      
-      const initializeBlog = () => {
-        console.log('Attempting to initialize blog...');
-        
-        // Get DOM elements
-        categoryButtons = document.querySelectorAll('.category-btn');
-        blogCards = document.querySelectorAll('.blog-card-wrapper');
-        
-        console.log('Found elements:', {
-          categoryButtons: categoryButtons.length,
-          blogCards: blogCards.length
-        });
-        
-        // Only proceed if we have the required elements
-        if (!categoryButtons.length || !blogCards.length) {
-          console.warn('Blog index elements not found, retrying...');
-          // Retry after a short delay
-          setTimeout(initializeBlog, 200);
-          return;
-        }
-        
-        // Reset state
-        currentCategory = 'all';
-        currentSort = 'newest';
-        currentPage = 1;
-        
-        // Set initial active state for "All" button
-        if (categoryButtons.length > 0) {
-          categoryButtons[0].classList.add('active');
-          console.log('Set active state on first button');
-        }
-        
-        // Setup functionality
-        setupCategoryButtons();
-        setupSortOptions();
-        
-        // Initial filter, sort and pagination
-        filterAndSortCards();
-        showPage();
-        
-        console.log('Blog index initialized successfully');
-      };
-      
-      // Initialize after DOM is ready and component has mounted
-      const timeoutId = setTimeout(() => {
-        // Double-check that we're still on the right page and elements exist
-        if (document.querySelector('.blog-card-wrapper')) {
-          initializeBlog();
-        } else {
-          console.warn('Blog elements not found after mount, retrying...');
-          setTimeout(initializeBlog, 300);
-        }
-      }, 200);
-      
-      // Cleanup function
-      return () => {
-        console.log('Cleaning up blog functionality');
-        clearTimeout(timeoutId);
-        eventListeners.forEach(({ element, event, handler }) => {
-          element.removeEventListener(event, handler);
-        });
-      };
+  // Filter and sort posts
+  const filteredAndSortedPosts = useMemo(() => {
+    let filtered = posts;
+    
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      filtered = posts.filter(post => post.category === selectedCategory);
     }
+    
+    // Sort posts
+    const sorted = [...filtered].sort((a, b) => {
+      switch (selectedSort) {
+        case 'newest':
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        case 'oldest':
+          return new Date(a.date).getTime() - new Date(b.date).getTime();
+        case 'popular':
+          // For now, sort by date as popularity data isn't available
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        default:
+          return 0;
+      }
+    });
+    
+    return sorted;
+  }, [posts, selectedCategory, selectedSort]);
+
+  // Pagination
+  const totalPages = Math.ceil(filteredAndSortedPosts.length / postsPerPage);
+  const currentPosts = filteredAndSortedPosts.slice(
+    (currentPage - 1) * postsPerPage,
+    currentPage * postsPerPage
+  );
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, selectedSort]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = () => {
+      // This will be handled by the dropdown component
+    };
+    
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
   return (
@@ -478,91 +795,6 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
         <meta property="og:image" content={metadata?.ogImage} />
         <meta property="og:url" content={metadata?.ogUrl} />
         <meta property="og:type" content={metadata?.ogType} />
-        
-        {/* Blog Index Styles */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            .blog-loading {
-              opacity: 0;
-              transition: opacity 0.3s ease-in-out;
-            }
-            .blog-loaded {
-              opacity: 1;
-            }
-            
-            /* Category Button Styles */
-            .category-btn {
-              background: rgba(255, 255, 255, 0.1);
-              border: 1px solid rgba(255, 255, 255, 0.2);
-              color: var(--bs-body-color);
-              border-radius: 25px;
-              padding: 8px 16px;
-              margin: 4px;
-              font-size: 0.9rem;
-              transition: all 0.3s ease;
-              white-space: nowrap;
-            }
-            
-            .category-btn:hover {
-              background: var(--bs-primary);
-              border-color: var(--bs-primary);
-              color: white;
-              transform: translateY(-2px);
-              box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-            }
-            
-            .category-btn.active {
-              background: var(--bs-primary);
-              border-color: var(--bs-primary);
-              color: white;
-              box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-            }
-            
-            /* Blog Card Styles */
-            .blog-card {
-              transition: transform 0.3s ease, box-shadow 0.3s ease;
-              border-radius: 1.5rem;
-            }
-            
-            .blog-card:hover {
-              transform: translateY(-5px);
-              box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            }
-            
-            /* Filter Bar Styles */
-            .filter-bar-card {
-              backdrop-filter: blur(10px);
-              background: rgba(255, 255, 255, 0.05);
-              border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            /* Pagination Styles */
-            .pagination .page-link {
-              border-radius: 50%;
-              margin: 0 2px;
-              width: 40px;
-              height: 40px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: 1px solid rgba(255, 255, 255, 0.2);
-              background: rgba(255, 255, 255, 0.1);
-              color: var(--bs-body-color);
-            }
-            
-            .pagination .page-item.active .page-link {
-              background: var(--bs-primary);
-              border-color: var(--bs-primary);
-              color: white;
-            }
-            
-            .pagination .page-link:hover {
-              background: var(--bs-primary);
-              border-color: var(--bs-primary);
-              color: white;
-            }
-          `
-        }} />
 
         {/* Structured Data */}
         <script
@@ -579,140 +811,156 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
         />
       </Head>
 
-      <div className={`blog-loading ${isLoaded ? 'blog-loaded' : ''}`}>
+      {/* Disqus Comment Count Script */}
+      <script 
+        id="dsq-count-scr" 
+        src="https://dsebest.disqus.com/count.js" 
+        async
+      />
 
-      {/* Breadcrumb */}
+      {/*breadcrumb*/}
       <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">Blog</div>
+        <div className="breadcrumb-title pe-3">其他</div>
         <div className="ps-3">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 p-0">
               <li className="breadcrumb-item active" aria-current="page">
-                主頁
+                Blog
               </li>
             </ol>
           </nav>
         </div>
       </div>
+      {/*end breadcrumb*/}
 
-      {/* Main Content */}
-      <div className="card rounded-4" style={{ height: 'auto' }}>
+      <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
-          <h1>Blog</h1>
-          <br />
-          <p style={{ marginBottom: '0.7rem' }}>
-            <strong>DSE.BEST</strong> 為香港中學文憑試（DSE）考生提供最全面、最實用的學習資源和最新考試資訊。無論你是準備核心科目還是選修科目，這裡都能找到歷屆試題、詳細答案、熱門溫習策略、考生經驗分享，以及專家撰寫的學習心得。<br />
-            我們的目標是幫助你掌握DSE考試趨勢，提升溫習效率，並以輕鬆自信的心態迎戰公開試。<br />
-            本網站每日更新，涵蓋最新DSE新聞、放榜資訊、JUPAS申請貼士、常見問題解答，以及各科重點難題分析。<br />
-            立即瀏覽 DSE.BEST，與全港考生一同進步，邁向理想成績！
-          </p>
-          <hr className="my-4" style={{ marginTop: '0.7rem', marginBottom: '1.2rem' }} />
+          {/* Custom Blog Header Section */}
+          <div style={{
+            textAlign: 'center',
+            padding: '20px 20px',
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}>
+            <h1 style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              marginBottom: '24px',
+              lineHeight: '1.2',
+              color: '#667eea'
+            }}>
+              Blog
+            </h1>
+            <p style={{
+              fontSize: '1rem',
+              lineHeight: '1.6',
+              color: 'var(--bs-body-color, #6b7280)',
+              marginBottom: '0',
+              textAlign: 'center'
+            }}>
+              <strong>DSE.BEST</strong> 為香港中學文憑試（DSE）考生提供最全面的學習資源和最新考試資訊，包括歷屆試題、詳細答案、溫習策略和心得分享。
+            </p>
+          </div>
+          <hr className="my-4" style={{ marginTop: '0rem !important', marginBottom: '0.2rem !important' }} />
 
-          {/* Filter/Sort Bar Card (Transparent) */}
-          <div className="card mb-4 px-3 py-2 filter-bar-card" style={{ borderRadius: '1.5rem', background: 'transparent' }}>
-            <div className="filter-bar-inner d-flex align-items-center justify-content-between gap-2 w-100" style={{ background: 'none !important' }}>
-              
-              {/* Category Buttons Wrapper */}
-              <div className="d-flex align-items-center flex-grow-1 flex-wrap gap-2 category-sorter">
-                <button className="btn category-btn" data-category="all" type="button">全部 All</button>
-                <button className="btn category-btn" data-category="DSE News" type="button">DSE News</button>
-                <button className="btn category-btn" data-category="Chinese" type="button">中文 Chinese</button>
-                <button className="btn category-btn" data-category="English" type="button">英文 English</button>
-                <button className="btn category-btn" data-category="Maths" type="button">數學 Maths</button>
-                <button className="btn category-btn" data-category="CSD" type="button">公民 CSD</button>
-                <button className="btn category-btn" data-category="Physics" type="button">物理 Physics</button>
-                <button className="btn category-btn" data-category="Chemistry" type="button">化學 Chemistry</button>
-                <button className="btn category-btn" data-category="Biology" type="button">生物 Biology</button>
-                <button className="btn category-btn" data-category="ICT" type="button">資訊 ICT</button>
-                <button className="btn category-btn" data-category="M1" type="button">M1</button>
-                <button className="btn category-btn" data-category="M2" type="button">M2</button>
-                <button className="btn category-btn" data-category="Geography" type="button">地理 Geography</button>
-                <button className="btn category-btn" data-category="History" type="button">歷史 History</button>
-                <button className="btn category-btn" data-category="Chinese History" type="button">中國歷史 Chinese History</button>
-                <button className="btn category-btn" data-category="Economics" type="button">經濟 Economics</button>
-                <button className="btn category-btn" data-category="BAFS" type="button">企會財 BAFS</button>
-                <button className="btn category-btn" data-category="Visual Arts" type="button">視藝 Visual Arts</button>
-              </div>
-              <br />
-              
-              {/* Sort Dropdown Wrapper */}
-              <div className="dropdown">
-                <button className="btn btn-primary rounded-pill px-4 shadow-sm dropdown-toggle sort-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span id="sortLabel">Newest</span>
-                </button>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item sort-option active" href="#" data-sort="newest">Newest</a></li>
-                  <li><a className="dropdown-item sort-option" href="#" data-sort="oldest">Oldest</a></li>
-                  <li><a className="dropdown-item sort-option" href="#" data-sort="popular">Popular</a></li>
-                </ul>
-              </div>
-            </div>
+          {/* Filter and Sort Bar */}
+          <FilterSortBar
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            selectedSort={selectedSort}
+            onSortChange={setSelectedSort}
+          />
+
+          {/* Blog Posts Grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '20px',
+            marginBottom: '40px',
+            width: '100%',
+            maxWidth: '100%',
+            boxSizing: 'border-box'
+          }} className="blog-grid-container">
+            {currentPosts.map((post, index) => (
+              <BlogCard key={post.id} post={post} index={index} />
+            ))}
           </div>
 
-          {/* Reduced or removed spacer for mobile, keep for desktop only */}
-          <div className="filter-bar-spacer d-none d-md-block" style={{ height: '20px', clear: 'both' }}></div>
+          <style jsx>{`
+            .blog-grid-container {
+              display: grid !important;
+              grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+              max-width: 1200px !important;
+              margin: 0 auto !important;
+            }
+            
+            @media (min-width: 768px) {
+              .blog-grid-container {
+                grid-template-columns: repeat(3, 1fr) !important;
+                justify-items: center !important;
+              }
+              
+              .blog-grid-container > * {
+                width: 320px !important;
+                max-width: 320px !important;
+              }
+            }
+            
+            @media (max-width: 767px) {
+              .blog-grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+              }
+            }
+          `}</style>
 
-          {/* Blog Cards Container */}
-          <div className="container my-4">
-            <div className="row g-4 mb-5 align-items-stretch" id="blogCardRow">
-              {(() => {
-                console.log('Rendering blog cards, total posts:', posts.length);
-                return posts.length === 0 ? (
-                  <div className="col-12">
-                    <div className="alert alert-info">
-                      No blog posts found. Check the data/blog-index.json file.
-                    </div>
-                  </div>
-                ) : (
-                  posts.map((post, index) => {
-                    console.log(`Rendering post ${index + 1}:`, post.title, 'Category:', post.category);
-                    return <BlogCard key={post.id} post={post} index={index} />;
-                  })
-                );
-              })()}
+          {/* No Results */}
+          {currentPosts.length === 0 && (
+            <div style={{
+              textAlign: 'center',
+              padding: '60px 20px',
+              color: 'var(--bs-body-color, #6b7280)'
+            }}>
+              <BiFileBlank style={{ fontSize: '64px', marginBottom: '16px', opacity: 0.5 }} />
+              <h3 style={{ margin: '0 0 8px 0', fontSize: '1.25rem' }}>暫無文章</h3>
+              <p style={{ margin: '0', fontSize: '0.875rem' }}>
+                請稍後再來查看最新內容
+              </p>
             </div>
+          )}
 
-            {/* Pagination */}
-            <nav aria-label="Blog pagination" className="d-flex justify-content-center mt-4">
-              <ul className="pagination justify-content-center" id="blogPagination" suppressHydrationWarning={true}>
-                {/* Pagination items will be injected by JS */}
-              </ul>
-            </nav>
-          </div>
-
-          {posts.length === 0 && (
-            <div className="text-center py-5">
-              <BiFileBlank className="display-1 text-muted" />
-              <h3 className="mt-3 text-muted">暫無文章</h3>
-              <p className="text-muted">請稍後再來查看最新內容</p>
-            </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           )}
         </div>
       </div>
-
-      {/* FAQ Section */}
-      </div>
     </>
-  )
+  );
 }
 
-export async function getStaticProps(): Promise<{ props: BlogIndexProps }> {
+export const getStaticProps: GetStaticProps<BlogIndexProps> = async () => {
   try {
-    // Read from static JSON file generated at build time
     const dataPath = path.join(process.cwd(), 'data', 'blog-index.json');
-    const posts = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+    const jsonData = fs.readFileSync(dataPath, 'utf8');
+    const posts: BlogPost[] = JSON.parse(jsonData);
 
     return {
       props: {
-        posts
-      }
+        posts: posts.filter(post => post.index !== false)
+      },
+      revalidate: 3600 // Revalidate every hour
     };
   } catch (error) {
-    console.error('Error loading blog data:', error);
+    console.error('Error loading blog posts:', error);
     return {
       props: {
         posts: []
-      }
+      },
+      revalidate: 3600
     };
   }
-}
+};
