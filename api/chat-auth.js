@@ -275,7 +275,7 @@ const MOD_COMMANDS = {
 
 // Rate limit settings
 const RATE_LIMIT_WINDOW = 60000; // 1 minute
-const MAX_REQUESTS = 8; // 8 requests per minute
+const MAX_REQUESTS = 8000000; // 8 requests per minute
 const BLOCK_THRESHOLD = 2; // Number of rate limit violations before blocking
 const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
