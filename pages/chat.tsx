@@ -406,8 +406,8 @@ export default function ChatPage() {
                                         <BiTime className="rule-icon warning" style={{ width: '24px', height: '28px' }} />
                                         <span>
                                             <strong>發送頻率</strong> -
-                                            每條訊息間隔15秒，每分鐘最多8條訊息 15-second cooldown
-                                            between messages, max 8 per minute
+                                            每條訊息間隔3秒，每分鐘最多15條訊息 3-second cooldown
+                                            between messages, max 15 per minute
                                         </span>
                                     </li>
                                     <li>

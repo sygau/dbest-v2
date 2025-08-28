@@ -18,12 +18,16 @@
     "paths": {
       "@/*": ["./*"],
       "@/components/*": ["components/*"],
+      "@/hooks/*": ["hooks/*"],
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
       "@/config/*": ["config/*"],
-      "@/data/*": ["data/*"]
-    }
+      "@/data/*": ["data/*"],
+      "@/utils/*": ["utils/*"],
+      "@/types/*": ["types/*"]
+    },
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "types/globals.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "out", ".next"]
 }

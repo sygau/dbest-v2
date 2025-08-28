@@ -1,6 +1,8 @@
 'use client'
 import Link from 'next/link'
-import { ReactNode } from 'react'
+import { ReactNode, MouseEvent, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { useNavigationMode } from '../hooks/useNavigationMode'
 
 interface NavigationLinkProps {
   href: string
@@ -17,10 +19,50 @@ export default function NavigationLink({
   onClick,
   ...props 
 }: NavigationLinkProps) {
-  // Check if traditional navigation is enabled
-  const useTraditionalNavigation = process.env.NEXT_PUBLIC_NAVIGATION_MODE === 'traditional'
+  const router = useRouter()
+  const { isTraditionalMode } = useNavigationMode()
+  const [isClient, setIsClient] = useState(false)
   
-  if (useTraditionalNavigation) {
+  // Ensure we're on the client side
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  
+  // Handle navigation with loading state in SPA mode
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    // Call the original onClick handler if provided
+    if (onClick) {
+      onClick()
+    }
+    
+    // If in traditional mode, allow default browser navigation
+    if (isTraditionalMode) {
+      return
+    }
+    
+    // In SPA mode, prevent default and handle navigation via router
+    e.preventDefault()
+    
+    // Only navigate if the href is different from the current path
+    if (href !== router.asPath) {
+      router.push(href)
+    }
+  }
+  
+  // Before client hydration, render a simple anchor tag to avoid hydration mismatch
+  if (!isClient) {
+    return (
+      <a 
+        href={href} 
+        className={className}
+        {...props}
+      >
+        {children}
+      </a>
+    )
+  }
+  
+  if (isTraditionalMode) {
     // Use traditional navigation with full page reload
     return (
       <a 
@@ -39,15 +81,15 @@ export default function NavigationLink({
     )
   }
   
-  // Use Next.js Link for SPA navigation (default behavior)
+  // Use Next.js Link for SPA navigation with skeleton loading
   return (
-    <Link 
+    <a 
       href={href} 
       className={className}
-      onClick={onClick}
+      onClick={handleClick}
       {...props}
     >
       {children}
-    </Link>
+    </a>
   )
 } 

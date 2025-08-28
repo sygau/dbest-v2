@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import useUIInitialization from './useUIInitialization'
 
 declare global {
   interface Window {
@@ -8,33 +9,30 @@ declare global {
     countdownInterval?: NodeJS.Timeout
     blogPagination?: any
     initializePage?: () => void
-    adsbygoogle?: any[]
   }
 }
 
+/**
+ * Hook to initialize page functionality
+ * Now uses React hooks instead of jQuery-based functionality
+ */
 const usePageInitialization = () => {
   const router = useRouter()
-
-  const reloadAds = () => {
-    if (typeof window !== 'undefined' && window.adsbygoogle) {
-      try {
-        // Force AdSense to re-evaluate all ad containers on the page
-        // This ensures ads below the fold also load
-        window.adsbygoogle = window.adsbygoogle || []
-        window.adsbygoogle.push({})
-      } catch (error) {
-        console.error('Error reloading AdSense ads:', error)
-      }
-    }
-  }
+  
+  // Initialize all UI functionality using our new React hooks
+  const ui = useUIInitialization()
 
   const initializePage = () => {
     if (typeof window !== 'undefined') {
-      // Main page initialization (custom logic)
-      if (typeof window.initializePage === 'function') {
-        window.initializePage()
+      // Initialize paper links if available (subject-specific functionality)
+      if (typeof window.initPaperLinks === 'function') {
+        window.initPaperLinks()
       }
-      reloadAds()
+      
+      // Initialize countdown if on countdown page
+      if (router.pathname === '/countdown' && typeof window.updateCountdown === 'function') {
+        window.updateCountdown()
+      }
     }
   }
 
@@ -57,7 +55,8 @@ const usePageInitialization = () => {
     }
   }, [router.asPath])
 
-  return null
+  // Return UI methods for use in components if needed
+  return ui
 }
 
 export default usePageInitialization

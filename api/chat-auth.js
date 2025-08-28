@@ -275,7 +275,7 @@ const MOD_COMMANDS = {
 
 // Rate limit settings
 const RATE_LIMIT_WINDOW = 60000; // 1 minute
-const MAX_REQUESTS = 8000000; // 8 requests per minute
+const MAX_REQUESTS = 15; // 15 requests per minute (increased from 8)
 const BLOCK_THRESHOLD = 2; // Number of rate limit violations before blocking
 const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
@@ -617,41 +617,14 @@ function sanitizeForXSS(input) {
   // Step 2: Remove Unicode control characters and invisible characters
   sanitized = sanitized.replace(/[\u200B-\u200D\uFEFF\u00AD\u061C\u180E\u2060-\u2069]/g, '');
   
-  // Step 3: HTML entity encoding for dangerous characters
+  // Step 3: Only encode truly dangerous HTML characters
   const htmlEntities = {
-    '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#x27;',
-    '/': '&#x2F;',
-    '\\': '&#x5C;',
-    '`': '&#x60;',
-    '=': '&#x3D;',
-    '+': '&#x2B;',
-    '-': '&#x2D;',
-    ';': '&#x3B;',
-    ':': '&#x3A;',
-    '!': '&#x21;',
-    '@': '&#x40;',
-    '#': '&#x23;',
-    '$': '&#x24;',
-    '%': '&#x25;',
-    '^': '&#x5E;',
-    '*': '&#x2A;',
-    '(': '&#x28;',
-    ')': '&#x29;',
-    '_': '&#x5F;',
-    '[': '&#x5B;',
-    ']': '&#x5D;',
-    '{': '&#x7B;',
-    '}': '&#x7D;',
-    '|': '&#x7C;',
-    '~': '&#x7E;'
   };
   
-  // Step 4: Replace dangerous characters with HTML entities
-  sanitized = sanitized.replace(/[&<>"'\/\\`=+\-;:!@#$%^&*()_\[\]{}|~]/g, (match) => {
+  // Step 4: Replace only dangerous HTML characters with entities
+  sanitized = sanitized.replace(/[<>]/g, (match) => {
     return htmlEntities[match] || match;
   });
   

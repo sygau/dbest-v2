@@ -1,21 +1,18 @@
 'use client'
-import { useMemo } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 
 export const useNavigationMode = () => {
-  const navigationMode = useMemo(() => {
-    if (typeof window === 'undefined') {
-      // Server-side: default to SPA mode
-      return 'spa'
-    }
-    
-    // Check environment variable
+  // Start with a default value that matches server-side rendering
+  const [navigationMode, setNavigationMode] = useState<'spa' | 'traditional'>('spa')
+
+  useEffect(() => {
+    // Only check environment variable on the client side
     const envMode = process.env.NEXT_PUBLIC_NAVIGATION_MODE
     if (envMode === 'traditional') {
-      return 'traditional'
+      setNavigationMode('traditional')
+    } else {
+      setNavigationMode('spa')
     }
-    
-    // Default to SPA mode
-    return 'spa'
   }, [])
 
   const isTraditionalMode = navigationMode === 'traditional'

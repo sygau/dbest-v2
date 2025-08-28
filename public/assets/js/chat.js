@@ -20,8 +20,8 @@ class DSEChat {
     this.rateLimitMessageCount = 0;
     
     // Rate limit settings
-    this.SEND_COOLDOWN = 15000; // 15s cooldown between sends
-    this.MAX_MESSAGES_PER_MINUTE = 8; // Max 8 messages per minute
+    this.SEND_COOLDOWN = 3000; // 3s cooldown between sends
+    this.MAX_MESSAGES_PER_MINUTE = 15; // Max 15 messages per minute (increased from 8)
     this.MAX_BURST = 3; // Max 3 messages in burst
     this.BURST_WINDOW = 30000; // 30 second burst window
     this.RATE_LIMIT_WINDOW = 60000; // 1 minute window for overall limit
