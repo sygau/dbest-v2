@@ -15,6 +15,7 @@ import {
   UnifiedSubjectCard,
 } from '../components/SubjectCardVariants'
 import FAQSection from '../components/FAQSection'
+import NavigationLink from '../components/NavigationLink'
 import { 
   generateWebsiteStructuredData, 
   generateHomepageStructuredData, 
@@ -257,6 +258,53 @@ export default function HomePage() {
             </div>
           </div>
 
+        </div>
+
+        {/* Contact Message Section */}
+        <div className="container my-5">
+          <div className="row justify-content-center">
+            <div className="col-lg-8">
+              <div className="card border-primary border-2">
+                <div className="card-body text-center p-4">
+                  <h3 className="mb-3">
+                    <span className="text-primary">💬 有任何資源請求或查詢？</span>
+                  </h3>
+                  <p className="mb-3">
+                    如果您需要特定的學習資源或有任何問題，歡迎在我們的聊天室告訴我們！
+                    <br />
+                    <br />
+                    For any resource requests or inquiries, feel free to tell us in our chat room!
+                  </p>
+                  <NavigationLink 
+                    href="/chat" 
+                    className="btn btn-primary btn-lg d-inline-flex align-items-center gap-2"
+                    style={{
+                      borderRadius: '25px',
+                      padding: '0.75rem 1.5rem',
+                      fontSize: '1.1rem',
+                      fontWeight: '600',
+                      boxShadow: '0 4px 15px rgba(13, 110, 253, 0.3)',
+                      transition: 'all 0.3s ease',
+                      border: 'none',
+                      background: 'linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%)',
+                      minWidth: '200px',
+                      justifyContent: 'center'
+                    }}
+                    onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 6px 20px rgba(13, 110, 253, 0.4)';
+                    }}
+                    onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(13, 110, 253, 0.3)';
+                    }}
+                  >
+                    <span>💬 進入聊天室 / Enter Chat</span>
+                  </NavigationLink>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* FAQ Section */}

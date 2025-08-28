@@ -24,7 +24,7 @@ interface PaperData {
 
 // Helper function to get paper display info
 function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
-  const englishPaperTypeMap: Record<string, string> = {
+  const mathPaperTypeMap: Record<string, string> = {
     'P1': 'Paper 1',
     'P2': 'Paper 2',
     'ans': 'Answers / Marking Scheme'
@@ -35,7 +35,7 @@ function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
   if (!match) return null;
 
   const [, paperType] = match;
-  const displayType = englishPaperTypeMap[paperType] || paperType.toUpperCase();
+  const displayType = mathPaperTypeMap[paperType] || paperType.toUpperCase();
 
   return {
     paperId,
@@ -49,6 +49,8 @@ function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
 export default function MathYearPage({ subject, year, papers, availableFiles }: YearPageProps) {
   // Use the clean single function approach
   const meta = generateYearMeta('math', year);
+
+
 
   return (
     <>
@@ -169,7 +171,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
           <div className="mt-5 text-center">
             <h3 className="mb-4">其他年份 / Other Years</h3>
             <div className="d-flex flex-wrap justify-content-center gap-2">
-              {[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023].map((yearNum) => {
+              {[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024].map((yearNum) => {
                 const isCurrentYear = yearNum === parseInt(year);
                 return (
                   <NavigationLink
@@ -222,7 +224,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
           {/* CTA to Main Page */}
           <div className="text-center mt-5 mb-5">
             <h3>Need More Mathematics Papers?</h3>
-            <p className="mb-4">Access all years (2012-2023), topic-based practice, and comprehensive study materials.</p>
+            <p className="mb-4">Access all years (2012-2024), topic-based practice, and comprehensive study materials.</p>
             <NavigationLink 
               href="/math" 
               className="btn btn-primary btn-lg d-inline-flex align-items-center gap-3"
@@ -247,7 +249,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                 e.currentTarget.style.boxShadow = '0 8px 25px rgba(13, 110, 253, 0.3)';
               }}
             >
-              <span>View All Mathematics Papers (2012-2023)</span>
+              <span>View All Mathematics Papers (2012-2024)</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14"/>
                 <path d="m12 5 7 7-7 7"/>
@@ -261,7 +263,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
+  const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
 
   const paths = years.map((year) => ({
     params: { year }
