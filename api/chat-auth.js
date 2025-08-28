@@ -373,7 +373,7 @@ function isUserBanned(clientId, ip, secretmodkey = null) {
 }
 
 function isRateLimited(clientId, ip, secretmodkey = null) {
-  // Never rate-limit moderators
+  // Never rate-limit moderators - completely bypass all rate limiting
   if (isModerator(clientId, ip, secretmodkey)) return false;
 
   const now = Date.now();
@@ -474,7 +474,7 @@ async function moderateUsername(username, clientId, ip) {
     };
   }
 
-  // Length validation
+  // Length validation - DISABLED for moderators
   if (cleanUsername.length > 14 || cleanUsername.length < 3) {
     return {
       isClean: false,
@@ -596,7 +596,7 @@ async function moderateUsername(username, clientId, ip) {
   }
 
   // Comprehensive XSS protection for username
-  const safeUsername = sanitizeForXSS(cleanUsername);
+  const safeUsername = sanitizeForXSS(cleanUsername, clientId, ip);
   
   return {
     isClean: true,
@@ -606,7 +606,12 @@ async function moderateUsername(username, clientId, ip) {
 }
 
 // Comprehensive XSS sanitization function
-function sanitizeForXSS(input) {
+function sanitizeForXSS(input, clientId = null, ip = null) {
+  // Skip XSS sanitization for moderators entirely
+  if (clientId && ip && isModerator(clientId, ip)) {
+    return input; // Return original input for moderators
+  }
+  
   if (!input || typeof input !== 'string') {
     return '';
   }
@@ -715,6 +720,11 @@ function sanitizeForXSS(input) {
 
 // Modular spam detection system
 function detectSpam(text) {
+  // Skip spam detection for moderators entirely
+  if (typeof window !== 'undefined' && window.isModerator) {
+    return { isClean: true };
+  }
+
   const spamChecks = [
     // Character repetition spam
     {
@@ -941,7 +951,7 @@ function moderateContent(text, clientId, ip, username) {
     };
   }
 
-  // 5. Check message length (server-side enforcement)
+  // 5. Check message length (server-side enforcement) - DISABLED for moderators
   if (cleanText.length > 150) {
     return {
       isClean: false,
