@@ -92,6 +92,7 @@ async function sendNtfyNotification(messageData, userInfo = {}) {
       headers: {
         'X-Title': messageData.sender,
         'X-Priority': '3',
+        'X-Click' : 'https://dse.best/chat',
         'X-Icon': 'https://dse.best/assets/images/logo-icon.png',
         'X-Actions': `view, Chat, https://dse.best/chat; http, IP Info, https://ipinfo.io/${userInfo.ip || ''}`
       },
