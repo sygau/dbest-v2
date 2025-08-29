@@ -1956,8 +1956,7 @@ Server Uptime: ~${uptimeHours}h
       });
 
       // Send NTFY notification for new messages (only for non-moderator messages)
-      // Skip notifications in production to reduce CPU usage
-      if (!isMod && process.env.NODE_ENV !== 'production') {
+      if (!isMod) {
         try {
           await sendNtfyNotification(sanitizedMessage, {
             ip: ip,
