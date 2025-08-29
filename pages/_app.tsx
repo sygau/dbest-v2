@@ -28,7 +28,8 @@ import {
   BiUpArrowAlt,
   BiFile,
   BiPalette,
-  BiBookReader
+  BiBookReader,
+  BiLogoInstagram
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
@@ -126,6 +127,32 @@ export default function App({ Component, pageProps }: AppProps) {
               <a className="nav-link" href="#"><BiSearch style={{ fontSize: 22 }} /></a>
             </li> */}
  
+            <li className="nav-item">
+              <a 
+                className="nav-link btn bg-transparent border-0 p-0" 
+                href="https://www.instagram.com/dse_best"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                title="Follow us on Instagram"
+                onClick={(e) => {
+                  // Try to open Instagram app first on mobile
+                  if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    e.preventDefault();
+                    const appUrl = 'instagram://user?username=dse_best';
+                    const webUrl = 'https://www.instagram.com/dse_best';
+                    
+                    // Try to open app, fallback to website after 2 seconds
+                    window.location.href = appUrl;
+                    setTimeout(() => {
+                      window.location.href = webUrl;
+                    }, 2000);
+                  }
+                }}
+              >
+                <BiLogoInstagram style={{ fontSize: 22 }} />
+              </a>
+            </li>
             <li className="nav-item">
               <button 
                 className="nav-link btn bg-transparent border-0 p-0" 
@@ -346,12 +373,8 @@ export default function App({ Component, pageProps }: AppProps) {
           </div>
 
           {/* Footer */}
-          <footer className="footer d-flex flex-column flex-md-row align-items-center justify-content-between gap-1 py-3 border-top px-xl-4 px-3">
-            <p>© 2023-2025 dse.best</p>
-            <div className="footer-links">
-              <NavigationLink href="/disclaimer">免責聲明</NavigationLink>
-              <NavigationLink href="/privacy-policy">私隱政策</NavigationLink>
-            </div>
+          <footer className="footer d-flex flex-column flex-md-row align-items-center justify-content-between gap-1 py-0 border-top px-xl-4 px-3">
+            <p className="mb-0" style={{ marginTop: '15px' }}>© 2023-2025 dse.best | 試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途。如發現本網站內容有任何侵權或違規情況，請<NavigationLink href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>聯絡我們</NavigationLink></p>
           </footer>
         </main>
       </div>

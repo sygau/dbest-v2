@@ -9,7 +9,8 @@ import {
   BiLaptop,
   BiGlobe,
   BiMoney,
-  BiBriefcase
+  BiBriefcase,
+  BiLogoInstagram
 } from 'react-icons/bi';
 import {
   UnifiedSubjectCard,
@@ -42,8 +43,8 @@ const homepageFAQs = [
   },
   {
     id: 'faq4',
-    question: '可唔可以離線瀏覽？',
-    answer: 'DSEBest 個 <abbr title="Progressive Web App">PWA</abbr>，只要你用 Chrome 或 Safari 加到主畫面，網站就會自動快取資源，離線都能睇到以往載入過嘅內容。'
+    question: '點樣貢獻試卷？',
+    answer: '你可以透過 Instagram 傳送試卷俾我哋！歡迎大家分享歷屆試題、答案或其他學習資源，幫助更多同學。'
   },
   {
     id: 'faq5',
@@ -260,23 +261,22 @@ export default function HomePage() {
 
         </div>
 
-        {/* Contact Message Section */}
+        {/* Instagram Follow Section */}
         <div className="container my-5">
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className="card border-primary border-2">
                 <div className="card-body text-center p-4">
                   <h3 className="mb-3">
-                    <span className="text-primary">💬 有任何資源請求或查詢？</span>
+                    <span className="text-primary">📱 Follow us on Instagram</span>
                   </h3>
                   <p className="mb-3">
-                    如果您需要特定的學習資源或有任何問題，歡迎在我們的聊天室告訴我們！
-                    <br />
-                    <br />
-                    For any resource requests or inquiries, feel free to tell us in our chat room!
+                    追蹤我們的 Instagram 獲取最新消息和更新！
                   </p>
-                  <NavigationLink 
-                    href="/chat" 
+                  <a 
+                    href="https://www.instagram.com/dse_best"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn btn-primary btn-lg d-inline-flex align-items-center gap-2"
                     style={{
                       borderRadius: '25px',
@@ -288,7 +288,23 @@ export default function HomePage() {
                       border: 'none',
                       background: 'linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%)',
                       minWidth: '200px',
-                      justifyContent: 'center'
+                      justifyContent: 'center',
+                      textDecoration: 'none',
+                      color: 'white'
+                    }}
+                    onClick={(e) => {
+                      // Try to open Instagram app first on mobile
+                      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                        e.preventDefault();
+                        const appUrl = 'instagram://user?username=dse_best';
+                        const webUrl = 'https://www.instagram.com/dse_best';
+                        
+                        // Try to open app, fallback to website after 2 seconds
+                        window.location.href = appUrl;
+                        setTimeout(() => {
+                          window.location.href = webUrl;
+                        }, 2000);
+                      }
                     }}
                     onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
                       e.currentTarget.style.transform = 'translateY(-2px)';
@@ -299,8 +315,9 @@ export default function HomePage() {
                       e.currentTarget.style.boxShadow = '0 4px 15px rgba(13, 110, 253, 0.3)';
                     }}
                   >
-                    <span>💬 進入聊天室 / Enter Chat</span>
-                  </NavigationLink>
+                    <BiLogoInstagram style={{ fontSize: '1.2rem' }} />
+                    <span>Follow us on Instagram</span>
+                  </a>
                 </div>
               </div>
             </div>
