@@ -10,8 +10,16 @@ const LOGFLARE_API_KEY = process.env.LOGFLARE_API_KEY || '7MnWPFtPMj28';
 const LOGFLARE_SOURCE_ID = process.env.LOGFLARE_SOURCE_ID || '4cd60bba-acd6-4e2b-83f6-0271b53350db';
 const LOGFLARE_ENDPOINT = `https://api.logflare.app/logs?source=${LOGFLARE_SOURCE_ID}`;
 
-// Enhanced logging with Logflare using fetch
+// Enhanced logging with Logflare using fetch (optimized for serverless)
 async function logToLogflare(event, metadata = {}) {
+  // Skip logging for high-frequency events in production
+  if (process.env.NODE_ENV === 'production') {
+    const skipEvents = ['connection_attempt', 'token_generated', 'message_sent'];
+    if (skipEvents.includes(event)) {
+      return; // Skip logging for these events to reduce CPU usage
+    }
+  }
+
   if (!LOGFLARE_API_KEY || LOGFLARE_API_KEY === 'YOUR_LOGFLARE_API_KEY') {
     console.log('LOGFLARE_EVENT:', JSON.stringify({ event, metadata }, null, 2));
     return;
@@ -27,9 +35,9 @@ async function logToLogflare(event, metadata = {}) {
       }
     };
 
-    // Create AbortController for timeout (better compatibility)
+    // Reduced timeout for faster response
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
 
     const response = await fetch(LOGFLARE_ENDPOINT, {
       method: 'POST',
@@ -337,8 +345,8 @@ function cleanupInactiveUsers() {
   }
 }
 
-// Run cleanup every 2 minutes
-setInterval(cleanupInactiveUsers, 2 * 60 * 1000);
+// Note: setInterval removed for serverless compatibility
+// Cleanup will be handled on-demand during requests
 
 // Enhanced ban check function with IP-level enforcement
 function isUserBanned(clientId, ip, secretmodkey = null) {
@@ -1092,6 +1100,12 @@ function moderateContent(text, clientId, ip, username) {
 }
 
 export default async function handler(req, res) {
+  // Perform cleanup on-demand (every 10th request to reduce overhead)
+  const requestCount = Math.floor(Math.random() * 10);
+  if (requestCount === 0) {
+    cleanupInactiveUsers();
+  }
+
   // CORS Configuration
   const allowedOrigins = [
     'https://dse.best',
@@ -1942,7 +1956,8 @@ Server Uptime: ~${uptimeHours}h
       });
 
       // Send NTFY notification for new messages (only for non-moderator messages)
-      if (!isMod) {
+      // Skip notifications in production to reduce CPU usage
+      if (!isMod && process.env.NODE_ENV !== 'production') {
         try {
           await sendNtfyNotification(sanitizedMessage, {
             ip: ip,
