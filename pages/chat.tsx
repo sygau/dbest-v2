@@ -1010,6 +1010,21 @@ export default function ChatPage() {
                         height: calc(100vh - 80px);
                         border-radius: 0;
                         margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    
+                    .messages-container {
+                        flex: 1;
+                        min-height: 0;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    
+                    .messages-list {
+                        flex: 1;
+                        min-height: 0;
+                        padding: 0.5rem;
                     }
 
                     .chat-header {

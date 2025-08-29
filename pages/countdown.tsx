@@ -660,7 +660,7 @@ export default function CountdownPage() {
           font-weight: 600;
           font-size: 0.95rem;
           transition: all 0.3s ease;
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          border: none;
         }
 
         .countdown-page .timetable-link:hover {
@@ -720,7 +720,7 @@ export default function CountdownPage() {
         .countdown-page .btn-primary {
           background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
           color: white;
-          border-color: rgba(255, 255, 255, 0.3);
+          border: none;
         }
 
         .countdown-page .btn-primary:hover {
