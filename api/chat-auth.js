@@ -1,9 +1,7 @@
 const Ably = require('ably/promises');
 
-// Initialize tracking maps
-const rateLimits = new Map();
-const userIPs = new Map();
-const violationCounts = new Map();
+// Note: Removed all Maps since serverless functions are stateless
+// Data will be lost between function invocations anyway
 
 // Logflare configuration
 const LOGFLARE_API_KEY = process.env.LOGFLARE_API_KEY || '7MnWPFtPMj28';
@@ -294,90 +292,21 @@ const BAN_TYPES = {
   TEMPORARY: 'temporary'
 };
 
-// Track bans - simple Map of clientId -> banInfo
-const blockedUsers = new Map();
-// Track IP bans separately for stronger enforcement
-const blockedIPs = new Map();
-// Track fingerprinting data to detect ban evasion
-const userFingerprints = new Map();
+// Note: Removed all Maps since serverless functions are stateless
+// Data will be lost between function invocations anyway
 
-// Historical user data for moderation purposes (keeps data longer)
-const userHistory = new Map();
-
-// Clean up inactive users and log leave events
-function cleanupInactiveUsers() {
-  const now = Date.now();
-  const INACTIVE_THRESHOLD = 5 * 60 * 1000; // 5 minutes
-  const HISTORY_RETENTION = 24 * 60 * 60 * 1000; // Keep history for 24 hours
-
-  for (const [clientId, userData] of userIPs.entries()) {
-    if (now - userData.lastSeen > INACTIVE_THRESHOLD) {
-      // Log user leave
-      logToLogflare('user_leave', {
-        event_type: 'user_leave',
-        client_id: clientId,
-        username: userData.username,
-        ip_address: userData.ip,
-        device_info: userData.deviceInfo || 'Unknown',
-        geography: userData.geoData || { country: 'Unknown', region: 'Unknown', city: 'Unknown' },
-        session_duration: now - (userData.firstSeen || userData.lastSeen),
-        leave_reason: 'inactive_timeout',
-        timestamp: new Date().toISOString()
-      });
-      
-      // Move to historical data instead of deleting completely
-      userHistory.set(clientId, {
-        ...userData,
-        leftAt: now,
-        leftReason: 'inactive_timeout'
-      });
-      
-      // Remove from active users
-      userIPs.delete(clientId);
-    }
-  }
-  
-  // Clean up old historical data (older than 24 hours)
-  for (const [clientId, userData] of userHistory.entries()) {
-    if (userData.leftAt && (now - userData.leftAt > HISTORY_RETENTION)) {
-      userHistory.delete(clientId);
-    }
-  }
-}
+// Note: Removed cleanup function since Maps are removed
+// Serverless functions are stateless anyway
 
 // Note: setInterval removed for serverless compatibility
 // Cleanup will be handled on-demand during requests
 
-// Enhanced ban check function with IP-level enforcement
+// Simplified ban check function (no persistent data in serverless)
 function isUserBanned(clientId, ip, secretmodkey = null) {
   // Never ban moderators
   if (isModerator(clientId, ip, secretmodkey)) return false;
   
-  // Check direct client ID ban
-  if (blockedUsers.has(clientId)) return true;
-  
-  // Check IP ban (stronger enforcement)
-  if (blockedIPs.has(ip)) return true;
-  
-  // Check for ban evasion by looking for other banned clients from same IP
-  const ipUsers = Array.from(userIPs.entries())
-    .filter(([, data]) => data.ip === ip)
-    .map(([id]) => id);
-  
-  for (const userId of ipUsers) {
-    if (blockedUsers.has(userId)) {
-      // Auto-ban this client ID as well for ban evasion
-      blockedUsers.set(clientId, {
-        bannedAt: Date.now(),
-        type: BAN_TYPES.PERMANENT,
-        reason: 'Ban evasion detected',
-        originalBannedUser: userId,
-        ip: ip
-      });
-      return true;
-    }
-  }
-  
+  // No persistent bans in serverless - would need external database
   return false;
 }
 
@@ -385,75 +314,12 @@ function isRateLimited(clientId, ip, secretmodkey = null) {
   // Never rate-limit moderators - completely bypass all rate limiting
   if (isModerator(clientId, ip, secretmodkey)) return false;
 
-  const now = Date.now();
-
-  // Check if user is blocked
-  const blockData = blockedUsers.get(clientId);
-  if (blockData) {
-    if (now - blockData.blockedAt < BLOCK_DURATION) {
-      return { blocked: true, remaining: BLOCK_DURATION - (now - blockData.blockedAt) };
-    } else {
-      blockedUsers.delete(clientId);
-      violationCounts.delete(clientId);
-    }
-  }
-
-  // Enhanced rate limiting: also check by IP to prevent easy circumvention
-  const ipRateKey = `ip_${ip}`;
-  const userLimit = rateLimits.get(clientId);
-  const ipLimit = rateLimits.get(ipRateKey);
-  
-  // Check both client ID and IP rate limits
-  const clientExceeded = checkRateLimit(clientId, userLimit, now);
-  const ipExceeded = checkRateLimit(ipRateKey, ipLimit, now);
-  
-  if (clientExceeded || ipExceeded) {
-    return clientExceeded || ipExceeded;
-  }
-
+  // No persistent rate limiting in serverless - would need external database
   return false;
 }
 
-// Helper function to check rate limits
-function checkRateLimit(key, limitData, now) {
-  if (!limitData) {
-    rateLimits.set(key, {
-      count: 1,
-      windowStart: now
-    });
-    return false;
-  }
-
-  if (now - limitData.windowStart > RATE_LIMIT_WINDOW) {
-    rateLimits.set(key, {
-      count: 1,
-      windowStart: now
-    });
-    return false;
-  }
-
-  if (limitData.count >= MAX_REQUESTS) {
-    // Increment violation count
-    const violations = (violationCounts.get(key) || 0) + 1;
-    violationCounts.set(key, violations);
-
-    // Check if user should be blocked
-    if (violations >= BLOCK_THRESHOLD) {
-      if (key.startsWith('ip_')) {
-        const ip = key.substring(3);
-        blockedIPs.set(ip, { blockedAt: now, reason: 'Rate limit violations' });
-      } else {
-        blockedUsers.set(key, { blockedAt: now, reason: 'Rate limit violations' });
-      }
-      return { blocked: true, remaining: BLOCK_DURATION };
-    }
-
-    return { limited: true, resetTime: limitData.windowStart + RATE_LIMIT_WINDOW - now };
-  }
-
-  limitData.count++;
-  return false;
-}
+// Note: Removed rate limit helper function since Maps are removed
+// Serverless functions are stateless anyway
 
 // Logging function for moderation events
 async function logModeration(clientId, ip, username, message, reason, action) {
@@ -1100,11 +966,6 @@ function moderateContent(text, clientId, ip, username) {
 }
 
 export default async function handler(req, res) {
-  // Perform cleanup on-demand (every 10th request to reduce overhead)
-  const requestCount = Math.floor(Math.random() * 10);
-  if (requestCount === 0) {
-    cleanupInactiveUsers();
-  }
 
   // CORS Configuration
   const allowedOrigins = [
@@ -1190,43 +1051,18 @@ export default async function handler(req, res) {
     // Use the cleaned username
     cleanUsername = usernameModResult.cleanUsername;
 
-    // Check if this is a new user or username change
-    const existingUser = userIPs.get(cleanClientId);
-    const isNewUser = !existingUser;
-    const isUsernameChange = existingUser && existingUser.username !== cleanUsername;
-
-    // Track user IP and updated info
+    // Note: Removed user tracking since Maps are removed
+    // Serverless functions are stateless anyway
     const currentTime = Date.now();
-    const existingUserData = userIPs.get(cleanClientId);
-    
-    userIPs.set(cleanClientId, {
-      ip,
-      lastSeen: currentTime,
-      firstSeen: existingUserData?.firstSeen || currentTime, // Keep original join time
-      username: cleanUsername,
-      deviceInfo,
-      geoData,
-      userAgent
-    });
+    const isNewUser = true; // Always treat as new user since no persistence
+    const isUsernameChange = false;
 
-    // Log user join/leave/username change events
+    // Log user join events (simplified since no persistence)
     if (isNewUser) {
       await logToLogflare('user_join', {
         event_type: 'user_join',
         client_id: cleanClientId,
         username: cleanUsername,
-        ip_address: ip,
-        device_info: deviceInfo,
-        geography: geoData,
-        user_agent: userAgent,
-        timestamp: new Date().toISOString()
-      });
-    } else if (isUsernameChange) {
-      await logToLogflare('username_change', {
-        event_type: 'username_change',
-        client_id: cleanClientId,
-        old_username: existingUser.username,
-        new_username: cleanUsername,
         ip_address: ip,
         device_info: deviceInfo,
         geography: geoData,
@@ -1307,7 +1143,7 @@ export default async function handler(req, res) {
 
         // Moderator-only commands
         if (isModerator(cleanClientId, ip, secretmodkey)) {
-          // Info command
+          // Info command (simplified - no persistent data)
           if (match = MOD_COMMANDS.info.exec(message)) {
             const [, targetId] = match;
             
@@ -1320,42 +1156,16 @@ export default async function handler(req, res) {
               });
             }
             
-            // Check active users first, then historical data
-            let targetData = userIPs.get(targetId);
-            let isActive = true;
-            
-            if (!targetData) {
-              targetData = userHistory.get(targetId);
-              isActive = false;
-            }
-            
-            const banData = blockedUsers.get(targetId);
-            
-            let status = isActive ? 'Active' : 'Inactive';
-            if (banData) status = banData.type === BAN_TYPES.PERMANENT ? 'Permanently Banned' : 'Temporarily Banned';
-
-            const info = {
-              clientId: targetId,
-              username: targetData?.username || 'Unknown',
-              ip: targetData?.ip || 'Unknown',
-              status,
-              isActive,
-              lastSeen: targetData ? new Date(targetData.lastSeen).toISOString() : 'Never',
-              leftAt: targetData?.leftAt ? new Date(targetData.leftAt).toISOString() : null,
-              leftReason: targetData?.leftReason || null,
-              banInfo: banData || 'None'
-            };
-
             return res.status(200).json({
               status: 'success',
               command: true,
-              message: `User Info:\n${JSON.stringify(info, null, 2)}`,
+              message: `User Info:\nClient ID: ${targetId}\nStatus: Unknown (no persistent data in serverless)\nNote: Serverless functions are stateless`,
               private: true,
               doNotBroadcast: true
             });
           }
 
-          // Ban command
+          // Ban command (simplified - no persistent data)
           if (match = MOD_COMMANDS.ban.exec(message)) {
             const [, targetId] = match;
             
@@ -1368,84 +1178,14 @@ export default async function handler(req, res) {
               });
             }
             
-            const targetData = userIPs.get(targetId);
-            
-            if (!targetData) {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: `❌ User ${targetId} not found in active users`,
-                private: true
-              });
-            }
-
-            // Enhanced ban with IP blocking
-            const banData = {
-              bannedAt: Date.now(),
-              type: BAN_TYPES.PERMANENT,
-              moderator: cleanClientId,
-              reason: 'Moderator ban',
-              ip: targetData.ip,
-              duration: Infinity
-            };
-
-            blockedUsers.set(targetId, banData);
-            // Also ban the IP
-            blockedIPs.set(targetData.ip, {
-              bannedAt: Date.now(),
-              reason: 'Associated with banned user',
-              bannedUser: targetId,
-              moderator: cleanClientId
-            });
-            
-            // Ban all other users from the same IP
-            const ipUsers = Array.from(userIPs.entries())
-              .filter(([, data]) => data.ip === targetData.ip)
-              .map(([id]) => id);
-              
-            ipUsers.forEach(userId => {
-              if (userId !== targetId) {
-                blockedUsers.set(userId, {
-                  ...banData,
-                  reason: 'Same IP as banned user',
-                  originalBannedUser: targetId
-                });
-              }
-            });
-              
-            await logModeration(targetId, targetData.ip, targetData.username, 
-              'N/A', 
-              `Permanently banned by moderator ${cleanUsername}. IP banned. Associated IDs: ${ipUsers.join(', ')}`, 
-              'MOD_BAN');
-
-            // Log ban to Logflare with comprehensive data
-            await logToLogflare('user_ban', {
-              event_type: 'user_ban',
-              banned_client_id: targetId,
-              banned_username: targetData.username,
-              banned_ip_address: targetData.ip,
-              banned_device_info: targetData.deviceInfo || 'Unknown',
-              banned_geography: targetData.geoData || { country: 'Unknown', region: 'Unknown', city: 'Unknown' },
-              ban_reason: 'Moderator ban',
-              ban_type: 'permanent',
-              moderator_client_id: cleanClientId,
-              moderator_username: cleanUsername,
-              moderator_ip: ip,
-              moderator_device_info: deviceInfo,
-              moderator_geography: geoData,
-              affected_accounts: ipUsers,
-              affected_count: ipUsers.length,
-              timestamp: new Date().toISOString()
-            });
-
             return res.status(200).json({ 
               status: 'Command executed',
               command: true,
-              message: `✅ User ${targetId} and IP ${targetData.ip} have been permanently banned. ${ipUsers.length} accounts affected.`
+              message: `⚠️ Ban command disabled - no persistent data in serverless functions. User ${targetId} would be banned if using external database.`
             });
           }
 
-          // Unban command
+          // Unban command (simplified - no persistent data)
           if (match = MOD_COMMANDS.unban.exec(message)) {
             const [, targetId] = match;
             
@@ -1458,30 +1198,14 @@ export default async function handler(req, res) {
               });
             }
             
-            const targetData = userIPs.get(targetId);
-            
-            blockedUsers.delete(targetId);
-            
-            // Also unban the IP if no other banned users share it
-            if (targetData?.ip) {
-              const otherBannedFromIP = Array.from(blockedUsers.entries())
-                .filter(([, data]) => data.ip === targetData.ip && targetId !== targetId);
-              
-              if (otherBannedFromIP.length === 0) {
-                blockedIPs.delete(targetData.ip);
-              }
-            }
-
-            await logModeration(targetId, targetData?.ip || 'unknown', targetId,
-              'N/A', `Unbanned by moderator ${username}`, 'MOD_UNBAN');
             return res.status(200).json({
               status: 'Command executed',
               command: true,
-              message: `✅ User ${targetId} has been unbanned`
+              message: `⚠️ Unban command disabled - no persistent data in serverless functions. User ${targetId} would be unbanned if using external database.`
             });
           }
 
-          // Ban IP command
+          // Ban IP command (simplified - no persistent data)
           if (match = MOD_COMMANDS.banip.exec(message)) {
             const [, targetIP] = match;
             
@@ -1494,50 +1218,14 @@ export default async function handler(req, res) {
               });
             }
             
-            // Basic IP validation
-            const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
-            if (!ipRegex.test(targetIP)) {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: 'Invalid IP address format',
-                private: true
-              });
-            }
-            
-            blockedIPs.set(targetIP, {
-              bannedAt: Date.now(),
-              reason: 'Direct IP ban by moderator',
-              moderator: clientId
-            });
-
-            // Ban all users currently using this IP
-            const affectedUsers = Array.from(userIPs.entries())
-              .filter(([, data]) => data.ip === targetIP)
-              .map(([id]) => id);
-
-            affectedUsers.forEach(userId => {
-              blockedUsers.set(userId, {
-                bannedAt: Date.now(),
-                type: BAN_TYPES.PERMANENT,
-                moderator: clientId,
-                reason: 'IP banned by moderator',
-                ip: targetIP
-              });
-            });
-
-            await logModeration('SYSTEM', targetIP, 'N/A', 'N/A', 
-              `IP banned by moderator ${username}. Affected users: ${affectedUsers.join(', ')}`, 
-              'MOD_IP_BAN');
-
             return res.status(200).json({
               status: 'Command executed',
               command: true,
-              message: `✅ IP ${targetIP} has been banned. ${affectedUsers.length} users affected.`
+              message: `⚠️ Ban IP command disabled - no persistent data in serverless functions. IP ${targetIP} would be banned if using external database.`
             });
           }
 
-          // Unban IP command
+          // Unban IP command (simplified - no persistent data)
           if (match = MOD_COMMANDS.unbanip.exec(message)) {
             const [, targetIP] = match;
             
@@ -1550,59 +1238,19 @@ export default async function handler(req, res) {
               });
             }
             
-            // Basic IP validation
-            const ipRegex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
-            if (!ipRegex.test(targetIP)) {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: 'Invalid IP address format',
-                private: true
-              });
-            }
-            
-            blockedIPs.delete(targetIP);
-
-            await logModeration('SYSTEM', targetIP, 'N/A', 'N/A',
-              `IP unbanned by moderator ${username}`, 'MOD_IP_UNBAN');
-              
             return res.status(200).json({
               status: 'Command executed',
               command: true,
-              message: `✅ IP ${targetIP} has been unbanned`
+              message: `⚠️ Unban IP command disabled - no persistent data in serverless functions. IP ${targetIP} would be unbanned if using external database.`
             });
           }
 
-          // List bans command
+          // List bans command (simplified - no persistent data)
           if (MOD_COMMANDS.listbans.test(message)) {
-            const bannedUsers = Array.from(blockedUsers.entries()).slice(0, 10);
-            const bannedIPs = Array.from(blockedIPs.entries()).slice(0, 10);
-            
-            let banList = 'Recent Bans:\n\n';
-            
-            if (bannedUsers.length > 0) {
-              banList += 'Banned Users:\n';
-              bannedUsers.forEach(([id, data]) => {
-                banList += `• ${id} (${data.reason || 'No reason'})\n`;
-              });
-              banList += '\n';
-            }
-            
-            if (bannedIPs.length > 0) {
-              banList += 'Banned IPs:\n';
-              bannedIPs.forEach(([ip, data]) => {
-                banList += `• ${ip} (${data.reason || 'No reason'})\n`;
-              });
-            }
-            
-            if (bannedUsers.length === 0 && bannedIPs.length === 0) {
-              banList += 'No active bans.';
-            }
-
             return res.status(200).json({
               status: 'success',
               command: true,
-              message: banList,
+              message: 'No active bans.\n\nNote: Serverless functions are stateless - no persistent data available.',
               private: true
             });
           }
@@ -1662,65 +1310,36 @@ export default async function handler(req, res) {
             }
           }
 
-          // Online command - show active users
+          // Online command - show active users (simplified - no persistent data)
           if (MOD_COMMANDS.online.test(message)) {
-            const activeUsers = Array.from(userIPs.entries()).map(([clientId, data]) => ({
-              clientId: clientId.substring(0, 8) + '...', // Truncate for privacy
-              username: data.username,
-              lastSeen: Math.round((Date.now() - data.lastSeen) / 1000) // seconds ago
-            }));
-
-            if (activeUsers.length === 0) {
-              return res.status(200).json({
-                status: 'success',
-                command: true,
-                message: 'No users currently active',
-                private: true
-              });
-            }
-
-            const userList = activeUsers
-              .sort((a, b) => a.lastSeen - b.lastSeen) // Sort by most recent activity
-              .map(user => `• ${user.username} (${user.lastSeen}s ago)`)
-              .join('\n');
-
             return res.status(200).json({
               status: 'success',
               command: true,
-              message: `👥 Active Users (${activeUsers.length}):\n\n${userList}`,
+              message: 'No users currently active\n\nNote: Serverless functions are stateless - no persistent user data available.',
               private: true
             });
           }
 
-          // Stats command - show system statistics
+          // Stats command - show system statistics (simplified - no persistent data)
           if (MOD_COMMANDS.stats.test(message)) {
-            const now = Date.now();
-            const activeCount = userIPs.size;
-            const historicalCount = userHistory.size;
-            const bannedCount = blockedUsers.size;
-            const bannedIPCount = blockedIPs.size;
-            
-            // Calculate uptime (since server start - approximate)
-            const uptimeHours = Math.round((now - (global.serverStartTime || now)) / (1000 * 60 * 60));
-            
             const stats = `📊 System Statistics:
 
-Active Users: ${activeCount}
-Historical Data: ${historicalCount} users (24h retention)
-Banned Users: ${bannedCount}
-Banned IPs: ${bannedIPCount}
-Server Uptime: ~${uptimeHours}h
+Active Users: 0 (no persistent data)
+Historical Data: 0 users (no persistent data)
+Banned Users: 0 (no persistent data)
+Banned IPs: 0 (no persistent data)
+Server Uptime: N/A (serverless)
 
 💾 Memory Usage:
-- Active user data: ${activeCount} entries
-- Historical data: ${historicalCount} entries
-- Rate limits: ${rateLimits.size} entries
-- Violation counts: ${violationCounts.size} entries
+- Active user data: 0 entries
+- Historical data: 0 entries
+- Rate limits: 0 entries
+- Violation counts: 0 entries
 
 🧹 Cleanup Info:
-- Inactive threshold: 5 minutes
-- History retention: 24 hours
-- Cleanup interval: 2 minutes`;
+- Serverless functions are stateless
+- No persistent data between invocations
+- Consider using external database for persistence`;
 
             return res.status(200).json({
               status: 'success',
@@ -1730,7 +1349,7 @@ Server Uptime: ~${uptimeHours}h
             });
           }
 
-          // Whois command
+          // Whois command (simplified - no persistent data)
           if (match = MOD_COMMANDS.whois.exec(message)) {
             const [, targetUsername] = match;
             
@@ -1743,55 +1362,10 @@ Server Uptime: ~${uptimeHours}h
               });
             }
             
-            // Search active users
-            const activeMatches = Array.from(userIPs.entries())
-              .filter(([, data]) => data.username.toLowerCase() === targetUsername.toLowerCase())
-              .map(([clientId, data]) => ({
-                clientId,
-                username: data.username,
-                ip: data.ip,
-                lastSeen: new Date(data.lastSeen).toISOString(),
-                isActive: true
-              }));
-              
-            // Search historical data
-            const historicalMatches = Array.from(userHistory.entries())
-              .filter(([, data]) => data.username.toLowerCase() === targetUsername.toLowerCase())
-              .map(([clientId, data]) => ({
-                clientId,
-                username: data.username,
-                ip: data.ip,
-                lastSeen: new Date(data.lastSeen).toISOString(),
-                leftAt: data.leftAt ? new Date(data.leftAt).toISOString() : null,
-                leftReason: data.leftReason || 'Unknown',
-                isActive: false
-              }));
-              
-            const allMatches = [...activeMatches, ...historicalMatches];
-
-            if (allMatches.length === 0) {
-              return res.status(200).json({
-                status: 'error',
-                command: true,
-                message: `❌ No users found with username "${targetUsername}"`,
-                private: true
-              });
-            }
-
-            const message = allMatches.map(user => {
-              let userInfo = `User: ${user.username}\nClient ID: ${user.clientId}\nIP: ${user.ip}\nLast seen: ${user.lastSeen}`;
-              if (!user.isActive) {
-                userInfo += `\nStatus: Inactive (left ${user.leftAt})\nLeft reason: ${user.leftReason}`;
-              } else {
-                userInfo += '\nStatus: Active';
-              }
-              return userInfo;
-            }).join('\n\n');
-
             return res.status(200).json({
-              status: 'success',
+              status: 'error',
               command: true,
-              message: `🔍 Found ${allMatches.length} match${allMatches.length > 1 ? 'es' : ''} (${activeMatches.length} active, ${historicalMatches.length} historical):\n\n${message}`,
+              message: `❌ No users found with username "${targetUsername}"\n\nNote: Serverless functions are stateless - no persistent user data available.`,
               private: true
             });
           }
@@ -1973,33 +1547,20 @@ Server Uptime: ~${uptimeHours}h
       return res.status(200).json({ status: 'published' });
     }
 
-    // Handle explicit user leave events
+    // Handle explicit user leave events (simplified - no persistent data)
     if (req.body.action === 'leave') {
-      const userData = userIPs.get(cleanClientId);
-      if (userData) {
-        // Log user leave
-        await logToLogflare('user_leave', {
-          event_type: 'user_leave',
-          client_id: cleanClientId,
-          username: cleanUsername,
-          ip_address: ip,
-          device_info: deviceInfo,
-          geography: geoData,
-          session_duration: currentTime - (userData.firstSeen || userData.lastSeen),
-          leave_reason: 'explicit_leave',
-          timestamp: new Date().toISOString()
-        });
-        
-        // Move to historical data
-        userHistory.set(cleanClientId, {
-          ...userData,
-          leftAt: currentTime,
-          leftReason: 'explicit_leave'
-        });
-        
-        // Remove from active users
-        userIPs.delete(cleanClientId);
-      }
+      // Log user leave (simplified since no persistent data)
+      await logToLogflare('user_leave', {
+        event_type: 'user_leave',
+        client_id: cleanClientId,
+        username: cleanUsername,
+        ip_address: ip,
+        device_info: deviceInfo,
+        geography: geoData,
+        session_duration: 0, // No persistent data to calculate duration
+        leave_reason: 'explicit_leave',
+        timestamp: new Date().toISOString()
+      });
       
       return res.status(200).json({ status: 'User left successfully' });
     }
