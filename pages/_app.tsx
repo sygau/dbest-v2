@@ -34,6 +34,7 @@ import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
 import usePageInitialization from '../hooks/usePageInitialization'
 import usePdfTracking from '../hooks/usePdfTracking' // Import the PDF tracking hook
+import TraditionalLayoutManager from '../components/TraditionalLayoutManager'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -73,6 +74,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <PaceLoader />
+      <TraditionalLayoutManager />
 
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />

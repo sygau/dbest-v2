@@ -27,6 +27,17 @@ NEXT_PUBLIC_NAVIGATION_MODE=traditional
 - Slower page transitions
 - More traditional web experience
 
+### Traditional New Mode (Enhanced)
+```bash
+NEXT_PUBLIC_NAVIGATION_MODE=traditional_new
+```
+
+- Uses full page reloads for AdSense compatibility
+- **Enhanced UX with layout preservation**
+- **Smooth loading transitions**
+- **Sidebar and header appear to stay in place during navigation**
+- **Best of both worlds: AdSense compatibility + improved UX**
+
 ## Implementation
 
 The toggle is implemented through:
@@ -38,6 +49,11 @@ The toggle is implemented through:
 2. **useNavigationMode Hook** (`hooks/useNavigationMode.ts`)
    - Provides utilities for checking current navigation mode
    - Can be used in components that need to know the current mode
+
+3. **TraditionalLayoutManager Component** (`components/TraditionalLayoutManager.tsx`)
+   - **NEW**: Provides enhanced traditional navigation with layout preservation
+   - Only activates when `traditional_new` mode is enabled
+   - Clones sidebar and header during navigation for seamless UX
 
 ## Usage
 
@@ -54,12 +70,13 @@ import NavigationLink from '../components/NavigationLink'
 import { useNavigationMode } from '../hooks/useNavigationMode'
 
 function MyComponent() {
-  const { mode, isTraditionalMode, isSPAMode } = useNavigationMode()
+  const { mode, isTraditionalMode, isTraditionalNewMode, isSPAMode } = useNavigationMode()
   
   return (
     <div>
       Current mode: {mode}
       {isTraditionalMode && <p>Using traditional navigation</p>}
+      {isTraditionalNewMode && <p>Using enhanced traditional navigation</p>}
       {isSPAMode && <p>Using SPA navigation</p>}
     </div>
   )
@@ -69,8 +86,9 @@ function MyComponent() {
 ## Benefits
 
 - **Easy Toggle**: Change navigation mode without code changes
-- **AdSense Compatibility**: Traditional mode works better with AdSense
+- **AdSense Compatibility**: Traditional modes work better with AdSense
 - **Performance**: SPA mode provides better performance
+- **Enhanced UX**: Traditional new mode provides layout preservation
 - **No Breaking Changes**: All existing Link components work the same way
 
 ## Migration
@@ -87,9 +105,26 @@ NEXT_PUBLIC_NAVIGATION_MODE=spa
 
 # For traditional mode (better for AdSense)
 NEXT_PUBLIC_NAVIGATION_MODE=traditional
+
+# For enhanced traditional mode (AdSense + better UX)
+NEXT_PUBLIC_NAVIGATION_MODE=traditional_new
 ```
 
 ## Deployment
 
 - **Vercel**: Set environment variables in the Vercel dashboard
-- **Other platforms**: Set the `NEXT_PUBLIC_NAVIGATION_MODE` environment variable in your deployment platform 
+- **Other platforms**: Set the `NEXT_PUBLIC_NAVIGATION_MODE` environment variable in your deployment platform
+
+## Mode Comparison
+
+| Mode | AdSense Compatible | Page Transitions | Layout Preservation | User Experience |
+|------|-------------------|------------------|-------------------|-----------------|
+| `spa` | ❌ No | ⚡ Fast | ✅ Yes | ⭐ Excellent |
+| `traditional` | ✅ Yes | 🐌 Slow | ❌ No | ⚠️ Basic |
+| `traditional_new` | ✅ Yes | 🐌 Slow | ✅ Yes | ⭐ Good |
+
+## Recommended Usage
+
+- **For maximum AdSense revenue**: Use `traditional_new`
+- **For best user experience**: Use `spa` (if AdSense issues can be resolved)
+- **For compatibility testing**: Use `traditional` 

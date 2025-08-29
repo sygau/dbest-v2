@@ -1,12 +1,11 @@
 'use client'
-import Link from 'next/link'
-import { ReactNode, MouseEvent, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useState, useEffect, MouseEvent } from 'react'
 import { useNavigationMode } from '../hooks/useNavigationMode'
 
 interface NavigationLinkProps {
   href: string
-  children: ReactNode
+  children: React.ReactNode
   className?: string
   onClick?: () => void
   [key: string]: any
@@ -20,7 +19,7 @@ export default function NavigationLink({
   ...props 
 }: NavigationLinkProps) {
   const router = useRouter()
-  const { isTraditionalMode } = useNavigationMode()
+  const { isTraditionalMode, isTraditionalNewMode } = useNavigationMode()
   const [isClient, setIsClient] = useState(false)
   
   // Ensure we're on the client side
@@ -36,7 +35,7 @@ export default function NavigationLink({
     }
     
     // If in traditional mode, allow default browser navigation
-    if (isTraditionalMode) {
+    if (isTraditionalMode || isTraditionalNewMode) {
       return
     }
     
@@ -62,7 +61,7 @@ export default function NavigationLink({
     )
   }
   
-  if (isTraditionalMode) {
+  if (isTraditionalMode || isTraditionalNewMode) {
     // Use traditional navigation with full page reload
     return (
       <a 
