@@ -12,6 +12,73 @@ export default function TraditionalLayoutManager() {
     scrollPosition?: number
     scrollHandler?: (e: Event) => void
   }>({})
+  
+  // Store scroll position before navigation
+  const storeScrollPosition = () => {
+    // Skip in development environment
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Skipping scroll position storage in development mode')
+      return
+    }
+    
+    const sidebarNav = document.querySelector('.sidebar-nav') as HTMLElement
+    if (sidebarNav) {
+      const scrollTop = sidebarNav.scrollTop
+      sessionStorage.setItem('sidebarScrollPosition', scrollTop.toString())
+      console.log('Stored scroll position:', scrollTop)
+    }
+  }
+  
+  // Restore scroll position after navigation
+  const restoreScrollPosition = () => {
+    // Skip in development environment
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Skipping scroll position restoration in development mode')
+      return
+    }
+    
+    const savedPosition = sessionStorage.getItem('sidebarScrollPosition')
+    if (!savedPosition) return
+    
+    console.log('Attempting to restore scroll position:', savedPosition)
+    
+    // Try multiple approaches to restore scroll position
+    const tryRestore = () => {
+      const sidebarNav = document.querySelector('.sidebar-nav') as HTMLElement
+      if (sidebarNav) {
+        const targetPosition = parseInt(savedPosition)
+        sidebarNav.scrollTop = targetPosition
+        
+        // Force scroll after a brief delay
+        setTimeout(() => {
+          sidebarNav.scrollTop = targetPosition
+          console.log('Restored scroll position to:', sidebarNav.scrollTop)
+        }, 10)
+        
+        // Try again after layout is stable
+        setTimeout(() => {
+          sidebarNav.scrollTop = targetPosition
+        }, 100)
+        
+        // Final attempt after everything is loaded
+        setTimeout(() => {
+          sidebarNav.scrollTop = targetPosition
+        }, 500)
+      }
+    }
+    
+    // Try immediately
+    tryRestore()
+    
+    // Try after DOM is ready
+    setTimeout(tryRestore, 50)
+    
+    // Try after page load
+    setTimeout(tryRestore, 200)
+    
+    // Try after everything is stable
+    setTimeout(tryRestore, 1000)
+  }
 
   useEffect(() => {
     if (!isTraditionalNewMode) return
@@ -212,27 +279,41 @@ export default function TraditionalLayoutManager() {
       e.preventDefault()
       setIsNavigating(true)
       
-      // Preserve layout in place
-      preserveLayout()
+      // Store scroll position before navigation
+      storeScrollPosition()
       
-      // Navigate immediately
+      // Navigate immediately (skip complex layout preservation for now)
       window.location.href = link.href
     }
 
     // Handle page load
     const handleLoad = () => {
       setIsNavigating(false)
-      restoreLayout()
+      // Restore scroll position
+      restoreScrollPosition()
     }
 
     // Add event listeners
     document.addEventListener('click', handleNavigationClick)
     window.addEventListener('load', handleLoad)
+    document.addEventListener('DOMContentLoaded', restoreScrollPosition)
+    
+    // Also try to restore on window focus (in case of back/forward navigation)
+    window.addEventListener('focus', restoreScrollPosition)
+    
+    // Try restoration on page visibility change
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        restoreScrollPosition()
+      }
+    })
 
     return () => {
       document.removeEventListener('click', handleNavigationClick)
       window.removeEventListener('load', handleLoad)
-      restoreLayout()
+      document.removeEventListener('DOMContentLoaded', restoreScrollPosition)
+      window.removeEventListener('focus', restoreScrollPosition)
+      document.removeEventListener('visibilitychange', restoreScrollPosition)
     }
   }, [isTraditionalNewMode])
 

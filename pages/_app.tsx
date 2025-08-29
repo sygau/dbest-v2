@@ -304,18 +304,6 @@ export default function App({ Component, pageProps }: AppProps) {
               </NavigationLink>
             </li>
             <li>
-              <NavigationLink href="/history">
-                <div className="parent-icon"><BiBook style={{ color: '#ffab91', fontSize: 24 }} /></div>
-                <div className="menu-title">歷史 History</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/chinese-history">
-                <div className="parent-icon"><BiBook style={{ color: '#ff1744', fontSize: 24 }} /></div>
-                <div className="menu-title">中國歷史 Chinese History</div>
-              </NavigationLink>
-            </li>
-            <li>
               <NavigationLink href="/economics">
                 <div className="parent-icon"><BiMoney style={{ color: '#ffd600', fontSize: 24 }} /></div>
                 <div className="menu-title">經濟 Economics</div>
@@ -325,6 +313,18 @@ export default function App({ Component, pageProps }: AppProps) {
               <NavigationLink href="/bafs">
                 <div className="parent-icon"><BiBriefcase style={{ color: '#ffea00', fontSize: 24 }} /></div>
                 <div className="menu-title">企業、會計與財務概論 BAFS</div>
+              </NavigationLink>
+            </li>
+            <li>
+              <NavigationLink href="/history">
+                <div className="parent-icon"><BiBook style={{ color: '#ffab91', fontSize: 24 }} /></div>
+                <div className="menu-title">歷史 History</div>
+              </NavigationLink>
+            </li>
+            <li>
+              <NavigationLink href="/chinese-history">
+                <div className="parent-icon"><BiBook style={{ color: '#ff1744', fontSize: 24 }} /></div>
+                <div className="menu-title">中國歷史 Chinese History</div>
               </NavigationLink>
             </li>
             {/*

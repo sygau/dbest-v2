@@ -1780,8 +1780,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題一</h5>
-                                    <p className="card-text">By Topic 1 (中文)</p>
+                                    <h5 className="card-title">主題一 地球</h5>
+                                    <p className="card-text">地球</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1797,8 +1797,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題二</h5>
-                                    <p className="card-text">By Topic 2 (中文)</p>
+                                    <h5 className="card-title">主題二 微觀世界 I</h5>
+                                    <p className="card-text">微觀世界 I</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1814,8 +1814,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題三</h5>
-                                    <p className="card-text">By Topic 3 (中文)</p>
+                                    <h5 className="card-title">主題三 金屬</h5>
+                                    <p className="card-text">金屬</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1831,8 +1831,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題四</h5>
-                                    <p className="card-text">By Topic 4 (中文)</p>
+                                    <h5 className="card-title">主題四 酸和鹽</h5>
+                                    <p className="card-text">酸和鹽</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1848,8 +1848,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題五</h5>
-                                    <p className="card-text">By Topic 5 (中文)</p>
+                                    <h5 className="card-title">主題五 化石燃料</h5>
+                                    <p className="card-text">化石燃料和碳化合物</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1865,8 +1865,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題六</h5>
-                                    <p className="card-text">By Topic 6 (中文)</p>
+                                    <h5 className="card-title">主題六 微觀世界 II</h5>
+                                    <p className="card-text">微觀世界 II</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1882,8 +1882,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題七</h5>
-                                    <p className="card-text">By Topic 7 (中文)</p>
+                                    <h5 className="card-title">主題七 化學電池</h5>
+                                    <p className="card-text">化學電池</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1899,8 +1899,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題八</h5>
-                                    <p className="card-text">By Topic 8 (中文)</p>
+                                    <h5 className="card-title">主題八 化學反應與能量</h5>
+                                    <p className="card-text">化學反應與能量</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1916,8 +1916,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題九</h5>
-                                    <p className="card-text">By Topic 9 (中文)</p>
+                                    <h5 className="card-title">主題九 氧化還原反應</h5>
+                                    <p className="card-text">氧化還原反應</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1933,8 +1933,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十</h5>
-                                    <p className="card-text">By Topic 10 (中文)</p>
+                                    <h5 className="card-title">主題十 電解</h5>
+                                    <p className="card-text">電解</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1950,8 +1950,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十一</h5>
-                                    <p className="card-text">By Topic 11 (中文)</p>
+                                    <h5 className="card-title">主題十一 反應速率</h5>
+                                    <p className="card-text">反應速率</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1967,8 +1967,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十二</h5>
-                                    <p className="card-text">By Topic 12 (中文)</p>
+                                    <h5 className="card-title">主題十二 氣體的摩爾數</h5>
+                                    <p className="card-text">氣體的摩爾數</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1984,8 +1984,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十三</h5>
-                                    <p className="card-text">By Topic 13 (中文)</p>
+                                    <h5 className="card-title">主題十三 平衡常數</h5>
+                                    <p className="card-text">平衡常數</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2001,8 +2001,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十四</h5>
-                                    <p className="card-text">By Topic 14 (中文)</p>
+                                    <h5 className="card-title">主題十四 同系列和同分異構</h5>
+                                    <p className="card-text">同系列和同分異構</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2018,8 +2018,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十五</h5>
-                                    <p className="card-text">By Topic 15 (中文)</p>
+                                    <h5 className="card-title">主題十五 碳化合物</h5>
+                                    <p className="card-text">碳化合物的化學</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2035,8 +2035,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十六</h5>
-                                    <p className="card-text">By Topic 16 (中文)</p>
+                                    <h5 className="card-title">主題十六 重要有機物質</h5>
+                                    <p className="card-text">重要有機物質</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2052,8 +2052,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十七</h5>
-                                    <p className="card-text">By Topic 17 (中文)</p>
+                                    <h5 className="card-title">主題十七 化學世界中的規律</h5>
+                                    <p className="card-text">化學世界中的規律</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2069,8 +2069,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十八</h5>
-                                    <p className="card-text">By Topic 18 (中文)</p>
+                                    <h5 className="card-title">MC Answers</h5>
+                                    <p className="card-text">MC Answers (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2086,8 +2086,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題十九</h5>
-                                    <p className="card-text">By Topic 19 (中文)</p>
+                                    <h5 className="card-title">CE LQ Answers</h5>
+                                    <p className="card-text">CE LQ Answers (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2103,8 +2103,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題二十</h5>
-                                    <p className="card-text">By Topic 20 (中文)</p>
+                                    <h5 className="card-title">DSE LQ Answers</h5>
+                                    <p className="card-text">DSE LQ Answers (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2120,8 +2120,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題二十一</h5>
-                                    <p className="card-text">By Topic 21 (中文)</p>
+                                    <h5 className="card-title">E1 工業化學</h5>
+                                    <p className="card-text">工業化學 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2137,8 +2137,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題二十二</h5>
-                                    <p className="card-text">By Topic 22 (中文)</p>
+                                    <h5 className="card-title">E2 分析化學</h5>
+                                    <p className="card-text">分析化學 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2154,8 +2154,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">主題 ALL</h5>
-                                    <p className="card-text">By Topic ALL (中文)</p>
+                                    <h5 className="card-title">All (excluding E1, E2)</h5>
+                                    <p className="card-text">All (excluding E1, E2) (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2176,8 +2176,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 1</h5>
-                                    <p className="card-text">By Topic 1 (English)</p>
+                                    <h5 className="card-title">Topic 1 Laboratory Safety</h5>
+                                    <p className="card-text">Laboratory Safety and Precautions</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2194,8 +2194,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 2</h5>
-                                    <p className="card-text">By Topic 2 (English)</p>
+                                    <h5 className="card-title">Topic 2 Planet Earth</h5>
+                                    <p className="card-text">Planet Earth</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2212,8 +2212,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 3</h5>
-                                    <p className="card-text">By Topic 3 (English)</p>
+                                    <h5 className="card-title">Topic 3 Microscopic World</h5>
+                                    <p className="card-text">Microscopic World</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2230,8 +2230,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 4</h5>
-                                    <p className="card-text">By Topic 4 (English)</p>
+                                    <h5 className="card-title">Topic 4 Metals</h5>
+                                    <p className="card-text">Metals</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2248,8 +2248,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 5</h5>
-                                    <p className="card-text">By Topic 5 (English)</p>
+                                    <h5 className="card-title">Topic 5 Acid and Bases</h5>
+                                    <p className="card-text">Acid and Bases</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2266,8 +2266,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 6</h5>
-                                    <p className="card-text">By Topic 6 (English)</p>
+                                    <h5 className="card-title">Topic 6 Fossil fuels</h5>
+                                    <p className="card-text">Fossil fuels and Carbon Compounds</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2284,8 +2284,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 7</h5>
-                                    <p className="card-text">By Topic 7 (English)</p>
+                                    <h5 className="card-title">Topic 7 Microscopic World II</h5>
+                                    <p className="card-text">Microscopic World II</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2302,8 +2302,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 8</h5>
-                                    <p className="card-text">By Topic 8 (English)</p>
+                                    <h5 className="card-title">Topic 8 Redox Reactions</h5>
+                                    <p className="card-text">Redox Reactions, Chemical Cells and Electrolysis</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2320,8 +2320,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 9</h5>
-                                    <p className="card-text">By Topic 9 (English)</p>
+                                    <h5 className="card-title">Topic 9 Chemical Reactions</h5>
+                                    <p className="card-text">Chemical Reactions and Energy</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2338,8 +2338,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 10</h5>
-                                    <p className="card-text">By Topic 10 (English)</p>
+                                    <h5 className="card-title">Topic 10 Rate of Reaction</h5>
+                                    <p className="card-text">Rate of Reaction</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2356,8 +2356,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 11</h5>
-                                    <p className="card-text">By Topic 11 (English)</p>
+                                    <h5 className="card-title">Topic 11 Chemical Equilibrium</h5>
+                                    <p className="card-text">Chemical Equilibrium</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2374,8 +2374,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 12</h5>
-                                    <p className="card-text">By Topic 12 (English)</p>
+                                    <h5 className="card-title">Topic 12 Carbon Compounds</h5>
+                                    <p className="card-text">Chemistry of Carbon Compounds</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2392,8 +2392,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 13</h5>
-                                    <p className="card-text">By Topic 13 (English)</p>
+                                    <h5 className="card-title">Topic 13 Chemical World</h5>
+                                    <p className="card-text">Patterns in the Chemical World</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2410,8 +2410,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 14</h5>
-                                    <p className="card-text">By Topic 14 (English)</p>
+                                    <h5 className="card-title">Elective 1 Industrial Chemistry</h5>
+                                    <p className="card-text">Industrial Chemistry</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2428,8 +2428,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">Topic 15</h5>
-                                    <p className="card-text">By Topic 15 (English)</p>
+                                    <h5 className="card-title">Elective 2 Analytical Chemistry</h5>
+                                    <p className="card-text">Analytical Chemistry</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2446,8 +2446,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">BK1</h5>
-                                    <p className="card-text">By Topic BK1 (English)</p>
+                                    <h5 className="card-title">Book 1 Topic 1-6</h5>
+                                    <p className="card-text">By Topic Book 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2464,8 +2464,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">BK2</h5>
-                                    <p className="card-text">By Topic BK2 (English)</p>
+                                    <h5 className="card-title">Book 2 Topic 7-13</h5>
+                                    <p className="card-text">By Topic Book 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2482,8 +2482,8 @@ export default function ChemistryPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">BK3</h5>
-                                    <p className="card-text">By Topic BK3 (English)</p>
+                                    <h5 className="card-title">Book 3 E1+E2</h5>
+                                    <p className="card-text">By Topic Book 3 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
