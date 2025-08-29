@@ -24,7 +24,8 @@
     'm1': 'm1',
     'm2': 'm2',
     'bafs': 'bafs',
-    'citizen': 'citizen'
+    'citizen': 'citizen',
+    'ths': 'ths'
   };
 
   /**
@@ -32,12 +33,17 @@
    */
   function getCurrentSubject() {
     const path = window.location.pathname.toLowerCase();
+    console.log(`🔍 Analyzing path: ${path}`);
 
     // Check each subject - order matters for partial matches
     for (const [key, value] of Object.entries(SUBJECTS)) {
       // More precise matching to avoid false positives
-      if (path.includes(`/${key}`) || path.includes(`${key}.`) || path === `/${key}` || path.endsWith(`/${key}`)) {
-        console.log(`🎯 Detected subject: ${value} from path: ${path}`);
+      const exactMatch = path === `/${key}` || path === `/${key}/`;
+      const startsWithMatch = path.startsWith(`/${key}/`);
+      const endsWithMatch = path.endsWith(`/${key}`) || path.endsWith(`/${key}/`);
+      
+      if (exactMatch || startsWithMatch || endsWithMatch) {
+        console.log(`🎯 Detected subject: ${value} from path: ${path} (key: ${key})`);
         return value;
       }
     }

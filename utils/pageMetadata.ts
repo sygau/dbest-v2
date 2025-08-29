@@ -172,6 +172,16 @@ export const subjectMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/citizen",
     "ogType": "website"
+  },
+  "ths": {
+    "title": "DSE 旅遊與款待 Tourism and Hospitality Studies Past Paper | 歷屆試題及答案",
+    "description": "下載DSE旅遊與款待科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供2012-2023年完整試卷。",
+    "robots": "index, follow",
+    "ogTitle": "DSE 旅遊與款待 Tourism and Hospitality Studies 歷屆試題 Past Papers | 旅遊與款待試卷及答案",
+    "ogDescription": "下載DSE旅遊與款待科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供2012-2023年完整試卷。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/ths",
+    "ogType": "website"
   }
 };
 

@@ -42,6 +42,7 @@ export const usePdfTracking = () => {
         else if (fullUrl.includes('/bafs/')) subject = 'bafs';
         else if (fullUrl.includes('/visual-arts/')) subject = 'visual-arts';
         else if (fullUrl.includes('/citizen/')) subject = 'citizen';
+        else if (fullUrl.includes('/ths/')) subject = 'ths';
 
         // Get language from data attribute or default to unknown
         let extractedLanguage = linkElement.dataset.language || 'unknown';

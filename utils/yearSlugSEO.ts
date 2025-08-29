@@ -123,6 +123,14 @@ const subjectConfigs: Record<string, SubjectSEOConfig> = {
     pageTitle: 'DSE 資訊及通訊科技 ICT {year} Past Papers 歷屆試題',
     pageDescriptionEng: 'Browse our complete collection of DSE ICT Information and Communication Technology {year} past papers, including Paper 1, Paper 2A/B/C/D, marking schemes, and performance reports in PDF format. This comprehensive collection serves as essential resources for Hong Kong DSE ICT exam preparation and revision.',
     pageDescriptionChi: '瀏覽我們完整的DSE 資訊及通訊科技 {year} 資訊及通訊科技歷屆試題合集，包括卷一、卷二A/B/C/D、參考答案及考生表現報告等PDF格式文件。這套完整的試題集合是香港中學文憑試資訊及通訊科技科考試準備及溫習的重要資源，涵蓋數據庫管理、程式編寫、網絡技術及多媒體等核心課題。'
+  },
+  ths: {
+    seoTitle: 'DSE 旅遊與款待 Tourism and Hospitality Studies {year} Past Papers | Paper 1, Paper 2, Answers/Marking Scheme',
+    seoDescription: 'Download DSE 旅遊與款待 Tourism and Hospitality Studies {year} past papers, including Paper 1, Paper 2, answers, detailed marking schemes, and performance reports in PDF format. Essential resources for Hong Kong DSE Tourism and Hospitality Studies exam preparation and revision, covering tourism industry, hospitality management, and related topics to help you master DSE Tourism and Hospitality Studies concepts and achieve excellent results in your examination.',
+    isDualLang: false,
+    pageTitle: 'DSE 旅遊與款待 Tourism and Hospitality Studies {year} Past Papers 歷屆試題',
+    pageDescriptionEng: 'Browse our complete collection of DSE Tourism and Hospitality Studies {year} past papers, including Paper 1, Paper 2, marking schemes, and performance reports in PDF format. This comprehensive collection serves as essential resources for Hong Kong DSE Tourism and Hospitality Studies exam preparation and revision, covering tourism industry, hospitality management, and related topics.',
+    pageDescriptionChi: '瀏覽我們完整的DSE 旅遊與款待 {year} 旅遊與款待歷屆試題合集，包括卷一、卷二、參考答案及考生表現報告等PDF格式文件。這套完整的試題集合是香港中學文憑試旅遊與款待科考試準備及溫習的重要資源，涵蓋旅遊業、款待業管理等核心課題。'
   }
 };
 

@@ -155,6 +155,14 @@ export const subjectData: Record<string, SubjectData> = {
     englishDescription: 'DSE Visual Arts past papers and answers, covering art creation and art appreciation. Complete exam papers available for download to master key exam points.',
     category: 'elective',
     url: 'https://dse.best/visual-arts'
+  },
+  ths: {
+    name: '旅遊與款待',
+    englishName: 'Tourism and Hospitality Studies',
+    description: 'DSE 旅遊與款待科歷屆試題及答案，涵蓋旅遊業、款待業等課題。提供完整試卷下載，助您掌握旅遊與款待科考試重點。',
+    englishDescription: 'DSE Tourism and Hospitality Studies past papers and answers, covering tourism and hospitality industries. Complete exam papers available for download to master key exam points.',
+    category: 'elective',
+    url: 'https://dse.best/ths'
   }
 };
 
@@ -475,6 +483,24 @@ const subjectFAQs: Record<string, Array<{question: string, answer: string}>> = {
     {
       question: "如何準備公民科的議題分析？",
       answer: "關注時事發展，運用多元資料和不同觀點分析社會議題。培養批判思考能力，能夠平衡不同持份者的利益和關注點，提出合理建議。"
+    }
+  ],
+  ths: [
+    {
+      question: "DSE旅遊與款待科包括哪些主要範疇？",
+      answer: "DSE旅遊與款待科涵蓋旅遊業和款待業兩大範疇，包括旅遊目的地管理、旅遊產品開發、酒店管理、餐飲服務、顧客服務等核心課題。"
+    },
+    {
+      question: "旅遊與款待科如何進行評核？",
+      answer: "旅遊與款待科評核包括公開考試和校本評核。公開考試佔80%，包括卷一和卷二；校本評核佔20%，包括專題研習和實務評估。"
+    },
+    {
+      question: "旅遊與款待科校本評核有什麼要求？",
+      answer: "校本評核包括旅遊或款待業專題研習，學生需要選擇相關課題進行研究，運用專業知識分析行業問題，提出解決方案和建議。"
+    },
+    {
+      question: "如何準備旅遊與款待科的實務題目？",
+      answer: "關注旅遊業和款待業的最新發展趨勢，了解行業運作模式和顧客需求。結合理論知識和實務經驗，培養解決實際問題的能力。"
     }
   ],
   'visual-arts': [

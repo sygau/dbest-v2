@@ -10,6 +10,7 @@ import {
   BiGlobe,
   BiMoney,
   BiBriefcase,
+  BiPlanet,
   BiLogoInstagram
 } from 'react-icons/bi';
 import {
@@ -255,6 +256,61 @@ export default function HomePage() {
                 icon={<BiGlobe style={{ color: '#00bfae', fontSize: 40 }} />}
                 accent="#00bfae"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
+            </div>
+
+            {/* Economics */}
+            <div className="col">
+              <UnifiedSubjectCard
+                title="經濟 Economics"
+                href="/economics"
+                icon={<BiMoney style={{ color: '#ffd600', fontSize: 40 }} />}
+                accent="#ffd600"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
+            </div>
+
+            {/* BAFS */}
+            <div className="col">
+              <UnifiedSubjectCard
+                title="企業、會計與財務概論 BAFS"
+                href="/bafs"
+                icon={<BiBriefcase style={{ color: '#ffea00', fontSize: 40 }} />}
+                accent="#ffea00"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
+            </div>
+
+            {/* History */}
+            <div className="col">
+              <UnifiedSubjectCard
+                title="歷史 History"
+                href="/history"
+                icon={<BiBook style={{ color: '#ffab91', fontSize: 40 }} />}
+                accent="#ffab91"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
+              />
+            </div>
+
+            {/* Chinese History */}
+            <div className="col">
+              <UnifiedSubjectCard
+                title="中國歷史 Chinese History"
+                href="/chinese-history"
+                icon={<BiBook style={{ color: '#ff1744', fontSize: 40 }} />}
+                accent="#ff1744"
+                details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中' }]}
+              />
+            </div>
+
+            {/* Tourism and Hospitality Studies */}
+            <div className="col">
+              <UnifiedSubjectCard
+                title="旅遊與款待 Tourism & Hospitality"
+                href="/ths"
+                icon={<BiPlanet style={{ color: '#2196f3', fontSize: 40 }} />}
+                accent="#2196f3"
+                details={[{ label: '年份', value: '2023' }, { label: '語言', value: '中' }]}
               />
             </div>
           </div>

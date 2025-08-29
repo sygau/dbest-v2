@@ -28,6 +28,7 @@ All configuration files are located in `public/config/` directory.
 - `bafs.json` - BAFS papers
 - `m1.json` - M1 papers
 - `m2.json` - M2 papers
+- `ths.json` - Tourism and Hospitality Studies papers
 
 ### JSON Format
 ```json
@@ -60,6 +61,7 @@ All configuration files are located in `public/config/` directory.
 - `pages/bafs/[year].tsx`
 - `pages/m1/[year].tsx`
 - `pages/m2/[year].tsx`
+- `pages/ths/[year].tsx`
 
 ### Required Changes
 
@@ -98,6 +100,7 @@ const years = ['2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '
 - `pages/geography/index.tsx`
 - `pages/economics/index.tsx`
 - `pages/ict/index.tsx`
+- `pages/ths/index.tsx`
 - `pages/bafs/index.tsx`
 - `pages/m1/index.tsx`
 - `pages/m2/index.tsx`

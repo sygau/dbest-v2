@@ -22,14 +22,14 @@ function parseArguments() {
 const subjects = [
   'math', 'english', 'physics', 'biology', 'chemistry', 'chinese',
   'bafs', 'chinese-history', 'economics', 'history', 'geography',
-  'm1', 'm2', 'ict'
+  'm1', 'm2', 'ict', 'ths'
 ];
 
 // Core subjects (highest priority)
 const coreSubjects = ['math', 'english', 'chinese'];
 
 // Other subjects (high priority)
-const otherSubjects = ['physics', 'biology', 'chemistry', 'bafs', 'chinese-history', 'economics', 'history', 'geography', 'm1', 'm2', 'ict'];
+const otherSubjects = ['physics', 'biology', 'chemistry', 'bafs', 'chinese-history', 'economics', 'history', 'geography', 'm1', 'm2', 'ict', 'ths'];
 
 // Info pages
 const infoPages = [

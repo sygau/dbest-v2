@@ -29,7 +29,8 @@ import {
   BiFile,
   BiPalette,
   BiBookReader,
-  BiLogoInstagram
+  BiLogoInstagram,
+  BiPlanet
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
@@ -325,6 +326,12 @@ export default function App({ Component, pageProps }: AppProps) {
               <NavigationLink href="/chinese-history">
                 <div className="parent-icon"><BiBook style={{ color: '#ff1744', fontSize: 24 }} /></div>
                 <div className="menu-title">中國歷史 Chinese History</div>
+              </NavigationLink>
+            </li>
+            <li>
+              <NavigationLink href="/ths">
+                <div className="parent-icon"><BiPlanet style={{ color: '#2196f3', fontSize: 24 }} /></div>
+                <div className="menu-title">旅遊與款待 Tourism & Hospitality</div>
               </NavigationLink>
             </li>
             {/*
