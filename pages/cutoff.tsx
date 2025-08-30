@@ -174,7 +174,7 @@ export default function CutoffPage() {
               <div>
                 <strong>⚠️ 注意事項：</strong>
                 <br />
-                Cut Off資料僅供參考，可能存有錯誤，並會按年更新。
+                Cut Off 資料僅供參考，可能存有錯誤，並會按年更新。
                 <br />
                 <small className="text-muted">
                   This cut-off score data is for reference only. It may contain errors and is subject to change annually.

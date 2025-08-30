@@ -294,7 +294,7 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - GA data fetching to embed (download count in index)
 
 ### Pages suggestions
-- PRIORITY!!!!! CUT OFF  PAGE AND COLLECTIN!!!!!!!!!!!!!!!!!!!!!!!!!!! (SOURCE FROM PERPLEXITY)
+- Cut off slugs
 - AI Mock Papers Section
 - Study Locations Google Maps
 - Countdown timer for each subjects
