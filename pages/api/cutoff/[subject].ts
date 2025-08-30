@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import fs from 'fs';
+import path from 'path';
 import { csvToCutoffData, dataToTableFormat } from '../../../utils/cutoffData';
 
 interface TableConfig {
@@ -37,12 +39,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    // Load configuration using fetch
-    const configResponse = await fetch(`${req.headers.origin}/config/cutoff-config.json`);
-    if (!configResponse.ok) {
-      throw new Error(`Failed to load config: ${configResponse.statusText}`);
-    }
-    const config: CutoffConfig = await configResponse.json();
+    // Load configuration
+    const configPath = path.join(process.cwd(), 'public', 'config', 'cutoff-config.json');
+    const configData = fs.readFileSync(configPath, 'utf-8');
+    const config: CutoffConfig = JSON.parse(configData);
 
     // Check if subject exists in config
     if (!config[subjectString]) {
@@ -53,36 +53,37 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const subjectConfig = config[subjectString];
+    const dataDir = path.join(process.cwd(), 'public', 'data', 'cutoff', subjectString);
     const allData: any[] = [];
     const availableTables: string[] = [];
 
     // Process each table configuration
     for (const tableConfig of subjectConfig.tables) {
-      try {
-        // Fetch CSV file
-        const csvResponse = await fetch(`${req.headers.origin}/data/cutoff/${subjectString}/${tableConfig.file}`);
-        if (!csvResponse.ok) {
-          console.warn(`CSV file not found: ${tableConfig.file}`);
-          continue;
+      const csvPath = path.join(dataDir, tableConfig.file);
+      
+      if (fs.existsSync(csvPath)) {
+        try {
+          // Read CSV file
+          const csvData = fs.readFileSync(csvPath, 'utf-8');
+          
+          // Convert CSV to structured data
+          const cutoffData = csvToCutoffData(csvData, subjectString);
+          
+          // Add table metadata to each record
+          const enrichedData = cutoffData.map(record => ({
+            ...record,
+            tableId: tableConfig.id,
+            tableTitle: tableConfig.title
+          }));
+          
+          allData.push(...enrichedData);
+          availableTables.push(tableConfig.id);
+          
+        } catch (error) {
+          console.error(`Error processing ${tableConfig.file}:`, error);
         }
-        
-        const csvData = await csvResponse.text();
-        
-        // Convert CSV to structured data
-        const cutoffData = csvToCutoffData(csvData, subjectString);
-        
-        // Add table metadata to each record
-        const enrichedData = cutoffData.map(record => ({
-          ...record,
-          tableId: tableConfig.id,
-          tableTitle: tableConfig.title
-        }));
-        
-        allData.push(...enrichedData);
-        availableTables.push(tableConfig.id);
-        
-      } catch (error) {
-        console.error(`Error processing ${tableConfig.file}:`, error);
+      } else {
+        console.warn(`CSV file not found: ${csvPath}`);
       }
     }
 

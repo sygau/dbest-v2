@@ -4,6 +4,7 @@ import { BiBarChartAlt2 } from 'react-icons/bi';
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData';
 import { getPageMetadata } from '../utils/pageMetadata';
 import CutoffTable from '../components/CutoffTable';
+import { loadSubjectData, CutoffTableData, SubjectConfig } from '../utils/clientCutoffData';
 
 export default function CutoffPage() {
   const metadata = getPageMetadata('cutoff');
@@ -11,8 +12,8 @@ export default function CutoffPage() {
   const faqData = generateSubjectFAQStructuredData('cutoff');
   
   const [selectedSubject, setSelectedSubject] = useState('english');
-  const [cutoffData, setCutoffData] = useState(null);
-  const [cutoffConfig, setCutoffConfig] = useState<any>(null);
+  const [cutoffData, setCutoffData] = useState<CutoffTableData | null>(null);
+  const [cutoffConfig, setCutoffConfig] = useState<SubjectConfig | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -21,6 +22,7 @@ export default function CutoffPage() {
     
     if (!subject) {
       setCutoffData(null);
+      setCutoffConfig(null);
       return;
     }
 
@@ -28,18 +30,13 @@ export default function CutoffPage() {
     setError('');
 
     try {
-      const response = await fetch(`/api/cutoff/${subject}`);
-      
-      if (!response.ok) {
-        throw new Error(`Failed to load data: ${response.statusText}`);
-      }
-      
-      const data = await response.json();
-      setCutoffData(data.data);
-      setCutoffConfig(data.config);
+      const { data, config } = await loadSubjectData(subject);
+      setCutoffData(data);
+      setCutoffConfig(config);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load cutoff data');
       setCutoffData(null);
+      setCutoffConfig(null);
     } finally {
       setLoading(false);
     }
@@ -160,7 +157,7 @@ export default function CutoffPage() {
           {/* Cut-off Table */}
           <CutoffTable 
             data={cutoffData || {}}
-            config={cutoffConfig}
+            config={cutoffConfig || undefined}
             subject={selectedSubject}
             loading={loading}
           />

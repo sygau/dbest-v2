@@ -1,5 +1,5 @@
 import React from 'react';
-import { getGradeColor } from '../utils/cutoffData';
+import { getGradeColor } from '../utils/clientCutoffData';
 
 // Custom scrollbar styles
 const scrollbarStyles = `
