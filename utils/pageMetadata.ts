@@ -285,6 +285,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/blog",
     "ogType": "website"
+  },
+  "cutoff": {
+    "title": "DSE Cut off Scores (2012-2024)",
+    "description": "HKDSE 各科目等級Cut Off查詢，包括中文、英文、數學、物理、化學、生物、ICT、M1、M2等科目的歷年Cut Off資料。了解各等級達標分數，助您制定備考策略。",
+    "robots": "index, follow",
+    "ogTitle": "HKDSE Cut-off Scores (2012-2024)",
+    "ogDescription": "HKDSE 各科目等級分數Cut Off查詢，包括中文、英文、數學、物理、化學、生物、ICT、M1、M2等科目的歷年Cut Off資料。了解各等級達標分數，助您制定備考策略。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/cutoff",
+    "ogType": "website"
   }
 };
 

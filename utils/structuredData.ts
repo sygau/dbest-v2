@@ -163,6 +163,14 @@ export const subjectData: Record<string, SubjectData> = {
     englishDescription: 'DSE Tourism and Hospitality Studies past papers and answers, covering tourism and hospitality industries. Complete exam papers available for download to master key exam points.',
     category: 'elective',
     url: 'https://dse.best/ths'
+  },
+  cutoff: {
+    name: '分數線',
+    englishName: 'Cut-off Scores',
+    description: 'HKDSE 各科目等級分數線查詢，包括中文、英文、數學、物理、化學、生物、ICT、M1、M2等科目的歷年分數線資料。了解各等級達標分數，助您制定備考策略。',
+    englishDescription: 'HKDSE cut-off scores for all subjects including Chinese, English, Mathematics, Physics, Chemistry, Biology, ICT, M1, M2 and more. Historical grade boundaries to help you understand score requirements and plan your study strategy.',
+    category: 'core',
+    url: 'https://dse.best/cutoff'
   }
 };
 
@@ -856,6 +864,36 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
     {
       question: "可以分享或轉載Blog文章嗎？",
       answer: "歡迎分享文章連結，但請尊重版權，不要直接複製內容。如需轉載，請聯繫我們獲得授權，並註明來源。"
+    }
+  ],
+  cutoff: [
+    {
+      question: "What are HKDSE cut-off scores?",
+      answer: "HKDSE cut-off scores are the minimum marks students need to achieve to obtain specific grades (5**, 5*, 5, 4, 3, 2). These grade boundaries are adjusted annually based on exam difficulty and overall student performance, published by the Hong Kong Examinations and Assessment Authority (HKEAA)."
+    },
+    {
+      question: "How do I find cut-off scores for a specific subject?",
+      answer: "Select the subject and year on this page to view the grade boundaries. You can also use the search function to quickly find specific grades or score ranges. The data is organized by subject and year for easy navigation."
+    },
+    {
+      question: "What does the percentage in cut-off scores mean?",
+      answer: "The percentage shows the proportion of students who achieved that grade. For example, if the 5** grade has 84%, it means approximately 84% of students reached the 5** cut-off score. This helps understand the competitiveness of each grade level."
+    },
+    {
+      question: "Do cut-off scores change every year?",
+      answer: "Yes, cut-off scores are adjusted annually based on exam difficulty and student performance. More difficult exams typically have lower cut-off scores, while easier exams have higher boundaries. It's recommended to analyze multi-year data to understand trends."
+    },
+    {
+      question: "How can I use cut-off scores to plan my study strategy?",
+      answer: "Understanding target grade cut-off scores helps set clear learning goals. Analyze multi-year data to understand score trends and develop targeted study plans based on your strengths and weaknesses. This data-driven approach improves exam preparation effectiveness."
+    },
+    {
+      question: "What's the difference between cut-off scores and raw marks?",
+      answer: "Cut-off scores are the minimum marks required for each grade, while raw marks are the actual scores students receive. Cut-off scores help you understand what you need to achieve for your target grade, making them essential for goal setting and study planning."
+    },
+    {
+      question: "How accurate are the cut-off scores on this website?",
+      answer: "Our cut-off scores are sourced from official HKEAA publications and updated annually. We strive to provide the most accurate and up-to-date information to help students make informed decisions about their exam preparation and grade targets."
     }
   ]
 };

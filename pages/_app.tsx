@@ -7,6 +7,7 @@ import '../styles/globals.css' // Import Next.js global CSS
 import {
   BiHomeAlt,
   BiTimeFive,
+  BiBarChartAlt2,
   BiChat,
   BiBook,
   BiCalculator,
@@ -231,6 +232,12 @@ export default function App({ Component, pageProps }: AppProps) {
               <NavigationLink href="/countdown">
                 <div className="parent-icon"><BiTimeFive style={{ color: '#f9a8d4', fontSize: 24 }} /></div>
                 <div className="menu-title">DSE 2026 倒數</div>
+              </NavigationLink>
+            </li>
+            <li>
+              <NavigationLink href="/cutoff">
+                <div className="parent-icon"><BiBarChartAlt2 style={{ color: '#10b981', fontSize: 24 }} /></div>
+                <div className="menu-title">DSE Cut Off</div>
               </NavigationLink>
             </li>
             {chatConfig.enabled && (
