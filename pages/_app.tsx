@@ -32,7 +32,8 @@ import {
   BiPalette,
   BiBookReader,
   BiLogoInstagram,
-  BiPlanet
+  BiPlanet,
+  BiMoon
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
@@ -418,8 +419,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className="offcanvas offcanvas-end" data-bs-scroll="true" tabIndex={-1} id="staticBackdrop">
         <div className="offcanvas-header border-bottom h-70">
           <div>
-            <h5 className="mb-0">主題自定義</h5>
-            <p className="mb-0">Customize your theme</p>
+            <h5 className="mb-0">Theme Customizer</h5>
+            <p className="mb-0">Choose your preferred theme</p>
           </div>
           <a href="#" className="primaery-menu-close" data-bs-dismiss="offcanvas">
             <BiX style={{ fontSize: 24 }} />
@@ -434,8 +435,8 @@ export default function App({ Component, pageProps }: AppProps) {
                   onClick={() => handleThemeChange('blue-theme')}
                   role="button"
                 >
-                  <span><BiHomeAlt style={{ fontSize: 22 }} /></span>
-                  <span>藍色</span>
+                  <span><BiPalette style={{ fontSize: 22 }} /></span>
+                  <span>Blue</span>
                 </div>
               </div>
               <div className="col-12 col-xl-6">
@@ -444,8 +445,8 @@ export default function App({ Component, pageProps }: AppProps) {
                   onClick={() => handleThemeChange('light')}
                   role="button"
                 >
-                  <span><BiTimeFive style={{ fontSize: 22 }} /></span>
-                  <span>淺色</span>
+                  <span><BiCircleHalf style={{ fontSize: 22 }} /></span>
+                  <span>Light</span>
                 </div>
               </div>
               <div className="col-12 col-xl-6">
@@ -454,8 +455,8 @@ export default function App({ Component, pageProps }: AppProps) {
                   onClick={() => handleThemeChange('dark')}
                   role="button"
                 >
-                  <span><BiError style={{ fontSize: 22 }} /></span>
-                  <span>深色</span>
+                  <span><BiShieldAlt style={{ fontSize: 22 }} /></span>
+                  <span>Gray</span>
                 </div>
               </div>
               <div className="col-12 col-xl-6">
@@ -464,8 +465,8 @@ export default function App({ Component, pageProps }: AppProps) {
                   onClick={() => handleThemeChange('semi-dark')}
                   role="button"
                 >
-                  <span><BiShieldAlt style={{ fontSize: 22 }} /></span>
-                  <span>半深色</span>
+                  <span><BiMoon style={{ fontSize: 22 }} /></span>
+                  <span>Monochrome</span>
                 </div>
               </div>
             </div>

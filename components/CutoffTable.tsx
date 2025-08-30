@@ -92,8 +92,14 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
                 <span className="visually-hidden">Loading...</span>
               </div>
             </div>
-            <h6 className="text-secondary mb-2">Loading cut-off data...</h6>
-            <p className="text-secondary small">載入分數線資料中...</p>
+            <h6 className="text-dark mb-2" style={{ 
+              color: 'var(--bs-body-color) !important',
+              opacity: '0.9'
+            }}>Loading cut-off data...</h6>
+            <p className="text-dark small" style={{ 
+              color: 'var(--bs-body-color) !important',
+              opacity: '0.8'
+            }}>載入分數線資料中...</p>
           </div>
         </div>
       </div>
@@ -110,8 +116,14 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
                 <path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <h6 className="text-secondary mb-2">No data available</h6>
-            <p className="text-secondary small">
+            <h6 className="text-dark mb-2" style={{ 
+              color: 'var(--bs-body-color) !important',
+              opacity: '0.9'
+            }}>No data available</h6>
+            <p className="text-dark small" style={{ 
+              color: 'var(--bs-body-color) !important',
+              opacity: '0.8'
+            }}>
               沒有找到 {subject} 的分數線資料
               <br />
               Please select a different subject or check back later
