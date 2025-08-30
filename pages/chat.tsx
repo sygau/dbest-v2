@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { getMainPageMetadata } from '../utils/structuredData';
+import { getChatConfig, getChatDisabledMessage } from '../utils/chatToggle';
+import ChatDisabled from '../components/ChatDisabled';
 import {
     BiHomeAlt,
     BiBook,
@@ -24,6 +26,7 @@ import {
 
 export default function ChatPage() {
     const metadata = getMainPageMetadata('chat');
+    const chatConfig = getChatConfig();
     const [showRules, setShowRules] = useState(false);
     const [isClosingRules, setIsClosingRules] = useState(false);
     const [showUsernameModal, setShowUsernameModal] = useState(false);
@@ -133,6 +136,38 @@ export default function ChatPage() {
             }
         };
     }, []);
+
+    // If chat is disabled, show disabled component
+    if (!chatConfig.enabled) {
+        return (
+            <>
+                <Head>
+                    <title>Chat Disabled</title>
+                    <meta name="description" content="Chat is currently disabled" />
+                    <meta name="robots" content="noindex, nofollow" />
+                </Head>
+
+                {/*breadcrumb*/}
+                <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+                    <div className="breadcrumb-title pe-3">其他</div>
+                    <div className="ps-3">
+                        <nav aria-label="breadcrumb">
+                            <ol className="breadcrumb mb-0 p-0">
+                                <li className="breadcrumb-item active" aria-current="page">
+                                    聊天室 Chatroom (Disabled)
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+                {/*end breadcrumb*/}
+
+                <ChatDisabled 
+                    message={getChatDisabledMessage()}
+                />
+            </>
+        );
+    }
 
     return (
         <>

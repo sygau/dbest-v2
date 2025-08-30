@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import Link from 'next/link'
 import Head from 'next/head'
 import NavigationLink from '../components/NavigationLink'
+import { getChatConfig } from '../utils/chatToggle'
 import '../styles/globals.css' // Import Next.js global CSS
 import {
   BiHomeAlt,
@@ -47,6 +48,8 @@ export default function App({ Component, pageProps }: AppProps) {
   // Initialize PDF tracking
   usePdfTracking()
   const canonicalUrl = `https://dse.best${router.asPath}`
+  // Get chat configuration
+  const chatConfig = getChatConfig()
   // Render a minimal layout for the maintenance page (no header/sidebar/footer)
   if (router.pathname === '/maintenance') {
     return <Component {...pageProps} />
@@ -230,12 +233,14 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">DSE 2026 倒數</div>
               </NavigationLink>
             </li>
-            <li>
-              <NavigationLink href="/chat">
-                <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
-                <div className="menu-title">聊天室 Chatroom</div>
-              </NavigationLink>
-            </li>
+            {chatConfig.enabled && (
+              <li>
+                <NavigationLink href="/chat">
+                  <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
+                  <div className="menu-title">聊天室 Chatroom</div>
+                </NavigationLink>
+              </li>
+            )}
             <li className="menu-label">核心科目</li>
             <li>
               <NavigationLink href="/chinese">

@@ -291,13 +291,13 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - Search (Fuse?)
 - Multilingual support
 - Codebase revamp 
-- Disqus comment count in blog
 - Generative Engine Optimization (GEO)
 - CF Plugins
 - Chat Auth Vulne improvement
 - Chat QOL: Lockdown/Disable chat command by mods/remote management panel
 - Chat Env disable + message/reason
-
+- Migrate chat API to workers 
+- GA data fetching to embed (download count in index)
 
 ### Pages suggestions
 - PRIORITY!!!!! CUT OFF  PAGE AND COLLECTIN!!!!!!!!!!!!!!!!!!!!!!!!!!! (SOURCE FROM PERPLEXITY)

@@ -320,11 +320,11 @@ export default function HomePage() {
         </div>
 
         {/* Instagram Follow Section */}
-        <div className="container my-5">
+        <div className="container my-5" style={{marginBottom: '0rem !important'}}>
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className="card border-primary border-2">
-                <div className="card-body text-center p-4">
+                <div className="card-body text-center p-2">
                   <h3 className="mb-3">
                     <span className="text-primary">📱 Follow us on Instagram</span>
                   </h3>
