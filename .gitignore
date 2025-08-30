@@ -16,7 +16,6 @@ out/
 
 # Build outputs
 public/blog/
-data/
 !data/blog-index.json
 dist/
 build/

@@ -1,0 +1,148 @@
+{
+  "english": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "English Overall Score Cut Off Table",
+        "file": "overall.csv"
+      },
+      {
+        "id": "paper1",
+        "title": "English Paper 1 - Reading Cut Off Table",
+        "file": "paper1.csv"
+      },
+      {
+        "id": "paper2",
+        "title": "English Paper 2 - Writing Cut Off Table",
+        "file": "paper2.csv"
+      },
+      {
+        "id": "paper3",
+        "title": "English Paper 3 - Listening & Integrated Skills Cut Off Table",
+        "file": "paper3.csv"
+      },
+      {
+        "id": "paper4",
+        "title": "English Paper 4 - Speaking Cut Off Table",
+        "file": "paper4.csv"
+      }
+    ]
+  },
+  "chinese": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Chinese Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "math": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Mathematics Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "biology": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Biology Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "physics": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Physics Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "chemistry": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Chemistry Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "economics": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Economics Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "bafs": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "BAFS Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "chinese-history": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Chinese History Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "history": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "History Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "geography": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Geography Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "ict": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "ICT Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "m1": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "M1 Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "m2": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "M2 Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  }
+} 

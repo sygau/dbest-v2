@@ -40,7 +40,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // Load configuration
-    const configPath = path.join(process.cwd(), 'data', 'cutoff-config.json');
+    const configPath = path.join(process.cwd(), 'public', 'config', 'cutoff-config.json');
     const configData = fs.readFileSync(configPath, 'utf-8');
     const config: CutoffConfig = JSON.parse(configData);
 
@@ -53,7 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const subjectConfig = config[subjectString];
-    const dataDir = path.join(process.cwd(), 'data', 'cutoff', subjectString);
+    const dataDir = path.join(process.cwd(), 'public', 'data', 'cutoff', subjectString);
     const allData: any[] = [];
     const availableTables: string[] = [];
 
