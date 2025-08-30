@@ -45,7 +45,7 @@ const homepageFAQs = [
   {
     id: 'faq4',
     question: '點樣貢獻試卷？',
-    answer: '你可以透過 Instagram 傳送試卷俾我哋！歡迎大家分享歷屆試題、答案或其他學習資源，幫助更多同學。'
+    answer: '你可以透過 Instagram / <a href="mailto:info@dse.best">info@dse.best</a> 傳送試卷俾我哋！歡迎大家分享歷屆試題、答案或其他學習資源，幫助更多同學。'
   },
   {
     id: 'faq5',
@@ -109,10 +109,12 @@ export default function HomePage() {
           {/* Hero Section */}
           <h1 className="fw-bold mb-4" style={{ marginTop: '50px', fontSize: '3.0rem' }}>
             <span style={{
-              background: 'linear-gradient(to right, #663399, #007bff)',
+              /* background: 'linear-gradient(135deg, #8b5cf6 0%, #a855f7 25%, #c084fc 50%, #d8b4fe 75%, #e9d5ff 100%)', */
+              background: '#8b5cf6',
               WebkitBackgroundClip: 'text',
               backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
+              WebkitTextFillColor: 'transparent',
+              filter: 'drop-shadow(2px 2px 4px rgba(139, 92, 246, 0.3))'
             }}>
               歡迎來到 DSE.BEST
             </span>
