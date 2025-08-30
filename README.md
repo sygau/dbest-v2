@@ -274,7 +274,6 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - Enrich index features (Daily Quote)
 - More Subjects
 - Redis based chat moderation (User Data logging, bans, handle commands instead of maps which destroy upon vercel execution)
-- Third party push notif for chat
 - UI Improvement (Blog, Download cards etc)
 - Completely redesign countdown with all subjects
 - Blog post contentful react implementation 
@@ -282,20 +281,15 @@ You can add beautiful, flexible buttons to your blog posts or pages using the fo
 - Improve SEO meta descriptions and titles
 - Fix material icon and button shortcodes in BlogGeneration
 - Schema / Google Rich Results optimizations/FAQ?/Breadcrumbs ETC
-- Validate all downloads (Anti Scraping)
-- Block scraping of PDFs (Anti Scraping)
-- Signed URLs for downloading with expiry (Anti Scraping)
 - PageSpeed improvements 
 - Add topic names for ByTopics
 - Sitemap.xml generation
-- Search (Fuse?)
 - Multilingual support
 - Codebase revamp 
 - Generative Engine Optimization (GEO)
 - CF Plugins
 - Chat Auth Vulne improvement
 - Chat QOL: Lockdown/Disable chat command by mods/remote management panel
-- Chat Env disable + message/reason
 - Migrate chat API to workers 
 - GA data fetching to embed (download count in index)
 
