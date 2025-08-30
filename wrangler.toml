@@ -1,0 +1,63 @@
+name = "dse-chat-auth"
+main = "api/chat-auth-workers.js"
+compatibility_date = "2024-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+# KV Namespace for rate limiting and bans
+[[kv_namespaces]]
+binding = "CHAT_KV"
+id = "your-kv-namespace-id"
+preview_id = "your-preview-kv-namespace-id"
+
+# Environment variables
+[vars]
+NODE_ENV = "production"
+
+# Secrets (set these using wrangler secret put)
+# ABLY_API_KEY
+# LOGFLARE_API_KEY  
+# LOGFLARE_SOURCE_ID
+# MOD_SECRET_KEY
+# MOD_ID
+# MOD_IP
+
+# Routes
+[[routes]]
+pattern = "api.chat-auth.your-domain.com/*"
+zone_name = "your-domain.com"
+
+# Or use custom domain
+# [[routes]]
+# pattern = "chat-auth.your-domain.com/*"
+# zone_name = "your-domain.com"
+
+# Environment-specific configurations
+[env.production]
+name = "dse-chat-auth-prod"
+
+[env.staging]
+name = "dse-chat-auth-staging"
+vars = { NODE_ENV = "staging" }
+
+# Build configuration
+[build]
+command = "npm run build"
+watch_dir = "src"
+
+# Minification and optimization
+[build.upload]
+format = "service-worker"
+main = "./api/chat-auth-workers.js"
+
+# Performance settings
+[triggers]
+crons = []
+
+# Resource limits
+[limits]
+cpu_ms = 50
+memory_mb = 128
+
+# Analytics
+[analytics]
+enabled = true 
