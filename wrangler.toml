@@ -78,45 +78,4 @@ X-Content-Type-Options = "nosniff"
 Referrer-Policy = "strict-origin-when-cross-origin"
 Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Cache headers for static assets
-[[headers]]
-for = "/assets/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "*.css"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "*.js"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "*.woff"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-for = "*.woff2"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-
-# Short cache for manifest and sitemap
-[[headers]]
-for = "/manifest.json"
-[headers.values]
-Cache-Control = "public, max-age=3600"
-
-[[headers]]
-for = "/robots.txt"
-[headers.values]
-Cache-Control = "public, max-age=3600"
-
-[[headers]]
-for = "/sitemap.xml"
-[headers.values]
-Cache-Control = "public, max-age=3600" 
+ 
