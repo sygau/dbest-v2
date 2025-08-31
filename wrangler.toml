@@ -64,12 +64,7 @@ from = "/jable"
 to = "https://jable.tv/"
 status = 301
 
-# Bot blocking
-[[redirects]]
-from = "/"
-to = "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre"
-status = 301
-headers = { "User-Agent" = "*[Bb]yte[Ss]pider*" }
+
 
 # Headers configuration
 [[headers]]

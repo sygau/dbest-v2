@@ -5,11 +5,6 @@
 # External redirects
 /jable https://jable.tv/ 301
 
-# Bot blocking - redirect ByteSpider to Wikipedia
-/  https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre 301
-  User-Agent: *[Bb]yte[Ss]pider*
-
-
 
 # API routes - redirect to Vercel API subdomain
 /api/* https://api.dse.best/:splat 301
@@ -19,5 +14,4 @@
 # /  https://dse.best/:splat 301
 # /* https://dse.best/:splat 301
 
-# SPA fallback for client-side routing
-/*    /index.html   200 
+ 
