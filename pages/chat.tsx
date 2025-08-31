@@ -96,7 +96,7 @@ export default function ChatPage() {
             // Load chat script if not already loaded
             if (!(window as any).DSEChatLoaded) {
                 const chatScript = document.createElement('script');
-                chatScript.src = '/assets/js/chat.js';
+                chatScript.src = '/assets/js/chat.js?v=' + Date.now();
                 chatScript.onload = () => {
                     (window as any).DSEChatLoaded = true;
                     initializeChat();
