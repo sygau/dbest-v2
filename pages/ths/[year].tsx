@@ -8,6 +8,8 @@ import NavigationLink from '../../components/NavigationLink'
 import { usePdfTracking } from '../../hooks/usePdfTracking';
 import { generateYearMeta } from '../../utils/yearSlugSEO';
 import { generateSubjectFAQStructuredData } from '../../utils/structuredData';
+import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 // Define types
 interface YearPageProps {
@@ -54,7 +56,9 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
   const router = useRouter()
   usePdfTracking();
 
+  // Use the clean single function approach
   const meta = generateYearMeta('ths', year);
+  const lastUpdated = getSubjectYearSlugLastUpdated('ths');
   const faqData = generateSubjectFAQStructuredData('ths');
 
   // If the page is not yet generated, this will be displayed
@@ -126,10 +130,7 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
             <br />
             {meta.pageDescriptionEng}
           </p>
-          <div className="alert alert-border-primary alert-dismissible fade show">
-            <div className=""><b>最後更新: </b>12/8/2025</div>
-            <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
-          </div>
+          <LastUpdatedAlert date={lastUpdated} />
           <br />
           <hr className="my-4" />
           <br />

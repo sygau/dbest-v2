@@ -2,12 +2,16 @@ import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
+
 export default function EconomicsPage() {
   const metadata = getSubjectMetadata('economics');
 
     const subjectKey = 'economics';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -69,17 +73,7 @@ export default function EconomicsPage() {
                         <br />
                         Welcome to browse DSE Economics past papers. Here you can find comprehensive Economics examination materials including microeconomics, macroeconomics, international trade, and economic development topics arranged by year, along with data response questions, essay questions, and detailed marking schemes to help you master DSE Economics concepts and achieve excellent results in your examination.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     {/* Syllabus */}

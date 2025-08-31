@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { BiDownload } from 'react-icons/bi';
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 export default function EnglishPage() {
   const metadata = getSubjectMetadata('english');
@@ -9,6 +11,7 @@ export default function EnglishPage() {
     const subjectKey = 'english';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -69,17 +72,7 @@ export default function EnglishPage() {
                         <br />
                         Welcome to browse DSE English Language past papers. Here you can find comprehensive English Language examination materials including reading comprehension, writing tasks, listening exercises, and speaking assessments arranged by year, along with detailed marking schemes and sample answers to enhance your DSE English Language preparation.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     <br />

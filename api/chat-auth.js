@@ -277,7 +277,8 @@ const MOD_COMMANDS = {
   whois: /^\/whois (\S+)$/i, // /whois username - get user's client ID
   listbans: /^\/listbans$/i, // /listbans - show all banned users and IPs
   online: /^\/online$/i,     // /online - show currently active users
-  stats: /^\/stats$/i        // /stats - show user statistics
+  stats: /^\/stats$/i,       // /stats - show user statistics
+  link: /^\/link (.+)$/i     // /link url - send clickable link as moderator
 };
 
 // Rate limit settings
@@ -349,124 +350,139 @@ async function moderateUsername(username, clientId, ip) {
     };
   }
 
+  // Check for restricted name "Jable" or names containing "Jable"
+  if (cleanUsername.toLowerCase().includes('jable')) {
+    return {
+      isClean: false,
+      reason: 'This name is restricted and cannot be used',
+      severity: 'high'
+    };
+  }
+
   // Length validation - DISABLED for moderators
-  if (cleanUsername.length > 14 || cleanUsername.length < 3) {
+  if (!isModerator(clientId, ip) && (cleanUsername.length > 14 || cleanUsername.length < 3)) {
     return {
       isClean: false,
       reason: 'Username must be 3-14 characters long'
     };
   }
 
-  // Check for HTML/script tags
-  const hasHTML = /<[^>]*>/.test(cleanUsername);
-  if (hasHTML) {
-    return {
-      isClean: false,
-      reason: 'HTML tags are not allowed in usernames',
-      severity: 'high'
-    };
-  }
-
-  // Check for JavaScript-like content
-  const hasJS = /(javascript|script|eval|function|alert|document|window|location|innerHTML|outerHTML|onload|onerror)\s*[\(\:=]/i.test(cleanUsername);
-  if (hasJS) {
-    return {
-      isClean: false,
-      reason: 'JavaScript-like content is not allowed in usernames',
-      severity: 'high'
-    };
-  }
-
-  // Check for links/domains
-  const linkPatterns = [
-    /(https?:\/\/[^\s]+)/gi,
-    /(www\.[^\s]+)/gi,
-    /\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\b/gi,
-    /(bit\.ly|tinyurl|t\.co|goo\.gl|short\.link|ow\.ly|is\.gd|buff\.ly)/gi,
-    /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/gi,
-    /(discord\.gg|discord\.com\/invite)/gi,
-    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi
-  ];
-
-  for (const pattern of linkPatterns) {
-    if (pattern.test(cleanUsername)) {
+  // Check for HTML/script tags (skip for moderators)
+  if (!isModerator(clientId, ip)) {
+    const hasHTML = /<[^>]*>/.test(cleanUsername);
+    if (hasHTML) {
       return {
         isClean: false,
-        reason: 'Links and domains are not allowed in usernames',
+        reason: 'HTML tags are not allowed in usernames',
+        severity: 'high'
+      };
+    }
+
+    // Check for JavaScript-like content
+    const hasJS = /(javascript|script|eval|function|alert|document|window|location|innerHTML|outerHTML|onload|onerror)\s*[\(\:=]/i.test(cleanUsername);
+    if (hasJS) {
+      return {
+        isClean: false,
+        reason: 'JavaScript-like content is not allowed in usernames',
+        severity: 'high'
+      };
+    }
+
+    // Check for links/domains
+    const linkPatterns = [
+      /(https?:\/\/[^\s]+)/gi,
+      /(www\.[^\s]+)/gi,
+      /\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\b/gi,
+      /(bit\.ly|tinyurl|t\.co|goo\.gl|short\.link|ow\.ly|is\.gd|buff\.ly)/gi,
+      /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/gi,
+      /(discord\.gg|discord\.com\/invite)/gi,
+      /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi
+    ];
+
+    for (const pattern of linkPatterns) {
+      if (pattern.test(cleanUsername)) {
+        return {
+          isClean: false,
+          reason: 'Links and domains are not allowed in usernames',
+          severity: 'medium'
+        };
+      }
+    }
+  }
+
+  // Apply the same profanity filtering as messages (skip for moderators)
+  if (!isModerator(clientId, ip)) {
+    const profanityPatterns = [
+      // Basic profanity (English) - core set for usernames
+      /\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|nude|naked|penis|vagina|anal|oral|masturbate|orgasm)\b/i,
+      
+      // Strong profanity
+      /\b(motherfucker|asshole|douchebag|jackass|dickhead|shithead|fuckface|cocksucker|twat|prick)\b/i,
+      
+      // Sexual content
+      /\b(horny|kinky|fetish|bdsm|porn|xxx|onlyfans|escort|prostitute|hooker)\b/i,
+
+      // Numbers and symbols replacing letters
+      /\b\w*f+[^a-z]*u+[^a-z]*c+[^a-z]*k+\w*\b/i,
+      /\b\w*sh[1!]t\w*\b/i,
+      /\b\w*b[1!]tch\w*\b/i,
+      /\b\w*[4@]s{2,}\w*\b/i,
+      /\b\w*p[0o]rn\w*\b/i,
+      /\bs[3e]x\b/i,
+      
+      // Chinese profanity (core set)
+      /\b(他媽的|幹你娘|操你媽|去死|白癡|智障|腦殘|垃圾|廢物|幹|操|靠北|靠腰|機掰|雞掰|屌|懶叫|鳥|屁眼|婊子|臭婊子|賤人|死人頭|王八蛋|混蛋|畜生|禽獸|狗屎|狗娘養的|傻逼|傻瓜|傻屄|狗日的|你妹|草泥马|日你妈|死全家|滾蛋|死肥豬|二逼|他妈的|变态|我操|我靠|操你妈)\b/i,
+      
+      // Cantonese profanity (core set)
+      /\b(屌你|屌|瘀|閪|西|撚|柒頭|仆街|仆你個街|死仔包|死八婆|鬼佬|死鬼佬|死開|收皮|執嘢|搵笨|搵死|食屎|食蕉|碌葛|九唔搭八|頂你|頂你個肺|戇居|低能|白痴|戇鳩|傻瓜|蠢材|衰仔|衰佬|衰婆)\b/i,
+      
+      // Hate speech and slurs
+      /\b(nigger|faggot|retard|nazi|hitler|chink|gook|spic|wetback|beaner|cracker|honky|kike|jap|raghead|towelhead|sandnigger)\b/i,
+      
+      // Common bypass attempts - more specific patterns
+      /\bf+[u\*\-_]+c+[k\*\-_]+\b/i,
+      /\bs+h+[i\*\-_]+t+\b/i,  // More specific: requires 'h' after 's'
+      /\bb+[i\*\-_]+t+[c\*\-_]+h+\b/i,
+      /\bd+[i\*\-_]+[u\*\-_]+\b/i,
+      /\bp+[o\*\-_]+r+[n\*\-_]+\b/i
+    ];
+
+    for (const pattern of profanityPatterns) {
+      if (pattern.test(cleanUsername)) {
+        return {
+          isClean: false,
+          reason: 'Username contains inappropriate language',
+          severity: 'high'
+        };
+      }
+    }
+  }
+
+  // Check for excessive special characters or numbers (skip for moderators)
+  if (!isModerator(clientId, ip)) {
+    const specialCharCount = (cleanUsername.match(/[^a-zA-Z0-9\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
+    if (specialCharCount > cleanUsername.length * 0.4) {
+      return {
+        isClean: false,
+        reason: 'Username contains too many special characters',
         severity: 'medium'
       };
     }
-  }
 
-  // Apply the same profanity filtering as messages
-  const profanityPatterns = [
-    // Basic profanity (English) - core set for usernames
-    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|nude|naked|penis|vagina|anal|oral|masturbate|orgasm)\b/i,
-    
-    // Strong profanity
-    /\b(motherfucker|asshole|douchebag|jackass|dickhead|shithead|fuckface|cocksucker|twat|prick)\b/i,
-    
-    // Sexual content
-    /\b(horny|kinky|fetish|bdsm|porn|xxx|onlyfans|escort|prostitute|hooker)\b/i,
+    // Check for admin/moderator impersonation
+    const adminPatterns = [
+      /\b(admin|administrator|mod|moderator|staff|owner|dse\.?best|system|bot|official)\b/i,
+      /\b(管理|管理员|版主|官方|系統|机器人)\b/i
+    ];
 
-    // Numbers and symbols replacing letters
-    /\b\w*f+[^a-z]*u+[^a-z]*c+[^a-z]*k+\w*\b/i,
-    /\b\w*sh[1!]t\w*\b/i,
-    /\b\w*b[1!]tch\w*\b/i,
-    /\b\w*[4@]s{2,}\w*\b/i,
-    /\b\w*p[0o]rn\w*\b/i,
-    /\bs[3e]x\b/i,
-    
-    // Chinese profanity (core set)
-    /\b(他媽的|幹你娘|操你媽|去死|白癡|智障|腦殘|垃圾|廢物|幹|操|靠北|靠腰|機掰|雞掰|屌|懶叫|鳥|屁眼|婊子|臭婊子|賤人|死人頭|王八蛋|混蛋|畜生|禽獸|狗屎|狗娘養的|傻逼|傻瓜|傻屄|狗日的|你妹|草泥马|日你妈|死全家|滾蛋|死肥豬|二逼|他妈的|变态|我操|我靠|操你妈)\b/i,
-    
-    // Cantonese profanity (core set)
-    /\b(屌你|屌|瘀|閪|西|撚|柒頭|仆街|仆你個街|死仔包|死八婆|鬼佬|死鬼佬|死開|收皮|執嘢|搵笨|搵死|食屎|食蕉|碌葛|九唔搭八|頂你|頂你個肺|戇居|低能|白痴|戇鳩|傻瓜|蠢材|衰仔|衰佬|衰婆)\b/i,
-    
-    // Hate speech and slurs
-    /\b(nigger|faggot|retard|nazi|hitler|chink|gook|spic|wetback|beaner|cracker|honky|kike|jap|raghead|towelhead|sandnigger)\b/i,
-    
-    // Common bypass attempts - more specific patterns
-    /\bf+[u\*\-_]+c+[k\*\-_]+\b/i,
-    /\bs+h+[i\*\-_]+t+\b/i,  // More specific: requires 'h' after 's'
-    /\bb+[i\*\-_]+t+[c\*\-_]+h+\b/i,
-    /\bd+[i\*\-_]+[u\*\-_]+\b/i,
-    /\bp+[o\*\-_]+r+[n\*\-_]+\b/i
-  ];
-
-  for (const pattern of profanityPatterns) {
-    if (pattern.test(cleanUsername)) {
-      return {
-        isClean: false,
-        reason: 'Username contains inappropriate language',
-        severity: 'high'
-      };
-    }
-  }
-
-  // Check for excessive special characters or numbers
-  const specialCharCount = (cleanUsername.match(/[^a-zA-Z0-9\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  if (specialCharCount > cleanUsername.length * 0.4) {
-    return {
-      isClean: false,
-      reason: 'Username contains too many special characters',
-      severity: 'medium'
-    };
-  }
-
-  // Check for admin/moderator impersonation
-  const adminPatterns = [
-    /\b(admin|administrator|mod|moderator|staff|owner|dse\.?best|system|bot|official)\b/i,
-    /\b(管理|管理员|版主|官方|系統|机器人)\b/i
-  ];
-
-  for (const pattern of adminPatterns) {
-    if (pattern.test(cleanUsername)) {
-      return {
-        isClean: false,
-        reason: 'Username cannot impersonate staff or official accounts',
-        severity: 'high'
-      };
+    for (const pattern of adminPatterns) {
+      if (pattern.test(cleanUsername)) {
+        return {
+          isClean: false,
+          reason: 'Username cannot impersonate staff or official accounts',
+          severity: 'high'
+        };
+      }
     }
   }
 
@@ -594,9 +610,9 @@ function sanitizeForXSS(input, clientId = null, ip = null) {
 }
 
 // Modular spam detection system
-function detectSpam(text) {
+function detectSpam(text, clientId = null, ip = null) {
   // Skip spam detection for moderators entirely
-  if (typeof window !== 'undefined' && window.isModerator) {
+  if (clientId && ip && isModerator(clientId, ip)) {
     return { isClean: true };
   }
 
@@ -926,7 +942,7 @@ function moderateContent(text, clientId, ip, username) {
   }
 
   // 7. Enhanced spam detection (modularized)
-  const spamDetectionResult = detectSpam(cleanText);
+  const spamDetectionResult = detectSpam(cleanText, clientId, ip);
   if (!spamDetectionResult.isClean) {
     return spamDetectionResult;
   }
@@ -949,19 +965,22 @@ function moderateContent(text, clientId, ip, username) {
     }
   }
   
-  // HTML entity encode the text for extra safety
-  const safeText = cleanText
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;');
+  // HTML entity encode the text for extra safety (skip for moderators)
+  let safeText = cleanText;
+  if (!isModerator(clientId, ip)) {
+    safeText = cleanText
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/\//g, '&#x2F;');
+  }
   
   return {
     isClean: true,
     reason: null,
-    cleanText: safeText // Return HTML-encoded text
+    cleanText: safeText // Return original text for moderators, encoded for others
   };
 }
 
@@ -1128,7 +1147,8 @@ export default async function handler(req, res) {
 /listbans - Show all banned users and IPs
 /online - Show currently active users
 /stats - Show user statistics and cleanup info
-/purge - Clear chat by flooding with placeholder messages` :
+/purge - Clear chat by flooding with placeholder messages
+/link <url> - Send a clickable link as a message` :
             `Available commands:
 /help - Show this help message`;
 
@@ -1369,10 +1389,75 @@ Server Uptime: N/A (serverless)
               private: true
             });
           }
+
+          // Link command - send clickable link as moderator
+          if (match = MOD_COMMANDS.link.exec(message)) {
+            const [, url] = match;
+            
+            if (!url || url.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /link <url>',
+                private: true
+              });
+            }
+
+            // Validate and clean the URL
+            let cleanUrl = url.trim();
+            
+            // Add protocol if missing
+            if (!cleanUrl.match(/^https?:\/\//)) {
+              cleanUrl = 'https://' + cleanUrl;
+            }
+
+            // Basic URL validation
+            try {
+              new URL(cleanUrl);
+            } catch (error) {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid URL format. Please provide a valid URL.',
+                private: true
+              });
+            }
+
+            // Publish the link message through Ably as a normal message with link formatting
+            try {
+              const ably = new Ably.Rest(process.env.ABLY_API_KEY);
+              const channel = ably.channels.get('dsebest-livechat');
+              
+              // Send as normal message with link formatting
+              await channel.publish('message', {
+                clientId: cleanClientId,
+                sender: cleanUsername,
+                text: `[LINK]${cleanUrl}[/LINK]`, // Simple link format
+                timestamp: Date.now(),
+                isModerator: true
+              });
+
+              return res.status(200).json({
+                status: 'success',
+                command: true,
+                message: `✅ Link sent successfully: ${cleanUrl}`,
+                private: true,
+                doNotBroadcast: true
+              });
+            } catch (error) {
+              console.error('Error publishing link message:', error);
+              return res.status(500).json({
+                status: 'error',
+                command: true,
+                message: 'Failed to send link. Please try again.',
+                private: true
+              });
+            }
+          }
         }
 
         // Check if the command looks like a valid command but with wrong syntax
-        const commandPrefixes = ['/ban', '/unban', '/banip', '/unbanip', '/info', '/whois', '/purge', '/listbans', '/help', '/online', '/stats'];
+        const commandPrefixes = ['/ban', '/unban', '/banip', '/unbanip', '/info', '/whois', '/purge', '/listbans', '/help', '/online', '/stats', '/link'];
         const commandWord = text.split(' ')[0].toLowerCase();
         
         if (commandPrefixes.some(prefix => commandWord.startsWith(prefix))) {
@@ -1413,6 +1498,9 @@ Server Uptime: N/A (serverless)
               break;
             case '/stats':
               helpText = 'Correct usage: /stats (no parameters needed)';
+              break;
+            case '/link':
+              helpText = 'Correct usage: /link <url>';
               break;
           }
           

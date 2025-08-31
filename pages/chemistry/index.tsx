@@ -2,12 +2,15 @@ import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 export default function ChemistryPage() {
   const metadata = getSubjectMetadata('chemistry');
 
     const subjectKey = 'chemistry';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -69,17 +72,7 @@ export default function ChemistryPage() {
                         <br />
                         Welcome to browse DSE Chemistry past papers. Here you can find comprehensive Chemistry examination materials including organic chemistry, inorganic chemistry, physical chemistry, and analytical chemistry topics arranged by year, along with practical examination papers, topic-based practice exercises, and detailed solutions to help you understand DSE Chemistry concepts and prepare effectively for your examination.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     <br />

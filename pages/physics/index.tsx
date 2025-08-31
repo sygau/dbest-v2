@@ -2,12 +2,15 @@ import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 export default function PhysicsPage() {
   const metadata = getSubjectMetadata('physics');
 
     const subjectKey = 'physics';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -69,17 +72,7 @@ export default function PhysicsPage() {
                         <br />
                         Welcome to browse DSE Physics past papers. Here you can find comprehensive Physics examination materials including mechanics, electricity, waves, and modern physics topics arranged by year, along with practical examination papers, topic-based practice exercises, and detailed marking schemes to help you master DSE Physics concepts and achieve excellent results in your examination.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     <br />

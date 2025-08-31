@@ -521,9 +521,38 @@ class DSEChat {
     headerDiv.appendChild(timeSpan);
     bubble.appendChild(headerDiv);
     
-    // Message content - CRITICAL: Use textContent to prevent XSS
+    // Message content - Handle special formatting
     const textSpan = document.createElement('span');
-    textSpan.textContent = String(text || '').substring(0, 500); // Limit length as extra safety
+    const messageText = String(text || '').substring(0, 500); // Limit length as extra safety
+    
+    // Check for link format: [LINK]url[/LINK]
+    const linkMatch = messageText.match(/\[LINK\](.*?)\[\/LINK\]/);
+    if (linkMatch) {
+      const url = linkMatch[1];
+      const displayText = url.replace(/^https?:\/\//, ''); // Remove protocol for display
+      
+      // Create clickable link
+      const link = document.createElement('a');
+      link.href = url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'link-message';
+      link.style.color = '#007bff';
+      link.style.textDecoration = 'underline';
+      link.style.cursor = 'pointer';
+      link.textContent = displayText;
+      
+      // Add link icon
+      const linkIcon = document.createElement('span');
+      linkIcon.innerHTML = ' 🔗';
+      linkIcon.style.marginLeft = '4px';
+      link.appendChild(linkIcon);
+      
+      textSpan.appendChild(link);
+    } else {
+      // Regular message - Use textContent to prevent XSS
+      textSpan.textContent = messageText;
+    }
     bubble.appendChild(textSpan);
     wrapper.appendChild(bubble);
     this.chatMessages.appendChild(wrapper);

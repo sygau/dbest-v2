@@ -2,12 +2,16 @@ import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
+
 export default function ICTPage() {
   const metadata = getSubjectMetadata('ict');
 
     const subjectKey = 'ict';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -70,17 +74,7 @@ export default function ICTPage() {
                         <br />
                         Welcome to browse DSE Information and Communication Technology (ICT) past papers. Here you can find comprehensive ICT examination materials including database management, programming, networking, multimedia, and information processing topics arranged by year, along with practical examination papers, topic-based practice exercises, and detailed marking schemes to help you master DSE ICT concepts and prepare effectively for your examination.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     <br />

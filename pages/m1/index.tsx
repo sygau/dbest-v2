@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 export default function M1Page() {
   const metadata = getSubjectMetadata('m1');
@@ -9,6 +11,7 @@ export default function M1Page() {
     const subjectKey = 'm1';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -71,17 +74,7 @@ export default function M1Page() {
                         <br />
                         Welcome to browse DSE Mathematics Extended Part Module 1 (M1) past papers. Here you can find comprehensive M1 examination materials including statistics, probability, and calculus topics arranged by year, along with topic-based practice exercises and historical Mathematics & Statistics (M&S) papers to help you excel in DSE M1 examination preparation.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     {/* Syllabus */}

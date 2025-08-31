@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { BiDownload } from 'react-icons/bi';
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 export default function MathPage() {
   const metadata = getSubjectMetadata('math');
@@ -9,6 +11,7 @@ export default function MathPage() {
     const subjectKey = 'math';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -70,17 +73,7 @@ export default function MathPage() {
                         <br />
                         Welcome to browse DSE Mathematics past papers. Here you can find comprehensive Mathematics examination papers including Paper 1 (Multiple Choice) and Paper 2 (Long Questions) arranged by year, along with topic-based practice materials covering algebra, geometry, trigonometry, calculus, and statistics to help you master DSE Mathematics concepts and improve your exam performance.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     {/* 2024 */}

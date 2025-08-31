@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../utils/structuredData'
 import { BiDownload, BiWrench } from 'react-icons/bi';
 import { getSubjectMetadata } from '../utils/structuredData';
+import { getOtherPageLastUpdated } from '../utils/lastUpdated';
+import LastUpdatedAlert from '../components/LastUpdatedAlert';
 
 export default function CitizenPage() {
   const metadata = getSubjectMetadata('citizen');
@@ -9,6 +11,7 @@ export default function CitizenPage() {
     const subjectKey = 'citizen';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getOtherPageLastUpdated('citizen');
 
     return (
         <>
@@ -68,17 +71,7 @@ export default function CitizenPage() {
                         歡迎瀏覽DSE 公民與社會發展科 Citizenship and Social Development
                         歷屆試題。本科目於2024年首次開考，試卷資源將陸續添加。
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>1/7/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     <br />

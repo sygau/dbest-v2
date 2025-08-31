@@ -4,7 +4,9 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import fs from 'fs'
 import path from 'path'
 import NavigationLink from '../../components/NavigationLink'
-import { generateYearMeta } from '../../utils/yearSlugSEO'
+import { generateYearMeta } from '../../utils/yearSlugSEO';
+import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 // Define types
 interface YearPageProps {
@@ -47,6 +49,7 @@ function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
 export default function M2YearPage({ subject, year, papers, availableFiles }: YearPageProps) {
   // Use the clean single function approach
   const meta = generateYearMeta('m2', year);
+  const lastUpdated = getSubjectYearSlugLastUpdated('m2');
 
   return (
     <>
@@ -110,17 +113,7 @@ export default function M2YearPage({ subject, year, papers, availableFiles }: Ye
             {meta.pageDescriptionChi}
           </p>
 
-          <div className="alert alert-border-primary alert-dismissible fade show">
-            <div className="">
-              <b>Last Updated: </b>12/8/2025
-            </div>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="alert"
-              aria-label="Close"
-            />
-          </div>
+          <LastUpdatedAlert date={lastUpdated} />
 
           <br />
           <hr className="my-4" />

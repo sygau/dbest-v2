@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { BiDownload } from 'react-icons/bi';
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 export default function ChinesePage() {
   const metadata = getSubjectMetadata('chinese');
@@ -9,6 +11,7 @@ export default function ChinesePage() {
     const subjectKey = 'chinese';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -67,17 +70,7 @@ export default function ChinesePage() {
                         <br />
                         Welcome to browse DSE Chinese Language past papers. Here you can find Chinese Language examination papers, answers, and marking schemes arranged by year, including reading comprehension, writing, listening, and speaking components to help you prepare for the DSE Chinese Language examination effectively.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     <br />

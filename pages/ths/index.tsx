@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
 import { BiDownload } from 'react-icons/bi';
 import { getSubjectMetadata } from '../../utils/structuredData';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import { usePdfTracking } from '../../hooks/usePdfTracking';
 
 export default function THSPage() {
@@ -11,6 +13,7 @@ export default function THSPage() {
     const subjectKey = 'ths';
     const structuredData = generateSubjectStructuredData(subjectKey);
     const faqData = generateSubjectFAQStructuredData(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
 
     return (
         <>
@@ -71,17 +74,7 @@ export default function THSPage() {
                         <br />
                         Welcome to browse DSE Tourism and Hospitality Studies past papers. Here you can find comprehensive Tourism and Hospitality Studies examination materials including tourism industry, hospitality management, and related topics arranged by year, along with practical examination papers and detailed solutions to help you understand DSE Tourism and Hospitality Studies concepts and prepare effectively for your examination.
                     </p>
-                    <div className="alert alert-border-primary alert-dismissible fade show">
-                        <div className="">
-                            <b>最後更新: </b>12/8/2025
-                        </div>
-                        <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
+                    <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
                     <br />

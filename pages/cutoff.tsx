@@ -5,6 +5,8 @@ import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from 
 import { getPageMetadata } from '../utils/pageMetadata';
 import CutoffTable from '../components/CutoffTable';
 import { loadSubjectData, CutoffTableData, SubjectConfig } from '../utils/clientCutoffData';
+import { getOtherPageLastUpdated } from '../utils/lastUpdated';
+import LastUpdatedAlert from '../components/LastUpdatedAlert';
 
 export default function CutoffPage() {
   const metadata = getPageMetadata('cutoff');
@@ -16,6 +18,7 @@ export default function CutoffPage() {
   const [cutoffConfig, setCutoffConfig] = useState<SubjectConfig | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const lastUpdated = getOtherPageLastUpdated('cutoff');
 
   const handleSubjectChange = async (subject: string) => {
     setSelectedSubject(subject);
@@ -99,13 +102,15 @@ export default function CutoffPage() {
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
-          <h1 className="mb-4">HKDSE Cut-off Scores Cut Off</h1>
+          <h1 className="mb-4">DSE Cut-off Scores</h1>
           <p className="mb-4">
-            歡迎瀏覽HKDSE各科目的Cut Off資料，包括英文、中文、數學、物理、化學、生物、ICT、M1、M2、地理、經濟、BAFS、歷史、中國歷史、旅遊與款待等科目。在此，您可以找到按年份排列的等級Cut Off，助您了解各等級的達標分數。
+            歡迎瀏覽DSE各科目的Cut Off資料，包括英文、中文、數學、物理、化學、生物、ICT、M1、M2、地理、經濟、BAFS、歷史、中國歷史、旅遊與款待等科目。在此，您可以找到按年份排列的等級Cut Off，助您了解各等級的達標分數。
             <br />
             <br />
-            Welcome to browse HKDSE cut-off scores for all subjects including English, Chinese, Mathematics, Physics, Chemistry, Biology, ICT, M1, M2, Geography, Economics, BAFS, History, Chinese History, Tourism & Hospitality and more. Here you can find grade boundaries arranged by year to help you understand the score requirements for each grade level.
+            Welcome to browse DSE cut-off scores for all subjects including English, Chinese, Mathematics, Physics, Chemistry, Biology, ICT, M1, M2, Geography, Economics, BAFS, History, Chinese History, Tourism & Hospitality and more. Here you can find grade boundaries arranged by year to help you understand the score requirements for each grade level. (source/credits: dse00 & afterschool)
           </p>
+
+          <LastUpdatedAlert date={lastUpdated} />
 
           <br />
 
