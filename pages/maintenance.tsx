@@ -1,3 +1,6 @@
+// Edge Runtime configuration for Cloudflare Pages
+export const runtime = 'edge';
+
 import Head from 'next/head'
 import type { GetServerSideProps } from 'next'
 import { useEffect, useRef } from 'react'

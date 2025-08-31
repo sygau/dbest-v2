@@ -3,6 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   
+
+  
   // Enable full optimization for production
   experimental: {
     // Disable optimizeCss as it requires additional dependencies

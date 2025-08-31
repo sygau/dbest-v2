@@ -1,0 +1,10 @@
+# Exclude API routes from build (will be handled by Cloudflare Workers)
+api/
+pages/api/
+
+# Exclude development files
+dev/
+bustime/
+
+# Exclude maintenance page (handled separately)
+pages/maintenance.tsx 

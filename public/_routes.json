@@ -5,6 +5,7 @@
     "/_next/*",
     "/api/*",
     "/dev/*",
-    "/bustime/*"
+    "/bustime/*",
+    "/maintenance"
   ]
 } 
