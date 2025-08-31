@@ -799,7 +799,7 @@ class DSEChat {
 
     // Initialise Ably with auth endpoint
     this.ably = new Ably.Realtime.Promise({
-      authUrl: 'https://dse.best/api/chat-auth',
+      authUrl: 'https://api.dse.best/chat-auth',
       authMethod: 'POST',
       authParams: {
         clientId: clientId,
@@ -816,7 +816,7 @@ class DSEChat {
       this.checkAndShowWelcomeMessage();
       
       // Check if user is a moderator (API may not support check_mod, so we'll handle gracefully)
-      fetch('/api/chat-auth', {
+      fetch('https://api.dse.best/chat-auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1065,7 +1065,7 @@ class DSEChat {
     }
 
     // First moderate the message
-    fetch('/api/chat-auth', {
+    fetch('https://api.dse.best/chat-auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1113,7 +1113,7 @@ class DSEChat {
         };
 
         // Send to server for publishing
-        return fetch('/api/chat-auth', {
+        return fetch('https://api.dse.best/chat-auth', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1181,7 +1181,7 @@ class DSEChat {
     const username = this.userNameInput?.value?.trim() || 'Anonymous';
     
     // Send leave event asynchronously (don't wait for response)
-    fetch('/api/chat-auth', {
+    fetch('https://api.dse.best/chat-auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

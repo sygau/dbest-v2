@@ -11,8 +11,8 @@
 
 
 
-# API routes - redirect to Vercel (dse.best)
-/api/* https://dse.best/api/:splat 301
+# API routes - redirect to Vercel API subdomain
+/api/* https://api.dse.best/:splat 301
 
 # Custom domain redirects (if you want to redirect pages.dev to your custom domain)
 # Uncomment these if you want to redirect from pages.dev to dse.best
