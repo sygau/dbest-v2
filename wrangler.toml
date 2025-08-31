@@ -1,63 +1,127 @@
-name = "dse-chat-auth"
-main = "api/chat-auth-workers.js"
+# Cloudflare Pages Configuration for DSEBest
+# This file configures the build and deployment settings
+
+[build]
+command = "npm run build:full"
+publish = ".next"
+
+[build.environment]
+NODE_VERSION = "18"
+NPM_VERSION = "9"
+
+# Environment variables (set these in Cloudflare Pages dashboard)
+# CONTENTFUL_SPACE_ID
+# CONTENTFUL_ACCESS_TOKEN
+# CONTENTFUL_ENVIRONMENT
+# CONTENTFUL_PREVIEW_ACCESS_TOKEN
+
+# Build settings
+[build.processing]
+skip_processing = false
+
+# Asset optimization
+[build.processing.images]
+bypass_on = "dev"
+optimize_png = true
+optimize_jpeg = true
+optimize_webp = true
+
+# CSS and JS optimization
+[build.processing.css]
+bundle = true
+minify = true
+
+[build.processing.js]
+bundle = true
+minify = true
+
+# HTML optimization
+[build.processing.html]
+pretty_urls = true
+
+# Functions (if you need serverless functions)
+[functions]
+directory = "functions"
+
+# Compatibility settings
+[compatibility]
 compatibility_date = "2024-01-15"
 compatibility_flags = ["nodejs_compat"]
 
-# KV Namespace for rate limiting and bans
-[[kv_namespaces]]
-binding = "CHAT_KV"
-id = "your-kv-namespace-id"
-preview_id = "your-preview-kv-namespace-id"
+# Routes configuration
+[[redirects]]
+from = "/:page.html"
+to = "/:page"
+status = 301
 
-# Environment variables
-[vars]
-NODE_ENV = "production"
+[[redirects]]
+from = "/blog/:slug.html"
+to = "/blog/:slug"
+status = 301
 
-# Secrets (set these using wrangler secret put)
-# ABLY_API_KEY
-# LOGFLARE_API_KEY  
-# LOGFLARE_SOURCE_ID
-# MOD_SECRET_KEY
-# MOD_ID
-# MOD_IP
+[[redirects]]
+from = "/jable"
+to = "https://jable.tv/"
+status = 301
 
-# Routes
-[[routes]]
-pattern = "api.chat-auth.your-domain.com/*"
-zone_name = "your-domain.com"
+# Bot blocking
+[[redirects]]
+from = "/"
+to = "https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre"
+status = 301
+headers = { "User-Agent" = "*[Bb]yte[Ss]pider*" }
 
-# Or use custom domain
-# [[routes]]
-# pattern = "chat-auth.your-domain.com/*"
-# zone_name = "your-domain.com"
+# Headers configuration
+[[headers]]
+for = "/*"
+[headers.values]
+X-DNS-Prefetch-Control = "on"
+Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+X-XSS-Protection = "1; mode=block"
+X-Frame-Options = "SAMEORIGIN"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# Environment-specific configurations
-[env.production]
-name = "dse-chat-auth-prod"
+# Cache headers for static assets
+[[headers]]
+for = "/assets/*"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
-[env.staging]
-name = "dse-chat-auth-staging"
-vars = { NODE_ENV = "staging" }
+[[headers]]
+for = "*.css"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
-# Build configuration
-[build]
-command = "npm run build"
-watch_dir = "src"
+[[headers]]
+for = "*.js"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
-# Minification and optimization
-[build.upload]
-format = "service-worker"
-main = "./api/chat-auth-workers.js"
+[[headers]]
+for = "*.woff"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
-# Performance settings
-[triggers]
-crons = []
+[[headers]]
+for = "*.woff2"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
-# Resource limits
-[limits]
-cpu_ms = 50
-memory_mb = 128
 
-# Analytics
-[analytics]
-enabled = true 
+# Short cache for manifest and sitemap
+[[headers]]
+for = "/manifest.json"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/robots.txt"
+[headers.values]
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/sitemap.xml"
+[headers.values]
+Cache-Control = "public, max-age=3600" 
