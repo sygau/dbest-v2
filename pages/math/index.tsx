@@ -158,6 +158,24 @@ export default function MathPage() {
                                 </div>
                             </div>
                         </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Answers</h5>
+                                    <p className="card-text">2023 Answer Booklet</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2023_ans"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <hr className="my-4" />
                     {/* 2022 */}

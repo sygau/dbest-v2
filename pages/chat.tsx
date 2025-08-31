@@ -51,6 +51,10 @@ export default function ChatPage() {
         }, 300);
     };
 
+    const handleOpenUsernameModal = () => {
+        setShowUsernameModal(true);
+    };
+
     useEffect(() => {
         // Destroy existing chat instance if it exists
         if ((window as any).dseChat) {
@@ -68,8 +72,14 @@ export default function ChatPage() {
             setIsModerator(event.detail.isModerator);
         };
 
+        // Add event listener for closing username modal from JavaScript
+        const handleCloseUsernameModalEvent = () => {
+            handleCloseUsernameModal();
+        };
+
         document.addEventListener('showRulesModal', handleShowRulesModal as EventListener);
         document.addEventListener('moderatorStatusUpdate', handleModeratorStatus as EventListener);
+        document.addEventListener('closeUsernameModal', handleCloseUsernameModalEvent);
 
         // Load Ably script if not already loaded
         if (!(window as any).Ably && !(window as any).AblyLoading) {
@@ -130,12 +140,30 @@ export default function ChatPage() {
         return () => {
             document.removeEventListener('showRulesModal', handleShowRulesModal as EventListener);
             document.removeEventListener('moderatorStatusUpdate', handleModeratorStatus as EventListener);
+            document.removeEventListener('closeUsernameModal', handleCloseUsernameModalEvent);
             if ((window as any).dseChat) {
                 (window as any).dseChat.destroy();
                 (window as any).dseChat = null;
             }
         };
     }, []);
+
+    // Effect to populate mobile username input when modal opens
+    useEffect(() => {
+        if (showUsernameModal) {
+            // Small delay to ensure modal is rendered
+            const timer = setTimeout(() => {
+                const mobileInput = document.getElementById('userNameInputMobile') as HTMLInputElement;
+                const currentInput = document.getElementById('userNameInput') as HTMLInputElement;
+                if (mobileInput && currentInput) {
+                    mobileInput.value = currentInput.value;
+                    mobileInput.focus(); // Focus the input for better UX
+                }
+            }, 50);
+            
+            return () => clearTimeout(timer);
+        }
+    }, [showUsernameModal]);
 
     // If chat is disabled, show disabled component
     if (!chatConfig.enabled) {
@@ -219,6 +247,13 @@ export default function ChatPage() {
                                 </div>
                             )}
                             <button
+                                className="username-button-mobile"
+                                onClick={handleOpenUsernameModal}
+                                title="Edit Username"
+                            >
+                                <BiPencil style={{ fontSize: '16px' }} />
+                            </button>
+                            <button
                                 className="rules-button"
                                 onClick={() => setShowRules(true)}
                                 title="Chat Rules"
@@ -240,33 +275,20 @@ export default function ChatPage() {
                 {/* Input Area */}
                 <div className="input-container">
                     <div className="input-wrapper">
-                        {/* Username Input - Desktop */}
-                        <div className="username-input-desktop">
-                            <input
-                                type="text"
-                                id="userNameInput"
-                                className="username-field"
-                                maxLength={14}
-                                placeholder="Your name"
-                                disabled
-                            />
-                            <button
-                                className="edit-name-btn"
-                                id="editNameBtn"
-                                type="button"
-                                aria-label="Edit username"
-                            >
-                                <BiPencil style={{ fontSize: '16px', marginTop: '0.1rem' }} />
-                            </button>
-                        </div>
 
-                        {/* Username Button - Mobile */}
+
+
+
+                        {/* Hidden Username Input for JavaScript */}
+                        <input
+                            type="text"
+                            id="userNameInput"
+                            style={{ display: 'none' }}
+                        />
                         <button
-                            className="username-button-mobile"
-                            onClick={() => setShowUsernameModal(true)}
-                        >
-                            <BiPencil style={{ fontSize: '16px', marginTop: '0.1rem' }} />
-                        </button>
+                            id="editNameBtn"
+                            style={{ display: 'none' }}
+                        />
 
                         {/* Message Input */}
                         <div className="message-input-wrapper">
@@ -277,6 +299,7 @@ export default function ChatPage() {
                                 placeholder="Type a message..."
                                 autoComplete="off"
                                 maxLength={150}
+                                style={{ fontSize: '16px' }}
                             />
                             <button
                                 className="send-button"
@@ -315,12 +338,35 @@ export default function ChatPage() {
                                     className="form-control"
                                     maxLength={14}
                                     placeholder="Your name"
+                                    style={{ fontSize: '16px' }}
+                                    onKeyPress={(e) => {
+                                        if (e.key === 'Enter') {
+                                            const saveBtn = document.getElementById('saveUsernameBtn');
+                                            if (saveBtn) {
+                                                saveBtn.click();
+                                            }
+                                        }
+                                    }}
                                 />
                                 <button
                                     className="btn btn-primary"
                                     id="saveUsernameBtn"
                                     type="button"
                                     style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', border: 'none' }}
+                                    onClick={() => {
+                                        const mobileInput = document.getElementById('userNameInputMobile') as HTMLInputElement;
+                                        if (mobileInput) {
+                                            const newUsername = mobileInput.value.trim();
+                                            if (newUsername) {
+                                                localStorage.setItem('chatUsername', newUsername);
+                                                // Add system message if chat is available
+                                                if ((window as any).dseChat && (window as any).dseChat.addSystemMessage) {
+                                                    (window as any).dseChat.addSystemMessage(`Username changed to ${newUsername}`);
+                                                }
+                                                handleCloseUsernameModal();
+                                            }
+                                        }
+                                    }}
                                 >
                                     <BiCheck style={{ fontSize: '28px', marginBottom: '0.1rem', marginRight: '0.1rem' }} />
                                 </button>
@@ -518,6 +564,62 @@ export default function ChatPage() {
                     overflow: hidden;
                     border: 1px solid var(--bs-border-color);
                     color: rgba(255, 255, 255, 0.9);
+                    height: calc(100vh - 120px);
+                    min-height: 500px;
+                }
+
+                /* Remove extra space below chat widget */
+                .main-content {
+                    padding-bottom: 0 !important;
+                    min-height: auto !important;
+                }
+
+                /* Ensure page doesn't have extra margins */
+                body {
+                    margin-bottom: 0 !important;
+                }
+
+                /* Mobile viewport height fix */
+                @media (max-width: 768px) {
+                    .main-content {
+                        min-height: auto !important;
+                        height: auto !important;
+                    }
+                }
+
+                /* Hide footer on chat page */
+                .footer {
+                    display: none !important;
+                }
+
+                /* Hide back to top button on chat page */
+                .back-to-top-btn-modern {
+                    display: none !important;
+                }
+
+                /* Ensure main wrapper doesn't add extra space */
+                .main-wrapper {
+                    min-height: auto !important;
+                    height: auto !important;
+                    display: block !important;
+                }
+
+                /* Force page to only show chat widget */
+                body {
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    height: auto !important;
+                    min-height: auto !important;
+                }
+
+                html {
+                    height: auto !important;
+                    min-height: auto !important;
+                }
+
+                #__next {
+                    height: auto !important;
+                    min-height: auto !important;
                 }
 
                 .chat-header {
@@ -637,7 +739,6 @@ export default function ChatPage() {
                     overflow-x: hidden;
                     padding: 1rem;
                     scroll-behavior: smooth;
-                    max-height: calc(100vh - 300px);
                 }
 
                 .input-container {
@@ -648,8 +749,16 @@ export default function ChatPage() {
 
                 .input-wrapper {
                     display: flex;
-                    gap: 0.75rem;
+                    gap: 0.5rem;
                     align-items: flex-end;
+                    min-height: 44px;
+                    justify-content: center;
+                }
+
+                .message-input-wrapper {
+                    flex: 0 1 auto;
+                    max-width: 600px;
+                    width: 100%;
                 }
 
                 .username-input-desktop {
@@ -671,7 +780,7 @@ export default function ChatPage() {
                     background: var(--bs-body-bg);
                     color: var(--bs-body-color);
                     font-size: 0.875rem;
-                    height: 40px;
+                    height: 44px;
                     box-sizing: border-box;
                 }
 
@@ -701,8 +810,8 @@ export default function ChatPage() {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    width: 40px;
-                    height: 40px;
+                    width: 44px;
+                    height: 44px;
                     position: absolute;
                     right: 0;
                     top: 0;
@@ -718,21 +827,31 @@ export default function ChatPage() {
 
                 .username-button-mobile {
                     display: none;
-                    background: var(--bs-secondary);
+                    background: rgba(255, 255, 255, 0.2);
                     border: none;
                     color: white;
-                    padding: 0;
+                    padding: 0.4rem;
                     border-radius: 8px;
                     cursor: pointer;
                     transition: all 0.2s ease;
-                    height: 40px;
-                    width: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 36px;
+                    min-height: 36px;
+                    touch-action: manipulation;
+                }
+
+                .username-button-mobile:hover {
+                    background: rgba(255, 255, 255, 0.3);
                 }
 
                 .message-input-wrapper {
-                    flex: 1;
+                    flex: 0 1 auto;
                     display: flex;
                     gap: 0.5rem;
+                    max-width: 600px;
+                    width: 100%;
                 }
 
                 .message-field {
@@ -744,7 +863,7 @@ export default function ChatPage() {
                     color: var(--bs-body-color);
                     font-size: 0.875rem;
                     resize: none;
-                    height: 40px;
+                    height: 44px;
                     box-sizing: border-box;
                 }
 
@@ -766,7 +885,7 @@ export default function ChatPage() {
                     align-items: center;
                     justify-content: center;
                     min-width: 48px;
-                    height: 40px;
+                    height: 44px;
                 }
 
 
@@ -1044,6 +1163,41 @@ export default function ChatPage() {
                         margin: 0;
                         display: flex;
                         flex-direction: column;
+                        height: calc(100vh - 100px);
+                        min-height: 200px;
+                        border-radius: 0;
+                        position: fixed;
+                        top: 50px;
+                        left: 0;
+                        right: 0;
+                        bottom: 50px;
+                        z-index: 1;
+                    }
+
+                    /* Hide desktop username section on mobile */
+                    .username-input-desktop {
+                        display: none !important;
+                    }
+
+                    /* Hide desktop username section on all devices */
+                    .username-input-desktop {
+                        display: none !important;
+                    }
+
+                    /* Hide breadcrumb on mobile to save space */
+                    .page-breadcrumb {
+                        display: none !important;
+                    }
+
+                    /* Hide footer on mobile to save space */
+                    .page-footer {
+                        display: none !important;
+                    }
+
+                    /* Ensure main content doesn't add extra space */
+                    .main-content {
+                        padding: 0 !important;
+                        margin: 0 !important;
                     }
                     
                     .messages-container {
@@ -1083,6 +1237,25 @@ export default function ChatPage() {
 
                     .input-wrapper {
                         gap: 0.5rem;
+                        padding: 0 0.25rem;
+                    }
+
+                    .message-input-wrapper {
+                        gap: 0.5rem;
+                        min-width: 0;
+                    }
+
+                    .message-field {
+                        min-width: 0;
+                        flex: 1;
+                    }
+
+                    .send-button {
+                        min-width: 44px;
+                        width: 44px;
+                        height: 44px;
+                        padding: 0;
+                        flex-shrink: 0;
                     }
 
                     .modal-content {
@@ -1112,7 +1285,7 @@ export default function ChatPage() {
                     }
 
                     .username-button-mobile {
-                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                        background: rgba(255, 255, 255, 0.2) !important;
                         border: none !important;
                         color: white !important;
                     }

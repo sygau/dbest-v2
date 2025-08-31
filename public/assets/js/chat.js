@@ -200,16 +200,7 @@ class DSEChat {
     this.editNameBtn.addEventListener('click', this.handleEditName.bind(this));
     this.userNameInput.addEventListener('keypress', this.handleUsernameKeypress.bind(this));
 
-    // Mobile username handling
-    const saveUsernameBtn = document.getElementById('saveUsernameBtn');
-    if (saveUsernameBtn) {
-      saveUsernameBtn.addEventListener('click', this.handleMobileUsernameSave.bind(this));
-    }
 
-    const usernameModal = document.getElementById('usernameModal');
-    if (usernameModal) {
-      usernameModal.addEventListener('show.bs.modal', this.handleUsernameModalShow.bind(this));
-    }
 
     // Rules button
     const rulesBtn = document.getElementById('rulesBtn');
@@ -353,30 +344,9 @@ class DSEChat {
     }
   }
 
-  handleMobileUsernameSave() {
-    const mobileInput = document.getElementById('userNameInputMobile');
-    if (!mobileInput) return;
 
-    const newUsername = mobileInput.value.trim();
-    if (this.validateUsername(newUsername)) {
-      this.userNameInput.value = newUsername;
-      localStorage.setItem('chatUsername', newUsername);
-      this.addSystemMessage(`Username changed to ${newUsername}`);
-      
-      // Hide modal
-      const modal = bootstrap.Modal.getInstance(document.getElementById('usernameModal'));
-      if (modal) {
-        modal.hide();
-      }
-    }
-  }
 
-  handleUsernameModalShow() {
-    const mobileInput = document.getElementById('userNameInputMobile');
-    if (mobileInput) {
-      mobileInput.value = this.userNameInput.value;
-    }
-  }
+
 
   handleMessageKeypress(e) {
     if (e.key === 'Enter') {
