@@ -13,7 +13,7 @@ When users request:
 - **Chinese History**: Always Chinese
 - **Chinese Language**: Always Chinese  
 - **English Language**: Always English
-
+- ** M1/M2**: Always English
 ## Step-by-Step Process
 
 ### 1. Understand the Subject Structure
@@ -318,6 +318,7 @@ Always verify these steps are completed:
 - [ ] Year slug pages checked and updated (`pages/<subject>/[year].tsx`)
 - [ ] Upload instructions provided to user
 - [ ] New year notification sent (if applicable)
+- [ ] Update the new pages/year slug pages (if any) to sitemap.xml with today's date.
 
 ### 🔄 Continuation Protocol
 

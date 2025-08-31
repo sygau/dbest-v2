@@ -1161,6 +1161,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dse.best/m2/2024</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/m2/2025</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dse.best/ict/2012</loc>
     <lastmod>2025-08-24</lastmod>
     <changefreq>monthly</changefreq>
