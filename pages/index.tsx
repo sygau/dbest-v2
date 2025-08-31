@@ -17,7 +17,9 @@ import {
   UnifiedSubjectCard,
 } from '../components/SubjectCardVariants'
 import FAQSection from '../components/FAQSection'
+import ChangelogSection from '../components/ChangelogSection'
 import NavigationLink from '../components/NavigationLink'
+import { changelogData } from '../utils/changelogData'
 import { 
   generateWebsiteStructuredData, 
   generateHomepageStructuredData, 
@@ -320,36 +322,35 @@ export default function HomePage() {
         </div>
 
         {/* Instagram Follow Section */}
-        <div className="container my-5" style={{marginBottom: '0rem !important'}}>
+        <div className="container my-5 instagram-section">
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className="card border-primary border-2">
                 <div className="card-body text-center p-2">
                   <h3 className="mb-3">
-                    <span className="text-primary">📱 Follow us on Instagram</span>
+                    <span className="text-primary">Follow us on Instagram</span>
                   </h3>
                   <p className="mb-3">
                     追蹤我們的 Instagram 獲取最新消息和更新！
                   </p>
-                  <a 
-                    href="https://www.instagram.com/dse_best"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary btn-lg d-inline-flex align-items-center gap-2"
-                    style={{
-                      borderRadius: '25px',
-                      padding: '0.75rem 1.5rem',
-                      fontSize: '1.1rem',
-                      fontWeight: '600',
-                      boxShadow: '0 4px 15px rgba(13, 110, 253, 0.3)',
-                      transition: 'all 0.3s ease',
-                      border: 'none',
-                      background: 'linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%)',
-                      minWidth: '200px',
-                      justifyContent: 'center',
-                      textDecoration: 'none',
-                      color: 'white'
-                    }}
+                                      <a 
+                      href="https://www.instagram.com/dse_best"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary d-inline-flex align-items-center gap-2"
+                      style={{
+                        borderRadius: '20px',
+                        padding: '0.5rem 1rem',
+                        fontSize: '0.9rem',
+                        fontWeight: '500',
+                        transition: 'all 0.3s ease',
+                        border: 'none',
+                        background: 'linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%)',
+                        minWidth: '160px',
+                        justifyContent: 'center',
+                        textDecoration: 'none',
+                        color: 'white'
+                      }}
                     onClick={(e) => {
                       // Try to open Instagram app first on mobile
                       if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
@@ -365,12 +366,10 @@ export default function HomePage() {
                       }
                     }}
                     onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 6px 20px rgba(13, 110, 253, 0.4)';
+                      e.currentTarget.style.transform = 'translateY(-1px)';
                     }}
                     onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
                       e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(13, 110, 253, 0.3)';
                     }}
                   >
                     <BiLogoInstagram style={{ fontSize: '1.2rem' }} />
@@ -381,6 +380,12 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+
+        {/* Changelog Section */}
+        <ChangelogSection 
+          date={changelogData.date}
+          changes={changelogData.changes}
+        />
 
         {/* FAQ Section */}
         <FAQSection faqs={homepageFAQs} />

@@ -30,6 +30,49 @@ body {
     letter-spacing: 0.5px;
     background-color: #eff1f3;
   }
+
+  /* CLS Prevention - Apply to ALL cards */
+  .card.rounded-4 {
+    min-height: 800px !important;
+    contain: layout;
+    height: auto !important;
+  }
+
+  /* Override any inline height: auto styles */
+  .card.rounded-4[style*="height: auto"] {
+    min-height: 800px !important;
+  }
+
+  /* Prevent layout shifts for images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent layout shifts during loading */
+  .main-wrapper {
+    min-height: 100vh;
+  }
+
+  /* Prevent layout shifts for card bodies */
+  .card-body {
+    contain: layout;
+  }
+
+  /* Optimize for better TBT */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Instagram section margin fix */
+  .instagram-section {
+    margin-bottom: 0 !important;
+  }
+
+  /* Changelog section margin fix */
+  .changelog-section {
+    margin-bottom: 0 !important;
+  }
   
   a {
     text-decoration: none;
