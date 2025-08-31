@@ -5,6 +5,13 @@ const isMaintenanceEnabled = (process.env.MAINTENANCE_MODE === 'true' || process
 const isMaydayEnabled = (process.env.MAYDAY === 'true' || process.env.MAYDAY === '1')
 
 export function middleware(request: NextRequest) {
+  // Redirect pages.dev subdomain to main domain
+  const hostname = request.headers.get('host') || ''
+  if (hostname.includes('.pages.dev')) {
+    const redirectUrl = new URL(`https://dse.best${request.nextUrl.pathname}${request.nextUrl.search}`)
+    return NextResponse.redirect(redirectUrl, 301)
+  }
+
   // Mayday mode - redirect all traffic to mayday.dse.best
   if (isMaydayEnabled) {
     const maydayUrl = new URL('https://mayday.dse.best' + request.nextUrl.pathname + request.nextUrl.search)
