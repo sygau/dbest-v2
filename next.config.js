@@ -55,9 +55,26 @@ const nextConfig = {
   // Security headers only - let Vercel/Cloudflare handle caching
   async headers() {
     return [
+      // Block indexing for pages.dev subdomain
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: '.*\\.pages\\.dev$'
+          }
+        ],
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow, noarchive, nosnippet'
+          }
+        ]
+      },
       {
         source: '/:path*',
         headers: [
+
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on'
