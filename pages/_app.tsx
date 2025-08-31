@@ -201,7 +201,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
             <div className="logo-name flex-grow-1">
               <NavigationLink href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <h5 className="mb-0">DSEBest</h5>
+                <h5 className="mb-0" style={{ fontSize: '1.4rem', fontFamily: 'Segoe UI, sans-serif' }}>DSEBest</h5>
               </NavigationLink>
             </div>
             <div className="sidebar-close">
