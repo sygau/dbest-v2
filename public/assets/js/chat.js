@@ -1,3 +1,4 @@
+// Yes, this is vibe coded.
 // Helper function to escape regex special characters
 function escapeRegex(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -42,14 +43,12 @@ class DSEChat {
     this.charCounter = null;
   }
 
-  // Initialize the chat system
   init() {
     if (this.isInitialized) {
       console.log('Chat already initialized');
       return;
     }
 
-    // Check if we have the required DOM elements
     this.chatMessages = document.getElementById('chatMessages');
     this.statusDot = document.getElementById('statusDot');
     this.statusText = document.getElementById('statusText');
@@ -73,16 +72,13 @@ class DSEChat {
     this.isInitialized = true;
   }
 
-  // Clean up when navigating away
   destroy() {
     if (!this.isInitialized) return;
 
     console.log('Destroying DSE Chat...');
     
-    // Send leave event to server
     this.sendLeaveEvent();
     
-    // Disconnect from Ably
     if (this.ably) {
       try {
         if (this.channel) {
@@ -94,17 +90,14 @@ class DSEChat {
       }
     }
 
-    // Remove event listeners
     this.removeEventListeners();
     
-    // Reset state
     this.isInitialized = false;
     this.ably = null;
     this.channel = null;
     this.isUserModerator = false;
     this.isSending = false;
     
-    // Clear DOM references
     this.chatMessages = null;
     this.statusDot = null;
     this.statusText = null;
@@ -115,13 +108,11 @@ class DSEChat {
     this.charCounter = null;
   }
 
-  // Generate a random username
   randomUsername() {
     const animals = ['Tiger','Panda','Dolphin','Eagle','Fox','Koala','Lion','Otter','Penguin','Shark'];
     return animals[Math.floor(Math.random()*animals.length)] + Math.floor(100 + Math.random()*900);
   }
 
-  // Load username from localStorage or generate new one
   initializeUsername() {
     const savedUsername = localStorage.getItem('chatUsername');
     if (savedUsername) {
@@ -132,19 +123,16 @@ class DSEChat {
     }
   }
 
-  // Get secret key from localStorage if available
   getSecretKey() {
     return localStorage.getItem('dsechat_mod_secret') || null;
   }
 
-  // Enhanced validation functions with security checks
   validateUsername(username) {
     if (!username) {
       this.addSystemMessage('Username cannot be empty');
       return false;
     }
     
-    // Sanitize input
     const cleanUsername = String(username).trim();
     
     if (cleanUsername.length < this.MIN_USERNAME_LENGTH) {
@@ -156,7 +144,6 @@ class DSEChat {
       return false;
     }
     
-    // Check for suspicious patterns
     if (/<|>|&|"|'|script|javascript|onload|onerror|eval/i.test(cleanUsername)) {
       this.addSystemMessage('Username contains invalid characters');
       return false;
@@ -171,7 +158,6 @@ class DSEChat {
       return false;
     }
     
-    // Sanitize input
     const cleanMessage = String(message).trim();
     
     if (cleanMessage.length > this.MAX_MESSAGE_LENGTH) {
@@ -179,13 +165,11 @@ class DSEChat {
       return false;
     }
     
-    // Client-side security checks (server will do more thorough checks)
     if (/<script|javascript:|onload|onerror|eval\s*\(|fetch\s*\(|xhr|websocket/i.test(cleanMessage)) {
       this.addSystemMessage('Message contains suspicious content');
       return false;
     }
 
-    // Enhanced link detection (client-side)
     const linkPatterns = [
       /(https?:\/\/[^\s]+)/gi,
       /(www\.[^\s]+)/gi,
@@ -194,18 +178,18 @@ class DSEChat {
       /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi
     ];
 
-    for (const pattern of linkPatterns) {
+    /* for (const pattern of linkPatterns) {
       if (pattern.test(cleanMessage)) {
         this.addSystemMessage('Links and domains are not allowed in messages');
         return false;
       }
-    }
+    } */
 
     // Basic profanity check (client-side preview)
-    if (/\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|porn|nude|naked|nigger|nigga|faggot|retard)\b/i.test(cleanMessage)) {
+    /* if (/\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|porn|nude|naked|nigger|nigga|faggot|retard)\b/i.test(cleanMessage)) {
       this.addSystemMessage('Message contains inappropriate language');
       return false;
-    }
+    } */
     
     return true;
   }
