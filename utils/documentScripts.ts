@@ -5,9 +5,6 @@ export const consolidatedScripts = {
 
   // Analytics scripts
   analytics: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XB60B3MXHH');`,
-  
-  // Vercel scripts
-  vercel: `window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};`,
 };
 
 // Consolidated PWA iOS styles

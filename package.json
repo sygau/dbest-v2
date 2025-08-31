@@ -27,7 +27,6 @@
     "@contentful/rich-text-types": "^16.8.5",
     "@types/node": "^24.2.0",
     "@types/react": "^19.1.9",
-    "@vercel/edge": "^0.1.2",
     "ably": "^1.2.48",
     "bootstrap": "^5.3.2",
     "contentful": "^10.15.1",

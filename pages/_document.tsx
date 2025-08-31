@@ -29,10 +29,7 @@ export default function Document() {
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
         <script defer dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
         
-        {/* Vercel Analytics */}
-        <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.vercel }} />
-        <script defer src="/vcli_alytc/script.js"></script>
-        <script defer src="/vclii_speed/script.js"></script>
+
         
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
