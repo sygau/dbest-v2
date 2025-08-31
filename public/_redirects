@@ -1,0 +1,22 @@
+# Clean URLs - remove .html extensions
+/:page.html /:page 301
+/blog/:slug.html /blog/:slug 301
+
+# External redirects
+/jable https://jable.tv/ 301
+
+# Bot blocking - redirect ByteSpider to Wikipedia
+/  https://en.wikipedia.org/wiki/1989_Tiananmen_Square_protests_and_massacre 301
+  User-Agent: *[Bb]yte[Ss]pider*
+
+# Vercel Analytics redirects (for compatibility during migration)
+/vcli_alytc/* https://dse.best/_vercel/insights/:splat 301
+/vclii_speed/* https://dse.best/_vercel/speed-insights/:splat 301
+
+# Custom domain redirects (if you want to redirect pages.dev to your custom domain)
+# Uncomment these if you want to redirect from pages.dev to dse.best
+# /  https://dse.best/:splat 301
+# /* https://dse.best/:splat 301
+
+# SPA fallback for client-side routing
+/*    /index.html   200 
