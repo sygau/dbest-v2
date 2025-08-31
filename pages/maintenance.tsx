@@ -1,5 +1,5 @@
 // Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'edge';
+export const runtime = 'experimental-edge';
 
 import Head from 'next/head'
 import type { GetServerSideProps } from 'next'
