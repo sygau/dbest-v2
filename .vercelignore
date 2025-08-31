@@ -1,4 +1,4 @@
-# Exclude API routes from build (will be handled by Cloudflare Workers)
+# Exclude API routes from Pages build (keep on Vercel)
 api/
 pages/api/
 
@@ -7,4 +7,7 @@ dev/
 bustime/
 
 # Exclude maintenance page (handled separately)
-pages/maintenance.tsx 
+pages/maintenance.tsx
+
+# Exclude Workers config (for later)
+wrangler-workers.toml 

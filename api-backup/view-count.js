@@ -1,6 +1,3 @@
-// Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'edge';
-
 const { createClient } = require('redis')
 
 // Create Redis client

@@ -1,6 +1,3 @@
-// Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'edge';
-
 const Ably = require('ably/promises');
 
 // Note: Removed all Maps since serverless functions are stateless

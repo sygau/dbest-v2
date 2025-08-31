@@ -1,6 +1,3 @@
-// Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'edge';
-
 // api/bus-checker.js
 module.exports = async function handler(req, res) {
   const { stop, lat, lng, radius = 400, route } = req.query;
