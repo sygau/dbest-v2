@@ -13,7 +13,6 @@
     "start": "next start",
     "lint": "next lint",
     "export": "npm run prebuild && next build && next export",
-    "contentful": "node contentful/contentful.js",
     "meta": "node scripts/updateMeta.js",
     "blog:sync": "node scripts/generate-blog-data.js",
     "css:build": "node scripts/combine-css.js",
