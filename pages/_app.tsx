@@ -241,6 +241,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">DSE Cut Off</div>
               </NavigationLink>
             </li>
+            <li>
+              <NavigationLink href="/blog">
+                <div className="parent-icon"><BiFile style={{ color: '#8b5cf6', fontSize: 24 }} /></div>
+                <div className="menu-title">Blog</div>
+              </NavigationLink>
+            </li>
             {chatConfig.enabled && (
               <li>
                 <NavigationLink href="/chat">

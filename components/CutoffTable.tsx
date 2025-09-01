@@ -63,7 +63,18 @@ interface CutoffTableProps {
 
 const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loading = false }) => {
   const tableIds = Object.keys(data).sort();
-  const grades = ['5**', '5*', '5', '4', '3', '2'];
+  
+  // Dynamically determine available grades from the data
+  const getAvailableGrades = (tableData: any) => {
+    const allGrades = new Set<string>();
+    Object.values(tableData).forEach((yearData: any) => {
+      Object.keys(yearData).forEach(grade => allGrades.add(grade));
+    });
+    
+    // Sort grades in the desired order
+    const gradeOrder = ['5**', '5*', '5', '4', '3', '2', '1'];
+    return gradeOrder.filter(grade => allGrades.has(grade));
+  };
 
   const getTableConfig = (tableId: string) => {
     if (config?.tables) {
@@ -141,6 +152,7 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
         const tableData = data[tableId];
         const years = Object.keys(tableData).sort((a, b) => parseInt(b) - parseInt(a));
         const tableConfig = getTableConfig(tableId);
+        const grades = getAvailableGrades(tableData);
         
         return (
           <div key={tableId} className="card mb-4">
@@ -148,10 +160,7 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
               <h5 className="mb-0">
                 {tableConfig?.title || tableId}
               </h5>
-              <small className="text-dark" style={{ 
-                color: 'var(--bs-body-color) !important',
-                opacity: '0.8'
-              }}>
+              <small style={{ color: 'var(--bs-body-color)', opacity: '0.8' }}>
                 {Math.min(...years.map(y => parseInt(y)))} - {Math.max(...years.map(y => parseInt(y)))}
               </small>
             </div>
@@ -169,7 +178,7 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
                 }}>
                   <thead className="table-dark">
                     <tr>
-                      <th scope="col" className="text-center" style={{ minWidth: '100px', position: 'sticky', left: 0, backgroundColor: '#212529', zIndex: 1 }}>
+                      <th scope="col" className="text-center" style={{ minWidth: '100px' }}>
                         等級 Grade
                       </th>
                       {years.map(year => (
@@ -187,10 +196,7 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
                           style={{ 
                             backgroundColor: getGradeColor(grade),
                             color: grade === '5**' || grade === '5*' ? '#000' : '#fff',
-                            minWidth: '100px',
-                            position: 'sticky',
-                            left: 0,
-                            zIndex: 1
+                            minWidth: '100px'
                           }}
                         >
                           {grade}

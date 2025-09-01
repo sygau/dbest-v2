@@ -6,7 +6,6 @@ import { getPageMetadata } from '../utils/pageMetadata';
 import CutoffTable from '../components/CutoffTable';
 import { loadSubjectData, CutoffTableData, SubjectConfig } from '../utils/clientCutoffData';
 import { getOtherPageLastUpdated } from '../utils/lastUpdated';
-import LastUpdatedAlert from '../components/LastUpdatedAlert';
 
 export default function CutoffPage() {
   const metadata = getPageMetadata('cutoff');
@@ -110,9 +109,7 @@ export default function CutoffPage() {
             Welcome to browse DSE cut-off scores for all subjects including English, Chinese, Mathematics, Physics, Chemistry, Biology, ICT, M1, M2, Geography, Economics, BAFS, History, Chinese History, Tourism & Hospitality and more. Here you can find grade boundaries arranged by year to help you understand the score requirements for each grade level. (source/credits: dse00 & afterschool)
           </p>
 
-          <LastUpdatedAlert date={lastUpdated} />
 
-          <br />
 
           {/* Subject Selection */}
           <div className="row mb-4">

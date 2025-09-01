@@ -927,7 +927,6 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
               <strong>dse.best</strong> 為香港中學文憑試（DSE）考生提供最全面的學習資源和最新考試資訊，包括歷屆試題、詳細答案、溫習策略和心得分享。
             </p>
           </div>
-          <hr className="my-4" style={{ marginTop: '0rem !important', marginBottom: '0.2rem !important' }} />
 
           {/* Filter and Sort Bar */}
           <FilterSortBar
