@@ -3,6 +3,9 @@ import { createClient } from 'contentful'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 
+// Required for Cloudflare Pages
+export const runtime = 'edge'
+
 // Helpers copied to match site rendering
 function replaceYouTubeMarkers(content: string) {
   return content.replace(/\[youtube:([a-zA-Z0-9_-]{11})\]/g, (_match, videoId) => {
