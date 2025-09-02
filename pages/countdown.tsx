@@ -274,7 +274,10 @@ export default function CountdownPage() {
           line-height: 1.1;
         }
 
-        /* Purple color for dark and blue themes */
+        /* Purple color for all themes */
+        [data-bs-theme=light] .countdown-page .countdown-main-title {
+          color:rgb(117, 76, 241);
+        }
         [data-bs-theme=dark] .countdown-page .countdown-main-title,
         [data-bs-theme=blue-theme] .countdown-page .countdown-main-title {
           color: #8b5cf6;
@@ -345,7 +348,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .card-number {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Roboto', 'Segoe UI', sans-serif;
           font-size: 3.2rem;
           font-weight: 800;
           line-height: 1.1;
@@ -355,7 +358,11 @@ export default function CountdownPage() {
           color: #ffffff;
         }
 
-        /* Purple color for countdown numbers in dark and blue themes */
+        /* Purple color for countdown numbers in all themes */
+        [data-bs-theme=light] .countdown-page .card-number {
+          color:rgb(131, 92, 248);
+          text-shadow: none;
+        }
         [data-bs-theme=dark] .countdown-page .card-number,
         [data-bs-theme=blue-theme] .countdown-page .card-number {
           color: #8b5cf6;
