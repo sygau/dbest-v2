@@ -33,7 +33,8 @@ import {
   BiBookReader,
   BiLogoInstagram,
   BiPlanet,
-  BiMoon
+  BiMoon,
+  BiDiamond
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
@@ -258,7 +259,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </li>
             <li>
               <NavigationLink href="/resources">
-                <div className="parent-icon"><BiBookReader style={{ color: '#8e24aa', fontSize: 24 }} /></div>
+                <div className="parent-icon"><BiDiamond style={{ color: '#64d454', fontSize: 24 }} /></div>
                 <div className="menu-title">Resources</div>
               </NavigationLink>
             </li>

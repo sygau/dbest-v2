@@ -67,7 +67,7 @@ export default function ResourcesPage() {
           <h3>
             1. GrabASeat Public Spaces Collection | 公共空間介紹
           </h3>
-          <p><strong> Credits: </strong> Threads <a href="https://www.threads.com/@grabaseat.hk" target="_blank" rel="noopener noreferrer">@grabaseat.hk</a>
+          <p><strong> Credits: </strong> <a href="https://www.threads.com/@grabaseat.hk" target="_blank" rel="noopener noreferrer">@grabaseat.hk</a>
           </p>
           
           <div className="text-center mb-4">
@@ -82,7 +82,7 @@ export default function ResourcesPage() {
                 href="https://maps.app.goo.gl/uP9oFzLCep2jNp9F8" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="btn btn-outline-primary"
+                className="btn btn-primary"
               >
                 🗺️ 查看地圖 View Maps
               </a>
@@ -102,22 +102,24 @@ export default function ResourcesPage() {
           </p>
 
 
-          <div className="mt-4">
+          <div className="text-center mt-4">
             <img
               src="https://images.ctfassets.net/fqnskombkl24/2TAiG8vyutgs2BSRA4f50J/bfe117e8951f5ddd12e0bf5e7cf533b3/image.png?fm=webp"
               alt="NoteSity DSE Resources"
               className="img-fluid rounded"
-              style={{ maxWidth: '400px', width: '100%', height: 'auto' }}
+              style={{ maxWidth: '500px', width: '100%', height: 'auto' }}
             />
           </div>
           <br />
-          <p>
-            凡使用優惠碼 <strong>DSEBEST</strong>，即可在 NoteSity 購物享 <strong>九五折優惠</strong>
-          </p>
+          <div className="text-center">
+            <p>
+              凡使用優惠碼 <strong>DSEBEST</strong>，即可在 NoteSity 購物享 <strong>九五折優惠</strong>
+            </p>
 
-          <p>
-            <a href="https://notesity.hk/?utm_source=dsebest&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="btn btn-primary">👉 前往 NoteSity 官網選購</a>
-          </p>
+            <p>
+              <a href="https://notesity.hk/?utm_source=dsebest&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="btn btn-primary">👉 前往 NoteSity 官網選購</a>
+            </p>
+          </div>
         </div>
       </div>
     </>
