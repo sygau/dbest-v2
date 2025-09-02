@@ -275,7 +275,8 @@ export default function CountdownPage() {
         }
 
         /* Purple color for all themes */
-        [data-bs-theme=light] .countdown-page .countdown-main-title {
+        [data-bs-theme=light] .countdown-page .countdown-main-title,
+        [data-bs-theme=semi-dark] .countdown-page .countdown-main-title {
           color:rgb(117, 76, 241);
         }
         [data-bs-theme=dark] .countdown-page .countdown-main-title,
@@ -359,7 +360,8 @@ export default function CountdownPage() {
         }
 
         /* Purple color for countdown numbers in all themes */
-        [data-bs-theme=light] .countdown-page .card-number {
+        [data-bs-theme=light] .countdown-page .card-number,
+        [data-bs-theme=semi-dark] .countdown-page .card-number {
           color:rgb(131, 92, 248);
           text-shadow: none;
         }
@@ -552,8 +554,6 @@ export default function CountdownPage() {
 
         .countdown-page .exam-info-card-compact:hover {
           background: var(--bs-card-bg);
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px -5px var(--shadow-color);
         }
 
         .countdown-page .info-icon-compact {
@@ -574,8 +574,8 @@ export default function CountdownPage() {
         /* Horizontal Line Divider */
         .countdown-page .timetable-divider {
           border: none;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, var(--bs-border-color), transparent);
+          height: 2px;
+          background: var(--bs-border-color);
           margin: 2rem auto;
           max-width: 400px;
         }
@@ -605,8 +605,6 @@ export default function CountdownPage() {
 
         .countdown-page .timetable-card:hover {
           background: var(--bs-card-bg);
-          transform: translateY(-3px);
-          box-shadow: 0 12px 25px -5px var(--shadow-color);
         }
 
         .countdown-page .timetable-icon {
@@ -641,7 +639,7 @@ export default function CountdownPage() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: #0d6efd;
+          background: #7c3aed;
           color: white;
           text-decoration: none;
           padding: 0.75rem 1.5rem;
@@ -654,7 +652,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .timetable-link:hover {
-          background: #0b5ed7;
+          background: #6d28d9;
           color: white;
         }
 
@@ -705,13 +703,13 @@ export default function CountdownPage() {
         }
 
         .countdown-page .btn-primary {
-          background: #0d6efd;
+          background: #7c3aed;
           color: white;
           border: none;
         }
 
         .countdown-page .btn-primary:hover {
-          background: #0b5ed7;
+          background: #6d28d9;
         }
 
         .countdown-page .btn-outline-primary {
