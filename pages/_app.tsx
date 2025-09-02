@@ -237,7 +237,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </li>
             <li>
               <NavigationLink href="/cutoff">
-                <div className="parent-icon"><BiBarChartAlt2 style={{ color: '#10b981', fontSize: 24 }} /></div>
+                <div className="parent-icon"><BiBarChartAlt2 style={{ color: '#f77', fontSize: 24 }} /></div>
                 <div className="menu-title">DSE Cut Off</div>
               </NavigationLink>
             </li>
