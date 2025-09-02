@@ -8,7 +8,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 
 // Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'edge'
+export const runtime = 'experimental-edge'
 
 interface BlogPost {
   id: string
