@@ -895,6 +895,28 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
       question: "How accurate are the cut-off scores on this website?",
       answer: "Our cut-off scores are sourced from official HKEAA publications and updated annually. We strive to provide the most accurate and up-to-date information to help students make informed decisions about their exam preparation and grade targets."
     }
+  ],
+  resources: [
+    {
+      question: "DSEBest 提供哪些學習資源？",
+      answer: "DSEBest 提供全面的DSE學習資源，包括歷屆試題下載、Cut-off分數查詢、DSE倒數計時器、學習交流室、學習博客、考試技巧、備考策略等。涵蓋中文、英文、數學、物理、化學、生物等全科資源。"
+    },
+    {
+      question: "如何有效利用這些學習資源？",
+      answer: "建議按以下順序使用：1) 先了解各科目資源，2) 制定個人學習計劃，3) 定期練習歷屆試題，4) 使用學習工具如倒數計時器，5) 參與學習交流討論，6) 閱讀學習博客獲取最新資訊。"
+    },
+    {
+      question: "學習資源多久更新一次？",
+      answer: "我們會定期更新學習資源，包括最新歷屆試題、考試資訊、學習技巧、備考策略等。一般每月都會有新內容加入，確保學生獲得最新最準確的學習資料。"
+    },
+    {
+      question: "這些學習資源都是免費的嗎？",
+      answer: "是的，DSEBest 提供的所有學習資源都是完全免費的，包括歷屆試題下載、學習工具使用、學習博客閱讀等。我們致力於為香港DSE學生提供免費優質的學習支援。"
+    },
+    {
+      question: "如何找到特定科目的學習資源？",
+      answer: "您可以通過導航菜單選擇特定科目，或直接訪問對應的科目頁面。每個科目頁面都包含該科目的歷屆試題、學習資源和相關資訊。"
+    }
   ]
 };
 
@@ -915,5 +937,52 @@ export function generatePageFAQStructuredData(pageKey: string) {
         "text": faq.answer
       }
     }))
+  };
+}
+
+// Generate Resources page structured data
+export function generateResourcesStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "DSE 學習資源 Learning Resources",
+    "description": "DSE 學習資源中心，提供歷屆試題下載、學習工具、考試技巧、備考策略等全方位學習支援。",
+    "url": "https://dse.best/resources",
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "DSE Learning Resources",
+      "description": "Comprehensive collection of DSE learning resources including past papers, study tools, and exam preparation guides",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "歷屆試題 Past Papers",
+          "description": "Complete collection of DSE past papers from 2012-2024"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cut-off分數查詢",
+          "description": "Grade boundary scores for all subjects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "學習工具 Study Tools",
+          "description": "DSE countdown timer, chatroom, and learning blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "考試技巧 Exam Tips",
+          "description": "Study strategies and exam preparation guides"
+        }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DSEBest",
+      "url": "https://dse.best"
+    }
   };
 } 

@@ -30,4 +30,17 @@ export const homepageFAQs: FAQItem[] = [
     question: 'DSEBest 嘅資源幾時會更新？',
     answer: '我哋會定期更新 DSEBest 嘅試題、答案同學習資源，確保內容最新最齊全。一般每月都會有新資料或功能加入，歡迎大家多啲留意網站公告或追蹤我哋嘅社交平台獲取最新消息。'
   }
+]
+
+export const resourcesFAQs: FAQItem[] = [
+  {
+    id: 'resources-faq1',
+    question: 'DSEBest 提供哪些學習資源？',
+    answer: 'DSEBest 提供全面的DSE學習資源，包括歷屆試題下載、Cut-off分數查詢、DSE倒數計時器、學習交流室、學習博客、考試技巧、備考策略等。涵蓋中文、英文、數學、物理、化學、生物等全科資源。'
+  },
+  {
+    id: 'resources-faq2',
+    question: '有冇 NoteSity 優惠碼/promo code/ discount code？',
+    answer: '有！我哋同 NoteSity 合作，為 DSEBest 用戶提供專屬優惠碼 DSEBEST，使用呢個優惠碼就可以喺 NoteSity 購物享 九五折優惠！呢個優惠碼可以用嚟買精讀筆記、模擬試卷、補充練習等所有 DSE 溫習資源。'
+  }
 ] 

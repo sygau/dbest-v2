@@ -256,6 +256,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">Blog</div>
               </NavigationLink>
             </li>
+            <li>
+              <NavigationLink href="/resources">
+                <div className="parent-icon"><BiBookReader style={{ color: '#8e24aa', fontSize: 24 }} /></div>
+                <div className="menu-title">Resources</div>
+              </NavigationLink>
+            </li>
             <li className="menu-label">核心科目</li>
             <li>
               <NavigationLink href="/chinese">

@@ -237,7 +237,7 @@
                     yearPages++;
                 } else if (loc.includes('/blog/')) {
                     sections['Blog'].push(urlData);
-                } else if (['/about', '/contact', '/disclaimer', '/privacy-policy', '/countdown'].some(page => loc.includes(page))) {
+                } else if (['/about', '/contact', '/disclaimer', '/privacy-policy', '/countdown', '/resources'].some(page => loc.includes(page))) {
                     sections['Information Pages'].push(urlData);
                 } else if (['/math', '/english', '/chinese'].some(subject => loc.endsWith(subject))) {
                     sections['Core Subjects'].push(urlData);

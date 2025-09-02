@@ -37,7 +37,8 @@ const infoPages = [
   { path: '/contact', priority: '0.4', changefreq: 'monthly' },
   { path: '/disclaimer', priority: '0.3', changefreq: 'yearly' },
   { path: '/privacy-policy', priority: '0.3', changefreq: 'yearly' },
-  { path: '/countdown', priority: '0.8', changefreq: 'daily' }
+  { path: '/countdown', priority: '0.8', changefreq: 'daily' },
+  { path: '/resources', priority: '0.7', changefreq: 'daily' }
 ];
 
 // Blog posts (extracted from existing sitemap)

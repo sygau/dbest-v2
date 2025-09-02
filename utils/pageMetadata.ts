@@ -295,6 +295,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/cutoff",
     "ogType": "website"
+  },
+  "resources": {
+    "title": "DSE 學習資源 Learning Resources | 歷屆試題、學習工具、備考指南",
+    "description": "DSE 學習資源中心，提供歷屆試題下載、學習工具、考試技巧、備考策略等全方位學習支援。涵蓋中文、英文、數學、物理、化學、生物等全科資源。",
+    "robots": "index, follow",
+    "ogTitle": "DSE 學習資源 Learning Resources | 歷屆試題、學習工具、備考指南",
+    "ogDescription": "DSE 學習資源中心，提供歷屆試題下載、學習工具、考試技巧、備考策略等全方位學習支援。涵蓋中文、英文、數學、物理、化學、生物等全科資源。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/resources",
+    "ogType": "website"
   }
 };
 
