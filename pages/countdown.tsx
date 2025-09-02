@@ -96,127 +96,116 @@ export default function CountdownPage() {
             </div>
 
             {/* Main Countdown Container */}
-            <div className="row countdown-page">
-                <div className="col-12">
-                    <div className="modern-countdown-container">
-                        {/* Header Section */}
-                        <div className="countdown-header">
-                            <div className="countdown-title-wrapper">
-                                <h1 className="countdown-main-title">
-                                    DSE 2026 倒數
-                                </h1>
-                            </div>
-                            <p className="countdown-description">
-                                距離香港中學文憑考試 2026 還有
-                            </p>
+            <div className="card rounded-4 countdown-page">
+                <div className="card-body">
+                    {/* Header Section */}
+                    <div className="countdown-header">
+                        <div className="countdown-title-wrapper">
+                            <h1 className="countdown-main-title">
+                                DSE 2026 倒數
+                            </h1>
                         </div>
+                        <p className="countdown-description">
+                            距離香港中學文憑考試 2026 還有
+                        </p>
+                    </div>
 
-                        {/* Countdown Display */}
-                        <div className="countdown-display">
-                            <div className="countdown-grid">
-                                <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
-                                    <div className="card-number" data-value={timeLeft.days}>
-                                        {timeLeft.days.toString().padStart(3, '0')}
-                                    </div>
-                                    <div className="card-label">
-                                        <span className="label-zh">天</span>
-                                        <span className="label-en">DAYS</span>
-                                    </div>
+                    {/* Countdown Display */}
+                    <div className="countdown-display">
+                        <div className="countdown-grid">
+                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                                <div className="card-number" data-value={timeLeft.days}>
+                                    {timeLeft.days.toString().padStart(3, '0')}
                                 </div>
-
-                                <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
-                                    <div className="card-number" data-value={timeLeft.hours}>
-                                        {timeLeft.hours.toString().padStart(2, '0')}
-                                    </div>
-                                    <div className="card-label">
-                                        <span className="label-zh">小時</span>
-                                        <span className="label-en">HOURS</span>
-                                    </div>
+                                <div className="card-label">
+                                    <span className="label-zh">天</span>
+                                    <span className="label-en">DAYS</span>
                                 </div>
+                            </div>
 
-                                <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
-                                    <div className="card-number" data-value={timeLeft.minutes}>
-                                        {timeLeft.minutes.toString().padStart(2, '0')}
-                                    </div>
-                                    <div className="card-label">
-                                        <span className="label-zh">分鐘</span>
-                                        <span className="label-en">MINUTES</span>
-                                    </div>
+                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                                <div className="card-number" data-value={timeLeft.hours}>
+                                    {timeLeft.hours.toString().padStart(2, '0')}
                                 </div>
+                                <div className="card-label">
+                                    <span className="label-zh">小時</span>
+                                    <span className="label-en">HOURS</span>
+                                </div>
+                            </div>
 
-                                <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
-                                    <div className="card-number" data-value={timeLeft.seconds}>
-                                        {timeLeft.seconds.toString().padStart(2, '0')}
-                                    </div>
-                                    <div className="card-label">
-                                        <span className="label-zh">秒</span>
-                                        <span className="label-en">SECONDS</span>
-                                    </div>
+                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                                <div className="card-number" data-value={timeLeft.minutes}>
+                                    {timeLeft.minutes.toString().padStart(2, '0')}
+                                </div>
+                                <div className="card-label">
+                                    <span className="label-zh">分鐘</span>
+                                    <span className="label-en">MINUTES</span>
+                                </div>
+                            </div>
+
+                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                                <div className="card-number" data-value={timeLeft.seconds}>
+                                    {timeLeft.seconds.toString().padStart(2, '0')}
+                                </div>
+                                <div className="card-label">
+                                    <span className="label-zh">秒</span>
+                                    <span className="label-en">SECONDS</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        {/* Exam Info Section - Compact */}
-                        <div className="exam-info-section-compact">
-                            <div className="exam-info-grid-compact">
-                                <div className="exam-info-card-compact">
-                                    <div className="info-icon-compact">📅</div>
-                                    <div className="info-content-compact">
-                                        <p>2026年4月10日</p>
-                                    </div>
+                    {/* Exam Info Section - Compact */}
+                    <div className="exam-info-section-compact">
+                        <div className="exam-info-grid-compact">
+                            <div className="exam-info-card-compact">
+                                <div className="info-icon-compact" style={{ display: 'flex', alignItems: 'center', fontSize: '18px', marginBottom: '4px' }}>📅</div>
+                                <div className="info-content-compact">
+                                    <p>2026年4月10日</p>
                                 </div>
+                            </div>
 
-                                <div className="exam-info-card-compact">
-                                    <div className="info-icon-compact">⏰</div>
-                                    <div className="info-content-compact">
-                                        <p>上午9:00</p>
-                                    </div>
-                                </div>
-
-                                <div className="exam-info-card-compact">
-                                    <div className="info-icon-compact">📍</div>
-                                    <div className="info-content-compact">
-                                        <p>香港各考場</p>
-                                    </div>
+                            <div className="exam-info-card-compact">
+                                <div className="info-icon-compact" style={{ display: 'flex', alignItems: 'center', fontSize: '18px', marginBottom: '4px' }}>⏰</div>
+                                <div className="info-content-compact">
+                                    <p>上午9:00</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        {/* Horizontal Line */}
-                        <hr className="timetable-divider" />
+                    {/* Horizontal Line */}
+                    <hr className="timetable-divider" />
 
-                        {/* Exam Timetable Link Section */}
-                        <div className="exam-timetable-section">
-                            <div className="timetable-card">
-                                <div className="timetable-content">
-                                    <h4>完整考試時間表</h4>
-                                    <p>查看 2026 年 DSE 各科目詳細考試時間安排</p>
-                                    <NavigationLink 
-                                        href="https://www.hkeaa.edu.hk/doclibrary/hkdse/exam_timetable/2026_dse_timetable.pdf" 
-                                        className="timetable-link"
-                                        target="_blank"
-                                    >
-                                        查看完整考試時間表
-                                    </NavigationLink>
-                                </div>
+                    {/* Exam Timetable Link Section */}
+                    <div className="exam-timetable-section">
+                        <div className="timetable-card">
+                            <div className="timetable-content">
+                                <h4>完整考試時間表</h4>
+                                <p>查看 2026 年 DSE 各科目詳細考試時間安排</p>
+                                <NavigationLink 
+                                    href="https://www.hkeaa.edu.hk/doclibrary/hkdse/exam_timetable/2026_dse_timetable.pdf" 
+                                    className="timetable-link"
+                                    target="_blank"
+                                >
+                                    查看完整考試時間表
+                                </NavigationLink>
                             </div>
                         </div>
+                    </div>
 
-
-
-                        {/* Call to Action */}
-                        <div className="countdown-cta">
-                            <div className="cta-content">
-                                <h3>準備好迎接挑戰了嗎？</h3>
-                                <p>立即開始溫習，掌握歷屆試題重點</p>
-                                <div className="cta-buttons">
-                                    <NavigationLink href="/" className="btn btn-primary btn-lg">
-                                        開始溫習
-                                    </NavigationLink>
-                                    <NavigationLink href="/blog" className="btn btn-outline-primary btn-lg">
-                                        考試攻略
-                                    </NavigationLink>
-                                </div>
+                    {/* Call to Action */}
+                    <div className="countdown-cta">
+                        <div className="cta-content">
+                            <h3>準備好迎接挑戰了嗎？</h3>
+                            <p>立即開始溫習，掌握歷屆試題重點</p>
+                            <div className="cta-buttons">
+                                <NavigationLink href="/" className="btn btn-primary btn-lg">
+                                    開始溫習
+                                </NavigationLink>
+                                {/* <NavigationLink href="/blog" className="btn btn-outline-primary btn-lg">
+                                    考試攻略
+                                </NavigationLink> */}
                             </div>
                         </div>
                     </div>
@@ -239,38 +228,30 @@ export default function CountdownPage() {
         }
 
         .countdown-page body {
-          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+          background: transparent;
           min-height: 100vh;
         }
 
-        .countdown-page .modern-countdown-container {
-          background: var(--primary-gradient);
+        .countdown-page .card {
+          background: transparent;
           border-radius: 28px;
           padding: 3.5rem 2.5rem;
           margin: 2.5rem 0;
-          box-shadow: 
-            0 25px 50px -12px var(--shadow-color),
-            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          box-shadow: none;
           position: relative;
           overflow: hidden;
-          color: var(--text-primary);
-          border: 1px solid var(--border-color);
+          color: var(--bs-body-color);
+          border: none;
         }
 
-        .countdown-page .modern-countdown-container::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-          z-index: 1;
+        .countdown-page .card::before {
+          display: none;
         }
 
         .countdown-page .countdown-header {
           text-align: center;
           margin-bottom: 2rem;
+          margin-top: 2rem;
           position: relative;
           z-index: 2;
         }
@@ -282,22 +263,28 @@ export default function CountdownPage() {
         }
 
         .countdown-page .countdown-main-title {
-          font-family: 'Poppins', sans-serif;
+          font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
           font-size: 3.8rem;
           font-weight: 800;
           margin: 0;
           text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
           text-align: center;
           letter-spacing: -0.5px;
-          color: #ffffff;
+          color: var(--bs-body-color);
           line-height: 1.1;
+        }
+
+        /* Purple color for dark and blue themes */
+        [data-bs-theme=dark] .countdown-page .countdown-main-title,
+        [data-bs-theme=blue-theme] .countdown-page .countdown-main-title {
+          color: #8b5cf6;
         }
 
         .countdown-page .countdown-description {
           font-family: sans-serif;
           font-size: 1.3rem;
           font-weight: 500;
-          color: #ffffff;
+          color: var(--bs-body-color);
           margin: 0;
           letter-spacing: 0.5px;
         }
@@ -317,9 +304,9 @@ export default function CountdownPage() {
         }
 
         .countdown-page .countdown-card {
-          background: var(--card-bg);
+          background: rgba(128, 128, 128, 0.1);
           backdrop-filter: blur(20px);
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--bs-border-color);
           border-radius: 24px;
           padding: 2rem 1.5rem;
           text-align: center;
@@ -327,7 +314,7 @@ export default function CountdownPage() {
           transform: translateY(30px);
           opacity: 0;
           animation: slideInUp 0.7s ease forwards;
-          aspect-ratio: 1;
+          aspect-ratio: 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -337,17 +324,6 @@ export default function CountdownPage() {
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
           position: relative;
           overflow: hidden;
-        }
-
-        .countdown-page .countdown-card::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: var(--accent-gradient);
-          border-radius: 24px 24px 0 0;
         }
 
         .countdown-page .countdown-card.loaded {
@@ -362,7 +338,7 @@ export default function CountdownPage() {
 
         .countdown-page .countdown-card:hover {
           transform: translateY(-8px) scale(1.03);
-          background: var(--card-hover-bg);
+          background: rgba(128, 128, 128, 0.15);
           box-shadow: 
             0 20px 40px -10px var(--shadow-color),
             inset 0 1px 0 rgba(255, 255, 255, 0.15);
@@ -371,12 +347,18 @@ export default function CountdownPage() {
         .countdown-page .card-number {
           font-family: 'Inter', sans-serif;
           font-size: 3.2rem;
-          font-weight: 900;
+          font-weight: 800;
           line-height: 1.1;
           text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
           transition: all 0.3s ease;
           letter-spacing: -1px;
           color: #ffffff;
+        }
+
+        /* Purple color for countdown numbers in dark and blue themes */
+        [data-bs-theme=dark] .countdown-page .card-number,
+        [data-bs-theme=blue-theme] .countdown-page .card-number {
+          color: #8b5cf6;
         }
 
         .countdown-page .countdown-card:hover .card-number {
@@ -391,20 +373,21 @@ export default function CountdownPage() {
         }
 
         .countdown-page .label-zh {
-          font-family: sans-serif;
-          font-size: 1.2rem;
+          font-family: 'Segoe UI', sans-serif;
+          font-size: 1rem;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--bs-body-color);
           letter-spacing: 0.5px;
+          margin-bottom: -10px;
         }
 
         .countdown-page .label-en {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Segoe UI', sans-serif;
           font-size: 1rem;
           font-weight: 600;
-          color: #ffffff;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
+          color: var(--bs-body-color);
+          letter-spacing: 0.3px;
+          text-transform: lowercase;
         }
 
         .countdown-page .countdown-progress {
@@ -425,23 +408,23 @@ export default function CountdownPage() {
           margin: 0;
           font-size: 1.4rem;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--bs-body-color);
         }
 
         .countdown-page .progress-percentage {
-          background: rgba(255, 255, 255, 0.2);
+          background: var(--bs-secondary-bg);
           padding: 0.6rem 1.25rem;
           border-radius: 24px;
           font-family: 'Inter', sans-serif;
           font-weight: 700;
           font-size: 1.2rem;
-          color: #ffffff;
+          color: var(--bs-body-color);
           backdrop-filter: blur(10px);
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--bs-border-color);
         }
 
         .countdown-page .progress-bar-container {
-          background: rgba(0, 0, 0, 0.2);
+          background: var(--bs-secondary-bg);
           height: 16px;
           border-radius: 12px;
           overflow: hidden;
@@ -474,7 +457,7 @@ export default function CountdownPage() {
           text-align: center;
           font-size: 1.1rem;
           font-weight: 500;
-          color: #ffffff;
+          color: var(--bs-body-color);
           margin: 0;
         }
 
@@ -491,9 +474,9 @@ export default function CountdownPage() {
         }
 
         .countdown-page .exam-info-card {
-          background: var(--card-bg);
+          background: var(--bs-card-bg);
           backdrop-filter: blur(15px);
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--bs-border-color);
           border-radius: 20px;
           padding: 1.75rem;
           display: flex;
@@ -504,7 +487,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .exam-info-card:hover {
-          background: var(--card-hover-bg);
+          background: var(--bs-card-bg);
           transform: translateY(-5px);
           box-shadow: 0 12px 25px -5px var(--shadow-color);
         }
@@ -520,13 +503,13 @@ export default function CountdownPage() {
           margin: 0 0 0.6rem 0;
           font-size: 1.2rem;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--bs-body-color);
         }
 
         .countdown-page .info-content p {
           font-family: sans-serif;
           margin: 0;
-          color: #ffffff;
+          color: var(--bs-body-color);
           font-size: 1rem;
           font-weight: 500;
         }
@@ -547,9 +530,9 @@ export default function CountdownPage() {
         }
 
         .countdown-page .exam-info-card-compact {
-          background: var(--card-bg);
+          background: var(--bs-card-bg);
           backdrop-filter: blur(15px);
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--bs-border-color);
           border-radius: 10px;
           padding: 0.5rem;
           display: flex;
@@ -561,7 +544,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .exam-info-card-compact:hover {
-          background: var(--card-hover-bg);
+          background: var(--bs-card-bg);
           transform: translateY(-3px);
           box-shadow: 0 8px 20px -5px var(--shadow-color);
         }
@@ -575,7 +558,7 @@ export default function CountdownPage() {
         .countdown-page .info-content-compact p {
           font-family: sans-serif;
           margin: 0;
-          color: #ffffff;
+          color: var(--bs-body-color);
           font-size: 0.9rem;
           font-weight: 600;
           line-height: 1.2;
@@ -585,7 +568,7 @@ export default function CountdownPage() {
         .countdown-page .timetable-divider {
           border: none;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+          background: linear-gradient(90deg, transparent, var(--bs-border-color), transparent);
           margin: 2rem auto;
           max-width: 400px;
         }
@@ -599,9 +582,9 @@ export default function CountdownPage() {
         }
 
         .countdown-page .timetable-card {
-          background: var(--card-bg);
+          background: var(--bs-card-bg);
           backdrop-filter: blur(15px);
-          border: 1px solid var(--border-color);
+          border: 1px solid var(--bs-border-color);
           border-radius: 20px;
           padding: 1.5rem;
           display: flex;
@@ -614,7 +597,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .timetable-card:hover {
-          background: var(--card-hover-bg);
+          background: var(--bs-card-bg);
           transform: translateY(-3px);
           box-shadow: 0 12px 25px -5px var(--shadow-color);
         }
@@ -635,13 +618,13 @@ export default function CountdownPage() {
           margin: 0 0 0.5rem 0;
           font-size: 1.3rem;
           font-weight: 700;
-          color: #ffffff;
+          color: var(--bs-body-color);
         }
 
         .countdown-page .timetable-content p {
           font-family: sans-serif;
           margin: 0 0 1rem 0;
-          color: #ffffff;
+          color: var(--bs-body-color);
           font-size: 1rem;
           font-weight: 500;
           opacity: 0.9;
@@ -651,7 +634,7 @@ export default function CountdownPage() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          background: #0d6efd;
           color: white;
           text-decoration: none;
           padding: 0.75rem 1.5rem;
@@ -664,9 +647,7 @@ export default function CountdownPage() {
         }
 
         .countdown-page .timetable-link:hover {
-          background: linear-gradient(135deg, #4895ef 0%, #3a0ca3 100%);
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+          background: #0b5ed7;
           color: white;
         }
 
@@ -683,15 +664,14 @@ export default function CountdownPage() {
           font-weight: 800;
           margin-bottom: 0.75rem;
           letter-spacing: -0.5px;
-          color: #ffffff;
+          color: var(--bs-body-color);
         }
 
         .countdown-page .cta-content p {
           font-family: sans-serif;
           font-size: 1.2rem;
           font-weight: 500;
-          color: #ffffff;
-          margin-bottom: 2.5rem;
+          color: var(--bs-body-color);
           max-width: 600px;
           margin-left: auto;
           margin-right: auto;
@@ -718,15 +698,13 @@ export default function CountdownPage() {
         }
 
         .countdown-page .btn-primary {
-          background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+          background: #0d6efd;
           color: white;
           border: none;
         }
 
         .countdown-page .btn-primary:hover {
-          background: linear-gradient(135deg, #4895ef 0%, #3a0ca3 100%);
-          transform: translateY(-3px);
-          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+          background: #0b5ed7;
         }
 
         .countdown-page .btn-outline-primary {

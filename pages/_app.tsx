@@ -232,7 +232,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <li>
               <NavigationLink href="/countdown">
                 <div className="parent-icon"><BiTimeFive style={{ color: '#f9a8d4', fontSize: 24 }} /></div>
-                <div className="menu-title">DSE 2026 倒數</div>
+                <div className="menu-title">DSE Countdown</div>
               </NavigationLink>
             </li>
             <li>
@@ -241,20 +241,21 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">DSE Cut Off</div>
               </NavigationLink>
             </li>
-            <li>
-              <NavigationLink href="/blog">
-                <div className="parent-icon"><BiFile style={{ color: '#8b5cf6', fontSize: 24 }} /></div>
-                <div className="menu-title">Blog</div>
-              </NavigationLink>
-            </li>
+            
             {chatConfig.enabled && (
               <li>
                 <NavigationLink href="/chat">
                   <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
-                  <div className="menu-title">聊天室 Chatroom</div>
+                  <div className="menu-title">Chatroom</div>
                 </NavigationLink>
               </li>
             )}
+            <li>
+              <NavigationLink href="/blog">
+                <div className="parent-icon"><BiFile style={{ color: '#2fc4d4', fontSize: 24 }} /></div>
+                <div className="menu-title">Blog</div>
+              </NavigationLink>
+            </li>
             <li className="menu-label">核心科目</li>
             <li>
               <NavigationLink href="/chinese">
