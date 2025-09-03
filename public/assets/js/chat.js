@@ -479,33 +479,96 @@ class DSEChat {
     const textSpan = document.createElement('span');
     const messageText = String(text || '').substring(0, 500); // Limit length as extra safety
     
-    // Check for link format: [LINK]url[/LINK]
-    const linkMatch = messageText.match(/\[LINK\](.*?)\[\/LINK\]/);
-    if (linkMatch) {
-      const url = linkMatch[1];
-      const displayText = url.replace(/^https?:\/\//, ''); // Remove protocol for display
+    // Check for sticker format: [STICKERNAME]
+    const stickerMatch = messageText.match(/^\[([A-Za-z0-9_-]+)\]$/);
+    if (stickerMatch) {
+      const stickerName = stickerMatch[1];
       
-      // Create clickable link
-      const link = document.createElement('a');
-      link.href = url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.className = 'link-message';
-      link.style.color = '#007bff';
-      link.style.textDecoration = 'underline';
-      link.style.cursor = 'pointer';
-      link.textContent = displayText;
-      
-      // Add link icon
-      const linkIcon = document.createElement('span');
-      linkIcon.innerHTML = ' 🔗';
-      linkIcon.style.marginLeft = '4px';
-      link.appendChild(linkIcon);
-      
-      textSpan.appendChild(link);
+      // Security: Only allow specific local stickers, prevent third-party image injection
+      if (stickerName.toLowerCase() === 'excited') {
+        // Create sticker display with local image only
+        const stickerImg = document.createElement('img');
+        
+        // Security: Only allow the specific excited sticker from our domain
+        const allowedStickers = {
+          'excited': 'https://dse.best/assets/stickers/excited.webp'
+        };
+        
+        const stickerPath = allowedStickers[stickerName.toLowerCase()];
+        if (!stickerPath) {
+          // Invalid sticker - show as text
+          textSpan.textContent = messageText;
+          return;
+        }
+        
+        stickerImg.src = stickerPath; // Only our domain sticker allowed
+        stickerImg.alt = `Sticker: ${stickerName}`;
+        stickerImg.style.cssText = `
+          max-width: 120px;
+          max-height: 120px;
+          border-radius: 8px;
+          display: block;
+          margin: 4px 0;
+        `;
+        
+        // Security: Prevent any external image loading or XSS
+        stickerImg.onerror = () => {
+          stickerImg.style.display = 'none';
+          const fallback = document.createElement('div');
+          fallback.style.cssText = `
+            width: 120px;
+            height: 120px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #6c757d;
+          `;
+          fallback.textContent = '😊';
+          textSpan.appendChild(fallback);
+        };
+        
+        // Security: Prevent any onclick or other event handlers
+        stickerImg.onclick = null;
+        stickerImg.onload = null;
+        
+        textSpan.appendChild(stickerImg);
+      } else {
+        // Invalid sticker name - show as text
+        textSpan.textContent = messageText;
+      }
     } else {
-      // Regular message - Use textContent to prevent XSS
-      textSpan.textContent = messageText;
+      // Check for link format: [LINK]url[/LINK]
+      const linkMatch = messageText.match(/\[LINK\](.*?)\[\/LINK\]/);
+      if (linkMatch) {
+        const url = linkMatch[1];
+        const displayText = url.replace(/^https?:\/\//, ''); // Remove protocol for display
+        
+        // Create clickable link
+        const link = document.createElement('a');
+        link.href = url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'link-message';
+        link.style.color = '#007bff';
+        link.style.textDecoration = 'underline';
+        link.style.cursor = 'pointer';
+        link.textContent = displayText;
+        
+        // Add link icon
+        const linkIcon = document.createElement('span');
+        linkIcon.innerHTML = ' 🔗';
+        linkIcon.style.marginLeft = '4px';
+        link.appendChild(linkIcon);
+        
+        textSpan.appendChild(link);
+      } else {
+        // Regular message - Use textContent to prevent XSS
+        textSpan.textContent = messageText;
+      }
     }
     bubble.appendChild(textSpan);
     wrapper.appendChild(bubble);
@@ -839,24 +902,50 @@ class DSEChat {
     // Process emoji shortcodes
     const processedText = this.processEmojiShortcodes(text);
 
-    // Enhanced validation with security checks
-    if (!this.validateUsername(sender)) {
-      this.isSending = false;
-      this.setInputState(false);
-      return;
-    }
-    if (!this.validateMessage(processedText)) {
-      this.isSending = false;
-      this.setInputState(false);
-      return;
-    }
+    // Check for sticker format and validate
+    const stickerMatch = processedText.match(/^\[([A-Za-z0-9_-]+)\]$/);
+    if (stickerMatch) {
+      const stickerName = stickerMatch[1];
+      
+      // Validate sticker name (only allow excited for now)
+      if (stickerName.toLowerCase() !== 'excited') {
+        this.addSystemMessage('Invalid sticker name. Only "excited" sticker is available.');
+        this.isSending = false;
+        this.setInputState(false);
+        return;
+      }
+      
+      // Sticker messages are always valid and don't need additional validation
+      // They bypass length checks since they're just [STICKERNAME]
+    } else {
+      // Check if message contains multiple stickers (prevent [excited][excited])
+      const stickerCount = (processedText.match(/\[[A-Za-z0-9_-]+\]/g) || []).length;
+      if (stickerCount > 1) {
+        this.addSystemMessage('Only one sticker per message is allowed.');
+        this.isSending = false;
+        this.setInputState(false);
+        return;
+      }
+      
+      // Enhanced validation with security checks for regular messages
+      if (!this.validateUsername(sender)) {
+        this.isSending = false;
+        this.setInputState(false);
+        return;
+      }
+      if (!this.validateMessage(processedText)) {
+        this.isSending = false;
+        this.setInputState(false);
+        return;
+      }
 
-    // Additional client-side length and content verification
-    if (processedText.length > this.MAX_MESSAGE_LENGTH || sender.length > this.MAX_USERNAME_LENGTH) {
-      this.addSystemMessage('Input exceeds maximum allowed length');
-      this.isSending = false;
-      this.setInputState(false);
-      return;
+      // Additional client-side length and content verification for regular messages
+      if (processedText.length > this.MAX_MESSAGE_LENGTH || sender.length > this.MAX_USERNAME_LENGTH) {
+        this.addSystemMessage('Input exceeds maximum allowed length');
+        this.isSending = false;
+        this.setInputState(false);
+        return;
+      }
     }
 
     // First moderate the message

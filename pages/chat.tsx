@@ -21,7 +21,8 @@ import {
     BiMessageRounded,
     BiWifi,
     BiWifiOff,
-    BiPencil
+    BiPencil,
+    BiImage
 } from 'react-icons/bi'
 
 export default function ChatPage() {
@@ -34,6 +35,12 @@ export default function ChatPage() {
     const [connectionStatus, setConnectionStatus] = useState('connecting');
     const [statusText, setStatusText] = useState('Connecting...');
     const [isModerator, setIsModerator] = useState(false);
+    const [showStickers, setShowStickers] = useState(false);
+
+    // Placeholder sticker data with dummyimages.com URLs
+    const stickers = [
+        { id: 1, url: 'https://dse.best/assets/stickers/excited.webp', alt: 'excited' }
+    ];
 
     const handleCloseRules = () => {
         setIsClosingRules(true);
@@ -53,6 +60,49 @@ export default function ChatPage() {
 
     const handleOpenUsernameModal = () => {
         setShowUsernameModal(true);
+    };
+
+    const toggleStickers = () => {
+        setShowStickers(!showStickers);
+    };
+
+    const handleStickerClick = (sticker: any) => {
+        console.log('Sticker clicked:', sticker); // Debug log
+        
+        // Prevent any default behavior
+        event?.preventDefault();
+        event?.stopPropagation();
+        
+        // Validate sticker data
+        if (!sticker || sticker.alt !== 'excited') {
+            console.error('Invalid sticker data:', sticker);
+            return;
+        }
+        
+        // Send sticker as a message
+        const messageInput = document.getElementById('messageInput') as HTMLInputElement;
+        if (messageInput) {
+            const stickerMessage = `[excited]`;
+            console.log('Setting message input to:', stickerMessage); // Debug log
+            
+            // Clear any existing content first
+            messageInput.value = '';
+            
+            // Set the sticker message
+            messageInput.value = stickerMessage;
+            
+            // Trigger send button click with a small delay to ensure input is set
+            setTimeout(() => {
+                const sendButton = document.getElementById('sendButton');
+                if (sendButton) {
+                    console.log('Triggering send button click'); // Debug log
+                    sendButton.click();
+                }
+            }, 10);
+        }
+        
+        // Close stickers panel
+        setShowStickers(false);
     };
 
     useEffect(() => {
@@ -77,9 +127,26 @@ export default function ChatPage() {
             handleCloseUsernameModal();
         };
 
+        // Handle clicking outside stickers panel
+        const handleClickOutside = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+            if (showStickers && !target.closest('.stickers-panel') && !target.closest('.stickers-button')) {
+                setShowStickers(false);
+            }
+        };
+
+        // Handle keyboard shortcuts
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape' && showStickers) {
+                setShowStickers(false);
+            }
+        };
+
         document.addEventListener('showRulesModal', handleShowRulesModal as EventListener);
         document.addEventListener('moderatorStatusUpdate', handleModeratorStatus as EventListener);
         document.addEventListener('closeUsernameModal', handleCloseUsernameModalEvent);
+        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('keydown', handleKeyDown);
 
         // Load Ably script if not already loaded
         if (!(window as any).Ably && !(window as any).AblyLoading) {
@@ -98,7 +165,7 @@ export default function ChatPage() {
                 setStatusText('Connection failed');
             };
             document.head.appendChild(ablyScript);
-        } else if ((window as any).Ably) {
+        } else if ((window as any).AblyLoaded) {
             loadChatScript();
         }
 
@@ -106,7 +173,8 @@ export default function ChatPage() {
             // Load chat script if not already loaded
             if (!(window as any).DSEChatLoaded) {
                 const chatScript = document.createElement('script');
-                chatScript.src = '/assets/js/chat.js?v=' + Date.now();
+                // Add cache-busting to prevent old sticker logic from interfering
+                chatScript.src = '/assets/js/chat.js?v=' + Date.now() + '&stickers=' + Date.now();
                 chatScript.onload = () => {
                     (window as any).DSEChatLoaded = true;
                     initializeChat();
@@ -141,12 +209,14 @@ export default function ChatPage() {
             document.removeEventListener('showRulesModal', handleShowRulesModal as EventListener);
             document.removeEventListener('moderatorStatusUpdate', handleModeratorStatus as EventListener);
             document.removeEventListener('closeUsernameModal', handleCloseUsernameModalEvent);
+            document.removeEventListener('click', handleClickOutside);
+            document.removeEventListener('keydown', handleKeyDown);
             if ((window as any).dseChat) {
                 (window as any).dseChat.destroy();
                 (window as any).dseChat = null;
             }
         };
-    }, []);
+    }, []); // Remove showStickers dependency to prevent chat reconnection
 
     // Effect to populate mobile username input when modal opens
     useEffect(() => {
@@ -273,7 +343,7 @@ export default function ChatPage() {
                 </div>
 
                 {/* Input Area */}
-                <div className="input-container">
+                <div className="input-container" style={{ position: 'relative' }}>
                     <div className="input-wrapper">
 
 
@@ -291,7 +361,35 @@ export default function ChatPage() {
                         />
 
                         {/* Message Input */}
-                        <div className="message-input-wrapper">
+                        <div className="message-input-wrapper" style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            width: '100%'
+                        }}>
+                            <button
+                                className="stickers-button"
+                                type="button"
+                                aria-label="Open stickers"
+                                onClick={toggleStickers}
+                                style={{
+                                    background: showStickers ? 'var(--bs-primary-bg-subtle)' : 'transparent',
+                                    border: showStickers ? '1px solid var(--bs-primary-border-subtle)' : '1px solid transparent',
+                                    padding: '6px',
+                                    borderRadius: '50%',
+                                    cursor: 'pointer',
+                                    color: showStickers ? 'var(--bs-primary)' : 'var(--bs-secondary-color)',
+                                    transition: 'all 0.2s ease',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: '32px',
+                                    height: '32px',
+                                    flexShrink: 0
+                                }}
+                            >
+                                <BiSmile size={16} />
+                            </button>
                             <input
                                 type="text"
                                 id="messageInput"
@@ -299,13 +397,20 @@ export default function ChatPage() {
                                 placeholder="Type a message..."
                                 autoComplete="off"
                                 maxLength={150}
-                                style={{ fontSize: '16px' }}
+                                style={{ 
+                                    fontSize: '16px',
+                                    flex: 1,
+                                    minWidth: 0
+                                }}
                             />
                             <button
                                 className="send-button"
                                 id="sendButton"
                                 type="button"
                                 aria-label="Send message"
+                                style={{
+                                    flexShrink: 0
+                                }}
                             >
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M12 19V5" />
@@ -313,6 +418,144 @@ export default function ChatPage() {
                                 </svg>
                             </button>
                         </div>
+
+                        {/* Stickers Panel */}
+                        {showStickers && (
+                            <div className="stickers-panel" style={{
+                                position: 'absolute',
+                                bottom: '100%',
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                background: 'var(--bs-body-bg)',
+                                border: '1px solid var(--bs-border-color)',
+                                borderRadius: '16px',
+                                padding: '20px',
+                                marginBottom: '12px',
+                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
+                                zIndex: 1000,
+                                width: '320px',
+                                maxHeight: '400px',
+                                overflowY: 'auto'
+                            }}>
+                                <div className="stickers-header" style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    marginBottom: '12px',
+                                    paddingBottom: '8px',
+                                    borderBottom: '1px solid var(--bs-border-color)'
+                                }}>
+                                    <h6 style={{ 
+                                        margin: 0, 
+                                        color: 'var(--bs-body-color)', 
+                                        fontSize: '14px', 
+                                        fontWeight: '600',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '6px'
+                                    }}>
+                                        😊
+                                        Stickers
+                                    </h6>
+                                    <button
+                                        onClick={toggleStickers}
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            padding: '6px',
+                                            borderRadius: '50%',
+                                            cursor: 'pointer',
+                                            color: 'var(--bs-secondary-color)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            transition: 'all 0.2s ease'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.backgroundColor = 'var(--bs-secondary-bg)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.backgroundColor = 'transparent';
+                                        }}
+                                        aria-label="Close stickers"
+                                    >
+                                        <BiX size={18} />
+                                    </button>
+                                </div>
+                                <div className="stickers-grid" style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    {stickers.map((sticker) => (
+                                        <button
+                                            key={sticker.id}
+                                            onClick={() => handleStickerClick(sticker)}
+                                            className="sticker-item"
+                                            style={{
+                                                background: 'var(--bs-body-bg)',
+                                                border: '2px solid var(--bs-border-color)',
+                                                borderRadius: '12px',
+                                                padding: '6px',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.2s ease',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                width: '64px',
+                                                height: '64px',
+                                                position: 'relative',
+                                                overflow: 'hidden'
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.currentTarget.style.borderColor = 'var(--bs-primary)';
+                                                e.currentTarget.style.transform = 'scale(1.05)';
+                                                e.currentTarget.style.boxShadow = '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.currentTarget.style.borderColor = 'var(--bs-border-color)';
+                                                e.currentTarget.style.transform = 'scale(1)';
+                                                e.currentTarget.style.boxShadow = 'none';
+                                            }}
+                                            aria-label={`Send ${sticker.alt} sticker`}
+                                            title={`Send ${sticker.alt} sticker`}
+                                        >
+                                            <img
+                                                src={sticker.url}
+                                                alt={sticker.alt}
+                                                style={{
+                                                    width: '100%',
+                                                    height: '100%',
+                                                    objectFit: 'cover',
+                                                    borderRadius: '8px',
+                                                    display: 'block'
+                                                }}
+                                                loading="lazy"
+                                                onError={(e) => {
+                                                    const target = e.target as HTMLImageElement;
+                                                    target.style.display = 'none';
+                                                    const fallback = document.createElement('div');
+                                                    fallback.style.cssText = `
+                                                        width: 100%;
+                                                        height: 100%;
+                                                        background: var(--bs-secondary-bg);
+                                                        border: 1px solid var(--bs-border-color);
+                                                        border-radius: 8px;
+                                                        display: flex;
+                                                        align-items: center;
+                                                        justify-content: center;
+                                                        font-size: 28px;
+                                                        color: var(--bs-secondary-color);
+                                                    `;
+                                                    fallback.textContent = '😊';
+                                                    target.parentNode?.appendChild(fallback);
+                                                }}
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
