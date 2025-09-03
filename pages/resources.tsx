@@ -117,7 +117,7 @@ export default function ResourcesPage() {
             </p>
 
             <p>
-              <a href="https://notesity.hk/?utm_source=dsebest&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="btn btn-primary">👉 前往 NoteSity 官網選購</a>
+              <a href="https://www.notesity.hk/?utm_source=dsebest&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="btn btn-primary">👉 前往 NoteSity 官網選購</a>
             </p>
           </div>
         </div>
