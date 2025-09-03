@@ -485,61 +485,83 @@ class DSEChat {
       const stickerName = stickerMatch[1];
       
       // Security: Only allow specific local stickers, prevent third-party image injection
-      if (stickerName.toLowerCase() === 'excited') {
-        // Create sticker display with local image only
-        const stickerImg = document.createElement('img');
-        
-        // Security: Only allow the specific excited sticker from our domain
-        const allowedStickers = {
-          'excited': 'https://dse.best/assets/stickers/excited.webp'
-        };
-        
-        const stickerPath = allowedStickers[stickerName.toLowerCase()];
-        if (!stickerPath) {
-          // Invalid sticker - show as text
-          textSpan.textContent = messageText;
-          return;
-        }
-        
-        stickerImg.src = stickerPath; // Only our domain sticker allowed
-        stickerImg.alt = `Sticker: ${stickerName}`;
-        stickerImg.style.cssText = `
-          max-width: 120px;
-          max-height: 120px;
-          border-radius: 8px;
-          display: block;
-          margin: 4px 0;
-        `;
-        
-        // Security: Prevent any external image loading or XSS
-        stickerImg.onerror = () => {
-          stickerImg.style.display = 'none';
-          const fallback = document.createElement('div');
-          fallback.style.cssText = `
-            width: 120px;
-            height: 120px;
-            background: #f8f9fa;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #6c757d;
-          `;
-          fallback.textContent = '😊';
-          textSpan.appendChild(fallback);
-        };
-        
-        // Security: Prevent any onclick or other event handlers
-        stickerImg.onclick = null;
-        stickerImg.onload = null;
-        
-        textSpan.appendChild(stickerImg);
-      } else {
-        // Invalid sticker name - show as text
+      const allowedStickers = {
+        'excited': '/assets/stickers/excited.webp',
+        'wave': '/assets/stickers/wave.webp',
+        'shocked': '/assets/stickers/shocked.webp',
+        'shh': '/assets/stickers/shh.webp',
+        'thumbsdown': '/assets/stickers/thumbsdown.webp',
+        'agree': '/assets/stickers/agree.webp',
+        'heart1': '/assets/stickers/heart1.webp',
+        'clap': '/assets/stickers/clap.webp',
+        'thumbsup_glasses': '/assets/stickers/thumbsup_glasses.webp',
+        'mh': '/assets/stickers/mh.webp'
+      };
+      
+      const stickerPath = allowedStickers[stickerName.toLowerCase()];
+      if (!stickerPath) {
+        // Invalid sticker - show as text
         textSpan.textContent = messageText;
+        bubble.appendChild(textSpan);
+        wrapper.appendChild(bubble);
+        this.chatMessages.appendChild(wrapper);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+        return;
       }
+      
+      // Create sticker display with local image only
+      const stickerImg = document.createElement('img');
+      
+      stickerImg.src = stickerPath; // Only our domain sticker allowed
+      stickerImg.alt = `Sticker: ${stickerName}`;
+      
+      // Responsive sticker sizing based on screen width
+      const isMobile = window.innerWidth <= 768;
+      const isSmallMobile = window.innerWidth <= 480;
+      
+      let stickerSize;
+      if (isSmallMobile) {
+        stickerSize = 55; // Very small mobile
+      } else if (isMobile) {
+        stickerSize = 60; // Mobile
+      } else {
+        stickerSize = 78; // Desktop (user's preferred size)
+      }
+      
+      stickerImg.style.cssText = `
+        max-width: ${stickerSize}px;
+        max-height: ${stickerSize}px;
+        border-radius: 8px;
+        display: block;
+      `;
+      
+      // Security: Prevent any external image loading or XSS
+      stickerImg.onerror = () => {
+        stickerImg.style.display = 'none';
+        
+        // Use the same responsive sizing for fallback
+        const fallback = document.createElement('div');
+        fallback.style.cssText = `
+          width: ${stickerSize}px;
+          height: ${stickerSize}px;
+          background: #f8f9fa;
+          border: 1px solid #dee2e6;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          color: #6c757d;
+        `;
+        fallback.textContent = '😊';
+        textSpan.appendChild(fallback);
+      };
+      
+      // Security: Prevent any onclick or other event handlers
+      stickerImg.onclick = null;
+      stickerImg.onload = null;
+      
+      textSpan.appendChild(stickerImg);
     } else {
       // Check for link format: [LINK]url[/LINK]
       const linkMatch = messageText.match(/\[LINK\](.*?)\[\/LINK\]/);
@@ -907,9 +929,14 @@ class DSEChat {
     if (stickerMatch) {
       const stickerName = stickerMatch[1];
       
-      // Validate sticker name (only allow excited for now)
-      if (stickerName.toLowerCase() !== 'excited') {
-        this.addSystemMessage('Invalid sticker name. Only "excited" sticker is available.');
+      // Validate sticker name (allow all available stickers)
+      const allowedStickers = [
+        'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
+        'agree', 'heart1', 'clap', 'thumbsup_glasses', 'mh'
+      ];
+      
+      if (!allowedStickers.includes(stickerName.toLowerCase())) {
+        this.addSystemMessage('Invalid sticker name.');
         this.isSending = false;
         this.setInputState(false);
         return;

@@ -781,11 +781,16 @@ function moderateContent(text, clientId, ip, username, secretmodkey = null, isMo
   if (stickerMatch) {
     const stickerName = stickerMatch[1];
     
-    // Validate sticker name (only allow excited for now)
-    if (stickerName.toLowerCase() !== 'excited') {
+    // Validate sticker name (allow all available stickers)
+    const allowedStickers = [
+      'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
+      'agree', 'heart1', 'clap', 'thumbsup_glasses', 'mh'
+    ];
+    
+    if (!allowedStickers.includes(stickerName.toLowerCase())) {
       return {
         isClean: false,
-        reason: 'Invalid sticker name. Only "excited" sticker is available.',
+        reason: 'Invalid sticker name.',
         severity: 'low'
       };
     }

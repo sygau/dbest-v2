@@ -37,10 +37,18 @@ export default function ChatPage() {
     const [isModerator, setIsModerator] = useState(false);
     const [showStickers, setShowStickers] = useState(false);
 
-    // Placeholder sticker data with dummyimages.com URLs
-    const stickers = [
-        { id: 1, url: 'https://dse.best/assets/stickers/excited.webp', alt: 'excited' }
-    ];
+    // Placeholder sticker data with relative paths
+    const [stickers] = useState([
+        { id: 1, url: '/assets/stickers/excited.webp', alt: 'excited' },
+        { id: 2, url: '/assets/stickers/wave.webp', alt: 'wave' },
+        { id: 3, url: '/assets/stickers/shocked.webp', alt: 'shocked' },
+        { id: 4, url: '/assets/stickers/shh.webp', alt: 'shh' },
+        { id: 5, url: '/assets/stickers/thumbsdown.webp', alt: 'thumbsdown' },
+        { id: 6, url: '/assets/stickers/agree.webp', alt: 'agree' },
+        { id: 7, url: '/assets/stickers/heart1.webp', alt: 'heart1' },
+        { id: 8, url: '/assets/stickers/clap.webp', alt: 'clap' },
+        { id: 9, url: '/assets/stickers/thumbsup_glasses.webp', alt: 'thumbsup_glasses' }
+    ]);
 
     const handleCloseRules = () => {
         setIsClosingRules(true);
@@ -74,7 +82,7 @@ export default function ChatPage() {
         event?.stopPropagation();
         
         // Validate sticker data
-        if (!sticker || sticker.alt !== 'excited') {
+        if (!sticker || !sticker.alt) {
             console.error('Invalid sticker data:', sticker);
             return;
         }
@@ -82,7 +90,7 @@ export default function ChatPage() {
         // Send sticker as a message
         const messageInput = document.getElementById('messageInput') as HTMLInputElement;
         if (messageInput) {
-            const stickerMessage = `[excited]`;
+            const stickerMessage = `[${sticker.alt}]`;
             console.log('Setting message input to:', stickerMessage); // Debug log
             
             // Clear any existing content first
@@ -378,7 +386,7 @@ export default function ChatPage() {
                                     padding: '6px',
                                     borderRadius: '50%',
                                     cursor: 'pointer',
-                                    color: showStickers ? 'var(--bs-primary)' : 'var(--bs-secondary-color)',
+                                    color: showStickers ? 'var(--bs-primary)' : 'var(--bs-body-color)',
                                     transition: 'all 0.2s ease',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -419,8 +427,8 @@ export default function ChatPage() {
                             </button>
                         </div>
 
-                        {/* Stickers Panel */}
-                        {showStickers && (
+                        {/* Stickers Panel - Desktop (unchanged) */}
+                        {showStickers && window.innerWidth > 768 && (
                             <div className="stickers-panel" style={{
                                 position: 'absolute',
                                 bottom: '100%',
@@ -429,12 +437,13 @@ export default function ChatPage() {
                                 background: 'var(--bs-body-bg)',
                                 border: '1px solid var(--bs-border-color)',
                                 borderRadius: '16px',
-                                padding: '20px',
+                                padding: '16px',
                                 marginBottom: '12px',
                                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)',
                                 zIndex: 1000,
-                                width: '320px',
-                                maxHeight: '400px',
+                                width: 'min(320px, 90vw)',
+                                maxWidth: '320px',
+                                maxHeight: 'min(400px, 80vh)',
                                 overflowY: 'auto'
                             }}>
                                 <div className="stickers-header" style={{
@@ -454,7 +463,6 @@ export default function ChatPage() {
                                         alignItems: 'center',
                                         gap: '6px'
                                     }}>
-                                        😊
                                         Stickers
                                     </h6>
                                     <button
@@ -465,7 +473,7 @@ export default function ChatPage() {
                                             padding: '6px',
                                             borderRadius: '50%',
                                             cursor: 'pointer',
-                                            color: 'var(--bs-secondary-color)',
+                                            color: 'var(--bs-body-color)',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
@@ -483,9 +491,13 @@ export default function ChatPage() {
                                     </button>
                                 </div>
                                 <div className="stickers-grid" style={{
-                                    display: 'flex',
+                                    display: 'grid',
+                                    gridTemplateColumns: 'repeat(3, 1fr)',
+                                    gap: '8px',
+                                    padding: '12px',
                                     justifyContent: 'center',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    width: '100%'
                                 }}>
                                     {stickers.map((sticker) => (
                                         <button
@@ -502,8 +514,10 @@ export default function ChatPage() {
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
-                                                width: '64px',
-                                                height: '64px',
+                                                width: 'min(72px, 15vw)',
+                                                height: 'min(72px, 15vw)',
+                                                maxWidth: '72px',
+                                                maxHeight: '72px',
                                                 position: 'relative',
                                                 overflow: 'hidden'
                                             }}
@@ -613,6 +627,103 @@ export default function ChatPage() {
                                 >
                                     <BiCheck style={{ fontSize: '28px', marginBottom: '0.1rem', marginRight: '0.1rem' }} />
                                 </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Mobile Stickers Modal Overlay */}
+            {showStickers && window.innerWidth <= 768 && (
+                <div className="modal-overlay" onClick={toggleStickers}>
+                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                        <div className="modal-header">
+                            <h3>
+                                <BiSmile className="me-2" />
+                                Stickers
+                            </h3>
+                            <button
+                                className="modal-close"
+                                onClick={toggleStickers}
+                            >
+                                <BiX />
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="stickers-grid-mobile" style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(3, 1fr)',
+                                gap: '8px',
+                                padding: '16px',
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                {stickers.map((sticker) => (
+                                    <button
+                                        key={sticker.id}
+                                        onClick={() => handleStickerClick(sticker)}
+                                        className="sticker-item-mobile"
+                                        style={{
+                                            background: 'var(--bs-body-bg)',
+                                            border: '2px solid var(--bs-border-color)',
+                                            borderRadius: '12px',
+                                            padding: '6px',
+                                            cursor: 'pointer',
+                                            transition: 'all 0.2s ease',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            width: '80px',
+                                            height: '80px',
+                                            position: 'relative',
+                                            overflow: 'hidden'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.borderColor = 'var(--bs-primary)';
+                                            e.currentTarget.style.transform = 'scale(1.05)';
+                                            e.currentTarget.style.boxShadow = '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.borderColor = 'var(--bs-border-color)';
+                                            e.currentTarget.style.transform = 'scale(1)';
+                                            e.currentTarget.style.boxShadow = 'none';
+                                        }}
+                                        aria-label={`Send ${sticker.alt} sticker`}
+                                        title={`Send ${sticker.alt} sticker`}
+                                    >
+                                        <img
+                                            src={sticker.url}
+                                            alt={sticker.alt}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover',
+                                                borderRadius: '8px',
+                                                display: 'block'
+                                            }}
+                                            loading="lazy"
+                                            onError={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                target.style.display = 'none';
+                                                const fallback = document.createElement('div');
+                                                fallback.style.cssText = `
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    background: var(--bs-secondary-bg);
+                                                    border: 1px solid var(--bs-border-color);
+                                                    border-radius: 8px;
+                                                    display: flex;
+                                                    align-items: center;
+                                                    justify-content: center;
+                                                    font-size: 28px;
+                                                    color: var(--bs-secondary-color);
+                                                `;
+                                                fallback.textContent = '😊';
+                                                target.parentNode?.appendChild(fallback);
+                                            }}
+                                        />
+                                    </button>
+                                ))}
                             </div>
                         </div>
                     </div>
