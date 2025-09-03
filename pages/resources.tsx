@@ -60,7 +60,8 @@ export default function ResourcesPage() {
             呢度你可以搵到所有額外嘅 DSE 資源，包括溫習室位置、獨家優惠、學生折扣、實用工具同網站等等，幫你喺 DSE 考試度攞到好成績！
           </p>
           <hr />
-          <h2 className="text-center">
+          <br></br>
+          <h2 className="text-center" style={{marginTop: '6px'}}>
             溫習室 Study Rooms/Locations
           </h2>
           <hr style={{ marginTop: '-4px', borderWidth: '2px' }} />
@@ -88,8 +89,8 @@ export default function ResourcesPage() {
               </a>
             </div>
           </div>
-          
-          <h2 className="text-center">
+          <br></br>
+          <h2 className="text-center" style={{marginTop: '6px'}}>
             獨家優惠 Exclusive Offers
           </h2>
           <hr style={{ marginTop: '-4px', borderWidth: '2px' }} />
