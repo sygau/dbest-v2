@@ -365,23 +365,23 @@ export default function BlogPreviewPage({ post, error }: PreviewPageProps) {
                 {post.tags && post.tags.length > 0 && (
                   <div className="post-tags d-flex flex-wrap gap-2">
                     {post.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        style={{
-                          display: 'inline-block',
-                          background: 'linear-gradient(90deg, #0d6efd 60%, #0dcaf0 100%)',
-                          color: '#fff',
-                          borderRadius: '999px',
-                          padding: '0.35em 1em',
-                          fontWeight: 500,
-                          fontSize: '1em',
-                          letterSpacing: '0.03em',
-                          boxShadow: '0 1px 6px rgba(13,110,253,0.10)',
-                          border: 'none',
-                          transition: 'background 0.2s',
-                          cursor: 'default',
-                        }}
-                      >
+                                          <span
+                      key={index}
+                      style={{
+                        display: 'inline-block',
+                        background: '#0d6efd',
+                        color: '#fff',
+                        borderRadius: '999px',
+                        padding: '0.35em 1em',
+                        fontWeight: 500,
+                        fontSize: '1em',
+                        letterSpacing: '0.03em',
+                        boxShadow: '0 1px 6px rgba(13,110,253,0.10)',
+                        border: 'none',
+                        transition: 'background 0.2s',
+                        cursor: 'default',
+                      }}
+                    >
                         #{tag}
                       </span>
                     ))}

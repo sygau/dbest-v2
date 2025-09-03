@@ -231,7 +231,7 @@ export default function BlogPost({ post }: BlogPostProps) {
                       key={index}
                       style={{
                         display: 'inline-block',
-                        background: 'linear-gradient(90deg, #0d6efd 60%, #0dcaf0 100%)',
+                        background: '#0d6efd',
                         color: '#fff',
                         borderRadius: '999px',
                         padding: '0.35em 1em',
