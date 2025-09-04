@@ -536,7 +536,7 @@ class DSEChat {
       } else if (isMobile) {
         stickerSize = 60; // Mobile
       } else {
-        stickerSize = 78; // Desktop (user's preferred size)
+        stickerSize = 100; // Desktop (user's preferred size)
       }
       
       stickerImg.style.cssText = `
