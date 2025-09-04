@@ -495,7 +495,8 @@ class DSEChat {
         'heart1': '/assets/stickers/heart1.webp',
         'clap': '/assets/stickers/clap.webp',
         'thumbsup_glasses': '/assets/stickers/thumbsup_glasses.webp',
-        'mh': '/assets/stickers/mh.webp'
+        'mh': '/assets/stickers/mh.webp',
+        'ifc': '/assets/stickers/ifc.webp'
       };
       
       const stickerPath = allowedStickers[stickerName.toLowerCase()];

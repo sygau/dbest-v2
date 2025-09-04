@@ -1,22 +1,10 @@
 const Ably = require('ably');
-
-// Note: Removed all Maps since serverless functions are stateless
-// Data will be lost between function invocations anyway
-
-// Logflare configuration
 const LOGFLARE_API_KEY = '7MnWPFtPMj28';
 const LOGFLARE_SOURCE_ID = '4cd60bba-acd6-4e2b-83f6-0271b53350db';
 const LOGFLARE_ENDPOINT = `https://api.logflare.app/logs?source=${LOGFLARE_SOURCE_ID}`;
 
 // Enhanced logging with Logflare using fetch (optimized for serverless)
 async function logToLogflare(event, metadata = {}) {
-  // Skip logging for high-frequency events in production
-  if (process.env.NODE_ENV === 'production') {
-    const skipEvents = ['connection_attempt', 'token_generated', 'message_sent'];
-    if (skipEvents.includes(event)) {
-      return; // Skip logging for these events to reduce CPU usage
-    }
-  }
 
   if (!LOGFLARE_API_KEY || !LOGFLARE_SOURCE_ID) {
     console.log('LOGFLARE_EVENT:', JSON.stringify({ event, metadata }, null, 2));
@@ -54,7 +42,6 @@ async function logToLogflare(event, metadata = {}) {
     }
   } catch (error) {
     console.error('Failed to log to Logflare:', error.message);
-    // Fallback to console logging
     console.log('LOGFLARE_EVENT:', JSON.stringify({ event, metadata }, null, 2));
   }
 }
@@ -465,13 +452,6 @@ async function moderateUsername(username, clientId, ip, secretmodkey = null, isM
     
     // Hate speech and slurs
     /\b(nigger|faggot|retard|nazi|hitler|chink|gook|spic|wetback|beaner|cracker|honky|kike|jap|raghead|towelhead|sandnigger)\b/i,
-    
-    // Common bypass attempts - more specific patterns
-    /\bf+[u\*\-_]+c+[k\*\-_]+\b/i,
-    /\bs+h+[i\*\-_]+t+\b/i,  // More specific: requires 'h' after 's'
-    /\bb+[i\*\-_]+t+[c\*\-_]+h+\b/i,
-    /\bd+[i\*\-_]+[u\*\-_]+\b/i,
-    /\bp+[o\*\-_]+r+[n\*\-_]+\b/i
   ];
 
   for (const pattern of profanityPatterns) {
@@ -784,7 +764,7 @@ function moderateContent(text, clientId, ip, username, secretmodkey = null, isMo
     // Validate sticker name (allow all available stickers)
     const allowedStickers = [
       'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-      'agree', 'heart1', 'clap', 'thumbsup_glasses', 'mh'
+      'agree', 'heart1', 'clap', 'thumbsup_glasses', 'mh', 'ifc'
     ];
     
     if (!allowedStickers.includes(stickerName.toLowerCase())) {
@@ -1060,22 +1040,6 @@ export default async function handler(req, res) {
     // Note: Removed user tracking since Maps are removed
     // Serverless functions are stateless anyway
     const currentTime = Date.now();
-    const isNewUser = true; // Always treat as new user since no persistence
-    const isUsernameChange = false;
-
-    // Log user join events (simplified since no persistence)
-    if (isNewUser) {
-      await logToLogflare('user_join', {
-        event_type: 'user_join',
-        client_id: cleanClientId,
-        username: cleanUsername,
-        ip_address: ip,
-        device_info: deviceInfo,
-        geography: geoData,
-        user_agent: userAgent,
-        timestamp: new Date().toISOString()
-      });
-    }
 
     // Check if user is banned
     if (isUserBanned(cleanClientId, ip, secretmodkey, isMod)) {
@@ -1641,19 +1605,12 @@ Server Uptime: N/A (serverless)
       // No logging for user leave to reduce CPU overhead
       return res.status(200).json({ status: 'User left successfully' });
     }
-
-    // For token generation
-    if (req.body.action === 'token' || !req.body.action) {
-      // No logging for connection attempts to reduce CPU overhead
-    }
     
     const tokenParams = { clientId: cleanClientId, capability: {
       'dsebest-livechat': ['publish', 'subscribe', 'presence', 'history']
     }};
     const tokenRequest = await ably.auth.createTokenRequest(tokenParams);
-    
-    // No logging for token generation to reduce CPU overhead
-    
+        
     return res.status(200).json(tokenRequest);
 
   } catch (error) {
