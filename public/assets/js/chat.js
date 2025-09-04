@@ -495,8 +495,18 @@ class DSEChat {
         'heart1': '/assets/stickers/heart1.webp',
         'clap': '/assets/stickers/clap.webp',
         'thumbsup_glasses': '/assets/stickers/thumbsup_glasses.webp',
+
         'mh': '/assets/stickers/mh.webp',
-        'ifc': '/assets/stickers/ifc.webp'
+        'ifc': '/assets/stickers/ifc.webp',
+        'middlefinger': '/assets/stickers/middlefinger.webp',
+        'police1': '/assets/stickers/police1.webp',
+        'mh2': '/assets/stickers/mh2.webp',
+        'police2': '/assets/stickers/police2.webp',
+        'jable': '/assets/stickers/jable.webp',
+        'saibou': '/assets/stickers/saibou.webp',
+        'mh3': '/assets/stickers/mh3.webp',
+        'hahah': '/assets/stickers/hahah.webp',
+        'goodmorning': '/assets/stickers/goodmorning.webp'
       };
       
       const stickerPath = allowedStickers[stickerName.toLowerCase()];
@@ -933,7 +943,10 @@ class DSEChat {
       // Validate sticker name (allow all available stickers)
       const allowedStickers = [
         'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-        'agree', 'heart1', 'clap', 'thumbsup_glasses', 'mh'
+        'agree', 'heart1', 'clap', 'thumbsup_glasses',
+        'mh', 'ifc',
+        'middlefinger', 'police1', 'mh2', 'police2',
+        'jable', 'saibou', 'mh3','hahah', 'goodmorning' 
       ];
       
       if (!allowedStickers.includes(stickerName.toLowerCase())) {

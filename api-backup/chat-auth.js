@@ -764,7 +764,11 @@ function moderateContent(text, clientId, ip, username, secretmodkey = null, isMo
     // Validate sticker name (allow all available stickers)
     const allowedStickers = [
       'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-      'agree', 'heart1', 'clap', 'thumbsup_glasses', 'mh', 'ifc'
+      'agree', 'heart1', 'clap', 'thumbsup_glasses', 
+      
+      'mh', 'ifc',
+      'middlefinger', 'police1', 'mh2', 'police2',
+      'jable', 'saibou', 'mh3','hahah', 'goodmorning' 
     ];
     
     if (!allowedStickers.includes(stickerName.toLowerCase())) {
