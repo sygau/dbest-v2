@@ -76,6 +76,48 @@ export default function MathPage() {
                     <LastUpdatedAlert date={lastUpdated} />
                     <br />
                     <hr className="my-4" />
+                    {/* 2025 */}
+                    <h2 style={{ textAlign: "center" }}>2025</h2>
+                    <br />
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Paper 1</h5>
+                                    <p className="card-text">2025 Paper 1</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2025_P1"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Paper 2</h5>
+                                    <p className="card-text">2025 Paper 2</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2025_P2"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className="my-4" />
                     {/* 2024 */}
                     <h2 style={{ textAlign: "center" }}>2024</h2>
                     <br />

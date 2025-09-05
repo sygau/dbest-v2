@@ -36,13 +36,13 @@ const homepageFAQs = [
   },
   {
     id: 'faq2',
-    question: '「dse.life」停咗，點解喺 DSEBest 仲搵到啲文件？',
-    answer: '我哋已經將 <strong>dse.life backup</strong> 嘅所有公開資源妥善備份並整合到 DSEBest，確保同學依然可以免費存取重要嘅 DSE 資料。'
+    question: '「dse.life」停咗服務，點解喺 DSEBest 仍然搵到DSE Life嘅資料？',
+    answer: '我哋已經將 <strong>dse.life backup</strong> 嘅所有公開DSE資源妥善備份並整合到 DSEBest，確保同學依然可以免費存取重要嘅 <strong>DSE歷屆試題</strong>同<strong>DSE Past Paper下載</strong>功能。原有嘅dse.life資源已100%完整保留。'
   },
   {
     id: 'faq3',
-    question: '點樣下載 PDF 試卷同答案？',
-    answer: '喺各科頁面揀選年份後，直接按「下載」或「查看」按鈕即可開啟或下載 PDF 試卷／答案檔案，毋須登入。'
+    question: '點樣下載DSE Past Paper試卷同答案？DSE PP下載係咪免費？',
+    answer: '完全免費！喺各科頁面揀選年份後，直接按「<strong>下載</strong>」或「查看」按鈕即可開啟或<strong>下載DSE試卷</strong>／答案PDF檔案，毋須登入。所有<strong>DSE PP下載</strong>服務完全免費提供。'
   },
   {
     id: 'faq4',

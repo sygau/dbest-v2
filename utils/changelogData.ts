@@ -4,8 +4,8 @@ export interface ChangelogEntry {
 }
 
 export const changelogData: ChangelogEntry = {
-  date: "1/9/2025",
+  date: "6/9/2025",
   changes: [
-    "Cut off for 2025"
+    "2025 Chem, Math, and Chinese pp added"
   ]
 }; 

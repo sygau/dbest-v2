@@ -237,6 +237,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dse.best/math/2025</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dse.best/math/2024</loc>
     <lastmod>2025-08-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -555,6 +561,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dse.best/chemistry/2025</loc>
+    <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dse.best/chemistry/2024</loc>
     <lastmod>2025-08-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -623,6 +635,12 @@
   <url>
     <loc>https://dse.best/chinese/2022</loc>
     <lastmod>2025-08-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/chinese/2025</loc>
+    <lastmod>2025-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
