@@ -524,7 +524,9 @@ export default function ChatPage() {
                                             className="sticker-item"
                                             style={{
                                                 background: 'var(--bs-body-bg)',
-                                                border: '2px solid var(--bs-border-color)',
+                                                border: sticker.id >= 10 && sticker.id <= 20 
+                                                    ? '2px solid gold' 
+                                                    : '2px solid var(--bs-border-color)',
                                                 borderRadius: '12px',
                                                 padding: '6px',
                                                 cursor: 'pointer',
@@ -537,17 +539,26 @@ export default function ChatPage() {
                                                 maxWidth: '72px',
                                                 maxHeight: '72px',
                                                 position: 'relative',
-                                                overflow: 'hidden'
+                                                overflow: 'hidden',
+                                                ...(sticker.id >= 10 && sticker.id <= 20 && {
+                                                    boxShadow: '0 0 8px rgba(255, 215, 0, 0.3)'
+                                                })
                                             }}
                                             onMouseEnter={(e) => {
-                                                e.currentTarget.style.borderColor = 'var(--bs-primary)';
+                                                const isModerator = sticker.id >= 10 && sticker.id <= 20;
+                                                e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-primary)';
                                                 e.currentTarget.style.transform = 'scale(1.05)';
-                                                e.currentTarget.style.boxShadow = '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
+                                                e.currentTarget.style.boxShadow = isModerator 
+                                                    ? '0 4px 16px rgba(255, 215, 0, 0.4)' 
+                                                    : '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
                                             }}
                                             onMouseLeave={(e) => {
-                                                e.currentTarget.style.borderColor = 'var(--bs-border-color)';
+                                                const isModerator = sticker.id >= 10 && sticker.id <= 20;
+                                                e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-border-color)';
                                                 e.currentTarget.style.transform = 'scale(1)';
-                                                e.currentTarget.style.boxShadow = 'none';
+                                                e.currentTarget.style.boxShadow = isModerator 
+                                                    ? '0 0 8px rgba(255, 215, 0, 0.3)' 
+                                                    : 'none';
                                             }}
                                             aria-label={`Send ${sticker.alt} sticker`}
                                             title={`Send ${sticker.alt} sticker`}
@@ -683,7 +694,9 @@ export default function ChatPage() {
                                         className="sticker-item-mobile"
                                         style={{
                                             background: 'var(--bs-body-bg)',
-                                            border: '2px solid var(--bs-border-color)',
+                                            border: sticker.id >= 10 && sticker.id <= 20 
+                                                ? '2px solid gold' 
+                                                : '2px solid var(--bs-border-color)',
                                             borderRadius: '12px',
                                             padding: '6px',
                                             cursor: 'pointer',
@@ -694,17 +707,26 @@ export default function ChatPage() {
                                             width: '80px',
                                             height: '80px',
                                             position: 'relative',
-                                            overflow: 'hidden'
+                                            overflow: 'hidden',
+                                            ...(sticker.id >= 10 && sticker.id <= 20 && {
+                                                boxShadow: '0 0 8px rgba(255, 215, 0, 0.3)'
+                                            })
                                         }}
                                         onMouseEnter={(e) => {
-                                            e.currentTarget.style.borderColor = 'var(--bs-primary)';
+                                            const isModerator = sticker.id >= 10 && sticker.id <= 20;
+                                            e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-primary)';
                                             e.currentTarget.style.transform = 'scale(1.05)';
-                                            e.currentTarget.style.boxShadow = '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
+                                            e.currentTarget.style.boxShadow = isModerator 
+                                                ? '0 4px 16px rgba(255, 215, 0, 0.4)' 
+                                                : '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
                                         }}
                                         onMouseLeave={(e) => {
-                                            e.currentTarget.style.borderColor = 'var(--bs-border-color)';
+                                            const isModerator = sticker.id >= 10 && sticker.id <= 20;
+                                            e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-border-color)';
                                             e.currentTarget.style.transform = 'scale(1)';
-                                            e.currentTarget.style.boxShadow = 'none';
+                                            e.currentTarget.style.boxShadow = isModerator 
+                                                ? '0 0 8px rgba(255, 215, 0, 0.3)' 
+                                                : 'none';
                                         }}
                                         aria-label={`Send ${sticker.alt} sticker`}
                                         title={`Send ${sticker.alt} sticker`}
