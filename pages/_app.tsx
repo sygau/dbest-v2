@@ -283,12 +283,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">數學 Math</div>
               </NavigationLink>
             </li>
-            {/* <li>
-              <Link href="/citizen">
-                <div className="parent-icon"><BiBookReader style={{color: '#8e24aa', fontSize: 24}} /></div>
-                <div className="menu-title">公民</div>
-              </Link>
-            </li> */}
+            <li>
+              <NavigationLink href="/citizen">
+                <div className="parent-icon"><BiGlobe style={{ color: '#28a745', fontSize: 24 }} /></div>
+                <div className="menu-title">公民與社會發展 Citizen and Social Development</div>
+              </NavigationLink>
+            </li>
             <li className="menu-label">選修科目</li>
             <li>
               <NavigationLink href="/physics">
