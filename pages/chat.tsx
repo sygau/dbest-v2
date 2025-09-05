@@ -537,8 +537,9 @@ export default function ChatPage() {
                                                 maxHeight: '72px',
                                                 position: 'relative',
                                                 overflow: 'hidden',
+                                                border: '2px solid var(--bs-border-color)',
                                                 ...(sticker.id >= 10 && sticker.id <= 20 && {
-                                                    boxShadow: '0 0 8px #6b643f33'
+                                                    borderColor: '#625c37 !important',
                                                 })
                                             }}
                                             aria-label={`Send ${sticker.alt} sticker`}
@@ -686,8 +687,10 @@ export default function ChatPage() {
                                             height: '80px',
                                             position: 'relative',
                                             overflow: 'hidden',
+                                            border: '2px solid var(--bs-border-color)',
                                             ...(sticker.id >= 10 && sticker.id <= 20 && {
-                                                boxShadow: '0 0 8px #6b643f33'
+                                                borderColor: '#625c37 !important',
+                                                boxShadow: '0 0 8px #625c3733'
                                             })
                                         }}
                                         aria-label={`Send ${sticker.alt} sticker`}
