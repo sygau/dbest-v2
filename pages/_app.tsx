@@ -268,7 +268,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <li>
               <NavigationLink href="/chinese">
                 <div className="parent-icon"><BiBook style={{ color: '#ff69b4', fontSize: 24 }} /></div>
-                <div className="menu-title">中文</div>
+                <div className="menu-title">中文 Chinese</div>
               </NavigationLink>
             </li>
             <li>
@@ -286,7 +286,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <li>
               <NavigationLink href="/citizen">
                 <div className="parent-icon"><BiGlobe style={{ color: '#28a745', fontSize: 24 }} /></div>
-                <div className="menu-title">公民與社會發展 Citizen and Social Development</div>
+                <div className="menu-title">公民 CSD</div>
               </NavigationLink>
             </li>
             <li className="menu-label">選修科目</li>
