@@ -4128,9 +4128,17 @@ body {
     border-color: var(--bs-border-color) !important;
   }
   
+  [data-bs-theme="blue-theme"] .sticker-item.moderator-sticker {
+    border-color: #625c37 !important;
+  }
+  
   [data-bs-theme="blue-theme"] .sticker-item:hover {
     border-color: var(--bs-primary) !important;
     box-shadow: 0 4px 16px rgba(var(--bs-primary-rgb), 0.2) !important;
+  }
+  
+  [data-bs-theme="blue-theme"] .sticker-item.moderator-sticker:hover {
+    border-color: #625c37 !important;
   }
   
   [data-bs-theme="semi-dark"] .stickers-panel {
