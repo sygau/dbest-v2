@@ -485,7 +485,7 @@ class DSEChat {
       const stickerName = stickerMatch[1];
       
       // Security: Only allow specific local stickers, prevent third-party image injection
-      const allowedStickers = {
+      const regularStickers = {
         'excited': '/assets/stickers/excited.webp',
         'wave': '/assets/stickers/wave.webp',
         'shocked': '/assets/stickers/shocked.webp',
@@ -494,8 +494,11 @@ class DSEChat {
         'agree': '/assets/stickers/agree.webp',
         'heart1': '/assets/stickers/heart1.webp',
         'clap': '/assets/stickers/clap.webp',
-        'thumbsup_glasses': '/assets/stickers/thumbsup_glasses.webp',
+        'thumbsup_glasses': '/assets/stickers/thumbsup_glasses.webp'
+      };
 
+      // Moderator-only stickers (require authentication)
+      const moderatorOnlyStickers = {
         'mh': '/assets/stickers/mh.webp',
         'ifc': '/assets/stickers/ifc.webp',
         'middlefinger': '/assets/stickers/middlefinger.webp',
@@ -508,8 +511,31 @@ class DSEChat {
         'hahah': '/assets/stickers/hahah.webp',
         'goodmorning': '/assets/stickers/goodmorning.webp'
       };
+
+      const stickerNameLower = stickerName.toLowerCase();
+      let stickerPath = null;
+
+      // Check if it's a regular sticker first
+      if (regularStickers[stickerNameLower]) {
+        stickerPath = regularStickers[stickerNameLower];
+      } 
+      // Check if it's a moderator-only sticker and user is authenticated
+      else if (moderatorOnlyStickers[stickerNameLower]) {
+        if (!this.isUserModerator) {
+          // User is not a moderator - reject the sticker and show as text
+          console.warn('Attempted to use moderator-only sticker without permission:', stickerName);
+          textSpan.textContent = `[Moderator Only Sticker: ${stickerName}]`;
+          textSpan.style.color = '#dc3545'; // Red color to indicate restriction
+          textSpan.style.fontStyle = 'italic';
+          bubble.appendChild(textSpan);
+          wrapper.appendChild(bubble);
+          this.chatMessages.appendChild(wrapper);
+          this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+          return;
+        }
+        stickerPath = moderatorOnlyStickers[stickerNameLower];
+      }
       
-      const stickerPath = allowedStickers[stickerName.toLowerCase()];
       if (!stickerPath) {
         // Invalid sticker - show as text
         textSpan.textContent = messageText;
@@ -518,9 +544,7 @@ class DSEChat {
         this.chatMessages.appendChild(wrapper);
         this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         return;
-      }
-      
-      // Create sticker display with local image only
+      }      // Create sticker display with local image only
       const stickerImg = document.createElement('img');
       
       stickerImg.src = stickerPath; // Only our domain sticker allowed
@@ -938,19 +962,33 @@ class DSEChat {
     // Check for sticker format and validate
     const stickerMatch = processedText.match(/^\[([A-Za-z0-9_-]+)\]$/);
     if (stickerMatch) {
-      const stickerName = stickerMatch[1];
+      const stickerName = stickerMatch[1].toLowerCase();
       
-      // Validate sticker name (allow all available stickers)
-      const allowedStickers = [
+      // Define regular and moderator-only stickers
+      const regularStickers = [
         'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-        'agree', 'heart1', 'clap', 'thumbsup_glasses',
-        'mh', 'ifc',
-        'middlefinger', 'police1', 'mh2', 'police2',
-        'jable', 'saibou', 'mh3','hahah', 'goodmorning' 
+        'agree', 'heart1', 'clap', 'thumbsup_glasses'
       ];
       
-      if (!allowedStickers.includes(stickerName.toLowerCase())) {
+      const moderatorOnlyStickers = [
+        'mh', 'ifc', 'middlefinger', 'police1', 'mh2', 'police2',
+        'jable', 'saibou', 'mh3', 'hahah', 'goodmorning'
+      ];
+      
+      // Check if it's a valid sticker
+      const isRegularSticker = regularStickers.includes(stickerName);
+      const isModeratorSticker = moderatorOnlyStickers.includes(stickerName);
+      
+      if (!isRegularSticker && !isModeratorSticker) {
         this.addSystemMessage('Invalid sticker name.');
+        this.isSending = false;
+        this.setInputState(false);
+        return;
+      }
+      
+      // Check moderator authentication for moderator-only stickers
+      if (isModeratorSticker && !this.isUserModerator) {
+        this.addSystemMessage('You do not have permission to use this sticker. Moderator privileges required.');
         this.isSending = false;
         this.setInputState(false);
         return;

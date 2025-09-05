@@ -4082,11 +4082,22 @@ body {
     width: 80px !important;
     height: 80px !important;
   }
+
+  /* Moderator-only sticker styling */
+  .sticker-item.moderator-sticker {
+    border-color: #6b643f !important;
+    box-shadow: 0 0 8px #6b643f33 !important;
+  }
   
   .sticker-item:hover {
     transform: scale(1.05);
     border-color: var(--bs-primary) !important;
     box-shadow: 0 4px 16px rgba(var(--bs-primary-rgb), 0.15) !important;
+  }
+
+  .sticker-item.moderator-sticker:hover {
+    border-color: #6b643f !important;
+    box-shadow: 0 4px 16px #6b643f66 !important;
   }
   
   /* Theme-specific sticker panel styling */
@@ -4301,11 +4312,22 @@ body {
     width: 85px !important;
     height: 85px !important;
   }
+
+  /* Moderator-only mobile sticker styling */
+  .sticker-item-mobile.moderator-sticker {
+    border-color: #6b643f !important;
+    box-shadow: 0 0 8px #6b643f33 !important;
+  }
   
   .sticker-item-mobile:hover {
     transform: scale(1.05);
     border-color: var(--bs-primary) !important;
     box-shadow: 0 4px 16px rgba(var(--bs-primary-rgb), 0.15) !important;
+  }
+
+  .sticker-item-mobile.moderator-sticker:hover {
+    border-color: #6b643f !important;
+    box-shadow: 0 4px 16px #6b643f66 !important;
   }
   
   /* Responsive mobile sticker adjustments */
