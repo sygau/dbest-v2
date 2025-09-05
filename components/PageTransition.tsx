@@ -112,7 +112,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
     }
     
     // Subject index page (e.g., /math, /physics)
-    if (/\/(math|physics|chemistry|biology|english|chinese|history|geography|economics|bafs|ict|m1|m2|chinese-history)$/.test(path)) {
+    if (/\/(math|physics|chemistry|biology|english|chinese|history|geography|economics|bafs|ict|m1|m2|chinese-history|citizen)$/.test(path)) {
       return `
         <div class="card-body p-4">
           <div class="skeleton-heading"></div>

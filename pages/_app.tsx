@@ -34,7 +34,8 @@ import {
   BiLogoInstagram,
   BiPlanet,
   BiMoon,
-  BiDiamond
+  BiDiamond,
+  BiGroup
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import PaceLoader from '../components/PaceLoader'
@@ -359,6 +360,12 @@ export default function App({ Component, pageProps }: AppProps) {
               <NavigationLink href="/ths">
                 <div className="parent-icon"><BiPlanet style={{ color: '#2196f3', fontSize: 24 }} /></div>
                 <div className="menu-title">旅遊與款待 Tourism & Hospitality</div>
+              </NavigationLink>
+            </li>
+            <li>
+              <NavigationLink href="/citizen">
+                <div className="parent-icon"><BiGroup style={{ color: '#ff5722', fontSize: 24 }} /></div>
+                <div className="menu-title">公民與社會發展 Citizen and Social Development</div>
               </NavigationLink>
             </li>
             {/*

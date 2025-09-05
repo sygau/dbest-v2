@@ -131,6 +131,14 @@ const subjectConfigs: Record<string, SubjectSEOConfig> = {
     pageTitle: 'DSE 旅遊與款待 Tourism and Hospitality Studies {year} Past Papers 歷屆試題',
     pageDescriptionEng: 'Browse our complete collection of DSE Tourism and Hospitality Studies {year} past papers, including Paper 1, Paper 2, marking schemes, and performance reports in PDF format. This comprehensive collection serves as essential resources for Hong Kong DSE Tourism and Hospitality Studies exam preparation and revision, covering tourism industry, hospitality management, and related topics.',
     pageDescriptionChi: '瀏覽我們完整的DSE 旅遊與款待 {year} 旅遊與款待歷屆試題合集，包括卷一、卷二、參考答案及考生表現報告等PDF格式文件。這套完整的試題集合是香港中學文憑試旅遊與款待科考試準備及溫習的重要資源，涵蓋旅遊業、款待業管理等核心課題。'
+  },
+  citizen: {
+    seoTitle: 'DSE 公民與社會發展 Citizenship and Social Development {year} Past Papers | Paper 1, Paper 2, Answers',
+    seoDescription: 'Download DSE 公民與社會發展 Citizenship and Social Development {year} past papers, including Paper 1, Paper 2, answers, and marking schemes in PDF format. Essential resources for Hong Kong DSE Citizenship and Social Development exam preparation and revision, covering Hong Kong under "One Country, Two Systems", China since reform and opening-up, and the interconnected world to help you master DSE Citizenship concepts and achieve excellent results in your examination.',
+    isDualLang: false,
+    pageTitle: 'DSE 公民與社會發展 Citizenship and Social Development {year} Past Papers 歷屆試題',
+    pageDescriptionEng: 'Browse our complete collection of DSE Citizenship and Social Development {year} past papers, including Paper 1, Paper 2, marking schemes, and performance reports in PDF format. This comprehensive collection serves as essential resources for Hong Kong DSE Citizenship and Social Development exam preparation and revision, covering Hong Kong under "One Country, Two Systems", China since reform and opening-up, and the interconnected world.',
+    pageDescriptionChi: '瀏覽我們完整的DSE 公民與社會發展 {year} 公民與社會發展歷屆試題合集，包括卷一、卷二、參考答案及考生表現報告等PDF格式文件。這套完整的試題集合是香港中學文憑試公民與社會發展科考試準備及溫習的重要資源，涵蓋「一國兩制」下的香港、改革開放以來的國家、互聯相依的當代世界等核心課題。'
   }
 };
 

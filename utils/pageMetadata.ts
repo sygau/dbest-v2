@@ -166,7 +166,7 @@ export const subjectMetadata: Record<string, PageMetadata> = {
   "citizen": {
     "title": "DSE 公民與社會發展 Citizenship and Social Development Past Paper | 歷屆試題及答案",
     "description": "下載DSE公民與社會發展科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供完整試卷。",
-    "robots": "noindex, nofollow",
+    "robots": "index, follow",
     "ogTitle": "DSE 公民與社會發展 歷屆試題 Past Papers | 公民科試卷及答案",
     "ogDescription": "下載DSE公民與社會發展科歷屆試題、答案及考生表現，全面掌握考試趨勢，提升應考實力。免費提供完整試卷。",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",

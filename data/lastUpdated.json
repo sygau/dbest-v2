@@ -59,9 +59,13 @@
     "ths": {
       "index": "31/8/2025",
       "yearSlug": "31/8/2025"
+    },
+    "citizen": {
+      "index": "6/9/2025",
+      "yearSlug": "6/9/2025"
     }
   },
   "other": {
-    "citizen": "1/7/2025"
+    "citizen": "6/9/2025"
   }
 } 

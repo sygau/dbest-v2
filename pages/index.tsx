@@ -180,6 +180,17 @@ export default function HomePage() {
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>
+
+            {/* Citizenship and Social Development */}
+            <div className="col">
+              <UnifiedSubjectCard
+                title="公民與社會發展 Citizenship"
+                href="/citizen"
+                icon={<BiGlobe style={{ color: '#28a745', fontSize: 40 }} />}
+                accent="#28a745"
+                details={[{ label: '年份', value: '2024' }, { label: '語言', value: '中' }]}
+              />
+            </div>
           </div>
 
           {/* Electives Section */}
