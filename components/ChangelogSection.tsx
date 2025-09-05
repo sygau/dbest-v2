@@ -16,12 +16,12 @@ export default function ChangelogSection({ date, changes }: ChangelogSectionProp
                 Changelog / 更新日誌
               </h3>
               <div className="changelog-entry">
-                <div className="fw-bold text-primary mb-2">{date}</div>
-                <ul className="list-unstyled mb-0">
+                <div className="fw-bold text-primary mb-2 text-center">{date}</div>
+                <div className="text-center">
                   {changes.map((change, index) => (
-                    <li key={index}>• {change}</li>
+                    <p key={index} className="mb-2">{change}</p>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </div>

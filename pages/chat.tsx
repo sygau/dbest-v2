@@ -50,6 +50,24 @@ export default function ChatPage() {
         { id: 9, url: '/assets/stickers/thumbsup_glasses.webp', alt: 'thumbsup_glasses' }
     ]);
 
+    // Moderator-only stickers that show up in popup for moderators
+    const moderatorStickers = [
+        { id: 10, url: '/assets/stickers/mh.webp', alt: 'mh' },
+        { id: 11, url: '/assets/stickers/ifc.webp', alt: 'ifc' },
+        { id: 12, url: '/assets/stickers/middlefinger.webp', alt: 'middlefinger' },
+        { id: 13, url: '/assets/stickers/police1.webp', alt: 'police1' },
+        { id: 14, url: '/assets/stickers/mh2.webp', alt: 'mh2' },
+        { id: 15, url: '/assets/stickers/police2.webp', alt: 'police2' },
+        { id: 16, url: '/assets/stickers/jable.webp', alt: 'jable' },
+        { id: 17, url: '/assets/stickers/saibou.webp', alt: 'saibou' },
+        { id: 18, url: '/assets/stickers/mh3.webp', alt: 'mh3' },
+        { id: 19, url: '/assets/stickers/hahah.webp', alt: 'hahah' },
+        { id: 20, url: '/assets/stickers/goodmorning.webp', alt: 'goodmorning' }
+    ];
+
+    // Combined stickers array - shows moderator stickers only if user is moderator
+    const allStickers = isModerator ? [...stickers, ...moderatorStickers] : stickers;
+
     const handleCloseRules = () => {
         setIsClosingRules(true);
         setTimeout(() => {
@@ -499,7 +517,7 @@ export default function ChatPage() {
                                     alignItems: 'center',
                                     width: '100%'
                                 }}>
-                                    {stickers.map((sticker) => (
+                                    {allStickers.map((sticker) => (
                                         <button
                                             key={sticker.id}
                                             onClick={() => handleStickerClick(sticker)}
@@ -658,7 +676,7 @@ export default function ChatPage() {
                                 justifyContent: 'center',
                                 alignItems: 'center'
                             }}>
-                                {stickers.map((sticker) => (
+                                {allStickers.map((sticker) => (
                                     <button
                                         key={sticker.id}
                                         onClick={() => handleStickerClick(sticker)}
