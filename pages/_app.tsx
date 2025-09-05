@@ -362,12 +362,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">旅遊與款待 Tourism & Hospitality</div>
               </NavigationLink>
             </li>
-            <li>
-              <NavigationLink href="/citizen">
-                <div className="parent-icon"><BiGroup style={{ color: '#ff5722', fontSize: 24 }} /></div>
-                <div className="menu-title">公民與社會發展 Citizen and Social Development</div>
-              </NavigationLink>
-            </li>
             {/*
             <li>
               <a href="/visual-arts">
