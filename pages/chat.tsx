@@ -525,7 +525,7 @@ export default function ChatPage() {
                                             style={{
                                                 background: 'var(--bs-body-bg)',
                                                 border: sticker.id >= 10 && sticker.id <= 20 
-                                                    ? '2px solid gold' 
+                                                    ? '2px solid #6b643f' 
                                                     : '2px solid var(--bs-border-color)',
                                                 borderRadius: '12px',
                                                 padding: '6px',
@@ -541,23 +541,23 @@ export default function ChatPage() {
                                                 position: 'relative',
                                                 overflow: 'hidden',
                                                 ...(sticker.id >= 10 && sticker.id <= 20 && {
-                                                    boxShadow: '0 0 8px rgba(255, 215, 0, 0.3)'
+                                                    boxShadow: '0 0 8px #6b643f33'
                                                 })
                                             }}
                                             onMouseEnter={(e) => {
                                                 const isModerator = sticker.id >= 10 && sticker.id <= 20;
-                                                e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-primary)';
+                                                e.currentTarget.style.borderColor = isModerator ? '#6b643f' : 'var(--bs-primary)';
                                                 e.currentTarget.style.transform = 'scale(1.05)';
                                                 e.currentTarget.style.boxShadow = isModerator 
-                                                    ? '0 4px 16px rgba(255, 215, 0, 0.4)' 
+                                                    ? '0 4px 16px #6b643f66' 
                                                     : '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
                                             }}
                                             onMouseLeave={(e) => {
                                                 const isModerator = sticker.id >= 10 && sticker.id <= 20;
-                                                e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-border-color)';
+                                                e.currentTarget.style.borderColor = isModerator ? '#6b643f' : 'var(--bs-border-color)';
                                                 e.currentTarget.style.transform = 'scale(1)';
                                                 e.currentTarget.style.boxShadow = isModerator 
-                                                    ? '0 0 8px rgba(255, 215, 0, 0.3)' 
+                                                    ? '0 0 8px #6b643f33' 
                                                     : 'none';
                                             }}
                                             aria-label={`Send ${sticker.alt} sticker`}
@@ -695,7 +695,7 @@ export default function ChatPage() {
                                         style={{
                                             background: 'var(--bs-body-bg)',
                                             border: sticker.id >= 10 && sticker.id <= 20 
-                                                ? '2px solid gold' 
+                                                ? '2px solid #6b643f' 
                                                 : '2px solid var(--bs-border-color)',
                                             borderRadius: '12px',
                                             padding: '6px',
@@ -709,23 +709,23 @@ export default function ChatPage() {
                                             position: 'relative',
                                             overflow: 'hidden',
                                             ...(sticker.id >= 10 && sticker.id <= 20 && {
-                                                boxShadow: '0 0 8px rgba(255, 215, 0, 0.3)'
+                                                boxShadow: '0 0 8px #6b643f33'
                                             })
                                         }}
                                         onMouseEnter={(e) => {
                                             const isModerator = sticker.id >= 10 && sticker.id <= 20;
-                                            e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-primary)';
+                                            e.currentTarget.style.borderColor = isModerator ? '#6b643f' : 'var(--bs-primary)';
                                             e.currentTarget.style.transform = 'scale(1.05)';
                                             e.currentTarget.style.boxShadow = isModerator 
-                                                ? '0 4px 16px rgba(255, 215, 0, 0.4)' 
+                                                ? '0 4px 16px #6b643f66' 
                                                 : '0 4px 16px rgba(var(--bs-primary-rgb), 0.15)';
                                         }}
                                         onMouseLeave={(e) => {
                                             const isModerator = sticker.id >= 10 && sticker.id <= 20;
-                                            e.currentTarget.style.borderColor = isModerator ? 'gold' : 'var(--bs-border-color)';
+                                            e.currentTarget.style.borderColor = isModerator ? '#6b643f' : 'var(--bs-border-color)';
                                             e.currentTarget.style.transform = 'scale(1)';
                                             e.currentTarget.style.boxShadow = isModerator 
-                                                ? '0 0 8px rgba(255, 215, 0, 0.3)' 
+                                                ? '0 0 8px #6b643f33' 
                                                 : 'none';
                                         }}
                                         aria-label={`Send ${sticker.alt} sticker`}
