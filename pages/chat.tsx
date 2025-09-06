@@ -74,8 +74,8 @@ export default function ChatPage() {
         { id: 29, url: '/assets/stickers/red.webp', alt: 'red' }
     ];
 
-    // Combined stickers array - shows moderator stickers only if user is moderator
-    const allStickers = isModerator ? [...stickers, ...moderatorStickers] : stickers;
+    // Combined stickers array - shows ALL stickers to everyone, but moderator stickers can only be sent by mods
+    const allStickers = [...stickers, ...moderatorStickers];
 
     const handleCloseRules = () => {
         setIsClosingRules(true);
@@ -111,6 +111,13 @@ export default function ChatPage() {
         // Validate sticker data
         if (!sticker || !sticker.alt) {
             console.error('Invalid sticker data:', sticker);
+            return;
+        }
+        
+        // Check if this is a moderator-only sticker (IDs 10-29) and user is not a moderator
+        if (sticker.id >= 10 && sticker.id <= 29 && !isModerator) {
+            console.log('Non-moderator attempted to use moderator-only sticker:', sticker.alt);
+            // You can add a visual feedback here if needed (like a toast message)
             return;
         }
         
@@ -535,7 +542,7 @@ export default function ChatPage() {
                                                 background: 'var(--bs-body-bg)',
                                                 borderRadius: '12px',
                                                 padding: '6px',
-                                                cursor: 'pointer',
+                                                cursor: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 'not-allowed' : 'pointer',
                                                 transition: 'all 0.2s ease',
                                                 display: 'flex',
                                                 alignItems: 'center',
@@ -547,12 +554,13 @@ export default function ChatPage() {
                                                 position: 'relative',
                                                 overflow: 'hidden',
                                                 border: '2px solid var(--bs-border-color)',
+                                                opacity: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 0.5 : 1,
                                                 ...(sticker.id >= 10 && sticker.id <= 29 && {
                                                     borderColor: '#625c37 !important',
                                                 })
                                             }}
                                             aria-label={`Send ${sticker.alt} sticker`}
-                                            title={`Send ${sticker.alt} sticker`}
+                                            title={sticker.id >= 10 && sticker.id <= 29 && !isModerator ? `${sticker.alt} sticker (Moderator only)` : `Send ${sticker.alt} sticker`}
                                         >
                                             <img
                                                 src={sticker.url}
@@ -687,7 +695,7 @@ export default function ChatPage() {
                                             background: 'var(--bs-body-bg)',
                                             borderRadius: '12px',
                                             padding: '6px',
-                                            cursor: 'pointer',
+                                            cursor: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 'not-allowed' : 'pointer',
                                             transition: 'all 0.2s ease',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -697,13 +705,14 @@ export default function ChatPage() {
                                             position: 'relative',
                                             overflow: 'hidden',
                                             border: '2px solid var(--bs-border-color)',
+                                            opacity: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 0.5 : 1,
                                             ...(sticker.id >= 10 && sticker.id <= 29 && {
                                                 borderColor: '#625c37 !important',
                                                 boxShadow: '0 0 8px #625c3733'
                                             })
                                         }}
                                         aria-label={`Send ${sticker.alt} sticker`}
-                                        title={`Send ${sticker.alt} sticker`}
+                                        title={sticker.id >= 10 && sticker.id <= 29 && !isModerator ? `${sticker.alt} sticker (Moderator only)` : `Send ${sticker.alt} sticker`}
                                     >
                                         <img
                                             src={sticker.url}
