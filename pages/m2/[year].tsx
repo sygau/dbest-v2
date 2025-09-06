@@ -162,7 +162,7 @@ export default function M2YearPage({ subject, year, papers, availableFiles }: Ye
           <div className="mt-5 text-center">
             <h3 className="mb-4">Other Years</h3>
             <div className="d-flex flex-wrap justify-content-center gap-2">
-              {[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023].map((yearNum) => {
+              {[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025,].map((yearNum) => {
                 const isCurrentYear = yearNum === parseInt(year);
                 return (
                   <NavigationLink
