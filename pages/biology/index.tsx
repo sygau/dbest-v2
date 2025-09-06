@@ -126,6 +126,24 @@ export default function BiologyPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">Paper 1</h5>
+                                    <p className="card-text">2024 Paper 1 (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2024_p1_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
                                     <p className="card-text">2024 Paper 2 (English)</p>
                                 </div>

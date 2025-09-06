@@ -118,6 +118,32 @@ export default function PhysicsPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    
+                    {/* 2024 */}
+                    <h2 style={{ textAlign: "center" }}>2024</h2>
+                    <br />
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {/* English */}
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Paper 1A</h5>
+                                    <p className="card-text">2024 Paper 1A (English)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2024_p1a_eng"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className="my-4" />
                     {/* 2023 */}
                     <h2 style={{ textAlign: "center" }}>2023</h2>
                     <br />
