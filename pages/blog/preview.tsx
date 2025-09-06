@@ -7,9 +7,6 @@ import { createClient } from 'contentful'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 
-// Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'experimental-edge'
-
 interface BlogPost {
   id: string
   slug: string
@@ -233,11 +230,43 @@ export default function BlogPreviewPage({ post, error }: PreviewPageProps) {
 
   if (error) {
     return (
-      <div className="container-xxl flex-grow-1 container-p-y">
-        <div className="alert alert-danger">
-          <strong>Error:</strong> {error}
+      <>
+        <Head>
+          <title>Preview Error | DSEBest</title>
+          <meta name="robots" content="noindex, nofollow" />
+        </Head>
+        <div className="container-xxl flex-grow-1 container-p-y">
+          <div className="row justify-content-center">
+            <div className="col-md-8 col-lg-6">
+              <div className="card rounded-4">
+                <div className="card-body text-center p-5">
+                  <div className="mb-4">
+                    <div className="display-1 text-danger">⚠️</div>
+                  </div>
+                  <h1 className="h3 mb-3">Preview Error</h1>
+                  <div className="alert alert-danger">
+                    <strong>Error:</strong> {error}
+                  </div>
+                  <p className="text-muted mb-4">
+                    There was an issue loading the preview content. This doesn't affect the live site.
+                  </p>
+                  <div className="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <button 
+                      onClick={() => router.back()} 
+                      className="btn btn-primary"
+                    >
+                      Go Back
+                    </button>
+                    <NavigationLink href="/blog" className="btn btn-outline-primary">
+                      View Blog
+                    </NavigationLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 
@@ -457,70 +486,130 @@ export default function BlogPreviewPage({ post, error }: PreviewPageProps) {
 
 // SSR function to fetch Contentful data
 export async function getServerSideProps(context: any) {
-  const { slug, secret } = context.query
-
-  // Validate secret
-  if (secret !== process.env.PREVIEW_SECRET) {
-    return {
-      notFound: true
-    }
-  }
-
-  if (!slug || typeof slug !== 'string') {
-    return {
-      props: {
-        error: 'Missing slug parameter'
-      }
-    }
-  }
-
+  // Wrap everything in a try-catch to prevent site crashes
   try {
+    // Add safety check for environment variables early
     const space = process.env.CONTENTFUL_SPACE_ID || process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
     const environment = process.env.CONTENTFUL_ENVIRONMENT || 'master'
     const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN
+    const previewSecret = process.env.PREVIEW_SECRET
 
+    // Log for debugging (remove in production)
+    console.log('Preview environment check:', {
+      hasSpace: !!space,
+      hasPreviewToken: !!previewToken,
+      hasPreviewSecret: !!previewSecret,
+      environment
+    })
+
+    const { slug, secret } = context.query
+
+    // If preview is not configured, return a friendly error instead of crashing
+    if (!previewSecret) {
+      console.warn('Preview mode is not configured - PREVIEW_SECRET missing')
+      return {
+        redirect: {
+          destination: '/blog',
+          permanent: false
+        }
+      }
+    }
+
+    // Validate secret
+    if (secret !== previewSecret) {
+      console.warn('Invalid preview secret provided')
+      return {
+        notFound: true
+      }
+    }
+
+    if (!slug || typeof slug !== 'string') {
+      return {
+        props: {
+          error: 'Missing slug parameter'
+        }
+      }
+    }
+
+    // Check if Contentful preview is configured
     if (!space || !previewToken) {
+      console.error('Contentful preview environment not configured properly')
       return {
         props: {
-          error: 'Contentful preview environment not configured'
+          error: 'Preview mode is not available - missing Contentful configuration'
         }
       }
     }
 
-    const client = createClient({
-      space,
-      environment,
-      accessToken: previewToken,
-      host: 'preview.contentful.com'
-    })
+    try {
+      // Add timeout to prevent hanging requests
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('Request timeout')), 10000) // 10 second timeout
+      })
 
-    const response = await client.getEntries({
-      content_type: 'blogPost',
-      limit: 1,
-      include: 1,
-      'fields.slug': slug
-    })
+      const client = createClient({
+        space,
+        environment,
+        accessToken: previewToken,
+        host: 'preview.contentful.com'
+      })
 
-    if (!response.items.length) {
+      const apiCall = client.getEntries({
+        content_type: 'blogPost',
+        limit: 1,
+        include: 1,
+        'fields.slug': slug
+      })
+
+      // Race between API call and timeout
+      const response = await Promise.race([apiCall, timeoutPromise]) as any
+
+      if (!response.items || !response.items.length) {
+        return {
+          props: {
+            error: 'Post not found in preview'
+          }
+        }
+      }
+
+      const post = transformPost(response.items[0])
+
       return {
         props: {
-          error: 'Post not found'
+          post
+        }
+      }
+    } catch (error: any) {
+      console.error('Preview error:', error)
+      
+      // Return user-friendly error messages
+      let errorMessage = 'Failed to load preview content'
+      
+      if (error.message === 'Request timeout') {
+        errorMessage = 'Preview request timed out. Please try again.'
+      } else if (error.message && error.message.includes('401')) {
+        errorMessage = 'Preview access denied. Check your Contentful preview token.'
+      } else if (error.message && error.message.includes('404')) {
+        errorMessage = 'Content not found in preview.'
+      } else if (error.message && error.message.includes('network')) {
+        errorMessage = 'Network error. Please check your connection and try again.'
+      }
+
+      return {
+        props: {
+          error: errorMessage
         }
       }
     }
-
-    const post = transformPost(response.items[0])
-
+  } catch (criticalError: any) {
+    // This catches any unexpected errors that could crash the site
+    console.error('Critical preview error:', criticalError)
+    
+    // Redirect to safety page instead of crashing
     return {
-      props: {
-        post
-      }
-    }
-  } catch (error: any) {
-    console.error('Preview error:', error)
-    return {
-      props: {
-        error: error?.message || 'Failed to load preview content'
+      redirect: {
+        destination: '/blog',
+        permanent: false
       }
     }
   }
