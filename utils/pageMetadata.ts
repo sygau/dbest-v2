@@ -134,17 +134,17 @@ export const subjectMetadata: Record<string, PageMetadata> = {
     "ogType": "website"
   },
   "math": {
-    "title": "DSE 數學 Mathematics Past Paper",
+    "title": "DSE 數學 Mathematics Past Paper | Paper 1, Paper 2, Answers/Marking Scheme",
     "description": "DSE 數學 Mathematics Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
     "robots": "index, follow",
-    "ogTitle": "HKDSE 數學 Mathematics Past Paper",
-    "ogDescription": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
+    "ogTitle": "DSE 數學 Mathematics 歷屆試題 Past Papers | 數學試卷及答案",
+    "ogDescription": "DSE 數學 Mathematics Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/math",
     "ogType": "website"
   },
   "physics": {
-    "title": "DSE 物理 Physics Past Paper",
+    "title": "DSE 物理 Physics Past Paper | Paper 1, Paper 2, Answers/Marking Scheme",
     "description": "DSE 物理 Physics Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
     "robots": "index, follow",
     "ogTitle": "DSE 物理 Physics 歷屆試題 Past Papers | 物理試卷及答案",

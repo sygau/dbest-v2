@@ -768,7 +768,9 @@ function moderateContent(text, clientId, ip, username, secretmodkey = null, isMo
       
       'mh', 'ifc',
       'middlefinger', 'police1', 'mh2', 'police2',
-      'jable', 'saibou', 'mh3','hahah', 'goodmorning' 
+      'jable', 'saibou', 'mh3','hahah', 'goodmorning',
+      'a_clap', 'a_laugh', 'a_pc', 'job',
+      'a_hammer', 'a_hellnah', 'a_juggle', 'a_wave', 'red'
     ];
     
     if (!allowedStickers.includes(stickerName.toLowerCase())) {

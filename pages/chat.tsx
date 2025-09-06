@@ -62,7 +62,16 @@ export default function ChatPage() {
         { id: 17, url: '/assets/stickers/saibou.webp', alt: 'saibou' },
         { id: 18, url: '/assets/stickers/mh3.webp', alt: 'mh3' },
         { id: 19, url: '/assets/stickers/hahah.webp', alt: 'hahah' },
-        { id: 20, url: '/assets/stickers/goodmorning.webp', alt: 'goodmorning' }
+        { id: 20, url: '/assets/stickers/goodmorning.webp', alt: 'goodmorning' },
+        { id: 21, url: '/assets/stickers/a_clap.webp', alt: 'a_clap' },
+        { id: 22, url: '/assets/stickers/a_laugh.webp', alt: 'a_laugh' },
+        { id: 23, url: '/assets/stickers/a_pc.webp', alt: 'a_pc' },
+        { id: 24, url: '/assets/stickers/job.webp', alt: 'job' },
+        { id: 25, url: '/assets/stickers/a_hammer.webp', alt: 'a_hammer' },
+        { id: 26, url: '/assets/stickers/a_hellnah.webp', alt: 'a_hellnah' },
+        { id: 27, url: '/assets/stickers/a_juggle.webp', alt: 'a_juggle' },
+        { id: 28, url: '/assets/stickers/a_wave.webp', alt: 'a_wave' },
+        { id: 29, url: '/assets/stickers/red.webp', alt: 'red' }
     ];
 
     // Combined stickers array - shows moderator stickers only if user is moderator
@@ -521,7 +530,7 @@ export default function ChatPage() {
                                         <button
                                             key={sticker.id}
                                             onClick={() => handleStickerClick(sticker)}
-                                            className={`sticker-item ${sticker.id >= 10 && sticker.id <= 20 ? 'moderator-sticker' : ''}`}
+                                            className={`sticker-item ${sticker.id >= 10 && sticker.id <= 29 ? 'moderator-sticker' : ''}`}
                                             style={{
                                                 background: 'var(--bs-body-bg)',
                                                 borderRadius: '12px',
@@ -538,7 +547,7 @@ export default function ChatPage() {
                                                 position: 'relative',
                                                 overflow: 'hidden',
                                                 border: '2px solid var(--bs-border-color)',
-                                                ...(sticker.id >= 10 && sticker.id <= 20 && {
+                                                ...(sticker.id >= 10 && sticker.id <= 29 && {
                                                     borderColor: '#625c37 !important',
                                                 })
                                             }}
@@ -673,7 +682,7 @@ export default function ChatPage() {
                                     <button
                                         key={sticker.id}
                                         onClick={() => handleStickerClick(sticker)}
-                                        className={`sticker-item-mobile ${sticker.id >= 10 && sticker.id <= 20 ? 'moderator-sticker' : ''}`}
+                                        className={`sticker-item-mobile ${sticker.id >= 10 && sticker.id <= 29 ? 'moderator-sticker' : ''}`}
                                         style={{
                                             background: 'var(--bs-body-bg)',
                                             borderRadius: '12px',
@@ -688,7 +697,7 @@ export default function ChatPage() {
                                             position: 'relative',
                                             overflow: 'hidden',
                                             border: '2px solid var(--bs-border-color)',
-                                            ...(sticker.id >= 10 && sticker.id <= 20 && {
+                                            ...(sticker.id >= 10 && sticker.id <= 29 && {
                                                 borderColor: '#625c37 !important',
                                                 boxShadow: '0 0 8px #625c3733'
                                             })

@@ -68,7 +68,16 @@ class DSEChat {
         'saibou': '/assets/stickers/saibou.webp',
         'mh3': '/assets/stickers/mh3.webp',
         'hahah': '/assets/stickers/hahah.webp',
-        'goodmorning': '/assets/stickers/goodmorning.webp'
+        'goodmorning': '/assets/stickers/goodmorning.webp',
+        'a_clap': '/assets/stickers/a_clap.webp',
+        'a_laugh': '/assets/stickers/a_laugh.webp',
+        'a_pc': '/assets/stickers/a_pc.webp',
+        'job': '/assets/stickers/job.webp',
+        'a_hammer': '/assets/stickers/a_hammer.webp',
+        'a_hellnah': '/assets/stickers/a_hellnah.webp',
+        'a_juggle': '/assets/stickers/a_juggle.webp',
+        'a_wave': '/assets/stickers/a_wave.webp',
+        'red': '/assets/stickers/red.webp'
       }
     };
   }
