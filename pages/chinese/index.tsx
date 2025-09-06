@@ -310,6 +310,24 @@ export default function ChinesePage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一 閱讀</h5>
+                                    <p className="card-text">2025 試卷一</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2025_P1"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">卷二 寫作</h5>
                                     <p className="card-text">2025 試卷二</p>
                                 </div>
