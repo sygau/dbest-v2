@@ -4,9 +4,12 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import fs from 'fs'
 import path from 'path'
 import NavigationLink from '../../components/NavigationLink'
-import { generateYearMeta } from '../../utils/yearSlugSEO';
+import { generateYearMeta } from '../../utils/yearSlugSEO'
 import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
+
+// Available years for this subject
+const AVAILABLE_YEARS = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
 
 // Define types
 interface YearPageProps {
@@ -217,7 +220,8 @@ export default function GeographyYearPage({ subject, year, papers, availableFile
           <div className="mt-5 text-center">
             <h3 className="mb-4">其他年份 / Other Years</h3>
             <div className="d-flex flex-wrap justify-content-center gap-2">
-              {[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023].map((yearNum) => {
+              {AVAILABLE_YEARS.map((yearStr) => {
+                const yearNum = parseInt(yearStr);
                 const isCurrentYear = yearNum === parseInt(year);
                 return (
                   <NavigationLink
@@ -308,9 +312,7 @@ export default function GeographyYearPage({ subject, year, papers, availableFile
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const years = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
-
-  const paths = years.map((year) => ({
+  const paths = AVAILABLE_YEARS.map((year) => ({
     params: { year }
   }));
 

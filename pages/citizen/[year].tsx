@@ -8,6 +8,9 @@ import { generateYearMeta } from '../../utils/yearSlugSEO'
 import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
+// Available years for this subject
+const AVAILABLE_YEARS = ['2024'];
+
 // Define types
 interface YearPageProps {
   subject: string;
@@ -159,8 +162,9 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
             <div className="col-12">
               <h3 className="mb-4">其他年份</h3>
               <div className="d-flex flex-wrap gap-2 mb-4">
-                {['2024'].map((yearNum) => {
-                  const isCurrentYear = yearNum === year;
+                {AVAILABLE_YEARS.map((yearStr) => {
+                  const yearNum = parseInt(yearStr);
+                  const isCurrentYear = yearNum === parseInt(year);
                   return (
                     <NavigationLink
                       key={yearNum}
@@ -239,9 +243,7 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const years = ['2024'];
-
-  const paths = years.map((year) => ({
+  const paths = AVAILABLE_YEARS.map((year) => ({
     params: { year }
   }));
 

@@ -61,7 +61,7 @@ export default function ResourcesPage() {
           </p>
           <hr />
           <br></br>
-          <h2 className="text-center" style={{marginTop: '6px'}}>
+          {/* <h2 className="text-center" style={{marginTop: '6px'}}>
             溫習室 Study Rooms/Locations
           </h2>
           <hr style={{ marginTop: '-4px', borderWidth: '2px' }} />
@@ -88,7 +88,7 @@ export default function ResourcesPage() {
                 🗺️ 查看地圖 View Maps
               </a>
             </div>
-          </div>
+          </div> */}
           <br></br>
           <h2 className="text-center" style={{marginTop: '6px'}}>
             獨家優惠 Exclusive Offers
