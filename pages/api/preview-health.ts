@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+// Edge Runtime configuration for Cloudflare Pages
+export const runtime = 'experimental-edge'
+
 interface HealthResponse {
   status: 'ok' | 'error'
   preview: {
@@ -17,10 +20,19 @@ export default function handler(
     const errors: string[] = []
     let configured = true
 
+    // Safe environment variable access for Edge Runtime
+    const getEnvVar = (name: string) => {
+      try {
+        return process.env[name] || null
+      } catch {
+        return null
+      }
+    }
+
     // Check required environment variables
-    const space = process.env.CONTENTFUL_SPACE_ID || process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
-    const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN
-    const previewSecret = process.env.PREVIEW_SECRET
+    const space = getEnvVar('CONTENTFUL_SPACE_ID') || getEnvVar('NEXT_PUBLIC_CONTENTFUL_SPACE_ID')
+    const previewToken = getEnvVar('CONTENTFUL_PREVIEW_TOKEN')
+    const previewSecret = getEnvVar('PREVIEW_SECRET')
 
     if (!space) {
       errors.push('CONTENTFUL_SPACE_ID not configured')

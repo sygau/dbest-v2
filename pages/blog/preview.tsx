@@ -7,6 +7,9 @@ import { createClient } from 'contentful'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import { BLOCKS, INLINES } from '@contentful/rich-text-types'
 
+// Edge Runtime configuration for Cloudflare Pages (required)
+export const runtime = 'experimental-edge'
+
 interface BlogPost {
   id: string
   slug: string
@@ -488,13 +491,22 @@ export default function BlogPreviewPage({ post, error }: PreviewPageProps) {
 export async function getServerSideProps(context: any) {
   // Wrap everything in a try-catch to prevent site crashes
   try {
-    // Add safety check for environment variables early
-    const space = process.env.CONTENTFUL_SPACE_ID || process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID
-    const environment = process.env.CONTENTFUL_ENVIRONMENT || 'master'
-    const previewToken = process.env.CONTENTFUL_PREVIEW_TOKEN
-    const previewSecret = process.env.PREVIEW_SECRET
+    // Safe environment variable access for Edge Runtime
+    const getEnvVar = (name: string) => {
+      try {
+        return process.env[name] || null
+      } catch {
+        return null
+      }
+    }
 
-    // Log for debugging (remove in production)
+    // Add safety check for environment variables early
+    const space = getEnvVar('CONTENTFUL_SPACE_ID') || getEnvVar('NEXT_PUBLIC_CONTENTFUL_SPACE_ID')
+    const environment = getEnvVar('CONTENTFUL_ENVIRONMENT') || 'master'
+    const previewToken = getEnvVar('CONTENTFUL_PREVIEW_TOKEN')
+    const previewSecret = getEnvVar('PREVIEW_SECRET')
+
+    // Log for debugging (Edge Runtime safe)
     console.log('Preview environment check:', {
       hasSpace: !!space,
       hasPreviewToken: !!previewToken,
@@ -502,7 +514,7 @@ export async function getServerSideProps(context: any) {
       environment
     })
 
-    const { slug, secret } = context.query
+    const { slug, secret } = context.query || {}
 
     // If preview is not configured, return a friendly error instead of crashing
     if (!previewSecret) {
@@ -542,10 +554,9 @@ export async function getServerSideProps(context: any) {
     }
 
     try {
-      // Add timeout to prevent hanging requests
-      const timeoutPromise = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error('Request timeout')), 10000) // 10 second timeout
-      })
+      // Edge Runtime compatible API call with timeout
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 8000) // 8 second timeout for Edge
 
       const client = createClient({
         space,
@@ -554,15 +565,14 @@ export async function getServerSideProps(context: any) {
         host: 'preview.contentful.com'
       })
 
-      const apiCall = client.getEntries({
+      const response = await client.getEntries({
         content_type: 'blogPost',
         limit: 1,
         include: 1,
         'fields.slug': slug
       })
 
-      // Race between API call and timeout
-      const response = await Promise.race([apiCall, timeoutPromise]) as any
+      clearTimeout(timeoutId)
 
       if (!response.items || !response.items.length) {
         return {
@@ -585,7 +595,7 @@ export async function getServerSideProps(context: any) {
       // Return user-friendly error messages
       let errorMessage = 'Failed to load preview content'
       
-      if (error.message === 'Request timeout') {
+      if (error.name === 'AbortError') {
         errorMessage = 'Preview request timed out. Please try again.'
       } else if (error.message && error.message.includes('401')) {
         errorMessage = 'Preview access denied. Check your Contentful preview token.'
@@ -605,11 +615,20 @@ export async function getServerSideProps(context: any) {
     // This catches any unexpected errors that could crash the site
     console.error('Critical preview error:', criticalError)
     
-    // Redirect to safety page instead of crashing
-    return {
-      redirect: {
-        destination: '/blog',
-        permanent: false
+    // In Edge Runtime, always try to return a safe response
+    try {
+      return {
+        redirect: {
+          destination: '/blog',
+          permanent: false
+        }
+      }
+    } catch {
+      // Last resort: return error props
+      return {
+        props: {
+          error: 'Preview mode temporarily unavailable'
+        }
       }
     }
   }
