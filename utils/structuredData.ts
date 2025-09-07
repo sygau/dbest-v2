@@ -190,9 +190,9 @@ export function generateSubjectStructuredData(subjectKey: string) {
     "inLanguage": ["zh-HK", "en-HK"],
     "isPartOf": {
       "@type": "WebSite",
-      "name": "DSEBest",
+      "name": "dse.best",
       "url": "https://dse.best/",
-      "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案"
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
     },
     "mainEntity": {
       "@type": "EducationalResource",
@@ -212,7 +212,7 @@ export function generateSubjectStructuredData(subjectKey: string) {
       },
       "provider": {
         "@type": "Organization",
-        "name": "DSEBest",
+        "name": "dse.best",
         "url": "https://dse.best/"
       }
     }
@@ -225,308 +225,320 @@ export function generateSubjectStructuredData(subjectKey: string) {
 const subjectFAQs: Record<string, Array<{question: string, answer: string}>> = {
   chinese: [
     {
-      question: "DSE中文科包括哪些卷別？",
-      answer: "DSE中文科包括卷一閱讀能力、卷二寫作能力、卷三聆聽及綜合能力、卷四說話能力，以及校本評核(SBA)。每卷佔分比重不同，其中卷一和卷二各佔24%。"
+      question: "DSE 中文卷一 閱讀能力 有什麼題型？",
+      answer: "DSE中文卷一包括多項選擇題和填充題，考核閱讀理解、字詞運用、篇章結構分析等能力。近年常見題型包括虛構文、非虛構文對讀，以及語體文與文言文比較。"
     },
     {
-      question: "中文科校本評核(SBA)包括什麼內容？",
-      answer: "中文科SBA包括閱讀活動、日常課業表現等，佔總分20%。學生需要完成指定的閱讀報告、專題研習等任務，並由任課老師評核。"
+      question: "DSE 中文卷二 寫作能力 作文題目類型有哪些？",
+      answer: "DSE中文卷二提供多個題目，通常包括議論文、記敘文、抒情文、實用文（如建議書、演講稿）等。考生需根據個人強項選擇合適題目，並在1小時45分鐘內完成。"
     },
     {
-      question: "如何有效準備中文科寫作卷？",
-      answer: "建議多閱讀不同文體的範文，掌握議論文、記敘文、實用文等寫作技巧。練習時要注意文章結構、論證方法和語言表達，並熟悉考試時間分配。"
+      question: "DSE 中文 SBA 評分標準 2025 是什麼？",
+      answer: "2025 DSE中文SBA佔總分20%，評核項目包括閱讀報告、小組討論、個人口頭報告等。評分標準側重語言表達、內容組織、互動能力及學習反思。"
     },
     {
-      question: "中文科聆聽及綜合能力卷有什麼特點？",
-      answer: "卷三結合聆聽理解和綜合寫作，學生需要根據聆聽材料和閱讀材料，綜合分析並撰寫指定文體的文章，考驗理解、分析和表達能力。"
+      question: "DSE 中文 文言文 常考篇目 有哪些？",
+      answer: "歷年常考文言文包括《岳陽樓記》、《桃花源記》、《出師表》、《師說》、《六國論》等。建議熟讀課文、掌握字詞解釋、篇章主旨及寫作手法。"
+    },
+    {
+      question: "DSE 中文 如何準備 聆聽及綜合能力？",
+      answer: "卷三結合聆聽與寫作，需根據錄音內容和資料冊撰寫指定文體（如新聞稿、建議書）。建議多練習筆記技巧、信息整合和時間分配。"
     }
   ],
   english: [
     {
-      question: "What are the components of DSE English Language?",
-      answer: "DSE English includes Paper 1 Reading, Paper 2 Writing, Paper 3 Listening and Integrated Skills, Paper 4 Speaking, and School-based Assessment (SBA). Papers 1-4 each contribute different weightings to the final grade."
+      question: "DSE English Paper 2 作文題目 有哪些？",
+      answer: "DSE English Paper 2 提供8個題目，涵蓋議論文、報告、提案、信件、文章、演講、故事等。考生需選擇1題作答，注意目標讀者和語氣。"
     },
     {
-      question: "How is DSE English SBA assessed?",
-      answer: "English SBA accounts for 20% of the total score and includes coursework like independent reading, group interaction, and individual presentation. Students are assessed on language proficiency, critical thinking, and communication skills."
+      question: "DSE 英文 SBA 評分標準 2025 是什麼？",
+      answer: "2025 DSE英文SBA佔總分20%，包括獨立專題研習（I-SBA）和小組互動。評核重點為語言流利度、邏輯組織、批判思考和互動技巧。"
     },
     {
-      question: "What types of writing are tested in DSE English Paper 2?",
-      answer: "Paper 2 tests various text types including argumentative essays, reports, proposals, letters, articles, speeches, and stories. Students choose from 8 questions covering different formats and audiences."
+      question: "DSE 英文 Listening 有什麼技巧？",
+      answer: "Paper 3聆聽部分需同時處理錄音和資料冊。建議預先閱讀問題、善用筆記、注意關鍵字和語氣變化。多練習歷屆試題提升反應速度。"
     },
     {
-      question: "How should I prepare for English Listening and Integrated Skills?",
-      answer: "Paper 3 combines listening comprehension with data file reading and writing tasks. Practice active listening, note-taking skills, and integrating information from multiple sources into coherent written responses."
+      question: "DSE 英文 Speaking 如何準備？",
+      answer: "Paper 4說話能力包括小組討論和個人陳述。建議練習表達意見、回應他人、使用連接詞，並保持自然語速和清晰發音。"
+    },
+    {
+      question: "DSE 英文 Reading 有什麼答題技巧？",
+      answer: "Paper 1閱讀理解需掌握主旨、推論、詞義等技巧。建議先看問題再閱讀，善用劃線和筆記，注意文章結構和作者立場。"
     }
   ],
   math: [
     {
-      question: "DSE數學科分為哪些部分？",
-      answer: "DSE數學必修部分分為卷一（多項選擇題）和卷二（長題目），涵蓋數與代數、度量、幾何與三角學、統計與概率四大學習範疇。"
+      question: "DSE 數學 卷一 卷二 有什麼分別？",
+      answer: "DSE數學卷一為長題目，佔65%；卷二為多項選擇題，佔35%。卷一考核解題過程，卷二考核計算速度和準確度。"
     },
     {
-      question: "數學科有哪些主要課題？",
-      answer: "主要課題包括：數與代數（如指數函數、對數函數）、幾何與三角學（如圓的性質、三角恆等式）、統計與概率、以及度量等核心內容。"
+      question: "DSE 數學 必修部分 有哪些課題？",
+      answer: "DSE數學必修部分包括數與代數、度量、圖形與空間、數據處理四大範疇，涵蓋指數、三角學、統計、概率、座標幾何等核心內容。"
     },
     {
-      question: "如何有效溫習數學科？",
-      answer: "建議系統性地溫習各個課題，多做歷屆試題掌握出題模式，重點練習計算技巧和解題方法，並注意時間分配策略。"
+      question: "DSE M1 M2 有什麼分別？哪個較難？",
+      answer: "M1（微積分與統計）偏重應用，適合理科生；M2（代數與微積分）偏重理論，數學要求更高。一般認為M2較難，但取決於個人強項。"
     },
     {
-      question: "數學延伸部分M1和M2有什麼分別？",
-      answer: "M1主要涵蓋微積分與統計，適合理科學生；M2涵蓋代數與微積分，數學要求較高。兩者均為選修科目，可與數學必修部分一同報考。"
+      question: "DSE 數學 如何溫習 有效？",
+      answer: "建議按課題系統溫習，多做歷屆試題掌握出題模式。重點練習計算技巧、解題方法和時間分配，並訂正錯題。"
+    },
+    {
+      question: "DSE 數學 公式表 有什麼？",
+      answer: "DSE數學提供公式表，包括三角學、數列、微積分、統計等常用公式。建議熟習公式表內容，並練習在考試中快速查找。"
     }
   ],
   physics: [
     {
-      question: "DSE物理科包括哪些主要範疇？",
-      answer: "DSE物理涵蓋四大主要範疇：力學（運動學、動力學）、熱物理學（溫度、熱量）、波動（機械波、聲波、光波）、電磁學（電學、磁學）。"
+      question: "DSE 物理 有什麼課題？",
+      answer: "DSE物理涵蓋力學、熱學、波動、電磁學、放射現象與核能五大範疇，包括運動學、能量、聲波、光波、電路、磁場等核心內容。"
     },
     {
-      question: "物理科校本評核(SBA)如何進行？",
-      answer: "物理SBA佔總分20%，包括實驗技能評核。學生需完成指定實驗，展示實驗設計、數據收集、分析及評估能力，並撰寫實驗報告。"
+      question: "DSE 物理 SBA 實驗 有什麼？",
+      answer: "DSE物理SBA佔20%，評核學生的實驗技能，包括實驗設計、數據收集、分析和評估。常見實驗如單擺、電阻測量、折射率測定等。"
     },
     {
-      question: "如何準備物理科實驗部分？",
-      answer: "重點掌握基本實驗技能，包括正確使用儀器、準確測量、數據處理、誤差分析等。熟悉常見實驗如單擺、電阻測量、折射率測定等。"
+      question: "DSE 物理 公式表 有什麼？",
+      answer: "DSE物理提供公式表，涵蓋力學、熱學、波動、電磁學等公式。建議熟習公式用法，並練習單位轉換和數量級估算。"
     },
     {
-      question: "物理科數學計算有什麼要求？",
-      answer: "物理科需要運用數學工具解決問題，包括代數運算、三角函數、對數、微積分初步概念等。建議加強數學基礎，熟練使用計算機。"
+      question: "DSE 物理 如何溫習 有效？",
+      answer: "建議結合概念理解與計算練習，多做歷屆試題。重點掌握實驗題、圖表分析和解釋題的答題技巧。"
     }
   ],
   chemistry: [
     {
-      question: "DSE化學科有哪些主要課題？",
-      answer: "DSE化學包括原子結構、化學鍵、化學反應、物質狀態、化學平衡、酸鹼、氧化還原、有機化學、金屬、非金屬等核心課題。"
+      question: "DSE 化學 有什麼課題？",
+      answer: "DSE化學包括微觀世界、金屬、酸和鹽、化石燃料、化學電池、反應速率、平衡常數、有機化學等核心課題，涵蓋理論與實踐。"
     },
     {
-      question: "化學科實驗部分如何評核？",
-      answer: "化學SBA佔20%，評核學生的實驗技能，包括實驗設計、安全操作、數據記錄、結果分析等。需要展示對化學原理的理解和應用能力。"
+      question: "DSE 化學 SBA 實驗 有什麼？",
+      answer: "DSE化學SBA佔20%，評核學生的實驗技能，包括安全操作、數據記錄、結果分析等。需要展示對化學原理的理解和應用能力。"
     },
     {
-      question: "如何掌握化學方程式？",
-      answer: "建議從基本反應類型開始，掌握配平技巧，理解反應機理。多練習常見反應如酸鹼中和、氧化還原、有機反應等，並注意反應條件。"
+      question: "DSE 化學 方程式 如何配平？",
+      answer: "建議掌握質量守恆定律，從簡單反應開始練習。多練習酸鹼中和、氧化還原、燃燒反應等常見方程式。"
     },
     {
-      question: "有機化學部分有什麼學習重點？",
-      answer: "重點掌握官能基的性質和反應，如醇、醛、酮、羧酸等。理解同分異構現象，熟悉命名法則，並能預測和解釋有機反應機理。"
+      question: "DSE 有機化學 有什麼重點？",
+      answer: "重點掌握官能基性質、命名法則、反應機理。理解同分異構現象，並能預測和解釋有機反應。"
     }
   ],
   biology: [
     {
-      question: "DSE生物科涵蓋哪些主要範疇？",
-      answer: "DSE生物包括細胞與分子生物學、遺傳與進化、生物與環境、人體生理學四大範疇，涵蓋從分子到生態系統各個層次的生物學知識。"
+      question: "DSE 生物 有什麼課題？",
+      answer: "DSE生物包括細胞、遺傳、進化、生態、人體生理、生物科技等範疇，涵蓋從分子到生態系統的生物學知識。"
     },
     {
-      question: "生物科校本評核包括什麼內容？",
-      answer: "生物SBA佔20%，包括實驗技能和生物科技應用評核。學生需要完成實驗設計、數據分析、科學探究等任務，展示科學思維和實踐能力。"
+      question: "DSE 生物 SBA 有什麼？",
+      answer: "DSE生物SBA佔20%，包括實驗技能和專題研習。學生需完成科學探究，展示實驗設計、數據分析和科學思維能力。"
     },
     {
-      question: "如何有效學習生物科概念？",
-      answer: "建議建立概念圖連接不同知識點，理解生物現象的因果關係。結合圖表、模型和實例學習，注重理解而非死記硬背。"
+      question: "DSE 生物 如何溫習 有效？",
+      answer: "建議建立概念圖連接知識點，理解因果關係。結合圖表、模型學習，注重理解而非死記。"
     },
     {
-      question: "生物科實驗設計有什麼要求？",
-      answer: "需要掌握科學方法，包括假設提出、變數控制、對照實驗設計、數據收集與分析等。理解實驗原理，能夠評估實驗的可靠性和有效性。"
+      question: "DSE 生物 實驗設計 有什麼要求？",
+      answer: "需要掌握假設提出、變數控制、對照實驗設計等科學方法。能評估實驗可靠性和有效性。"
     }
   ],
   ict: [
     {
-      question: "DSE ICT科包括哪些主要範疇？",
-      answer: "DSE ICT涵蓋資訊處理、電腦系統基礎、互聯網及其應用、基本程式編寫概念、電子學習與社會等範疇，結合理論與實踐應用。"
+      question: "DSE ICT 有什麼課題？",
+      answer: "DSE ICT涵蓋資訊處理、電腦系統、互聯網、程式編寫、電子學習等範疇，結合理論與實務應用。"
     },
     {
-      question: "ICT科校本評核如何進行？",
-      answer: "ICT SBA佔總分20%，包括專題研習和實作評核。學生需要完成程式設計、系統開發或資訊科技應用項目，展示解決問題的能力。"
+      question: "DSE ICT SBA 有什麼？",
+      answer: "DSE ICT SBA佔20%，包括程式設計、系統開發或資訊科技應用項目，展示解決問題的能力。"
     },
     {
-      question: "程式編寫部分有什麼要求？",
-      answer: "需要掌握基本程式概念如順序、選擇、循環結構，理解演算法邏輯。雖然不要求特定程式語言，但要能讀懂和編寫簡單程式。"
+      question: "DSE ICT 程式編寫 有什麼要求？",
+      answer: "需要掌握順序、選擇、循環等基本結構，理解演算法邏輯。雖不指定語言，但要能讀懂和編寫簡單程式。"
     },
     {
-      question: "如何準備ICT科的資訊處理題目？",
-      answer: "重點掌握資料庫操作、試算表應用、數據分析等技能。熟悉常用軟件功能，理解資訊系統的設計原理和應用場景。"
+      question: "DSE ICT 資訊處理 有什麼技巧？",
+      answer: "重點掌握資料庫、試算表操作和數據分析。熟悉常用軟件功能，理解資訊系統設計原理。"
     }
   ],
   m1: [
     {
-      question: "數學延伸部分M1涵蓋哪些內容？",
-      answer: "M1主要包括微積分（極限、導數、積分）和統計學（概率分布、假設檢定、回歸分析）兩大部分，適合修讀理科的學生。"
+      question: "DSE M1 有什麼內容？",
+      answer: "DSE M1包括微積分（極限、導數、積分）和統計學（概率分布、假設檢定）兩大部分，適合理科學生。"
     },
     {
-      question: "M1的微積分部分有什麼重點？",
-      answer: "重點包括函數極限、導數的計算和應用（如切線、極值問題）、積分的基本概念和應用（如面積計算）。需要掌握基本的微積分技巧。"
+      question: "DSE M1 微積分 有什麼重點？",
+      answer: "重點包括導數計算和應用（如極值問題）、積分基本概念和應用（如面積計算）。需掌握基本技巧。"
     },
     {
-      question: "M1統計部分與必修部分有什麼分別？",
-      answer: "M1統計更深入，涵蓋正態分布、二項分布、假設檢定、置信區間等進階概念。比必修部分的描述統計更注重推論統計的應用。"
+      question: "DSE M1 統計 有什麼？",
+      answer: "M1統計涵蓋正態分布、二項分布、假設檢定、置信區間等進階概念，比必修部分更深入。"
     },
     {
-      question: "修讀M1需要什麼數學基礎？",
-      answer: "需要良好的代數和函數基礎，特別是指數、對數函數的概念。建議數學必修部分有穩固基礎才修讀M1，以確保能應付較高的數學要求。"
+      question: "DSE M1 難嗎？",
+      answer: "M1有一定難度，需要良好代數基礎。建議數學必修部分有穩固基礎才修讀。"
     }
   ],
   m2: [
     {
-      question: "數學延伸部分M2涵蓋哪些內容？",
-      answer: "M2包括代數（矩陣、複數）和微積分（進階微分、積分、微分方程）兩大部分，數學要求較M1更高，適合數學能力較強的學生。"
+      question: "DSE M2 有什麼內容？",
+      answer: "DSE M2包括代數（矩陣、複數）和微積分（進階微分、積分、微分方程）兩大部分，數學要求較高。"
     },
     {
-      question: "M2的複數部分有什麼重點？",
-      answer: "重點包括複數的基本運算、極坐標形式、棣莫弗定理的應用。需要理解複數的幾何意義，掌握複數在解方程和三角學中的應用。"
+      question: "DSE M2 複數 有什麼重點？",
+      answer: "重點包括複數運算、極坐標形式、棣莫弗定理應用。需理解幾何意義和在解方程中的應用。"
     },
     {
-      question: "M2的微分方程如何學習？",
-      answer: "從簡單的一階微分方程開始，掌握變數分離法、齊次方程的解法。理解微分方程在物理和工程中的應用，如增長模型、振動問題等。"
+      question: "DSE M2 微分方程 有什麼？",
+      answer: "從簡單一階微分方程開始，掌握變數分離法、齊次方程解法。理解在物理和工程中的應用。"
     },
     {
-      question: "M1和M2應該如何選擇？",
-      answer: "M1偏重實際應用，適合理科學生；M2偏重理論推導，適合數學能力強且有興趣深入學習數學的學生。考慮個人興趣、能力和升學需要。"
+      question: "DSE M1 vs M2 如何選擇？",
+      answer: "M1偏重應用，適合理科生；M2偏重理論，適合數學能力強的學生。考慮個人興趣、能力和升學需要。"
     }
   ],
   geography: [
     {
-      question: "DSE地理科包括哪些主要範疇？",
-      answer: "DSE地理包括自然環境、人文環境、全球相互依存關係三大範疇，涵蓋自然地理（如氣候、地貌）和人文地理（如城市化、經濟活動）等內容。"
+      question: "DSE 地理 有什麼課題？",
+      answer: "DSE地理包括自然環境、人文環境、全球相互依存三大範疇，涵蓋氣候、地貌、城市化、經濟活動等內容。"
     },
     {
-      question: "地理科校本評核如何進行？",
-      answer: "地理SBA佔20%，通常包括實地考察和專題研習。學生需要進行地理調查、數據收集、分析和報告撰寫，展示地理研究技能。"
+      question: "DSE 地理 SBA 實地考察 有什麼？",
+      answer: "地理SBA佔20%，通常包括實地考察和專題研習。需進行地理調查、數據收集、分析和報告撰寫。"
     },
     {
-      question: "如何準備地理科的實地考察？",
-      answer: "需要掌握基本的地理調查方法，如問卷設計、測量技術、數據記錄等。了解考察地點的地理特徵，準備相關的理論知識和分析框架。"
+      question: "DSE 地理 如何準備 實地考察？",
+      answer: "掌握問卷設計、測量技術、數據記錄等方法。了解考察地點特徵，準備相關理論知識和分析框架。"
     },
     {
-      question: "地理科如何有效運用地圖和圖表？",
-      answer: "熟練讀取地形圖、氣候圖、人口圖等各類地理圖表。掌握等高線、比例尺、圖例的運用，能夠從圖表中提取和分析地理資訊。"
+      question: "DSE 地理 地圖技巧 有什麼？",
+      answer: "需熟練讀取地形圖、氣候圖、人口圖等。掌握等高線、比例尺、圖例運用，能從圖表提取資訊。"
     }
   ],
   history: [
     {
-      question: "DSE歷史科涵蓋哪個時期？",
-      answer: "DSE歷史主要涵蓋20世紀的世界歷史，包括兩次世界大戰、冷戰、非殖民化等重大事件，以及相關的政治、經濟、社會發展。"
+      question: "DSE 歷史 有什麼課題？",
+      answer: "DSE歷史主要涵蓋20世紀世界歷史，包括兩次世界大戰、冷戰、非殖民化等重大事件及其政治、經濟、社會發展。"
     },
     {
-      question: "歷史科校本評核包括什麼？",
-      answer: "歷史SBA佔20%，通常包括獨立專題研習。學生需要選擇歷史課題進行深入研究，運用史料分析、歷史解釋等技能完成研習報告。"
+      question: "DSE 歷史 SBA 專題研習 有什麼？",
+      answer: "歷史SBA佔20%，通常包括獨立專題研習。需選擇課題進行深入研究，運用史料分析、歷史解釋等技能完成報告。"
     },
     {
-      question: "如何分析歷史史料？",
-      answer: "需要考慮史料的性質、來源、目的、可靠性等因素。學會從不同角度解讀史料，比較不同史料的觀點，並結合歷史背景進行批判性思考。"
+      question: "DSE 歷史 史料分析 有什麼技巧？",
+      answer: "需考慮史料性質、來源、目的、可靠性。學會從不同角度解讀，比較觀點，並結合歷史背景批判思考。"
     },
     {
-      question: "歷史科論述題如何作答？",
-      answer: "建立清晰的論點，運用具體史實支持論證。注意分析因果關係、比較不同因素的重要性，並能夠從多角度評估歷史事件的影響。"
+      question: "DSE 歷史 論述題 如何作答？",
+      answer: "建立清晰論點，用具體史實支持。分析因果關係、比較因素重要性，並多角度評估歷史事件影響。"
     }
   ],
   'chinese-history': [
     {
-      question: "DSE中國歷史科涵蓋哪些朝代？",
-      answer: "DSE中史涵蓋從古代至現代的中國歷史，包括秦漢、魏晋南北朝、隋唐、宋元明清，以及近現代中國的政治、經濟、社會文化發展。"
+      question: "DSE 中史 有什麼朝代？",
+      answer: "DSE中史涵蓋從古代至現代的中國歷史，包括秦漢、魏晋南北朝、隋唐、宋元明清，以及近現代中國發展。"
     },
     {
-      question: "中國歷史科如何準備史料題？",
-      answer: "熟悉古文閱讀，理解文言文史料的內容和背景。掌握史料分析方法，能夠從史料中提取有用資訊，並結合歷史知識進行解釋和評論。"
+      question: "DSE 中史 史料題 如何準備？",
+      answer: "熟悉古文閱讀，理解文言文內容和背景。掌握史料分析方法，能提取資訊並結合歷史知識解釋。"
     },
     {
-      question: "中史科校本評核有什麼要求？",
-      answer: "中史SBA佔20%，包括專題研習和日常評核。學生需要選擇中國歷史課題進行研究，運用史學方法分析歷史問題，撰寫研習報告。"
+      question: "DSE 中史 SBA 有什麼？",
+      answer: "中史SBA佔20%，包括專題研習和日常評核。需選擇課題研究，運用史學方法分析問題，撰寫報告。"
     },
     {
-      question: "如何有效記憶中國歷史知識？",
-      answer: "建立時間脈絡，理解朝代更替的因果關係。結合地圖、圖表、史料等多元資源學習，注重理解歷史發展的邏輯，而非純粹背誦。"
+      question: "DSE 中史 如何記憶 有效？",
+      answer: "建立時間脈絡，理解朝代更替因果。結合地圖、圖表、史料學習，注重理解歷史發展邏輯。"
     }
   ],
   economics: [
     {
-      question: "DSE經濟科包括哪些主要概念？",
-      answer: "DSE經濟涵蓋微觀經濟（供求理論、市場結構、消費者和生產者理論）和宏觀經濟（國民收入、貨幣銀行、國際貿易、經濟增長）等核心概念。"
+      question: "DSE 經濟 有什麼概念？",
+      answer: "DSE經濟涵蓋微觀經濟（供求理論、市場結構）和宏觀經濟（國民收入、貨幣銀行、國際貿易）等核心概念。"
     },
     {
-      question: "經濟科如何分析圖表？",
-      answer: "掌握供求圖、成本收益圖、經濟循環圖等的繪製和解讀。能夠運用圖表分析經濟現象，解釋價格變動、市場均衡、政策效果等經濟問題。"
+      question: "DSE 經濟 圖表分析 有什麼技巧？",
+      answer: "掌握供求圖、成本收益圖、經濟循環圖的繪製和解讀。能用圖表分析經濟現象和政策效果。"
     },
     {
-      question: "經濟科校本評核如何進行？",
-      answer: "經濟SBA佔20%，通常包括經濟專題研習。學生需要選擇現實經濟議題進行研究，運用經濟理論分析問題，提出合理的政策建議。"
+      question: "DSE 經濟 SBA 有什麼？",
+      answer: "經濟SBA佔20%，通常包括經濟專題研習。需選擇現實經濟議題研究，運用理論分析，提出政策建議。"
     },
     {
-      question: "如何應用經濟理論解釋現實問題？",
-      answer: "學會將抽象的經濟概念與現實情況聯繫，如用供求理論解釋樓價變動、用貨幣理論分析通脹等。注重經濟邏輯的運用和批判思考。"
+      question: "DSE 經濟 如何應用理論？",
+      answer: "學會將經濟概念與現實連結，如用供求理論解釋樓價變動。注重經濟邏輯運用和批判思考。"
     }
   ],
   bafs: [
     {
-      question: "DSE BAFS科包括哪些主要範疇？",
-      answer: "BAFS包括會計（財務會計、成本會計）、商業管理（管理概念、市場學、人力資源）和個人理財三大範疇，涵蓋理論知識和實務應用。"
+      question: "DSE BAFS 有什麼範疇？",
+      answer: "BAFS包括會計（財務會計、成本會計）、商業管理（管理、市場學、人力資源）和個人理財三大範疇。"
     },
     {
-      question: "BAFS會計部分有什麼重點？",
-      answer: "重點掌握複式記帳法、財務報表編製、成本計算等基本概念。理解會計原則和程序，能夠處理日常會計事務和分析財務資訊。"
+      question: "DSE BAFS 會計 有什麼重點？",
+      answer: "重點掌握複式記帳法、財務報表編製、成本計算等。理解會計原則和程序，能處理日常會計事務。"
     },
     {
-      question: "BAFS商業管理部分如何學習？",
-      answer: "結合現實商業案例學習管理理論，理解企業的組織結構、營運策略、市場推廣等概念。注重理論與實務的結合應用。"
+      question: "DSE BAFS 商業管理 有什麼？",
+      answer: "結合現實案例學習管理理論，理解企業組織、營運策略、市場推廣等概念。注重理論與實務結合。"
     },
     {
-      question: "BAFS校本評核包括什麼內容？",
-      answer: "BAFS SBA佔20%，包括商業個案研習或會計實務專題。學生需要分析真實商業情況，運用BAFS知識提出解決方案和建議。"
+      question: "DSE BAFS SBA 有什麼？",
+      answer: "BAFS SBA佔20%，包括商業個案研習或會計實務專題。需分析真實情況，提出解決方案和建議。"
     }
   ],
   citizen: [
     {
-      question: "DSE公民與社會發展科涵蓋哪些範疇？",
-      answer: "公民科包括「一國兩制」下的香港、改革開放以來的國家、互聯相依的當代世界三大主題，培養學生的國家觀念、香港情懷和國際視野。"
+      question: "DSE 公民科 有什麼主題？",
+      answer: "公民科包括「一國兩制」下的香港、改革開放以來的國家、互聯相依的當代世界三大主題。"
     },
     {
-      question: "公民科如何進行評核？",
-      answer: "公民科採用「達標」與「不達標」的等級制，不設分級。評核包括校本評核和公開考試，重視學生的批判思考和價值判斷能力。"
+      question: "DSE 公民科 如何評核？",
+      answer: "公民科採用「達標」與「不達標」等級制，不設分級。評核包括校本評核和公開考試。"
     },
     {
-      question: "公民科校本評核有什麼要求？",
-      answer: "校本評核包括專題研習和國情考察等活動。學生需要深入了解國家發展、香港社會和國際議題，培養多角度思考和解決問題的能力。"
+      question: "DSE 公民科 SBA 有什麼？",
+      answer: "校本評核包括專題研習和國情考察。需深入了解國家發展、香港社會和國際議題。"
     },
     {
-      question: "如何準備公民科的議題分析？",
-      answer: "關注時事發展，運用多元資料和不同觀點分析社會議題。培養批判思考能力，能夠平衡不同持份者的利益和關注點，提出合理建議。"
+      question: "DSE 公民科 如何準備？",
+      answer: "關注時事發展，運用多元資料分析社會議題。培養批判思考能力，平衡不同持份者利益。"
     }
   ],
   ths: [
     {
-      question: "DSE旅遊與款待科包括哪些主要範疇？",
-      answer: "DSE旅遊與款待科涵蓋旅遊業和款待業兩大範疇，包括旅遊目的地管理、旅遊產品開發、酒店管理、餐飲服務、顧客服務等核心課題。"
+      question: "DSE 旅遊與款待 有什麼課題？",
+      answer: "涵蓋旅遊業和款待業兩大範疇，包括旅遊目的地管理、旅遊產品開發、酒店管理、餐飲服務等。"
     },
     {
-      question: "旅遊與款待科如何進行評核？",
-      answer: "旅遊與款待科評核包括公開考試和校本評核。公開考試佔80%，包括卷一和卷二；校本評核佔20%，包括專題研習和實務評估。"
+      question: "DSE 旅遊與款待 如何評核？",
+      answer: "評核包括公開考試（80%）和校本評核（20%）。公開考試分卷一和卷二。"
     },
     {
-      question: "旅遊與款待科校本評核有什麼要求？",
-      answer: "校本評核包括旅遊或款待業專題研習，學生需要選擇相關課題進行研究，運用專業知識分析行業問題，提出解決方案和建議。"
+      question: "DSE 旅遊與款待 SBA 有什麼？",
+      answer: "校本評核包括專題研習，需選擇課題研究，運用專業知識分析行業問題，提出解決方案。"
     },
     {
-      question: "如何準備旅遊與款待科的實務題目？",
-      answer: "關注旅遊業和款待業的最新發展趨勢，了解行業運作模式和顧客需求。結合理論知識和實務經驗，培養解決實際問題的能力。"
+      question: "DSE 旅遊與款待 如何準備？",
+      answer: "關注行業最新發展趨勢，了解運作模式和顧客需求。結合理論和實務，培養解決實際問題能力。"
     }
   ],
   'visual-arts': [
     {
-      question: "DSE視覺藝術科包括哪些主要範疇？",
-      answer: "DSE視覺藝術包括藝術創作和藝術評賞兩大範疇。藝術創作涵蓋個人作品集、藝術創作過程記錄；藝術評賞包括藝術作品分析、藝術史知識和藝術理論。"
+      question: "DSE 視覺藝術 有什麼範疇？",
+      answer: "包括藝術創作和藝術評賞兩大範疇。創作涵蓋作品集和創作過程記錄；評賞包括作品分析、藝術史和理論。"
     },
     {
-      question: "視覺藝術科校本評核如何進行？",
-      answer: "視覺藝術SBA佔總分50%，包括藝術創作作品集和藝術評賞習作。學生需要展示藝術創作能力、藝術評賞技巧和對藝術史的理解。"
+      question: "DSE 視覺藝術 SBA 有什麼？",
+      answer: "SBA佔總分50%，包括藝術創作作品集和藝術評賞習作。需展示創作能力、評賞技巧和藝術史理解。"
     },
     {
-      question: "如何準備視覺藝術科作品集？",
-      answer: "作品集應展示個人藝術風格和創作過程，包括素描、繪畫、設計等不同媒介的作品。注重作品的多樣性和創意性，並附上創作理念和過程記錄。"
+      question: "DSE 視覺藝術 作品集 如何準備？",
+      answer: "作品集應展示個人風格和創作過程，包括素描、繪畫、設計等媒介。注重多樣性和創意性。"
     },
     {
-      question: "視覺藝術科藝術評賞有什麼要求？",
-      answer: "需要掌握藝術分析框架，能夠從形式、內容、背景等角度分析藝術作品。熟悉不同藝術流派和藝術家的風格特點，並能運用藝術術語進行評賞。"
+      question: "DSE 視覺藝術 評賞 有什麼要求？",
+      answer: "需掌握藝術分析框架，能從形式、內容、背景等角度分析作品。熟悉藝術流派和術語。"
     }
   ]
 };
@@ -563,7 +575,7 @@ export interface PageData {
 
 export const pageData: Record<string, PageData> = {
   homepage: {
-    name: 'HKDSE Past Papers 歷屆試題 | DSE.BEST',
+    name: 'HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2',
     description: 'DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。',
     url: 'https://dse.best/',
     type: 'homepage'
@@ -587,8 +599,8 @@ export function generateWebsiteStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "DSEBest",
-    "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案，涵蓋中文、英文、數學、物理、化學等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。",
+    "name": "dse.best",
+    "description": "dse.best 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案，涵蓋中文、英文、數學、物理、化學等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。",
     "url": "https://dse.best/",
     "inLanguage": ["zh-HK", "en-HK"]
   };
@@ -607,9 +619,9 @@ export function generateHomepageStructuredData() {
     "inLanguage": ["zh-HK", "en-HK"],
     "isPartOf": {
       "@type": "WebSite",
-      "name": "DSEBest",
+      "name": "dse.best",
       "url": "https://dse.best/",
-      "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案"
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -734,9 +746,9 @@ export function generateCountdownStructuredData() {
     "inLanguage": ["zh-HK", "en-HK"],
     "isPartOf": {
       "@type": "WebSite",
-      "name": "DSEBest",
+      "name": "dse.best",
       "url": "https://dse.best/",
-      "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案"
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
     },
     "mainEntity": {
       "@type": "Event",
@@ -766,6 +778,58 @@ export function generateCountdownStructuredData() {
   };
 }
 
+// Chat page structured data
+export function generateChatStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "dse.best Chat 聊天室",
+    "description": "加入dse.best學習社群聊天室/DSE Chat Room，與其他同學即時討論DSE備考心得、學習技巧和考試經驗。支援實時對話、貼圖互動，打造友善的學習交流環境。",
+    "url": "https://dse.best/chat",
+    "inLanguage": ["zh-HK", "en-HK"],
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "dse.best",
+      "url": "https://dse.best/",
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "DSE Best Chat",
+      "description": "實時學習討論聊天室",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "url": "https://dse.best/chat",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "DSE Students"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "dse.best 主頁",
+          "item": "https://dse.best/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DSE Chat 聊天室",
+          "item": "https://dse.best/chat"
+        }
+      ]
+    }
+  };
+}
+
 // Blog index structured data
 export function generateBlogStructuredData(posts: any[] = []) {
   const page = pageData.blog;
@@ -779,9 +843,9 @@ export function generateBlogStructuredData(posts: any[] = []) {
     "inLanguage": ["zh-HK", "en-HK"],
     "isPartOf": {
       "@type": "WebSite",
-      "name": "DSEBest",
+      "name": "dse.best",
       "url": "https://dse.best/",
-      "description": "DSE.BEST 提供全面的香港中學文憑試 (DSE) 各科歷屆試題及答案"
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
     },
     "blogPost": posts.map((post, index) => ({
       "@type": "BlogPosting",
@@ -800,7 +864,7 @@ export function generateBlogStructuredData(posts: any[] = []) {
       },
       "publisher": {
         "@type": "Organization",
-        "name": "DSEBest",
+        "name": "dse.best",
         "logo": {
           "@type": "ImageObject",
           "url": "https://dse.best/assets/images/logo-icon.webp"
@@ -814,8 +878,8 @@ export function generateBlogStructuredData(posts: any[] = []) {
 const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
   homepage: [
     {
-      question: "DSE.BEST提供哪些科目的歷屆試題？",
-      answer: "DSE.BEST提供全面的DSE歷屆試題，包括核心科目（中文、英文、數學）和選修科目（物理、化學、生物、ICT、M1、M2、地理、歷史、中國歷史、經濟、BAFS等），涵蓋2012年至今的完整試題及答案。"
+      question: "dse.best提供哪些科目的歷屆試題？",
+      answer: "dse.best提供全面的DSE歷屆試題，包括核心科目（中文、英文、數學）和選修科目（物理、化學、生物、ICT、M1、M2、地理、歷史、中國歷史、經濟、BAFS等），涵蓋2012年至今的完整試題及答案。"
     },
     {
       question: "如何下載DSE歷屆試題？",
@@ -826,8 +890,8 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
       answer: "我們會定期更新歷屆試題，包括最新的考試年份。目前提供至2024年的試題，2025年試題將在考試完成後更新。請查看各科目頁面的更新日期。"
     },
     {
-      question: "DSE.BEST與其他網站有什麼不同？",
-      answer: "DSE.BEST提供最完整的DSE歷屆試題資源，按科目和年份清晰分類，支援快速搜尋。網站採用現代化設計，支援手機瀏覽，並提供豐富的學習資源和考試資訊。"
+      question: "dse.best與其他網站有什麼不同？",
+      answer: "dse.best提供最完整的DSE歷屆試題資源，按科目和年份清晰分類，支援快速搜尋。網站採用現代化設計，支援手機瀏覽，並提供豐富的學習資源和考試資訊。"
     }
   ],
   countdown: [
@@ -850,8 +914,8 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
   ],
   blog: [
     {
-      question: "DSE.BEST Blog提供什麼內容？",
-      answer: "DSE.BEST Blog提供最新的DSE考試資訊、學習資源、溫習心得、考生經驗分享、科目指南等內容，幫助學生掌握DSE動向和提升學習效果。"
+      question: "dse.best Blog提供什麼內容？",
+      answer: "dse.best Blog提供最新的DSE考試資訊、學習資源、溫習心得、考生經驗分享、科目指南等內容，幫助學生掌握DSE動向和提升學習效果。"
     },
     {
       question: "如何找到特定科目的文章？",
@@ -864,6 +928,32 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
     {
       question: "可以分享或轉載Blog文章嗎？",
       answer: "歡迎分享文章連結，但請尊重版權，不要直接複製內容。如需轉載，請聯繫我們獲得授權，並註明來源。"
+    }
+  ],
+  chat: [
+    {
+      question: "DSE學習交流聊天室有什麼功能？",
+      answer: "dse.best DSE學習交流聊天室提供香港中學文憑試學生即時討論平台，支援實時文字對話、表情符號、用戶名稱自定義等功能。學生可以討論DSE各科備考心得、分享歷屆試題解答技巧、交流考試經驗和溫習方法。"
+    },
+    {
+      question: "DSE Chat Room如何幫助備考？",
+      answer: "透過DSE聊天室，學生可以與其他應屆考生即時討論中文、英文、數學、物理、化學、生物等科目的學習難點，分享有效的溫習策略、解題技巧和時間管理方法。互相鼓勵支持，減輕DSE考試壓力。"
+    },
+    {
+      question: "香港DSE學生聊天室討論什麼科目？",
+      answer: "DSE聊天室歡迎討論所有香港中學文憑試科目，包括核心科目（中文、英文、數學、公民科）和選修科目（物理、化學、生物、ICT、M1、M2、地理、歷史、中國歷史、經濟、BAFS、視覺藝術等）的學習心得和考試技巧。"
+    },
+    {
+      question: "DSE 2025考生可以在聊天室討論什麼？",
+      answer: "DSE 2025考生可以討論最新考試安排、各科溫習進度、歷屆試題分析、選科建議、升學規劃、JUPAS選科策略、Cut-off分數預測等。也可以分享有效的學習資源和備考心得。"
+    },
+    {
+      question: "如何在DSE聊天室獲得學習支援？",
+      answer: "在DSE聊天室中，你可以向其他同學請教學習問題、尋求科目建議、分享溫習困難。其他經驗豐富的同學會分享有用的學習方法、推薦優質資源，提供情緒支持和鼓勵。"
+    },
+    {
+      question: "DSE聊天室的使用時間和規則是什麼？",
+      answer: "DSE聊天室24小時開放，方便不同時間學習的同學交流。請保持友善尊重的態度，專注DSE學習相關討論。禁止發送廣告、不當內容或垃圾訊息，共同維護積極正面的DSE學習交流環境。"
     }
   ],
   cutoff: [
@@ -898,8 +988,8 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
   ],
   resources: [
     {
-      question: "DSEBest 提供哪些學習資源？",
-      answer: "DSEBest 提供全面的DSE學習資源，包括歷屆試題下載、Cut-off分數查詢、DSE倒數計時器、學習交流室、學習博客、考試技巧、備考策略等。涵蓋中文、英文、數學、物理、化學、生物等全科資源。"
+      question: "dse.best 提供哪些學習資源？",
+      answer: "dse.best 提供全面的DSE學習資源，包括歷屆試題下載、Cut-off分數查詢、DSE倒數計時器、學習交流室、學習博客、考試技巧、備考策略等。涵蓋中文、英文、數學、物理、化學、生物等全科資源。"
     },
     {
       question: "如何有效利用這些學習資源？",
@@ -911,7 +1001,7 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
     },
     {
       question: "這些學習資源都是免費的嗎？",
-      answer: "是的，DSEBest 提供的所有學習資源都是完全免費的，包括歷屆試題下載、學習工具使用、學習博客閱讀等。我們致力於為香港DSE學生提供免費優質的學習支援。"
+      answer: "是的，dse.best 提供的所有學習資源都是完全免費的，包括歷屆試題下載、學習工具使用、學習博客閱讀等。我們致力於為香港DSE學生提供免費優質的學習支援。"
     },
     {
       question: "如何找到特定科目的學習資源？",
@@ -981,7 +1071,7 @@ export function generateResourcesStructuredData() {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "DSEBest",
+      "name": "dse.best",
       "url": "https://dse.best"
     }
   };

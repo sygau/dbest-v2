@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { getMainPageMetadata } from '../utils/structuredData';
+import { getMainPageMetadata, generateChatStructuredData, generatePageFAQStructuredData } from '../utils/structuredData';
 import { getChatConfig, getChatDisabledMessage } from '../utils/chatToggle';
 import ChatDisabled from '../components/ChatDisabled';
 import {
@@ -27,6 +27,8 @@ import {
 
 export default function ChatPage() {
     const metadata = getMainPageMetadata('chat');
+    const chatStructuredData = generateChatStructuredData();
+    const chatFAQData = generatePageFAQStructuredData('chat');
     const chatConfig = getChatConfig();
     const [showRules, setShowRules] = useState(false);
     const [isClosingRules, setIsClosingRules] = useState(false);
@@ -36,6 +38,7 @@ export default function ChatPage() {
     const [statusText, setStatusText] = useState('Connecting...');
     const [isModerator, setIsModerator] = useState(false);
     const [showStickers, setShowStickers] = useState(false);
+    const [isBot, setIsBot] = useState(false);
 
     // Placeholder sticker data with relative paths
     const [stickers] = useState([
@@ -148,6 +151,48 @@ export default function ChatPage() {
     };
 
     useEffect(() => {
+        // Bot detection function
+        const detectBot = () => {
+            const userAgent = navigator.userAgent.toLowerCase();
+            const botPatterns = [
+                'googlebot',
+                'bingbot',
+                'slurp', // Yahoo
+                'duckduckbot',
+                'baiduspider',
+                'yandexbot',
+                'facebookexternalhit',
+                'twitterbot',
+                'rogerbot',
+                'linkedinbot',
+                'embedly',
+                'quora link preview',
+                'showyoubot',
+                'outbrain',
+                'pinterest',
+                'developers.google.com/+/web/snippet',
+                'slackbot',
+                'vkshare',
+                'w3c_validator',
+                'redditbot',
+                'applebot',
+                'whatsapp',
+                'flipboard',
+                'tumblr',
+                'bitlybot',
+                'skypeuripreview',
+                'nuzzel',
+                'discordbot',
+                'google page speed',
+                'qwantbot'
+            ];
+            
+            return botPatterns.some(pattern => userAgent.includes(pattern));
+        };
+
+        // Set bot detection result
+        setIsBot(detectBot());
+
         // Destroy existing chat instance if it exists
         if ((window as any).dseChat) {
             (window as any).dseChat.destroy();
@@ -322,6 +367,22 @@ export default function ChatPage() {
                 <meta property="og:image" content={metadata?.ogImage} />
                 <meta property="og:url" content={metadata?.ogUrl} />
                 <meta property="og:type" content={metadata?.ogType} />
+
+                {/* Structured Data */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify(chatStructuredData)
+                    }}
+                />
+                {chatFAQData && (
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                            __html: JSON.stringify(chatFAQData)
+                        }}
+                    />
+                )}
             </Head>
 
             {/*breadcrumb*/}
@@ -340,6 +401,98 @@ export default function ChatPage() {
             {/*end breadcrumb*/}
 
             {/* Modern Chat Container */}
+            {isBot ? (
+                // SEO Content for Search Engine Bots
+                <div className="seo-chat-content">
+                    <article className="chat-seo-article">
+                        <header>
+                            <h1>DSE Best Community Chat - 香港中學文憑試學習討論平台</h1>
+                            <p className="lead">dse.best聊天室是香港最活躍的DSE學習交流社群，為DSE考生提供即時討論、學習支援和備考經驗分享的專業平台。</p>
+                        </header>
+
+                        <section className="chat-features">
+                            <h2>DSE學習聊天室功能特色</h2>
+                            <p>
+                                我們的DSE學習聊天室專為香港中學文憑試考生設計，提供全面的學習交流環境。考生可以在這裡討論各科DSE備考策略，
+                                包括中文科閱讀理解技巧、英文科寫作方法、數學科解題步驟、物理化學實驗重點、生物科概念整理等。
+                                聊天室支援即時對話功能，讓DSE同學能夠快速獲得學習問題的解答和備考建議。
+                            </p>
+                            <p>
+                                平台採用先進的實時通訊技術，確保DSE學習討論的流暢性和穩定性。無論是討論歷屆試題解法、分享溫習心得，
+                                還是交流考試技巧，dse.best聊天室都能提供最佳的學習交流體驗。我們的社群涵蓋所有DSE科目，
+                                包括核心科目（中文、英文、數學、公民與社會發展）和選修科目（物理、化學、生物、ICT、地理、歷史、經濟、BAFS等）。
+                            </p>
+                        </section>
+
+                        <section className="study-community">
+                            <h2>DSE備考學習社群</h2>
+                            <p>
+                                加入dse.best學習社群，與來自全港不同學校的DSE考生建立學習網絡。我們的聊天室促進知識分享和互助學習，
+                                幫助同學在DSE備考路上互相支持。社群成員經常分享最新的DSE考試資訊、cut-off分數預測、JUPAS選科建議，
+                                以及各科目的學習資源和備考策略。這種集體智慧的分享模式大大提升了DSE備考的效率和成功率。
+                            </p>
+                            <p>
+                                我們重視學習討論的質量，設有完善的社群規則和管理制度。聊天室禁止發布無關內容、垃圾訊息或不當言論，
+                                確保討論環境專注於DSE學習和備考。管理團隊定期監察討論內容，維護健康正面的學習氛圍，
+                                讓每位DSE考生都能在安全友善的環境中專心學習和交流。
+                            </p>
+                        </section>
+
+                        <section className="exam-preparation">
+                            <h2>DSE考試準備與學習資源</h2>
+                            <p>
+                                dse.best聊天室不僅是討論平台，更是豐富學習資源的集中地。考生可以在聊天過程中分享和獲取各類DSE學習材料，
+                                包括歷屆試題分析、模擬考試題目、溫習筆記、記憶口訣等。這些由社群成員貢獻的學習資源經過實戰驗證，
+                                對DSE備考具有很高的參考價值。聊天室也定期舉辦線上學習活動，如溫習小組、答題競賽、經驗分享會等。
+                            </p>
+                            <p>
+                                我們特別重視DSE各科目的平衡發展。聊天室設有不同的討論主題頻道，讓考生可以針對特定科目進行深入討論。
+                                無論是中文科的文言文理解、英文科的聆聽技巧提升、數學科的運算速度訓練，還是選修科目的專業知識鞏固，
+                                都有專門的討論空間和經驗豐富的同學提供協助。這種分科討論的模式有助於考生更有效地利用時間，
+                                針對性地提升各科成績。
+                            </p>
+                        </section>
+
+                        <section className="technology-features">
+                            <h2>先進技術與用戶體驗</h2>
+                            <p>
+                                dse.best聊天室採用最新的網頁技術開發，提供流暢的用戶體驗和穩定的服務性能。平台支援多裝置使用，
+                                包括桌面電腦、平板電腦和智能手機，讓DSE考生隨時隨地都能參與學習討論。我們的技術團隊持續優化系統性能，
+                                確保聊天室在高峰使用時段仍能保持快速響應和穩定運行。
+                            </p>
+                            <p>
+                                聊天室具備多項實用功能，如貼圖表情支援、訊息搜尋、用戶標識、即時通知等，增強了學習交流的趣味性和便利性。
+                                我們也重視用戶隱私保護，採用安全的資料傳輸協議，確保所有討論內容的安全性。平台的響應式設計確保在不同螢幕尺寸下
+                                都能提供最佳的瀏覽體驗，滿足現代DSE學生多元化的使用需求。
+                            </p>
+                        </section>
+
+                        <section className="success-stories">
+                            <h2>DSE成功案例與學習成果</h2>
+                            <p>
+                                多年來，dse.best聊天室已經幫助無數DSE考生提升學習成績和備考效率。許多成功考獲理想成績的同學都表示，
+                                通過聊天室的學習交流獲得了寶貴的考試心得和應試技巧。他們在聊天室中建立的學習夥伴關係不僅幫助彼此度過
+                                備考的艱難時期，更在DSE考試中發揮了關鍵作用。這些成功經驗不斷激勵著新一代的DSE考生加入我們的學習社群。
+                            </p>
+                            <p>
+                                我們的聊天室社群已成為DSE備考生態系統中不可或缺的一部分。從日常學習疑問解答到考前心理調適，
+                                從科目選擇建議到大學選科指導，聊天室提供全方位的學習支援服務。這種綜合性的教育支援模式
+                                有效提升了DSE考生的整體競爭力，幫助他們在升學路上取得更好的成果。
+                            </p>
+                        </section>
+
+                        <footer className="chat-conclusion">
+                            <h2>加入DSE Best學習社群</h2>
+                            <p>
+                                立即加入dse.best聊天室，開始您的DSE學習交流之旅。我們相信，通過集體的智慧和互助精神，
+                                每位DSE考生都能找到最適合自己的學習方法，在香港中學文憑試中取得理想成績。
+                                讓我們一起在學習的道路上攜手前進，共同迎接DSE的挑戰！
+                            </p>
+                        </footer>
+                    </article>
+                </div>
+            ) : (
+                // Regular Chat Container for Human Users
             <div className="chat-container">
                 {/* Header */}
                 <div className="chat-header">
@@ -600,6 +753,7 @@ export default function ChatPage() {
                     </div>
                 </div>
             </div>
+            )}
 
             {/* Username Modal */}
             {(showUsernameModal || isClosingUsernameModal) && (
@@ -888,6 +1042,74 @@ export default function ChatPage() {
             )}
 
             <style jsx>{`
+                /* SEO Content Styles for Search Engine Bots */
+                .seo-chat-content {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 2rem;
+                    background: var(--bs-body-bg);
+                    border-radius: 12px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                }
+
+                .chat-seo-article {
+                    line-height: 1.7;
+                    color: var(--bs-body-color);
+                }
+
+                .chat-seo-article h1 {
+                    font-size: 2.5rem;
+                    color: var(--bs-primary);
+                    margin-bottom: 1rem;
+                    font-weight: 700;
+                }
+
+                .chat-seo-article h2 {
+                    font-size: 1.8rem;
+                    color: var(--bs-primary);
+                    margin: 2rem 0 1rem 0;
+                    font-weight: 600;
+                }
+
+                .chat-seo-article .lead {
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    color: var(--bs-secondary);
+                    margin-bottom: 2rem;
+                    line-height: 1.6;
+                }
+
+                .chat-seo-article p {
+                    margin-bottom: 1.5rem;
+                    text-align: justify;
+                }
+
+                .chat-seo-article section {
+                    margin-bottom: 3rem;
+                }
+
+                .chat-conclusion {
+                    background: var(--bs-primary-bg-subtle);
+                    padding: 2rem;
+                    border-radius: 8px;
+                    border-left: 4px solid var(--bs-primary);
+                }
+
+                @media (max-width: 768px) {
+                    .seo-chat-content {
+                        padding: 1rem;
+                        margin: 0.5rem;
+                    }
+                    
+                    .chat-seo-article h1 {
+                        font-size: 2rem;
+                    }
+                    
+                    .chat-seo-article h2 {
+                        font-size: 1.5rem;
+                    }
+                }
+
                 /* Override conflicting external CSS */
                 :global(.chat-container) {
                     position: relative !important;

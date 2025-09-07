@@ -217,7 +217,7 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogType": "website"
   },
   "homepage": {
-    "title": "HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2等",
+    "title": "HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2",
     "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
     "robots": "index, follow",
     "ogTitle": "HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2等",
@@ -227,11 +227,11 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogType": "website"
   },
   "chat": {
-    "title": "Chatroom 聊天室",
-    "description": "DSE Best學習交流聊天室，與其他同學一起討論學習心得，分享DSE備考經驗。",
-    "robots": "noindex, nofollow",
-    "ogTitle": "Chatroom 聊天室",
-    "ogDescription": "DSE Best學習交流聊天室，與其他同學一起討論學習心得，分享DSE備考經驗。",
+    "title": "DSE Best Community Chat | 香港DSE學習討論聊天室",
+    "description": "加入DSE Best學習社群聊天室，與其他同學即時討論DSE備考心得、學習技巧和考試經驗。支援實時對話、貼圖互動，打造友善的學習交流環境。",
+    "robots": "index, follow",
+    "ogTitle": "DSE Best Community Chat | 香港DSE學習討論聊天室",
+    "ogDescription": "加入DSE Best學習社群聊天室，與其他同學即時討論DSE備考心得、學習技巧和考試經驗。支援實時對話、貼圖互動，打造友善的學習交流環境。",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/chat",
     "ogType": "website"
