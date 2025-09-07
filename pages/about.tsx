@@ -38,33 +38,30 @@ export default function AboutPage() {
                         <h1>關於我們 About Us</h1>
                         <br />
                         <p>
-                            歡迎來到 <strong>DSEBest</strong>
+                            歡迎來到 <strong>dse.best</strong>
                             ，我們是香港DSE考生的學習夥伴，致力於提供最優質的學習資源和支援。
                         </p>
                         <hr />
                         <h5>1. 我們的使命</h5>
                         <ul>
-                            <li>為香港DSE考生提供全面、易用的學習資源</li>
-                            <li>幫助學生有效準備DSE考試，提升學習效率</li>
+                            <li>為香港 DSE 考生提供全面、易用的學習資源</li>
+                            <li>幫助學生有效準備 DSE 考試，提升學習效率</li>
                             <li>建立一個互相支持的學習社群，分享考試技巧和經驗</li>
-                            <li>提供最新的DSE考試資訊和趨勢分析</li>
+                            <li>提供最新的 DSE 考試資訊和趨勢分析</li>
                         </ul>
                         <hr />
-                        <h5>2. 我們的團隊</h5>
+                        <h5>2. 我們的價值觀</h5>
                         <ul>
-                            <li>由經驗豐富的教育工作者和學科專家組成</li>
-                            <li>團隊成員包括前DSE考生和現職教師</li>
-                            <li>我們了解DSE考試的挑戰，致力於為學生提供實用幫助</li>
+                            <li>我們了解 DSE 考試的挑戰，致力於為學生提供實用幫助</li>
                             <li>定期更新內容，確保資訊的準確性和時效性</li>
                         </ul>
                         <hr />
                         <h5>3. 我們的服務</h5>
                         <ul>
-                            <li>完整收錄歷屆DSE試題及答案</li>
                             <li>提供各科學習資源和考試技巧</li>
-                            <li>定期更新DSE最新資訊和考試動態</li>
+                            <li>定期更新 DSE 最新資訊和考試動態</li>
                             <li>分享實用的學習方法和時間管理技巧</li>
-                            <li>提供JUPAS選科和升學資訊</li>
+                            <li>提供 JUPAS 選科和升學資訊</li>
                         </ul>
                         <hr />
                         <h5>4. 聯繫我們</h5>
@@ -74,16 +71,6 @@ export default function AboutPage() {
                                 電郵：<a href="mailto:info@dse.best">info@dse.best</a>
                             </li>
                             <li>我們會盡快回覆您的查詢</li>
-                        </ul>
-                        <hr />
-                        <h5>5. 加入我們</h5>
-                        <ul>
-                            <li>我們正在尋找對教育充滿熱情的人才</li>
-                            <li>歡迎教育工作者、內容創作者和網頁開發者加入我們的團隊</li>
-                            <li>
-                                請將您的履歷和求職信發送至：
-                                <a href="mailto:info@dse.best">info@dse.best</a>
-                            </li>
                         </ul>
                         <hr />
                     </div>

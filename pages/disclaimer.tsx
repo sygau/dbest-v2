@@ -78,7 +78,8 @@ export default function DisclaimerPage() {
                         <br />
                         <br />
                         The resources provided on this website are sourced from public channels
-                        or user submissions. While we strive to ensure the accuracy and legality
+                        or user submissions. We do not obtain any  of the past papers ourselves.
+                        While we strive to ensure the accuracy and legality
                         of all content, we do not guarantee that all materials are error-free or
                         fully compliant with copyright laws. If any content involves third-party
                         copyright or other rights, please contact us promptly. Upon
@@ -97,7 +98,8 @@ export default function DisclaimerPage() {
                         >
                             contact us
                         </a>{" "}
-                        immediately.
+                        or email us at <a href="mailto:info@dse.best">info@dse.best</a> immediately.
+                        We appreciate your understanding and cooperation.
                     </p>
                 </div>
             </div>
