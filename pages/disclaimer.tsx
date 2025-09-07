@@ -57,7 +57,8 @@ export default function DisclaimerPage() {
                         >
                             聯絡我們
                         </a>
-                        。
+                        或電郵至 <a href="mailto:info@dse.best">info@dse.best</a>。
+                        感謝您的理解與合作。
                     </p>
                     <hr />
                     <h3>English</h3>
