@@ -983,8 +983,8 @@ export default async function handler(req, res) {
             `Available moderator commands:
 /help - Show this help message
 /online - Show currently active users
-/ban <clientid> - Permanently ban a user and their IP
-/unban <clientid> - Remove a user's ban
+/ban <ip> - DOES NOT WORK
+/unban <ip> - DOES NOT WORK
 /purge - Clear chat by flooding with placeholder messages
 /link <url> - Send a clickable link as a message` :
             `Available commands:
