@@ -397,6 +397,8 @@ class DSEChat {
         this.setEditButtonIcon('bi-pencil');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
+        // Update presence data with new username
+        this.updatePresenceUsername(newUsername);
         // Sync with mobile input
         const mobileInput = document.getElementById('userNameInputMobile');
         if (mobileInput) {
@@ -419,6 +421,8 @@ class DSEChat {
         this.setEditButtonIcon('bi-pencil');
         localStorage.setItem('chatUsername', newUsername);
         this.addSystemMessage(`Username changed to ${newUsername}`);
+        // Update presence data with new username
+        this.updatePresenceUsername(newUsername);
       }
     }
   }
@@ -882,8 +886,9 @@ class DSEChat {
         });
       });
       
-      // Enter presence set
-      this.channel.presence.enter();
+      // Enter presence set with username data
+      const username = this.userNameInput.value.trim();
+      this.channel.presence.enter({ username: username });
       
       // Get initial presence count
       this.channel.presence.get((err, members) => {
@@ -892,6 +897,17 @@ class DSEChat {
         }
       });
     });
+  }
+
+  // Update presence data with new username
+  updatePresenceUsername(newUsername) {
+    if (this.channel && this.channel.presence) {
+      try {
+        this.channel.presence.update({ username: newUsername });
+      } catch (error) {
+        console.warn('Failed to update presence username:', error);
+      }
+    }
   }
 
   // Helper function to disable/enable input
