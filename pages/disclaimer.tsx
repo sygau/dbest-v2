@@ -39,7 +39,7 @@ export default function DisclaimerPage() {
                     <br />
                     <h3>中文</h3>
                     <p>
-                        本網站所載之香港中學文憑考試（HKDSE）試題及相關資源均屬香港考試及評核局（HKEAA）之智慧財產。本網站僅供學術研究及個人學習用途，旨在協助學生自學及溫習，並無任何商業用途或牟利行為。
+                        本網站所載之香港中學文憑考試（HKDSE）試題及相關資源均屬香港考試及評核局（HKEAA）之智慧財產。本網站僅供學術研究及個人學習用途，旨在協助學生自學及溫習。
                         <br />
                         <br />
                         用戶不得將本站內容用於任何形式的商業用途，包括但不限於轉載、公開展示、發佈、售賣或作為教材於收費課程中使用。未經授權，嚴禁以任何方式複製、修改、分發或發佈本站內容。
@@ -66,8 +66,7 @@ export default function DisclaimerPage() {
                         intellectual property of the Hong Kong Examinations and Assessment
                         Authority (HKEAA). This website is intended solely for academic research
                         and personal study purposes, to assist students in self-study and
-                        revision. No commercial use or profit-making activity is intended or
-                        permitted.
+                        revision.
                         <br />
                         <br />
                         Users must not use any content from this site for commercial purposes,
