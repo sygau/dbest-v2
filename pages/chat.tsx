@@ -2003,6 +2003,7 @@ export default function ChatPage() {
                     height: 18px;
                     animation: badge-glow 2s ease-in-out infinite alternate;
                     margin-top: -4px;
+                    vertical-align: middle;
                 }
 
                 :global(.moderator-badge svg) {

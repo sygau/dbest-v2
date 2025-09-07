@@ -207,12 +207,11 @@ function isModerator(clientId, ip, secretmodkey = null) {
 
 // Command patterns
 const MOD_COMMANDS = {
-  ban: /^\/ban (\S+)$/i,     // /ban clientId - permanent ban
-  unban: /^\/unban (\S+)$/i, // /unban clientId
   help: /^\/help$/i,         // /help - show available commands
   purge: /^\/purge$/i,       // /purge - clear chat with placeholder messages
   online: /^\/online$/i,     // /online - show currently active users
-  link: /^\/link (.+)$/i     // /link url - send clickable link as moderator
+  link: /^\/link (.+)$/i,    // /link url - send clickable link as moderator
+  ipinfo: /^\/ipinfo (\S+)$/i // /ipinfo ip - get detailed IP information
 };
 
 // Rate limit settings
@@ -220,12 +219,6 @@ const RATE_LIMIT_WINDOW = 60000; // 1 minute
 const MAX_REQUESTS = 15; // 15 requests per minute (increased from 8)
 const BLOCK_THRESHOLD = 2; // Number of rate limit violations before blocking
 const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-
-// Ban types enum
-const BAN_TYPES = {
-  PERMANENT: 'permanent',
-  TEMPORARY: 'temporary'
-};
 
 // Note: Removed all Maps since serverless functions are stateless
 // Data will be lost between function invocations anyway
@@ -235,15 +228,6 @@ const BAN_TYPES = {
 
 // Note: setInterval removed for serverless compatibility
 // Cleanup will be handled on-demand during requests
-
-// Simplified ban check function (no persistent data in serverless)
-function isUserBanned(clientId, ip, secretmodkey = null, isMod = null) {
-  // Never ban moderators
-  if (isMod !== null ? isMod : isModerator(clientId, ip, secretmodkey)) return false;
-  
-  // No persistent bans in serverless - would need external database
-  return false;
-}
 
 function isRateLimited(clientId, ip, secretmodkey = null, isMod = null) {
   // Never rate-limit moderators - completely bypass all rate limiting
@@ -306,7 +290,7 @@ async function moderateContent(text, type = 'message', clientId = null, ip = nul
   }
 
   // Special handling for usernames - check for "Jable" restriction
-  if (type === 'username' && cleanText.toLowerCase().includes('jable')) {
+  if (type === 'username' && (cleanText.toLowerCase().includes('jable') || cleanText.toLowerCase().includes('jabie'))) {
     return {
       isClean: false,
       reason: 'This name is restricted and cannot be used',
@@ -935,11 +919,6 @@ export default async function handler(req, res) {
     // Note: Removed user tracking since Maps are removed
     // Serverless functions are stateless anyway
     const currentTime = Date.now();
-
-    // Check if user is banned
-    if (isUserBanned(cleanClientId, ip, secretmodkey, isMod)) {
-      return res.status(403).json({ error: 'You are permanently banned from the chat' });
-    }
     
     // Check rate limiting
     const rateLimitStatus = isRateLimited(cleanClientId, ip, secretmodkey, isMod);
@@ -983,10 +962,9 @@ export default async function handler(req, res) {
             `Available moderator commands:
 /help - Show this help message
 /online - Show currently active users
-/ban <ip> - DOES NOT WORK
-/unban <ip> - DOES NOT WORK
 /purge - Clear chat by flooding with placeholder messages
-/link <url> - Send a clickable link as a message` :
+/link <url> - Send a clickable link as a message
+/ipinfo <ip> - Get detailed information about an IP address` :
             `Available commands:
 /help - Show this help message
 /online - Show currently active users`;
@@ -1072,46 +1050,6 @@ export default async function handler(req, res) {
 
         // Moderator-only commands
         if (isMod) {
-          // Ban command (simplified - no persistent data)
-          if (match = MOD_COMMANDS.ban.exec(message)) {
-            const [, targetId] = match;
-            
-            if (!targetId || targetId.trim() === '') {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: 'Invalid usage. Correct format: /ban <clientId>',
-                private: true
-              });
-            }
-            
-            return res.status(200).json({ 
-              status: 'Command executed',
-              command: true,
-              message: `⚠️ Ban command disabled - no persistent data in serverless functions. User ${targetId} would be banned if using external database.`
-            });
-          }
-
-          // Unban command (simplified - no persistent data)
-          if (match = MOD_COMMANDS.unban.exec(message)) {
-            const [, targetId] = match;
-            
-            if (!targetId || targetId.trim() === '') {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: 'Invalid usage. Correct format: /unban <clientId>',
-                private: true
-              });
-            }
-            
-            return res.status(200).json({
-              status: 'Command executed',
-              command: true,
-              message: `⚠️ Unban command disabled - no persistent data in serverless functions. User ${targetId} would be unbanned if using external database.`
-            });
-          }
-
           // Purge command - flood chat with placeholder messages
           if (MOD_COMMANDS.purge.test(message)) {
             const count = 50; // Fixed count of 50 messages
@@ -1234,10 +1172,89 @@ export default async function handler(req, res) {
               });
             }
           }
+
+          // IP Info command - get detailed IP information
+          if (match = MOD_COMMANDS.ipinfo.exec(message)) {
+            const [, targetIp] = match;
+            
+            if (!targetIp || targetIp.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /ipinfo <ip>',
+                private: true
+              });
+            }
+
+            const cleanIp = targetIp.trim();
+            
+            // Basic IP address validation
+            const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+            const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$/;
+            
+            if (!ipv4Regex.test(cleanIp) && !ipv6Regex.test(cleanIp)) {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid IP address format. Please provide a valid IPv4 or IPv6 address.',
+                private: true
+              });
+            }
+
+            try {
+              console.log(`Moderator ${cleanUsername} requested IP info for: ${cleanIp}`);
+              
+              // Get detailed IP information
+              const ipInfo = await getDetailedIPInfo(cleanIp);
+              
+              if (ipInfo.error) {
+                return res.status(200).json({
+                  status: 'success',
+                  command: true,
+                  message: `❌ Failed to lookup IP ${cleanIp}: ${ipInfo.error}`,
+                  private: true
+                });
+              }
+
+              // Format the response with essential information only
+              const locationEmoji = ipInfo.isMobile ? '📱' : ipInfo.isHosting ? '🖥️' : ipInfo.isProxy ? '🔀' : '🌍';
+              const securityFlags = [];
+              if (ipInfo.isProxy) securityFlags.push('🔀 Proxy');
+              if (ipInfo.isHosting) securityFlags.push('🖥️ Hosting');
+              if (ipInfo.isMobile) securityFlags.push('📱 Mobile');
+              
+              const ipInfoText = `${locationEmoji} ${ipInfo.ip}
+
+📍 ${ipInfo.city || 'Unknown'}, ${ipInfo.region || 'Unknown'}, ${ipInfo.country || 'Unknown'}
+🌐 ${ipInfo.isp || 'Unknown'}
+⏰ ${ipInfo.timezone || 'Unknown'}${securityFlags.length > 0 ? `\n🔒 ${securityFlags.join(', ')}` : ''}`;
+
+              // Log the IP lookup for moderation purposes
+              await logModeration(cleanClientId, ip, cleanUsername, 
+                `/ipinfo ${cleanIp}`, 
+                `IP information lookup`, 
+                'MOD_IPINFO');
+
+              return res.status(200).json({
+                status: 'success',
+                command: true,
+                message: ipInfoText,
+                private: true
+              });
+            } catch (error) {
+              console.error('Error during IP info lookup:', error);
+              return res.status(500).json({
+                status: 'error',
+                command: true,
+                message: `Failed to lookup IP information: ${error.message}`,
+                private: true
+              });
+            }
+          }
         }
 
         // Check if the command looks like a valid command but with wrong syntax
-        const commandPrefixes = ['/ban', '/unban', '/purge', '/help', '/online', '/link'];
+        const commandPrefixes = ['/purge', '/help', '/online', '/link', '/ipinfo'];
         const commandWord = text.split(' ')[0].toLowerCase();
         
         if (commandPrefixes.some(prefix => commandWord.startsWith(prefix))) {
@@ -1246,12 +1263,6 @@ export default async function handler(req, res) {
           let helpText = '';
           
           switch (baseCommand) {
-            case '/ban':
-              helpText = 'Correct usage: /ban <clientId>';
-              break;
-            case '/unban':
-              helpText = 'Correct usage: /unban <clientId>';
-              break;
             case '/purge':
               helpText = 'Correct usage: /purge (no parameters needed)';
               break;
@@ -1263,6 +1274,9 @@ export default async function handler(req, res) {
               break;
             case '/link':
               helpText = 'Correct usage: /link <url>';
+              break;
+            case '/ipinfo':
+              helpText = 'Correct usage: /ipinfo <ip>';
               break;
           }
           

@@ -683,22 +683,22 @@ class DSEChat {
         const url = linkMatch[1];
         const displayText = url.replace(/^https?:\/\//, ''); // Remove protocol for display
         
-        // Create clickable link
+        // Add emoji at the front
+        const linkIcon = document.createElement('span');
+        linkIcon.innerHTML = '🔗 ';
+        linkIcon.style.marginRight = '4px';
+        textSpan.appendChild(linkIcon);
+        
+        // Create clickable link with normal text styling
         const link = document.createElement('a');
         link.href = url;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.className = 'link-message';
-        link.style.color = '#007bff';
+        link.style.color = 'inherit'; // Use same color as normal message text
         link.style.textDecoration = 'underline';
         link.style.cursor = 'pointer';
         link.textContent = displayText;
-        
-        // Add link icon
-        const linkIcon = document.createElement('span');
-        linkIcon.innerHTML = ' 🔗';
-        linkIcon.style.marginLeft = '4px';
-        link.appendChild(linkIcon);
         
         textSpan.appendChild(link);
       } else {
