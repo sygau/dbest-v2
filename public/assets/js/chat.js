@@ -82,7 +82,7 @@ class DSEChat {
     };
   }
 
-  // Helper method to validate sticker usage
+  // Helper method to validate sticker usage for SENDING (permission check)
   validateStickerUsage(stickerName) {
     const config = this.getStickerConfig();
     const stickerNameLower = stickerName.toLowerCase();
@@ -94,6 +94,26 @@ class DSEChat {
     if (config.moderatorOnly[stickerNameLower]) {
       return { 
         valid: this.isUserModerator, 
+        path: config.moderatorOnly[stickerNameLower], 
+        requiresMod: true 
+      };
+    }
+    
+    return { valid: false, path: null, requiresMod: false };
+  }
+
+  // Helper method to get sticker info for VIEWING (no permission check - anyone can view any sticker)
+  getStickerForViewing(stickerName) {
+    const config = this.getStickerConfig();
+    const stickerNameLower = stickerName.toLowerCase();
+    
+    if (config.regular[stickerNameLower]) {
+      return { valid: true, path: config.regular[stickerNameLower], requiresMod: false };
+    }
+    
+    if (config.moderatorOnly[stickerNameLower]) {
+      return { 
+        valid: true, // Always valid for viewing
         path: config.moderatorOnly[stickerNameLower], 
         requiresMod: true 
       };
@@ -542,19 +562,21 @@ class DSEChat {
     const stickerMatch = messageText.match(/^\[([A-Za-z0-9_-]+)\]$/);
     if (stickerMatch) {
       const stickerName = stickerMatch[1];
-      const validation = this.validateStickerUsage(stickerName);
+      const stickerInfo = this.getStickerForViewing(stickerName); // Use viewing function instead of validation
       
-      if (!validation.valid) {
-        // Invalid sticker or non-moderator trying to use mod sticker
-        // This should not happen if client-side validation is working
-        // Silently ignore to prevent spam/errors
-        console.warn('Invalid sticker usage attempt:', stickerName, 'requiresMod:', validation.requiresMod);
+      if (!stickerInfo.valid) {
+        // Unknown sticker name - show as text
+        textSpan.textContent = messageText;
+        bubble.appendChild(textSpan);
+        wrapper.appendChild(bubble);
+        this.messagesContainer.appendChild(wrapper);
+        this.scrollToBottom();
         return;
       }
       
       // Create sticker display with local image only
       const stickerImg = document.createElement('img');
-      stickerImg.src = validation.path; // Only our domain sticker allowed
+      stickerImg.src = stickerInfo.path; // Only our domain sticker allowed
       stickerImg.alt = `Sticker: ${stickerName}`;
       
       // Responsive sticker sizing based on screen width
