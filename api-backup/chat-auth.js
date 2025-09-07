@@ -1285,10 +1285,18 @@ export default async function handler(req, res) {
         timestamp: Date.now()
       };
       
-      // Publish through server's Ably instance with verified status
+      // Publish main message (without IP) to public channel
       await ably.channels.get('dsebest-livechat').publish('message', {
         ...sanitizedMessage,
         isModerator: isMod // Server-verified moderator status
+      });
+      
+      // Publish IP data separately to moderator-only channel
+      await ably.channels.get('dsebest-livechat-moderation').publish('user-ip', {
+        messageId: sanitizedMessage.timestamp, // Use timestamp as message ID for correlation
+        clientId: cleanClientId,
+        userIP: ip,
+        timestamp: sanitizedMessage.timestamp
       });
 
       // Send NTFY notification for new messages (only for non-moderator messages)
