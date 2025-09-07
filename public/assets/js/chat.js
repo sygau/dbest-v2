@@ -510,45 +510,6 @@ class DSEChat {
 
   // Helper to append normal messages
 
-  loadHistoricalIPData() {
-    // Load IP data from moderation channel for historical messages
-    if (this.moderationChannel) {
-      this.moderationChannel.history({ limit: 50 }).then(result => {
-        result.items.reverse().forEach(ipMsg => {
-          if (ipMsg.data && ipMsg.data.messageId && ipMsg.data.userIP) {
-            const { messageId, userIP, clientId } = ipMsg.data;
-            const isMine = clientId === this.ably.auth.clientId;
-            if (!isMine) {
-              // Find message by timestamp correlation
-              this.updateMessageWithIP(messageId, userIP);
-            }
-          }
-        });
-      });
-    }
-  }
-
-  updateMessageWithIP(messageId, userIP) {
-    // Find message element by data attribute or ID
-    const messageElement = document.querySelector(`[data-message-id="${messageId}"]`);
-    if (messageElement && userIP) {
-      const senderElement = messageElement.querySelector('.fw-bold');
-      if (senderElement && !senderElement.querySelector('.text-info')) {
-        const ipSpan = document.createElement('span');
-        ipSpan.className = 'text-info ms-2 cursor-pointer';
-        ipSpan.textContent = `[${userIP}]`;
-        ipSpan.onclick = () => {
-          navigator.clipboard.writeText(userIP);
-          ipSpan.textContent = '[Copied!]';
-          setTimeout(() => {
-            ipSpan.textContent = `[${userIP}]`;
-          }, 1000);
-        };
-        senderElement.appendChild(ipSpan);
-      }
-    }
-  }
-
   addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false, messageId = null, userIP = null) {
     const wrapper = document.createElement('div');
     wrapper.className = 'd-flex flex-column' + (isMine ? ' align-items-end' : ' align-items-start');
@@ -910,20 +871,14 @@ class DSEChat {
             }
             
             const isMine = msg.data.clientId === this.ably.auth.clientId;
-            // Historical messages won't have IP data - that's OK for now
-            this.addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id, null);
+            this.addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id, msg.data.userIP);
           }
         });
-        
-        // Load IP data for historical messages if moderator
-        if (this.isUserModerator) {
-          this.loadHistoricalIPData();
-        }
       });
 
       // Subscribe to new messages
       this.channel.subscribe('message', msg => {
-        const { sender, text, isModerator, clientId, isPurgeMessage } = msg.data;
+        const { sender, text, isModerator, clientId, isPurgeMessage, userIP } = msg.data;
         
         // Skip displaying purge messages
         if (isPurgeMessage) {
@@ -931,34 +886,8 @@ class DSEChat {
         }
         
         const isMine = clientId === this.ably.auth.clientId;
-        // Store message temporarily without IP, will be updated if moderator
-        this.addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id, null);
-        
-        // Store message info for IP correlation if moderator
-        if (this.isUserModerator) {
-          this.pendingIPUpdates = this.pendingIPUpdates || new Map();
-          this.pendingIPUpdates.set(msg.timestamp, {
-            messageId: msg.id,
-            clientId: clientId,
-            isMine: isMine
-          });
-        }
+        this.addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id, userIP);
       });
-
-      // Subscribe to moderator-only IP data channel
-      if (this.isUserModerator) {
-        this.moderationChannel = this.ably.channels.get('dsebest-livechat-moderation');
-        this.moderationChannel.subscribe('user-ip', msg => {
-          const { messageId, clientId, userIP, timestamp } = msg.data;
-          
-          // Find the corresponding message and update it with IP
-          const pendingUpdate = this.pendingIPUpdates?.get(timestamp);
-          if (pendingUpdate && !pendingUpdate.isMine) {
-            this.updateMessageWithIP(pendingUpdate.messageId, userIP);
-            this.pendingIPUpdates.delete(timestamp);
-          }
-        });
-      }
 
       // Subscribe to moderation commands
       this.channel.subscribe('command', msg => {
