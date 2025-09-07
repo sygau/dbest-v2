@@ -116,7 +116,9 @@ export default function ResourcesPage() {
             <p>
               凡使用優惠碼 <strong>DSEBEST</strong>，即可在 NoteSity 購物享 <strong>九五折優惠</strong>
             </p>
-
+            <p>
+              Use our NoteSity Discount/Promo code <strong>DSEBEST</strong> for <strong>5% off</strong>
+            </p>
             <p>
               <a href="https://www.notesity.hk/?utm_source=dsebest&utm_medium=referral" target="_blank" rel="noopener noreferrer" className="btn btn-primary">👉 前往 NoteSity 官網選購</a>
             </p>

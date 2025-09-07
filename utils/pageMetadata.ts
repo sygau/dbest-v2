@@ -297,10 +297,10 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogType": "website"
   },
   "resources": {
-    "title": "DSE 學習資源 Learning Resources | 歷屆試題、學習工具、備考指南",
+    "title": "DSE 學習資源 Learning Resources | 學習工具、備考指南、NoteSity Discounts",
     "description": "DSE 學習資源中心，提供歷屆試題下載、學習工具、考試技巧、備考策略等全方位學習支援。",
     "robots": "index, follow",
-    "ogTitle": "DSE 學習資源 Learning Resources | 歷屆試題、學習工具、備考指南",
+    "ogTitle": "DSE 學習資源 Learning Resources | 學習工具、備考指南、NoteSity Discounts",
     "ogDescription": "DSE 學習資源中心，提供歷屆試題下載、學習工具、考試技巧、備考策略等全方位學習支援。",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/resources",
