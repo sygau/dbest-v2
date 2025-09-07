@@ -839,12 +839,67 @@ export default async function handler(req, res) {
     const cleanClientId = String(clientId || '').trim();
     let cleanUsername = String(username || '').trim();
     
-    // Get client IP and additional request info
-    const ip = req.headers['cf-connecting-ip'] ||
-               req.headers['true-client-ip'] ||
-               req.headers['x-forwarded-for']?.split(',')[0] || 
-               req.headers['x-real-ip'] || 
-               req.socket.remoteAddress;
+    // Get client IP with improved Cloudflare handling
+    function getRealClientIP(req) {
+      // Try Cloudflare headers first
+      const cfConnectingIP = req.headers['cf-connecting-ip'];
+      if (cfConnectingIP && !isCloudflareIP(cfConnectingIP)) {
+        return cfConnectingIP;
+      }
+      
+      // Try other proxy headers
+      const trueClientIP = req.headers['true-client-ip'];
+      if (trueClientIP && !isCloudflareIP(trueClientIP)) {
+        return trueClientIP;
+      }
+      
+      // Parse X-Forwarded-For (get the first non-Cloudflare IP)
+      const xForwardedFor = req.headers['x-forwarded-for'];
+      if (xForwardedFor) {
+        const ips = xForwardedFor.split(',').map(ip => ip.trim());
+        for (const ip of ips) {
+          if (ip && !isPrivateIP(ip) && !isCloudflareIP(ip)) {
+            return ip;
+          }
+        }
+      }
+      
+      const xRealIP = req.headers['x-real-ip'];
+      if (xRealIP && !isCloudflareIP(xRealIP)) {
+        return xRealIP;
+      }
+      
+      // Last resort - direct connection
+      return req.socket.remoteAddress || 'unknown';
+    }
+    
+    // Helper function to check if IP is a Cloudflare IP
+    function isCloudflareIP(ip) {
+      if (!ip) return false;
+      const cloudflareRanges = [
+        '173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22',
+        '141.101.64.0/18', '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20',
+        '197.234.240.0/22', '198.41.128.0/17', '162.158.0.0/15', '104.16.0.0/13',
+        '104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22'
+      ];
+      
+      // Simple check for common Cloudflare IP ranges
+      return ip.startsWith('104.') || ip.startsWith('172.') || 
+             ip.startsWith('173.') || ip.startsWith('198.') ||
+             ip.startsWith('162.') || ip.startsWith('141.') ||
+             ip.startsWith('108.') || ip.startsWith('188.') ||
+             ip.startsWith('190.') || ip.startsWith('197.') ||
+             ip.startsWith('103.') || ip.startsWith('131.');
+    }
+    
+    // Helper function to check if IP is private
+    function isPrivateIP(ip) {
+      if (!ip) return false;
+      return ip.startsWith('10.') || ip.startsWith('192.168.') || 
+             ip.startsWith('172.16.') || ip === '127.0.0.1' || ip === '::1';
+    }
+    
+    const ip = getRealClientIP(req);
     
     const userAgent = req.headers['user-agent'] || '';
     const deviceInfo = detectDevice(userAgent);
@@ -927,13 +982,14 @@ export default async function handler(req, res) {
           const helpText = isMod ? 
             `Available moderator commands:
 /help - Show this help message
+/online - Show currently active users
 /ban <clientid> - Permanently ban a user and their IP
 /unban <clientid> - Remove a user's ban
-/online - Show currently active users
 /purge - Clear chat by flooding with placeholder messages
 /link <url> - Send a clickable link as a message` :
             `Available commands:
-/help - Show this help message`;
+/help - Show this help message
+/online - Show currently active users`;
 
           return res.status(200).json({
             status: 'success',
@@ -942,6 +998,76 @@ export default async function handler(req, res) {
             private: true,
             doNotBroadcast: true
           });
+        }
+
+        // Online command - available to all users
+        if (MOD_COMMANDS.online.test(message)) {
+          try {
+            const channel = ably.channels.get('dsebest-livechat');
+            
+            const presenceData = await channel.presence.get();
+            
+            // Debug logging to understand the response structure
+            console.log('Presence response type:', typeof presenceData);
+            console.log('Is array:', Array.isArray(presenceData));
+            console.log('Presence data:', presenceData);
+            
+            // Safely handle different response formats
+            let presenceSet = [];
+            
+            if (Array.isArray(presenceData)) {
+              presenceSet = presenceData;
+            } else if (presenceData && Array.isArray(presenceData.items)) {
+              presenceSet = presenceData.items;
+            } else if (presenceData && Array.isArray(presenceData.members)) {
+              presenceSet = presenceData.members;
+            } else if (presenceData && presenceData.length !== undefined) {
+              // Handle array-like objects
+              presenceSet = Array.from(presenceData);
+            } else {
+              // If it's a single object, wrap it in an array
+              presenceSet = presenceData ? [presenceData] : [];
+            }
+            
+            if (presenceSet.length === 0) {
+              return res.status(200).json({
+                status: 'success',
+                command: true,
+                message: 'No users currently online.',
+                private: true
+              });
+            }
+            
+            // Extract usernames from presence data
+            const usernames = presenceSet
+              .filter(member => member && (member.data?.username || member.clientId))
+              .map(member => {
+                // Try to get username from data or clientId
+                return member.data?.username || member.clientId || 'Unknown';
+              })
+              .filter(username => username && username !== 'Unknown')
+              .sort()
+              .filter((username, index, arr) => arr.indexOf(username) === index); // Remove duplicates
+            
+            const onlineList = usernames.length > 0 
+              ? `👥 Online Users (${usernames.length}):\n\n${usernames.join('\n')}`
+              : 'No users currently online.';
+            
+            return res.status(200).json({
+              status: 'success',
+              command: true,
+              message: onlineList,
+              private: true
+            });
+          } catch (error) {
+            console.error('Error fetching online users:', error);
+            return res.status(200).json({
+              status: 'success',
+              command: true,
+              message: `Error fetching online users: ${error.message}`,
+              private: true
+            });
+          }
         }
 
         // Moderator-only commands
@@ -1036,77 +1162,6 @@ export default async function handler(req, res) {
                 status: 'error',
                 command: true,
                 message: `Failed to purge chat: ${error.message}`,
-                private: true
-              });
-            }
-          }
-
-          // Online command - show active users
-          if (MOD_COMMANDS.online.test(message)) {
-            try {
-              const ably = new Ably.Rest('fOPjAQ.LL-6_A:1QcafkRsuzspOaW3zofjg8Cu_5WjxEjpHUF0syG4uCs');
-              const channel = ably.channels.get('dsebest-livechat');
-              
-              const presenceData = await channel.presence.get();
-              
-              // Debug logging to understand the response structure
-              console.log('Presence response type:', typeof presenceData);
-              console.log('Is array:', Array.isArray(presenceData));
-              console.log('Presence data:', presenceData);
-              
-              // Safely handle different response formats
-              let presenceSet = [];
-              
-              if (Array.isArray(presenceData)) {
-                presenceSet = presenceData;
-              } else if (presenceData && Array.isArray(presenceData.items)) {
-                presenceSet = presenceData.items;
-              } else if (presenceData && Array.isArray(presenceData.members)) {
-                presenceSet = presenceData.members;
-              } else if (presenceData && presenceData.length !== undefined) {
-                // Handle array-like objects
-                presenceSet = Array.from(presenceData);
-              } else {
-                // If it's a single object, wrap it in an array
-                presenceSet = presenceData ? [presenceData] : [];
-              }
-              
-              if (presenceSet.length === 0) {
-                return res.status(200).json({
-                  status: 'success',
-                  command: true,
-                  message: 'No users currently online.',
-                  private: true
-                });
-              }
-              
-              // Extract usernames from presence data
-              const usernames = presenceSet
-                .filter(member => member && (member.data?.username || member.clientId))
-                .map(member => {
-                  // Try to get username from data or clientId
-                  return member.data?.username || member.clientId || 'Unknown';
-                })
-                .filter(username => username && username !== 'Unknown')
-                .sort()
-                .filter((username, index, arr) => arr.indexOf(username) === index); // Remove duplicates
-              
-              const onlineList = usernames.length > 0 
-                ? `👥 Online Users (${usernames.length}):\n\n${usernames.join('\n')}`
-                : 'No users currently online.';
-              
-              return res.status(200).json({
-                status: 'success',
-                command: true,
-                message: onlineList,
-                private: true
-              });
-            } catch (error) {
-              console.error('Error fetching online users:', error);
-              return res.status(200).json({
-                status: 'success',
-                command: true,
-                message: `Error fetching online users: ${error.message}`,
                 private: true
               });
             }
