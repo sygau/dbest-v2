@@ -74,8 +74,8 @@ export default function ChatPage() {
         { id: 29, url: '/assets/stickers/red.webp', alt: 'red' }
     ];
 
-    // Combined stickers array - shows ALL stickers to everyone, but moderator stickers can only be sent by mods
-    const allStickers = [...stickers, ...moderatorStickers];
+    // Combined stickers array - only show moderator stickers to moderators
+    const allStickers = isModerator ? [...stickers, ...moderatorStickers] : stickers;
 
     const handleCloseRules = () => {
         setIsClosingRules(true);
@@ -542,7 +542,7 @@ export default function ChatPage() {
                                                 background: 'var(--bs-body-bg)',
                                                 borderRadius: '12px',
                                                 padding: '6px',
-                                                cursor: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 'not-allowed' : 'pointer',
+                                                cursor: 'pointer',
                                                 transition: 'all 0.2s ease',
                                                 display: 'flex',
                                                 alignItems: 'center',
@@ -554,7 +554,6 @@ export default function ChatPage() {
                                                 position: 'relative',
                                                 overflow: 'hidden',
                                                 border: '2px solid var(--bs-border-color)',
-                                                opacity: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 0.5 : 1,
                                                 ...(sticker.id >= 10 && sticker.id <= 29 && {
                                                     borderColor: '#625c37 !important',
                                                 })
@@ -695,7 +694,7 @@ export default function ChatPage() {
                                             background: 'var(--bs-body-bg)',
                                             borderRadius: '12px',
                                             padding: '6px',
-                                            cursor: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 'not-allowed' : 'pointer',
+                                            cursor: 'pointer',
                                             transition: 'all 0.2s ease',
                                             display: 'flex',
                                             alignItems: 'center',
@@ -705,7 +704,6 @@ export default function ChatPage() {
                                             position: 'relative',
                                             overflow: 'hidden',
                                             border: '2px solid var(--bs-border-color)',
-                                            opacity: sticker.id >= 10 && sticker.id <= 29 && !isModerator ? 0.5 : 1,
                                             ...(sticker.id >= 10 && sticker.id <= 29 && {
                                                 borderColor: '#625c37 !important',
                                                 boxShadow: '0 0 8px #625c3733'
