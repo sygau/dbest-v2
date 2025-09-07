@@ -609,14 +609,14 @@ class DSEChat {
       placeholder.style.cssText = `
         width: ${stickerSize}px;
         height: ${stickerSize}px;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border: 1px solid #dee2e6;
+        background: transparent;
+        border: none;
         border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
-        color: #6c757d;
+        font-size: 20px;
+        color: rgba(108, 117, 125, 0.4);
         position: absolute;
         top: 0;
         left: 0;
