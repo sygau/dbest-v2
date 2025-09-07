@@ -579,6 +579,14 @@ class DSEChat {
       }
       
       // Create sticker display with local image only
+      const stickerContainer = document.createElement('div');
+      stickerContainer.style.cssText = `
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      `;
+      
       const stickerImg = document.createElement('img');
       stickerImg.src = stickerInfo.path; // Only our domain sticker allowed
       stickerImg.alt = `Sticker: ${stickerName}`;
@@ -596,16 +604,53 @@ class DSEChat {
         stickerSize = 100; // Desktop (user's preferred size)
       }
       
+      // Create placeholder to prevent layout shift
+      const placeholder = document.createElement('div');
+      placeholder.style.cssText = `
+        width: ${stickerSize}px;
+        height: ${stickerSize}px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #6c757d;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.3s ease;
+      `;
+      placeholder.textContent = '📷'; // Camera icon as placeholder
+      
       stickerImg.style.cssText = `
         max-width: ${stickerSize}px;
         max-height: ${stickerSize}px;
+        width: ${stickerSize}px;
+        height: ${stickerSize}px;
         border-radius: 8px;
         display: block;
+        object-fit: contain;
+        opacity: 0;
+        transition: opacity 0.3s ease;
       `;
+      
+      // Handle successful image load
+      stickerImg.onload = () => {
+        stickerImg.style.opacity = '1';
+        placeholder.style.opacity = '0';
+        setTimeout(() => {
+          if (placeholder.parentNode) {
+            placeholder.parentNode.removeChild(placeholder);
+          }
+        }, 300); // Remove placeholder after fade transition
+      };
       
       // Security: Prevent any external image loading or XSS
       stickerImg.onerror = () => {
         stickerImg.style.display = 'none';
+        placeholder.style.opacity = '0';
         
         // Use the same responsive sizing for fallback
         const fallback = document.createElement('div');
@@ -622,14 +667,16 @@ class DSEChat {
           color: #6c757d;
         `;
         fallback.textContent = '😊';
-        textSpan.appendChild(fallback);
+        stickerContainer.appendChild(fallback);
       };
       
       // Security: Prevent any onclick or other event handlers
       stickerImg.onclick = null;
-      stickerImg.onload = null;
       
-      textSpan.appendChild(stickerImg);
+      // Add elements to container
+      stickerContainer.appendChild(placeholder);
+      stickerContainer.appendChild(stickerImg);
+      textSpan.appendChild(stickerContainer);
     } else {
       // Check for link format: [LINK]url[/LINK]
       const linkMatch = messageText.match(/\[LINK\](.*?)\[\/LINK\]/);

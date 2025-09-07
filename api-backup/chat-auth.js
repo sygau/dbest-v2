@@ -1,50 +1,4 @@
 const Ably = require('ably');
-const LOGFLARE_API_KEY = '7MnWPFtPMj28';
-const LOGFLARE_SOURCE_ID = '4cd60bba-acd6-4e2b-83f6-0271b53350db';
-const LOGFLARE_ENDPOINT = `https://api.logflare.app/logs?source=${LOGFLARE_SOURCE_ID}`;
-
-// Enhanced logging with Logflare using fetch (optimized for serverless)
-async function logToLogflare(event, metadata = {}) {
-
-  if (!LOGFLARE_API_KEY || !LOGFLARE_SOURCE_ID) {
-    console.log('LOGFLARE_EVENT:', JSON.stringify({ event, metadata }, null, 2));
-    return;
-  }
-
-  try {
-    const logEntry = {
-      message: event,
-      metadata: {
-        timestamp: new Date().toISOString(),
-        service: 'dse-chat',
-        ...metadata
-      }
-    };
-
-    // Reduced timeout for faster response
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
-
-    const response = await fetch(LOGFLARE_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'X-API-KEY': LOGFLARE_API_KEY,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(logEntry),
-      signal: controller.signal
-    });
-
-    clearTimeout(timeoutId);
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-    }
-  } catch (error) {
-    console.error('Failed to log to Logflare:', error.message);
-    console.log('LOGFLARE_EVENT:', JSON.stringify({ event, metadata }, null, 2));
-  }
-}
 
 // NTFY notification helper
 async function sendNtfyNotification(messageData, userInfo = {}) {
@@ -255,15 +209,9 @@ function isModerator(clientId, ip, secretmodkey = null) {
 const MOD_COMMANDS = {
   ban: /^\/ban (\S+)$/i,     // /ban clientId - permanent ban
   unban: /^\/unban (\S+)$/i, // /unban clientId
-  banip: /^\/banip (\S+)$/i, // /banip IP - ban specific IP
-  unbanip: /^\/unbanip (\S+)$/i, // /unbanip IP - unban specific IP
-  info: /^\/info (\S+)$/i,   // /info clientId - show user info
   help: /^\/help$/i,         // /help - show available commands
   purge: /^\/purge$/i,       // /purge - clear chat with placeholder messages
-  whois: /^\/whois (\S+)$/i, // /whois username - get user's client ID
-  listbans: /^\/listbans$/i, // /listbans - show all banned users and IPs
   online: /^\/online$/i,     // /online - show currently active users
-  stats: /^\/stats$/i,       // /stats - show user statistics
   link: /^\/link (.+)$/i     // /link url - send clickable link as moderator
 };
 
@@ -315,8 +263,8 @@ async function logModeration(clientId, ip, username, message, reason, action) {
   console.log('MODERATION_LOG:', logEntry);
 }
 
-// Username moderation function
-async function moderateUsername(username, clientId, ip, secretmodkey = null, isMod = null) {
+// Unified content moderation function for both usernames and messages
+async function moderateContent(text, type = 'message', clientId = null, ip = null, secretmodkey = null, isMod = null) {
   // Check moderator status once at the beginning
   const isModStatus = isMod !== null ? isMod : isModerator(clientId, ip, secretmodkey);
   
@@ -325,22 +273,40 @@ async function moderateUsername(username, clientId, ip, secretmodkey = null, isM
     return {
       isClean: true,
       reason: null,
-      cleanUsername: username
+      cleanText: text // Return original text for moderators
     };
   }
 
-  // Ensure username is a string and trim it
-  const cleanUsername = String(username || '').trim();
+  // Ensure text is a string and trim it
+  const cleanText = String(text || '').trim();
   
-  if (!cleanUsername) {
+  if (!cleanText) {
     return {
       isClean: false,
-      reason: 'Username cannot be empty'
+      reason: `${type === 'username' ? 'Username' : 'Message'} cannot be empty`
     };
   }
 
-  // Check for restricted name "Jable" or names containing "Jable"
-  if (cleanUsername.toLowerCase().includes('jable')) {
+  // Length validation based on type
+  const maxLength = type === 'username' ? 14 : 150;
+  const minLength = type === 'username' ? 3 : 1;
+  
+  if (cleanText.length > maxLength) {
+    return {
+      isClean: false,
+      reason: `${type === 'username' ? 'Username' : 'Message'} cannot be longer than ${maxLength} characters`
+    };
+  }
+  
+  if (cleanText.length < minLength) {
+    return {
+      isClean: false,
+      reason: `${type === 'username' ? 'Username' : 'Message'} must be at least ${minLength} character${minLength > 1 ? 's' : ''} long`
+    };
+  }
+
+  // Special handling for usernames - check for "Jable" restriction
+  if (type === 'username' && cleanText.toLowerCase().includes('jable')) {
     return {
       isClean: false,
       reason: 'This name is restricted and cannot be used',
@@ -348,129 +314,228 @@ async function moderateUsername(username, clientId, ip, secretmodkey = null, isM
     };
   }
 
-  // Length validation
-  if (cleanUsername.length > 14 || cleanUsername.length < 3) {
-    return {
-      isClean: false,
-      reason: 'Username must be 3-14 characters long'
-    };
+  // Special handling for messages - check for sticker format
+  if (type === 'message') {
+    const stickerMatch = cleanText.match(/^\[([A-Za-z0-9_-]+)\]$/);
+    if (stickerMatch) {
+      const stickerName = stickerMatch[1];
+      
+      // Validate sticker name (allow all available stickers)
+      const allowedStickers = [
+        'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
+        'agree', 'heart1', 'clap', 'thumbsup_glasses', 
+        
+        'mh', 'ifc',
+        'middlefinger', 'police1', 'mh2', 'police2',
+        'jable', 'saibou', 'mh3','hahah', 'goodmorning',
+        'a_clap', 'a_laugh', 'a_pc', 'job',
+        'a_hammer', 'a_hellnah', 'a_juggle', 'a_wave', 'red'
+      ];
+      
+      if (!allowedStickers.includes(stickerName.toLowerCase())) {
+        return {
+          isClean: false,
+          reason: 'Invalid sticker name.',
+          severity: 'low'
+        };
+      }
+      
+      // Sticker messages are always clean and don't need additional validation
+      return {
+        isClean: true,
+        reason: null,
+        cleanText: cleanText
+      };
+    }
+
+    // Check for multiple stickers in a single message (prevent [excited][excited])
+    const stickerCount = (cleanText.match(/\[[A-Za-z0-9_-]+\]/g) || []).length;
+    if (stickerCount > 1) {
+      return {
+        isClean: false,
+        reason: 'Only one sticker per message is allowed.',
+        severity: 'low'
+      };
+    }
   }
 
-  // Username security checks - Ordered by complexity (fastest first)
+  // Enhanced security checks - Ordered by complexity (fastest first)
   // 1. FAST: Check for HTML/script tags (simple regex)
-  const hasHTML = /<[^>]*>/.test(cleanUsername);
+  const hasHTML = /<[^>]*>/.test(cleanText);
   if (hasHTML) {
     return {
       isClean: false,
-      reason: 'HTML tags are not allowed in usernames',
+      reason: 'HTML tags are not allowed',
       severity: 'high'
     };
   }
 
   // 2. FAST: Check for JavaScript-like content (simple regex)
-  const hasJS = /(javascript|script|eval|function|alert|document|window|location|innerHTML|outerHTML|onload|onerror)\s*[\(\:=]/i.test(cleanUsername);
+  const hasJS = /(javascript|script|eval|function|alert|document|window|location|innerHTML|outerHTML|onload|onerror)\s*[\(\:=]/i.test(cleanText);
   if (hasJS) {
     return {
       isClean: false,
-      reason: 'JavaScript-like content is not allowed in usernames',
+      reason: 'JavaScript-like content is not allowed',
       severity: 'high'
     };
   }
 
-  // Username content checks - Ordered by complexity (fastest first)
-  // 1. FAST: Check for links/domains (multiple regex patterns)
+  // 3. FAST: Check for potential data exfiltration attempts (simple regex) - messages only
+  if (type === 'message') {
+    const dataExfilPattern = /(fetch|xhr|xmlhttprequest|websocket|ajax)/i;
+    if (dataExfilPattern.test(cleanText)) {
+      return {
+        isClean: false,
+        reason: 'Suspicious content detected',
+        severity: 'high'
+      };
+    }
+  }
+
+  // 4. SLOW: Enhanced link/domain detection (multiple regex patterns)
   const linkPatterns = [
+    // Standard URLs
     /(https?:\/\/[^\s]+)/gi,
     /(www\.[^\s]+)/gi,
+    // Domain-like patterns without protocol
     /\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\b/gi,
+    // Common short URL patterns
     /(bit\.ly|tinyurl|t\.co|goo\.gl|short\.link|ow\.ly|is\.gd|buff\.ly)/gi,
+    // IP addresses
     /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/gi,
+    // Discord/social media invites
     /(discord\.gg|discord\.com\/invite)/gi,
-    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi
+    // Email-like patterns
+    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi,
+    // Suspicious domain extensions
+    /\b\w+\.(tk|ml|ga|cf|click|download|exe|zip|rar)\b/gi
   ];
 
   for (const pattern of linkPatterns) {
-    if (pattern.test(cleanUsername)) {
+    if (pattern.test(cleanText)) {
       return {
         isClean: false,
-        reason: 'Links and domains are not allowed in usernames',
+        reason: `Links and domains are not allowed in ${type === 'username' ? 'usernames' : 'messages'}`,
         severity: 'medium'
       };
     }
   }
 
-  // 2. FAST: Check for admin/moderator impersonation (simple regex)
-  const adminPatterns = [
-    /\b(admin|administrator|mod|moderator|staff|owner|dse\.?best|system|bot|official)\b/i,
-    /\b(管理|管理员|版主|官方|系統|机器人|DSEBEST)\b/i
-  ];
+  // 5. Username-specific checks
+  if (type === 'username') {
+    // Check for admin/moderator impersonation (simple regex)
+    const adminPatterns = [
+      /\b(admin|administrator|mod|moderator|staff|owner|dse\.?best|system|bot|official)\b/i,
+      /\b(管理|管理员|版主|官方|系統|机器人|DSEBEST)\b/i
+    ];
 
-  for (const pattern of adminPatterns) {
-    if (pattern.test(cleanUsername)) {
+    for (const pattern of adminPatterns) {
+      if (pattern.test(cleanText)) {
+        return {
+          isClean: false,
+          reason: 'Username cannot impersonate staff or official accounts',
+          severity: 'high'
+        };
+      }
+    }
+
+    // Check for excessive special characters (regex + math)
+    const specialCharCount = (cleanText.match(/[^a-zA-Z0-9\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
+    if (specialCharCount > cleanText.length * 0.4) {
       return {
         isClean: false,
-        reason: 'Username cannot impersonate staff or official accounts',
-        severity: 'high'
+        reason: 'Username contains too many special characters',
+        severity: 'medium'
       };
     }
   }
 
-  // 3. MEDIUM: Check for excessive special characters (regex + math)
-  const specialCharCount = (cleanUsername.match(/[^a-zA-Z0-9\u4e00-\u9fff\u3400-\u4dbf]/g) || []).length;
-  if (specialCharCount > cleanUsername.length * 0.4) {
-    return {
-      isClean: false,
-      reason: 'Username contains too many special characters',
-      severity: 'medium'
-    };
+  // 6. Message-specific spam detection
+  if (type === 'message') {
+    const spamDetectionResult = detectSpam(cleanText, clientId, ip);
+    if (!spamDetectionResult.isClean) {
+      return spamDetectionResult;
+    }
+
+    // Check for potential injection attempts
+    const injectionPatterns = [
+      /['"]\s*[;\|&`$()]/,
+      /union\s+select/i,
+      /drop\s+table/i,
+      /exec\s*\(/i
+    ];
+
+    for (const pattern of injectionPatterns) {
+      if (pattern.test(cleanText)) {
+        return {
+          isClean: false,
+          reason: 'Suspicious content detected',
+          severity: 'high'
+        };
+      }
+    }
   }
 
-  // 4. SLOW: Apply profanity filtering (multiple complex regex patterns)
-  const profanityPatterns = [
-    // Basic profanity (English) - core set for usernames
-    /\b(fuck|shit|damn|bitch|ass|hell|crap|piss|bastard|whore|slut|cunt|cock|dick|pussy|tits|boobs|sex|nude|naked|penis|vagina|anal|oral|masturbate|orgasm)\b/i,
+  // 7. Comprehensive profanity check using word boundary approach (shared for both)
+  const BANNED_WORDS = new Set([
+    // English profanity
+    'fuck', 'shit', 'damn', 'bitch', 'ass', 'hell', 'crap', 'piss', 'bastard', 'whore', 'slut', 'cunt', 'cock', 'dick', 'pussy', 'tits', 'boobs', 'sex', 'intercourse', 'nude', 'naked', 'penis', 'vagina', 'anal', 'oral', 'masturbate', 'orgasm', 'cum', 'blowjob', 'handjob', 'dildo', 'vibrator',
+    'motherfucker', 'asshole', 'douchebag', 'jackass', 'dickhead', 'shithead', 'fuckface', 'cocksucker', 'twat', 'prick', 'knobhead', 'tosser', 'wanker', 'bellend', 'pillock', 'minger', 'scrubber', 'slag',
+    'horny', 'kinky', 'fetish', 'bdsm', 'threesome', 'gangbang', 'bukkake', 'creampie', 'deepthroat', 'rimjob', 'fisting', 'squirt', 'milf', 'gilf', 'cougar', 'escort', 'prostitute', 'hooker',
+    'ballsack', 'nutsack', 'scrotum', 'clitoris', 'labia', 'areola', 'nipples', 'butthole', 'anus', 'rectum', 'pubic', 'genital', 'erection', 'boner',
     
-    // Strong profanity
-    /\b(motherfucker|asshole|douchebag|jackass|dickhead|shithead|fuckface|cocksucker|twat|prick)\b/i,
-    
-    // Sexual content
-    /\b(horny|kinky|fetish|bdsm|porn|xxx|onlyfans|escort|prostitute|hooker)\b/i,
-
-    // Numbers and symbols replacing letters
-    /\b\w*f+[^a-z]*u+[^a-z]*c+[^a-z]*k+\w*\b/i,
-    /\b\w*sh[1!]t\w*\b/i,
-    /\bb+[1!]tch\w*\b/i,
-    /\b\w*[4@]s{2,}\w*\b/i,
-    /\b\w*p[0o]rn\w*\b/i,
-    /\bs[3e]x\b/i,
-    
-    // Chinese profanity (core set)
-    /\b(他媽的|幹你娘|操你媽|去死|白癡|智障|腦殘|垃圾|廢物|幹|操|靠北|靠腰|機掰|雞掰|屌|懶叫|鳥|屁眼|婊子|臭婊子|賤人|死人頭|王八蛋|混蛋|畜生|禽獸|狗屎|狗娘養的|傻逼|傻瓜|傻屄|狗日的|你妹|草泥马|日你妈|死全家|滾蛋|死肥豬|二逼|他妈的|变态|我操|我靠|操你妈)\b/i,
-    
-    // Cantonese profanity (core set)
-    /\b(屌你|屌|瘀|閪|西|撚|柒頭|仆街|仆你個街|死仔包|死八婆|鬼佬|死鬼佬|死開|收皮|執嘢|搵笨|搵死|食屎|食蕉|碌葛|九唔搭八|頂你|頂你個肺|戇居|低能|白痴|戇鳩|傻瓜|蠢材|衰仔|衰佬|衰婆)\b/i,
+    // Adult websites and platforms
+    'onlyfans', 'xvideos', 'redtube', 'youjizz', 'xhamster', 'spankwire', 'chaturbate', 'cam4', 'livejasmin', 'missav', 'thisav', 'brazzers', 'jav', 'javhd', 'hentai', 'hanime', 'nhentai', 'loli', 'rule34', 'xnxx', 'youporn', 'eporner',
     
     // Hate speech and slurs
-    /\b(nigger|faggot|retard|nazi|hitler|chink|gook|spic|wetback|beaner|cracker|honky|kike|jap|raghead|towelhead|sandnigger)\b/i,
-  ];
+    'nigger', 'faggot', 'retard', 'nazi', 'hitler', 'kys', 'suicide', 'chink', 'gook', 'spic', 'wetback', 'beaner', 'cracker', 'honky', 'kike', 'jap', 'raghead', 'towelhead', 'sandnigger', 'cameljockey',
+    
+    // Drug references
+    'cocaine', 'heroin', 'meth', 'weed', 'marijuana', 'cannabis', 'drug', 'drugs', 'crack', 'ecstasy', 'molly', 'mdma', 'lsd', 'acid', 'shrooms', 'mushrooms', 'ketamine', 'specialk', 'opium', 'fentanyl', 'oxy', 'xanax', 'adderall', 'ritalin', 'dope', 'pot', 'ganja', 'hash', 'blunt', 'joint', 'bong', 'pipe', 'needle', 'syringe', 'dealer', 'pusher',
+    
+    // Chinese profanity (Mandarin)
+    '他媽的', '幹你娘', '操你媽', '去死', '白癡', '智障', '腦殘', '垃圾', '廢物', '幹', '操', '靠北', '靠腰', '機掰', '雞掰', '屌', '懶叫', '鳥', '屁眼', '婊子', '臭婊子', '賤人', '死人頭', '王八蛋', '混蛋', '畜生', '禽獸', '狗屎', '狗娘養的', '傻逼', '傻瓜', '傻屄', '狗日的', '你妹', '草泥马', '日你妈', '死全家', '滾蛋', '死肥豬', '二逼', '他妈的', '变态', '我操', '我靠', '操你妈', '操你祖宗十八代', '死肥猪', '滚', '滚开', '滚蛋', '笨蛋', '臭鸡蛋',
+    
+    // Cantonese profanity (Hong Kong)
+    '屌你', '屌', '瘀', '閪', '撚', '柒頭', '仆街', '仆你個街', '死仔包', '死八婆', '鬼佬', '死鬼佬', '死開', '執嘢', '搵笨', '搵死', '食屎', '食蕉', '碌葛', '九唔搭八', '頂你', '頂你個肺', '戇居', '低能', '白痴', '戇鳩', '傻瓜', '蠢材', '衰仔', '衰佬', '衰婆', '你老母', '屌你老母', '你阿媽', '屌你阿媽', '死雞', '死豬', '死牛', '死狗', '屎忽鬼', '屎坑婆', '屎窟鬼', '雞', '鳩', '撚樣', '撚嘢', '鳩嘢', '柒嘢', '西嘢', '閪嘢', '哨牙', '爛牙', '爛舌頭', '含撚', '含鳩', '含西', '去死啦', '仆你',
+    
+    // Cantonese romanization variants
+    'diu', 'dllm', 'sldpk', 'dnlm', 'dlnm', 'dn', 'sb3', 'on9', '6uo', 'onl79', 'on99', '0n9', '8964',
+    
+    // More Cantonese (traditional characters and variants)
+    '戇撚', '戇鳩', '撚頭', '撚仔', '鳩仔', '西仔', '閪仔', '柒仔', '戇豬', '蠢豬', '低撚能', '撚低能', '鳩低能', '死撚仔', '死鳩仔', '死西仔', '死閪仔', '死柒仔', '撚樣衰', '鳩樣衰', '西樣衰', '閪樣衰', '柒樣衰', '屌你撚', '屌你鳩', '屌你西', '屌你閪', '屌你柒', '含撚包', '含鳩包', '含西包', '含閪包', '含柒包', '屌撚你', '屌鳩你', '屌西你', '屌閪你', '屌柒你', 'pk', '仆街仔', '仆街死', '咸濕', '妖', '神經病', '唔該死', '死扑街', '戇屎', '慳啲啦', '撈撈', '搵扑街', '阮囡', '臭雞', '臭閪', '屎忽', '死屍頭', '屌屎'
+  ]);
 
-  for (const pattern of profanityPatterns) {
-    if (pattern.test(cleanUsername)) {
-      return {
-        isClean: false,
-        reason: 'Username contains inappropriate language',
-        severity: 'high'
-      };
-    }
+  // Efficient word boundary profanity check
+  function checkProfanity(text) {
+    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
+    return words.some(word => BANNED_WORDS.has(word));
   }
 
-  // Comprehensive XSS protection for username
-  const safeUsername = sanitizeForXSS(cleanUsername, clientId, ip, secretmodkey);
+  // Check profanity
+  if (checkProfanity(cleanText)) {
+    return {
+      isClean: false,
+      reason: `${type === 'username' ? 'Username' : 'Message'} contains inappropriate language`,
+      severity: 'high'
+    };
+  }
+  
+  // HTML entity encode the text for extra safety (messages only, usernames stay as-is)
+  const safeText = type === 'message' ? 
+    cleanText
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/\//g, '&#x2F;') :
+    cleanText;
   
   return {
     isClean: true,
     reason: null,
-    cleanUsername: safeUsername
+    cleanText: safeText
   };
 }
 
@@ -732,227 +797,6 @@ function calculateEntropy(text) {
   return entropy;
 }
 
-// Content moderation with multiple checks
-function moderateContent(text, clientId, ip, username, secretmodkey = null, isMod = null) {
-  // Check moderator status once at the beginning
-  const isModStatus = isMod !== null ? isMod : isModerator(clientId, ip, secretmodkey);
-  
-  // Skip moderation for moderators entirely
-  if (isModStatus) {
-    return {
-      isClean: true,
-      reason: null,
-      cleanText: text // Return original text for moderators
-    };
-  }
-
-  // Ensure text is a string and limit length
-  const cleanText = String(text || '').trim();
-  
-  if (!cleanText) {
-    return {
-      isClean: false,
-      reason: 'Message cannot be empty'
-    };
-  }
-
-  // Check for sticker format: [STICKERNAME]
-  const stickerMatch = cleanText.match(/^\[([A-Za-z0-9_-]+)\]$/);
-  if (stickerMatch) {
-    const stickerName = stickerMatch[1];
-    
-    // Validate sticker name (allow all available stickers)
-    const allowedStickers = [
-      'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-      'agree', 'heart1', 'clap', 'thumbsup_glasses', 
-      
-      'mh', 'ifc',
-      'middlefinger', 'police1', 'mh2', 'police2',
-      'jable', 'saibou', 'mh3','hahah', 'goodmorning',
-      'a_clap', 'a_laugh', 'a_pc', 'job',
-      'a_hammer', 'a_hellnah', 'a_juggle', 'a_wave', 'red'
-    ];
-    
-    if (!allowedStickers.includes(stickerName.toLowerCase())) {
-      return {
-        isClean: false,
-        reason: 'Invalid sticker name.',
-        severity: 'low'
-      };
-    }
-    
-    // Sticker messages are always clean and don't need additional validation
-    return {
-      isClean: true,
-      reason: null,
-      cleanText: cleanText
-    };
-  }
-
-  // Check for multiple stickers in a single message (prevent [excited][excited])
-  const stickerCount = (cleanText.match(/\[[A-Za-z0-9_-]+\]/g) || []).length;
-  if (stickerCount > 1) {
-    return {
-      isClean: false,
-      reason: 'Only one sticker per message is allowed.',
-      severity: 'low'
-    };
-  }
-
-  // Enhanced security checks - Ordered by complexity (fastest first)
-  // 1. FAST: Check for HTML/script tags (simple regex)
-  const hasHTML = /<[^>]*>/.test(cleanText);
-  if (hasHTML) {
-    return {
-      isClean: false,
-      reason: 'HTML tags are not allowed',
-      severity: 'high'
-    };
-  }
-
-  // 2. FAST: Check for JavaScript-like content (simple regex)
-  const hasJS = /(javascript|script|eval|function|alert|document|window|location|innerHTML|outerHTML|onload|onerror)\s*[\(\:=]/i.test(cleanText);
-  if (hasJS) {
-    return {
-      isClean: false,
-      reason: 'JavaScript-like content is not allowed',
-      severity: 'high'
-    };
-  }
-
-  // 3. FAST: Check for potential data exfiltration attempts (simple regex)
-  const dataExfilPattern = /(fetch|xhr|xmlhttprequest|websocket|ajax)/i;
-  if (dataExfilPattern.test(cleanText)) {
-    return {
-      isClean: false,
-      reason: 'Suspicious content detected',
-      severity: 'high'
-    };
-  }
-
-  // 4. MEDIUM: Check message length (simple comparison)
-  if (cleanText.length > 150) {
-    return {
-      isClean: false,
-      reason: 'Message is too long (max 150 characters)',
-      severity: 'low'
-    };
-  }
-
-  // 5. SLOW: Enhanced link/domain detection (multiple regex patterns)
-  const linkPatterns = [
-    // Standard URLs
-    /(https?:\/\/[^\s]+)/gi,
-    /(www\.[^\s]+)/gi,
-    // Domain-like patterns without protocol
-    /\b[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(?:\/[^\s]*)?\b/gi,
-    // Common short URL patterns
-    /(bit\.ly|tinyurl|t\.co|goo\.gl|short\.link|ow\.ly|is\.gd|buff\.ly)/gi,
-    // IP addresses
-    /\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b/gi,
-    // Discord/social media invites
-    /(discord\.gg|discord\.com\/invite)/gi,
-    // Email-like patterns
-    /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/gi,
-    // Suspicious domain extensions
-    /\b\w+\.(tk|ml|ga|cf|click|download|exe|zip|rar)\b/gi
-  ];
-
-  for (const pattern of linkPatterns) {
-    if (pattern.test(cleanText)) {
-      return {
-        isClean: false,
-        reason: 'Links and domains are not allowed in messages',
-        severity: 'medium'
-      };
-    }
-  }
-
-  // 6. Efficient profanity check using word boundary approach
-  const BANNED_WORDS = new Set([
-    // English profanity
-    'fuck', 'shit', 'damn', 'bitch', 'ass', 'hell', 'crap', 'piss', 'bastard', 'whore', 'slut', 'cunt', 'cock', 'dick', 'pussy', 'tits', 'boobs', 'sex', 'intercourse', 'nude', 'naked', 'penis', 'vagina', 'anal', 'oral', 'masturbate', 'orgasm', 'cum', 'blowjob', 'handjob', 'dildo', 'vibrator',
-    'motherfucker', 'asshole', 'douchebag', 'jackass', 'dickhead', 'shithead', 'fuckface', 'cocksucker', 'twat', 'prick', 'knobhead', 'tosser', 'wanker', 'bellend', 'pillock', 'minger', 'scrubber', 'slag',
-    'horny', 'kinky', 'fetish', 'bdsm', 'threesome', 'gangbang', 'bukkake', 'creampie', 'deepthroat', 'rimjob', 'fisting', 'squirt', 'milf', 'gilf', 'cougar', 'escort', 'prostitute', 'hooker',
-    'ballsack', 'nutsack', 'scrotum', 'clitoris', 'labia', 'areola', 'nipples', 'butthole', 'anus', 'rectum', 'pubic', 'genital', 'erection', 'boner',
-    
-    // Adult websites and platforms
-    'onlyfans', 'xvideos', 'redtube', 'youjizz', 'xhamster', 'spankwire', 'chaturbate', 'cam4', 'livejasmin', 'missav', 'thisav', 'brazzers', 'jav', 'javhd', 'hentai', 'hanime', 'nhentai', 'loli', 'rule34', 'xnxx', 'youporn', 'eporner',
-    
-    // Hate speech and slurs
-    'nigger', 'faggot', 'retard', 'nazi', 'hitler', 'kys', 'suicide', 'chink', 'gook', 'spic', 'wetback', 'beaner', 'cracker', 'honky', 'kike', 'jap', 'raghead', 'towelhead', 'sandnigger', 'cameljockey',
-    
-    // Drug references
-    'cocaine', 'heroin', 'meth', 'weed', 'marijuana', 'cannabis', 'drug', 'drugs', 'crack', 'ecstasy', 'molly', 'mdma', 'lsd', 'acid', 'shrooms', 'mushrooms', 'ketamine', 'specialk', 'opium', 'fentanyl', 'oxy', 'xanax', 'adderall', 'ritalin', 'dope', 'pot', 'ganja', 'hash', 'blunt', 'joint', 'bong', 'pipe', 'needle', 'syringe', 'dealer', 'pusher',
-    
-    // Chinese profanity (Mandarin)
-    '他媽的', '幹你娘', '操你媽', '去死', '白癡', '智障', '腦殘', '垃圾', '廢物', '幹', '操', '靠北', '靠腰', '機掰', '雞掰', '屌', '懶叫', '鳥', '屁眼', '婊子', '臭婊子', '賤人', '死人頭', '王八蛋', '混蛋', '畜生', '禽獸', '狗屎', '狗娘養的', '傻逼', '傻瓜', '傻屄', '狗日的', '你妹', '草泥马', '日你妈', '死全家', '滾蛋', '死肥豬', '二逼', '他妈的', '变态', '我操', '我靠', '操你妈', '操你祖宗十八代', '死肥猪', '滚', '滚开', '滚蛋', '笨蛋', '臭鸡蛋',
-    
-    // Cantonese profanity (Hong Kong)
-    '屌你', '屌', '瘀', '閪', '撚', '柒頭', '仆街', '仆你個街', '死仔包', '死八婆', '鬼佬', '死鬼佬', '死開', '執嘢', '搵笨', '搵死', '食屎', '食蕉', '碌葛', '九唔搭八', '頂你', '頂你個肺', '戇居', '低能', '白痴', '戇鳩', '傻瓜', '蠢材', '衰仔', '衰佬', '衰婆', '你老母', '屌你老母', '你阿媽', '屌你阿媽', '死雞', '死豬', '死牛', '死狗', '屎忽鬼', '屎坑婆', '屎窟鬼', '雞', '鳩', '撚樣', '撚嘢', '鳩嘢', '柒嘢', '西嘢', '閪嘢', '哨牙', '爛牙', '爛舌頭', '含撚', '含鳩', '含西', '去死啦', '仆你',
-    
-    // Cantonese romanization variants
-    'diu', 'dllm', 'sldpk', 'dnlm', 'dlnm', 'dn', 'sb3', 'on9', '6uo', 'onl79', 'on99', '0n9', '8964',
-    
-    // More Cantonese (traditional characters and variants)
-    '戇撚', '戇鳩', '撚頭', '撚仔', '鳩仔', '西仔', '閪仔', '柒仔', '戇豬', '蠢豬', '低撚能', '撚低能', '鳩低能', '死撚仔', '死鳩仔', '死西仔', '死閪仔', '死柒仔', '撚樣衰', '鳩樣衰', '西樣衰', '閪樣衰', '柒樣衰', '屌你撚', '屌你鳩', '屌你西', '屌你閪', '屌你柒', '含撚包', '含鳩包', '含西包', '含閪包', '含柒包', '屌撚你', '屌鳩你', '屌西你', '屌閪你', '屌柒你', 'pk', '仆街仔', '仆街死', '咸濕', '妖', '神經病', '唔該死', '死扑街', '戇屎', '慳啲啦', '撈撈', '搵扑街', '阮囡', '臭雞', '臭閪', '屎忽', '死屍頭', '屌屎'
-  ]);
-
-  // Efficient word boundary profanity check
-  function checkProfanity(text) {
-    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-    return words.some(word => BANNED_WORDS.has(word));
-  }
-
-  // Check profanity
-  if (checkProfanity(cleanText)) {
-    return {
-      isClean: false,
-      reason: 'Message contains inappropriate language',
-      severity: 'high'
-    };
-  }
-
-  // 7. Enhanced spam detection (modularized)
-  const spamDetectionResult = detectSpam(cleanText, clientId, ip);
-  if (!spamDetectionResult.isClean) {
-    return spamDetectionResult;
-  }
-
-  // 8. Check for potential injection attempts
-  const injectionPatterns = [
-    /['"]\s*[;\|&`$()]/,
-    /union\s+select/i,
-    /drop\s+table/i,
-    /exec\s*\(/i
-  ];
-
-  for (const pattern of injectionPatterns) {
-    if (pattern.test(cleanText)) {
-      return {
-        isClean: false,
-        reason: 'Suspicious content detected',
-        severity: 'high'
-      };
-    }
-  }
-  
-  // HTML entity encode the text for extra safety
-  const safeText = cleanText
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;');
-  
-  return {
-    isClean: true,
-    reason: null,
-    cleanText: safeText
-  };
-}
-
 export default async function handler(req, res) {
 
   // CORS Configuration
@@ -1021,27 +865,17 @@ export default async function handler(req, res) {
     const isMod = isModerator(cleanClientId, ip, secretmodkey);
     console.log('DEBUG: Main handler isMod:', isMod);
     
-    // Apply username moderation (NEW!)
-    const usernameModResult = await moderateUsername(cleanUsername, cleanClientId, ip, secretmodkey, isMod);
+    // Apply unified content moderation for username
+    const usernameModResult = await moderateContent(cleanUsername, 'username', cleanClientId, ip, secretmodkey, isMod);
     const hasRestrictedUsername = !usernameModResult.isClean;
     
     if (hasRestrictedUsername) {
-      // Log username violation
-      await logToLogflare('username_violation', {
-        event_type: 'username_violation',
-        client_id: cleanClientId,
-        username: cleanUsername,
-        ip_address: ip,
-        device_info: deviceInfo,
-        geography: geoData,
-        violation_reason: usernameModResult.reason,
-        severity: usernameModResult.severity || 'medium',
-        user_agent: userAgent
-      });
+      // Username violation detected but no logging
+      console.log('Username violation:', usernameModResult.reason);
     }
     
     // Use the cleaned username (or original if restricted)
-    cleanUsername = usernameModResult.isClean ? usernameModResult.cleanUsername : cleanUsername;
+    cleanUsername = usernameModResult.isClean ? usernameModResult.cleanText : cleanUsername;
 
     // Note: Removed user tracking since Maps are removed
     // Serverless functions are stateless anyway
@@ -1058,16 +892,8 @@ export default async function handler(req, res) {
       await logModeration(cleanClientId, ip, cleanUsername, 'N/A', 'Rate limit violation', 'RATE_LIMIT');
       
       // Log rate limit violation
-      await logToLogflare('rate_limit_violation', {
-        event_type: 'rate_limit_violation',
-        client_id: cleanClientId,
-        username: cleanUsername,
-        ip_address: ip,
-        device_info: deviceInfo,
-        geography: geoData,
-        user_agent: userAgent,
-        timestamp: new Date().toISOString()
-      });
+      // Rate limit exceeded
+      console.log('Rate limit exceeded for:', cleanClientId, cleanUsername, ip);
       
       return res.status(429).json({ error: 'Rate limit exceeded' });
     }
@@ -1101,15 +927,9 @@ export default async function handler(req, res) {
           const helpText = isMod ? 
             `Available moderator commands:
 /help - Show this help message
-/whois <username> - Get client ID and info for a user by their username
-/info <clientid> - Show detailed information for a client ID
 /ban <clientid> - Permanently ban a user and their IP
 /unban <clientid> - Remove a user's ban
-/banip <ip> - Ban a specific IP address
-/unbanip <ip> - Unban a specific IP address
-/listbans - Show all banned users and IPs
 /online - Show currently active users
-/stats - Show user statistics and cleanup info
 /purge - Clear chat by flooding with placeholder messages
 /link <url> - Send a clickable link as a message` :
             `Available commands:
@@ -1126,28 +946,6 @@ export default async function handler(req, res) {
 
         // Moderator-only commands
         if (isMod) {
-          // Info command (simplified - no persistent data)
-          if (match = MOD_COMMANDS.info.exec(message)) {
-            const [, targetId] = match;
-            
-            if (!targetId || targetId.trim() === '') {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: 'Invalid usage. Correct format: /info <clientId>',
-                private: true
-              });
-            }
-            
-            return res.status(200).json({
-              status: 'success',
-              command: true,
-              message: `User Info:\nClient ID: ${targetId}\nStatus: Unknown (no persistent data in serverless)\nNote: Serverless functions are stateless`,
-              private: true,
-              doNotBroadcast: true
-            });
-          }
-
           // Ban command (simplified - no persistent data)
           if (match = MOD_COMMANDS.ban.exec(message)) {
             const [, targetId] = match;
@@ -1185,56 +983,6 @@ export default async function handler(req, res) {
               status: 'Command executed',
               command: true,
               message: `⚠️ Unban command disabled - no persistent data in serverless functions. User ${targetId} would be unbanned if using external database.`
-            });
-          }
-
-          // Ban IP command (simplified - no persistent data)
-          if (match = MOD_COMMANDS.banip.exec(message)) {
-            const [, targetIP] = match;
-            
-            if (!targetIP || targetIP.trim() === '') {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: 'Invalid usage. Correct format: /banip <ip_address>',
-                private: true
-              });
-            }
-            
-            return res.status(200).json({
-              status: 'Command executed',
-              command: true,
-              message: `⚠️ Ban IP command disabled - no persistent data in serverless functions. IP ${targetIP} would be banned if using external database.`
-            });
-          }
-
-          // Unban IP command (simplified - no persistent data)
-          if (match = MOD_COMMANDS.unbanip.exec(message)) {
-            const [, targetIP] = match;
-            
-            if (!targetIP || targetIP.trim() === '') {
-              return res.status(400).json({
-                status: 'error',
-                command: true,
-                message: 'Invalid usage. Correct format: /unbanip <ip_address>',
-                private: true
-              });
-            }
-            
-            return res.status(200).json({
-              status: 'Command executed',
-              command: true,
-              message: `⚠️ Unban IP command disabled - no persistent data in serverless functions. IP ${targetIP} would be unbanned if using external database.`
-            });
-          }
-
-          // List bans command (simplified - no persistent data)
-          if (MOD_COMMANDS.listbans.test(message)) {
-            return res.status(200).json({
-              status: 'success',
-              command: true,
-              message: 'No active bans.\n\nNote: Serverless functions are stateless - no persistent data available.',
-              private: true
             });
           }
 
@@ -1293,64 +1041,75 @@ export default async function handler(req, res) {
             }
           }
 
-          // Online command - show active users (simplified - no persistent data)
+          // Online command - show active users
           if (MOD_COMMANDS.online.test(message)) {
-            return res.status(200).json({
-              status: 'success',
-              command: true,
-              message: 'No users currently active\n\nNote: Serverless functions are stateless - no persistent user data available.',
-              private: true
-            });
-          }
-
-          // Stats command - show system statistics (simplified - no persistent data)
-          if (MOD_COMMANDS.stats.test(message)) {
-            const stats = `📊 System Statistics:
-
-Active Users: 0 (no persistent data)
-Historical Data: 0 users (no persistent data)
-Banned Users: 0 (no persistent data)
-Banned IPs: 0 (no persistent data)
-Server Uptime: N/A (serverless)
-
-💾 Memory Usage:
-- Active user data: 0 entries
-- Historical data: 0 entries
-- Rate limits: 0 entries
-- Violation counts: 0 entries
-
-🧹 Cleanup Info:
-- Serverless functions are stateless
-- No persistent data between invocations
-- Consider using external database for persistence`;
-
-            return res.status(200).json({
-              status: 'success',
-              command: true,
-              message: stats,
-              private: true
-            });
-          }
-
-          // Whois command (simplified - no persistent data)
-          if (match = MOD_COMMANDS.whois.exec(message)) {
-            const [, targetUsername] = match;
-            
-            if (!targetUsername || targetUsername.trim() === '') {
-              return res.status(400).json({
-                status: 'error',
+            try {
+              const ably = new Ably.Rest('fOPjAQ.LL-6_A:1QcafkRsuzspOaW3zofjg8Cu_5WjxEjpHUF0syG4uCs');
+              const channel = ably.channels.get('dsebest-livechat');
+              
+              const presenceData = await channel.presence.get();
+              
+              // Debug logging to understand the response structure
+              console.log('Presence response type:', typeof presenceData);
+              console.log('Is array:', Array.isArray(presenceData));
+              console.log('Presence data:', presenceData);
+              
+              // Safely handle different response formats
+              let presenceSet = [];
+              
+              if (Array.isArray(presenceData)) {
+                presenceSet = presenceData;
+              } else if (presenceData && Array.isArray(presenceData.items)) {
+                presenceSet = presenceData.items;
+              } else if (presenceData && Array.isArray(presenceData.members)) {
+                presenceSet = presenceData.members;
+              } else if (presenceData && presenceData.length !== undefined) {
+                // Handle array-like objects
+                presenceSet = Array.from(presenceData);
+              } else {
+                // If it's a single object, wrap it in an array
+                presenceSet = presenceData ? [presenceData] : [];
+              }
+              
+              if (presenceSet.length === 0) {
+                return res.status(200).json({
+                  status: 'success',
+                  command: true,
+                  message: 'No users currently online.',
+                  private: true
+                });
+              }
+              
+              // Extract usernames from presence data
+              const usernames = presenceSet
+                .filter(member => member && (member.data?.username || member.clientId))
+                .map(member => {
+                  // Try to get username from data or clientId
+                  return member.data?.username || member.clientId || 'Unknown';
+                })
+                .filter(username => username && username !== 'Unknown')
+                .sort()
+                .filter((username, index, arr) => arr.indexOf(username) === index); // Remove duplicates
+              
+              const onlineList = usernames.length > 0 
+                ? `👥 Online Users (${usernames.length}):\n\n${usernames.join('\n')}`
+                : 'No users currently online.';
+              
+              return res.status(200).json({
+                status: 'success',
                 command: true,
-                message: 'Invalid usage. Correct format: /whois <username>',
+                message: onlineList,
+                private: true
+              });
+            } catch (error) {
+              console.error('Error fetching online users:', error);
+              return res.status(200).json({
+                status: 'success',
+                command: true,
+                message: `Error fetching online users: ${error.message}`,
                 private: true
               });
             }
-            
-            return res.status(200).json({
-              status: 'error',
-              command: true,
-              message: `❌ No users found with username "${targetUsername}"\n\nNote: Serverless functions are stateless - no persistent user data available.`,
-              private: true
-            });
           }
 
           // Link command - send clickable link as moderator
@@ -1423,7 +1182,7 @@ Server Uptime: N/A (serverless)
         }
 
         // Check if the command looks like a valid command but with wrong syntax
-        const commandPrefixes = ['/ban', '/unban', '/banip', '/unbanip', '/info', '/whois', '/purge', '/listbans', '/help', '/online', '/stats', '/link'];
+        const commandPrefixes = ['/ban', '/unban', '/purge', '/help', '/online', '/link'];
         const commandWord = text.split(' ')[0].toLowerCase();
         
         if (commandPrefixes.some(prefix => commandWord.startsWith(prefix))) {
@@ -1438,32 +1197,14 @@ Server Uptime: N/A (serverless)
             case '/unban':
               helpText = 'Correct usage: /unban <clientId>';
               break;
-            case '/banip':
-              helpText = 'Correct usage: /banip <ip_address>';
-              break;
-            case '/unbanip':
-              helpText = 'Correct usage: /unbanip <ip_address>';
-              break;
-            case '/info':
-              helpText = 'Correct usage: /info <clientId>';
-              break;
-            case '/whois':
-              helpText = 'Correct usage: /whois <username>';
-              break;
             case '/purge':
               helpText = 'Correct usage: /purge (no parameters needed)';
-              break;
-            case '/listbans':
-              helpText = 'Correct usage: /listbans (no parameters needed)';
               break;
             case '/help':
               helpText = 'Correct usage: /help (no parameters needed)';
               break;
             case '/online':
               helpText = 'Correct usage: /online (no parameters needed)';
-              break;
-            case '/stats':
-              helpText = 'Correct usage: /stats (no parameters needed)';
               break;
             case '/link':
               helpText = 'Correct usage: /link <url>';
@@ -1489,7 +1230,7 @@ Server Uptime: N/A (serverless)
 
 
       // Normal message moderation
-      const modResult = moderateContent(text, cleanClientId, ip, cleanUsername, secretmodkey, isMod);
+      const modResult = await moderateContent(text, 'message', cleanClientId, ip, secretmodkey, isMod);
       if (!modResult.isClean) {
         if (modResult.severity !== 'low') {
           await logModeration(
@@ -1501,20 +1242,8 @@ Server Uptime: N/A (serverless)
             'VIOLATION'
           );
           
-          // Log message violation to Logflare
-          await logToLogflare('message_violation', {
-            event_type: 'message_violation',
-            client_id: cleanClientId,
-            username: cleanUsername,
-            ip_address: ip,
-            device_info: deviceInfo,
-            geography: geoData,
-            message_content: text,
-            violation_reason: modResult.reason,
-            severity: modResult.severity || 'medium',
-            user_agent: userAgent,
-            timestamp: new Date().toISOString()
-          });
+          // Message violation detected but no logging
+          console.log('Message violation:', modResult.reason);
         }
         return res.status(403).json({ error: modResult.reason });
       }
@@ -1538,41 +1267,15 @@ Server Uptime: N/A (serverless)
       }
       
       // Check if the message is clean
-      const modResult = moderateContent(messageText, cleanClientId, ip, cleanUsername, secretmodkey, isMod);
+      const modResult = await moderateContent(messageText, 'message', cleanClientId, ip, secretmodkey, isMod);
       if (!modResult.isClean) {
-        // Log message violation to Logflare
-        await logToLogflare('message_violation', {
-          event_type: 'message_violation',
-          client_id: cleanClientId,
-          username: cleanUsername,
-          ip_address: ip,
-          device_info: deviceInfo,
-          geography: geoData,
-          message_content: messageText,
-          violation_reason: modResult.reason,
-          severity: modResult.severity || 'medium',
-          user_agent: userAgent,
-          timestamp: new Date().toISOString()
-        });
+        // Message violation detected but no logging
+        console.log('Message violation:', modResult.reason);
         
         return res.status(403).json({ error: modResult.reason });
       }
 
       // Use already checked moderator status
-      
-      // Log successful message to Logflare
-      await logToLogflare('message_sent', {
-        event_type: 'message_sent',
-        client_id: cleanClientId,
-        username: cleanUsername,
-        ip_address: ip,
-        device_info: deviceInfo,
-        geography: geoData,
-        message_content: modResult.cleanText,
-        is_moderator: isMod,
-        user_agent: userAgent,
-        timestamp: new Date().toISOString()
-      });
       
       // Create sanitized message object
       const sanitizedMessage = {
