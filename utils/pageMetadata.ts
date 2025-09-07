@@ -248,10 +248,10 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
   },
   "countdown": {
     "title": "DSE 2026 Countdown Timer 考試日期倒數",
-    "description": "DSE倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。",
+    "description": "DSE 2026 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2026 DSE Examination?",
     "robots": "index, follow",
     "ogTitle": "DSE 2026 Countdown Timer 考試日期倒數",
-    "ogDescription": "DSE倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。",
+    "ogDescription": "DSE 2026 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2026 DSE Examination?",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/countdown",
     "ogType": "website"
