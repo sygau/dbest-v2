@@ -78,7 +78,8 @@ export default function DisclaimerPage() {
                         <br />
                         <br />
                         The resources provided on this website are sourced from public channels
-                        or user submissions. We do not obtain any  of the past papers ourselves.
+                        or user submissions. (e.g. dse[.]rioho[.]dev dse247[.]com dselib[.]com etc.)
+                        We do not obtain, scan, nor distribute any of the past papers.
                         While we strive to ensure the accuracy and legality
                         of all content, we do not guarantee that all materials are error-free or
                         fully compliant with copyright laws. If any content involves third-party
