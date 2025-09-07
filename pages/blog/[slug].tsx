@@ -250,18 +250,6 @@ export default function BlogPost({ post }: BlogPostProps) {
                 </div>
               )}
             </div>
-
-            {/* Featured Image */}
-            {post.featuredImage && (
-              <div className="text-center mb-4">
-                <img 
-                  src={post.featuredImage} 
-                  alt={post.title}
-                  className="img-fluid rounded" 
-                  style={{ maxHeight: '400px', objectFit: 'cover' }} 
-                />
-              </div>
-            )}
           </div>
 
           {/* Post Content */}
