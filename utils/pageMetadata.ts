@@ -229,7 +229,7 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
   "chat": {
     "title": "dse.best Chatroom",
     "description": "加入dse.best學習社群聊天室，與其他同學即時討論DSE備考心得、學習技巧和考試經驗。支援實時對話、貼圖互動，打造友善的學習交流環境。",
-    "robots": "index, follow",
+    "robots": "noindex, nofollow",
     "ogTitle": "dse.best Chatroom",
     "ogDescription": "加入dse.best學習社群聊天室，與其他同學即時討論DSE備考心得、學習技巧和考試經驗。支援實時對話、貼圖互動，打造友善的學習交流環境。",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
