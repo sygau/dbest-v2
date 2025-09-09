@@ -252,8 +252,11 @@ async function moderateContent(text, type = 'message', clientId = null, ip = nul
   // Check moderator status once at the beginning
   const isModStatus = isMod !== null ? isMod : isModerator(clientId, ip, secretmodkey);
   
+  console.log('DEBUG: moderateContent - type:', type, 'isMod:', isMod, 'isModStatus:', isModStatus, 'text:', text?.substring(0, 20));
+  
   // Skip moderation for moderators entirely
   if (isModStatus) {
+    console.log('DEBUG: Skipping moderation for moderator');
     return {
       isClean: true,
       reason: null,
@@ -291,6 +294,7 @@ async function moderateContent(text, type = 'message', clientId = null, ip = nul
 
   // Special handling for usernames - check for "Jable" restriction
   if (type === 'username' && (cleanText.toLowerCase().includes('jable') || cleanText.toLowerCase().includes('jabie'))) {
+    console.log('DEBUG: Jable restriction triggered for username:', cleanText);
     return {
       isClean: false,
       reason: 'This name is restricted and cannot be used',
@@ -306,14 +310,22 @@ async function moderateContent(text, type = 'message', clientId = null, ip = nul
       
       // Validate sticker name (allow all available stickers)
       const allowedStickers = [
+        // Public/accessible to everyone
         'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-        'agree', 'heart1', 'clap', 'thumbsup_glasses', 
+        'agree', 'heart1', 'clap', 'thumbsup_glasses',
+        'ace', 'yay', 'wot', 'tophat', 'sorry', 'frown',
+        'hmmm', 'hungry', 'backstab',
         
-        'mh', 'ifc',
-        'middlefinger', 'police1', 'mh2', 'police2',
-        'jable', 'saibou', 'mh3','hahah', 'goodmorning',
-        'a_clap', 'a_laugh', 'a_pc', 'job',
-        'a_hammer', 'a_hellnah', 'a_juggle', 'a_wave', 'red'
+        // Moderator only stickers
+        'mh', 'ifc', 'middlefinger', 'police1', 'mh2', 'police2',
+        'jable', 'saibou', 'mh3', 'mh4', 'hahah', 'goodmorning',
+        'job', 'red', 'beer', 'smoke', 'keepscrolling',
+        
+        // All a_ stickers are moderator only
+        'a_clap', 'a_laugh', 'a_pc', 'a_hammer', 'a_hellnah', 
+        'a_juggle', 'a_wave', 'a_angrywalk', 'a_ball', 'a_boo', 
+        'a_faint', 'a_gun', 'a_keyboard', 'a_pray', 'a_reading', 
+        'a_sadbye', 'a_ski', 'a_sprint', 'a_taphead'
       ];
       
       if (!allowedStickers.includes(stickerName.toLowerCase())) {
@@ -415,6 +427,7 @@ async function moderateContent(text, type = 'message', clientId = null, ip = nul
 
     for (const pattern of adminPatterns) {
       if (pattern.test(cleanText)) {
+        console.log('DEBUG: Admin impersonation restriction triggered for username:', cleanText);
         return {
           isClean: false,
           reason: 'Username cannot impersonate staff or official accounts',
@@ -902,7 +915,7 @@ export default async function handler(req, res) {
 
     // Check moderator status once for the entire request
     const isMod = isModerator(cleanClientId, ip, secretmodkey);
-    console.log('DEBUG: Main handler isMod:', isMod);
+    console.log('DEBUG: Main handler isMod:', isMod, 'for username:', cleanUsername);
     
     // Apply unified content moderation for username
     const usernameModResult = await moderateContent(cleanUsername, 'username', cleanClientId, ip, secretmodkey, isMod);

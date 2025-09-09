@@ -55,7 +55,16 @@ class DSEChat {
         'agree': '/assets/stickers/agree.webp',
         'heart1': '/assets/stickers/heart1.webp',
         'clap': '/assets/stickers/clap.webp',
-        'thumbsup_glasses': '/assets/stickers/thumbsup_glasses.webp'
+        'thumbsup_glasses': '/assets/stickers/thumbsup_glasses.webp',
+        'ace': '/assets/stickers/ace.webp',
+        'yay': '/assets/stickers/yay.webp',
+        'wot': '/assets/stickers/wot.webp',
+        'tophat': '/assets/stickers/tophat.webp',
+        'sorry': '/assets/stickers/sorry.webp',
+        'frown': '/assets/stickers/frown.webp',
+        'hmmm': '/assets/stickers/hmmm.webp',
+        'hungry': '/assets/stickers/hungry.webp',
+        'backstab': '/assets/stickers/backstab.webp'
       },
       moderatorOnly: {
         'mh': '/assets/stickers/mh.webp',
@@ -67,17 +76,34 @@ class DSEChat {
         'jable': '/assets/stickers/jable.webp',
         'saibou': '/assets/stickers/saibou.webp',
         'mh3': '/assets/stickers/mh3.webp',
+        'mh4': '/assets/stickers/mh4.webp',
         'hahah': '/assets/stickers/hahah.webp',
         'goodmorning': '/assets/stickers/goodmorning.webp',
+        'job': '/assets/stickers/job.webp',
+        'red': '/assets/stickers/red.webp',
+        'beer': '/assets/stickers/beer.webp',
+        'smoke': '/assets/stickers/smoke.webp',
+        'keepscrolling': '/assets/stickers/keepscrolling.webp',
+        // All a_ stickers are moderator only
         'a_clap': '/assets/stickers/a_clap.webp',
         'a_laugh': '/assets/stickers/a_laugh.webp',
         'a_pc': '/assets/stickers/a_pc.webp',
-        'job': '/assets/stickers/job.webp',
         'a_hammer': '/assets/stickers/a_hammer.webp',
         'a_hellnah': '/assets/stickers/a_hellnah.webp',
         'a_juggle': '/assets/stickers/a_juggle.webp',
         'a_wave': '/assets/stickers/a_wave.webp',
-        'red': '/assets/stickers/red.webp'
+        'a_angrywalk': '/assets/stickers/a_angrywalk.webp',
+        'a_ball': '/assets/stickers/a_ball.webp',
+        'a_boo': '/assets/stickers/a_boo.webp',
+        'a_faint': '/assets/stickers/a_faint.webp',
+        'a_gun': '/assets/stickers/a_gun.webp',
+        'a_keyboard': '/assets/stickers/a_keyboard.webp',
+        'a_pray': '/assets/stickers/a_pray.webp',
+        'a_reading': '/assets/stickers/a_reading.webp',
+        'a_sadbye': '/assets/stickers/a_sadbye.webp',
+        'a_ski': '/assets/stickers/a_ski.webp',
+        'a_sprint': '/assets/stickers/a_sprint.webp',
+        'a_taphead': '/assets/stickers/a_taphead.webp'
       }
     };
   }
