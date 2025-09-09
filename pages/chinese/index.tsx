@@ -72,10 +72,52 @@ export default function ChinesePage() {
                     </p>
                     <LastUpdatedAlert date={lastUpdated} />
                     <br />
+                    
+                    {/* Navigation Section */}
+                    <div className="text-center mb-4">
+                        {/* All Years Row */}
+                        <div className="mb-2 d-flex flex-wrap justify-content-center align-items-center">
+                            <a href="#year-2025" className="text-decoration-none text-info fw-bold nav-link-year">2025</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2024" className="text-decoration-none text-info fw-bold nav-link-year">2024</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2023" className="text-decoration-none text-info fw-bold nav-link-year">2023</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2022" className="text-decoration-none text-info fw-bold nav-link-year">2022</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2021" className="text-decoration-none text-info fw-bold nav-link-year">2021</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2020" className="text-decoration-none text-info fw-bold nav-link-year">2020</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2019" className="text-decoration-none text-info fw-bold nav-link-year">2019</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2018" className="text-decoration-none text-info fw-bold nav-link-year">2018</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2017" className="text-decoration-none text-info fw-bold nav-link-year">2017</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2016" className="text-decoration-none text-info fw-bold nav-link-year">2016</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2015" className="text-decoration-none text-info fw-bold nav-link-year">2015</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2014" className="text-decoration-none text-info fw-bold nav-link-year">2014</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2013" className="text-decoration-none text-info fw-bold nav-link-year">2013</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2012" className="text-decoration-none text-info fw-bold nav-link-year">2012</a>
+                        </div>
+                        {/* Sections Row */}
+                        <div className="d-flex flex-wrap justify-content-center align-items-center">
+                            <a href="#sample-papers" className="text-decoration-none text-info fw-bold nav-link-section">模擬試卷</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#practice-papers" className="text-decoration-none text-info fw-bold nav-link-section">練習試卷</a>
+                        </div>
+                    </div>
+                    
                     <hr className="my-4" />
-                    <br />
+                    
                     {/* Year-wise Past Paper Listing */}
                     {/* 模擬試卷 (Sample Papers) */}
+                    <div id="sample-papers"></div>
                     <h2 style={{ textAlign: "center" }}>模擬試卷</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -190,6 +232,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 練習試卷 (Practice Papers) */}
+                    <div id="practice-papers"></div>
                     <h2 style={{ textAlign: "center" }}>練習試卷</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -304,6 +347,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2025 */}
+                    <div id="year-2025"></div>
                     <h2 style={{ textAlign: "center" }}>2025</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -346,6 +390,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2024 */}
+                    <div id="year-2024"></div>
                     <h2 style={{ textAlign: "center" }}>2024</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -388,6 +433,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2023 */}
+                    <div id="year-2023"></div>
                     <h2 style={{ textAlign: "center" }}>2023</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -466,6 +512,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2022 */}
+                    <div id="year-2022"></div>
                     <h2 style={{ textAlign: "center" }}>2022</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -562,6 +609,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2021 */}
+                    <div id="year-2021"></div>
                     <h2 style={{ textAlign: "center" }}>2021</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -658,6 +706,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2020 */}
+                    <div id="year-2020"></div>
                     <h2 style={{ textAlign: "center" }}>2020</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -754,6 +803,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2019 */}
+                    <div id="year-2019"></div>
                     <h2 style={{ textAlign: "center" }}>2019</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -868,6 +918,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2018 */}
+                    <div id="year-2018"></div>
                     <h2 style={{ textAlign: "center" }}>2018</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -982,6 +1033,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2017 */}
+                    <div id="year-2017"></div>
                     <h2 style={{ textAlign: "center" }}>2017</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -1096,6 +1148,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2016 */}
+                    <div id="year-2016"></div>
                     <h2 style={{ textAlign: "center" }}>2016</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -1210,6 +1263,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2015 */}
+                    <div id="year-2015"></div>
                     <h2 style={{ textAlign: "center" }}>2015</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -1342,6 +1396,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2014 */}
+                    <div id="year-2014"></div>
                     <h2 style={{ textAlign: "center" }}>2014</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -1474,6 +1529,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2013 */}
+                    <div id="year-2013"></div>
                     <h2 style={{ textAlign: "center" }}>2013</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -1588,6 +1644,7 @@ export default function ChinesePage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2012 */}
+                    <div id="year-2012"></div>
                     <h2 style={{ textAlign: "center" }}>2012</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
