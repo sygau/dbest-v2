@@ -217,10 +217,10 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogType": "website"
   },
   "homepage": {
-    "title": "HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2",
+    "title": "HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio",
     "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
     "robots": "index, follow",
-    "ogTitle": "HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2等",
+    "ogTitle": "HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio等",
     "ogDescription": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/",
