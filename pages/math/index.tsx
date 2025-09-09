@@ -194,7 +194,7 @@ export default function MathPage() {
                             <span className="nav-separator">|</span>
                             <a href="#practice-papers" className="text-decoration-none text-info fw-bold nav-link-section">練習卷 Practice Papers</a>
                             <span className="nav-separator">|</span>
-                            <a href="#sample-papers" className="text-decoration-none text-info fw-bold nav-link-section">示例卷 Sample Papers</a>
+                            <a href="#sample-papers" className="text-decoration-none text-info fw-bold nav-link-section">模擬試卷 Sample Papers</a>
                         </div>
                     </div>
                     
@@ -2444,8 +2444,8 @@ export default function MathPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">示例卷一</h5>
-                                    <p className="card-text">Sample Paper 1 (中文)</p>
+                                    <h5 className="card-title">模擬試卷一</h5>
+                                    <p className="card-text">模擬試卷一 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2461,8 +2461,8 @@ export default function MathPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">示例卷二</h5>
-                                    <p className="card-text">Sample Paper 2 (中文)</p>
+                                    <h5 className="card-title">模擬試卷二</h5>
+                                    <p className="card-text">模擬試卷二 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -2478,8 +2478,8 @@ export default function MathPage() {
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
-                                    <h5 className="card-title">示例卷答案</h5>
-                                    <p className="card-text">示例卷參考答案 (中文)</p>
+                                    <h5 className="card-title">模擬試卷答案</h5>
+                                    <p className="card-text">模擬試卷參考答案 (中文)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a

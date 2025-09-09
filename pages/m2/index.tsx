@@ -105,273 +105,6 @@ export default function M2Page() {
                         </div>
                     </div>
                     <hr className="my-4" />
-                    {/* By Topic Section */}
-                    <h2 style={{ textAlign: "center" }}>DSE By Topic</h2>
-                    <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 1-13</h5>
-                                    <p className="card-text">By Topic Book 1</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_bk1"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 1 Mathematical Induction</h5>
-                                    <p className="card-text">By Topic 1</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_1"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 2 Binomial Theorem</h5>
-                                    <p className="card-text">By Topic 2</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_2"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 3 More about Trigonometric Functions
-                                    </h5>
-                                    <p className="card-text">By Topic 3</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_3"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 4 Limits and Derivatives</h5>
-                                    <p className="card-text">By Topic 4</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_4"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 5 Differentiation</h5>
-                                    <p className="card-text">By Topic 5</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_5"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 6 Applications of Differentiation
-                                    </h5>
-                                    <p className="card-text">By Topic 6</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_6"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 7 Indefinite Integrals</h5>
-                                    <p className="card-text">By Topic 7</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_7"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 8 Definite Integrals</h5>
-                                    <p className="card-text">By Topic 8</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_8"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 9 Applications of Definite Integrals
-                                    </h5>
-                                    <p className="card-text">By Topic 9</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_9"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 10 Matrices and Determinants</h5>
-                                    <p className="card-text">By Topic 10</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_10"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 11 System of Linear Equations
-                                    </h5>
-                                    <p className="card-text">By Topic 11</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_11"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 12 Vectors</h5>
-                                    <p className="card-text">By Topic 12</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_12"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 13 Product of Vectors</h5>
-                                    <p className="card-text">By Topic 13</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_13"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr className="my-4" />
-                    <br />
                     {/* DSE by Year Section */}
                     <h2 style={{ textAlign: "center" }}>DSE By Year</h2>
                     <br />
@@ -1066,6 +799,272 @@ export default function M2Page() {
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
                                         data-paper-id="2012_per"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className="my-4" />
+                    {/* By Topic Section */}
+                    <h2 style={{ textAlign: "center" }}>DSE By Topic</h2>
+                    <br />
+                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 1-13</h5>
+                                    <p className="card-text">By Topic Book 1</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_bk1"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 1 Mathematical Induction</h5>
+                                    <p className="card-text">By Topic 1</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_1"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 2 Binomial Theorem</h5>
+                                    <p className="card-text">By Topic 2</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_2"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Topic 3 More about Trigonometric Functions
+                                    </h5>
+                                    <p className="card-text">By Topic 3</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_3"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 4 Limits and Derivatives</h5>
+                                    <p className="card-text">By Topic 4</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_4"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 5 Differentiation</h5>
+                                    <p className="card-text">By Topic 5</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_5"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Topic 6 Applications of Differentiation
+                                    </h5>
+                                    <p className="card-text">By Topic 6</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_6"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 7 Indefinite Integrals</h5>
+                                    <p className="card-text">By Topic 7</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_7"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 8 Definite Integrals</h5>
+                                    <p className="card-text">By Topic 8</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_8"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Topic 9 Applications of Definite Integrals
+                                    </h5>
+                                    <p className="card-text">By Topic 9</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_9"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 10 Matrices and Determinants</h5>
+                                    <p className="card-text">By Topic 10</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_10"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">
+                                        Topic 11 System of Linear Equations
+                                    </h5>
+                                    <p className="card-text">By Topic 11</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_11"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 12 Vectors</h5>
+                                    <p className="card-text">By Topic 12</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_12"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />
+                                        Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">Topic 13 Product of Vectors</h5>
+                                    <p className="card-text">By Topic 13</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="bytopic_13"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
