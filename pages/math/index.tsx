@@ -46,6 +46,86 @@ export default function MathPage() {
                 )}
             </Head>
 
+            <style jsx global>{`
+                html {
+                    scroll-padding-top: 120px;
+                }
+                
+                .nav-link-year {
+                    padding: 3px 6px;
+                    margin: 2px 2px;
+                    border-radius: 4px;
+                    transition: background-color 0.2s ease;
+                    display: inline-block;
+                    min-width: 42px;
+                    text-align: center;
+                }
+                
+                .nav-link-year:hover {
+                    background-color: rgba(13, 202, 240, 0.1);
+                }
+                
+                .nav-link-section {
+                    padding: 3px 5px;
+                    margin: 2px 2px;
+                    border-radius: 4px;
+                    transition: background-color 0.2s ease;
+                    display: inline-block;
+                    text-align: center;
+                    font-size: 0.9rem;
+                }
+                
+                .nav-link-section:hover {
+                    background-color: rgba(13, 202, 240, 0.1);
+                }
+                
+                .nav-separator {
+                    color: #6c757d;
+                    margin: 0 4px;
+                    font-weight: 300;
+                }
+                
+                @media (max-width: 768px) {
+                    .nav-link-year {
+                        min-width: 40px;
+                        font-size: 0.9rem;
+                        padding: 3px 6px;
+                        margin: 1px 2px;
+                    }
+                    
+                    .nav-link-section {
+                        font-size: 0.85rem;
+                        padding: 3px 5px;
+                        margin: 1px 2px;
+                    }
+                    
+                    .nav-separator {
+                        margin: 0 4px;
+                        font-size: 0.9rem;
+                    }
+                }
+                
+                @media (max-width: 576px) {
+                    .nav-link-year {
+                        min-width: 35px;
+                        font-size: 0.85rem;
+                        padding: 2px 4px;
+                        margin: 1px 1px;
+                    }
+                    
+                    .nav-link-section {
+                        font-size: 0.8rem;
+                        padding: 2px 4px;
+                        margin: 1px 1px;
+                    }
+                    
+                    .nav-separator {
+                        margin: 0 2px;
+                        font-size: 0.85rem;
+                    }
+                }
+            `}</style>
+
             {/*breadcrumb*/}
             <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <div className="breadcrumb-title pe-3">數學</div>
@@ -75,8 +155,54 @@ export default function MathPage() {
                     </p>
                     <LastUpdatedAlert date={lastUpdated} />
                     <br />
+                    
+                    {/* Navigation Section */}
+                    <div className="text-center mb-4">
+                        {/* All Years Row */}
+                        <div className="mb-2 d-flex flex-wrap justify-content-center align-items-center">
+                            <a href="#year-2025" className="text-decoration-none text-info fw-bold nav-link-year">2025</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2024" className="text-decoration-none text-info fw-bold nav-link-year">2024</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2023" className="text-decoration-none text-info fw-bold nav-link-year">2023</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2022" className="text-decoration-none text-info fw-bold nav-link-year">2022</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2021" className="text-decoration-none text-info fw-bold nav-link-year">2021</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2020" className="text-decoration-none text-info fw-bold nav-link-year">2020</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2019" className="text-decoration-none text-info fw-bold nav-link-year">2019</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2018" className="text-decoration-none text-info fw-bold nav-link-year">2018</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2017" className="text-decoration-none text-info fw-bold nav-link-year">2017</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2016" className="text-decoration-none text-info fw-bold nav-link-year">2016</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2015" className="text-decoration-none text-info fw-bold nav-link-year">2015</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2014" className="text-decoration-none text-info fw-bold nav-link-year">2014</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2013" className="text-decoration-none text-info fw-bold nav-link-year">2013</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#year-2012" className="text-decoration-none text-info fw-bold nav-link-year">2012</a>
+                        </div>
+                        {/* Sections Row */}
+                        <div className="d-flex flex-wrap justify-content-center align-items-center">
+                            <a href="#by-topic" className="text-decoration-none text-info fw-bold nav-link-section">按主題 By Topic</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#practice-papers" className="text-decoration-none text-info fw-bold nav-link-section">練習卷 Practice Papers</a>
+                            <span className="nav-separator">|</span>
+                            <a href="#sample-papers" className="text-decoration-none text-info fw-bold nav-link-section">示例卷 Sample Papers</a>
+                        </div>
+                    </div>
+                    
                     <hr className="my-4" />
+                    {/* By Year Section */}
+                    <div id="by-year"></div>
                     {/* 2025 */}
+                    <div id="year-2025"></div>
                     <h2 style={{ textAlign: "center" }}>2025</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -119,6 +245,7 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2024 */}
+                    <div id="year-2024"></div>
                     <h2 style={{ textAlign: "center" }}>2024</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -161,14 +288,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2023 */}
+                    <div id="year-2023"></div>
                     <h2 style={{ textAlign: "center" }}>2023</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2023 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2023_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2023 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2023_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2023 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2023_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2023 Paper 1</p>
+                                    <p className="card-text">2023 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -186,7 +365,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2023 Paper 2</p>
+                                    <p className="card-text">2023 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -204,7 +383,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2023 Answer Booklet</p>
+                                    <p className="card-text">2023 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -221,14 +400,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2022 */}
+                    <div id="year-2022"></div>
                     <h2 style={{ textAlign: "center" }}>2022</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2022 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2022_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2022 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2022_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2022 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2022_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2022 Paper 1</p>
+                                    <p className="card-text">2022 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -246,7 +477,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2022 Paper 2</p>
+                                    <p className="card-text">2022 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -264,7 +495,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2022 Answer Booklet</p>
+                                    <p className="card-text">2022 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -281,14 +512,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2021 */}
+                    <div id="year-2021"></div>
                     <h2 style={{ textAlign: "center" }}>2021</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2021 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2021_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2021 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2021_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2021 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2021_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2021 Paper 1</p>
+                                    <p className="card-text">2021 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -306,7 +589,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2021 Paper 2</p>
+                                    <p className="card-text">2021 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -324,7 +607,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2021 Answer Booklet</p>
+                                    <p className="card-text">2021 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -341,14 +624,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2020 */}
+                    <div id="year-2020"></div>
                     <h2 style={{ textAlign: "center" }}>2020</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2020 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2020_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2020 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2020_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2020 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2020_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2020 Paper 1</p>
+                                    <p className="card-text">2020 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -366,7 +701,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2020 Paper 2</p>
+                                    <p className="card-text">2020 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -384,7 +719,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2020 Answer Booklet</p>
+                                    <p className="card-text">2020 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -401,14 +736,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2019 */}
+                    <div id="year-2019"></div>
                     <h2 style={{ textAlign: "center" }}>2019</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2019 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2019_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2019 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2019_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2019 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2019_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2019 Paper 1</p>
+                                    <p className="card-text">2019 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -426,7 +813,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2019 Paper 2</p>
+                                    <p className="card-text">2019 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -444,7 +831,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2019 Answer Booklet</p>
+                                    <p className="card-text">2019 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -461,14 +848,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2018 */}
+                    <div id="year-2018"></div>
                     <h2 style={{ textAlign: "center" }}>2018</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2018 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2018_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2018 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2018_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2018 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2018_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2018 Paper 1</p>
+                                    <p className="card-text">2018 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -486,7 +925,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2018 Paper 2</p>
+                                    <p className="card-text">2018 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -504,7 +943,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2018 Answer Booklet</p>
+                                    <p className="card-text">2018 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -521,14 +960,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2017 */}
+                    <div id="year-2017"></div>
                     <h2 style={{ textAlign: "center" }}>2017</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2017 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2017_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2017 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2017_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2017 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2017_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2017 Paper 1</p>
+                                    <p className="card-text">2017 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -546,7 +1037,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2017 Paper 2</p>
+                                    <p className="card-text">2017 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -564,7 +1055,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2017 Answer Booklet</p>
+                                    <p className="card-text">2017 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -581,14 +1072,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2016 */}
+                    <div id="year-2016"></div>
                     <h2 style={{ textAlign: "center" }}>2016</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2016 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2016_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2016 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2016_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2016 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2016_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2016 Paper 1</p>
+                                    <p className="card-text">2016 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -606,7 +1149,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2016 Paper 2</p>
+                                    <p className="card-text">2016 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -624,7 +1167,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2016 Answer Booklet</p>
+                                    <p className="card-text">2016 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -641,14 +1184,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2015 */}
+                    <div id="year-2015"></div>
                     <h2 style={{ textAlign: "center" }}>2015</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2015 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2015_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2015 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2015_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2015 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2015_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2015 Paper 1</p>
+                                    <p className="card-text">2015 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -666,7 +1261,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2015 Paper 2</p>
+                                    <p className="card-text">2015 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -684,7 +1279,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2015 Answer Booklet</p>
+                                    <p className="card-text">2015 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -701,14 +1296,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2014 */}
+                    <div id="year-2014"></div>
                     <h2 style={{ textAlign: "center" }}>2014</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2014 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2014_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2014 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2014_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2014 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2014_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2014 Paper 1</p>
+                                    <p className="card-text">2014 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -726,7 +1373,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2014 Paper 2</p>
+                                    <p className="card-text">2014 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -744,7 +1391,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2014 Answer Booklet</p>
+                                    <p className="card-text">2014 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -761,14 +1408,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2013 */}
+                    <div id="year-2013"></div>
                     <h2 style={{ textAlign: "center" }}>2013</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2013 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2013_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2013 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2013_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2013 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2013_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2013 Paper 1</p>
+                                    <p className="card-text">2013 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -786,7 +1485,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2013 Paper 2</p>
+                                    <p className="card-text">2013 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -804,7 +1503,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2013 Answer Booklet</p>
+                                    <p className="card-text">2013 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -821,14 +1520,66 @@ export default function MathPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2012 */}
+                    <div id="year-2012"></div>
                     <h2 style={{ textAlign: "center" }}>2012</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">卷一</h5>
+                                    <p className="card-text">2012 Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2012_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">卷二</h5>
+                                    <p className="card-text">2012 Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2012_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">參考答案</h5>
+                                    <p className="card-text">2012 參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="2012_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2012 Paper 1</p>
+                                    <p className="card-text">2012 Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -846,7 +1597,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2012 Paper 2</p>
+                                    <p className="card-text">2012 Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -864,7 +1615,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Answers</h5>
-                                    <p className="card-text">2012 Answer Booklet</p>
+                                    <p className="card-text">2012 Answer Booklet (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -880,6 +1631,7 @@ export default function MathPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <div id="by-topic"></div>
                     <h2 style={{ textAlign: "center" }}>By Topic (Paper 1)</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -1574,14 +2326,66 @@ export default function MathPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <div id="practice-papers"></div>
                     <h2 style={{ textAlign: "center" }}>Practice Paper</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">練習卷一</h5>
+                                    <p className="card-text">Practice Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pp_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">練習卷二</h5>
+                                    <p className="card-text">Practice Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pp_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">練習卷答案</h5>
+                                    <p className="card-text">練習卷參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="pp_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Practice Paper 1</h5>
-                                    <p className="card-text">Practice Paper 1</p>
+                                    <p className="card-text">Practice Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1599,7 +2403,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Practice Paper 2</h5>
-                                    <p className="card-text">Practice Paper 2</p>
+                                    <p className="card-text">Practice Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1617,7 +2421,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Practice Paper Answers</h5>
-                                    <p className="card-text">Practice Paper Answers</p>
+                                    <p className="card-text">Practice Paper Answers (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1633,14 +2437,66 @@ export default function MathPage() {
                         </div>
                     </div>
                     <hr className="my-4" />
+                    <div id="sample-papers"></div>
                     <h2 style={{ textAlign: "center" }}>Sample Paper</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         <div className="col">
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
+                                    <h5 className="card-title">示例卷一</h5>
+                                    <p className="card-text">Sample Paper 1 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="sp_P1_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">示例卷二</h5>
+                                    <p className="card-text">Sample Paper 2 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="sp_P2_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
+                                    <h5 className="card-title">示例卷答案</h5>
+                                    <p className="card-text">示例卷參考答案 (中文)</p>
+                                </div>
+                                <div className="card-footer bg-transparent border-0">
+                                    <a
+                                        href="#"
+                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        data-paper-id="sp_ans_chi"
+                                    >
+                                        <BiDownload style={{ fontSize: 22 }} />下載
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="card h-100 d-flex flex-column">
+                                <div className="card-body">
                                     <h5 className="card-title">Sample Paper 1</h5>
-                                    <p className="card-text">Sample Paper 1</p>
+                                    <p className="card-text">Sample Paper 1 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1658,7 +2514,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Sample Paper 2</h5>
-                                    <p className="card-text">Sample Paper 2</p>
+                                    <p className="card-text">Sample Paper 2 (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
@@ -1676,7 +2532,7 @@ export default function MathPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Sample Paper Answers</h5>
-                                    <p className="card-text">Sample Paper Answers</p>
+                                    <p className="card-text">Sample Paper Answers (English)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a

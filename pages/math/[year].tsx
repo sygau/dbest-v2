@@ -29,24 +29,44 @@ interface PaperData {
 
 // Helper function to get paper display info
 function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
-  const mathPaperTypeMap: Record<string, string> = {
+  const mathPaperTypeMapEng: Record<string, string> = {
     'P1': 'Paper 1',
     'P2': 'Paper 2',
     'ans': 'Answers / Marking Scheme'
   };
+
+  const mathPaperTypeMapChi: Record<string, string> = {
+    'P1': '卷一',
+    'P2': '卷二',
+    'ans': '參考答案'
+  };
+
+  // Check for Chinese papers first (format: "2012_P1_chi", "2012_P2_chi", "2012_ans_chi")
+  const chiMatch = paperId.match(new RegExp(`${year}_(.+)_chi`));
+  if (chiMatch) {
+    const [, paperType] = chiMatch;
+    const displayType = mathPaperTypeMapChi[paperType] || paperType.toUpperCase();
+    return {
+      paperId,
+      title: displayType,
+      description: `${year} ${displayType}`,
+      language: 'chi' as 'chi' | 'eng',
+      paperType: displayType
+    };
+  }
 
   // Extract paper type from paperId (format: "2012_P1", "2012_P2", "2012_ans")
   const match = paperId.match(new RegExp(`${year}_(.+)`));
   if (!match) return null;
 
   const [, paperType] = match;
-  const displayType = mathPaperTypeMap[paperType] || paperType.toUpperCase();
+  const displayType = mathPaperTypeMapEng[paperType] || paperType.toUpperCase();
 
   return {
     paperId,
     title: displayType,
     description: `${year} ${displayType}`,
-    language: 'eng' as 'chi' | 'eng', // Math papers are English only
+    language: 'eng' as 'chi' | 'eng',
     paperType: displayType
   };
 }
@@ -55,6 +75,10 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
   // Use the clean single function approach
   const meta = generateYearMeta('math', year);
   const lastUpdated = getSubjectYearSlugLastUpdated('math');
+
+  // Separate papers by language
+  const chinesePapers = papers.filter(paper => paper.language === 'chi');
+  const englishPapers = papers.filter(paper => paper.language === 'eng');
 
 
 
@@ -126,40 +150,79 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
           <hr className="my-4" />
           <br />
 
-          {/* Papers Section */}
-          <div className="mb-5">
-            <h3 className="text-center mb-4">
-              <span style={{ color: '#0d6efd' }}>English Past Papers</span>
-            </h3>
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-              {papers
-                .sort((a, b) => {
-                  // Sort order: Paper 1, Paper 2, then Answers
-                  const order: Record<string, number> = { 'Paper 1': 1, 'Paper 2': 2, 'Answers / Marking Scheme': 3 };
-                  return (order[a.paperType] || 999) - (order[b.paperType] || 999);
-                })
-                .map((paper) => (
-                <div key={paper.paperId} className="col">
-                  <div className="card h-100 d-flex flex-column border-primary border-2">
-                    <div className="card-body">
-                      <h5 className="card-title">{paper.title}</h5>
-                      <p className="card-text">{paper.description}</p>
-                    </div>
-                    <div className="card-footer bg-transparent border-0">
-                      <a
-                        href="#"
-                        className="btn btn-primary px-4 d-inline-flex gap-2"
-                        data-paper-id={paper.paperId}
-                      >
-                        <BiDownload style={{ fontSize: 22 }} />
-                        Download
-                      </a>
+          {/* Chinese Papers Section */}
+          {chinesePapers.length > 0 && (
+            <div className="mb-5">
+              <h3 className="text-center mb-4">
+                <span style={{ color: '#dc3545' }}>中文試卷</span>
+              </h3>
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {chinesePapers
+                  .sort((a, b) => {
+                    // Sort order: Paper 1, Paper 2, then Answers
+                    const order: Record<string, number> = { '卷一': 1, '卷二': 2, '參考答案': 3 };
+                    return (order[a.paperType] || 999) - (order[b.paperType] || 999);
+                  })
+                  .map((paper) => (
+                  <div key={paper.paperId} className="col">
+                    <div className="card h-100 d-flex flex-column border-danger border-2">
+                      <div className="card-body">
+                        <h5 className="card-title">{paper.title}</h5>
+                        <p className="card-text">{paper.description}</p>
+                      </div>
+                      <div className="card-footer bg-transparent border-0">
+                        <a
+                          href="#"
+                          className="btn btn-danger px-4 d-inline-flex gap-2"
+                          data-paper-id={paper.paperId}
+                        >
+                          <BiDownload style={{ fontSize: 22 }} />
+                          下載
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+
+          {/* English Papers Section */}
+          {englishPapers.length > 0 && (
+            <div className="mb-5">
+              <h3 className="text-center mb-4">
+                <span style={{ color: '#0d6efd' }}>English Past Papers</span>
+              </h3>
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {englishPapers
+                  .sort((a, b) => {
+                    // Sort order: Paper 1, Paper 2, then Answers
+                    const order: Record<string, number> = { 'Paper 1': 1, 'Paper 2': 2, 'Answers / Marking Scheme': 3 };
+                    return (order[a.paperType] || 999) - (order[b.paperType] || 999);
+                  })
+                  .map((paper) => (
+                  <div key={paper.paperId} className="col">
+                    <div className="card h-100 d-flex flex-column border-primary border-2">
+                      <div className="card-body">
+                        <h5 className="card-title">{paper.title}</h5>
+                        <p className="card-text">{paper.description}</p>
+                      </div>
+                      <div className="card-footer bg-transparent border-0">
+                        <a
+                          href="#"
+                          className="btn btn-primary px-4 d-inline-flex gap-2"
+                          data-paper-id={paper.paperId}
+                        >
+                          <BiDownload style={{ fontSize: 22 }} />
+                          Download
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <hr className="my-4" />
 

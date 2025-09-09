@@ -190,6 +190,52 @@ async function getGeolocation(ip) {
   return { country: 'Unknown', region: 'Unknown', city: 'Unknown' };
 }
 
+// Enhanced IP information lookup for detailed analysis
+async function getDetailedIPInfo(ip) {
+  try {
+    // Create AbortController for timeout
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    
+    // Use ip-api.com with more detailed fields
+    const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,message,country,regionName,city,isp,org,timezone,mobile,proxy,hosting,query`, {
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (data.status === 'success') {
+      return {
+        ip: data.query || ip,
+        country: data.country || 'Unknown',
+        region: data.regionName || 'Unknown', 
+        city: data.city || 'Unknown',
+        isp: data.isp || 'Unknown',
+        org: data.org || 'Unknown',
+        timezone: data.timezone || 'Unknown',
+        isMobile: data.mobile || false,
+        isProxy: data.proxy || false,
+        isHosting: data.hosting || false
+      };
+    } else {
+      return {
+        error: data.message || 'IP lookup failed'
+      };
+    }
+  } catch (error) {
+    console.warn('Detailed IP lookup failed:', error.message);
+    return {
+      error: error.message || 'Network error during IP lookup'
+    };
+  }
+}
+
 // Moderator settings
 const MOD_SECRET_KEY = process.env.MOD_SECRET_KEY || 'dsebest88388'; // Secret key for mod auth
 
