@@ -1374,7 +1374,7 @@ export default async function handler(req, res) {
       });
       
       // Publish IP data separately to moderator-only channel
-      await ably.channels.get('dsebest-livechat-moderation').publish('user-ip', {
+      await ably.channels.get('dsebest-livechat').publish('user-ip', {
         messageId: sanitizedMessage.timestamp, // Use timestamp as message ID for correlation
         clientId: cleanClientId,
         userIP: ip,
