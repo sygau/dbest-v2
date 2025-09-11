@@ -20,6 +20,11 @@ class DSEChat {
     this.rateLimitStartTime = Date.now();
     this.rateLimitMessageCount = 0;
     
+    // Duplicate message prevention
+    this.lastMessage = '';
+    this.messageHistory = [];
+    this.MAX_HISTORY_SIZE = 10; // Keep last 10 messages for comparison
+    
     // Rate limit settings
     this.SEND_COOLDOWN = 3000; // 3s cooldown between sends
     this.MAX_MESSAGES_PER_MINUTE = 15; // Max 15 messages per minute (increased from 8)
@@ -1073,6 +1078,22 @@ class DSEChat {
     const text = this.messageInput.value.trim();
     const sender = this.userNameInput.value.trim();
 
+    // Check for duplicate message (exact match with last message)
+    if (text === this.lastMessage) {
+      this.addSystemMessage('Please do not send the same message twice in a row.');
+      this.isSending = false;
+      this.setInputState(false);
+      return;
+    }
+
+    // Check against recent message history for spamming
+    if (this.messageHistory.includes(text)) {
+      this.addSystemMessage('You have already sent this message recently. Please avoid repeating messages.');
+      this.isSending = false;
+      this.setInputState(false);
+      return;
+    }
+
     // Process emoji shortcodes
     const processedText = this.processEmojiShortcodes(text);
 
@@ -1206,6 +1227,14 @@ class DSEChat {
       this.messageCount++;
       this.rateLimitMessageCount++;
       this.lastSendTime = now;
+      
+      // Update message history for duplicate prevention
+      this.lastMessage = text;
+      this.messageHistory.push(text);
+      if (this.messageHistory.length > this.MAX_HISTORY_SIZE) {
+        this.messageHistory.shift(); // Remove oldest message
+      }
+      
       this.messageInput.value = '';
       
       // Reset burst window if needed
