@@ -550,6 +550,9 @@ class DSEChat {
     if (messageId) {
       wrapper.dataset.messageId = messageId;
     }
+    // Also set timestamp for IP correlation if messageId is not available
+    wrapper.dataset.timestamp = time;
+    
     const bubble = document.createElement('div');
     bubble.className = 'chat-bubble ' + (isMine ? 'mine' : 'other');
     if (isModerator) {
@@ -958,6 +961,40 @@ class DSEChat {
         
         const isMine = clientId === this.ably.auth.clientId;
         this.addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id, userIP);
+      });
+
+      // Subscribe to user IP data (for moderators)
+      this.channel.subscribe('user-ip', msg => {
+        if (this.isUserModerator) {
+          const { messageId, clientId, userIP, timestamp } = msg.data;
+          
+          // Find the corresponding message by timestamp
+          const messageWrappers = document.querySelectorAll('[data-timestamp]');
+          messageWrappers.forEach(wrapper => {
+            const messageTimestamp = parseInt(wrapper.dataset.timestamp);
+            // Allow 5 second tolerance for timestamp matching
+            if (Math.abs(messageTimestamp - timestamp) < 5000) {
+              
+              // Add IP to the username line if not already present and not the user's own message
+              const bubble = wrapper.querySelector('.chat-bubble');
+              const nameElement = bubble ? bubble.querySelector('strong') : null;
+              const isOwnMessage = bubble && bubble.classList.contains('mine');
+              
+              if (nameElement && !nameElement.querySelector('.text-info') && !isOwnMessage) {
+                const ipSpan = document.createElement('small');
+                ipSpan.className = 'ms-2 text-info';
+                ipSpan.title = 'User IP - Click to copy';
+                ipSpan.textContent = `[${userIP}]`;
+                ipSpan.style.cursor = 'pointer';
+                ipSpan.onclick = () => {
+                  navigator.clipboard.writeText(userIP);
+                  this.addSystemMessage('User IP copied to clipboard');
+                };
+                nameElement.appendChild(ipSpan);
+              }
+            }
+          });
+        }
       });
 
       // Subscribe to moderation commands
