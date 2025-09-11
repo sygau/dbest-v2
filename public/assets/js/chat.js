@@ -569,6 +569,14 @@ class DSEChat {
     }
     
     // Show user IP if user is a moderator and it's not their own message
+    // Debug logging to identify IP display issues
+    console.log('IP Display Debug:', {
+      isUserModerator: this.isUserModerator,
+      userIP: userIP,
+      isMine: isMine,
+      willShowIP: this.isUserModerator && userIP && !isMine
+    });
+    
     if (this.isUserModerator && userIP && !isMine) {
       const ipSpan = document.createElement('small');
       ipSpan.className = 'ms-2 text-info';
