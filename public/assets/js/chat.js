@@ -575,7 +575,7 @@ class DSEChat {
     }
     
     // Show user IP if user is a moderator and it's not their own message
-    // Debug logging to identify IP display issues
+    // Note: Server excludes ALL moderators' IPs, so we only need to check if it's not the viewer's own message
     console.log('IP Display Debug:', {
       isUserModerator: this.isUserModerator,
       userIP: userIP,
@@ -976,6 +976,7 @@ class DSEChat {
             if (Math.abs(messageTimestamp - timestamp) < 5000) {
               
               // Add IP to the username line if not already present and not the user's own message
+              // Note: Server excludes ALL moderators' IPs, so this will only show regular users' IPs
               const bubble = wrapper.querySelector('.chat-bubble');
               const nameElement = bubble ? bubble.querySelector('strong') : null;
               const isOwnMessage = bubble && bubble.classList.contains('mine');
