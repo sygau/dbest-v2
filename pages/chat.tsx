@@ -1883,12 +1883,31 @@ export default function ChatPage() {
 
                     .modal-content {
                         margin: 0;
-                        max-height: 100vh;
+                        max-height: 90vh;
                         border-radius: 16px !important;
+                        display: flex;
+                        flex-direction: column;
                     }
 
                     .modal-content.large {
                         border-radius: 16px !important;
+                        max-height: 90vh;
+                    }
+
+                    .modal-header {
+                        flex-shrink: 0;
+                        border-radius: 16px 16px 0 0 !important;
+                    }
+
+                    .modal-body {
+                        flex: 1;
+                        overflow-y: auto;
+                        max-height: calc(90vh - 140px);
+                    }
+
+                    .modal-footer {
+                        flex-shrink: 0;
+                        border-radius: 0 0 16px 16px !important;
                     }
 
                     .modal-header,

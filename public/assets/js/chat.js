@@ -1006,20 +1006,33 @@ class DSEChat {
 
   // Helper function to disable/enable input
   setInputState(disabled, cooldownSeconds = 0) {
+    // Get the correct elements by their actual IDs
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+    
     // If lockdown is active and user is not moderator, always disable
     if (this.isLockdownActive && !this.isUserModerator) {
-      this.messageInput.disabled = true;
-      this.sendButton.disabled = true;
-      this.messageInput.placeholder = 'Chat is temporarily unavailable';
+      if (messageInput) {
+        messageInput.disabled = true;
+        messageInput.placeholder = 'Chat is temporarily unavailable';
+      }
+      if (sendButton) {
+        sendButton.disabled = true;
+      }
       return;
     }
     
-    this.messageInput.disabled = disabled;
-    this.sendButton.disabled = disabled;
-    if (disabled && cooldownSeconds > 0) {
-      this.messageInput.placeholder = `Waiting ${cooldownSeconds} seconds...`;
-    } else {
-      this.messageInput.placeholder = 'Type a message…';
+    if (messageInput) {
+      messageInput.disabled = disabled;
+      if (disabled && cooldownSeconds > 0) {
+        messageInput.placeholder = `Waiting ${cooldownSeconds} seconds...`;
+      } else {
+        messageInput.placeholder = 'Type a message…';
+      }
+    }
+    
+    if (sendButton) {
+      sendButton.disabled = disabled;
     }
   }
 
@@ -1114,6 +1127,13 @@ class DSEChat {
     
     const text = this.messageInput.value.trim();
     const sender = this.userNameInput.value.trim();
+
+    // Check for empty message first
+    if (!text) {
+      this.isSending = false;
+      this.setInputState(false);
+      return;
+    }
 
     // Check for duplicate message (exact match with last message)
     if (text === this.lastMessage) {
