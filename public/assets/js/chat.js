@@ -875,6 +875,35 @@ class DSEChat {
         this.isUserModerator = !!data.isModerator;
         if (this.isUserModerator) {
           this.addSystemMessage('Welcome, Moderator! Type /help to see available commands.');
+          
+          // Check lockdown status for moderators
+          fetch('https://api.dse.best/chat-auth', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              action: 'check_lockdown',
+              clientId: this.ably.auth.clientId,
+              username: this.userNameInput.value.trim(),
+              secretmodkey: this.getSecretKey()
+            })
+          })
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            }
+            return { isLockdown: false };
+          })
+          .then(lockdownData => {
+            if (lockdownData.isLockdown) {
+              this.addSystemMessage('🔒 Lockdown mode is currently ACTIVE - only moderators can send messages.');
+              this.updateLockdownState(true);
+            }
+          })
+          .catch(() => {
+            // Silently fail - lockdown status check is not critical
+          });
         }
         
         // Dispatch event to React component
