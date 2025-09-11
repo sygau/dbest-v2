@@ -1,7 +1,7 @@
 const Ably = require('ably');
 const { createClient } = require('redis');
 
-// Redis setup for lockdown mode - using same setup as view-count.js
+// Redis setup for lockdown mode
 const redisClient = createClient({
   url: process.env.REDIS_URL || 'redis://default:DTBSTJ27DpCzsdbwJSR9kDvH7SZ8oAjG@redis-11863.c295.ap-southeast-1-1.ec2.redns.redis-cloud.com:11863'
 });
@@ -44,6 +44,33 @@ async function disableLockdown() {
     return true;
   } catch (error) {
     console.error('Error disabling lockdown:', error);
+    return false;
+  }
+}
+
+// IP ban functions
+async function isIPBanned(ip) {
+  try {
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
+    const banStatus = await redisClient.get(`chat:banned:${ip}`);
+    return banStatus === 'true';
+  } catch (error) {
+    console.error('Error checking IP ban status:', error);
+    return false; // Fail open - allow if Redis is down
+  }
+}
+
+async function banIP(ip) {
+  try {
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
+    await redisClient.set(`chat:banned:${ip}`, 'true');
+    return true;
+  } catch (error) {
+    console.error('Error banning IP:', error);
     return false;
   }
 }
@@ -306,9 +333,24 @@ const MOD_COMMANDS = {
   online: /^\/online$/i,     // /online - show currently active users
   link: /^\/link (.+)$/i,    // /link url - send clickable link as moderator
   ipinfo: /^\/ipinfo (\S+)$/i, // /ipinfo ip - get detailed IP information
-  lockdown: /^\/lockdown (on|off)$/i // /lockdown on/off - enable/disable lockdown mode
+  lockdown: /^\/lockdown (on|off)$/i, // /lockdown on/off - enable/disable lockdown mode
+  ban: /^\/ban (\S+)$/i      // /ban ip - ban an IP address
 };
 
+// Rate limit settings
+const RATE_LIMIT_WINDOW = 60000; // 1 minute
+const MAX_REQUESTS = 15; // 15 requests per minute (increased from 8)
+const BLOCK_THRESHOLD = 2; // Number of rate limit violations before blocking
+const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+// Note: Removed all Maps since serverless functions are stateless
+// Data will be lost between function invocations anyway
+
+// Note: Removed cleanup function since Maps are removed
+// Serverless functions are stateless anyway
+
+// Note: setInterval removed for serverless compatibility
+// Cleanup will be handled on-demand during requests
 
 function isRateLimited(clientId, ip, secretmodkey = null, isMod = null) {
   // Never rate-limit moderators - completely bypass all rate limiting
@@ -317,6 +359,9 @@ function isRateLimited(clientId, ip, secretmodkey = null, isMod = null) {
   // No persistent rate limiting in serverless - would need external database
   return false;
 }
+
+// Note: Removed rate limit helper function since Maps are removed
+// Serverless functions are stateless anyway
 
 // Logging function for moderation events
 async function logModeration(clientId, ip, username, message, reason, action) {
@@ -388,14 +433,22 @@ async function moderateContent(text, type = 'message', clientId = null, ip = nul
       
       // Validate sticker name (allow all available stickers)
       const allowedStickers = [
+        // Public/accessible to everyone
         'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-        'agree', 'heart1', 'clap', 'thumbsup_glasses', 
+        'agree', 'heart1', 'clap', 'thumbsup_glasses',
+        'ace', 'yay', 'wot', 'tophat', 'sorry', 'frown',
+        'hmmm', 'hungry', 'backstab',
         
-        'mh', 'ifc',
-        'middlefinger', 'police1', 'mh2', 'police2',
-        'jable', 'saibou', 'mh3','hahah', 'goodmorning',
-        'a_clap', 'a_laugh', 'a_pc', 'job',
-        'a_hammer', 'a_hellnah', 'a_juggle', 'a_wave', 'red'
+        // Moderator only stickers
+        'mh', 'ifc', 'middlefinger', 'police1', 'mh2', 'police2',
+        'jable', 'saibou', 'mh3', 'mh4', 'hahah', 'goodmorning',
+        'job', 'red', 'beer', 'smoke', 'keepscrolling',
+        
+        // All a_ stickers are moderator only
+        'a_clap', 'a_laugh', 'a_pc', 'a_hammer', 'a_hellnah', 
+        'a_juggle', 'a_wave', 'a_angrywalk', 'a_ball', 'a_boo', 
+        'a_faint', 'a_gun', 'a_keyboard', 'a_pray', 'a_reading', 
+        'a_sadbye', 'a_ski', 'a_sprint', 'a_taphead'
       ];
       
       if (!allowedStickers.includes(stickerName.toLowerCase())) {
@@ -895,6 +948,79 @@ export default async function handler(req, res) {
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Content-Security-Policy', "default-src 'none'; script-src 'self'");
 
+  // Get client IP immediately for ban check
+  function getRealClientIP(req) {
+    // Try Cloudflare headers first
+    const cfConnectingIP = req.headers['cf-connecting-ip'];
+    if (cfConnectingIP && !isCloudflareIP(cfConnectingIP)) {
+      return cfConnectingIP;
+    }
+    
+    // Try other proxy headers
+    const trueClientIP = req.headers['true-client-ip'];
+    if (trueClientIP && !isCloudflareIP(trueClientIP)) {
+      return trueClientIP;
+    }
+    
+    // Parse X-Forwarded-For (get the first non-Cloudflare IP)
+    const xForwardedFor = req.headers['x-forwarded-for'];
+    if (xForwardedFor) {
+      const ips = xForwardedFor.split(',').map(ip => ip.trim());
+      for (const ip of ips) {
+        if (ip && !isPrivateIP(ip) && !isCloudflareIP(ip)) {
+          return ip;
+        }
+      }
+    }
+    
+    const xRealIP = req.headers['x-real-ip'];
+    if (xRealIP && !isCloudflareIP(xRealIP)) {
+      return xRealIP;
+    }
+    
+    // Last resort - direct connection
+    return req.socket.remoteAddress || 'unknown';
+  }
+  
+  // Helper function to check if IP is a Cloudflare IP
+  function isCloudflareIP(ip) {
+    if (!ip) return false;
+    const cloudflareRanges = [
+      '173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22',
+      '141.101.64.0/18', '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20',
+      '197.234.240.0/22', '198.41.128.0/17', '162.158.0.0/15', '104.16.0.0/13',
+      '104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22'
+    ];
+    
+    // Simple check for common Cloudflare IP ranges
+    return ip.startsWith('104.') || ip.startsWith('172.') || 
+           ip.startsWith('173.') || ip.startsWith('198.') ||
+           ip.startsWith('162.') || ip.startsWith('141.') ||
+           ip.startsWith('108.') || ip.startsWith('188.') ||
+           ip.startsWith('190.') || ip.startsWith('197.') ||
+           ip.startsWith('103.') || ip.startsWith('131.');
+  }
+  
+  // Helper function to check if IP is private
+  function isPrivateIP(ip) {
+    if (!ip) return false;
+    return ip.startsWith('10.') || ip.startsWith('192.168.') || 
+           ip.startsWith('172.16.') || ip === '127.0.0.1' || ip === '::1';
+  }
+
+  const ip = getRealClientIP(req);
+  
+  // Check if IP is banned EARLY - refuse with 502 for security reasons
+  try {
+    const isBanned = await isIPBanned(ip);
+    if (isBanned) {
+      return res.status(502).end(); // No message, just refuse
+    }
+  } catch (error) {
+    console.error('Error checking IP ban status:', error);
+    // Continue if Redis check fails - fail open for availability
+  }
+
   try {
     if (req.method !== 'POST') {
       return res.status(405).json({ error: 'Method not allowed' });
@@ -905,68 +1031,6 @@ export default async function handler(req, res) {
     // Validate and sanitize inputs
     const cleanClientId = String(clientId || '').trim();
     let cleanUsername = String(username || '').trim();
-    
-    // Get client IP with improved Cloudflare handling
-    function getRealClientIP(req) {
-      // Try Cloudflare headers first
-      const cfConnectingIP = req.headers['cf-connecting-ip'];
-      if (cfConnectingIP && !isCloudflareIP(cfConnectingIP)) {
-        return cfConnectingIP;
-      }
-      
-      // Try other proxy headers
-      const trueClientIP = req.headers['true-client-ip'];
-      if (trueClientIP && !isCloudflareIP(trueClientIP)) {
-        return trueClientIP;
-      }
-      
-      // Parse X-Forwarded-For (get the first non-Cloudflare IP)
-      const xForwardedFor = req.headers['x-forwarded-for'];
-      if (xForwardedFor) {
-        const ips = xForwardedFor.split(',').map(ip => ip.trim());
-        for (const ip of ips) {
-          if (ip && !isPrivateIP(ip) && !isCloudflareIP(ip)) {
-            return ip;
-          }
-        }
-      }
-      
-      const xRealIP = req.headers['x-real-ip'];
-      if (xRealIP && !isCloudflareIP(xRealIP)) {
-        return xRealIP;
-      }
-      
-      // Last resort - direct connection
-      return req.socket.remoteAddress || 'unknown';
-    }
-    
-    // Helper function to check if IP is a Cloudflare IP
-    function isCloudflareIP(ip) {
-      if (!ip) return false;
-      const cloudflareRanges = [
-        '173.245.48.0/20', '103.21.244.0/22', '103.22.200.0/22', '103.31.4.0/22',
-        '141.101.64.0/18', '108.162.192.0/18', '190.93.240.0/20', '188.114.96.0/20',
-        '197.234.240.0/22', '198.41.128.0/17', '162.158.0.0/15', '104.16.0.0/13',
-        '104.24.0.0/14', '172.64.0.0/13', '131.0.72.0/22'
-      ];
-      
-      // Simple check for common Cloudflare IP ranges
-      return ip.startsWith('104.') || ip.startsWith('172.') || 
-             ip.startsWith('173.') || ip.startsWith('198.') ||
-             ip.startsWith('162.') || ip.startsWith('141.') ||
-             ip.startsWith('108.') || ip.startsWith('188.') ||
-             ip.startsWith('190.') || ip.startsWith('197.') ||
-             ip.startsWith('103.') || ip.startsWith('131.');
-    }
-    
-    // Helper function to check if IP is private
-    function isPrivateIP(ip) {
-      if (!ip) return false;
-      return ip.startsWith('10.') || ip.startsWith('192.168.') || 
-             ip.startsWith('172.16.') || ip === '127.0.0.1' || ip === '::1';
-    }
-    
-    const ip = getRealClientIP(req);
     
     const userAgent = req.headers['user-agent'] || '';
     const deviceInfo = detectDevice(userAgent);
@@ -1048,7 +1112,8 @@ export default async function handler(req, res) {
 /purge - Clear chat by flooding with placeholder messages
 /link <url> - Send a clickable link as a message
 /ipinfo <ip> - Get detailed information about an IP address
-/lockdown on/off - Enable or disable lockdown mode (only mods can send messages)` :
+/lockdown on/off - Enable or disable lockdown mode (only mods can send messages)
+/ban <ip> - Ban an IP address` :
             `Available commands:
 /help - Show this help message
 /online - Show currently active users`;
@@ -1393,10 +1458,76 @@ export default async function handler(req, res) {
               });
             }
           }
+
+          // Ban command - ban an IP address
+          if (match = MOD_COMMANDS.ban.exec(message)) {
+            const [, targetIp] = match;
+            
+            if (!targetIp || targetIp.trim() === '') {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid usage. Correct format: /ban <ip>',
+                private: true
+              });
+            }
+
+            const cleanIp = targetIp.trim();
+            
+            // Basic IP address validation
+            const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+            const ipv6Regex = /^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$|^::1$|^::$/;
+            
+            if (!ipv4Regex.test(cleanIp) && !ipv6Regex.test(cleanIp)) {
+              return res.status(400).json({
+                status: 'error',
+                command: true,
+                message: 'Invalid IP address format. Please provide a valid IPv4 or IPv6 address.',
+                private: true
+              });
+            }
+
+            try {
+              console.log(`Moderator ${cleanUsername} is banning IP: ${cleanIp}`);
+              
+              // Ban the IP
+              const banResult = await banIP(cleanIp);
+              
+              if (!banResult) {
+                return res.status(500).json({
+                  status: 'error',
+                  command: true,
+                  message: `❌ Failed to ban IP ${cleanIp}. Please try again.`,
+                  private: true
+                });
+              }
+
+              // Log the ban action
+              await logModeration(cleanClientId, ip, cleanUsername, 
+                `/ban ${cleanIp}`, 
+                `Banned IP address ${cleanIp}`, 
+                'MOD_BAN_IP');
+
+              return res.status(200).json({
+                status: 'success',
+                command: true,
+                message: `🚫 IP address ${cleanIp} has been banned successfully.`,
+                private: true
+              });
+            } catch (error) {
+              console.error('Error during ban command:', error);
+              return res.status(500).json({
+                status: 'error',
+                command: true,
+                message: `Failed to ban IP: ${error.message}`,
+                private: true
+              });
+            }
+          }
         }
 
         // Check if the command looks like a valid command but with wrong syntax
-        const commandPrefixes = ['/purge', '/help', '/online', '/link', '/ipinfo', '/lockdown'];
+        const commandPrefixes = ['/purge', '/help', '/online', '/link', '/ipinfo', '/lockdown', '/ban'];
         const commandWord = text.split(' ')[0].toLowerCase();
         
         if (commandPrefixes.some(prefix => commandWord.startsWith(prefix))) {
@@ -1422,6 +1553,9 @@ export default async function handler(req, res) {
               break;
             case '/lockdown':
               helpText = 'Correct usage: /lockdown on or /lockdown off';
+              break;
+            case '/ban':
+              helpText = 'Correct usage: /ban <ip>';
               break;
           }
           
@@ -1492,7 +1626,6 @@ export default async function handler(req, res) {
         } catch (error) {
           console.error('Error checking lockdown status:', error);
           // In case of Redis error, allow messages to prevent complete chat failure
-          // but log the error for investigation
         }
       }
       
