@@ -1,4 +1,52 @@
 const Ably = require('ably');
+const { createClient } = require('redis');
+
+// Redis setup for lockdown mode - using same setup as view-count.js
+const redisClient = createClient({
+  url: process.env.REDIS_URL || 'redis://default:DTBSTJ27DpCzsdbwJSR9kDvH7SZ8oAjG@redis-11863.c295.ap-southeast-1-1.ec2.redns.redis-cloud.com:11863'
+});
+
+redisClient.on('error', (err) => console.error('Redis Client Error for lockdown:', err));
+
+// Simple lockdown functions
+async function isLockdownEnabled() {
+  try {
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
+    const lockdownStatus = await redisClient.get('chat:lockdown');
+    return lockdownStatus === 'true';
+  } catch (error) {
+    console.error('Error checking lockdown status:', error);
+    return false; // Fail open - allow messages if Redis is down
+  }
+}
+
+async function enableLockdown() {
+  try {
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
+    await redisClient.set('chat:lockdown', 'true');
+    return true;
+  } catch (error) {
+    console.error('Error enabling lockdown:', error);
+    return false;
+  }
+}
+
+async function disableLockdown() {
+  try {
+    if (!redisClient.isOpen) {
+      await redisClient.connect();
+    }
+    await redisClient.set('chat:lockdown', 'false');
+    return true;
+  } catch (error) {
+    console.error('Error disabling lockdown:', error);
+    return false;
+  }
+}
 
 // NTFY notification helper
 async function sendNtfyNotification(messageData, userInfo = {}) {
@@ -257,23 +305,10 @@ const MOD_COMMANDS = {
   purge: /^\/purge$/i,       // /purge - clear chat with placeholder messages
   online: /^\/online$/i,     // /online - show currently active users
   link: /^\/link (.+)$/i,    // /link url - send clickable link as moderator
-  ipinfo: /^\/ipinfo (\S+)$/i // /ipinfo ip - get detailed IP information
+  ipinfo: /^\/ipinfo (\S+)$/i, // /ipinfo ip - get detailed IP information
+  lockdown: /^\/lockdown (on|off)$/i // /lockdown on/off - enable/disable lockdown mode
 };
 
-// Rate limit settings
-const RATE_LIMIT_WINDOW = 60000; // 1 minute
-const MAX_REQUESTS = 15; // 15 requests per minute (increased from 8)
-const BLOCK_THRESHOLD = 2; // Number of rate limit violations before blocking
-const BLOCK_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
-
-// Note: Removed all Maps since serverless functions are stateless
-// Data will be lost between function invocations anyway
-
-// Note: Removed cleanup function since Maps are removed
-// Serverless functions are stateless anyway
-
-// Note: setInterval removed for serverless compatibility
-// Cleanup will be handled on-demand during requests
 
 function isRateLimited(clientId, ip, secretmodkey = null, isMod = null) {
   // Never rate-limit moderators - completely bypass all rate limiting
@@ -282,9 +317,6 @@ function isRateLimited(clientId, ip, secretmodkey = null, isMod = null) {
   // No persistent rate limiting in serverless - would need external database
   return false;
 }
-
-// Note: Removed rate limit helper function since Maps are removed
-// Serverless functions are stateless anyway
 
 // Logging function for moderation events
 async function logModeration(clientId, ip, username, message, reason, action) {
@@ -356,22 +388,14 @@ async function moderateContent(text, type = 'message', clientId = null, ip = nul
       
       // Validate sticker name (allow all available stickers)
       const allowedStickers = [
-        // Public/accessible to everyone
         'excited', 'wave', 'shocked', 'shh', 'thumbsdown', 
-        'agree', 'heart1', 'clap', 'thumbsup_glasses',
-        'ace', 'yay', 'wot', 'tophat', 'sorry', 'frown',
-        'hmmm', 'hungry', 'backstab',
+        'agree', 'heart1', 'clap', 'thumbsup_glasses', 
         
-        // Moderator only stickers
-        'mh', 'ifc', 'middlefinger', 'police1', 'mh2', 'police2',
-        'jable', 'saibou', 'mh3', 'mh4', 'hahah', 'goodmorning',
-        'job', 'red', 'beer', 'smoke', 'keepscrolling',
-        
-        // All a_ stickers are moderator only
-        'a_clap', 'a_laugh', 'a_pc', 'a_hammer', 'a_hellnah', 
-        'a_juggle', 'a_wave', 'a_angrywalk', 'a_ball', 'a_boo', 
-        'a_faint', 'a_gun', 'a_keyboard', 'a_pray', 'a_reading', 
-        'a_sadbye', 'a_ski', 'a_sprint', 'a_taphead'
+        'mh', 'ifc',
+        'middlefinger', 'police1', 'mh2', 'police2',
+        'jable', 'saibou', 'mh3','hahah', 'goodmorning',
+        'a_clap', 'a_laugh', 'a_pc', 'job',
+        'a_hammer', 'a_hellnah', 'a_juggle', 'a_wave', 'red'
       ];
       
       if (!allowedStickers.includes(stickerName.toLowerCase())) {
@@ -1023,7 +1047,8 @@ export default async function handler(req, res) {
 /online - Show currently active users
 /purge - Clear chat by flooding with placeholder messages
 /link <url> - Send a clickable link as a message
-/ipinfo <ip> - Get detailed information about an IP address` :
+/ipinfo <ip> - Get detailed information about an IP address
+/lockdown on/off - Enable or disable lockdown mode (only mods can send messages)` :
             `Available commands:
 /help - Show this help message
 /online - Show currently active users`;
@@ -1310,10 +1335,68 @@ export default async function handler(req, res) {
               });
             }
           }
+
+          // Lockdown command - enable/disable lockdown mode
+          if (match = MOD_COMMANDS.lockdown.exec(message)) {
+            const [, action] = match;
+            const isEnable = action.toLowerCase() === 'on';
+            
+            try {
+              if (isEnable) {
+                await enableLockdown();
+                console.log(`Moderator ${cleanUsername} enabled lockdown mode`);
+                
+                // Broadcast lockdown status to all clients
+                const channel = ably.channels.get('dsebest-livechat');
+                await channel.publish('lockdown-status', { enabled: true });
+                
+                // Log the lockdown action
+                await logModeration(cleanClientId, ip, cleanUsername, 
+                  '/lockdown on', 
+                  'Enabled lockdown mode', 
+                  'MOD_LOCKDOWN_ENABLE');
+
+                return res.status(200).json({
+                  status: 'success',
+                  command: true,
+                  message: '🔒 Lockdown mode ENABLED. Only moderators can send messages.',
+                  private: false // Make this visible to all users
+                });
+              } else {
+                await disableLockdown();
+                console.log(`Moderator ${cleanUsername} disabled lockdown mode`);
+                
+                // Broadcast lockdown status to all clients
+                const channel = ably.channels.get('dsebest-livechat');
+                await channel.publish('lockdown-status', { enabled: false });
+                
+                // Log the lockdown action
+                await logModeration(cleanClientId, ip, cleanUsername, 
+                  '/lockdown off', 
+                  'Disabled lockdown mode', 
+                  'MOD_LOCKDOWN_DISABLE');
+
+                return res.status(200).json({
+                  status: 'success',
+                  command: true,
+                  message: '🔓 Lockdown mode DISABLED. All users can send messages again.',
+                  private: false // Make this visible to all users
+                });
+              }
+            } catch (error) {
+              console.error('Error during lockdown command:', error);
+              return res.status(500).json({
+                status: 'error',
+                command: true,
+                message: `Failed to ${isEnable ? 'enable' : 'disable'} lockdown mode: ${error.message}`,
+                private: true
+              });
+            }
+          }
         }
 
         // Check if the command looks like a valid command but with wrong syntax
-        const commandPrefixes = ['/purge', '/help', '/online', '/link', '/ipinfo'];
+        const commandPrefixes = ['/purge', '/help', '/online', '/link', '/ipinfo', '/lockdown'];
         const commandWord = text.split(' ')[0].toLowerCase();
         
         if (commandPrefixes.some(prefix => commandWord.startsWith(prefix))) {
@@ -1336,6 +1419,9 @@ export default async function handler(req, res) {
               break;
             case '/ipinfo':
               helpText = 'Correct usage: /ipinfo <ip>';
+              break;
+            case '/lockdown':
+              helpText = 'Correct usage: /lockdown on or /lockdown off';
               break;
           }
           
@@ -1392,6 +1478,22 @@ export default async function handler(req, res) {
         return res.status(400).json({ 
           error: `Cannot send messages: ${usernameModResult.reason}` 
         });
+      }
+      
+      // Check if lockdown mode is enabled (only moderators can send messages)
+      if (!isMod) {
+        try {
+          const isLockdownActive = await isLockdownEnabled();
+          if (isLockdownActive) {
+            return res.status(403).json({ 
+              error: "🔒 Lockdown mode is active. Only moderators can send messages." 
+            });
+          }
+        } catch (error) {
+          console.error('Error checking lockdown status:', error);
+          // In case of Redis error, allow messages to prevent complete chat failure
+          // but log the error for investigation
+        }
       }
       
       // Check if the message is clean

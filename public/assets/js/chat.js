@@ -20,6 +20,9 @@ class DSEChat {
     this.rateLimitStartTime = Date.now();
     this.rateLimitMessageCount = 0;
     
+    // Lockdown state
+    this.isLockdownActive = false;
+    
     // Duplicate message prevention
     this.lastMessage = '';
     this.messageHistory = [];
@@ -954,6 +957,12 @@ class DSEChat {
         }
       });
       
+      // Subscribe to lockdown status updates
+      this.channel.subscribe('lockdown-status', msg => {
+        const { enabled } = msg.data;
+        this.updateLockdownState(enabled);
+      });
+      
       // Handle presence
       this.channel.presence.subscribe('enter', member => {
         this.channel.presence.get((err, members) => {
@@ -997,12 +1006,32 @@ class DSEChat {
 
   // Helper function to disable/enable input
   setInputState(disabled, cooldownSeconds = 0) {
+    // If lockdown is active and user is not moderator, always disable
+    if (this.isLockdownActive && !this.isUserModerator) {
+      this.messageInput.disabled = true;
+      this.sendButton.disabled = true;
+      this.messageInput.placeholder = 'Chat is temporarily unavailable';
+      return;
+    }
+    
     this.messageInput.disabled = disabled;
     this.sendButton.disabled = disabled;
     if (disabled && cooldownSeconds > 0) {
       this.messageInput.placeholder = `Waiting ${cooldownSeconds} seconds...`;
     } else {
       this.messageInput.placeholder = 'Type a message…';
+    }
+  }
+
+  // Update lockdown state
+  updateLockdownState(isActive) {
+    this.isLockdownActive = isActive;
+    
+    // Update input state immediately
+    if (isActive && !this.isUserModerator) {
+      this.setInputState(true);
+    } else if (!isActive && !this.isSending) {
+      this.setInputState(false);
     }
   }
 
@@ -1264,7 +1293,16 @@ class DSEChat {
     .catch(error => {
       if (!error.silentFail) {
         console.error(error);
-        this.addSystemMessage(error.message || 'Failed to send message. Please try again.');
+        
+        const errorMessage = error.message || 'Failed to send message. Please try again.';
+        
+        // Check if the error indicates lockdown mode
+        if (errorMessage.includes('🔒') && errorMessage.includes('Lockdown mode')) {
+          this.updateLockdownState(true);
+          return;
+        }
+        
+        this.addSystemMessage(errorMessage);
       }
       this.setInputState(false);
       this.isSending = false;
