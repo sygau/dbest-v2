@@ -255,7 +255,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <li>
               <a href="https://forum.dse.best/" target="_self" className="external-link">
                 <div className="parent-icon"><BiGroup style={{ color: '#fdba74', fontSize: 24 }} /></div>
-                <div className="menu-title">Forum</div>
+                <div className="menu-title">Community</div>
               </a>
             </li>
             <li>
