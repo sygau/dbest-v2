@@ -2284,13 +2284,13 @@ export default function ChemistryPage() {
                             <div className="card h-100 d-flex flex-column">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 6 Fossil fuels</h5>
-                                    <p className="card-text">Fossil fuels and Carbon Compounds</p>
+                                    <p className="card-text">Fossil fuels and Carbon Compounds (file missing)</p>
                                 </div>
                                 <div className="card-footer bg-transparent border-0">
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_6_eng"
+                                        data-paper-id=""
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -2308,7 +2308,7 @@ export default function ChemistryPage() {
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_7_eng"
+                                        data-paper-id="bytopic_6_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -2326,7 +2326,7 @@ export default function ChemistryPage() {
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_8_eng"
+                                        data-paper-id="bytopic_7_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -2344,7 +2344,7 @@ export default function ChemistryPage() {
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_9_eng"
+                                        data-paper-id="bytopic_8_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -2362,7 +2362,7 @@ export default function ChemistryPage() {
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_10_eng"
+                                        data-paper-id="bytopic_9_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -2380,7 +2380,7 @@ export default function ChemistryPage() {
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_11_eng"
+                                        data-paper-id="bytopic_10_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -2398,7 +2398,7 @@ export default function ChemistryPage() {
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_12_eng"
+                                        data-paper-id="bytopic_11_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download
@@ -2416,7 +2416,7 @@ export default function ChemistryPage() {
                                     <a
                                         href="#"
                                         className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_13_eng"
+                                        data-paper-id="bytopic_12_eng"
                                     >
                                         <BiDownload style={{ fontSize: 22 }} />
                                         Download

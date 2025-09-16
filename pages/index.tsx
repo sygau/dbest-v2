@@ -31,13 +31,13 @@ import {
 const homepageFAQs = [
   {
     id: 'faq1',
-    question: 'DSEBest 係咩平台？有咩資源？',
-    answer: 'DSEBest（dse.best）係一個專為香港中學文憑試（HKDSE）學生而設嘅 <strong>免費網上平台</strong>，提供歷屆試題、溫習筆記、模擬試卷同教育博客文章等實用學習資源。'
+    question: 'dse.best 係咩平台？有咩資源？',
+    answer: 'dse.best 係一個專為香港中學文憑試（HKDSE）學生而設嘅 <strong>網上平台</strong>，提供歷屆試題、溫習筆記、模擬試卷同教育博客文章等實用學習資源。'
   },
   {
     id: 'faq2',
-    question: '「dse.life」停咗服務，點解喺 DSEBest 仍然搵到DSE Life嘅資料？',
-    answer: '我哋已經將 <strong>dse.life backup</strong> 嘅所有公開DSE資源妥善備份並整合到 DSEBest，確保同學依然可以免費存取重要嘅 <strong>DSE歷屆試題</strong>同<strong>DSE Past Paper下載</strong>功能。原有嘅dse.life資源已100%完整保留。'
+    question: '「dse.life」停咗服務，點解喺 dse.best 仍然搵到DSE Life嘅資料？',
+    answer: '我哋已經將 <strong>dse.life backup</strong> 嘅所有公開DSE資源妥善備份並整合到 dse.best，確保同學依然可以免費存取重要嘅 <strong>DSE歷屆試題</strong>同<strong>DSE Past Paper下載</strong>功能。原有嘅dse.life資源已100%完整保留。'
   },
   {
     id: 'faq3',
@@ -51,8 +51,8 @@ const homepageFAQs = [
   },
   {
     id: 'faq5',
-    question: 'DSEBest 嘅資源幾時會更新？',
-    answer: '我哋會定期更新 DSEBest 嘅試題、答案同學習資源，確保內容最新最齊全。一般每月都會有新資料或功能加入，歡迎大家多啲留意網站公告或追蹤我哋嘅社交平台獲取最新消息。'
+    question: 'dse.best 嘅資源幾時會更新？',
+    answer: '我哋會定期更新 dse.best 嘅試題、答案同學習資源，確保內容最新最齊全。一般每月都會有新資料或功能加入，歡迎大家多啲留意網站公告或追蹤我哋嘅社交平台獲取最新消息。'
   }
 ]
 export default function HomePage() {
