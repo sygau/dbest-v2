@@ -1,10 +1,12 @@
-function getSecretsList() {
+import type { NextApiRequest, NextApiResponse } from 'next'
+
+function getSecretsList(): string[] {
   const raw = (process.env.PASSCODE_SECRETS || process.env.PASSCODE_SECRET || '').trim()
   if (!raw) return []
   return raw.split(',').map(s => s.trim()).filter(Boolean).sort()
 }
 
-async function getSecretsVersion() {
+async function getSecretsVersion(): Promise<string | null> {
   const list = getSecretsList()
   if (list.length === 0) return null
   const joined = list.join('|')
@@ -18,35 +20,15 @@ async function getSecretsVersion() {
   return base64url
 }
 
-module.exports = async function handler(req, res) {
-  // Block all non-POST requests immediately to prevent exposure
-  // if (req.method !== 'POST') {
-  //   res.status(404).end()
-  //   return
-  // }
-
-  // Debug logging (only for POST requests)
-  console.log('Vercel Function Request:', {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Debug logging
+  console.log('Next.js API Request:', {
     method: req.method,
     url: req.url,
     origin: req.headers.origin,
     host: req.headers.host,
     referer: req.headers.referer
   })
-
-  // Basic anti-CSRF: enforce same-origin
-  // const origin = req.headers.origin || ''
-  // const host = req.headers.host || ''
-  // const referer = req.headers.referer || ''
-  
-  // // Allow requests from same host or from x.dse.best domains
-  // const isSameOrigin = origin && origin.includes(host)
-  // const isFromXdse = origin && (origin.includes('x.dse.best') || origin.includes('xv-dbest.vercel.app'))
-  // const isFromReferer = referer && (referer.includes(host) || referer.includes('x.dse.best') || referer.includes('xv-dbest.vercel.app'))
-  
-  // if (!isSameOrigin && !isFromXdse && !isFromReferer) {
-  //   return res.status(403).json({ ok: false, error: 'Forbidden' })
-  // }
 
   const secrets = getSecretsList()
   if (secrets.length === 0) {

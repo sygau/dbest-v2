@@ -41,10 +41,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl, 301)
   }
 
-  // Block GET requests to /api/unlock for security
-  // if (request.nextUrl.pathname === '/api/unlock' && request.method !== 'POST') {
-  //   return new NextResponse('Method Not Allowed', { status: 405 })
-  // }
 
   // Maintenance mode - show maintenance page
   if (isMaintenanceEnabled) {
@@ -115,8 +111,8 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Exclude assets and Next internals as an optimization
+  // Exclude assets, Next internals, AND API routes
   matcher: [
-    '/((?!_next|assets|favicon.ico|robots.txt|sitemap.xml|manifest.json|_vercel).*)'
+    '/((?!_next|assets|favicon.ico|robots.txt|manifest.json|_vercel|api).*)'
   ]
 } 
