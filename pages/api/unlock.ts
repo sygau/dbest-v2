@@ -46,7 +46,14 @@ async function getSecretsVersion(): Promise<string | null> {
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Debug logging
+  // Block all non-POST requests immediately to prevent exposure
+  if (req.method !== 'POST') {
+    // Return a plain 404 without any website template
+    res.status(404).end()
+    return
+  }
+
+  // Debug logging (only for POST requests)
   console.log('API Request:', {
     method: req.method,
     url: req.url,
@@ -54,10 +61,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     host: req.headers.host,
     referer: req.headers.referer
   })
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ ok: false, error: 'Method Not Allowed', received: req.method })
-  }
 
   // Basic anti-CSRF: enforce same-origin (relaxed for development)
   const origin = req.headers.origin || ''
