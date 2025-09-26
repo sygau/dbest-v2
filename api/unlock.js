@@ -1,37 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-
-// Remove Edge Runtime for now to fix the 405 issue
-// export const runtime = 'edge'
-
-// Simple in-memory rate limiter (per process)
-const attemptsByIp = new Map<string, { count: number; first: number }>()
-const WINDOW_MS = 60 * 1000 // 1 minute window
-const MAX_ATTEMPTS = 10 // max attempts per window
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now()
-  const entry = attemptsByIp.get(ip)
-  if (!entry) {
-    attemptsByIp.set(ip, { count: 1, first: now })
-    return false
-  }
-  // Reset window
-  if (now - entry.first > WINDOW_MS) {
-    attemptsByIp.set(ip, { count: 1, first: now })
-    return false
-  }
-  entry.count += 1
-  if (entry.count > MAX_ATTEMPTS) return true
-  return false
-}
-
-function getSecretsList(): string[] {
+function getSecretsList() {
   const raw = (process.env.PASSCODE_SECRETS || process.env.PASSCODE_SECRET || '').trim()
   if (!raw) return []
   return raw.split(',').map(s => s.trim()).filter(Boolean).sort()
 }
 
-async function getSecretsVersion(): Promise<string | null> {
+async function getSecretsVersion() {
   const list = getSecretsList()
   if (list.length === 0) return null
   const joined = list.join('|')
@@ -45,16 +18,15 @@ async function getSecretsVersion(): Promise<string | null> {
   return base64url
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req, res) {
   // Block all non-POST requests immediately to prevent exposure
   if (req.method !== 'POST') {
-    // Return a plain 404 without any website template
     res.status(404).end()
     return
   }
 
   // Debug logging (only for POST requests)
-  console.log('API Request:', {
+  console.log('Vercel Function Request:', {
     method: req.method,
     url: req.url,
     origin: req.headers.origin,
@@ -62,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     referer: req.headers.referer
   })
 
-  // Basic anti-CSRF: enforce same-origin (relaxed for development)
+  // Basic anti-CSRF: enforce same-origin
   const origin = req.headers.origin || ''
   const host = req.headers.host || ''
   const referer = req.headers.referer || ''
@@ -74,14 +46,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   if (!isSameOrigin && !isFromXdse && !isFromReferer) {
     return res.status(403).json({ ok: false, error: 'Forbidden' })
-  }
-
-  // Rate limit by IP
-  const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 
-             req.socket.remoteAddress || 
-             'unknown'
-  if (isRateLimited(ip)) {
-    return res.status(429).json({ ok: false, error: 'Too many attempts, slow down.' })
   }
 
   const secrets = getSecretsList()
@@ -115,4 +79,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   res.setHeader('Set-Cookie', `${cookieName}=${version}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAgeSeconds}; ${isSecure ? 'Secure;' : ''}`)
   
   return res.status(200).json({ ok: true })
-} 
+}
