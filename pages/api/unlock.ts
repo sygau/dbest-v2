@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextRequest } from 'next/server'
 
 // Edge Runtime configuration for Cloudflare Pages
 export const runtime = 'edge'
@@ -45,52 +45,91 @@ async function getSecretsVersion(): Promise<string | null> {
   return base64url
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextRequest) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ ok: false, error: 'Method Not Allowed' })
+    return new Response(JSON.stringify({ ok: false, error: 'Method Not Allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
-
   // Basic anti-CSRF: enforce same-origin
-  const origin = req.headers.origin || ''
-  const host = req.headers.host || ''
+  const origin = req.headers.get('origin') || ''
+  const host = req.headers.get('host') || ''
   if (!origin || !origin.includes(host)) {
-    return res.status(403).json({ ok: false, error: 'Forbidden' })
+    return new Response(JSON.stringify({ ok: false, error: 'Forbidden' }), {
+      status: 403,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   // Rate limit by IP
-  const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || req.socket.remoteAddress || 'unknown'
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+             req.headers.get('x-real-ip') || 
+             'unknown'
   if (isRateLimited(ip)) {
-    return res.status(429).json({ ok: false, error: 'Too many attempts, slow down.' })
+    return new Response(JSON.stringify({ ok: false, error: 'Too many attempts, slow down.' }), {
+      status: 429,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   const secrets = getSecretsList()
   if (secrets.length === 0) {
-    return res.status(500).json({ ok: false, error: 'Server error' })
+    return new Response(JSON.stringify({ ok: false, error: 'Server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   const cookieName = process.env.PASSCODE_COOKIE_NAME || 'site_pass'
   const maxAgeDays = parseInt(process.env.PASSCODE_MAX_AGE_DAYS || '7', 10)
   const maxAgeSeconds = Math.max(1, maxAgeDays) * 24 * 60 * 60
 
-  const { passcode } = req.body || {}
+  let body
+  try {
+    body = await req.json()
+  } catch (error) {
+    return new Response(JSON.stringify({ ok: false, error: 'Invalid JSON' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    })
+  }
+
+  const { passcode } = body || {}
   if (!passcode || typeof passcode !== 'string') {
-    return res.status(400).json({ ok: false, error: 'Invalid passcode' })
+    return new Response(JSON.stringify({ ok: false, error: 'Invalid passcode' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   // Validate against any configured secret (case-insensitive)
   const passLc = passcode.trim().toLowerCase()
   const isValid = secrets.some(s => s.toLowerCase() === passLc)
   if (!isValid) {
-    return res.status(401).json({ ok: false, error: 'Invalid passcode' })
+    return new Response(JSON.stringify({ ok: false, error: 'Invalid passcode' }), {
+      status: 401,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   // Set versioned cookie tied to the current secrets set
   const version = await getSecretsVersion()
   if (!version) {
-    return res.status(500).json({ ok: false, error: 'Server error' })
+    return new Response(JSON.stringify({ ok: false, error: 'Server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 
   const isSecure = process.env.NODE_ENV === 'production'
-  res.setHeader('Set-Cookie', `${cookieName}=${version}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAgeSeconds}; ${isSecure ? 'Secure;' : ''}`)
-  return res.status(200).json({ ok: true })
+  const cookieValue = `${cookieName}=${version}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAgeSeconds}; ${isSecure ? 'Secure;' : ''}`
+  
+  return new Response(JSON.stringify({ ok: true }), {
+    status: 200,
+    headers: { 
+      'Content-Type': 'application/json',
+      'Set-Cookie': cookieValue
+    }
+  })
 } 

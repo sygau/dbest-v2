@@ -57,7 +57,12 @@ export default function Document() {
         <NextScript />
         {/* Critical Scripts - Load in dependency order */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src={`/assets/js/appendLinks.min.js?v=${Date.now()}`} async></script>
+        {/* Conditionally load appendLinks script based on passcode mode */}
+        {process.env.PASSCODE_MODE === 'true' ? (
+          <script src={`/assets/js/appendLinksX.js?v=${Date.now()}`} async></script>
+        ) : (
+          <script src={`/assets/js/appendLinks.min.js?v=${Date.now()}`} async></script>
+        )}
         {/* <script src="/assets/js/msg.js"></script> */}
       </body>
     </Html>

@@ -79,6 +79,15 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith('/_vercel')
     )
 
+    // Special restriction for appendLinksX.js - only allow for authorized users
+    if (pathname === '/assets/js/appendLinksX.js') {
+      const passCookie = request.cookies.get(passcodeCookieName)?.value
+      const currentVersion = await getSecretsVersion()
+      if (!currentVersion || passCookie !== currentVersion) {
+        return new NextResponse('Access Denied', { status: 403 })
+      }
+    }
+
     if (!isAllowedPass) {
       const passCookie = request.cookies.get(passcodeCookieName)?.value
       const currentVersion = await getSecretsVersion()

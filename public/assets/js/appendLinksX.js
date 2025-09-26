@@ -42,25 +42,8 @@
 
   async function loadData(subject) {
     try {
-      let fileHost = localStorage.getItem('cdn_host'); 
-      
-      if (!fileHost) {
-        try {
-          const response = await fetch('https://cdn.dse.best', { 
-            method: 'HEAD',
-            mode: 'no-cors'
-          });
-          console.log('✅ cdn.dse.best is online');
-          fileHost = 'https://cdn.dse.best';
-        } catch (error) {
-          console.log('❌ cdn.dse.best is offline, using fallback');
-          fileHost = 'https://dbest-cdn.pages.dev';
-        }
-        
-        localStorage.setItem('cdn_host', fileHost);
-      } else {
-        console.log(`📋 Using cached CDN: ${fileHost}`);
-      }
+      const fileHost = 'https://x7m2qv9gkz1w8n3r5t6b4c0aehjldpuoyfsvxiwqzmnk3g7r2t9b6c5aeh.pages.dev';
+      console.log('🔒 Using x.dse.best specific CDN:', fileHost);
 
       const baseUrls = [
         window.location.origin,
@@ -195,7 +178,7 @@
   window.initPaperLinks = initPaperLinks;
 
   window.debugPaperLinks = function() {
-    console.log('=== DEBUG PAPER LINKS ===');
+    console.log('=== DEBUG PAPER LINKS (X.DSE.BEST) ===');
     console.log('Current URL:', window.location.pathname);
     console.log('Detected subject:', getCurrentSubject());
     
