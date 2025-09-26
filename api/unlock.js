@@ -35,18 +35,18 @@ export default async function handler(req, res) {
   })
 
   // Basic anti-CSRF: enforce same-origin
-  const origin = req.headers.origin || ''
-  const host = req.headers.host || ''
-  const referer = req.headers.referer || ''
+  // const origin = req.headers.origin || ''
+  // const host = req.headers.host || ''
+  // const referer = req.headers.referer || ''
   
-  // Allow requests from same host or from x.dse.best domains
-  const isSameOrigin = origin && origin.includes(host)
-  const isFromXdse = origin && (origin.includes('x.dse.best') || origin.includes('xv-dbest.vercel.app'))
-  const isFromReferer = referer && (referer.includes(host) || referer.includes('x.dse.best') || referer.includes('xv-dbest.vercel.app'))
+  // // Allow requests from same host or from x.dse.best domains
+  // const isSameOrigin = origin && origin.includes(host)
+  // const isFromXdse = origin && (origin.includes('x.dse.best') || origin.includes('xv-dbest.vercel.app'))
+  // const isFromReferer = referer && (referer.includes(host) || referer.includes('x.dse.best') || referer.includes('xv-dbest.vercel.app'))
   
-  if (!isSameOrigin && !isFromXdse && !isFromReferer) {
-    return res.status(403).json({ ok: false, error: 'Forbidden' })
-  }
+  // if (!isSameOrigin && !isFromXdse && !isFromReferer) {
+  //   return res.status(403).json({ ok: false, error: 'Forbidden' })
+  // }
 
   const secrets = getSecretsList()
   if (secrets.length === 0) {
