@@ -75,11 +75,9 @@ class DSEChat {
         'backstab': '/assets/stickers/backstab.webp'
       },
       moderatorOnly: {
-        'mh': '/assets/stickers/mh.webp',
         'ifc': '/assets/stickers/ifc.webp',
         'middlefinger': '/assets/stickers/middlefinger.webp',
         'police1': '/assets/stickers/police1.webp',
-        'mh2': '/assets/stickers/mh2.webp',
         'police2': '/assets/stickers/police2.webp',
         'jable': '/assets/stickers/jable.webp',
         'saibou': '/assets/stickers/saibou.webp',
@@ -838,7 +836,7 @@ class DSEChat {
 
     // Initialise Ably with auth endpoint
     this.ably = new Ably.Realtime.Promise({
-      authUrl: 'https://api.dse.best/chat-auth',
+      authUrl: 'https://api-v2.dse.best/chat-auth',
       authMethod: 'POST',
       authParams: {
         clientId: clientId,
@@ -855,7 +853,7 @@ class DSEChat {
       this.checkAndShowWelcomeMessage();
       
       // Check if user is a moderator (API may not support check_mod, so we'll handle gracefully)
-      fetch('https://api.dse.best/chat-auth', {
+      fetch('https://api-v2.dse.best/chat-auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -880,7 +878,7 @@ class DSEChat {
           this.addSystemMessage('Welcome, Moderator! Type /help to see available commands.');
           
           // Check lockdown status for moderators
-          fetch('https://api.dse.best/chat-auth', {
+          fetch('https://api-v2.dse.best/chat-auth', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -1272,7 +1270,7 @@ class DSEChat {
     }
 
     // First moderate the message
-    fetch('https://api.dse.best/chat-auth', {
+    fetch('https://api-v2.dse.best/chat-auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -1320,7 +1318,7 @@ class DSEChat {
         };
 
         // Send to server for publishing
-        return fetch('https://api.dse.best/chat-auth', {
+        return fetch('https://api-v2.dse.best/chat-auth', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1405,7 +1403,7 @@ class DSEChat {
     const username = this.userNameInput?.value?.trim() || 'Anonymous';
     
     // Send leave event asynchronously (don't wait for response)
-    fetch('https://api.dse.best/chat-auth', {
+    fetch('https://api-v2.dse.best/chat-auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -64,43 +64,41 @@ export default function ChatPage() {
 
     // Moderator-only stickers that show up in popup for moderators
     const moderatorStickers = [
-        { id: 19, url: '/assets/stickers/mh.webp', alt: 'mh' },
-        { id: 20, url: '/assets/stickers/ifc.webp', alt: 'ifc' },
-        { id: 21, url: '/assets/stickers/middlefinger.webp', alt: 'middlefinger' },
-        { id: 22, url: '/assets/stickers/police1.webp', alt: 'police1' },
-        { id: 23, url: '/assets/stickers/mh2.webp', alt: 'mh2' },
-        { id: 24, url: '/assets/stickers/police2.webp', alt: 'police2' },
-        { id: 25, url: '/assets/stickers/jable.webp', alt: 'jable' },
-        { id: 26, url: '/assets/stickers/saibou.webp', alt: 'saibou' },
-        { id: 27, url: '/assets/stickers/mh3.webp', alt: 'mh3' },
-        { id: 28, url: '/assets/stickers/mh4.webp', alt: 'mh4' },
-        { id: 29, url: '/assets/stickers/hahah.webp', alt: 'hahah' },
-        { id: 30, url: '/assets/stickers/goodmorning.webp', alt: 'goodmorning' },
-        { id: 31, url: '/assets/stickers/job.webp', alt: 'job' },
-        { id: 32, url: '/assets/stickers/red.webp', alt: 'red' },
-        { id: 33, url: '/assets/stickers/beer.webp', alt: 'beer' },
-        { id: 34, url: '/assets/stickers/smoke.webp', alt: 'smoke' },
-        { id: 35, url: '/assets/stickers/keepscrolling.webp', alt: 'keepscrolling' },
+        { id: 19, url: '/assets/stickers/ifc.webp', alt: 'ifc' },
+        { id: 20, url: '/assets/stickers/middlefinger.webp', alt: 'middlefinger' },
+        { id: 21, url: '/assets/stickers/police1.webp', alt: 'police1' },
+        { id: 22, url: '/assets/stickers/police2.webp', alt: 'police2' },
+        { id: 23, url: '/assets/stickers/jable.webp', alt: 'jable' },
+        { id: 24, url: '/assets/stickers/saibou.webp', alt: 'saibou' },
+        { id: 25, url: '/assets/stickers/mh3.webp', alt: 'mh3' },
+        { id: 26, url: '/assets/stickers/mh4.webp', alt: 'mh4' },
+        { id: 27, url: '/assets/stickers/hahah.webp', alt: 'hahah' },
+        { id: 28, url: '/assets/stickers/goodmorning.webp', alt: 'goodmorning' },
+        { id: 29, url: '/assets/stickers/job.webp', alt: 'job' },
+        { id: 30, url: '/assets/stickers/red.webp', alt: 'red' },
+        { id: 31, url: '/assets/stickers/beer.webp', alt: 'beer' },
+        { id: 32, url: '/assets/stickers/smoke.webp', alt: 'smoke' },
+        { id: 33, url: '/assets/stickers/keepscrolling.webp', alt: 'keepscrolling' },
         // All a_ stickers are moderator only
-        { id: 36, url: '/assets/stickers/a_clap.webp', alt: 'a_clap' },
-        { id: 37, url: '/assets/stickers/a_laugh.webp', alt: 'a_laugh' },
-        { id: 38, url: '/assets/stickers/a_pc.webp', alt: 'a_pc' },
-        { id: 39, url: '/assets/stickers/a_hammer.webp', alt: 'a_hammer' },
-        { id: 40, url: '/assets/stickers/a_hellnah.webp', alt: 'a_hellnah' },
-        { id: 41, url: '/assets/stickers/a_juggle.webp', alt: 'a_juggle' },
-        { id: 42, url: '/assets/stickers/a_wave.webp', alt: 'a_wave' },
-        { id: 43, url: '/assets/stickers/a_angrywalk.webp', alt: 'a_angrywalk' },
-        { id: 44, url: '/assets/stickers/a_ball.webp', alt: 'a_ball' },
-        { id: 45, url: '/assets/stickers/a_boo.webp', alt: 'a_boo' },
-        { id: 46, url: '/assets/stickers/a_faint.webp', alt: 'a_faint' },
-        { id: 47, url: '/assets/stickers/a_gun.webp', alt: 'a_gun' },
-        { id: 48, url: '/assets/stickers/a_keyboard.webp', alt: 'a_keyboard' },
-        { id: 49, url: '/assets/stickers/a_pray.webp', alt: 'a_pray' },
-        { id: 50, url: '/assets/stickers/a_reading.webp', alt: 'a_reading' },
-        { id: 51, url: '/assets/stickers/a_sadbye.webp', alt: 'a_sadbye' },
-        { id: 52, url: '/assets/stickers/a_ski.webp', alt: 'a_ski' },
-        { id: 53, url: '/assets/stickers/a_sprint.webp', alt: 'a_sprint' },
-        { id: 54, url: '/assets/stickers/a_taphead.webp', alt: 'a_taphead' }
+        { id: 34, url: '/assets/stickers/a_clap.webp', alt: 'a_clap' },
+        { id: 35, url: '/assets/stickers/a_laugh.webp', alt: 'a_laugh' },
+        { id: 36, url: '/assets/stickers/a_pc.webp', alt: 'a_pc' },
+        { id: 37, url: '/assets/stickers/a_hammer.webp', alt: 'a_hammer' },
+        { id: 38, url: '/assets/stickers/a_hellnah.webp', alt: 'a_hellnah' },
+        { id: 39, url: '/assets/stickers/a_juggle.webp', alt: 'a_juggle' },
+        { id: 40, url: '/assets/stickers/a_wave.webp', alt: 'a_wave' },
+        { id: 41, url: '/assets/stickers/a_angrywalk.webp', alt: 'a_angrywalk' },
+        { id: 42, url: '/assets/stickers/a_ball.webp', alt: 'a_ball' },
+        { id: 43, url: '/assets/stickers/a_boo.webp', alt: 'a_boo' },
+        { id: 44, url: '/assets/stickers/a_faint.webp', alt: 'a_faint' },
+        { id: 45, url: '/assets/stickers/a_gun.webp', alt: 'a_gun' },
+        { id: 46, url: '/assets/stickers/a_keyboard.webp', alt: 'a_keyboard' },
+        { id: 47, url: '/assets/stickers/a_pray.webp', alt: 'a_pray' },
+        { id: 48, url: '/assets/stickers/a_reading.webp', alt: 'a_reading' },
+        { id: 49, url: '/assets/stickers/a_sadbye.webp', alt: 'a_sadbye' },
+        { id: 50, url: '/assets/stickers/a_ski.webp', alt: 'a_ski' },
+        { id: 51, url: '/assets/stickers/a_sprint.webp', alt: 'a_sprint' },
+        { id: 52, url: '/assets/stickers/a_taphead.webp', alt: 'a_taphead' }
     ];
 
     // Combined stickers array - only show moderator stickers to moderators
@@ -143,8 +141,8 @@ export default function ChatPage() {
             return;
         }
         
-        // Check if this is a moderator-only sticker (IDs 19-54) and user is not a moderator
-        if (sticker.id >= 19 && sticker.id <= 54 && !isModerator) {
+        // Check if this is a moderator-only sticker (IDs 19-52) and user is not a moderator
+        if (sticker.id >= 19 && sticker.id <= 52 && !isModerator) {
             console.log('Non-moderator attempted to use moderator-only sticker:', sticker.alt);
             // You can add a visual feedback here if needed (like a toast message)
             return;
@@ -716,7 +714,7 @@ export default function ChatPage() {
                                         <button
                                             key={sticker.id}
                                             onClick={() => handleStickerClick(sticker)}
-                                            className={`sticker-item ${sticker.id >= 19 && sticker.id <= 54 ? 'moderator-sticker' : ''}`}
+                                            className={`sticker-item ${sticker.id >= 19 && sticker.id <= 52 ? 'moderator-sticker' : ''}`}
                                             style={{
                                                 background: 'var(--bs-body-bg)',
                                                 borderRadius: '12px',
@@ -733,12 +731,12 @@ export default function ChatPage() {
                                                 position: 'relative',
                                                 overflow: 'hidden',
                                                 border: '2px solid var(--bs-border-color)',
-                                                ...(sticker.id >= 19 && sticker.id <= 54 && {
+                                                ...(sticker.id >= 19 && sticker.id <= 52 && {
                                                     borderColor: '#625c37 !important',
                                                 })
                                             }}
                                             aria-label={`Send ${sticker.alt} sticker`}
-                                            title={sticker.id >= 19 && sticker.id <= 54 && !isModerator ? `${sticker.alt} sticker (Moderator only)` : `Send ${sticker.alt} sticker`}
+                                            title={sticker.id >= 19 && sticker.id <= 52 && !isModerator ? `${sticker.alt} sticker (Moderator only)` : `Send ${sticker.alt} sticker`}
                                         >
                                             <img
                                                 src={sticker.url}
@@ -869,7 +867,7 @@ export default function ChatPage() {
                                     <button
                                         key={sticker.id}
                                         onClick={() => handleStickerClick(sticker)}
-                                        className={`sticker-item-mobile ${sticker.id >= 19 && sticker.id <= 54 ? 'moderator-sticker' : ''}`}
+                                        className={`sticker-item-mobile ${sticker.id >= 19 && sticker.id <= 52 ? 'moderator-sticker' : ''}`}
                                         style={{
                                             background: 'var(--bs-body-bg)',
                                             borderRadius: '12px',
@@ -884,13 +882,13 @@ export default function ChatPage() {
                                             position: 'relative',
                                             overflow: 'hidden',
                                             border: '2px solid var(--bs-border-color)',
-                                            ...(sticker.id >= 19 && sticker.id <= 54 && {
+                                            ...(sticker.id >= 19 && sticker.id <= 52 && {
                                                 borderColor: '#625c37 !important',
                                                 boxShadow: '0 0 8px #625c3733'
                                             })
                                         }}
                                         aria-label={`Send ${sticker.alt} sticker`}
-                                        title={sticker.id >= 19 && sticker.id <= 54 && !isModerator ? `${sticker.alt} sticker (Moderator only)` : `Send ${sticker.alt} sticker`}
+                                        title={sticker.id >= 19 && sticker.id <= 52 && !isModerator ? `${sticker.alt} sticker (Moderator only)` : `Send ${sticker.alt} sticker`}
                                     >
                                         <img
                                             src={sticker.url}

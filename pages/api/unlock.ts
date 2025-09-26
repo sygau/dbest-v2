@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+// Edge Runtime configuration for Cloudflare Pages
+export const runtime = 'edge'
+
 // Simple in-memory rate limiter (per process)
 const attemptsByIp = new Map<string, { count: number; first: number }>()
 const WINDOW_MS = 60 * 1000 // 1 minute window

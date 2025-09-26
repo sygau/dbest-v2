@@ -7,7 +7,7 @@
 
 
 # API routes - redirect to Vercel API subdomain (using 307 to preserve POST method)
-/api/* https://api.dse.best/:splat 307
+/api/* https://api-v2.dse.best/:splat 307
 
 # Custom domain redirects (if you want to redirect pages.dev to your custom domain)
 # Uncomment these if you want to redirect from pages.dev to dse.best

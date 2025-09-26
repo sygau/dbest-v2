@@ -72,11 +72,9 @@ export default function LockPage() {
     setLoading(true)
     setError(null)
 
-    // Client-side rate limit state
     const now = Date.now()
     const s = readState()
 
-    // First 5 attempts free; after that, fixed 3s cooldown
     const nextAttempts = (s.attempts || 0) + 1
     let penalty = s.penalty || 0
     if (nextAttempts > 5) {
@@ -93,7 +91,6 @@ export default function LockPage() {
       })
       const data = await res.json()
       if (!res.ok || !data.ok) {
-        // Persist attempts and potential cooldown on failure
         const newState = { attempts: nextAttempts, last: now, penalty }
         writeState(newState)
         if (penalty > 0) setCooldownMs(penalty)
@@ -101,7 +98,6 @@ export default function LockPage() {
         setLoading(false)
         return
       }
-      // Success: reset client state
       writeState({ attempts: 0, last: 0, penalty: 0 })
       const safeNext = getSafeNext()
       router.replace(safeNext)
@@ -117,7 +113,7 @@ export default function LockPage() {
   return (
     <>
       <Head>
-        <title>dse.best</title>
+        <title>x.dse.best</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div style={{

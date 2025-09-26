@@ -8,7 +8,7 @@ export function useViewCount(slug: string) {
   useEffect(() => {
     const fetchViewCount = async () => {
       try {
-        const response = await fetch(`https://api.dse.best/view-count?slug=${encodeURIComponent(slug)}`)
+        const response = await fetch(`https://api-v2.dse.best/view-count?slug=${encodeURIComponent(slug)}`)
         if (response.ok) {
           const data = await response.json()
           setViewCount(data.count)
@@ -37,7 +37,7 @@ export function useViewCount(slug: string) {
       }
 
       try {
-        const response = await fetch('https://api.dse.best/view-count', {
+        const response = await fetch('https://api-v2.dse.best/view-count', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
