@@ -1,7 +1,7 @@
-import type { NextRequest } from 'next/server'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-// Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'edge'
+// Remove Edge Runtime for now to fix the 405 issue
+// export const runtime = 'edge'
 
 // Simple in-memory rate limiter (per process)
 const attemptsByIp = new Map<string, { count: number; first: number }>()
@@ -45,108 +45,71 @@ async function getSecretsVersion(): Promise<string | null> {
   return base64url
 }
 
-export default async function handler(req: NextRequest) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Debug logging
   console.log('API Request:', {
     method: req.method,
     url: req.url,
-    origin: req.headers.get('origin'),
-    host: req.headers.get('host'),
-    referer: req.headers.get('referer')
+    origin: req.headers.origin,
+    host: req.headers.host,
+    referer: req.headers.referer
   })
 
   if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ ok: false, error: 'Method Not Allowed', received: req.method }), {
-      status: 405,
-      headers: { 'Content-Type': 'application/json' }
-    })
+    return res.status(405).json({ ok: false, error: 'Method Not Allowed', received: req.method })
   }
+
+  // Basic anti-CSRF: enforce same-origin (relaxed for development)
+  const origin = req.headers.origin || ''
+  const host = req.headers.host || ''
+  const referer = req.headers.referer || ''
   
-  // Temporarily disable CSRF check for debugging
-  // const origin = req.headers.get('origin') || ''
-  // const host = req.headers.get('host') || ''
-  // const referer = req.headers.get('referer') || ''
+  // Allow requests from same host or from x.dse.best domains
+  const isSameOrigin = origin && origin.includes(host)
+  const isFromXdse = origin && (origin.includes('x.dse.best') || origin.includes('xv-dbest.vercel.app'))
+  const isFromReferer = referer && (referer.includes(host) || referer.includes('x.dse.best') || referer.includes('xv-dbest.vercel.app'))
   
-  // // Allow requests from same host or from x.dse.best domains
-  // const isSameOrigin = origin && origin.includes(host)
-  // const isFromXdse = origin && (origin.includes('x.dse.best') || origin.includes('xv-dbest.vercel.app'))
-  // const isFromReferer = referer && (referer.includes(host) || referer.includes('x.dse.best') || referer.includes('xv-dbest.vercel.app'))
-  
-  // if (!isSameOrigin && !isFromXdse && !isFromReferer) {
-  //   return new Response(JSON.stringify({ ok: false, error: 'Forbidden' }), {
-  //     status: 403,
-  //     headers: { 'Content-Type': 'application/json' }
-  //   })
-  // }
+  if (!isSameOrigin && !isFromXdse && !isFromReferer) {
+    return res.status(403).json({ ok: false, error: 'Forbidden' })
+  }
 
   // Rate limit by IP
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
-             req.headers.get('x-real-ip') || 
+  const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 
+             req.socket.remoteAddress || 
              'unknown'
   if (isRateLimited(ip)) {
-    return new Response(JSON.stringify({ ok: false, error: 'Too many attempts, slow down.' }), {
-      status: 429,
-      headers: { 'Content-Type': 'application/json' }
-    })
+    return res.status(429).json({ ok: false, error: 'Too many attempts, slow down.' })
   }
 
   const secrets = getSecretsList()
   if (secrets.length === 0) {
-    return new Response(JSON.stringify({ ok: false, error: 'Server error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    })
+    return res.status(500).json({ ok: false, error: 'Server error' })
   }
 
   const cookieName = process.env.PASSCODE_COOKIE_NAME || 'site_pass'
   const maxAgeDays = parseInt(process.env.PASSCODE_MAX_AGE_DAYS || '7', 10)
   const maxAgeSeconds = Math.max(1, maxAgeDays) * 24 * 60 * 60
 
-  let body
-  try {
-    body = await req.json()
-  } catch (error) {
-    return new Response(JSON.stringify({ ok: false, error: 'Invalid JSON' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    })
-  }
-
-  const { passcode } = body || {}
+  const { passcode } = req.body || {}
   if (!passcode || typeof passcode !== 'string') {
-    return new Response(JSON.stringify({ ok: false, error: 'Invalid passcode' }), {
-      status: 400,
-      headers: { 'Content-Type': 'application/json' }
-    })
+    return res.status(400).json({ ok: false, error: 'Invalid passcode' })
   }
 
   // Validate against any configured secret (case-insensitive)
   const passLc = passcode.trim().toLowerCase()
   const isValid = secrets.some(s => s.toLowerCase() === passLc)
   if (!isValid) {
-    return new Response(JSON.stringify({ ok: false, error: 'Invalid passcode' }), {
-      status: 401,
-      headers: { 'Content-Type': 'application/json' }
-    })
+    return res.status(401).json({ ok: false, error: 'Invalid passcode' })
   }
 
   // Set versioned cookie tied to the current secrets set
   const version = await getSecretsVersion()
   if (!version) {
-    return new Response(JSON.stringify({ ok: false, error: 'Server error' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    })
+    return res.status(500).json({ ok: false, error: 'Server error' })
   }
 
   const isSecure = process.env.NODE_ENV === 'production'
-  const cookieValue = `${cookieName}=${version}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAgeSeconds}; ${isSecure ? 'Secure;' : ''}`
+  res.setHeader('Set-Cookie', `${cookieName}=${version}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAgeSeconds}; ${isSecure ? 'Secure;' : ''}`)
   
-  return new Response(JSON.stringify({ ok: true }), {
-    status: 200,
-    headers: { 
-      'Content-Type': 'application/json',
-      'Set-Cookie': cookieValue
-    }
-  })
+  return res.status(200).json({ ok: true })
 } 
