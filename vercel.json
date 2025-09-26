@@ -39,11 +39,11 @@
   "rewrites": [
     {
       "source": "/vcli_alytc/:path*",
-      "destination": "https://dse.best/_vercel/insights/:path*"
+      "destination": "https://x.dse.best/_vercel/insights/:path*"
     },
     {
       "source": "/vclii_speed/:path*",
-      "destination": "https://dse.best/_vercel/speed-insights/:path*"
+      "destination": "https://x.dse.best/_vercel/speed-insights/:path*"
     }
   ],
   "headers": [

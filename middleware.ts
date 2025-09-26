@@ -35,6 +35,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(redirectUrl, 301)
   }
 
+  // Redirect xv-dbest.vercel.app to x.dse.best
+  if (hostname === 'xv-dbest.vercel.app') {
+    const redirectUrl = new URL(`https://x.dse.best${request.nextUrl.pathname}${request.nextUrl.search}`)
+    return NextResponse.redirect(redirectUrl, 301)
+  }
+
   // Maintenance mode - show maintenance page
   if (isMaintenanceEnabled) {
     const { pathname } = request.nextUrl
