@@ -2,20 +2,37 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 const isMaintenanceEnabled = (process.env.MAINTENANCE_MODE === 'true' || process.env.MAINTENANCE_MODE === '1')
-const isMaydayEnabled = (process.env.MAYDAY === 'true' || process.env.MAYDAY === '1')
 
-export function middleware(request: NextRequest) {
+// Passcode gate envs
+const isPasscodeMode = (process.env.PASSCODE_MODE === 'true' || process.env.PASSCODE_MODE === '1')
+const passcodeCookieName = process.env.PASSCODE_COOKIE_NAME || 'site_pass'
+
+function getSecretsList(): string[] {
+  const raw = (process.env.PASSCODE_SECRETS || process.env.PASSCODE_SECRET || '').trim()
+  if (!raw) return []
+  return raw.split(',').map(s => s.trim()).filter(Boolean).sort()
+}
+
+async function getSecretsVersion(): Promise<string | null> {
+  const list = getSecretsList()
+  if (list.length === 0) return null
+  const joined = list.join('|')
+  const data = new TextEncoder().encode(joined)
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data)
+  const bytes = new Uint8Array(hashBuffer)
+  let binary = ''
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i])
+  const base64 = btoa(binary)
+  const base64url = base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '')
+  return base64url
+}
+
+export async function middleware(request: NextRequest) {
   // Redirect pages.dev subdomain to main domain
   const hostname = request.headers.get('host') || ''
   if (hostname.includes('.pages.dev')) {
     const redirectUrl = new URL(`https://dse.best${request.nextUrl.pathname}${request.nextUrl.search}`)
     return NextResponse.redirect(redirectUrl, 301)
-  }
-
-  // Mayday mode - redirect all traffic to mayday.dse.best
-  if (isMaydayEnabled) {
-    const maydayUrl = new URL('https://mayday.dse.best' + request.nextUrl.pathname + request.nextUrl.search)
-    return NextResponse.redirect(maydayUrl)
   }
 
   // Maintenance mode - show maintenance page
@@ -43,6 +60,35 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone()
     url.pathname = '/maintenance'
     return NextResponse.rewrite(url)
+  }
+
+  // Passcode gate - simple cookie-based access control
+  if (isPasscodeMode) {
+    const { pathname, search } = request.nextUrl
+
+    // Allow list: lock page, unlock API, and essential internals/static
+    const isAllowedPass = (
+      pathname === '/lock' ||
+      pathname.startsWith('/api/unlock') ||
+      pathname.startsWith('/_next') ||
+      pathname.startsWith('/assets') ||
+      pathname.startsWith('/public') ||
+      pathname === '/favicon.ico' ||
+      pathname === '/robots.txt' ||
+      pathname === '/manifest.json' ||
+      pathname.startsWith('/_vercel')
+    )
+
+    if (!isAllowedPass) {
+      const passCookie = request.cookies.get(passcodeCookieName)?.value
+      const currentVersion = await getSecretsVersion()
+      if (!currentVersion || passCookie !== currentVersion) {
+        const url = request.nextUrl.clone()
+        url.pathname = '/lock'
+        url.search = search ? `?next=${encodeURIComponent(pathname + search)}` : `?next=${encodeURIComponent(pathname)}`
+        return NextResponse.redirect(url)
+      }
+    }
   }
 
   return NextResponse.next()

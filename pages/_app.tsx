@@ -58,6 +58,10 @@ export default function App({ Component, pageProps }: AppProps) {
   if (router.pathname === '/maintenance') {
     return <Component {...pageProps} />
   }
+  // Render a minimal layout for the lock page (no header/sidebar/footer)
+  if (router.pathname === '/lock') {
+    return <Component {...pageProps} />
+  }
 
   // Theme switcher handlers
   const handleThemeChange = (theme: string) => {
