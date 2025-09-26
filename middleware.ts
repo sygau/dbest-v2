@@ -48,11 +48,8 @@ export async function middleware(request: NextRequest) {
 
     // Allow only the maintenance page and essential static/Next internals
     const isAllowed = (
-      pathname === '/maintenance' ||
       pathname.startsWith('/_next') ||
       pathname.startsWith('/assets') ||
-      pathname.startsWith('/public') ||
-      pathname.startsWith('/favicon') ||
       pathname === '/favicon.ico' ||
       pathname === '/robots.txt' ||
       pathname === '/sitemap.xml' ||
@@ -79,12 +76,21 @@ export async function middleware(request: NextRequest) {
       pathname.startsWith('/api/') ||
       pathname.startsWith('/_next') ||
       pathname.startsWith('/assets') ||
-      pathname.startsWith('/public') ||
       pathname === '/favicon.ico' ||
       pathname === '/robots.txt' ||
       pathname === '/manifest.json' ||
       pathname.startsWith('/_vercel')
     )
+
+
+    // Handle non-existent API routes to prevent internal 404 exposure
+    if (pathname.startsWith('/api/')) {
+      const validApiRoutes = ['/api/unlock', '/api/test']
+      if (!validApiRoutes.includes(pathname)) {
+        // Let Next.js handle 404 with our custom page
+        return NextResponse.next()
+      }
+    }
 
     // Special restriction for appendLinksX.js - only allow for authorized users
     if (pathname === '/assets/js/appendLinksX.js') {

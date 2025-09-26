@@ -13,24 +13,26 @@ export default function Document() {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#0f1535" />
-        
+
         {/* Bootstrap CSS - Optimized loading with preload */}
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-        
+
         {/* Fonts */}
         {/* <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" as="style" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" /> */}
 
-        {/* Google AdSense */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
+        {/* Google AdSense - Only load if not in passcode mode */}
+        {process.env.PASSCODE_MODE !== 'true' && (
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
+        )}
 
         {/* Google Analytics */}
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
         <script defer dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
-        
 
-        
+
+
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -40,15 +42,15 @@ export default function Document() {
         <meta name="format-detection" content="telephone=no, email=no" />
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-touch-callout" content="none" />
-        
+
         {/* PWA iOS Styles */}
         <style dangerouslySetInnerHTML={{ __html: pwaStyles }} />
-        
+
         {/* Consolidated Main Script */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.mainScript }} />
-        
-          {/* VCLI Script - Only for x.dse.best hostname */}
-          {process.env.PASSCODE_MODE === 'true' && (
+
+        {/* VCLI Script - Only for x.dse.best hostname */}
+        {process.env.PASSCODE_MODE === 'true' && (
           <script defer src="/vcli_alytc/script.js"></script>
         )}
       </Head>
