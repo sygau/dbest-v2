@@ -261,12 +261,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">Blog</div>
               </NavigationLink>
             </li>
-            <li>
+            {/* <li>
               <NavigationLink href="/resources">
                 <div className="parent-icon"><BiDiamond style={{ color: '#64d454', fontSize: 24 }} /></div>
                 <div className="menu-title">Resources</div>
               </NavigationLink>
-            </li>
+            </li> */}
             <li className="menu-label">核心科目</li>
             <li>
               <NavigationLink href="/chinese">
