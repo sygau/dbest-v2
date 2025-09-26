@@ -46,11 +46,6 @@
       "destination": "https://x.dse.best/_vercel/speed-insights/:path*"
     }
   ],
-  "functions": {
-    "api/unlock.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
