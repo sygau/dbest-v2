@@ -83,14 +83,6 @@ export async function middleware(request: NextRequest) {
     )
 
 
-    // Handle non-existent API routes to prevent internal 404 exposure
-    if (pathname.startsWith('/api/')) {
-      const validApiRoutes = ['/api/unlock', '/api/test']
-      if (!validApiRoutes.includes(pathname)) {
-        // Let Next.js handle 404 with our custom page
-        return NextResponse.next()
-      }
-    }
 
     // Special restriction for appendLinksX.js - only allow for authorized users
     if (pathname === '/assets/js/appendLinksX.js') {

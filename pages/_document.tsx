@@ -59,22 +59,9 @@ export default function Document() {
         <NextScript />
         {/* Critical Scripts - Load in dependency order */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        {/* Conditionally load appendLinks script based on passcode mode and auth */}
+        {/* Conditionally load appendLinks script based on passcode mode */}
         {process.env.PASSCODE_MODE === 'true' ? (
-          <script dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const cookieName = '${process.env.PASSCODE_COOKIE_NAME || 'site_pass'}';
-                const cookie = document.cookie.split('; ').find(row => row.startsWith(cookieName + '='));
-                if (cookie) {
-                  const script = document.createElement('script');
-                  script.src = '/assets/js/appendLinksX.js?v=${Date.now()}';
-                  script.async = true;
-                  document.head.appendChild(script);
-                }
-              })();
-            `
-          }} />
+          <script src={`/assets/js/appendLinksX.js?v=${Date.now()}`} async></script>
         ) : (
           <script src={`/assets/js/appendLinks.min.js?v=${Date.now()}`} async></script>
         )}
