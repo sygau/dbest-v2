@@ -80,7 +80,7 @@ export async function middleware(request: NextRequest) {
     // Allow list: lock page, unlock API, and essential internals/static
     const isAllowedPass = (
       pathname === '/lock' ||
-      pathname.startsWith('/api/unlock') ||
+      pathname.startsWith('/api/') ||
       pathname.startsWith('/_next') ||
       pathname.startsWith('/assets') ||
       pathname.startsWith('/public') ||
