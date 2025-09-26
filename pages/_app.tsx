@@ -247,21 +247,14 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">DSE Cut Off</div>
               </NavigationLink>
             </li>
-            
-            {/* {chatConfig.enabled && (
+            {chatConfig.enabled && (
               <li>
                 <NavigationLink href="/chat">
                   <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
                   <div className="menu-title">Chatroom</div>
                 </NavigationLink>
               </li>
-            )} */}
-            <li>
-              <a href="https://forum.dse.best/" target="_self">
-                <div className="parent-icon"><BiGroup style={{ color: '#fdba74', fontSize: 24 }} /></div>
-                <div className="menu-title">Community</div>
-              </a>
-            </li>
+            )}
             <li>
               <NavigationLink href="/blog">
                 <div className="parent-icon"><BiFile style={{ color: '#2fc4d4', fontSize: 24 }} /></div>
