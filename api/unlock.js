@@ -20,10 +20,10 @@ async function getSecretsVersion() {
 
 export default async function handler(req, res) {
   // Block all non-POST requests immediately to prevent exposure
-  if (req.method !== 'POST') {
-    res.status(404).end()
-    return
-  }
+  // if (req.method !== 'POST') {
+  //   res.status(404).end()
+  //   return
+  // }
 
   // Debug logging (only for POST requests)
   console.log('Vercel Function Request:', {

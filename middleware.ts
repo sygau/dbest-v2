@@ -42,9 +42,9 @@ export async function middleware(request: NextRequest) {
   }
 
   // Block GET requests to /api/unlock for security
-  if (request.nextUrl.pathname === '/api/unlock' && request.method !== 'POST') {
-    return new NextResponse('Method Not Allowed', { status: 405 })
-  }
+  // if (request.nextUrl.pathname === '/api/unlock' && request.method !== 'POST') {
+  //   return new NextResponse('Method Not Allowed', { status: 405 })
+  // }
 
   // Maintenance mode - show maintenance page
   if (isMaintenanceEnabled) {
