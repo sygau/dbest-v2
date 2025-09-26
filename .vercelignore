@@ -1,6 +1,4 @@
-# Exclude API routes from Pages build (keep on Vercel)
-api/
-pages/api/
+
 
 # Exclude development files
 dev/
