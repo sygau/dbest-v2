@@ -3,19 +3,10 @@ import Link from 'next/link'
 import NavigationLink from '../components/NavigationLink'
 import { getMainPageMetadata } from '../utils/structuredData';
 import { useRouter } from 'next/router'
-import Custom404Passcode from './404-passcode'
 
 export default function Custom404() {
   const router = useRouter()
   
-  // Check if we're in passcode mode (x.dse.best) - server-side only
-  const isPasscodeMode = process.env.PASSCODE_MODE === 'true'
-
-  // For passcode mode (x.dse.best), show the passcode-specific 404
-  if (isPasscodeMode) {
-    return <Custom404Passcode />
-  }
-
   // Normal mode - show minimal 404 design without layout elements
   const metadata = getMainPageMetadata('404');
 
@@ -43,13 +34,7 @@ export default function Custom404() {
               background: 'var(--bs-body-bg, #f8f9fa)',
               color: 'var(--bs-body-color, #333)',
               margin: 0,
-              padding: 20,
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              zIndex: 9999
+              padding: 20
             }}>
               <div style={{ 
                 textAlign: 'center',
