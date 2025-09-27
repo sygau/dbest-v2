@@ -19,6 +19,8 @@ public/blog/
 !data/blog-index.json
 dist/
 build/
+scripts/data/
+data/
 
 # IDE files
 .vscode/

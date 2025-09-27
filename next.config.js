@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   
+  
 
   
   // Enable full optimization for production
