@@ -20,13 +20,6 @@ try {
   console.log('🔨 Running @cloudflare/next-on-pages build...');
   execSync('npx @cloudflare/next-on-pages@1', { stdio: 'inherit' });
 
-  // Restore API folder after build
-  if (fs.existsSync(apiBackupPath)) {
-    console.log('🔄 Restoring API routes...');
-    fs.copySync(apiBackupPath, apiPath);
-    fs.removeSync(apiBackupPath);
-  }
-
   console.log('✅ Cloudflare build completed successfully!');
   console.log('📁 Build output: .vercel/output/static');
   console.log('⚠️  Note: API routes were excluded from this build but restored to source');
