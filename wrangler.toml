@@ -3,7 +3,7 @@
 
 [build]
 command = "npm run build:cloudflare"
-publish = ".next"
+publish = ".vercel/output/static"
 
 [build.environment]
 NODE_VERSION = "18"
