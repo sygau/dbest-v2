@@ -23,9 +23,49 @@ async function getSecretsVersion(): Promise<string | null> {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log('UNLOCK API CALLED:', req.method, req.url)
 
+  const allowedOrigins = [
+    'https://x.dse.best',
+    'https://www.x.dse.best'
+  ]
+  
+  const origin = req.headers.origin
+  
+  // Set CORS headers
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin)
+  }
+  
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
+  
+  // Additional security headers
+  res.setHeader('X-Content-Type-Options', 'nosniff')
+  res.setHeader('X-Frame-Options', 'DENY')
+  res.setHeader('X-XSS-Protection', '1; mode=block')
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin')
+  res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()')
+  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload')
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end()
+  }
+  
+  // Only allow POST requests
+  if (req.method !== 'POST') {
+    return res.status(405).json({ ok: false, error: 'Unauthorized' })
+  }
+  
+  // Check origin for security
+  if (!origin || !allowedOrigins.includes(origin)) {
+    console.log('SECURITY: Invalid origin:', origin)
+    return res.status(403).json({ ok: false, error: 'Unauthorized' })
+  }
+
   const secrets = getSecretsList()
   if (secrets.length === 0) {
-    return res.status(500).json({ ok: false, error: 'Server error' })
+    return res.status(500).json({ ok: false, error: 'Unauthorized' })
   }
 
   const cookieName = process.env.PASSCODE_COOKIE_NAME || 'site_pass'
@@ -34,7 +74,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const { passcode } = req.body || {}
   if (!passcode || typeof passcode !== 'string') {
-    return res.status(400).json({ ok: false, error: 'Invalid passcode' })
+    return res.status(400).json({ ok: false, error: 'Unauthorized' })
   }
 
   // Validate against any configured secret (case-insensitive)
@@ -47,7 +87,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // Set versioned cookie tied to the current secrets set
   const version = await getSecretsVersion()
   if (!version) {
-    return res.status(500).json({ ok: false, error: 'Server error' })
+    return res.status(500).json({ ok: false, error: 'Unauthorized' })
   }
 
   const isSecure = process.env.NODE_ENV === 'production'
