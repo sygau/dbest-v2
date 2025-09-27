@@ -84,14 +84,8 @@ export async function middleware(request: NextRequest) {
 
 
 
-    // Special restriction for appendLinksX.js - only allow for authorized users
-    if (pathname === '/assets/js/appendLinksX.js') {
-      const passCookie = request.cookies.get(passcodeCookieName)?.value
-      const currentVersion = await getSecretsVersion()
-      if (!currentVersion || passCookie !== currentVersion) {
-        return new NextResponse('Access Denied', { status: 403 })
-      }
-    }
+    // Note: appendLinksX.js is now secured via the /api/secure-cdn endpoint
+    // No special middleware restriction needed as the script itself handles authorization
 
     if (!isAllowedPass) {
       const passCookie = request.cookies.get(passcodeCookieName)?.value

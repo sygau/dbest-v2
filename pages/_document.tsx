@@ -14,7 +14,7 @@ export default function Document() {
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#0f1535" />
 
-        {/* Bootstrap CSS - Optimized loading with preload */}
+        {/* Bootstrap CSS */}
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -22,7 +22,7 @@ export default function Document() {
         {/* <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" as="style" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" /> */}
 
-        {/* Google AdSense - Only load if not in passcode mode */}
+        {/* Google AdSense */}
         {process.env.PASSCODE_MODE !== 'true' && (
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
         )}
@@ -30,8 +30,6 @@ export default function Document() {
         {/* Google Analytics */}
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
         <script defer dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
-
-
 
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
@@ -49,7 +47,6 @@ export default function Document() {
         {/* Consolidated Main Script */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.mainScript }} />
 
-        {/* VCLI Script - Only for x.dse.best hostname */}
         {process.env.PASSCODE_MODE === 'true' && (
           <script defer src="https://x.dse.best/_vercel/insights/script.js"></script>
         )}
@@ -59,7 +56,7 @@ export default function Document() {
         <NextScript />
         {/* Critical Scripts - Load in dependency order */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-        {/* Conditionally load appendLinks script based on passcode mode */}
+
         {process.env.PASSCODE_MODE === 'true' ? (
           <script src={`/assets/js/appendLinksX.js?v=${Date.now()}`} async></script>
         ) : (
