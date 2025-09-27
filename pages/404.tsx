@@ -57,7 +57,7 @@ export default function Custom404() {
                 <p style={{ 
                   fontSize: "1.2rem", 
                   marginBottom: "2rem",
-                  color: "var(--bs-secondary-color, #6c757d)"
+                  color: "#6c757d"
                 }}>
                   抱歉，找不到您要訪問的頁面。
                 </p>
@@ -74,14 +74,7 @@ export default function Custom404() {
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
                   }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.background = '#0056b3';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.background = '#007bff';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+
                 >
                   返回主頁
                 </button>
