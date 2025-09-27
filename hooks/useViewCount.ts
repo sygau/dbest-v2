@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 export function useViewCount(slug: string) {
   const [viewCount, setViewCount] = useState<number | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const hasIncremented = useRef(false)
 
   // Fetch initial view count
   useEffect(() => {
@@ -27,12 +28,18 @@ export function useViewCount(slug: string) {
     fetchViewCount()
   }, [slug])
 
-  // Increment view count (only once per session)
+  // Increment view count (only once per component mount)
   useEffect(() => {
     const incrementViewCount = async () => {
-      // Check if we've already counted this view in this session
+      // Prevent double counting with useRef instead of sessionStorage
+      if (hasIncremented.current) {
+        return
+      }
+
+      // Check if we've already counted this view in this session (fallback)
       const sessionKey = `viewed_${slug}`
-      if (sessionStorage.getItem(sessionKey)) {
+      if (typeof window !== 'undefined' && sessionStorage.getItem(sessionKey)) {
+        hasIncremented.current = true
         return
       }
 
@@ -48,8 +55,14 @@ export function useViewCount(slug: string) {
         if (response.ok) {
           const data = await response.json()
           setViewCount(data.count)
-          // Mark as viewed in this session
-          sessionStorage.setItem(sessionKey, 'true')
+          hasIncremented.current = true
+          
+          // Mark as viewed in this session (fallback)
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem(sessionKey, 'true')
+          }
+        } else {
+          console.warn('Failed to increment view count:', response.status)
         }
       } catch (error) {
         console.error('Failed to increment view count:', error)

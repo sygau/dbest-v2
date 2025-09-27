@@ -22,7 +22,9 @@
     "sitemap": "node scripts/generate-sitemap.js",
     "cutoff:process": "node scripts/process-cutoff-data.js",
     "cutoff:validate": "node scripts/validate-csv-structure.js",
-    "obfuscate:appendlinksx": "node scripts/obfuscate-appendlinksx.js"
+    "obfuscate:appendlinksx": "node scripts/obfuscate-appendlinksx.js",
+    "views:check": "node scripts/check-view-counts.js",
+    "views:inflate": "node scripts/inflate-view-counts.js"
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.6.10",
