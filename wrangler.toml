@@ -2,7 +2,7 @@
 # This file configures the build and deployment settings
 
 [build]
-command = "npm run build:full"
+command = "npm run build:cloudflare"
 publish = ".next"
 
 [build.environment]
