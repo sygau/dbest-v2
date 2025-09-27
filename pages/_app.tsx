@@ -62,6 +62,15 @@ export default function App({ Component, pageProps }: AppProps) {
   if (router.pathname === '/lock') {
     return <Component {...pageProps} />
   }
+  // Render a minimal layout for 404 pages (no header/sidebar/footer)
+  if (router.pathname === '/404' || router.pathname === '/_error') {
+    return <Component {...pageProps} />
+  }
+  
+  // Check if we're on a 404 page by checking the component name
+  if (Component.name === 'Custom404') {
+    return <Component {...pageProps} />
+  }
 
   // Theme switcher handlers
   const handleThemeChange = (theme: string) => {

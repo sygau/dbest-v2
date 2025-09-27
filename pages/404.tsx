@@ -15,55 +15,61 @@ export default function Custom404() {
     }
   }, [])
 
-  // For x.dse.best, show the passcode-specific 404 with no layout
+  // For x.dse.best, show the passcode-specific 404 with minimal layout
   if (isXdse) {
     return (
-      <html>
-        <head>
+      <>
+        <Head>
           <title>x.dse.best</title>
           <meta name="robots" content="noindex, nofollow" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </head>
-        <body style={{ margin: 0, padding: 0 }}>
-          <div style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: '#0b0e1f',
-            color: '#e5e7eb'
-          }}>
-            <div style={{ width: '100%', maxWidth: 360, padding: 20 }}>
-              <div style={{ marginBottom: 12, textAlign: 'center' }}>
-                <h1 style={{ fontSize: 18, margin: 0, fontWeight: 600 }}>404</h1>
-                <p style={{ fontSize: 13, marginTop: 6, color: '#9ca3af' }}>Page not found</p>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button
-                  type="button"
-                  onClick={() => router.push('/')}
-                  style={{
-                    height: 42,
-                    padding: '0 14px',
-                    borderRadius: 10,
-                    border: '1px solid #4f46e5',
-                    background: '#4f46e5',
-                    color: '#fff',
-                    fontWeight: 600,
-                    cursor: 'pointer'
-                  }}
-                >
-                  Go to Main Page
-                </button>
-              </div>
+        </Head>
+        <div style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0b0e1f',
+          color: '#e5e7eb',
+          margin: 0,
+          padding: 0,
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 9999
+        }}>
+          <div style={{ width: '100%', maxWidth: 360, padding: 20 }}>
+            <div style={{ marginBottom: 12, textAlign: 'center' }}>
+              <h1 style={{ fontSize: 18, margin: 0, fontWeight: 600 }}>404</h1>
+              <p style={{ fontSize: 13, marginTop: 6, color: '#9ca3af' }}>Page not found</p>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <button
+                type="button"
+                onClick={() => router.push('/')}
+                style={{
+                  height: 42,
+                  padding: '0 14px',
+                  borderRadius: 10,
+                  border: '1px solid #4f46e5',
+                  background: '#4f46e5',
+                  color: '#fff',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                Go to Main Page
+              </button>
             </div>
           </div>
-        </body>
-      </html>
+        </div>
+      </>
     )
   }
 
-  // Normal mode - show your original 404 design
+  // Normal mode - show minimal 404 design without layout elements
   const metadata = getMainPageMetadata('404');
 
   return (
@@ -81,48 +87,73 @@ export default function Custom404() {
                 <meta property="og:type" content={metadata?.ogType} />
             </Head>
 
-            {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">錯誤</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item active" aria-current="page">
-                                404
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            {/*end breadcrumb*/}
-            <div className="card rounded-4" style={{ height: "auto", padding: 20 }}>
-                <div className="card-body text-center">
-                    <h1
-                        className="fw-bold mb-4"
-                        style={{ marginTop: 50, fontSize: "3.0rem" }}
-                    >
-                        <span
-                            style={{
-                                background: "linear-gradient(to right, #663399, #007bff)",
-                                WebkitBackgroundClip: "text",
-                                backgroundClip: "text",
-                                WebkitTextFillColor: "transparent"
-                            }}
-                        >
-                            404 Not Found
-                        </span>
-                    </h1>
-                    <p className="mb-4" style={{ marginTop: 40, fontSize: "1.4rem" }}>
-                        抱歉，找不到您要訪問的頁面。
-                    </p>
-                    <NavigationLink href="/" className="btn btn-primary">
-                        返回主頁
-                    </NavigationLink>
-                    <br />
-                    <hr className="my-4" />
-                    <br />
-                    <br />
-                </div>
+            {/* Minimal 404 page without layout elements */}
+            <div style={{
+              minHeight: '100vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              background: 'var(--bs-body-bg, #f8f9fa)',
+              color: 'var(--bs-body-color, #333)',
+              margin: 0,
+              padding: 20,
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 9999
+            }}>
+              <div style={{ 
+                textAlign: 'center',
+                maxWidth: 600,
+                width: '100%'
+              }}>
+                <h1
+                  style={{ 
+                    fontSize: "4rem",
+                    fontWeight: "bold",
+                    marginBottom: "1rem",
+                    background: "linear-gradient(to right, #663399, #007bff)",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    WebkitTextFillColor: "transparent"
+                  }}
+                >
+                  404 Not Found
+                </h1>
+                <p style={{ 
+                  fontSize: "1.2rem", 
+                  marginBottom: "2rem",
+                  color: "var(--bs-secondary-color, #6c757d)"
+                }}>
+                  抱歉，找不到您要訪問的頁面。
+                </p>
+                <button
+                  onClick={() => router.push('/')}
+                  style={{
+                    padding: '12px 24px',
+                    fontSize: '1rem',
+                    fontWeight: '600',
+                    borderRadius: '8px',
+                    border: 'none',
+                    background: '#007bff',
+                    color: 'white',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = '#0056b3';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = '#007bff';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  返回主頁
+                </button>
+              </div>
             </div>
         </>
     )
