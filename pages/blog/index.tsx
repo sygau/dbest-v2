@@ -1024,7 +1024,7 @@ export const getStaticProps: GetStaticProps<BlogIndexProps> = async () => {
       props: {
         posts: posts.filter(post => post.index !== false)
       },
-      revalidate: 3600 // Revalidate every hour
+      // revalidate: 3600 // Revalidate every hour - commented out for static export compatibility
     };
   } catch (error) {
     console.error('Error loading blog posts:', error);
@@ -1032,7 +1032,7 @@ export const getStaticProps: GetStaticProps<BlogIndexProps> = async () => {
       props: {
         posts: []
       },
-      revalidate: 3600
+      // revalidate: 3600 // Revalidate every hour - commented out for static export compatibility
     };
   }
 };
