@@ -14,7 +14,7 @@ export default function ContactPage() {
         const form = e.currentTarget;
         const formData = new FormData(form);
         try {
-            const response = await fetch('https://api.web3forms.com/submit', {
+            const response = await fetch('https://api.web3form.com/submit', {
                 method: 'POST',
                 body: formData,
             });
