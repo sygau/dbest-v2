@@ -293,12 +293,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   // Send NTFY notification for successful authentication
   try {
-    const geoData = await getGeoData(clientIP)
+    const ipString = Array.isArray(clientIP) ? clientIP[0] : clientIP
+    const geoData = await getGeoData(ipString)
     const deviceInfo = detectDevice(userAgent)
     const browserInfo = detectBrowser(userAgent)
     
     await sendAuthNotification({
-      ip: clientIP,
+      ip: ipString,
       geography: geoData,
       device: deviceInfo,
       browser: browserInfo
