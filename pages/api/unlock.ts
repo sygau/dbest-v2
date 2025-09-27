@@ -37,13 +37,14 @@ async function sendAuthNotification(userInfo: any, passcode: string) {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'X-Title': '🔓 xDB Authentication',
+        'X-Title': 'xDB Authentication',
         'X-Priority': '4',
         'X-Click': 'https://x.dse.best',
         'X-Icon': 'https://dse.best/assets/images/logo-icon.png',
-        'X-Actions': `view, Visit Site, https://x.dse.best; http, IP Info, https://ipinfo.io/${userInfo.ip || ''}`
+        'X-Actions': `view, Visit Site, https://x.dse.best; http, IP Info, https://ipinfo.io/${userInfo.ip || ''}`,
+        'Content-Type': 'text/plain; charset=utf-8'
       },
-      body: messageContent
+      body: new Uint8Array(new TextEncoder().encode(messageContent))
     })
 
     if (!response.ok) {
