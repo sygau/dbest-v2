@@ -52,9 +52,11 @@ These routes are automatically excluded from Cloudflare builds.
 ### Cloudflare Pages (dse.best)
 - Standard Next.js environment variables
 - No API-specific variables needed
+- **Note**: `PASSCODE_MODE` should NOT be set (or set to `false`)
 
 ### Vercel (x.dse.best)
 - All standard variables
+- `PASSCODE_MODE=true` - Enables passcode-specific 404 page
 - `PASSCODE_SECRETS` - Comma-separated list of valid passcodes
 - `PASSCODE_COOKIE_NAME` - Cookie name for authentication
 - `PASSCODE_MAX_AGE_DAYS` - Cookie expiration in days

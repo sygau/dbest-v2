@@ -3,70 +3,17 @@ import Link from 'next/link'
 import NavigationLink from '../components/NavigationLink'
 import { getMainPageMetadata } from '../utils/structuredData';
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import Custom404Passcode from './404-passcode'
 
 export default function Custom404() {
   const router = useRouter()
-  const [isXdse, setIsXdse] = useState(false)
+  
+  // Check if we're in passcode mode (x.dse.best) - server-side only
+  const isPasscodeMode = process.env.PASSCODE_MODE === 'true'
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setIsXdse(window.location.hostname === 'x.dse.best')
-    }
-  }, [])
-
-  // For x.dse.best, show the passcode-specific 404 with minimal layout
-  if (isXdse) {
-    return (
-      <>
-        <Head>
-          <title>x.dse.best</title>
-          <meta name="robots" content="noindex, nofollow" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-        </Head>
-        <div style={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: '#0b0e1f',
-          color: '#e5e7eb',
-          margin: 0,
-          padding: 0,
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 9999
-        }}>
-          <div style={{ width: '100%', maxWidth: 360, padding: 20 }}>
-            <div style={{ marginBottom: 12, textAlign: 'center' }}>
-              <h1 style={{ fontSize: 18, margin: 0, fontWeight: 600 }}>404</h1>
-              <p style={{ fontSize: 13, marginTop: 6, color: '#9ca3af' }}>Page not found</p>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <button
-                type="button"
-                onClick={() => router.push('/')}
-                style={{
-                  height: 42,
-                  padding: '0 14px',
-                  borderRadius: 10,
-                  border: '1px solid #4f46e5',
-                  background: '#4f46e5',
-                  color: '#fff',
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
-              >
-                Go to Main Page
-              </button>
-            </div>
-          </div>
-        </div>
-      </>
-    )
+  // For passcode mode (x.dse.best), show the passcode-specific 404
+  if (isPasscodeMode) {
+    return <Custom404Passcode />
   }
 
   // Normal mode - show minimal 404 design without layout elements
