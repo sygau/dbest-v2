@@ -66,13 +66,13 @@ export default function ContactPage() {
                             className="alert text-center"
                             role="alert"
                             style={{
-                                backgroundColor: '#198754', // Deeper Bootstrap success green
+                                backgroundColor: '#198754',
                                 color: 'white'
                             }}
                         >
                             <h4
-                                className="mb-3 fw-bold" // fw-bold for bold text
-                                style={{ color: 'white' }} // Ensure white text
+                                className="mb-3 fw-bold"
+                                style={{ color: 'white' }}
                             >
                                 訊息已成功送出！
                             </h4>
@@ -85,7 +85,7 @@ export default function ContactPage() {
                             </p>
                             {error && (
                                 <div className="alert alert-danger text-center" role="alert">
-                                    訊息送出失敗，請稍後再試或直接電郵至 info@dse.best。
+                                    訊息送出失敗，請稍後再試。
                                 </div>
                             )}
                             <form onSubmit={handleSubmit}>
