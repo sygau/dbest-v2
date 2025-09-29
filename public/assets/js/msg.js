@@ -18,7 +18,7 @@
 
             If you have any inquiries, you can find us <a href="https://www.instagram.com/dse_best/" target="_blank" style="text-decoration: none;">@dse_best</a> or email us at <a href="mailto:info@dse.best">info@dse.best</a>.
 
-            GL
+            GLHF
         `.trim(),
         buttonText: 'ok',
         checkboxText: 'Don\'t show this message again'
