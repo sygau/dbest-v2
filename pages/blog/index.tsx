@@ -25,6 +25,7 @@ interface BlogPost {
   content: string;
   comments: boolean;
   index: boolean;
+  indexPageVis: boolean;
   excerpt: string;
   createdAt: string;
   updatedAt: string;
@@ -1022,7 +1023,7 @@ export const getStaticProps: GetStaticProps<BlogIndexProps> = async () => {
 
     return {
       props: {
-        posts: posts.filter(post => post.index !== false)
+        posts: posts.filter(post => post.indexPageVis !== false)
       },
       // revalidate: 3600 // Revalidate every hour - commented out for static export compatibility
     };

@@ -64,7 +64,7 @@ export default function Document() {
         <Public>
           <script src={`/assets/js/appendLinks.min.js?v=${Date.now()}`} async></script>
         </Public>
-        {/* <script src="/assets/js/msg.js"></script> */}
+        <Public><script src="/assets/js/msg.js"></script></Public>
       </body>
     </Html>
   )

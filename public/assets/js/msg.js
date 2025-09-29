@@ -10,7 +10,16 @@
 
     const MODAL_CONTENT = {
         title: '🚨 公告 Announcement',
-        message: '基於某種原因，本網站的部份資源將無法查看，不便之處，敬請原諒。<br><br>Due to certain circumstances, partial content on our website will be limited. Apologies for the inconvenience caused.<br><br>If you have any inquiries, you can find us <a href="https://www.instagram.com/dse_best/" target="_blank" style="text-decoration: none;">@dse_best</a>',
+        message: `
+            基於版權問題，我們將會在48小時內下架及移除網站上所有涉及的資源，不便之處，敬請原諒。
+            
+            Due to copyright infringement issues, we are required to remove and take down all resources involving the issue in 48 hours. 
+            We sincerely apologize for the inconvenience caused and thank you for your understanding and cooperation.
+
+            If you have any inquiries, you can find us <a href="https://www.instagram.com/dse_best/" target="_blank" style="text-decoration: none;">@dse_best</a> or email us at <a href="mailto:info@dse.best">info@dse.best</a>.
+
+            GL
+        `.trim(),
         buttonText: 'ok',
         checkboxText: 'Don\'t show this message again'
     };
@@ -39,7 +48,8 @@
             return false;
         }
         
-        return !localStorage.getItem(CONFIG.storageKey);
+        // return !localStorage.getItem(CONFIG.storageKey);
+        return true; // Always show modal (checkbox functionality disabled)
     }
 
     function isSearchEngineBot() {
@@ -89,15 +99,15 @@
                             </button>
                         </div>
                         <div class="dsebest-modal-body">
-                            <div class="dsebest-modal-message">${MODAL_CONTENT.message}</div>
+                            <div class="dsebest-modal-message">${MODAL_CONTENT.message.replace(/\n/g, '<br>')}</div>
                         </div>
                         <div class="dsebest-modal-footer">
-                            <div class="dsebest-modal-checkbox">
+                            <!-- <div class="dsebest-modal-checkbox">
                                 <input type="checkbox" id="dsebest-hide-forever" class="dsebest-checkbox">
                                 <label for="dsebest-hide-forever" class="dsebest-checkbox-label">
                                     ${MODAL_CONTENT.checkboxText}
                                 </label>
-                            </div>
+                            </div> -->
                             <button class="dsebest-modal-button" id="dsebest-modal-ok">
                                 ${MODAL_CONTENT.buttonText}
                             </button>
@@ -508,10 +518,10 @@
         const okBtn = modal.querySelector('#dsebest-modal-ok');
         if (okBtn) {
             okBtn.addEventListener('click', () => {
-                const checkbox = modal.querySelector('#dsebest-hide-forever');
-                if (checkbox && checkbox.checked) {
-                    localStorage.setItem(CONFIG.storageKey, 'true');
-                }
+                // const checkbox = modal.querySelector('#dsebest-hide-forever');
+                // if (checkbox && checkbox.checked) {
+                //     localStorage.setItem(CONFIG.storageKey, 'true');
+                // }
                 hideModal();
             });
         }
@@ -530,14 +540,14 @@
         });
 
         // Checkbox animation
-        const checkbox = modal.querySelector('#dsebest-hide-forever');
-        if (checkbox) {
-            checkbox.addEventListener('change', (e) => {
-                if (e.target.checked) {
-                    e.target.style.accentColor = '#4361ee';
-                }
-            });
-        }
+        // const checkbox = modal.querySelector('#dsebest-hide-forever');
+        // if (checkbox) {
+        //     checkbox.addEventListener('change', (e) => {
+        //         if (e.target.checked) {
+        //             e.target.style.accentColor = '#4361ee';
+        //         }
+        //     });
+        // }
     }
 
     // Setup Instagram app links for mobile

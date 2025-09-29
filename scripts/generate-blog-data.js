@@ -61,7 +61,7 @@ async function generateBlogData() {
     
     // Generate blog index data
     const indexablePosts = posts
-      .filter(post => post.index)
+      .filter(post => post.indexPageVis)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     
     await fs.writeJson(path.join(dataDir, 'blog-index.json'), indexablePosts, { spaces: 2 });
