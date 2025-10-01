@@ -11,9 +11,9 @@
     const MODAL_CONTENT = {
         title: '🚨 公告 Announcement',
         message: `
-            基於版權問題，我們將會在48小時內下架及移除網站上所有涉及的資源，不便之處，敬請原諒。
+            基於版權問題，我們將會在30mins內下架及移除網站上所有涉及的資源，不便之處，敬請原諒。
             
-            Due to copyright infringement issues, we are required to remove and take down all resources involving the issue in 48 hours. We sincerely apologize for the inconvenience caused and thank you for your understanding and cooperation.
+            Due to copyright infringement issues, we are required to remove and take down all resources involving the issue in 30mins. We sincerely apologize for the inconvenience caused and thank you for your understanding and cooperation.
 
             If you have any inquiries, you can find us <a href="https://www.instagram.com/dse_best/" target="_blank" style="text-decoration: none;">@dse_best</a> or email us at <a href="mailto:info@dse.best">info@dse.best</a>.
 
