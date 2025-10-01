@@ -131,15 +131,32 @@ export default function HomePage() {
           <br />
           <br />
 
+          {/* Copyright Notice Section */}
+          <div className="alert alert-warning border-warning" style={{ 
+            backgroundColor: '#fff3cd', 
+            borderColor: '#ffeaa7', 
+            borderRadius: '10px',
+            padding: '20px',
+            marginBottom: '30px'
+          }}>
+            <h5 className="alert-heading mb-3" style={{ color: '#856404', fontWeight: 'bold' }}>
+              <i className="bi bi-exclamation-triangle-fill me-2"></i>
+              版權聲明 Copyright Notice
+            </h5>
+            <p className="mb-3" style={{ color: '#856404', fontSize: '1.1rem' }}>
+              由於版權原因，我們正在移除過往試題。我們致力於遵守版權法規，確保所有內容的合法使用。
+            </p>
+            <p className="mb-0" style={{ color: '#856404', fontSize: '1.1rem' }}>
+              Due to copyright reasons, we are taking down past papers. We are committed to complying with copyright regulations and ensuring the lawful use of all content.
+            </p>
+          </div>
+
           {/* Past Papers Section */}
           <h1 className="fw-bold mb-4">歷屆試題</h1>
           <p className="mb-4" style={{ fontSize: '1.5rem' }}>
             以下是按科目和年份分類的歷屆試題資源，點擊連結即可查看詳細內容。
           </p>
-          <p className="mb-4" style={{ fontSize: '1rem' }}>
-            原 <strong>dse.life</strong> 站內的資源現已整合Backup至{' '}
-            <a href="https://dse.best/">dse.best</a>，歡迎繼續使用！
-          </p>
+
 
           <br />
           <br />

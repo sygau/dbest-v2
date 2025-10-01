@@ -4,6 +4,7 @@ import Head from 'next/head'
 import NavigationLink from '../components/NavigationLink'
 import { getChatConfig } from '../utils/chatToggle'
 import '../styles/globals.css' // Import Next.js global CSS
+import { Private, Public } from '../components/Private'
 import {
   BiHomeAlt,
   BiTimeFive,
@@ -276,6 +277,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">Resources</div>
               </NavigationLink>
             </li> */}
+            <Private>
             <li className="menu-label">核心科目</li>
             <li>
               <NavigationLink href="/chinese">
@@ -374,14 +376,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 <div className="menu-title">旅遊與款待 Tourism & Hospitality</div>
               </NavigationLink>
             </li>
-            {/*
-            <li>
-              <a href="/visual-arts">
-                <div className="parent-icon"><BiPalette style={{color: '#03a9f4', fontSize: 24}} /></div>
-                <div className="menu-title">視覺藝術 Visual Arts</div>
-              </a>
-            </li>
-            */}
+            </Private>
             <li className="menu-label">其他</li>
             <li>
               <NavigationLink href="/about">
