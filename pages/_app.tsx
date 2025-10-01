@@ -377,6 +377,13 @@ export default function App({ Component, pageProps }: AppProps) {
               </NavigationLink>
             </li>
             </Private>
+            <li className="menu-label">工具</li>
+            <li>
+              <NavigationLink href="/pomodoro">
+                <div className="parent-icon"><BiTimeFive style={{ color: '#667eea', fontSize: 24 }} /></div>
+                <div className="menu-title">番茄鐘 Pomodoro</div>
+              </NavigationLink>
+            </li>
             <li className="menu-label">其他</li>
             <li>
               <NavigationLink href="/about">

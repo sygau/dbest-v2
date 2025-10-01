@@ -305,6 +305,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/resources",
     "ogType": "website"
+  },
+  "pomodoro": {
+    "title": "番茄鐘 Pomodoro Timer | DSE 學習工具",
+    "description": "番茄鐘 Pomodoro Timer | DSE 學習工具，幫助DSE學生提高學習效率，合理安排學習和休息時間。採用番茄工作法，25分鐘專注學習，5分鐘休息，提升學習效果。",
+    "robots": "index, follow",
+    "ogTitle": "番茄鐘 Pomodoro Timer | DSE 學習工具",
+    "ogDescription": "番茄鐘 Pomodoro Timer | DSE 學習工具，幫助DSE學生提高學習效率，合理安排學習和休息時間。採用番茄工作法，25分鐘專注學習，5分鐘休息，提升學習效果。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/pomodoro",
+    "ogType": "website"
   }
 };
 

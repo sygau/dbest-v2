@@ -1075,4 +1075,64 @@ export function generateResourcesStructuredData() {
       "url": "https://dse.best"
     }
   };
+}
+
+// Generate Pomodoro page structured data
+export function generatePomodoroStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "番茄鐘 Pomodoro Timer | DSE 學習工具",
+    "description": "番茄鐘 Pomodoro Timer DSE 學習工具，幫助DSE學生提高學習效率，合理安排學習和休息時間。採用番茄工作法，25分鐘專注學習，5分鐘休息，提升學習效果。",
+    "url": "https://dse.best/pomodoro",
+    "inLanguage": ["zh-HK", "en-HK"],
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "dse.best",
+      "url": "https://dse.best/",
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "DSE Pomodoro Timer",
+      "description": "專為DSE學生設計的番茄工作法計時器，幫助提高學習專注力和效率",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "url": "https://dse.best/pomodoro",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "DSE Students"
+      },
+      "featureList": [
+        "25分鐘專注學習計時",
+        "5分鐘短休息提醒",
+        "15分鐘長休息功能",
+        "學習進度追蹤",
+        "可自訂時間設定",
+        "聲音提醒功能"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "dse.best 主頁",
+          "item": "https://dse.best/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "番茄鐘 Pomodoro Timer",
+          "item": "https://dse.best/pomodoro"
+        }
+      ]
+    }
+  };
 } 
