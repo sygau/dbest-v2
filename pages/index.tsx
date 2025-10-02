@@ -134,7 +134,10 @@ export default function HomePage() {
           </div>
           </Public>
           {/* Past Papers Section */}
+          <Private>
           <h1 className="fw-bold mb-4">歷屆試題</h1>
+          </Private>
+          
 
 
           <br />
