@@ -43,6 +43,8 @@ import PaceLoader from '../components/PaceLoader'
 import usePageInitialization from '../hooks/usePageInitialization'
 import usePdfTracking from '../hooks/usePdfTracking' // Import the PDF tracking hook
 import TraditionalLayoutManager from '../components/TraditionalLayoutManager'
+import AnnouncementBar from '../components/AnnouncementBar'
+import { announcementConfig } from '../config/announcement'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -98,6 +100,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <PaceLoader />
       <TraditionalLayoutManager />
+      
+      {/* Announcement Bar */}
+      <AnnouncementBar config={announcementConfig} />
 
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
