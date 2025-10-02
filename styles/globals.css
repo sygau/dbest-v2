@@ -122,7 +122,7 @@ body {
     top: 70px; /* Below the header */
     left: 260px; /* Same as header left position */
     right: 0;
-    z-index: 9; /* Below header (z-index: 10) */
+    z-index: 8; /* Below header (z-index: 10) and sidebar (z-index: 9) */
     transition: all 0.3s ease;
   }
   
@@ -136,10 +136,21 @@ body {
     height: calc(100vh - var(--announcement-bar-height, 0px));
   }
   
+  /* Adjust announcement bar when sidebar is toggled */
+  body.toggled .announcement-bar {
+    left: 70px; /* Adjust for collapsed sidebar */
+  }
+  
   /* Mobile adjustments */
   @media (max-width: 1199px) {
     .announcement-bar {
       left: 0;
+      z-index: 7; /* Lower z-index on mobile to not interfere with sidebar */
+    }
+    
+    /* Hide announcement bar on mobile when sidebar is open */
+    body.toggled .announcement-bar {
+      display: none;
     }
     
     /* Adjust main content for mobile when announcement bar is visible */

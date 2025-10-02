@@ -39,3 +39,6 @@ export const announcementConfig = {
 // hideOnPages: ['/chat', '/admin', '/maintenance', '/lock'] - Hide on multiple pages
 // showOnPages: ['/'] - Show only on homepage
 // showOnPages: ['/', '/about', '/contact'] - Show on specific pages only
+
+// To reset dismissal (run in browser console):
+// localStorage.removeItem('dsebest_announcement_dismissed_' + your_announcement_content.slice(0, 50))

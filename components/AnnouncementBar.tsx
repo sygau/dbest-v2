@@ -19,8 +19,26 @@ interface AnnouncementBarProps {
 }
 
 export default function AnnouncementBar({ config, onDismiss }: AnnouncementBarProps) {
+  // Check dismissal status immediately to prevent flash
+  const getInitialDismissedState = () => {
+    if (typeof window !== 'undefined') {
+      const dismissedKey = `dsebest_announcement_dismissed_${config.content.slice(0, 50)}`
+      return localStorage.getItem(dismissedKey) === 'true'
+    }
+    return false
+  }
+
   const [isVisible, setIsVisible] = useState(false)
-  const [isDismissed, setIsDismissed] = useState(false)
+  const [isDismissed, setIsDismissed] = useState(getInitialDismissedState)
+
+  // Update dismissed state when content changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const dismissedKey = `dsebest_announcement_dismissed_${config.content.slice(0, 50)}`
+      const wasDismissed = localStorage.getItem(dismissedKey) === 'true'
+      setIsDismissed(wasDismissed)
+    }
+  }, [config.content])
 
   useEffect(() => {
     if (!config.enabled || isDismissed) {
@@ -95,6 +113,13 @@ export default function AnnouncementBar({ config, onDismiss }: AnnouncementBarPr
   const handleDismiss = () => {
     setIsDismissed(true)
     setIsVisible(false)
+    
+    // Save dismissal to localStorage
+    if (typeof window !== 'undefined') {
+      const dismissedKey = `dsebest_announcement_dismissed_${config.content.slice(0, 50)}`
+      localStorage.setItem(dismissedKey, 'true')
+    }
+    
     onDismiss?.()
   }
 
