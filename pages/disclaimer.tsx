@@ -33,75 +33,68 @@ export default function DisclaimerPage() {
                 </div>
             </div>
             {/*end breadcrumb*/}
-            <div className="card rounded-4" style={{ height: 800 }}>
+            <div className="card rounded-4" style={{ minHeight: 'auto' }}>
                 <div className="card-body">
                     <h1>免責聲明 Disclaimer</h1>
                     <br />
                     <h3>中文</h3>
-                    <p>
-                        本網站所載之香港中學文憑考試（HKDSE）試題及相關資源均屬香港考試及評核局（HKEAA）之智慧財產。本網站僅供學術研究及個人學習用途，旨在協助學生自學及溫習。
-                        <br />
-                        <br />
-                        用戶不得將本站內容用於任何形式的商業用途，包括但不限於轉載、公開展示、發佈、售賣或作為教材於收費課程中使用。未經授權，嚴禁以任何方式複製、修改、分發或發佈本站內容。
-                        <br />
-                        <br />
-                        本網站所提供之資源均來自公開渠道或用戶投稿，本站已盡力確保內容的準確性及合法性，但不保證所有內容均無誤或完全合法。若內容涉及第三方版權或其他權益，請相關權利人及時與我們聯絡，我們將於核實後盡快移除相關內容。
-                        <br />
-                        <br />
-                        使用本站資源所產生之一切後果，本站概不負責。用戶應自行判斷及承擔風險。
-                        <br />
-                        如有任何疑問或發現侵權內容，請即
-                        <a
-                            href="/contact"
-                            style={{ color: "inherit", textDecoration: "underline" }}
-                        >
-                            聯絡我們
-                        </a>
-                        或電郵至 <a href="mailto:info@dse.best">info@dse.best</a>。
-                        感謝您的理解與合作。
-                    </p>
+                    <div className="disclaimer-content">
+                        <p><strong>網站目的與性質</strong></p>
+                        <p>本網站旨在為學生提供學習資源和參考資料，包括但不限於考試資訊、學習材料、成績分析等。本網站純屬教育性質，旨在協助學生學習和準備考試。</p>
+                        
+                        <p><strong>資訊準確性</strong></p>
+                        <p>本網站提供的所有資訊僅供參考，我們努力確保資訊的準確性和時效性，但不保證所有資訊的完全準確性、完整性或最新性。資訊可能隨時更新或變更，恕不另行通知。</p>
+                        
+                        <p><strong>免責聲明</strong></p>
+                        <p>使用本網站及其內容的風險由用戶自行承擔。本網站不對以下情況承擔任何責任：</p>
+                        <ul>
+                            <li>因使用本網站資訊而導致的任何直接或間接損失</li>
+                            <li>資訊的準確性、完整性或適用性</li>
+                            <li>因網站技術問題導致的服務中斷或延誤</li>
+                            <li>第三方網站連結的內容或服務</li>
+                        </ul>
+                        
+                        <p><strong>教育建議</strong></p>
+                        <p>本網站提供的學習建議和策略僅供參考，不應視為專業教育建議。學生應根據自身情況和需求，結合專業教師指導，制定適合的學習計劃。</p>
+                        
+                        <p><strong>版權聲明</strong></p>
+                        <p>本網站內容受版權保護，未經許可不得複製、分發或商業使用。部分內容可能來自第三方，其版權歸原作者所有。</p>
+                        
+                        <p><strong>聯絡我們</strong></p>
+                        <p>如對本免責聲明有任何疑問，請通過網站聯絡頁面與我們聯繫。</p>
+                        
+                        <p><em>最後更新：2024年12月30日</em></p>
+                    </div>
+                    
                     <hr />
                     <h3>English</h3>
-                    <p>
-                        All HKDSE past papers and related materials on this website are the
-                        intellectual property of the Hong Kong Examinations and Assessment
-                        Authority (HKEAA). This website is intended solely for academic research
-                        and personal study purposes, to assist students in self-study and
-                        revision.
-                        <br />
-                        <br />
-                        Users must not use any content from this site for commercial purposes,
-                        including but not limited to redistribution, public display,
-                        publication, sale, or use as teaching material in paid courses.
-                        Unauthorized copying, modification, distribution, or publication of any
-                        content from this site is strictly prohibited.
-                        <br />
-                        <br />
-                        The resources provided on this website are sourced from public channels
-                        or user submissions. (e.g. dse[.]rioho[.]dev dse247[.]com dselib[.]com etc.)
-                        We do not obtain, scan, nor distribute any of the past papers.
-                        While we strive to ensure the accuracy and legality
-                        of all content, we do not guarantee that all materials are error-free or
-                        fully compliant with copyright laws. If any content involves third-party
-                        copyright or other rights, please contact us promptly. Upon
-                        verification, we will remove the relevant content as soon as possible.
-                        <br />
-                        <br />
-                        The website assumes no responsibility for any consequences arising from
-                        the use of its resources. Users should exercise their own judgment and
-                        bear all risks.
-                        <br />
-                        <br />
-                        If you have any questions or discover any infringing content, please{" "}
-                        <a
-                            href="/contact"
-                            style={{ color: "inherit", textDecoration: "underline" }}
-                        >
-                            contact us
-                        </a>{" "}
-                        or email us at <a href="mailto:info@dse.best">info@dse.best</a> immediately.
-                        We appreciate your understanding and cooperation.
-                    </p>
+                    <div className="disclaimer-content">
+                        <p><strong>Website Purpose and Nature</strong></p>
+                        <p>This website is designed to provide educational resources and reference materials for students, including but not limited to examination information, study materials, grade analysis, and academic guidance. This website is purely educational in nature and aims to assist students in their learning and exam preparation.</p>
+                        
+                        <p><strong>Information Accuracy</strong></p>
+                        <p>All information provided on this website is for reference purposes only. While we strive to ensure the accuracy and timeliness of information, we do not guarantee the complete accuracy, completeness, or currency of all information. Information may be updated or changed at any time without prior notice.</p>
+                        
+                        <p><strong>Disclaimer of Liability</strong></p>
+                        <p>The risk of using this website and its content is borne by the user. This website shall not be liable for the following circumstances:</p>
+                        <ul>
+                            <li>Any direct or indirect losses resulting from the use of information on this website</li>
+                            <li>The accuracy, completeness, or applicability of information</li>
+                            <li>Service interruptions or delays due to technical issues</li>
+                            <li>Content or services of third-party website links</li>
+                        </ul>
+                        
+                        <p><strong>Educational Advice</strong></p>
+                        <p>Learning suggestions and strategies provided on this website are for reference only and should not be considered as professional educational advice. Students should develop appropriate study plans based on their individual circumstances and needs, in consultation with professional educators.</p>
+                        
+                        <p><strong>Copyright Notice</strong></p>
+                        <p>The content of this website is protected by copyright and may not be reproduced, distributed, or used commercially without permission. Some content may be sourced from third parties, and the copyright belongs to the original authors.</p>
+                        
+                        <p><strong>Contact Us</strong></p>
+                        <p>If you have any questions about this disclaimer, please contact us through the website's contact page.</p>
+                        
+                        <p><em>Last updated: December 30, 2024</em></p>
+                    </div>
                 </div>
             </div>
         </>
