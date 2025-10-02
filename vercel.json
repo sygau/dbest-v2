@@ -24,6 +24,11 @@
       "permanent": true
     },
     {
+      "source": "hkpl_link",
+      "destination": "https://sls.hkpl.gov.hk/digital-collection/tc/collection_hkcee-and-hkale-papers-collection.html",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {

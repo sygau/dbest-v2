@@ -34,26 +34,6 @@ const homepageFAQs = [
     id: 'faq1',
     question: 'dse.best 係咩平台？有咩資源？',
     answer: 'dse.best 係一個專為香港中學文憑試（HKDSE）學生而設嘅 <strong>網上平台</strong>，提供歷屆試題、溫習筆記、模擬試卷同教育博客文章等實用學習資源。'
-  },
-  {
-    id: 'faq2',
-    question: '「dse.life」停咗服務，點解喺 dse.best 仍然搵到DSE Life嘅資料？',
-    answer: '我哋已經將 <strong>dse.life backup</strong> 嘅所有公開DSE資源妥善備份並整合到 dse.best，確保同學依然可以免費存取重要嘅 <strong>DSE歷屆試題</strong>同<strong>DSE Past Paper下載</strong>功能。原有嘅dse.life資源已100%完整保留。'
-  },
-  {
-    id: 'faq3',
-    question: '點樣下載DSE Past Paper試卷同答案？DSE PP下載係咪免費？',
-    answer: '完全免費！喺各科頁面揀選年份後，直接按「<strong>下載</strong>」或「查看」按鈕即可開啟或<strong>下載DSE試卷</strong>／答案PDF檔案，毋須登入。所有<strong>DSE PP下載</strong>服務完全免費提供。'
-  },
-  {
-    id: 'faq4',
-    question: '點樣貢獻試卷？',
-    answer: '你可以透過 Instagram / <a href="mailto:info@dse.best">info@dse.best</a> 傳送試卷俾我哋！歡迎大家分享歷屆試題、答案或其他學習資源，幫助更多同學。'
-  },
-  {
-    id: 'faq5',
-    question: 'dse.best 嘅資源幾時會更新？',
-    answer: '我哋會定期更新 dse.best 嘅試題、答案同學習資源，確保內容最新最齊全。一般每月都會有新資料或功能加入，歡迎大家多啲留意網站公告或追蹤我哋嘅社交平台獲取最新消息。'
   }
 ]
 export default function HomePage() {
@@ -154,7 +134,10 @@ export default function HomePage() {
           </div>
           </Public>
           {/* Past Papers Section */}
+          <Private>
           <h1 className="fw-bold mb-4">歷屆試題</h1>
+          </Private>
+          
 
 
           <br />
