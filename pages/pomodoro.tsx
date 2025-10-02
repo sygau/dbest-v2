@@ -14,9 +14,9 @@ export default function PomodoroPage() {
   const [totalTime, setTotalTime] = useState(0); // Total time in seconds
   const [isPaused, setIsPaused] = useState(false);
   const [timerMode, setTimerMode] = useState('work'); // 'work', 'break', 'longBreak'
-  const [workDuration, setWorkDuration] = useState(25);
-  const [breakDuration, setBreakDuration] = useState(5);
-  const [longBreakDuration, setLongBreakDuration] = useState(15);
+  const [workDuration, setWorkDuration] = useState<number | string>(25);
+  const [breakDuration, setBreakDuration] = useState<number | string>(5);
+  const [longBreakDuration, setLongBreakDuration] = useState<number | string>(15);
   const [startTime, setStartTime] = useState<number | null>(null);
   
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -116,9 +116,9 @@ export default function PomodoroPage() {
   // Save settings when they change
   useEffect(() => {
     const settings = {
-      workDuration,
-      breakDuration,
-      longBreakDuration
+      workDuration: typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25,
+      breakDuration: typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5,
+      longBreakDuration: typeof longBreakDuration === 'number' ? longBreakDuration : parseInt(longBreakDuration) || 15
     };
     localStorage.setItem('pomodoroSettings', JSON.stringify(settings));
   }, [workDuration, breakDuration, longBreakDuration]);
@@ -147,19 +147,22 @@ export default function PomodoroPage() {
     setIsActive(false);
     playNotificationSound();
     
+    const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
+    const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
+    
     if (!isBreak) {
       // Work session completed
       const newSessions = sessions + 1;
       setSessions(newSessions);
-      setTotalTime(prev => prev + (workDuration * 60));
+      setTotalTime(prev => prev + (workTime * 60));
       
       // Set break time
       setIsBreak(true);
-      setTimeLeft(breakDuration * 60);
+      setTimeLeft(breakTime * 60);
     } else {
       // Break completed
       setIsBreak(false);
-      setTimeLeft(workDuration * 60);
+      setTimeLeft(workTime * 60);
     }
   };
 
@@ -198,7 +201,9 @@ export default function PomodoroPage() {
   const resetTimer = () => {
     setIsActive(false);
     setIsPaused(false);
-    setTimeLeft(isBreak ? breakDuration * 60 : workDuration * 60);
+    const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
+    const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
+    setTimeLeft(isBreak ? breakTime * 60 : workTime * 60);
   };
 
   const skipSession = () => {
@@ -222,9 +227,12 @@ export default function PomodoroPage() {
   };
 
   const getProgressPercentage = () => {
-    const totalTime = isBreak ? breakDuration * 60 : workDuration * 60;
+    const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
+    const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
+    const totalTime = isBreak ? breakTime * 60 : workTime * 60;
     return ((totalTime - timeLeft) / totalTime) * 100;
   };
+
 
 
   return (
@@ -263,13 +271,10 @@ export default function PomodoroPage() {
       </div>
 
       {/* Main Content Card */}
-      <div className="card rounded-4" style={{ height: 'auto', padding: '20px' }}>
+      <div className="card rounded-4 pomodoro-page">
         <div className="card-body text-center">
           {/* Header */}
-          <h1 className="fw-bold mb-4" style={{ 
-            fontSize: '2.5rem',
-            color: '#667eea'
-          }}>
+          <h1 className="fw-bold mb-4 pomodoro-title">
             番茄鐘 Pomodoro Timer
           </h1>
 
@@ -282,7 +287,8 @@ export default function PomodoroPage() {
                 onClick={() => {
                   setTimerMode('work');
                   setIsBreak(false);
-                  setTimeLeft(workDuration * 60);
+                  const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
+                  setTimeLeft(workTime * 60);
                 }}
               >
                 <span className="desktop-text">工作 Work</span>
@@ -294,7 +300,8 @@ export default function PomodoroPage() {
                 onClick={() => {
                   setTimerMode('break');
                   setIsBreak(true);
-                  setTimeLeft(breakDuration * 60);
+                  const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
+                  setTimeLeft(breakTime * 60);
                 }}
               >
                 <span className="desktop-text">短休息 Break</span>
@@ -306,7 +313,8 @@ export default function PomodoroPage() {
                 onClick={() => {
                   setTimerMode('longBreak');
                   setIsBreak(true);
-                  setTimeLeft(longBreakDuration * 60);
+                  const longBreakTime = typeof longBreakDuration === 'number' ? longBreakDuration : parseInt(longBreakDuration) || 15;
+                  setTimeLeft(longBreakTime * 60);
                 }}
               >
                 <span className="desktop-text">長休息 Long Break</span>
@@ -442,9 +450,25 @@ export default function PomodoroPage() {
                       className="form-control"
                       id="workDuration"
                       value={workDuration}
-                      onChange={(e) => setWorkDuration(parseInt(e.target.value) || 25)}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === '') {
+                          setWorkDuration('');
+                        } else {
+                          const numValue = parseInt(value);
+                          if (!isNaN(numValue) && numValue >= 1 && numValue <= 60) {
+                            setWorkDuration(numValue);
+                          }
+                        }
+                      }}
+                      onBlur={(e) => {
+                        if (e.target.value === '' || parseInt(e.target.value) < 1) {
+                          setWorkDuration(25);
+                        }
+                      }}
                       min="1"
                       max="60"
+                      placeholder="25"
                     />
                   </div>
                   <div className="col-12">
@@ -454,9 +478,25 @@ export default function PomodoroPage() {
                       className="form-control"
                       id="breakDuration"
                       value={breakDuration}
-                      onChange={(e) => setBreakDuration(parseInt(e.target.value) || 5)}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === '') {
+                          setBreakDuration('');
+                        } else {
+                          const numValue = parseInt(value);
+                          if (!isNaN(numValue) && numValue >= 1 && numValue <= 30) {
+                            setBreakDuration(numValue);
+                          }
+                        }
+                      }}
+                      onBlur={(e) => {
+                        if (e.target.value === '' || parseInt(e.target.value) < 1) {
+                          setBreakDuration(5);
+                        }
+                      }}
                       min="1"
                       max="30"
+                      placeholder="5"
                     />
                   </div>
                   <div className="col-12">
@@ -466,9 +506,25 @@ export default function PomodoroPage() {
                       className="form-control"
                       id="longBreakDuration"
                       value={longBreakDuration}
-                      onChange={(e) => setLongBreakDuration(parseInt(e.target.value) || 15)}
+                      onChange={(e) => {
+                        const value = e.target.value;
+                        if (value === '') {
+                          setLongBreakDuration('');
+                        } else {
+                          const numValue = parseInt(value);
+                          if (!isNaN(numValue) && numValue >= 1 && numValue <= 60) {
+                            setLongBreakDuration(numValue);
+                          }
+                        }
+                      }}
+                      onBlur={(e) => {
+                        if (e.target.value === '' || parseInt(e.target.value) < 1) {
+                          setLongBreakDuration(15);
+                        }
+                      }}
                       min="1"
                       max="60"
+                      placeholder="15"
                     />
                   </div>
                 </div>
@@ -527,7 +583,8 @@ export default function PomodoroPage() {
           padding: 0.4rem 1.2rem;
           border: none;
           background: transparent;
-          color: rgba(255, 255, 255, 0.7);
+          color: var(--bs-body-color, rgba(255, 255, 255, 0.7));
+          opacity: 0.7;
           font-weight: 600;
           font-size: 0.95rem;
           border-radius: 6px;
@@ -582,13 +639,15 @@ export default function PomodoroPage() {
         }
         
         .tab:hover {
-          color: white;
-          background: rgba(255, 255, 255, 0.1);
+          color: var(--bs-body-color, white);
+          background: var(--tab-hover-bg, rgba(255, 255, 255, 0.1));
+          opacity: 1;
         }
         
         .tab.active {
           background: #667eea;
           color: white;
+          opacity: 1;
           box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
         }
         
@@ -625,7 +684,7 @@ export default function PomodoroPage() {
           width: 100%;
           height: 100%;
           border-radius: 50%;
-          background: #667eea;
+          background:rgb(106, 129, 230);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -635,7 +694,7 @@ export default function PomodoroPage() {
         }
         
         .timer-circle.work {
-          background: #2a3a83;
+          background:rgb(55, 82, 203);
         }
         
         .timer-circle.break {
@@ -677,7 +736,8 @@ export default function PomodoroPage() {
           border-radius: 16px;
           padding: 1.5rem;
           backdrop-filter: blur(10px);
-          border: 1px solid var(--card-border, rgba(255, 255, 255, 0.2));
+          border: 3px solid var(--card-border, rgba(255, 255, 255, 0.2));
+          box-shadow: var(--card-shadow, 0 8px 25px rgba(0, 0, 0, 0.1));
           display: flex;
           align-items: center;
           gap: 1rem;
@@ -693,6 +753,7 @@ export default function PomodoroPage() {
         .stat-icon {
           font-size: 2rem;
           opacity: 0.8;
+          color: var(--bs-body-color, white);
         }
         
         .stat-content {
@@ -701,15 +762,16 @@ export default function PomodoroPage() {
         
         .stat-title {
           font-size: 0.9rem;
-          color: var(--text-muted, rgba(255,255,255,0.7));
+          color: var(--bs-body-color, rgba(255,255,255,0.7));
           margin-bottom: 0.5rem;
           font-weight: 500;
+          opacity: 0.8;
         }
         
         .stat-value {
           font-size: 1.8rem;
           font-weight: 700;
-          color: var(--text-primary, white);
+          color: var(--bs-body-color, white);
         }
         
         /* Control Buttons */
@@ -799,43 +861,46 @@ export default function PomodoroPage() {
           padding: 2rem;
           margin-top: 2rem;
           backdrop-filter: blur(10px);
-          border: 1px solid var(--section-border, rgba(255, 255, 255, 0.1));
+          border: 3px solid var(--section-border, rgba(255, 255, 255, 0.1));
+          box-shadow: var(--card-shadow, 0 12px 35px rgba(0, 0, 0, 0.1));
         }
         
         .settings-section h4 {
-          color: var(--text-primary, white);
+          color: var(--bs-heading-color, white);
           margin-bottom: 1.5rem;
           font-weight: 600;
         }
         
         .settings-section .form-label {
-          color: var(--text-secondary, rgba(255,255,255,0.8));
+          color: var(--bs-body-color, rgba(255,255,255,0.8));
           font-weight: 500;
           margin-bottom: 0.5rem;
         }
         
         .settings-section .form-control {
-          background: var(--input-bg, rgba(255, 255, 255, 0.1));
-          border: 1px solid var(--input-border, rgba(255, 255, 255, 0.2));
-          color: var(--text-primary, white);
+          background: rgba(255, 255, 255, 0.1);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          color: var(--bs-body-color, white);
           border-radius: 8px;
           transition: all 0.3s ease;
+          font-size: 1rem;
+          padding: 0.75rem;
         }
         
         .settings-section .form-control:focus {
           background: var(--input-focus-bg, rgba(255, 255, 255, 0.15));
           border-color: var(--primary-color, #667eea);
           box-shadow: 0 0 0 0.2rem var(--primary-shadow, rgba(102, 126, 234, 0.25));
-          color: var(--text-primary, white);
+          color: var(--bs-body-color, white);
         }
         
         .settings-section .form-floating > label {
-          color: var(--text-secondary, rgba(255,255,255,0.8));
+          color: var(--bs-body-color, rgba(255,255,255,0.8));
         }
         
         .settings-section .form-floating > .form-control:focus ~ label,
         .settings-section .form-floating > .form-control:not(:placeholder-shown) ~ label {
-          color: var(--text-primary, white);
+          color: var(--bs-body-color, white);
           opacity: 0.8;
         }
         
@@ -845,11 +910,12 @@ export default function PomodoroPage() {
           border-radius: 16px;
           padding: 2rem;
           backdrop-filter: blur(10px);
-          border: 1px solid var(--section-border, rgba(255, 255, 255, 0.1));
+          border: 3px solid var(--section-border, rgba(255, 255, 255, 0.1));
+          box-shadow: var(--card-shadow, 0 12px 35px rgba(0, 0, 0, 0.1));
         }
         
         .instructions h4 {
-          color: var(--text-primary, white);
+          color: var(--bs-heading-color, white);
           margin-bottom: 1.5rem;
           font-weight: 600;
         }
@@ -859,18 +925,19 @@ export default function PomodoroPage() {
           border-radius: 12px;
           padding: 1.5rem;
           backdrop-filter: blur(10px);
-          border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+          border: 3px solid var(--card-border, rgba(255, 255, 255, 0.1));
+          box-shadow: var(--card-shadow, 0 8px 25px rgba(0, 0, 0, 0.1));
           height: 100%;
         }
         
         .instruction-card h5 {
-          color: var(--text-primary, white);
+          color: var(--bs-heading-color, white);
           margin-bottom: 1rem;
           font-weight: 600;
         }
         
         .instruction-card ul {
-          color: var(--text-secondary, rgba(255,255,255,0.8));
+          color: var(--bs-body-color, rgba(255,255,255,0.8));
           padding-left: 1.2rem;
         }
         
@@ -879,55 +946,356 @@ export default function PomodoroPage() {
           line-height: 1.5;
         }
         
-        /* Theme Variables */
-        [data-bs-theme="light"] {
-          --card-bg: rgba(255, 255, 255, 0.9);
-          --card-border: rgba(0, 0, 0, 0.1);
-          --card-shadow: 0 8px 25px rgba(0,0,0,0.1);
-          --section-bg: rgba(248, 249, 250, 0.8);
-          --section-border: rgba(0, 0, 0, 0.1);
-          --text-primary: #333;
-          --text-secondary: #666;
-          --text-muted: #999;
+        /* Theme-specific overrides */
+        [data-bs-theme="light"] .pomodoro-page {
+          --card-bg: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+          --card-border: rgba(0, 0, 0, 0.25);
+          --card-shadow: 0 12px 35px rgba(0,0,0,0.15), 0 6px 16px rgba(0, 0, 0, 0.12);
+          --section-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          --section-border: rgba(0, 0, 0, 0.25);
           --input-bg: #fff;
-          --input-border: #ced4da;
+          --input-border: rgba(0, 0, 0, 0.3);
           --input-focus-bg: #fff;
           --primary-color: #667eea;
           --primary-shadow: rgba(102, 126, 234, 0.25);
+          --tab-hover-bg: rgba(0, 0, 0, 0.05);
         }
         
-        [data-bs-theme="dark"] {
+        [data-bs-theme="dark"] .pomodoro-page {
           --card-bg: rgba(255, 255, 255, 0.1);
           --card-border: rgba(255, 255, 255, 0.2);
           --card-shadow: 0 8px 25px rgba(0,0,0,0.3);
           --section-bg: rgba(255, 255, 255, 0.05);
           --section-border: rgba(255, 255, 255, 0.1);
-          --text-primary: white;
-          --text-secondary: rgba(255,255,255,0.8);
-          --text-muted: rgba(255,255,255,0.6);
           --input-bg: rgba(255, 255, 255, 0.1);
           --input-border: rgba(255, 255, 255, 0.2);
           --input-focus-bg: rgba(255, 255, 255, 0.15);
           --primary-color: #667eea;
           --primary-shadow: rgba(102, 126, 234, 0.25);
+          --tab-hover-bg: rgba(255, 255, 255, 0.1);
         }
         
-        [data-bs-theme="blue-theme"] {
+        [data-bs-theme="blue-theme"] .pomodoro-page {
           --card-bg: rgba(255, 255, 255, 0.15);
           --card-border: rgba(255, 255, 255, 0.3);
           --card-shadow: 0 8px 25px rgba(0,0,0,0.2);
           --section-bg: rgba(255, 255, 255, 0.1);
           --section-border: rgba(255, 255, 255, 0.2);
-          --text-primary: white;
-          --text-secondary: rgba(255,255,255,0.8);
-          --text-muted: rgba(255,255,255,0.6);
           --input-bg: rgba(255, 255, 255, 0.15);
           --input-border: rgba(255, 255, 255, 0.3);
           --input-focus-bg: rgba(255, 255, 255, 0.2);
           --primary-color: #667eea;
           --primary-shadow: rgba(102, 126, 234, 0.25);
+          --tab-hover-bg: rgba(255, 255, 255, 0.1);
         }
         
+        /* iPad specific fixes */
+        @media (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+          /* iPad specific styling to fix white instruction cards */
+          .instruction-card {
+            background: var(--card-bg, rgba(255, 255, 255, 0.1)) !important;
+            border: 2px solid var(--card-border, rgba(255, 255, 255, 0.2)) !important;
+            backdrop-filter: blur(15px) !important;
+          }
+          
+          .stat-card {
+            background: var(--card-bg, rgba(255, 255, 255, 0.1)) !important;
+            border: 2px solid var(--card-border, rgba(255, 255, 255, 0.2)) !important;
+            backdrop-filter: blur(15px) !important;
+          }
+          
+          .settings-section {
+            background: var(--section-bg, rgba(255, 255, 255, 0.05)) !important;
+            border: 2px solid var(--section-border, rgba(255, 255, 255, 0.1)) !important;
+            backdrop-filter: blur(15px) !important;
+          }
+          
+          .instructions {
+            background: var(--section-bg, rgba(255, 255, 255, 0.05)) !important;
+            border: 2px solid var(--section-border, rgba(255, 255, 255, 0.1)) !important;
+            backdrop-filter: blur(15px) !important;
+          }
+        }
+        
+        /* Light theme specific fixes for better visibility */
+        [data-bs-theme=light] .tab-switcher {
+          background: #ffffff !important;
+          border: 4px solid #000000 !important;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.2) !important;
+          backdrop-filter: none !important;
+        }
+        
+        [data-bs-theme="light"] .timer-circle {
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+          border: 3px solid rgba(255, 255, 255, 0.8) !important;
+        }
+        
+        [data-bs-theme="light"] .timer-circle.work {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
+        
+        [data-bs-theme="light"] .timer-circle.break {
+          background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+        }
+        
+        
+        [data-bs-theme="light"] .stat-card:hover {
+          transform: translateY(-5px) !important;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 10px 25px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+          border-color: rgba(0, 0, 0, 0.35) !important;
+        }
+        
+        [data-bs-theme="light"] .instruction-card:hover {
+          transform: translateY(-4px) !important;
+          box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+          border-color: rgba(0, 0, 0, 0.35) !important;
+        }
+        
+        
+        /* Add strong background for light theme */
+        [data-bs-theme=light] .card.rounded-4 {
+          background: #ffffff !important;
+          border: 5px solid #333333 !important;
+          box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25), 0 12px 35px rgba(0, 0, 0, 0.2) !important;
+          backdrop-filter: none !important;
+        }
+        
+        /* Main title styling */
+        .pomodoro-title {
+          font-size: 2.5rem;
+        }
+        
+        /* Theme-specific styling for all themes */
+        
+        /* Light theme styling - scoped properly like countdown.tsx */
+        [data-bs-theme=light] .pomodoro-page .stat-card {
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+          border: 2px solid rgba(0, 0, 0, 0.15) !important;
+          color: #212529 !important;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+          border-radius: 16px !important;
+          padding: 1.5rem !important;
+          display: flex !important;
+          align-items: center !important;
+          gap: 1rem !important;
+          transition: all 0.3s ease !important;
+          height: 100% !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .instruction-card {
+          background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+          border: 2px solid rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+          border-radius: 12px !important;
+          padding: 1.5rem !important;
+          height: 100% !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .settings-section,
+        [data-bs-theme=light] .pomodoro-page .instructions {
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+          border: 2px solid rgba(0, 0, 0, 0.15) !important;
+          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1), 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+          border-radius: 16px !important;
+          padding: 2rem !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .settings-section h4,
+        [data-bs-theme=light] .pomodoro-page .instructions h4,
+        [data-bs-theme=light] .pomodoro-page .instruction-card h5 {
+          color: #212529 !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .instruction-card ul {
+          color: #495057 !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .stat-title {
+          color: #6c757d !important;
+          font-size: 0.9rem !important;
+          margin-bottom: 0.5rem !important;
+          font-weight: 500 !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .stat-value {
+          color: #212529 !important;
+          font-size: 1.8rem !important;
+          font-weight: 700 !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .form-label {
+          color: #495057 !important;
+          font-weight: 600 !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page input#workDuration,
+        [data-bs-theme=light] .pomodoro-page input#breakDuration,
+        [data-bs-theme=light] .pomodoro-page input#longBreakDuration {
+          background: #ffffff !important;
+          border: 2px solid #333333 !important;
+          color: #212529 !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+          border-radius: 8px !important;
+          padding: 0.75rem !important;
+          font-size: 1rem !important;
+        }
+        
+        [data-bs-theme=light] .pomodoro-page .settings-section .form-control:focus {
+          border-color: #667eea !important;
+          box-shadow: 0 0 0 0.3rem rgba(102, 126, 234, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+          color: #212529 !important;
+          background: #ffffff !important;
+        }
+        
+        /* Title colors to match sidebar across all themes */
+        [data-bs-theme=light] .pomodoro-page .pomodoro-title {
+          color: #008cff !important;
+        }
+        
+        [data-bs-theme=dark] .pomodoro-page .pomodoro-title,
+        [data-bs-theme=blue-theme] .pomodoro-page .pomodoro-title {
+          color: #ffffff !important;
+        }
+        
+        /* Dark theme styling */
+        [data-bs-theme=dark] .pomodoro-page .settings-section .form-control {
+          background: rgba(255, 255, 255, 0.1) !important;
+          border: 2px solid rgba(255, 255, 255, 0.3) !important;
+          color: white !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+          border-radius: 8px !important;
+          padding: 0.75rem !important;
+          font-size: 1rem !important;
+        }
+        
+        [data-bs-theme=dark] .pomodoro-page .settings-section .form-control:focus {
+          border-color: #667eea !important;
+          box-shadow: 0 0 0 0.3rem rgba(102, 126, 234, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+          color: white !important;
+          background: rgba(255, 255, 255, 0.15) !important;
+        }
+        
+        [data-bs-theme=dark] .stat-card {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        [data-bs-theme=dark] .instruction-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        [data-bs-theme=dark] .settings-section,
+        [data-bs-theme=dark] .instructions {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        [data-bs-theme=dark] .form-control {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+        }
+        
+        [data-bs-theme=dark] .form-control:focus {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: #667eea;
+          box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+          color: white;
+        }
+        
+        /* Blue theme styling */
+        [data-bs-theme=blue-theme] .pomodoro-page .settings-section .form-control {
+          background: rgba(255, 255, 255, 0.15) !important;
+          border: 2px solid rgba(255, 255, 255, 0.4) !important;
+          color: white !important;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+          border-radius: 8px !important;
+          padding: 0.75rem !important;
+          font-size: 1rem !important;
+        }
+        
+        [data-bs-theme=blue-theme] .pomodoro-page .settings-section .form-control:focus {
+          border-color: #667eea !important;
+          box-shadow: 0 0 0 0.3rem rgba(102, 126, 234, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+          color: white !important;
+          background: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        [data-bs-theme=blue-theme] .stat-card {
+          background: rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          color: white;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        [data-bs-theme=blue-theme] .instruction-card {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        [data-bs-theme=blue-theme] .settings-section,
+        [data-bs-theme=blue-theme] .instructions {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        [data-bs-theme=blue-theme] .form-control {
+          background: rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          color: white;
+        }
+        
+        [data-bs-theme=blue-theme] .form-control:focus {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: #667eea;
+          box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+          color: white;
+        }
+        
+        /* Title colors for dark and blue themes */
+        [data-bs-theme=dark] .pomodoro-title,
+        [data-bs-theme=blue-theme] .pomodoro-title {
+          color: #ffffff;
+        }
+        
+        /* Add inner borders for extra definition */
+        [data-bs-theme="light"] .stat-card::before {
+          content: '';
+          position: absolute;
+          top: 1px;
+          left: 1px;
+          right: 1px;
+          bottom: 1px;
+          border-radius: 14px;
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          pointer-events: none;
+        }
+        
+        [data-bs-theme="light"] .instruction-card::before {
+          content: '';
+          position: absolute;
+          top: 1px;
+          left: 1px;
+          right: 1px;
+          bottom: 1px;
+          border-radius: 10px;
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          pointer-events: none;
+        }
+        
+        /* Ensure cards have relative positioning for pseudo-elements */
+        [data-bs-theme="light"] .stat-card,
+        [data-bs-theme="light"] .instruction-card {
+          position: relative !important;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
           .timer-circle-container {
