@@ -274,7 +274,7 @@ export default function PomodoroPage() {
       <div className="card rounded-4 pomodoro-page">
         <div className="card-body text-center">
           {/* Header */}
-          <h1 className="fw-bold mb-4 pomodoro-title">
+          <h1 className="fw-bold mb-4 pomodoro-title" style={{color: '#667eea'}}>
             番茄鐘 Pomodoro Timer
           </h1>
 
@@ -1147,14 +1147,21 @@ export default function PomodoroPage() {
           background: #ffffff !important;
         }
         
-        /* Title colors to match sidebar across all themes */
-        [data-bs-theme=light] .pomodoro-page .pomodoro-title {
-          color: #008cff !important;
+        /* Title colors to match sidebar icon across all themes */
+        .pomodoro-page .pomodoro-title {
+          color: #667eea !important;
         }
         
-        [data-bs-theme=dark] .pomodoro-page .pomodoro-title,
+        [data-bs-theme=light] .pomodoro-page .pomodoro-title {
+          color: #667eea !important;
+        }
+        
+        [data-bs-theme=dark] .pomodoro-page .pomodoro-title {
+          color: #667eea !important;
+        }
+        
         [data-bs-theme=blue-theme] .pomodoro-page .pomodoro-title {
-          color: #ffffff !important;
+          color: #667eea !important;
         }
         
         /* Dark theme styling */
@@ -1259,11 +1266,6 @@ export default function PomodoroPage() {
           color: white;
         }
         
-        /* Title colors for dark and blue themes */
-        [data-bs-theme=dark] .pomodoro-title,
-        [data-bs-theme=blue-theme] .pomodoro-title {
-          color: #ffffff;
-        }
         
         /* Add inner borders for extra definition */
         [data-bs-theme="light"] .stat-card::before {

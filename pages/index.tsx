@@ -33,7 +33,7 @@ const homepageFAQs = [
   {
     id: 'faq1',
     question: 'dse.best 係咩平台？有咩資源？',
-    answer: 'dse.best 係一個專為香港中學文憑試（HKDSE）學生而設嘅 <strong>網上平台</strong>，提供歷屆試題、溫習筆記、模擬試卷同教育博客文章等實用學習資源。'
+    answer: 'dse.best 係一個專為香港中學文憑試（HKDSE）學生而設嘅 <strong>網上平台</strong>，提供溫習筆記、模擬試卷同教育博客文章等實用學習資源。'
   }
 ]
 export default function HomePage() {
