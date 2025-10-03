@@ -69,7 +69,7 @@ export default function App({ Component, pageProps }: AppProps) {
   if (router.pathname === '/404' || router.pathname === '/_error') {
     return <Component {...pageProps} />
   }
-  
+
   // Check if we're on a 404 page by checking the component name
   if (Component.name === 'Custom404') {
     return <Component {...pageProps} />
@@ -100,7 +100,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <PaceLoader />
       <TraditionalLayoutManager />
-      
+
       {/* Announcement Bar */}
       <AnnouncementBar config={announcementConfig} />
 
@@ -114,9 +114,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <header className="top-header">
         <nav className="navbar navbar-expand align-items-center gap-4">
           <div className="btn-toggle">
-            <button 
-              type="button" 
-              className="btn p-0 border-0 bg-transparent" 
+            <button
+              type="button"
+              className="btn p-0 border-0 bg-transparent"
               aria-label="Toggle sidebar menu"
               onClick={ui.toggleSidebar}
             >
@@ -153,10 +153,10 @@ export default function App({ Component, pageProps }: AppProps) {
             {/* <li className="nav-item d-lg-none mobile-search-btn">
               <a className="nav-link" href="#"><BiSearch style={{ fontSize: 22 }} /></a>
             </li> */}
- 
+
             <li className="nav-item">
-              <a 
-                className="nav-link btn bg-transparent border-0 p-0" 
+              <a
+                className="nav-link btn bg-transparent border-0 p-0"
                 href="https://www.instagram.com/dse_best"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -168,7 +168,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     e.preventDefault();
                     const appUrl = 'instagram://user?username=dse_best';
                     const webUrl = 'https://www.instagram.com/dse_best';
-                    
+
                     // Try to open app, fallback to website after 2 seconds
                     window.location.href = appUrl;
                     setTimeout(() => {
@@ -181,9 +181,9 @@ export default function App({ Component, pageProps }: AppProps) {
               </a>
             </li>
             <li className="nav-item">
-              <button 
-                className="nav-link btn bg-transparent border-0 p-0" 
-                data-bs-toggle="offcanvas" 
+              <button
+                className="nav-link btn bg-transparent border-0 p-0"
+                data-bs-toggle="offcanvas"
                 data-bs-target="#staticBackdrop"
                 aria-label="主題設定 Theme Settings"
                 title="主題設定 Theme Settings"
@@ -198,7 +198,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Wrapper */}
       <div className="wrapper">
         {/* Sidebar */}
-        <aside 
+        <aside
           className="sidebar-wrapper"
           data-simplebar="init"
           onMouseEnter={ui.handleSidebarMouseEnter}
@@ -226,8 +226,8 @@ export default function App({ Component, pageProps }: AppProps) {
               </NavigationLink>
             </div>
             <div className="sidebar-close">
-              <button 
-                className="btn p-0 border-0 bg-transparent" 
+              <button
+                className="btn p-0 border-0 bg-transparent"
                 aria-label="Close sidebar"
                 onClick={ui.closeSidebar}
               >
@@ -238,184 +238,184 @@ export default function App({ Component, pageProps }: AppProps) {
           <div className="sidebar-nav" suppressHydrationWarning>
             {/* navigation */}
             <ul className="metismenu sidebar-menu" id="sidenav" suppressHydrationWarning>
-            <li>
-              <NavigationLink href="/">
-                <div className="parent-icon"><BiHomeAlt style={{ color: '#a78bfa', fontSize: 24 }} /></div>
-                <div className="menu-title">主頁</div>
-              </NavigationLink>
-            </li>
-            {/* <li>
+              <li>
+                <NavigationLink href="/">
+                  <div className="parent-icon"><BiHomeAlt style={{ color: '#a78bfa', fontSize: 24 }} /></div>
+                  <div className="menu-title">主頁</div>
+                </NavigationLink>
+              </li>
+              {/* <li>
               <Link href="/blog/">
                 <div className="parent-icon"><BiFile style={{color: '#ffc107', fontSize: 24}} /></div>
                 <div className="menu-title">Blog</div>
               </Link>
             </li> */}
-            <li>
-              <NavigationLink href="/countdown">
-                <div className="parent-icon"><BiTimeFive style={{ color: '#f9a8d4', fontSize: 24 }} /></div>
-                <div className="menu-title">DSE Countdown</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/cutoff">
-                <div className="parent-icon"><BiBarChartAlt2 style={{ color: '#f77', fontSize: 24 }} /></div>
-                <div className="menu-title">DSE Cut Off</div>
-              </NavigationLink>
-            </li>
-            {chatConfig.enabled && (
               <li>
-                <NavigationLink href="/chat">
-                  <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
-                  <div className="menu-title">Chatroom</div>
+                <NavigationLink href="/countdown">
+                  <div className="parent-icon"><BiTimeFive style={{ color: '#f9a8d4', fontSize: 24 }} /></div>
+                  <div className="menu-title">DSE Countdown</div>
                 </NavigationLink>
               </li>
-            )}
-            <li>
-              <NavigationLink href="/blog">
-                <div className="parent-icon"><BiFile style={{ color: '#2fc4d4', fontSize: 24 }} /></div>
-                <div className="menu-title">Blog</div>
-              </NavigationLink>
-            </li>
-            {/* <li>
+              <li>
+                <NavigationLink href="/cutoff">
+                  <div className="parent-icon"><BiBarChartAlt2 style={{ color: '#f77', fontSize: 24 }} /></div>
+                  <div className="menu-title">DSE Cut Off</div>
+                </NavigationLink>
+              </li>
+              {chatConfig.enabled && (
+                <li>
+                  <NavigationLink href="/chat">
+                    <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
+                    <div className="menu-title">Chatroom</div>
+                  </NavigationLink>
+                </li>
+              )}
+              <li>
+                <NavigationLink href="/blog">
+                  <div className="parent-icon"><BiFile style={{ color: '#2fc4d4', fontSize: 24 }} /></div>
+                  <div className="menu-title">Blog</div>
+                </NavigationLink>
+              </li>
+              {/* <li>
               <NavigationLink href="/resources">
                 <div className="parent-icon"><BiDiamond style={{ color: '#64d454', fontSize: 24 }} /></div>
                 <div className="menu-title">Resources</div>
               </NavigationLink>
             </li> */}
-            <Private>
-            <li className="menu-label">核心科目</li>
-            <li>
-              <NavigationLink href="/chinese">
-                <div className="parent-icon"><BiBook style={{ color: '#ff69b4', fontSize: 24 }} /></div>
-                <div className="menu-title">中文 Chinese</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/english">
-                <div className="parent-icon"><BiBook style={{ color: '#40c4ff', fontSize: 24 }} /></div>
-                <div className="menu-title">英文 English</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/math">
-                <div className="parent-icon"><BiCalculator style={{ color: '#ffd600', fontSize: 24 }} /></div>
-                <div className="menu-title">數學 Math</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/citizen">
-                <div className="parent-icon"><BiGlobe style={{ color: '#28a745', fontSize: 24 }} /></div>
-                <div className="menu-title">公民 CSD</div>
-              </NavigationLink>
-            </li>
-            <li className="menu-label">選修科目</li>
-            <li>
-              <NavigationLink href="/physics">
-                <div className="parent-icon"><BiBot style={{ color: '#ffd600', fontSize: 24 }} /></div>
-                <div className="menu-title">物理 Physics</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/chemistry">
-                <div className="parent-icon"><BiTestTube style={{ color: '#00e676', fontSize: 24 }} /></div>
-                <div className="menu-title">化學 Chemistry</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/biology">
-                <div className="parent-icon"><BiLeaf style={{ color: '#00c853', fontSize: 24 }} /></div>
-                <div className="menu-title">生物 Biology</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/ict">
-                <div className="parent-icon"><BiLaptop style={{ color: '#ff3d00', fontSize: 24 }} /></div>
-                <div className="menu-title">資訊及通訊科技 ICT</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/m1">
-                <div className="parent-icon"><BiCalculator style={{ color: '#b388ff', fontSize: 24 }} /></div>
-                <div className="menu-title">M1</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/m2">
-                <div className="parent-icon"><BiCalculator style={{ color: '#64ffda', fontSize: 24 }} /></div>
-                <div className="menu-title">M2</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/geography">
-                <div className="parent-icon"><BiGlobe style={{ color: '#00bfae', fontSize: 24 }} /></div>
-                <div className="menu-title">地理 Geography</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/economics">
-                <div className="parent-icon"><BiMoney style={{ color: '#ffd600', fontSize: 24 }} /></div>
-                <div className="menu-title">經濟 Economics</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/bafs">
-                <div className="parent-icon"><BiBriefcase style={{ color: '#ffea00', fontSize: 24 }} /></div>
-                <div className="menu-title">企業、會計與財務概論 BAFS</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/history">
-                <div className="parent-icon"><BiBook style={{ color: '#ffab91', fontSize: 24 }} /></div>
-                <div className="menu-title">歷史 History</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/chinese-history">
-                <div className="parent-icon"><BiBook style={{ color: '#ff1744', fontSize: 24 }} /></div>
-                <div className="menu-title">中國歷史 Chinese History</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/ths">
-                <div className="parent-icon"><BiPlanet style={{ color: '#2196f3', fontSize: 24 }} /></div>
-                <div className="menu-title">旅遊與款待 Tourism & Hospitality</div>
-              </NavigationLink>
-            </li>
-            </Private>
-            <li className="menu-label">工具</li>
-            <li>
-              <NavigationLink href="/pomodoro">
-                <div className="parent-icon"><BiTimeFive style={{ color: '#667eea', fontSize: 24 }} /></div>
-                <div className="menu-title">番茄鐘 Pomodoro</div>
-              </NavigationLink>
-            </li>
-            <li className="menu-label">其他</li>
-            <li>
-              <NavigationLink href="/about">
-                <div className="parent-icon"><BiInfoCircle style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
-                <div className="menu-title">關於我們</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/contact">
-                <div className="parent-icon"><BiSupport style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
-                <div className="menu-title">聯絡我們</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/disclaimer">
-                <div className="parent-icon"><BiError style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
-                <div className="menu-title">免責聲明</div>
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink href="/privacy-policy">
-                <div className="parent-icon"><BiShieldAlt style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
-                <div className="menu-title">私隱政策</div>
-              </NavigationLink>
-            </li>
-          </ul>
-        </div>
+              <Private>
+                <li className="menu-label">核心科目</li>
+                <li>
+                  <NavigationLink href="/chinese">
+                    <div className="parent-icon"><BiBook style={{ color: '#ff69b4', fontSize: 24 }} /></div>
+                    <div className="menu-title">中文 Chinese</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/english">
+                    <div className="parent-icon"><BiBook style={{ color: '#40c4ff', fontSize: 24 }} /></div>
+                    <div className="menu-title">英文 English</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/math">
+                    <div className="parent-icon"><BiCalculator style={{ color: '#ffd600', fontSize: 24 }} /></div>
+                    <div className="menu-title">數學 Math</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/citizen">
+                    <div className="parent-icon"><BiGlobe style={{ color: '#28a745', fontSize: 24 }} /></div>
+                    <div className="menu-title">公民 CSD</div>
+                  </NavigationLink>
+                </li>
+                <li className="menu-label">選修科目</li>
+                <li>
+                  <NavigationLink href="/physics">
+                    <div className="parent-icon"><BiBot style={{ color: '#ffd600', fontSize: 24 }} /></div>
+                    <div className="menu-title">物理 Physics</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/chemistry">
+                    <div className="parent-icon"><BiTestTube style={{ color: '#00e676', fontSize: 24 }} /></div>
+                    <div className="menu-title">化學 Chemistry</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/biology">
+                    <div className="parent-icon"><BiLeaf style={{ color: '#00c853', fontSize: 24 }} /></div>
+                    <div className="menu-title">生物 Biology</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/ict">
+                    <div className="parent-icon"><BiLaptop style={{ color: '#ff3d00', fontSize: 24 }} /></div>
+                    <div className="menu-title">資訊及通訊科技 ICT</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/m1">
+                    <div className="parent-icon"><BiCalculator style={{ color: '#b388ff', fontSize: 24 }} /></div>
+                    <div className="menu-title">M1</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/m2">
+                    <div className="parent-icon"><BiCalculator style={{ color: '#64ffda', fontSize: 24 }} /></div>
+                    <div className="menu-title">M2</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/geography">
+                    <div className="parent-icon"><BiGlobe style={{ color: '#00bfae', fontSize: 24 }} /></div>
+                    <div className="menu-title">地理 Geography</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/economics">
+                    <div className="parent-icon"><BiMoney style={{ color: '#ffd600', fontSize: 24 }} /></div>
+                    <div className="menu-title">經濟 Economics</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/bafs">
+                    <div className="parent-icon"><BiBriefcase style={{ color: '#ffea00', fontSize: 24 }} /></div>
+                    <div className="menu-title">企業、會計與財務概論 BAFS</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/history">
+                    <div className="parent-icon"><BiBook style={{ color: '#ffab91', fontSize: 24 }} /></div>
+                    <div className="menu-title">歷史 History</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/chinese-history">
+                    <div className="parent-icon"><BiBook style={{ color: '#ff1744', fontSize: 24 }} /></div>
+                    <div className="menu-title">中國歷史 Chinese History</div>
+                  </NavigationLink>
+                </li>
+                <li>
+                  <NavigationLink href="/ths">
+                    <div className="parent-icon"><BiPlanet style={{ color: '#2196f3', fontSize: 24 }} /></div>
+                    <div className="menu-title">旅遊與款待 Tourism & Hospitality</div>
+                  </NavigationLink>
+                </li>
+              </Private>
+              <li className="menu-label">工具</li>
+              <li>
+                <NavigationLink href="/pomodoro">
+                  <div className="parent-icon"><BiTimeFive style={{ color: '#667eea', fontSize: 24 }} /></div>
+                  <div className="menu-title">番茄鐘 Pomodoro</div>
+                </NavigationLink>
+              </li>
+              <li className="menu-label">其他</li>
+              <li>
+                <NavigationLink href="/about">
+                  <div className="parent-icon"><BiInfoCircle style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
+                  <div className="menu-title">關於我們</div>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink href="/contact">
+                  <div className="parent-icon"><BiSupport style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
+                  <div className="menu-title">聯絡我們</div>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink href="/disclaimer">
+                  <div className="parent-icon"><BiError style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
+                  <div className="menu-title">免責聲明</div>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink href="/privacy-policy">
+                  <div className="parent-icon"><BiShieldAlt style={{ color: '#e8eaf6', fontSize: 24 }} /></div>
+                  <div className="menu-title">私隱政策</div>
+                </NavigationLink>
+              </li>
+            </ul>
+          </div>
         </aside>
 
         {/* Main Content */}
@@ -437,11 +437,11 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* Removed floating button */}
 
       {/* Back to Top Button */}
-      <button 
-        id="backToTopBtn" 
+      <button
+        id="backToTopBtn"
         className={`back-to-top-btn-modern ${ui.isBackToTopVisible ? 'show' : ''}`}
-        aria-label="Back to top" 
-        title="Back to top" 
+        aria-label="Back to top"
+        title="Back to top"
         tabIndex={0}
         onClick={ui.scrollToTop}
         onKeyDown={ui.handleBackToTopKeyDown}
@@ -464,7 +464,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <div>
             <div className="row g-3">
               <div className="col-12 col-xl-6">
-                <div 
+                <div
                   className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${ui.currentTheme === 'blue-theme' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('blue-theme')}
                   role="button"
@@ -474,7 +474,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </div>
               </div>
               <div className="col-12 col-xl-6">
-                <div 
+                <div
                   className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${ui.currentTheme === 'light' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('light')}
                   role="button"
@@ -484,7 +484,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </div>
               </div>
               <div className="col-12 col-xl-6">
-                <div 
+                <div
                   className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${ui.currentTheme === 'dark' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('dark')}
                   role="button"
@@ -494,7 +494,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </div>
               </div>
               <div className="col-12 col-xl-6">
-                <div 
+                <div
                   className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${ui.currentTheme === 'semi-dark' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('semi-dark')}
                   role="button"

@@ -1,6 +1,6 @@
 // Announcement Bar Configuration
 export const announcementConfig = {
-  enabled: true,
+  enabled: false,
   content: '📢 Notice: We are looking for suggestions of new features and improvements for our website. Tell us in the Chatroom!',
   type: 'info' as const,
   dismissible: true,
