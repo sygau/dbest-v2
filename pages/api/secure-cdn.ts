@@ -24,7 +24,7 @@ async function getSecretsVersion(): Promise<string | null> {
 // Note: CDN URLs are now stored in environment variables for security
 const CDN_CONFIG = {
   // Primary CDN URL from environment variable
-  primaryUrl: process.env.SECURE_CDN_URL || 'https://dbest-cdn.pages.dev',
+  primaryUrl: process.env.SECURE_CDN_URL || 'https://x7m2qv9gkz1w8n3r5t6b4c0aehjldpuoyfsvxiwqzmnk3g7r2t9b6c5aeh.pages.dev',
   // Fallback CDN URL
   fallbackUrl: 'https://dbest-cdn.pages.dev',
   // Version for cache invalidation
