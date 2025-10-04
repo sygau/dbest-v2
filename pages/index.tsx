@@ -113,26 +113,7 @@ export default function HomePage() {
           <br />
 
           {/* Copyright Notice Section */}
-          <Public>
-            <div className="alert alert-warning border-warning" style={{ 
-              backgroundColor: '#fff3cd', 
-              borderColor: '#ffeaa7', 
-              borderRadius: '10px',
-              padding: '20px',
-              marginBottom: '30px'
-            }}>
-              <h5 className="alert-heading mb-3" style={{ color: '#856404', fontWeight: 'bold' }}>
-                <i className="bi bi-exclamation-triangle-fill me-2"></i>
-                版權聲明 Copyright Notice
-              </h5>
-              <p className="mb-3" style={{ color: '#856404', fontSize: '1.1rem' }}>
-                由於版權原因，我們已經移除過往試題。我們致力於遵守版權法規，確保所有內容的合法使用。
-              </p>
-              <p className="mb-0" style={{ color: '#856404', fontSize: '1.1rem' }}>
-                Due to copyright reasons, we have taken down past papers. We are committed to complying with copyright regulations and ensuring the lawful use of all content.
-              </p>
-            </div>
-          </Public>
+          
           {/* Past Papers Section */}
           <Private>
             <h1 className="fw-bold mb-4">歷屆試題</h1>
