@@ -46,7 +46,7 @@ export default function Document() {
         <style dangerouslySetInnerHTML={{ __html: pwaStyles }} />
 
         {/* Hide download buttons */}
-        <Public><style dangerouslySetInnerHTML={{ __html: `a[data-paper-id],.btn-info:has(svg),.btn-info svg{display:none!important}` }} /></Public>
+        {/* <Public><style dangerouslySetInnerHTML={{ __html: `a[data-paper-id],.btn-info:has(svg),.btn-info svg{display:none!important}` }} /></Public> */}
 
         {/* Consolidated Main Script */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.mainScript }} />
