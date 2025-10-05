@@ -10,6 +10,7 @@ import {
   BiTimeFive,
   BiBarChartAlt2,
   BiChat,
+  BiMessageSquare,
   BiBook,
   BiCalculator,
   BiBot,
@@ -253,7 +254,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <li>
                 <NavigationLink href="/countdown">
                   <div className="parent-icon"><BiTimeFive style={{ color: '#f9a8d4', fontSize: 24 }} /></div>
-                  <div className="menu-title">DSE Countdown</div>
+                  <div className="menu-title">DSE 倒數Countdown</div>
                 </NavigationLink>
               </li>
               <li>
@@ -266,10 +267,16 @@ export default function App({ Component, pageProps }: AppProps) {
                 <li>
                   <NavigationLink href="/chat">
                     <div className="parent-icon"><BiChat style={{ color: '#fdba74', fontSize: 24 }} /></div>
-                    <div className="menu-title">Chatroom</div>
+                    <div className="menu-title">聊天室 Chatroom</div>
                   </NavigationLink>
                 </li>
               )}
+              <li>
+                <NavigationLink href="https://forum.dse.best">
+                  <div className="parent-icon"><BiMessageSquare style={{ color: '#8b5cf6', fontSize: 24 }} /></div>
+                  <div className="menu-title">討論區 Forums</div>
+                </NavigationLink>
+              </li>
               <li>
                 <NavigationLink href="/blog">
                   <div className="parent-icon"><BiFile style={{ color: '#2fc4d4', fontSize: 24 }} /></div>
