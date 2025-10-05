@@ -369,7 +369,7 @@ export default function PomodoroPage() {
                   className="btn btn-primary btn-lg control-btn reactive-btn"
                   onClick={startTimer}
                 >
-                  <BiPlay />
+                  <BiPlay style={{ fontSize: '32px' }} />
                   {isPaused ? '繼續 Continue' : '開始 Start'}
                 </button>
               ) : (
@@ -377,7 +377,7 @@ export default function PomodoroPage() {
                   className="btn btn-warning btn-lg control-btn reactive-btn"
                   onClick={pauseTimer}
                 >
-                  <BiPause />
+                  <BiPause style={{ fontSize: '32px' }} />
                   暫停 Pause
                 </button>
               )}
@@ -386,7 +386,7 @@ export default function PomodoroPage() {
                 className="btn btn-secondary btn-lg control-btn reactive-btn"
                 onClick={resetTimer}
               >
-                <BiRefresh />
+                <BiRefresh style={{ fontSize: '32px' }} />
                 重置 Reset
               </button>
               
@@ -394,7 +394,7 @@ export default function PomodoroPage() {
                 className="btn btn-info btn-lg control-btn reactive-btn"
                 onClick={skipSession}
               >
-                <BiSkipNext />
+                <BiSkipNext style={{ fontSize: '32px' }} />
                 跳過 Skip
               </button>
               
@@ -796,9 +796,10 @@ export default function PomodoroPage() {
         }
         
         .control-btn svg {
-          width: 18px;
-          height: 18px;
+          width: 32px;
+          height: 32px;
           flex-shrink: 0;
+          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
         }
         
         .control-btn:hover {
@@ -1343,6 +1344,11 @@ export default function PomodoroPage() {
             font-size: 0.9rem;
           }
           
+          .control-btn svg {
+            width: 28px;
+            height: 28px;
+          }
+          
           .stat-card {
             flex-direction: column;
             text-align: center;
@@ -1385,6 +1391,11 @@ export default function PomodoroPage() {
             max-width: 250px;
             padding: 0.5rem 1.5rem;
             font-size: 0.85rem;
+          }
+          
+          .control-btn svg {
+            width: 26px;
+            height: 26px;
           }
         }
       `}</style>
