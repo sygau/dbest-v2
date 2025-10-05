@@ -921,12 +921,12 @@ export default function PomodoroPage() {
         }
         
         .instruction-card {
-          background: var(--card-bg, rgba(255, 255, 255, 0.05));
+          background: transparent;
           border-radius: 12px;
           padding: 1.5rem;
-          backdrop-filter: blur(10px);
-          border: 3px solid var(--card-border, rgba(255, 255, 255, 0.1));
-          box-shadow: var(--card-shadow, 0 8px 25px rgba(0, 0, 0, 0.1));
+          backdrop-filter: none;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          box-shadow: none;
           height: 100%;
         }
         
@@ -993,27 +993,49 @@ export default function PomodoroPage() {
         @media (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
           /* iPad specific styling to fix white instruction cards */
           .instruction-card {
-            background: var(--card-bg, rgba(255, 255, 255, 0.1)) !important;
-            border: 2px solid var(--card-border, rgba(255, 255, 255, 0.2)) !important;
-            backdrop-filter: blur(15px) !important;
+            background: transparent !important;
+            border: 2px solid rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: none !important;
+            color: white !important;
+          }
+          
+          .instruction-card h5 {
+            color: white !important;
+          }
+          
+          .instruction-card ul {
+            color: rgba(255, 255, 255, 0.8) !important;
           }
           
           .stat-card {
-            background: var(--card-bg, rgba(255, 255, 255, 0.1)) !important;
-            border: 2px solid var(--card-border, rgba(255, 255, 255, 0.2)) !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 2px solid rgba(255, 255, 255, 0.2) !important;
             backdrop-filter: blur(15px) !important;
+            color: white !important;
+          }
+          
+          .stat-card .stat-title {
+            color: rgba(255, 255, 255, 0.7) !important;
+          }
+          
+          .stat-card .stat-value {
+            color: white !important;
           }
           
           .settings-section {
-            background: var(--section-bg, rgba(255, 255, 255, 0.05)) !important;
-            border: 2px solid var(--section-border, rgba(255, 255, 255, 0.1)) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 2px solid rgba(255, 255, 255, 0.1) !important;
             backdrop-filter: blur(15px) !important;
           }
           
           .instructions {
-            background: var(--section-bg, rgba(255, 255, 255, 0.05)) !important;
-            border: 2px solid var(--section-border, rgba(255, 255, 255, 0.1)) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 2px solid rgba(255, 255, 255, 0.1) !important;
             backdrop-filter: blur(15px) !important;
+          }
+          
+          .instructions h4 {
+            color: white !important;
           }
         }
         
@@ -1083,9 +1105,9 @@ export default function PomodoroPage() {
         }
         
         [data-bs-theme=light] .pomodoro-page .instruction-card {
-          background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
-          border: 2px solid rgba(0, 0, 0, 0.15) !important;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+          background: transparent !important;
+          border: 2px solid rgba(0, 0, 0, 0.3) !important;
+          box-shadow: none !important;
           border-radius: 12px !important;
           padding: 1.5rem !important;
           height: 100% !important;
@@ -1190,9 +1212,9 @@ export default function PomodoroPage() {
         }
         
         [data-bs-theme=dark] .instruction-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+          background: transparent;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          box-shadow: none;
         }
         
         [data-bs-theme=dark] .settings-section,
@@ -1241,9 +1263,9 @@ export default function PomodoroPage() {
         }
         
         [data-bs-theme=blue-theme] .instruction-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+          background: transparent;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          box-shadow: none;
         }
         
         [data-bs-theme=blue-theme] .settings-section,
@@ -1333,6 +1355,15 @@ export default function PomodoroPage() {
           
           .stat-value {
             font-size: 1.5rem;
+          }
+          
+          /* Add spacing between instruction cards on mobile */
+          .instruction-card {
+            margin-bottom: 1.5rem;
+          }
+          
+          .instruction-card:last-child {
+            margin-bottom: 0;
           }
         }
         
