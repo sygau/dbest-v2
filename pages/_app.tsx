@@ -254,7 +254,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <li>
                 <NavigationLink href="/countdown">
                   <div className="parent-icon"><BiTimeFive style={{ color: '#f9a8d4', fontSize: 24 }} /></div>
-                  <div className="menu-title">DSE 倒數Countdown</div>
+                  <div className="menu-title">DSE 倒數 Countdown</div>
                 </NavigationLink>
               </li>
               <li>
