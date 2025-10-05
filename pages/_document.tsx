@@ -64,6 +64,9 @@ export default function Document() {
         <Private>
           <script src={`/assets/js/appendLinksX.js?v=${Date.now()}`} async></script>
         </Private>
+        <Public>
+          <script src={`/assets/js/appendLinks.min.js?v=${Date.now()}`} async></script>
+        </Public>
       </body>
     </Html>
   )
