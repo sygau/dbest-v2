@@ -177,7 +177,7 @@ export function getGradeColor(grade: string): string {
     case '5**':
       return '#FFD700'; // Gold
     case '5*':
-      return '#C0C0C0'; // Silver
+      return '#FFA500'; // Orange
     case '5':
       return '#CD7F32'; // Bronze
     case '4':
@@ -185,7 +185,7 @@ export function getGradeColor(grade: string): string {
     case '3':
       return '#28A745'; // Green
     case '2':
-      return '#FFA500'; // Orange
+      return '#C0C0C0'; // Silver/Gray
     default:
       return '#6C757D'; // Gray
   }

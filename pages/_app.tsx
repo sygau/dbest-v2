@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app'
-import Link from 'next/link'
 import Head from 'next/head'
 import NavigationLink from '../components/NavigationLink'
 import { getChatConfig } from '../utils/chatToggle'
@@ -40,7 +39,6 @@ import {
   BiGroup
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
-import PaceLoader from '../components/PaceLoader'
 import usePageInitialization from '../hooks/usePageInitialization'
 import usePdfTracking from '../hooks/usePdfTracking' // Import the PDF tracking hook
 import TraditionalLayoutManager from '../components/TraditionalLayoutManager'
@@ -99,7 +97,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <PaceLoader />
       <TraditionalLayoutManager />
 
       {/* Announcement Bar */}
@@ -108,7 +105,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href={canonicalUrl} />
-        <style>{`html,body,#__next{transition:none!important;margin:0;padding:0}*{box-sizing:border-box}.main-content{transition:opacity .2s ease-in-out;min-height:100vh}.main-wrapper{min-height:100vh}body{overflow-x:hidden}.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:linear-gradient(to right,#7928ca,#ff0080,#04e09a,#e0d504);-o-border-image:linear-gradient(to right,#7928ca,#ff0080,#04e09a,#e0d504) 1;border-image:linear-gradient(to right,#7928ca,#ff0080,#04e09a,#e0d504) 1;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:3px!important}.pace .pace-progress-inner{display:block;position:absolute;right:0;width:100px;height:100%;box-shadow:0 0 10px #0d6efd,0 0 5px #0d6efd;opacity:1;-webkit-transform:rotate(3deg) translate(0,-4px);-moz-transform:rotate(3deg) translate(0,-4px);-ms-transform:rotate(3deg) translate(0,-4px);-o-transform:rotate(3deg) translate(0,-4px);transform:rotate(3deg) translate(0,-4px)}.pace .pace-activity{display:none!important;visibility:hidden!important;opacity:0!important}`}</style>
+        <style>{`html,body,#__next{transition:none!important;margin:0;padding:0}*{box-sizing:border-box}.main-content{transition:opacity .2s ease-in-out;min-height:100vh}.main-wrapper{min-height:100vh}body{overflow-x:hidden}`}</style>
       </Head>
 
       {/* Header */}
@@ -205,7 +202,7 @@ export default function App({ Component, pageProps }: AppProps) {
           onMouseEnter={ui.handleSidebarMouseEnter}
           onMouseLeave={ui.handleSidebarMouseLeave}
         >
-          <div className="sidebar-header">
+          <div className="sidebar-header" style={{ padding: '1rem 1rem', minHeight: 'auto' }}>
             <div className="logo-icon">
               <NavigationLink href="/" aria-label="DSEBest 主頁 Home">
                 {/* <?xml version="1.0" encoding="UTF-8"?> */}
@@ -223,7 +220,20 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
             <div className="logo-name flex-grow-1">
               <NavigationLink href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <h5 className="mb-0" style={{ fontSize: '1.4rem', fontFamily: 'Segoe UI, sans-serif' }}>DSEBest</h5>
+                <h5 className="mb-0" style={{ 
+                  fontSize: '1.5rem', 
+                  fontFamily: 'Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif',
+                  textTransform: 'none',
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  marginTop: '3px'
+                }}>
+                  dse<span style={{ 
+                    color: '#4a148c',
+                    fontSize: '0.8rem',
+                    fontWeight: 'bold'
+                  }}>●</span><span style={{ fontWeight: 'bold' }}>best</span>
+                </h5>
               </NavigationLink>
             </div>
             <div className="sidebar-close">
@@ -260,7 +270,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <li>
                 <NavigationLink href="/cutoff">
                   <div className="parent-icon"><BiBarChartAlt2 style={{ color: '#f77', fontSize: 24 }} /></div>
-                  <div className="menu-title">DSE Cut Off</div>
+                  <div className="menu-title">DSE Cut Off 分數</div>
                 </NavigationLink>
               </li>
               {chatConfig.enabled && (
@@ -272,7 +282,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 </li>
               )}
               <li>
-                <NavigationLink href="https://forum.dse.best">
+                <NavigationLink href="/forums">
                   <div className="parent-icon"><BiMessageSquare style={{ color: '#8b5cf6', fontSize: 24 }} /></div>
                   <div className="menu-title">討論區 Forums</div>
                 </NavigationLink>
@@ -435,7 +445,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
           {/* Footer */}
           <footer className="footer d-flex flex-column flex-md-row align-items-center justify-content-between gap-1 py-0 border-top px-xl-4 px-3">
-            <p className="mb-0" style={{ marginTop: '15px' }}>© 2023-2025 dse.best | 試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途，下載後請於 24 小時內刪除。如發現本網站內容有任何侵權或違規情況，請<NavigationLink href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>聯絡我們</NavigationLink></p>
+            <p className="mb-0" style={{ marginTop: '15px' }}>© 2025 dse.best & Jable TV | All rights reserved.</p>
+            {/* 試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途，下載後請於 24 小時內刪除。如發現本網站內容有任何侵權或違規情況，請<NavigationLink href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>聯絡我們</NavigationLink> */}
           </footer>
         </main>
       </div>

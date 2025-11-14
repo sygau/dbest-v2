@@ -73,7 +73,7 @@ export default function HomePage() {
           }}
         />
       </Head>
-
+      
       {/* Breadcrumb */}
       <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
         <div className="breadcrumb-title pe-3">首頁</div>
@@ -316,31 +316,38 @@ export default function HomePage() {
         <div className="container my-5 instagram-section">
           <div className="row justify-content-center">
             <div className="col-lg-8">
-              <div className="card border-primary border-2">
-                <div className="card-body text-center p-2">
-                  <h3 className="mb-3">
-                    <span className="text-primary">Follow us on Instagram</span>
+              <div className="card border-2" style={{ 
+                borderImage: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) 1',
+                background: 'linear-gradient(45deg, rgba(240,148,51,0.1) 0%, rgba(230,104,60,0.1) 25%, rgba(220,39,67,0.1) 50%, rgba(204,35,102,0.1) 75%, rgba(188,24,136,0.1) 100%)'
+              }}>
+                <div className="card-body text-center p-4">
+                  <h3 className="mb-3" style={{
+                    background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    fontWeight: 'bold'
+                  }}>
+                    Follow us on Instagram
                   </h3>
-                  <p className="mb-3">
+                  <p className="mb-3" style={{ color: 'var(--bs-body-color)' }}>
                     追蹤我們的 Instagram 獲取最新消息和更新！
                   </p>
-                                      <a 
+                  <a 
                       href="https://www.instagram.com/dse_best"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-primary d-inline-flex align-items-center gap-2"
+                      className="btn btn-lg d-inline-flex align-items-center gap-2"
                       style={{
-                        borderRadius: '20px',
-                        padding: '0.5rem 1rem',
-                        fontSize: '0.9rem',
-                        fontWeight: '500',
-                        transition: 'all 0.3s ease',
+                        background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
                         border: 'none',
-                        background: 'linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%)',
-                        minWidth: '160px',
-                        justifyContent: 'center',
+                        borderRadius: '25px',
+                        padding: '12px 32px',
                         textDecoration: 'none',
-                        color: 'white'
+                        transition: 'all 0.3s ease',
+                        color: 'white',
+                        fontWeight: '600',
+                        boxShadow: '0 4px 15px rgba(240,148,51,0.3)'
                       }}
                     onClick={(e) => {
                       // Try to open Instagram app first on mobile
@@ -356,14 +363,16 @@ export default function HomePage() {
                         }, 2000);
                       }
                     }}
-                    onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.currentTarget.style.transform = 'translateY(-1px)';
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+                      e.currentTarget.style.boxShadow = '0 8px 25px rgba(240,148,51,0.4)';
                     }}
-                    onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(240,148,51,0.3)';
                     }}
                   >
-                    <BiLogoInstagram style={{ fontSize: '1.2rem' }} />
+                    <BiLogoInstagram style={{ fontSize: '1.4rem' }} />
                     <span>Follow us on Instagram</span>
                   </a>
                 </div>

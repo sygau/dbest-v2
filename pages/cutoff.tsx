@@ -91,7 +91,7 @@ export default function CutoffPage() {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 p-0">
               <li className="breadcrumb-item active" aria-current="page">
-                HKDSE Cut-off Scores
+                DSE Cut Off Scores
               </li>
             </ol>
           </nav>
@@ -101,16 +101,25 @@ export default function CutoffPage() {
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
-          <h1 className="mb-4">DSE Cut-off Scores</h1>
+          <h1 className="mb-4">DSE Cut-Off 分數</h1>
           <p className="mb-4">
             歡迎瀏覽DSE各科目的Cut Off資料，包括英文、中文、數學、物理、化學、生物、ICT、M1、M2、地理、經濟、BAFS、歷史、中國歷史、旅遊與款待等科目。在此，您可以找到按年份排列的等級Cut Off，助您了解各等級的達標分數。
             <br />
             <br />
-            Welcome to browse DSE cut-off scores for all subjects including English, Chinese, Mathematics, Physics, Chemistry, Biology, ICT, M1, M2, Geography, Economics, BAFS, History, Chinese History, Tourism & Hospitality and more. Here you can find grade boundaries arranged by year to help you understand the score requirements for each grade level. (source/credits: dse00 & afterschool)
+            Welcome to browse DSE cut-off scores for all subjects including English, Chinese, Mathematics, Physics, Chemistry, Biology, ICT, M1, M2, Geography, Economics, BAFS, History, Chinese History, Tourism & Hospitality and more. Here you can find grade boundaries arranged by year to help you understand the score requirements for each grade level.
           </p>
-
-
-
+          {lastUpdated && (
+            <div className="alert alert-info alert-dismissible fade show mb-4" role="alert" style={{ backgroundColor: '#e3f2fd', borderColor: '#90caf9', color: '#0d47a1' }}>
+              <div className="d-flex align-items-center">
+                <svg className="bi flex-shrink-0 me-2" width="16" height="16" fill="currentColor">
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+                <div>
+                  <strong>資料更新 Data Updated:</strong> {lastUpdated}
+                </div>
+              </div>
+            </div>
+          )}
           {/* Subject Selection */}
           <div className="row mb-4">
             <div className="col-md-12">

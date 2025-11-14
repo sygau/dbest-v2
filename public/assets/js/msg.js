@@ -78,7 +78,7 @@
 
     function getCurrentTheme() {
         const html = document.documentElement;
-        return html.getAttribute('data-bs-theme') || 'blue-theme';
+        return html.getAttribute('data-bs-theme') || 'light';
     }
 
     function createModalHTML() {

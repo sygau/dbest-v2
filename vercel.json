@@ -29,6 +29,11 @@
       "permanent": true
     },
     {
+      "source": "/forums",
+      "destination": "https://forums.dse.best",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {

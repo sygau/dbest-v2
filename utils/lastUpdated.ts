@@ -7,6 +7,12 @@ interface LastUpdatedData {
       yearSlug: string;
     };
   };
+  cutoff: {
+    index: string;
+    subjects: {
+      [subject: string]: string;
+    };
+  };
   other: {
     [page: string]: string;
   };
@@ -80,4 +86,33 @@ export function updateSubjectYearSlugLastUpdated(subject: string, date: string):
   if (data.subjects[subject]) {
     data.subjects[subject].yearSlug = date;
   }
-} 
+}
+
+/**
+ * Get the last updated date for a subject cutoff page
+ * @param subject - The subject key (e.g., 'bafs', 'biology', etc.)
+ * @returns The last updated date in dd/mm/yyyy format
+ */
+export function getSubjectCutoffLastUpdated(subject: string): string {
+  return data.cutoff.subjects[subject] || '12/8/2025';
+}
+
+/**
+ * Get the last updated date for the cutoff index page
+ * @returns The last updated date in dd/mm/yyyy format
+ */
+export function getCutoffIndexLastUpdated(): string {
+  return data.cutoff.index || '12/8/2025';
+}
+
+/**
+ * Update the last updated date for a subject cutoff page
+ * Note: This function is for future use with a more sophisticated update system
+ * @param subject - The subject key
+ * @param date - The new date in dd/mm/yyyy format
+ */
+export function updateSubjectCutoffLastUpdated(subject: string, date: string): void {
+  if (data.cutoff.subjects[subject]) {
+    data.cutoff.subjects[subject] = date;
+  }
+}

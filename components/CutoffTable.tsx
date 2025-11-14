@@ -61,6 +61,26 @@ interface CutoffTableProps {
   loading?: boolean;
 }
 
+// Subject color mapping with theme-aware backgrounds
+const SUBJECT_COLORS: Record<string, { primary: string, lightBg: string, darkBg: string }> = {
+  'chinese': { primary: '#ff69b4', lightBg: '#fdf2f8', darkBg: '#831843' },
+  'english': { primary: '#40c4ff', lightBg: '#f0f9ff', darkBg: '#0c4a6e' },
+  'math': { primary: '#ffd600', lightBg: '#fefce8', darkBg: '#713f12' },
+  'citizen': { primary: '#28a745', lightBg: '#f0fdf4', darkBg: '#14532d' },
+  'physics': { primary: '#9c27b0', lightBg: '#faf5ff', darkBg: '#581c87' }, // Changed from yellow to purple for better contrast
+  'chemistry': { primary: '#00e676', lightBg: '#ecfdf5', darkBg: '#14532d' },
+  'biology': { primary: '#00c853', lightBg: '#f0fdf4', darkBg: '#14532d' },
+  'ict': { primary: '#ff3d00', lightBg: '#fef2f2', darkBg: '#7f1d1d' },
+  'm1': { primary: '#b388ff', lightBg: '#faf5ff', darkBg: '#581c87' },
+  'm2': { primary: '#64ffda', lightBg: '#f0fdfa', darkBg: '#134e4a' },
+  'geography': { primary: '#00bfae', lightBg: '#f0fdfa', darkBg: '#134e4a' },
+  'economics': { primary: '#ff9800', lightBg: '#fff7ed', darkBg: '#9a3412' }, // Changed from yellow to orange
+  'bafs': { primary: '#ffea00', lightBg: '#fefce8', darkBg: '#713f12' },
+  'history': { primary: '#ffab91', lightBg: '#fff7ed', darkBg: '#9a3412' },
+  'chinese-history': { primary: '#ff1744', lightBg: '#fef2f2', darkBg: '#7f1d1d' },
+  'ths': { primary: '#2196f3', lightBg: '#eff6ff', darkBg: '#1e3a8a' }
+};
+
 const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loading = false }) => {
   const tableIds = Object.keys(data).sort();
   
@@ -145,9 +165,42 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
     );
   }
 
+  // Get subject colors
+  const subjectColors = SUBJECT_COLORS[subject] || { primary: '#6c757d', lightBg: '#f8f9fa', darkBg: '#495057' };
+
   return (
     <div>
-      <style dangerouslySetInnerHTML={{ __html: scrollbarStyles }} />
+      <style dangerouslySetInnerHTML={{ __html: `
+        ${scrollbarStyles}
+        .cutoff-table-card {
+          background: var(--bs-body-bg);
+        }
+        [data-bs-theme="light"] .cutoff-table-card {
+          background: ${subjectColors.lightBg} !important;
+        }
+        [data-bs-theme="dark"] .cutoff-table-card {
+          background: ${subjectColors.darkBg} !important;
+        }
+        [data-bs-theme="blue-theme"] .cutoff-table-card {
+          background: ${subjectColors.darkBg} !important;
+        }
+        .cutoff-table-header {
+          background: var(--bs-secondary-bg);
+          border-bottom: 1px solid var(--bs-border-color);
+        }
+        [data-bs-theme="light"] .cutoff-table-header {
+          background: ${subjectColors.primary}20 !important;
+          border-bottom: 1px solid ${subjectColors.primary}40 !important;
+        }
+        [data-bs-theme="dark"] .cutoff-table-header {
+          background: ${subjectColors.primary}30 !important;
+          border-bottom: 1px solid ${subjectColors.primary}50 !important;
+        }
+        [data-bs-theme="blue-theme"] .cutoff-table-header {
+          background: ${subjectColors.primary}30 !important;
+          border-bottom: 1px solid ${subjectColors.primary}50 !important;
+        }
+      ` }} />
       {sortedTableIds.map(tableId => {
         const tableData = data[tableId];
         const years = Object.keys(tableData).sort((a, b) => parseInt(b) - parseInt(a));
@@ -155,8 +208,8 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
         const grades = getAvailableGrades(tableData);
         
         return (
-          <div key={tableId} className="card mb-4">
-            <div className="card-header">
+          <div key={tableId} className="card mb-4 cutoff-table-card">
+            <div className="card-header cutoff-table-header">
               <h5 className="mb-0">
                 {tableConfig?.title || tableId}
               </h5>

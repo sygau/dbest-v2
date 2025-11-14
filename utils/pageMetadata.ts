@@ -287,11 +287,11 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogType": "website"
   },
   "cutoff": {
-    "title": "DSE Cut off Scores (2012-2024)",
-    "description": "HKDSE 各科目等級Cut Off查詢，包括中文、英文、數學、物理、化學、生物、ICT、M1、M2等科目的歷年Cut Off資料。了解各等級達標分數，助您制定備考策略。",
+    "title": "【DSE Cut Off 分數】全港最齊 2012–2025 全部科目等級分界線｜英文、中文、數學等",
+    "description": "【DSE Cut Off 分數一覽】全港最齊2012–2025年全部科目等級分界線！涵蓋英文、中文、數學、物理、化學、生物、ICT、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術等。做完past paper？立即對cut off分數，精準預測你嘅DSE Level！",
     "robots": "index, follow",
-    "ogTitle": "HKDSE Cut-off Scores (2012-2024)",
-    "ogDescription": "HKDSE 各科目等級分數Cut Off查詢，包括中文、英文、數學、物理、化學、生物、ICT、M1、M2等科目的歷年Cut Off資料。了解各等級達標分數，助您制定備考策略。",
+    "ogTitle": "【DSE Cut Off 分數】全港最齊 2012–2025 全部科目等級分界線｜英文、中文、數學等",
+    "ogDescription": "【DSE Cut Off 分數一覽】全港最齊2012–2025年全部科目等級分界線！涵蓋英文、中文、數學、物理、化學、生物、ICT、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術等。做完past paper？立即對cut off分數，精準預測你嘅DSE Level！",
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/cutoff",
     "ogType": "website"

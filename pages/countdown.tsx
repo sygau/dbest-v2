@@ -17,8 +17,8 @@ export default function CountdownPage() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        // Target DSE 2026 - April 10, 2026 at 9:00 AM HKT
-        const targetDate = new Date('2026-04-10T09:00:00+08:00');
+        // Target DSE 2026 - April 9, 2026 at 9:00 AM HKT
+        const targetDate = new Date('2026-04-09T09:00:00+08:00');
 
         const calculateTimeLeft = () => {
             const now = new Date().getTime();
@@ -113,7 +113,7 @@ export default function CountdownPage() {
                     {/* Countdown Display */}
                     <div className="countdown-display">
                         <div className="countdown-grid">
-                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                            <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.days}>
                                     {timeLeft.days.toString().padStart(3, '0')}
                                 </div>
@@ -123,7 +123,7 @@ export default function CountdownPage() {
                                 </div>
                             </div>
 
-                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                            <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.hours}>
                                     {timeLeft.hours.toString().padStart(2, '0')}
                                 </div>
@@ -133,7 +133,7 @@ export default function CountdownPage() {
                                 </div>
                             </div>
 
-                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                            <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.minutes}>
                                     {timeLeft.minutes.toString().padStart(2, '0')}
                                 </div>
@@ -143,7 +143,7 @@ export default function CountdownPage() {
                                 </div>
                             </div>
 
-                            <div className={`countdown-card ${isLoaded ? 'loaded' : ''}`}>
+                            <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.seconds}>
                                     {timeLeft.seconds.toString().padStart(2, '0')}
                                 </div>
@@ -161,7 +161,7 @@ export default function CountdownPage() {
                             <div className="exam-info-card-compact">
                                 <div className="info-icon-compact" style={{ display: 'flex', alignItems: 'center', fontSize: '18px', marginBottom: '4px' }}>📅</div>
                                 <div className="info-content-compact">
-                                    <p>2026年4月10日</p>
+                                    <p>2026年4月9日</p>
                                 </div>
                             </div>
 
@@ -315,9 +315,6 @@ export default function CountdownPage() {
           padding: 2rem 1.5rem;
           text-align: center;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-          transform: translateY(30px);
-          opacity: 0;
-          animation: slideInUp 0.7s ease forwards;
           aspect-ratio: 0;
           display: flex;
           flex-direction: column;
@@ -329,16 +326,6 @@ export default function CountdownPage() {
           position: relative;
           overflow: hidden;
         }
-
-        .countdown-page .countdown-card.loaded {
-          transform: translateY(0);
-          opacity: 1;
-        }
-
-        .countdown-page .countdown-card:nth-child(1) { animation-delay: 0.1s; }
-        .countdown-page .countdown-card:nth-child(2) { animation-delay: 0.2s; }
-        .countdown-page .countdown-card:nth-child(3) { animation-delay: 0.3s; }
-        .countdown-page .countdown-card:nth-child(4) { animation-delay: 0.4s; }
 
         .countdown-page .countdown-card:hover {
           transform: translateY(-8px) scale(1.03);

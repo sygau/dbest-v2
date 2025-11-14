@@ -20,7 +20,7 @@ public/blog/
 dist/
 build/
 scripts/data/
-data/
+# data/
 
 # IDE files
 .vscode/

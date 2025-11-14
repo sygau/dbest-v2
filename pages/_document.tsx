@@ -4,7 +4,7 @@ import { Private, Public } from '../components/Private'
 
 export default function Document() {
   return (
-    <Html lang="zh-Hant" data-bs-theme="blue-theme">
+    <Html lang="zh-Hant" data-bs-theme="light">
       <Head>
         <meta property="og:site_name" content="dse.best" />
         <meta property="og:locale" content="zh_HK" />
