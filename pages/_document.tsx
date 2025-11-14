@@ -6,9 +6,9 @@ export default function Document() {
   return (
     <Html lang="zh-Hant">
       <Head>
-        {/* Theme prevention script - MUST run first to prevent FOUC */}
+        {/* BLOCKING theme script - MUST execute before any rendering */}
         <script dangerouslySetInnerHTML={{ 
-          __html: `try{var theme=localStorage.getItem('selectedTheme')||'light';document.documentElement.setAttribute('data-bs-theme',theme)}catch(e){document.documentElement.setAttribute('data-bs-theme','light')}` 
+          __html: `(function(){try{var theme=localStorage.getItem('selectedTheme')||'light';document.documentElement.setAttribute('data-bs-theme',theme);document.documentElement.style.setProperty('--bs-body-bg',theme==='dark'?'#212529':theme==='blue-theme'?'#0f1535':'#eff1f3')}catch(e){document.documentElement.setAttribute('data-bs-theme','light');document.documentElement.style.setProperty('--bs-body-bg','#eff1f3')}})()` 
         }} />
         <meta property="og:site_name" content="dse.best" />
         <meta property="og:locale" content="zh_HK" />
