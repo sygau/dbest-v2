@@ -5,28 +5,37 @@ import { useEffect, useState } from 'react';
  * Replaces jQuery theme switching from main.js
  */
 export const useThemeSwitcher = () => {
-  // Initialize with the current theme from the document or default to 'blue-theme'
+  // Initialize with the current theme from the document or default to 'light'
   const [theme, setTheme] = useState<string>(() => {
     if (typeof document !== 'undefined') {
-      return document.documentElement.getAttribute('data-bs-theme') || 'blue-theme';
+      return document.documentElement.getAttribute('data-bs-theme') || 'light';
     }
-    return 'blue-theme';
+    return 'light';
   });
 
   useEffect(() => {
     // Load saved theme from localStorage on initial render
     try {
+      const currentThemeAttr = document.documentElement.getAttribute('data-bs-theme');
       const savedTheme = localStorage.getItem('selectedTheme');
-      if (savedTheme) {
+      
+      // If theme is already set by the prevention script, just sync the state
+      if (currentThemeAttr) {
+        setTheme(currentThemeAttr);
+      } else if (savedTheme) {
+        // Fallback: apply theme if not already set
         document.documentElement.setAttribute('data-bs-theme', savedTheme);
         setTheme(savedTheme);
       } else {
-        // Set default theme if none is saved
-        document.documentElement.setAttribute('data-bs-theme', 'blue-theme');
-        setTheme('blue-theme');
+        // Set default theme if none is saved and none is set
+        document.documentElement.setAttribute('data-bs-theme', 'light');
+        setTheme('light');
       }
     } catch (error) {
       console.error('Error accessing localStorage:', error);
+      // Fallback to default theme
+      document.documentElement.setAttribute('data-bs-theme', 'light');
+      setTheme('light');
     }
   }, []);
 

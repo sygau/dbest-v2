@@ -30,7 +30,7 @@
     },
     {
       "source": "/forums",
-      "destination": "https://forums.dse.best",
+      "destination": "https://forum.dse.best",
       "permanent": true
     },
     {
