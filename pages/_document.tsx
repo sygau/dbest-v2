@@ -4,7 +4,7 @@ import { Private, Public } from '../components/Private'
 
 export default function Document() {
   return (
-    <Html lang="zh-Hant">
+    <Html lang="zh-Hant" style={{ backgroundColor: '#eff1f3' }}>
       <Head>
         {/* BLOCKING theme script - MUST execute before any rendering */}
         <script dangerouslySetInnerHTML={{ 
