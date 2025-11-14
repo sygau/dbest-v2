@@ -53,6 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const ui = usePageInitialization()
   // Initialize PDF tracking
   usePdfTracking()
+  const currentTheme = ui.currentTheme
   const canonicalUrl = `https://dse.best${router.asPath}`
   // Get chat configuration
   const chatConfig = getChatConfig()
@@ -206,11 +207,15 @@ export default function App({ Component, pageProps }: AppProps) {
                   alignItems: 'baseline',
                   marginTop: '3px'
                 }}>
-                  dse<span style={{ 
-                    color: '#4a148c',
-                    fontSize: '0.8rem',
-                    fontWeight: 'bold'
-                  }}>●</span><span style={{ fontWeight: 'bold' }}>best</span>
+                  dse<span
+                    className="logo-dot"
+                    style={{
+                      fontSize: '0.8rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    ●
+                  </span><span style={{ fontWeight: 'bold' }}>best</span>
                 </h5>
               </NavigationLink>
             </div>
@@ -471,7 +476,7 @@ export default function App({ Component, pageProps }: AppProps) {
               </div>
               <div className="col-12 col-xl-6">
                 <div
-                  className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${ui.currentTheme === 'light' ? 'active' : ''}`}
+                  className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${currentTheme === 'light' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('light')}
                   role="button"
                 >
@@ -481,7 +486,7 @@ export default function App({ Component, pageProps }: AppProps) {
               </div>
               <div className="col-12 col-xl-6">
                 <div
-                  className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${ui.currentTheme === 'dark' ? 'active' : ''}`}
+                  className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${currentTheme === 'dark' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('dark')}
                   role="button"
                 >
@@ -491,7 +496,7 @@ export default function App({ Component, pageProps }: AppProps) {
               </div>
               <div className="col-12 col-xl-6">
                 <div
-                  className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${ui.currentTheme === 'semi-dark' ? 'active' : ''}`}
+                  className={`theme-option-btn d-flex flex-column gap-1 align-items-center justify-content-center p-4 ${currentTheme === 'semi-dark' ? 'active' : ''}`}
                   onClick={() => handleThemeChange('semi-dark')}
                   role="button"
                 >
@@ -696,6 +701,19 @@ export default function App({ Component, pageProps }: AppProps) {
         
         [data-bs-theme="blue-theme"] .back-to-top-btn-modern:hover {
           background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* Logo dot default and theme variations */
+        .logo-dot {
+          color: #4a148c;
+        }
+
+        [data-bs-theme="dark"] .logo-dot {
+          color: #a855f7;
+        }
+
+        [data-bs-theme="blue-theme"] .logo-dot {
+          color: #c4b5fd;
         }
       `}</style>
     </>
