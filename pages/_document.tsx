@@ -4,8 +4,12 @@ import { Private, Public } from '../components/Private'
 
 export default function Document() {
   return (
-    <Html lang="zh-Hant" data-bs-theme="light">
+    <Html lang="zh-Hant">
       <Head>
+        {/* Theme prevention script - MUST run first to prevent FOUC */}
+        <script dangerouslySetInnerHTML={{ 
+          __html: `try{var theme=localStorage.getItem('selectedTheme')||'light';document.documentElement.setAttribute('data-bs-theme',theme)}catch(e){document.documentElement.setAttribute('data-bs-theme','light')}` 
+        }} />
         <meta property="og:site_name" content="dse.best" />
         <meta property="og:locale" content="zh_HK" />
         <meta property="og:locale:alternate" content="en_US" />
