@@ -123,28 +123,6 @@ export default function App({ Component, pageProps }: AppProps) {
           </div>
           <div className="search-bar flex-grow-1">
             <div className="position-relative">
-              {/* <input 
-                className="form-control rounded-5 px-5 search-control d-lg-block d-none" 
-                type="text" 
-                placeholder="Search"
-              />
-              <span 
-                className="position-absolute me-3 translate-middle-y end-0 top-50 search-close"
-                tabIndex={0} 
-                role="button" 
-                aria-label="Close Search"
-              >
-                <BiX style={{ fontSize: 22 }} />
-              </span>
-              <div className="search-popup p-3">
-                <div className="card rounded-4 overflow-hidden">
-                  <div className="card-body search-content">
-                    <p className="search-title mb-0" style={{whiteSpace: 'nowrap'}}>
-                      ⠀(裝飾嚟嘅， SEARCH唔到)⠀
-                    </p>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
           <ul className="navbar-nav gap-1 nav-right-links align-items-center">

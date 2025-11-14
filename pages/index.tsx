@@ -322,13 +322,12 @@ export default function HomePage() {
               }}>
                 <div className="card-body text-center p-4">
                   <h3 className="mb-3" style={{
-                    background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
-                    WebkitBackgroundClip: 'text',
+                    background: '#bc1888',
                     backgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     fontWeight: 'bold'
                   }}>
-                    Follow us on Instagram
+                    Follow dse.best on Instagram
                   </h3>
                   <p className="mb-3" style={{ color: 'var(--bs-body-color)' }}>
                     追蹤我們的 Instagram 獲取最新消息和更新！
@@ -362,14 +361,6 @@ export default function HomePage() {
                           window.location.href = webUrl;
                         }, 2000);
                       }
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
-                      e.currentTarget.style.boxShadow = '0 8px 25px rgba(240,148,51,0.4)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                      e.currentTarget.style.boxShadow = '0 4px 15px rgba(240,148,51,0.3)';
                     }}
                   >
                     <BiLogoInstagram style={{ fontSize: '1.4rem' }} />

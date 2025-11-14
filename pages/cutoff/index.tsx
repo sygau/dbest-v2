@@ -8,7 +8,10 @@ import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from 
 import { getCutoffIndexLastUpdated } from '../../utils/lastUpdated';
 
 export default function CutoffIndexPage() {
-  const metadata = getPageMetadata('cutoff');
+  const metadata = getPageMetadata('cutoff') || {
+    title: '【DSE Cut Off 分數】全港最齊 2012–2025 全部科目等級分界線｜英文、中文、數學等',
+    description: '【DSE Cut Off 分數一覽】全港最齊2012–2025年全部科目等級分界線！涵蓋英文、中文、數學、物理、化學、生物、ICT、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術等。做完past paper？立即對cut off分數，精準預測你嘅DSE Level！',
+  };
   const structuredData = generateSubjectStructuredData('cutoff');
   const faqData = generateSubjectFAQStructuredData('cutoff');
   const lastUpdated = getCutoffIndexLastUpdated();
