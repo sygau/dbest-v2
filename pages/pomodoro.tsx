@@ -1043,8 +1043,8 @@ export default function PomodoroPage() {
         /* Light theme specific fixes for better visibility */
         [data-bs-theme=light] .tab-switcher {
           background: #ffffff !important;
-          border: 4px solid #000000 !important;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 5px 12px rgba(0, 0, 0, 0.2) !important;
+          border: 1px solid rgba(148, 163, 184, 0.9) !important;
+          box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12) !important;
           backdrop-filter: none !important;
         }
         
@@ -1074,15 +1074,6 @@ export default function PomodoroPage() {
           border-color: rgba(0, 0, 0, 0.35) !important;
         }
         
-        
-        /* Add strong background for light theme */
-        [data-bs-theme=light] .card.rounded-4 {
-          background: #ffffff !important;
-          border: 5px solid #333333 !important;
-          box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25), 0 12px 35px rgba(0, 0, 0, 0.2) !important;
-          backdrop-filter: none !important;
-        }
-        
         /* Main title styling */
         .pomodoro-title {
           font-size: 2.5rem;
@@ -1093,7 +1084,7 @@ export default function PomodoroPage() {
         /* Light theme styling - scoped properly like countdown.tsx */
         [data-bs-theme=light] .pomodoro-page .stat-card {
           background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
-          border: 2px solid rgba(0, 0, 0, 0.15) !important;
+          border: 1px solid rgba(148, 163, 184, 0.9) !important;
           color: #212529 !important;
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
           border-radius: 16px !important;
@@ -1106,9 +1097,9 @@ export default function PomodoroPage() {
         }
         
         [data-bs-theme=light] .pomodoro-page .instruction-card {
-          background: transparent !important;
-          border: 2px solid rgba(0, 0, 0, 0.3) !important;
-          box-shadow: none !important;
+          background: #ffffff !important;
+          border: 1px solid rgba(148, 163, 184, 0.9) !important;
+          box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
           border-radius: 12px !important;
           padding: 1.5rem !important;
           height: 100% !important;
@@ -1117,8 +1108,8 @@ export default function PomodoroPage() {
         [data-bs-theme=light] .pomodoro-page .settings-section,
         [data-bs-theme=light] .pomodoro-page .instructions {
           background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
-          border: 2px solid rgba(0, 0, 0, 0.15) !important;
-          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1), 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+          border: 1px solid rgba(148, 163, 184, 0.9) !important;
+          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15) !important;
           border-radius: 16px !important;
           padding: 2rem !important;
         }

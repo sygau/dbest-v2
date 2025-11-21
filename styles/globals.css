@@ -27,6 +27,7 @@ html:root, html[data-bs-theme=light] {
   --bs-body-bg: #eff1f3 !important;
   --bs-body-color: #5b6166 !important;
   --bs-heading-color: #474747 !important;
+  --bs-card-bg: #ffffff !important;
 }
 
 html[data-bs-theme=dark] {
@@ -67,6 +68,11 @@ html[data-bs-theme] body {
     min-height: 800px !important;
     contain: layout;
     height: auto !important;
+  }
+
+  /* Page main cards: ensure white background in light theme only */
+  html[data-bs-theme='light'] .card.rounded-4 {
+    background-color: #ffffff !important;
   }
 
   /* Override any inline height: auto styles */

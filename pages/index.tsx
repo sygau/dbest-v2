@@ -87,7 +87,7 @@ export default function HomePage() {
       </div>
 
       {/* Main Content Card */}
-      <div className="card rounded-4" style={{ height: 'auto', padding: '20px' }}>
+      <div className="card rounded-4 main-hero-card" style={{ height: 'auto', padding: '20px' }}>
         <div className="card-body text-center">
           {/* Hero Section */}
           <h1 className="fw-bold mb-4" style={{ marginTop: '50px', fontSize: '3.0rem' }}>
@@ -155,8 +155,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="數學 Mathematics"
                 href="/math"
-                icon={<BiCalculator style={{ color: '#ffd600', fontSize: 40 }} />}
-                accent="#ffd600"
+                icon={<BiCalculator style={{ color: '#eab308', fontSize: 40 }} />}
+                accent="#eab308"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>
@@ -182,8 +182,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="物理 Physics"
                 href="/physics"
-                icon={<BiBot style={{ color: '#ffd600', fontSize: 40 }} />}
-                accent="#ffd600"
+                icon={<BiBot style={{ color: '#6366f1', fontSize: 40 }} />}
+                accent="#6366f1"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>
@@ -193,8 +193,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="化學 Chemistry"
                 href="/chemistry"
-                icon={<BiTestTube style={{ color: '#00e676', fontSize: 40 }} />}
-                accent="#00e676"
+                icon={<BiTestTube style={{ color: '#06b6d4', fontSize: 40 }} />}
+                accent="#06b6d4"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>
@@ -204,8 +204,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="生物 Biology"
                 href="/biology"
-                icon={<BiLeaf style={{ color: '#00c853', fontSize: 40 }} />}
-                accent="#00c853"
+                icon={<BiLeaf style={{ color: '#22c55e', fontSize: 40 }} />}
+                accent="#22c55e"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>
@@ -237,8 +237,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="數學延伸部分 (M2)"
                 href="/m2"
-                icon={<BiCalculator style={{ color: '#64ffda', fontSize: 40 }} />}
-                accent="#64ffda"
+                icon={<BiCalculator style={{ color: '#22d3ee', fontSize: 40 }} />}
+                accent="#22d3ee"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '英' }]}
               />
             </div>
@@ -248,8 +248,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="地理 Geography"
                 href="/geography"
-                icon={<BiGlobe style={{ color: '#00bfae', fontSize: 40 }} />}
-                accent="#00bfae"
+                icon={<BiGlobe style={{ color: '#16a34a', fontSize: 40 }} />}
+                accent="#16a34a"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>
@@ -259,8 +259,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="經濟 Economics"
                 href="/economics"
-                icon={<BiMoney style={{ color: '#ffd600', fontSize: 40 }} />}
-                accent="#ffd600"
+                icon={<BiMoney style={{ color: '#f97316', fontSize: 40 }} />}
+                accent="#f97316"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>
@@ -270,8 +270,8 @@ export default function HomePage() {
               <UnifiedSubjectCard
                 title="企業、會計與財務概論 BAFS"
                 href="/bafs"
-                icon={<BiBriefcase style={{ color: '#ffea00', fontSize: 40 }} />}
-                accent="#ffea00"
+                icon={<BiBriefcase style={{ color: '#10b981', fontSize: 40 }} />}
+                accent="#10b981"
                 details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]}
               />
             </div>

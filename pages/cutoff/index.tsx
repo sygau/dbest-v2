@@ -1,11 +1,30 @@
 import React from 'react';
 import Head from 'next/head';
-import { BiBarChartAlt2, BiTrendingUp, BiBookOpen } from 'react-icons/bi';
+import { BiBarChartAlt2, BiTrendingUp, BiBookOpen, BiBook, BiCalculator, BiBot, BiTestTube, BiLeaf, BiLaptop, BiGlobe, BiMoney, BiBriefcase, BiPlanet } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
 import { AVAILABLE_CUTOFF_SUBJECTS, CUTOFF_SUBJECT_NAMES } from '../../utils/cutoffSlugSEO';
 import { getPageMetadata } from '../../utils/pageMetadata';
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
 import { getCutoffIndexLastUpdated } from '../../utils/lastUpdated';
+
+const SUBJECT_STYLES: Record<string, { icon: any; color: string }> = {
+  chinese: { icon: BiBook, color: '#ff69b4' },
+  english: { icon: BiBook, color: '#40c4ff' },
+  math: { icon: BiCalculator, color: '#eab308' },
+  citizen: { icon: BiGlobe, color: '#28a745' },
+  physics: { icon: BiBot, color: '#6366f1' },
+  chemistry: { icon: BiTestTube, color: '#06b6d4' },
+  biology: { icon: BiLeaf, color: '#22c55e' },
+  ict: { icon: BiLaptop, color: '#ff3d00' },
+  m1: { icon: BiCalculator, color: '#b388ff' },
+  m2: { icon: BiCalculator, color: '#22d3ee' },
+  geography: { icon: BiGlobe, color: '#16a34a' },
+  economics: { icon: BiMoney, color: '#f97316' },
+  bafs: { icon: BiBriefcase, color: '#10b981' },
+  history: { icon: BiBook, color: '#ffab91' },
+  'chinese-history': { icon: BiBook, color: '#ff1744' },
+  ths: { icon: BiPlanet, color: '#2196f3' },
+};
 
 export default function CutoffIndexPage() {
   const metadata = getPageMetadata('cutoff') || {
@@ -67,8 +86,7 @@ export default function CutoffIndexPage() {
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
           <div className="d-flex align-items-center mb-4">
-            <BiBarChartAlt2 className="me-3" size={32} />
-            <h1 className="mb-0">DSE Cut-off Scores 分數線</h1>
+            <h1 className="mb-0">DSE Cut-off Scores 分數線 (2012-2025)</h1>
           </div>
           
           <p className="mb-4 lead">
@@ -79,29 +97,64 @@ export default function CutoffIndexPage() {
           </p>
 
           {/* Subject Grid */}
-          <div className="row g-3 mb-4">
-            {AVAILABLE_CUTOFF_SUBJECTS.map((subject) => (
-              <div key={subject} className="col-lg-4 col-md-6">
-                <NavigationLink href={`/cutoff/${subject}`} className="text-decoration-none">
-                  <div className="card h-100 border-0 shadow-sm hover-card">
-                    <div className="card-body d-flex align-items-center">
-                      <div className="me-3">
-                        <div className="bg-primary bg-opacity-10 rounded-circle p-3">
-                          <BiTrendingUp className="text-primary" size={24} />
+          <div className="cutoff-subject-list mb-4">
+            {AVAILABLE_CUTOFF_SUBJECTS.map((subject) => {
+              const subjectStyle = SUBJECT_STYLES[subject];
+              const IconComponent = subjectStyle?.icon || BiTrendingUp;
+              const accentColor = subjectStyle?.color || '#2563eb';
+
+              return (
+                <NavigationLink
+                  key={subject}
+                  href={`/cutoff/${subject}`}
+                  className="text-decoration-none d-block mb-2"
+                >
+                  <div
+                    className="cutoff-subject-row"
+                    style={{
+                      border: `1px solid ${accentColor}44`,
+                      background: `linear-gradient(90deg, ${accentColor}1a, rgba(15, 23, 42, 0.012))`,
+                      boxShadow: `0 10px 24px ${accentColor}1f`,
+                    }}
+                  >
+                    <div className="d-flex align-items-center gap-3 cutoff-subject-left">
+                      <div
+                        className="cutoff-subject-icon-wrapper"
+                        style={{
+                          background: `linear-gradient(135deg, ${accentColor}22, rgba(59, 130, 246, 0.15))`,
+                        }}
+                      >
+                        <IconComponent
+                          className="cutoff-subject-icon"
+                          size={22}
+                          style={{ color: accentColor }}
+                        />
+                      </div>
+                      <div className="cutoff-subject-text">
+                        <div className="cutoff-subject-name">
+                          {CUTOFF_SUBJECT_NAMES[subject]}
+                        </div>
+                        <div className="cutoff-subject-subtitle text-muted">
+                          Click to view
                         </div>
                       </div>
-                      <div className="flex-grow-1">
-                        <h6 className="card-title mb-1">{CUTOFF_SUBJECT_NAMES[subject]}</h6>
-                        <small className="text-muted">View cut-off scores</small>
-                      </div>
-                      <div>
-                        <i className="bx bx-chevron-right text-muted"></i>
-                      </div>
+                    </div>
+                    <div className="d-flex align-items-center gap-2 cutoff-subject-meta">
+                      <span
+                        className="cutoff-year-pill"
+                        style={{
+                          background: `linear-gradient(135deg, ${accentColor}33, ${accentColor}18)`,
+                          color: '#0f172a',
+                        }}
+                      >
+                        2012–2025
+                      </span>
+                      <i className="bx bx-chevron-right text-muted"></i>
                     </div>
                   </div>
                 </NavigationLink>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Information Section */}
@@ -139,16 +192,16 @@ export default function CutoffIndexPage() {
           </div>
 
           {/* Data Source & Credits */}
-          <div className="alert alert-info mb-4" role="alert">
+          <div className="alert alert-info mb-4 cutoff-data-source" role="alert">
             <div className="d-flex align-items-start">
               <i className="bx bx-info-circle me-2 mt-1"></i>
               <div>
                 <strong>資料來源 Data Sources:</strong>
                 <br />
-                Cut-off分數資料來源於dse00及afterschool等可靠渠道，並定期更新以確保準確性。
+                Cut-off分數資料來源於學生提交，並定期更新以確保準確性。
                 <br />
                 <small className="text-muted">
-                  Cut-off score data is sourced from reliable channels including dse00 and afterschool, and is regularly updated to ensure accuracy.
+                  Cut-off score data is sourced from student submissions, and is regularly updated to ensure accuracy.
                 </small>
                 {lastUpdated && (
                   <>
@@ -163,13 +216,10 @@ export default function CutoffIndexPage() {
           </div>
 
           {/* Warning Message */}
-          <div className="alert alert-warning mb-0" role="alert">
+          <div className="alert alert-warning mb-4" role="alert">
             <div className="d-flex align-items-start">
-              <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
-                <use href="#exclamation-triangle-fill"/>
-              </svg>
               <div>
-                <strong>⚠️ 注意事項 Important Notice:</strong>
+                <strong>注意事項 Important Notice:</strong>
                 <br />
                 Cut Off 資料僅供參考，可能存有錯誤，並會按年更新。實際分數要求請以香港考試及評核局公布為準。
                 <br />
@@ -190,6 +240,77 @@ export default function CutoffIndexPage() {
         .hover-card:hover {
           transform: translateY(-2px);
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .cutoff-subject-list {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+
+        .cutoff-subject-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.75rem 1rem;
+          border-radius: 999px;
+          transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+        }
+
+        .cutoff-subject-row:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+        }
+
+        .cutoff-subject-icon-wrapper {
+          width: 36px;
+          height: 36px;
+          border-radius: 999px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(16, 185, 129, 0.15));
+        }
+
+        .cutoff-subject-icon {
+          color: #2563eb;
+        }
+
+        .cutoff-subject-name {
+          font-weight: 600;
+          font-size: 0.98rem;
+        }
+
+        .cutoff-subject-subtitle {
+          font-size: 0.78rem;
+        }
+
+        .cutoff-year-pill {
+          padding: 0.18rem 0.55rem;
+          border-radius: 999px;
+          font-size: 0.75rem;
+          font-weight: 500;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(129, 140, 248, 0.12));
+          color: #1e3a8a;
+        }
+
+        .cutoff-data-source {
+          background-color: #e3f2fd;
+          border-color: #90caf9;
+          color: #0d47a1;
+        }
+
+        .cutoff-data-source .text-muted {
+          color: rgba(13, 71, 161, 0.8) !important;
+        }
+
+        @media (max-width: 576px) {
+          .cutoff-subject-row {
+            padding-inline: 0.75rem;
+          }
+          .cutoff-year-pill {
+            display: none;
+          }
         }
       `}</style>
     </>

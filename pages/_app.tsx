@@ -428,7 +428,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
           {/* Footer */}
           <footer className="footer d-flex flex-column flex-md-row align-items-center justify-content-between gap-1 py-0 border-top px-xl-4 px-3">
-            <p className="mb-0" style={{ marginTop: '15px' }}>© 2025 dse.best & Jable TV | All rights reserved.</p>
+            <p className="mb-0" style={{ marginTop: '15px' }}>© 2025 dse.best | All rights reserved.</p>
             {/* 試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途，下載後請於 24 小時內刪除。如發現本網站內容有任何侵權或違規情況，請<NavigationLink href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>聯絡我們</NavigationLink> */}
           </footer>
         </main>

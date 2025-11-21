@@ -3,7 +3,7 @@ import { consolidatedScripts, pwaStyles } from '../utils/documentScripts'
 
 export default function Document() {
   return (
-    <Html lang="zh-Hant" style={{ backgroundColor: '#eff1f31a' }}>
+    <Html lang="zh-Hant">
       <Head>
         {/* BLOCKING theme script - MUST execute before any rendering */}
         <script dangerouslySetInnerHTML={{ 
