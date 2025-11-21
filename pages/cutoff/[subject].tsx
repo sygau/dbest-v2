@@ -23,7 +23,7 @@ import {
   AVAILABLE_CUTOFF_SUBJECTS,
   CUTOFF_SUBJECT_NAMES 
 } from '../../utils/cutoffSlugSEO';
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
+import { generateSubjectStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData';
 import CutoffTable from '../../components/CutoffTable';
 import { loadSubjectData, CutoffTableData, SubjectConfig } from '../../utils/clientCutoffData';
 import { getSubjectCutoffLastUpdated, getOtherPageLastUpdated } from '../../utils/lastUpdated';
@@ -62,7 +62,7 @@ export default function CutoffSubjectPage() {
   const seoConfig = subjectStr ? getCutoffSEOConfig(subjectStr) : null;
   const metadata = subjectStr ? generateCutoffMetadata(subjectStr) : null;
   const structuredData = generateSubjectStructuredData('cutoff');
-  const faqData = generateSubjectFAQStructuredData('cutoff');
+  const faqData = generatePageFAQStructuredData('cutoff');
   const lastUpdated = subjectStr ? getSubjectCutoffLastUpdated(subjectStr) : null;
 
   // Load cutoff data for the subject
@@ -115,14 +115,18 @@ export default function CutoffSubjectPage() {
         <link rel="canonical" href={`https://dse.best/cutoff/${subjectStr}`} />
         
         {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
-        />
+        {structuredData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
+        )}
+        {faqData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+          />
+        )}
       </Head>
 
       {/* Breadcrumb */}

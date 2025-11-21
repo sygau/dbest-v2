@@ -4,7 +4,7 @@ import { BiBarChartAlt2, BiTrendingUp, BiBookOpen, BiBook, BiCalculator, BiBot, 
 import NavigationLink from '../../components/NavigationLink';
 import { AVAILABLE_CUTOFF_SUBJECTS, CUTOFF_SUBJECT_NAMES } from '../../utils/cutoffSlugSEO';
 import { getPageMetadata } from '../../utils/pageMetadata';
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
+import { generateSubjectStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData';
 import { getCutoffIndexLastUpdated } from '../../utils/lastUpdated';
 
 const SUBJECT_STYLES: Record<string, { icon: any; color: string }> = {
@@ -32,7 +32,7 @@ export default function CutoffIndexPage() {
     description: '【DSE Cut Off 分數一覽】全港最齊2012–2025年全部科目等級分界線！涵蓋英文、中文、數學、物理、化學、生物、ICT、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術等。做完past paper？立即對cut off分數，精準預測你嘅DSE Level！',
   };
   const structuredData = generateSubjectStructuredData('cutoff');
-  const faqData = generateSubjectFAQStructuredData('cutoff');
+  const faqData = generatePageFAQStructuredData('cutoff');
   const lastUpdated = getCutoffIndexLastUpdated();
 
   return (
@@ -53,14 +53,18 @@ export default function CutoffIndexPage() {
         <link rel="canonical" href="https://dse.best/cutoff" />
         
         {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
-        />
+        {structuredData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          />
+        )}
+        {faqData && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
+          />
+        )}
       </Head>
 
       {/* Breadcrumb */}
