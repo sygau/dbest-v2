@@ -267,7 +267,6 @@ export default function CountdownPage() {
           font-size: 3.8rem;
           font-weight: 800;
           margin: 0;
-          text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
           text-align: center;
           letter-spacing: -0.5px;
           color: var(--bs-body-color);

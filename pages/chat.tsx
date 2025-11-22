@@ -1482,7 +1482,7 @@ export default function ChatPage() {
                     border-radius: 8px;
                     background: var(--bs-body-bg);
                     color: var(--bs-body-color);
-                    font-size: 0.875rem;
+                    font-size: 16px;
                     resize: none;
                     height: 44px;
                     box-sizing: border-box;
