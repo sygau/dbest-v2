@@ -1439,8 +1439,6 @@ export default function ChatPage() {
                     box-sizing: border-box;
                 }
 
-
-
                 .edit-name-btn:hover {
                     background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
                     transform: none;
@@ -1509,8 +1507,6 @@ export default function ChatPage() {
                     height: 44px;
                 }
 
-
-
                 .send-button:hover {
                     transform: translateY(-1px);
                     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
@@ -1521,8 +1517,6 @@ export default function ChatPage() {
                     cursor: not-allowed;
                     transform: none;
                 }
-
-
 
                 .modal-overlay {
                     position: fixed;
