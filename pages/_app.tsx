@@ -386,7 +386,7 @@ export default function App({ Component, pageProps }: AppProps) {
               <li>
                 <NavigationLink href="/12p">
                   <div className="parent-icon"><BiBookReader style={{ color: '#ff6b9d', fontSize: 24 }} /></div>
-                  <div className="menu-title">十二篇範文練習</div>
+                  <div className="menu-title">十二篇語譯練習</div>
                 </NavigationLink>
               </li>
               <li>

@@ -29,6 +29,13 @@ export default function Document() {
         {/* Noto Sans HK for 12p pages */}
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
+        {/* No-ads handling: persist ?na flag and hide AdSense units on client */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=window.location?window.location.search||'':'';var p=new URLSearchParams(s);if(p.has('na')){try{localStorage.setItem('noAds','1')}catch(e){}}var n=false;try{n=localStorage.getItem('noAds')==='1'}catch(e){n=false}if(n){try{window.__noAds=true}catch(e){window.__noAds=true}try{var st=document.createElement('style');st.innerHTML='.adsbygoogle{display:none !important;}';document.head&&document.head.appendChild(st)}catch(e){}}}catch(e){}})();`
+          }}
+        />
+
         {/* Google AdSense */}
         {process.env.PASSCODE_MODE !== 'true' && (
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
