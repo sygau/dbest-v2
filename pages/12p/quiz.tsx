@@ -42,11 +42,11 @@ export default function QuizMode({ config }: QuizProps) {
 
   // Random incorrect feedback messages
   const incorrectMessages = [
-    '❌ 唔啃喖，再試下？',
-    '❌ 未夠準啦，再論！',
-    '❌ 差少少，再論啦！',
-    '❌ 不算啃，再論啦！',
-    '❌ 再論多次啦！'
+    '❌ 唔啱喎，再試下？',
+    '❌ 未夠準啦，再試！',
+    '❌ 差少少，再試吓啦！',
+    '❌ 已茂？',
+    '❌ 💀'
   ];
   const [currentIncorrectMsg, setCurrentIncorrectMsg] = useState(incorrectMessages[0]);
 

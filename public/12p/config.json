@@ -9,21 +9,21 @@
     },
     {
       "id": "yuwosuoyuye",
-      "title": "魚我所欲也",
+      "title": "《魚我所欲也》",
       "subtitle": "孟子",
       "file": "mengzi.json",
       "emoji": "🐟"
     },
     {
       "id": "xiaoyaoyou",
-      "title": "逍遙遊",
+      "title": "《逍遙遊》",
       "subtitle": "莊子",
       "file": "zhuangzi.json",
       "emoji": "🦅"
     },
     {
       "id": "quanxue",
-      "title": "勸學",
+      "title": "《勸學》",
       "subtitle": "荀子",
       "file": "xunzi.json",
       "emoji": "📖"
