@@ -384,6 +384,12 @@ export default function App({ Component, pageProps }: AppProps) {
               </Private>
               <li className="menu-label">工具</li>
               <li>
+                <NavigationLink href="/12p">
+                  <div className="parent-icon"><BiBookReader style={{ color: '#ff6b9d', fontSize: 24 }} /></div>
+                  <div className="menu-title">十二篇範文練習</div>
+                </NavigationLink>
+              </li>
+              <li>
                 <NavigationLink href="/pomodoro">
                   <div className="parent-icon"><BiTimeFive style={{ color: '#667eea', fontSize: 24 }} /></div>
                   <div className="menu-title">番茄鐘 Pomodoro</div>

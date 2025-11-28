@@ -1,0 +1,854 @@
+[
+  {
+    "id": "xunzi-001",
+    "sentence": "君子曰：學不可以{{已}}。",
+    "target": "已",
+    "meaning": "停止、終止",
+    "acptAns": [
+      "停止",
+      "終止"
+    ]
+  },
+  {
+    "id": "xunzi-002",
+    "sentence": "青，取之於{{藍}}，而青於藍。",
+    "target": "藍",
+    "meaning": "藍草，一種染料植物",
+    "acptAns": [
+      "藍草",
+      "蓼藍"
+    ]
+  },
+  {
+    "id": "xunzi-003",
+    "sentence": "青，取之於藍，而{{青}}於藍。",
+    "target": "青",
+    "meaning": "顏色更深、更青",
+    "acptAns": [
+      "顏色更深",
+      "更青"
+    ],
+    "notes": "作動詞用"
+  },
+  {
+    "id": "xunzi-004",
+    "sentence": "冰，水{{為}}之，而寒於水。",
+    "target": "為",
+    "meaning": "凝結、做成",
+    "acptAns": [
+      "凝結",
+      "做成",
+      "形成"
+    ]
+  },
+  {
+    "id": "xunzi-005",
+    "sentence": "冰，水為之，而{{寒}}於水。",
+    "target": "寒",
+    "meaning": "寒冷、冰冷",
+    "acptAns": [
+      "寒冷",
+      "冰冷"
+    ]
+  },
+  {
+    "id": "xunzi-006",
+    "sentence": "木直{{中}}繩。",
+    "target": "中",
+    "meaning": "符合、合乎",
+    "acptAns": [
+      "符合",
+      "合乎"
+    ]
+  },
+  {
+    "id": "xunzi-007",
+    "sentence": "木直中{{繩}}。",
+    "target": "繩",
+    "meaning": "墨線，木工取直的工具",
+    "acptAns": [
+      "墨線",
+      "繩墨"
+    ]
+  },
+  {
+    "id": "xunzi-008",
+    "sentence": "{{輮}}以為輪。",
+    "target": "輮",
+    "meaning": "用火烤彎木材",
+    "acptAns": [
+      "用火烤彎木材",
+      "烤彎"
+    ],
+    "notes": "通「煣」"
+  },
+  {
+    "id": "xunzi-009",
+    "sentence": "輮{{以為}}輪。",
+    "target": "以為",
+    "meaning": "使它成為、把它做成",
+    "acptAns": [
+      "使它成為",
+      "把它做成"
+    ],
+    "notes": "「以之為」的省略"
+  },
+  {
+    "id": "xunzi-010",
+    "sentence": "其曲{{中}}規。",
+    "target": "中",
+    "meaning": "符合、合乎",
+    "acptAns": [
+      "符合",
+      "合乎"
+    ]
+  },
+  {
+    "id": "xunzi-011",
+    "sentence": "其曲中{{規}}。",
+    "target": "規",
+    "meaning": "圓規，畫圓的工具",
+    "acptAns": [
+      "圓規"
+    ]
+  },
+  {
+    "id": "xunzi-012",
+    "sentence": "雖有{{槁暴}}。",
+    "target": "槁暴",
+    "meaning": "曬乾、枯乾",
+    "acptAns": [
+      "曬乾",
+      "枯乾"
+    ],
+    "notes": "「有」通「又」；「暴」通「曝」"
+  },
+  {
+    "id": "xunzi-013",
+    "sentence": "雖{{有}}槁暴。",
+    "target": "有",
+    "meaning": "又、再",
+    "acptAns": [
+      "又",
+      "再"
+    ],
+    "notes": "通「又」"
+  },
+  {
+    "id": "xunzi-014",
+    "sentence": "不復{{挺}}者。",
+    "target": "挺",
+    "meaning": "直、挺直",
+    "acptAns": [
+      "直",
+      "挺直"
+    ]
+  },
+  {
+    "id": "xunzi-015",
+    "sentence": "輮使之{{然}}也。",
+    "target": "然",
+    "meaning": "這樣、如此",
+    "acptAns": [
+      "這樣",
+      "如此"
+    ]
+  },
+  {
+    "id": "xunzi-016",
+    "sentence": "故木{{受}}繩則直。",
+    "target": "受",
+    "meaning": "經墨線量過",
+    "acptAns": [
+      "經墨線量過",
+      "符合"
+    ]
+  },
+  {
+    "id": "xunzi-017",
+    "sentence": "金{{就}}礪則利。",
+    "target": "就",
+    "meaning": "靠近、接近（指磨礪）",
+    "acptAns": [
+      "靠近",
+      "接近",
+      "磨礪"
+    ]
+  },
+  {
+    "id": "xunzi-018",
+    "sentence": "金就{{礪}}則利。",
+    "target": "礪",
+    "meaning": "磨刀石",
+    "acptAns": [
+      "磨刀石"
+    ]
+  },
+  {
+    "id": "xunzi-019",
+    "sentence": "金就礪則{{利}}。",
+    "target": "利",
+    "meaning": "鋒利",
+    "acptAns": [
+      "鋒利",
+      "銳利"
+    ]
+  },
+  {
+    "id": "xunzi-020",
+    "sentence": "君子{{博學}}而日參省乎己。",
+    "target": "博學",
+    "meaning": "廣泛地學習",
+    "acptAns": [
+      "廣泛地學習",
+      "廣博學習"
+    ]
+  },
+  {
+    "id": "xunzi-021",
+    "sentence": "君子博學而{{日}}參省乎己。",
+    "target": "日",
+    "meaning": "每天、每日",
+    "acptAns": [
+      "每天",
+      "每日"
+    ]
+  },
+  {
+    "id": "xunzi-022",
+    "sentence": "君子博學而日{{參}}省乎己。",
+    "target": "參",
+    "meaning": "檢驗、檢查",
+    "acptAns": [
+      "檢驗",
+      "檢查",
+      "參照"
+    ]
+  },
+  {
+    "id": "xunzi-023",
+    "sentence": "君子博學而日參{{省}}乎己。",
+    "target": "省",
+    "meaning": "省察、反省",
+    "acptAns": [
+      "省察",
+      "反省"
+    ]
+  },
+  {
+    "id": "xunzi-024",
+    "sentence": "則{{知}}明而行無過矣。",
+    "target": "知",
+    "meaning": "智慧",
+    "acptAns": [
+      "智慧",
+      "才智"
+    ],
+    "notes": "通「智」"
+  },
+  {
+    "id": "xunzi-025",
+    "sentence": "則知明而{{行}}無過矣。",
+    "target": "行",
+    "meaning": "行為",
+    "acptAns": [
+      "行為",
+      "行動"
+    ]
+  },
+  {
+    "id": "xunzi-026",
+    "sentence": "則知明而行無{{過}}矣。",
+    "target": "過",
+    "meaning": "過失、過錯",
+    "acptAns": [
+      "過失",
+      "過錯"
+    ]
+  },
+  {
+    "id": "xunzi-027",
+    "sentence": "吾嘗{{終日}}而思矣。",
+    "target": "終日",
+    "meaning": "整天",
+    "acptAns": [
+      "整天",
+      "全日"
+    ]
+  },
+  {
+    "id": "xunzi-028",
+    "sentence": "不如{{須臾}}之所學也。",
+    "target": "須臾",
+    "meaning": "片刻、一會兒",
+    "acptAns": [
+      "片刻",
+      "一會兒"
+    ]
+  },
+  {
+    "id": "xunzi-029",
+    "sentence": "吾嘗{{跂}}而望矣。",
+    "target": "跂",
+    "meaning": "提起腳跟、踮起腳",
+    "acptAns": [
+      "提起腳跟",
+      "踮起腳"
+    ]
+  },
+  {
+    "id": "xunzi-030",
+    "sentence": "不如{{登}}高之博見也。",
+    "target": "登",
+    "meaning": "登上",
+    "acptAns": [
+      "登上"
+    ]
+  },
+  {
+    "id": "xunzi-031",
+    "sentence": "不如登高之{{博}}見也。",
+    "target": "博",
+    "meaning": "廣闊、廣遠",
+    "acptAns": [
+      "廣闊",
+      "廣遠",
+      "寬廣"
+    ]
+  },
+  {
+    "id": "xunzi-032",
+    "sentence": "登高而{{招}}。",
+    "target": "招",
+    "meaning": "招手",
+    "acptAns": [
+      "招手"
+    ]
+  },
+  {
+    "id": "xunzi-033",
+    "sentence": "臂非加{{長}}也。",
+    "target": "長",
+    "meaning": "變長",
+    "acptAns": [
+      "變長",
+      "增長"
+    ]
+  },
+  {
+    "id": "xunzi-034",
+    "sentence": "而{{見}}者遠。",
+    "target": "見",
+    "meaning": "看見（的人）",
+    "acptAns": [
+      "看見"
+    ]
+  },
+  {
+    "id": "xunzi-035",
+    "sentence": "順風而{{呼}}。",
+    "target": "呼",
+    "meaning": "呼喊",
+    "acptAns": [
+      "呼喊",
+      "叫喊"
+    ]
+  },
+  {
+    "id": "xunzi-036",
+    "sentence": "聲非加{{疾}}也。",
+    "target": "疾",
+    "meaning": "強勁、宏大",
+    "acptAns": [
+      "強勁",
+      "宏大",
+      "大聲"
+    ]
+  },
+  {
+    "id": "xunzi-037",
+    "sentence": "而聞者{{彰}}。",
+    "target": "彰",
+    "meaning": "清楚、明顯",
+    "acptAns": [
+      "清楚",
+      "明顯"
+    ]
+  },
+  {
+    "id": "xunzi-038",
+    "sentence": "{{假}}輿馬者。",
+    "target": "假",
+    "meaning": "憑藉、借助、利用",
+    "acptAns": [
+      "憑藉",
+      "借助",
+      "利用"
+    ]
+  },
+  {
+    "id": "xunzi-039",
+    "sentence": "假{{輿}}馬者。",
+    "target": "輿",
+    "meaning": "車",
+    "acptAns": [
+      "車",
+      "車輛"
+    ]
+  },
+  {
+    "id": "xunzi-040",
+    "sentence": "非{{利足}}也。",
+    "target": "利足",
+    "meaning": "善於奔跑、腳步快",
+    "acptAns": [
+      "善於奔跑",
+      "腳步快"
+    ]
+  },
+  {
+    "id": "xunzi-041",
+    "sentence": "而{{致}}千里。",
+    "target": "致",
+    "meaning": "到達",
+    "acptAns": [
+      "到達",
+      "到"
+    ]
+  },
+  {
+    "id": "xunzi-042",
+    "sentence": "假{{舟楫}}者。",
+    "target": "舟楫",
+    "meaning": "船隻和船槳",
+    "acptAns": [
+      "船隻和船槳",
+      "船"
+    ]
+  },
+  {
+    "id": "xunzi-043",
+    "sentence": "非能{{水}}也。",
+    "target": "水",
+    "meaning": "游泳、識水性",
+    "acptAns": [
+      "游泳",
+      "識水性"
+    ],
+    "notes": "名詞作動詞"
+  },
+  {
+    "id": "xunzi-044",
+    "sentence": "而{{絕}}江河。",
+    "target": "絕",
+    "meaning": "橫渡",
+    "acptAns": [
+      "橫渡",
+      "穿越"
+    ]
+  },
+  {
+    "id": "xunzi-045",
+    "sentence": "而絕{{江河}}。",
+    "target": "江河",
+    "meaning": "長江和黃河",
+    "acptAns": [
+      "長江和黃河",
+      "大河"
+    ]
+  },
+  {
+    "id": "xunzi-046",
+    "sentence": "君子{{生}}非異也。",
+    "target": "生",
+    "meaning": "本性、天性",
+    "acptAns": [
+      "本性",
+      "天性",
+      "資質"
+    ],
+    "notes": "通「性」"
+  },
+  {
+    "id": "xunzi-047",
+    "sentence": "君子生非{{異}}也。",
+    "target": "異",
+    "meaning": "不同",
+    "acptAns": [
+      "不同",
+      "差別"
+    ]
+  },
+  {
+    "id": "xunzi-048",
+    "sentence": "善{{假}}於物也。",
+    "target": "假",
+    "meaning": "借助、利用",
+    "acptAns": [
+      "借助",
+      "利用"
+    ]
+  },
+  {
+    "id": "xunzi-049",
+    "sentence": "善假於{{物}}也。",
+    "target": "物",
+    "meaning": "外物、外在條件",
+    "acptAns": [
+      "外物",
+      "外在條件"
+    ]
+  },
+  {
+    "id": "xunzi-050",
+    "sentence": "積土成山，風雨{{興}}焉。",
+    "target": "興",
+    "meaning": "興起、產生",
+    "acptAns": [
+      "興起",
+      "產生",
+      "發生"
+    ]
+  },
+  {
+    "id": "xunzi-051",
+    "sentence": "積土成山，風雨興{{焉}}。",
+    "target": "焉",
+    "meaning": "於此、在這裡",
+    "acptAns": [
+      "於此",
+      "在這裡"
+    ],
+    "notes": "兼詞"
+  },
+  {
+    "id": "xunzi-052",
+    "sentence": "積水成{{淵}}。",
+    "target": "淵",
+    "meaning": "深水、深潭",
+    "acptAns": [
+      "深水",
+      "深潭"
+    ]
+  },
+  {
+    "id": "xunzi-053",
+    "sentence": "{{蛟龍}}生焉。",
+    "target": "蛟龍",
+    "meaning": "傳說中的龍",
+    "acptAns": [
+      "傳說中的龍",
+      "龍"
+    ]
+  },
+  {
+    "id": "xunzi-054",
+    "sentence": "積善成{{德}}。",
+    "target": "德",
+    "meaning": "品德",
+    "acptAns": [
+      "品德",
+      "德行"
+    ]
+  },
+  {
+    "id": "xunzi-055",
+    "sentence": "而{{神明}}自得。",
+    "target": "神明",
+    "meaning": "精神智慧、心智",
+    "acptAns": [
+      "精神智慧",
+      "心智"
+    ]
+  },
+  {
+    "id": "xunzi-056",
+    "sentence": "而神明{{自得}}。",
+    "target": "自得",
+    "meaning": "自然獲得",
+    "acptAns": [
+      "自然獲得",
+      "獲得"
+    ]
+  },
+  {
+    "id": "xunzi-057",
+    "sentence": "聖心{{備}}焉。",
+    "target": "備",
+    "meaning": "具備",
+    "acptAns": [
+      "具備",
+      "完備"
+    ]
+  },
+  {
+    "id": "xunzi-058",
+    "sentence": "故不積{{蹞}}步。",
+    "target": "蹞",
+    "meaning": "半步",
+    "acptAns": [
+      "半步"
+    ],
+    "notes": "通「跬」"
+  },
+  {
+    "id": "xunzi-059",
+    "sentence": "無以{{至}}千里。",
+    "target": "至",
+    "meaning": "到達",
+    "acptAns": [
+      "到達"
+    ]
+  },
+  {
+    "id": "xunzi-060",
+    "sentence": "不積{{小流}}。",
+    "target": "小流",
+    "meaning": "細小的水流",
+    "acptAns": [
+      "細小的水流",
+      "細流"
+    ]
+  },
+  {
+    "id": "xunzi-061",
+    "sentence": "無以成{{江海}}。",
+    "target": "江海",
+    "meaning": "大河大海",
+    "acptAns": [
+      "大河大海",
+      "大海"
+    ]
+  },
+  {
+    "id": "xunzi-062",
+    "sentence": "{{騏驥}}一躍，不能十步。",
+    "target": "騏驥",
+    "meaning": "駿馬、良馬",
+    "acptAns": [
+      "駿馬",
+      "良馬",
+      "千里馬"
+    ]
+  },
+  {
+    "id": "xunzi-063",
+    "sentence": "{{駑馬}}十駕。",
+    "target": "駑馬",
+    "meaning": "劣馬",
+    "acptAns": [
+      "劣馬",
+      "跑不快的馬"
+    ]
+  },
+  {
+    "id": "xunzi-064",
+    "sentence": "駑馬十{{駕}}。",
+    "target": "駕",
+    "meaning": "馬拉車一天的路程",
+    "acptAns": [
+      "馬拉車一天的路程",
+      "一天的路程"
+    ]
+  },
+  {
+    "id": "xunzi-065",
+    "sentence": "功在不{{舍}}。",
+    "target": "舍",
+    "meaning": "捨棄、停止",
+    "acptAns": [
+      "捨棄",
+      "停止",
+      "放棄"
+    ],
+    "notes": "通「捨」"
+  },
+  {
+    "id": "xunzi-066",
+    "sentence": "{{鍥}}而舍之。",
+    "target": "鍥",
+    "meaning": "刻",
+    "acptAns": [
+      "刻",
+      "雕刻"
+    ]
+  },
+  {
+    "id": "xunzi-067",
+    "sentence": "{{朽木}}不折。",
+    "target": "朽木",
+    "meaning": "腐爛的木頭",
+    "acptAns": [
+      "腐爛的木頭",
+      "爛木"
+    ]
+  },
+  {
+    "id": "xunzi-068",
+    "sentence": "朽木不{{折}}。",
+    "target": "折",
+    "meaning": "折斷",
+    "acptAns": [
+      "折斷",
+      "斷"
+    ]
+  },
+  {
+    "id": "xunzi-069",
+    "sentence": "鍥而不{{舍}}。",
+    "target": "舍",
+    "meaning": "捨棄、停止",
+    "acptAns": [
+      "捨棄",
+      "停止"
+    ],
+    "notes": "通「捨」"
+  },
+  {
+    "id": "xunzi-070",
+    "sentence": "{{金石}}可鏤。",
+    "target": "金石",
+    "meaning": "金屬和石頭（喻堅硬之物）",
+    "acptAns": [
+      "金屬和石頭",
+      "堅硬的東西"
+    ]
+  },
+  {
+    "id": "xunzi-071",
+    "sentence": "金石可{{鏤}}。",
+    "target": "鏤",
+    "meaning": "雕刻",
+    "acptAns": [
+      "雕刻",
+      "刻"
+    ]
+  },
+  {
+    "id": "xunzi-072",
+    "sentence": "{{螾}}無爪牙之利。",
+    "target": "螾",
+    "meaning": "蚯蚓",
+    "acptAns": [
+      "蚯蚓"
+    ]
+  },
+  {
+    "id": "xunzi-073",
+    "sentence": "螾無{{爪牙}}之利。",
+    "target": "爪牙",
+    "meaning": "爪子和牙齒",
+    "acptAns": [
+      "爪子和牙齒"
+    ]
+  },
+  {
+    "id": "xunzi-074",
+    "sentence": "螾無爪牙之{{利}}。",
+    "target": "利",
+    "meaning": "鋒利",
+    "acptAns": [
+      "鋒利",
+      "銳利"
+    ]
+  },
+  {
+    "id": "xunzi-075",
+    "sentence": "{{筋骨}}之強。",
+    "target": "筋骨",
+    "meaning": "筋骨、肌肉骨骼",
+    "acptAns": [
+      "筋骨",
+      "肌肉骨骼"
+    ]
+  },
+  {
+    "id": "xunzi-076",
+    "sentence": "筋骨之{{強}}。",
+    "target": "強",
+    "meaning": "強健",
+    "acptAns": [
+      "強健",
+      "強壯"
+    ]
+  },
+  {
+    "id": "xunzi-077",
+    "sentence": "上食{{埃土}}。",
+    "target": "埃土",
+    "meaning": "泥土",
+    "acptAns": [
+      "泥土",
+      "土壤"
+    ]
+  },
+  {
+    "id": "xunzi-078",
+    "sentence": "下飲{{黃泉}}。",
+    "target": "黃泉",
+    "meaning": "地下的泉水",
+    "acptAns": [
+      "地下的泉水",
+      "地下水"
+    ]
+  },
+  {
+    "id": "xunzi-079",
+    "sentence": "用心{{一}}也。",
+    "target": "一",
+    "meaning": "專一",
+    "acptAns": [
+      "專一"
+    ]
+  },
+  {
+    "id": "xunzi-080",
+    "sentence": "蟹六{{跪}}而二螯。",
+    "target": "跪",
+    "meaning": "腳",
+    "acptAns": [
+      "腳",
+      "足"
+    ]
+  },
+  {
+    "id": "xunzi-081",
+    "sentence": "蟹六跪而二{{螯}}。",
+    "target": "螯",
+    "meaning": "蟹鉗",
+    "acptAns": [
+      "蟹鉗",
+      "鉗子"
+    ]
+  },
+  {
+    "id": "xunzi-082",
+    "sentence": "非{{蛇鱔}}之穴無可寄託者。",
+    "target": "蛇鱔",
+    "meaning": "蛇和鱔",
+    "acptAns": [
+      "蛇和鱔"
+    ]
+  },
+  {
+    "id": "xunzi-083",
+    "sentence": "非蛇鱔之穴無可{{寄託}}者。",
+    "target": "寄託",
+    "meaning": "容身、寄居、安身",
+    "acptAns": [
+      "容身",
+      "寄居",
+      "安身"
+    ]
+  },
+  {
+    "id": "xunzi-084",
+    "sentence": "用心{{躁}}也。",
+    "target": "躁",
+    "meaning": "浮躁、不專一",
+    "acptAns": [
+      "浮躁",
+      "不專一"
+    ]
+  }
+]

@@ -1,0 +1,655 @@
+[
+  {
+    "id": "shishuo-001",
+    "sentence": "古之{{學者}}必有師。",
+    "target": "學者",
+    "meaning": "求學的人",
+    "acptAns": [
+      "求學的人",
+      "學生"
+    ],
+    "notes": "古義：求學的人；今義：在學術上有成就的人"
+  },
+  {
+    "id": "shishuo-002",
+    "sentence": "師者，{{所以}}傳道、受業、解惑也。",
+    "target": "所以",
+    "meaning": "用來……的（憑藉）",
+    "acptAns": [
+      "用來……的",
+      "依靠……來"
+    ]
+  },
+  {
+    "id": "shishuo-003",
+    "sentence": "師者，所以傳道、{{受}}業、解惑也。",
+    "target": "受",
+    "meaning": "傳授",
+    "acptAns": [
+      "傳授",
+      "教授"
+    ],
+    "notes": "通「授」"
+  },
+  {
+    "id": "shishuo-004",
+    "sentence": "人非生而{{知}}之者。",
+    "target": "知",
+    "meaning": "懂得、知道",
+    "acptAns": [
+      "懂得",
+      "知道"
+    ]
+  },
+  {
+    "id": "shishuo-005",
+    "sentence": "{{孰}}能無惑？",
+    "target": "孰",
+    "meaning": "誰",
+    "acptAns": [
+      "誰"
+    ]
+  },
+  {
+    "id": "shishuo-006",
+    "sentence": "惑而不{{從}}師。",
+    "target": "從",
+    "meaning": "跟從、跟隨",
+    "acptAns": [
+      "跟從",
+      "跟隨"
+    ]
+  },
+  {
+    "id": "shishuo-007",
+    "sentence": "其為惑也{{終}}不解矣。",
+    "target": "終",
+    "meaning": "終究、始終",
+    "acptAns": [
+      "終究",
+      "始終",
+      "永遠"
+    ]
+  },
+  {
+    "id": "shishuo-008",
+    "sentence": "生{{乎}}吾前。",
+    "target": "乎",
+    "meaning": "於、在",
+    "acptAns": [
+      "於",
+      "在"
+    ],
+    "notes": "介詞"
+  },
+  {
+    "id": "shishuo-009",
+    "sentence": "其{{聞}}道也，固先乎吾。",
+    "target": "聞",
+    "meaning": "領會、懂得",
+    "acptAns": [
+      "領會",
+      "懂得",
+      "知道"
+    ]
+  },
+  {
+    "id": "shishuo-010",
+    "sentence": "其聞道也，{{固}}先乎吾。",
+    "target": "固",
+    "meaning": "本來",
+    "acptAns": [
+      "本來",
+      "原來"
+    ]
+  },
+  {
+    "id": "shishuo-011",
+    "sentence": "吾從而{{師}}之。",
+    "target": "師",
+    "meaning": "學習、以……為師",
+    "acptAns": [
+      "學習",
+      "效法",
+      "拜師",
+      "以……為師"
+    ],
+    "notes": "意動用法/名詞作動詞"
+  },
+  {
+    "id": "shishuo-012",
+    "sentence": "吾{{從}}而師之。",
+    "target": "從",
+    "meaning": "跟隨",
+    "acptAns": [
+      "跟隨",
+      "跟從"
+    ]
+  },
+  {
+    "id": "shishuo-013",
+    "sentence": "吾師{{道}}也。",
+    "target": "道",
+    "meaning": "道理",
+    "acptAns": [
+      "道理",
+      "真理"
+    ]
+  },
+  {
+    "id": "shishuo-014",
+    "sentence": "夫{{庸}}知其年之先後生於吾乎？",
+    "target": "庸",
+    "meaning": "豈、哪、何必",
+    "acptAns": [
+      "豈",
+      "哪",
+      "何必"
+    ]
+  },
+  {
+    "id": "shishuo-015",
+    "sentence": "是故無貴無賤，無長無{{少}}。",
+    "target": "少",
+    "meaning": "年輕",
+    "acptAns": [
+      "年輕",
+      "年少"
+    ]
+  },
+  {
+    "id": "shishuo-016",
+    "sentence": "道之所{{存}}，師之所存也。",
+    "target": "存",
+    "meaning": "存在、在",
+    "acptAns": [
+      "存在",
+      "在"
+    ]
+  },
+  {
+    "id": "shishuo-017",
+    "sentence": "{{師道}}之不傳也久矣！",
+    "target": "師道",
+    "meaning": "從師學習的風尚/原則",
+    "acptAns": [
+      "從師學習的風尚",
+      "尊師重道的原則"
+    ]
+  },
+  {
+    "id": "shishuo-018",
+    "sentence": "欲人之無惑也{{難}}矣！",
+    "target": "難",
+    "meaning": "困難",
+    "acptAns": [
+      "困難"
+    ]
+  },
+  {
+    "id": "shishuo-019",
+    "sentence": "古之聖人，其{{出}}人也遠矣。",
+    "target": "出",
+    "meaning": "超出、超越",
+    "acptAns": [
+      "超出",
+      "超越"
+    ]
+  },
+  {
+    "id": "shishuo-020",
+    "sentence": "猶且從師而{{問}}焉。",
+    "target": "問",
+    "meaning": "請教",
+    "acptAns": [
+      "請教",
+      "詢問"
+    ]
+  },
+  {
+    "id": "shishuo-021",
+    "sentence": "今之{{眾人}}，其下聖人也亦遠矣。",
+    "target": "眾人",
+    "meaning": "一般人、普通人",
+    "acptAns": [
+      "一般人",
+      "普通人"
+    ]
+  },
+  {
+    "id": "shishuo-022",
+    "sentence": "今之眾人，其{{下}}聖人也亦遠矣。",
+    "target": "下",
+    "meaning": "低於、不及",
+    "acptAns": [
+      "低於",
+      "不及",
+      "差於"
+    ]
+  },
+  {
+    "id": "shishuo-023",
+    "sentence": "而{{恥}}學於師。",
+    "target": "恥",
+    "meaning": "以……為恥",
+    "acptAns": [
+      "以……為恥",
+      "羞恥"
+    ],
+    "notes": "意動用法"
+  },
+  {
+    "id": "shishuo-024",
+    "sentence": "是故{{聖}}益聖，愚益愚。",
+    "target": "聖",
+    "meaning": "聖人",
+    "acptAns": [
+      "聖人",
+      "明智的人"
+    ]
+  },
+  {
+    "id": "shishuo-025",
+    "sentence": "是故聖{{益}}聖，愚益愚。",
+    "target": "益",
+    "meaning": "更加",
+    "acptAns": [
+      "更加",
+      "越發"
+    ]
+  },
+  {
+    "id": "shishuo-026",
+    "sentence": "聖人之所以為聖，{{愚人}}之所以為愚。",
+    "target": "愚人",
+    "meaning": "愚笨的人",
+    "acptAns": [
+      "愚笨的人",
+      "愚昧的人"
+    ]
+  },
+  {
+    "id": "shishuo-027",
+    "sentence": "其皆出於{{此}}乎？",
+    "target": "此",
+    "meaning": "這（指從師與否）",
+    "acptAns": [
+      "這",
+      "這裏"
+    ]
+  },
+  {
+    "id": "shishuo-028",
+    "sentence": "愛其子，{{擇}}師而教之。",
+    "target": "擇",
+    "meaning": "選擇",
+    "acptAns": [
+      "選擇",
+      "挑選"
+    ]
+  },
+  {
+    "id": "shishuo-029",
+    "sentence": "於其身也，則{{恥}}師焉，惑矣！",
+    "target": "恥",
+    "meaning": "以……為恥",
+    "acptAns": [
+      "以……為恥"
+    ]
+  },
+  {
+    "id": "shishuo-030",
+    "sentence": "於其身也，則恥師焉，{{惑}}矣！",
+    "target": "惑",
+    "meaning": "糊塗",
+    "acptAns": [
+      "糊塗",
+      "不明智"
+    ]
+  },
+  {
+    "id": "shishuo-031",
+    "sentence": "授之書而習其{{句讀}}者。",
+    "target": "句讀",
+    "meaning": "文章斷句",
+    "acptAns": [
+      "文章斷句",
+      "句逗"
+    ]
+  },
+  {
+    "id": "shishuo-032",
+    "sentence": "非吾所謂傳其道、解其惑者{{也}}。",
+    "target": "也",
+    "meaning": "啊（表判斷/感嘆）",
+    "acptAns": [
+      "啊"
+    ],
+    "notes": "句末語氣詞"
+  },
+  {
+    "id": "shishuo-033",
+    "sentence": "{{句讀}}之不知，惑之不解。",
+    "target": "句讀",
+    "meaning": "斷句",
+    "acptAns": [
+      "斷句",
+      "句逗"
+    ]
+  },
+  {
+    "id": "shishuo-034",
+    "sentence": "或師焉，或{{不}}焉。",
+    "target": "不",
+    "meaning": "不（從師）",
+    "acptAns": [
+      "不",
+      "否"
+    ],
+    "notes": "通「否」"
+  },
+  {
+    "id": "shishuo-035",
+    "sentence": "小學而大{{遺}}。",
+    "target": "遺",
+    "meaning": "遺漏、丟棄",
+    "acptAns": [
+      "遺漏",
+      "丟棄",
+      "放棄"
+    ]
+  },
+  {
+    "id": "shishuo-036",
+    "sentence": "吾未見其{{明}}也。",
+    "target": "明",
+    "meaning": "明智",
+    "acptAns": [
+      "明智",
+      "聰明"
+    ]
+  },
+  {
+    "id": "shishuo-037",
+    "sentence": "巫、醫、樂師、{{百工}}之人。",
+    "target": "百工",
+    "meaning": "各種工匠",
+    "acptAns": [
+      "各種工匠",
+      "各類工匠"
+    ]
+  },
+  {
+    "id": "shishuo-038",
+    "sentence": "不{{恥}}相師。",
+    "target": "恥",
+    "meaning": "以……為恥",
+    "acptAns": [
+      "以……為恥"
+    ]
+  },
+  {
+    "id": "shishuo-039",
+    "sentence": "士大夫之{{族}}。",
+    "target": "族",
+    "meaning": "類",
+    "acptAns": [
+      "類",
+      "一類人"
+    ]
+  },
+  {
+    "id": "shishuo-040",
+    "sentence": "曰師、曰弟子{{云}}者。",
+    "target": "云",
+    "meaning": "說、如此",
+    "acptAns": [
+      "說",
+      "如此"
+    ]
+  },
+  {
+    "id": "shishuo-041",
+    "sentence": "則{{群}}聚而笑之。",
+    "target": "群",
+    "meaning": "成群",
+    "acptAns": [
+      "成群",
+      "聚集"
+    ]
+  },
+  {
+    "id": "shishuo-042",
+    "sentence": "彼與彼年相{{若}}也，道相似也。",
+    "target": "若",
+    "meaning": "相近、差不多",
+    "acptAns": [
+      "相近",
+      "相似",
+      "差不多"
+    ]
+  },
+  {
+    "id": "shishuo-043",
+    "sentence": "位卑則足{{羞}}，官盛則近諛。",
+    "target": "羞",
+    "meaning": "羞恥",
+    "acptAns": [
+      "羞恥",
+      "感到羞恥"
+    ]
+  },
+  {
+    "id": "shishuo-044",
+    "sentence": "位卑則足羞，官盛則近{{諛}}。",
+    "target": "諛",
+    "meaning": "阿諛奉承",
+    "acptAns": [
+      "阿諛奉承",
+      "諂媚",
+      "奉承"
+    ]
+  },
+  {
+    "id": "shishuo-045",
+    "sentence": "嗚呼！師道之不{{復}}可知矣！",
+    "target": "復",
+    "meaning": "恢復",
+    "acptAns": [
+      "恢復"
+    ]
+  },
+  {
+    "id": "shishuo-046",
+    "sentence": "君子不{{齒}}。",
+    "target": "齒",
+    "meaning": "並列、提及",
+    "acptAns": [
+      "並列",
+      "重視",
+      "提及"
+    ],
+    "notes": "引申為不屑一提"
+  },
+  {
+    "id": "shishuo-047",
+    "sentence": "今其智乃{{反}}不能及。",
+    "target": "反",
+    "meaning": "反而",
+    "acptAns": [
+      "反而"
+    ]
+  },
+  {
+    "id": "shishuo-048",
+    "sentence": "其可{{怪}}也歟！",
+    "target": "怪",
+    "meaning": "奇怪",
+    "acptAns": [
+      "奇怪",
+      "怪異"
+    ]
+  },
+  {
+    "id": "shishuo-049",
+    "sentence": "聖人無{{常}}師。",
+    "target": "常",
+    "meaning": "固定",
+    "acptAns": [
+      "固定"
+    ]
+  },
+  {
+    "id": "shishuo-050",
+    "sentence": "孔子{{師}}郯子、萇弘、師襄、老聃。",
+    "target": "師",
+    "meaning": "向……學習、以……為師",
+    "acptAns": [
+      "向……學習",
+      "以……為師"
+    ]
+  },
+  {
+    "id": "shishuo-051",
+    "sentence": "郯子之{{徒}}，其賢不及孔子。",
+    "target": "徒",
+    "meaning": "類、這些人",
+    "acptAns": [
+      "類",
+      "一類人",
+      "這類人"
+    ]
+  },
+  {
+    "id": "shishuo-052",
+    "sentence": "其{{賢}}不及孔子。",
+    "target": "賢",
+    "meaning": "賢能、德才",
+    "acptAns": [
+      "賢能",
+      "德才",
+      "才德"
+    ]
+  },
+  {
+    "id": "shishuo-053",
+    "sentence": "三人行，則必有我{{師}}。",
+    "target": "師",
+    "meaning": "老師、榜樣",
+    "acptAns": [
+      "老師",
+      "榜樣"
+    ]
+  },
+  {
+    "id": "shishuo-054",
+    "sentence": "是故弟子{{不必}}不如師。",
+    "target": "不必",
+    "meaning": "不一定",
+    "acptAns": [
+      "不一定",
+      "未必"
+    ]
+  },
+  {
+    "id": "shishuo-055",
+    "sentence": "師{{不必}}賢於弟子。",
+    "target": "不必",
+    "meaning": "不一定",
+    "acptAns": [
+      "不一定",
+      "未必"
+    ]
+  },
+  {
+    "id": "shishuo-056",
+    "sentence": "師不必{{賢}}於弟子。",
+    "target": "賢",
+    "meaning": "高明、勝過",
+    "acptAns": [
+      "高明",
+      "勝過",
+      "賢能"
+    ]
+  },
+  {
+    "id": "shishuo-057",
+    "sentence": "聞道有{{先後}}。",
+    "target": "先後",
+    "meaning": "早晚",
+    "acptAns": [
+      "早晚",
+      "先後"
+    ]
+  },
+  {
+    "id": "shishuo-058",
+    "sentence": "術業有專{{攻}}。",
+    "target": "攻",
+    "meaning": "研究、專長",
+    "acptAns": [
+      "研究",
+      "專長"
+    ]
+  },
+  {
+    "id": "shishuo-059",
+    "sentence": "如是{{而已}}。",
+    "target": "而已",
+    "meaning": "罷了",
+    "acptAns": [
+      "罷了"
+    ]
+  },
+  {
+    "id": "shishuo-060",
+    "sentence": "李氏子蟠，年十七，好{{古文}}。",
+    "target": "古文",
+    "meaning": "秦漢以前的散文",
+    "acptAns": [
+      "秦漢以前的散文",
+      "先秦散文"
+    ]
+  },
+  {
+    "id": "shishuo-061",
+    "sentence": "六藝{{經傳}}，皆通習之。",
+    "target": "經傳",
+    "meaning": "經文和傳文",
+    "acptAns": [
+      "經文和傳文",
+      "儒家經典"
+    ]
+  },
+  {
+    "id": "shishuo-062",
+    "sentence": "不{{拘}}於時。",
+    "target": "拘",
+    "meaning": "拘束、限制",
+    "acptAns": [
+      "拘束",
+      "限制"
+    ]
+  },
+  {
+    "id": "shishuo-063",
+    "sentence": "學於余。余{{嘉}}其能行古道。",
+    "target": "嘉",
+    "meaning": "讚許、嘉獎",
+    "acptAns": [
+      "讚許",
+      "嘉獎",
+      "讚賞"
+    ]
+  },
+  {
+    "id": "shishuo-064",
+    "sentence": "作《師說》以{{貽}}之。",
+    "target": "貽",
+    "meaning": "贈送",
+    "acptAns": [
+      "贈送",
+      "送給"
+    ]
+  }
+]

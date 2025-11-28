@@ -25,6 +25,9 @@ export default function Document() {
         {/* Fonts */}
         {/* <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" as="style" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" /> */}
+        
+        {/* Noto Sans HK for 12p pages */}
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
         {/* Google AdSense */}
         {process.env.PASSCODE_MODE !== 'true' && (
