@@ -126,7 +126,7 @@ export default function LockPage() {
       }}>
         <div style={{ width: '100%', maxWidth: 360, padding: 20 }}>
           <div style={{ marginBottom: 12, textAlign: 'center' }}>
-            <h1 style={{ fontSize: 18, margin: 0, fontWeight: 600 }}>Welcome</h1>
+            <h1 style={{ fontSize: 18, margin: 0, fontWeight: 600 }}>HM Tech</h1>
             <p style={{ fontSize: 13, marginTop: 6, color: '#9ca3af' }}>Enter passcode to continue</p>
           </div>
           <form onSubmit={onSubmit}>
@@ -176,8 +176,11 @@ export default function LockPage() {
               <div role="alert" style={{ color: '#fca5a5', fontSize: 13, marginTop: 10 }}>{error}</div>
             )}
           </form>
+          <div style={{ marginTop: 20, fontSize: 11, textAlign: 'center', color: '#6b7280' }}>
+            &copy; 2025 Hung Mau Technologes Inc | All rights reserved
+          </div>
         </div>
       </div>
     </>
   )
-} 
+}
