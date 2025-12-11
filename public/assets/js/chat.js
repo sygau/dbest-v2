@@ -156,7 +156,6 @@ class DSEChat {
 
   init() {
     if (this.isInitialized) {
-      console.log('Chat already initialized');
       return;
     }
 
@@ -170,11 +169,8 @@ class DSEChat {
     this.charCounter = document.getElementById('charCounter');
 
     if (!this.chatMessages || !this.userNameInput || !this.messageInput) {
-      console.log('Chat DOM elements not found, skipping initialization');
       return;
     }
-
-    console.log('Initializing DSE Chat...');
     
     this.initializeUsername();
     this.setupEventListeners();
@@ -186,8 +182,6 @@ class DSEChat {
   destroy() {
     if (!this.isInitialized) return;
 
-    console.log('Destroying DSE Chat...');
-    
     this.sendLeaveEvent();
     
     if (this.ably) {
@@ -197,7 +191,7 @@ class DSEChat {
         }
         this.ably.connection.close();
       } catch (error) {
-        console.warn('Error during Ably cleanup:', error);
+        // Silently fail
       }
     }
 
@@ -542,7 +536,7 @@ class DSEChat {
 
   // Helper to append normal messages
 
-  addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false, messageId = null, userIP = null) {
+  addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false, messageId = null, userIP = null, isBot = false) {
     const wrapper = document.createElement('div');
     wrapper.className = 'd-flex flex-column' + (isMine ? ' align-items-end' : ' align-items-start');
     if (messageId) {
@@ -556,6 +550,9 @@ class DSEChat {
     if (isModerator) {
       bubble.className += ' moderator';
     }
+    if (isBot) {
+      bubble.className += ' ai-bot';
+    }
     
     // Username and timestamp line
     const headerDiv = document.createElement('div');
@@ -568,19 +565,19 @@ class DSEChat {
       const badge = document.createElement('span');
       badge.className = 'moderator-badge';
       badge.title = 'Moderator';
-      badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148 98 112-98 112 14 148-144 32-76 128-136-58zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24zm60-176 226-226-56-58-170 170-86-84-56 56z"/></svg>`;
+      badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148-144 32-76 128-136-58zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24zm60-176 226-226-56-58-170 170-86-84-56 56z"/></svg>`;
       nameLine.appendChild(badge);
+    }
+    if (isBot) {
+      const aiBadge = document.createElement('span');
+      aiBadge.className = 'ai-badge';
+      aiBadge.title = 'AI Assistant';
+      aiBadge.textContent = 'AI';
+      nameLine.appendChild(aiBadge);
     }
     
     // Show user IP if user is a moderator and it's not their own message
     // Note: Server excludes ALL moderators' IPs, so we only need to check if it's not the viewer's own message
-    console.log('IP Display Debug:', {
-      isUserModerator: this.isUserModerator,
-      userIP: userIP,
-      isMine: isMine,
-      willShowIP: this.isUserModerator && userIP && !isMine
-    });
-    
     if (this.isUserModerator && userIP && !isMine) {
       const ipSpan = document.createElement('small');
       ipSpan.className = 'ms-2 text-info';
@@ -908,7 +905,6 @@ class DSEChat {
         }
         
         // Dispatch event to React component
-        console.log('Dispatching moderator status event:', this.isUserModerator);
         const event = new CustomEvent('moderatorStatusUpdate', {
           detail: { isModerator: this.isUserModerator }
         });
@@ -943,14 +939,14 @@ class DSEChat {
             }
             
             const isMine = msg.data.clientId === this.ably.auth.clientId;
-            this.addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id, msg.data.userIP);
+            this.addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id, msg.data.userIP, msg.data.isBot);
           }
         });
       });
 
       // Subscribe to new messages
       this.channel.subscribe('message', msg => {
-        const { sender, text, isModerator, clientId, isPurgeMessage, userIP } = msg.data;
+        const { sender, text, isModerator, clientId, isPurgeMessage, userIP, isBot } = msg.data;
         
         // Skip displaying purge messages
         if (isPurgeMessage) {
@@ -958,7 +954,7 @@ class DSEChat {
         }
         
         const isMine = clientId === this.ably.auth.clientId;
-        this.addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id, userIP);
+        this.addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id, userIP, isBot);
       });
 
       // Subscribe to user IP data (for moderators)
