@@ -536,7 +536,7 @@ class DSEChat {
 
   // Helper to append normal messages
 
-  addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false, messageId = null, userIP = null, isBot = false) {
+  addMessage(sender, text, isMine, time = Date.now(), clientId = null, isModerator = false, messageId = null, userIP = null, isBot = false, links = []) {
     const wrapper = document.createElement('div');
     wrapper.className = 'd-flex flex-column' + (isMine ? ' align-items-end' : ' align-items-start');
     if (messageId) {
@@ -572,7 +572,7 @@ class DSEChat {
       const aiBadge = document.createElement('span');
       aiBadge.className = 'ai-badge';
       aiBadge.title = 'AI Assistant';
-      aiBadge.textContent = 'AI';
+      aiBadge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zM7.5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S9.83 13 9 13s-1.5-.67-1.5-1.5zM16 17H8v-2h8v2zm-.5-4c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>`;
       nameLine.appendChild(aiBadge);
     }
     
@@ -747,6 +747,81 @@ class DSEChat {
       }
     }
     bubble.appendChild(textSpan);
+    
+    // Render link buttons if present (for AI bot responses)
+    if (isBot && links && links.length > 0) {
+      const linksContainer = document.createElement('div');
+      linksContainer.className = 'ai-links-container';
+      linksContainer.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+        width: 100%;
+      `;
+      
+      links.forEach(link => {
+        if (!link.url || !link.label) return;
+        
+        const linkButton = document.createElement('a');
+        linkButton.href = link.url;
+        linkButton.target = '_blank';
+        linkButton.rel = 'noopener noreferrer';
+        linkButton.className = 'ai-link-button';
+        linkButton.style.cssText = `
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 16px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          border-radius: 8px;
+          color: #ecfdf5;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.2s ease;
+          cursor: pointer;
+        `;
+        
+        // Hover effects
+        linkButton.onmouseenter = () => {
+          linkButton.style.background = 'rgba(255, 255, 255, 0.15)';
+          linkButton.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+          linkButton.style.transform = 'translateY(-1px)';
+        };
+        linkButton.onmouseleave = () => {
+          linkButton.style.background = 'rgba(255, 255, 255, 0.1)';
+          linkButton.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+          linkButton.style.transform = 'translateY(0)';
+        };
+        
+        // Emoji icon
+        if (link.emoji) {
+          const emojiSpan = document.createElement('span');
+          emojiSpan.textContent = link.emoji;
+          emojiSpan.style.fontSize = '16px';
+          linkButton.appendChild(emojiSpan);
+        }
+        
+        // Label text
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = link.label;
+        labelSpan.style.flex = '1';
+        linkButton.appendChild(labelSpan);
+        
+        // Arrow icon
+        const arrowSpan = document.createElement('span');
+        arrowSpan.innerHTML = '→';
+        arrowSpan.style.fontSize = '16px';
+        linkButton.appendChild(arrowSpan);
+        
+        linksContainer.appendChild(linkButton);
+      });
+      
+      bubble.appendChild(linksContainer);
+    }
+    
     wrapper.appendChild(bubble);
     this.chatMessages.appendChild(wrapper);
     this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
@@ -939,14 +1014,14 @@ class DSEChat {
             }
             
             const isMine = msg.data.clientId === this.ably.auth.clientId;
-            this.addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id, msg.data.userIP, msg.data.isBot);
+            this.addMessage(msg.data.sender, msg.data.text, isMine, msg.timestamp, msg.data.clientId, msg.data.isModerator, msg.id, msg.data.userIP, msg.data.isBot, msg.data.links || []);
           }
         });
       });
 
       // Subscribe to new messages
       this.channel.subscribe('message', msg => {
-        const { sender, text, isModerator, clientId, isPurgeMessage, userIP, isBot } = msg.data;
+        const { sender, text, isModerator, clientId, isPurgeMessage, userIP, isBot, links } = msg.data;
         
         // Skip displaying purge messages
         if (isPurgeMessage) {
@@ -954,7 +1029,7 @@ class DSEChat {
         }
         
         const isMine = clientId === this.ably.auth.clientId;
-        this.addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id, userIP, isBot);
+        this.addMessage(sender, text, isMine, msg.timestamp, clientId, isModerator, msg.id, userIP, isBot, links || []);
       });
 
       // Subscribe to user IP data (for moderators)
