@@ -2063,24 +2063,7 @@ export default function ChatPage() {
                     /* Styles handled by general .moderator-badge */
                 }
 
-                /* AI Bot Badge Styling */
-                :global(.ai-badge) {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-left: 6px;
-                    padding: 2px 6px;
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                    color: #fff;
-                    font-size: 10px;
-                    font-weight: 700;
-                    border-radius: 4px;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                    box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
-                    animation: ai-pulse 2s ease-in-out infinite;
-                    vertical-align: middle;
-                }
+                /* AI Bot Badge Styling REMOVED BECAUSE IT SUCK ASS*/
 
                 @keyframes ai-pulse {
                     0%, 100% { 
@@ -2096,7 +2079,6 @@ export default function ChatPage() {
                 /* AI Bot Message Bubble Styling */
                 :global(.chat-bubble.ai-bot) {
                     background: linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 100%);
-                    border-left: 3px solid #22c55e;
                     color: #ecfdf5;
                 }
 
