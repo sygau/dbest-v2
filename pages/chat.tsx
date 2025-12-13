@@ -2095,12 +2095,13 @@ export default function ChatPage() {
 
                 /* AI Bot Message Bubble Styling */
                 :global(.chat-bubble.ai-bot) {
-                    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
-                    border-left: 3px solid #667eea;
+                    background: linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 100%);
+                    border-left: 3px solid #22c55e;
+                    color: #ecfdf5;
                 }
 
                 :global(.chat-bubble.ai-bot.other) {
-                    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+                    background: linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 100%);
                 }
 
                 /* Username styling in chat bubbles */

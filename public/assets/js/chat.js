@@ -565,7 +565,7 @@ class DSEChat {
       const badge = document.createElement('span');
       badge.className = 'moderator-badge';
       badge.title = 'Moderator';
-      badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148-144 32-76 128-136-58zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24zm60-176 226-226-56-58-170 170-86-84-56 56z"/></svg>`;
+      badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148 98 112-98 112 14 148-144 32-76 128-136-58zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24zm60-176 226-226-56-58-170 170-86-84-56 56z"/></svg>`;
       nameLine.appendChild(badge);
     }
     if (isBot) {
@@ -614,8 +614,8 @@ class DSEChat {
         textSpan.textContent = messageText;
         bubble.appendChild(textSpan);
         wrapper.appendChild(bubble);
-        this.messagesContainer.appendChild(wrapper);
-        this.scrollToBottom();
+        this.chatMessages.appendChild(wrapper);
+        this.chatMessages.scrollTo({ top: this.chatMessages.scrollHeight, behavior: 'smooth' });
         return;
       }
       
