@@ -1177,7 +1177,7 @@ export default function ChatPage() {
                 .chat-container {
                     display: flex;
                     flex-direction: column;
-                    max-width: 1200px;
+                    max-width: 1900px;
                     margin: 0 auto;
                     background: var(--bs-body-bg);
                     border-radius: 16px;
@@ -1185,7 +1185,7 @@ export default function ChatPage() {
                     overflow: hidden;
                     border: 1px solid var(--bs-border-color);
                     color: rgba(255, 255, 255, 0.9);
-                    height: calc(100vh - 120px);
+                    height: calc(100vh - 220px);
                     min-height: 500px;
                 }
 

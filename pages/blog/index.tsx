@@ -727,7 +727,7 @@ function Pagination({
           borderRadius: '12px',
           border: '2px solid var(--bs-border-color, #e5e7eb)',
           background: 'var(--bs-card-bg, #ffffff)',
-          color: currentPage === 1 ? 'var(--bs-body-color, #9ca3af)' : 'var(--bs-heading-color, #1f2937)',
+          color: currentPage === 1 ? '#9ca3af' : '#ffffff',
           cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
           transition: 'all 0.2s ease',
           fontSize: '0.875rem',
@@ -747,7 +747,7 @@ function Pagination({
             borderRadius: '12px',
             border: page === currentPage ? '2px solid var(--bs-primary, #3b82f6)' : '2px solid var(--bs-border-color, #e5e7eb)',
             background: page === currentPage ? 'var(--bs-primary, #3b82f6)' : 'var(--bs-card-bg, #ffffff)',
-            color: page === currentPage ? '#fff' : 'var(--bs-heading-color, #1f2937)',
+            color: page === currentPage ? '#fff' : '#ffffff',
             cursor: page === '...' ? 'default' : 'pointer',
             transition: 'all 0.2s ease',
             fontSize: '0.875rem',
@@ -767,7 +767,7 @@ function Pagination({
           borderRadius: '12px',
           border: '2px solid var(--bs-border-color, #e5e7eb)',
           background: 'var(--bs-card-bg, #ffffff)',
-          color: currentPage === totalPages ? 'var(--bs-body-color, #9ca3af)' : 'var(--bs-heading-color, #1f2937)',
+          color: currentPage === totalPages ? '#9ca3af' : '#ffffff',
           cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
           transition: 'all 0.2s ease',
           fontSize: '0.875rem',
@@ -787,7 +787,52 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
   const [selectedSort, setSelectedSort] = useState('newest');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
+  const [isLoadingCounts, setIsLoadingCounts] = useState(false);
   const postsPerPage = 6; // Show 6 posts per page
+
+  // Fetch all view counts on mount (cached for the session) - TEMPORARILY DISABLED
+  useEffect(() => {
+    // Redis connection issues - disable batch fetching for now
+    setViewCounts({});
+    setIsLoadingCounts(false);
+    
+    /* TEMPORARILY DISABLED
+    const fetchViewCounts = async () => {
+      // Check if we already have cached counts in sessionStorage
+      const cached = sessionStorage.getItem('blogViewCounts');
+      const cacheTime = sessionStorage.getItem('blogViewCountsTime');
+      const now = Date.now();
+      
+      // Use cache if it's less than 5 minutes old
+      if (cached && cacheTime && (now - parseInt(cacheTime)) < 5 * 60 * 1000) {
+        setViewCounts(JSON.parse(cached));
+        return;
+      }
+
+      setIsLoadingCounts(true);
+      try {
+        const slugs = posts.map(p => p.slug).join(',');
+        const response = await fetch(`/api/view-counts-batch?slugs=${encodeURIComponent(slugs)}`);
+        
+        if (response.ok) {
+          const data = await response.json();
+          setViewCounts(data.counts || {});
+          
+          // Cache the results
+          sessionStorage.setItem('blogViewCounts', JSON.stringify(data.counts || {}));
+          sessionStorage.setItem('blogViewCountsTime', now.toString());
+        }
+      } catch (error) {
+        console.error('Failed to fetch view counts:', error);
+      } finally {
+        setIsLoadingCounts(false);
+      }
+    };
+
+    fetchViewCounts();
+    */
+  }, [posts]);
 
   // Filter and sort posts
   const filteredAndSortedPosts = useMemo(() => {
@@ -817,15 +862,17 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
         case 'oldest':
           return new Date(a.date).getTime() - new Date(b.date).getTime();
         case 'popular':
-          // For now, sort by date as popularity data isn't available
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
+          // Sort by view count (descending)
+          const countA = viewCounts[a.slug] || 0;
+          const countB = viewCounts[b.slug] || 0;
+          return countB - countA;
         default:
           return 0;
       }
     });
     
     return sorted;
-  }, [posts, selectedCategory, selectedSort, searchQuery]);
+  }, [posts, selectedCategory, selectedSort, searchQuery, viewCounts]);
 
   // Pagination
   const totalPages = Math.ceil(filteredAndSortedPosts.length / postsPerPage);
@@ -902,113 +949,113 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
 
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
-          {/* Custom Blog Header Section */}
-          <div style={{
-            textAlign: 'center',
-            padding: '20px 20px',
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}>
-            <h1 style={{
-              fontSize: '2.5rem',
-              fontWeight: '700',
-              marginBottom: '24px',
-              lineHeight: '1.2',
-              color: '#667eea'
-            }}>
-              Blog
-            </h1>
-            <p style={{
-              fontSize: '1rem',
-              lineHeight: '1.6',
-              color: 'var(--bs-body-color, #6b7280)',
-              marginBottom: '0',
-              textAlign: 'center'
-            }}>
-              <strong>dse.best</strong> 為香港中學文憑試（DSE）考生提供最全面的學習資源和最新考試資訊，包括歷屆試題、詳細答案、溫習策略和心得分享。
-            </p>
-          </div>
-
-          {/* Filter and Sort Bar */}
-          <FilterSortBar
-            selectedCategory={selectedCategory}
-            onCategoryChange={setSelectedCategory}
-            selectedSort={selectedSort}
-            onSortChange={setSelectedSort}
-            searchQuery={searchQuery}
-            onSearchChange={setSearchQuery}
-          />
-
-          {/* Blog Posts Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '20px',
-            marginBottom: '40px',
-            width: '100%',
-            maxWidth: '100%',
-            boxSizing: 'border-box'
-          }} className="blog-grid-container">
-            {currentPosts.map((post, index) => (
-              <BlogCard key={post.id} post={post} index={index} />
-            ))}
-          </div>
-
-          <style jsx>{`
-            .blog-grid-container {
-              display: grid !important;
-              grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-              max-width: 1200px !important;
-              margin: 0 auto !important;
-            }
-            
-            @media (min-width: 768px) {
-              .blog-grid-container {
-                grid-template-columns: repeat(3, 1fr) !important;
-                justify-items: center !important;
-              }
-              
-              .blog-grid-container > * {
-                width: 320px !important;
-                max-width: 320px !important;
-              }
-            }
-            
-            @media (max-width: 767px) {
-              .blog-grid-container {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-              }
-            }
-          `}</style>
-
-          {/* No Results */}
-          {currentPosts.length === 0 && (
+          <div className="blog-container">
+            {/* Custom Blog Header Section */}
             <div style={{
               textAlign: 'center',
-              padding: '60px 20px',
-              color: 'var(--bs-body-color, #6b7280)'
+              padding: '30px 20px',
+              maxWidth: '900px',
+              margin: '0 auto'
             }}>
-              <BiFileBlank style={{ fontSize: '64px', marginBottom: '16px', opacity: 0.5 }} />
-              <h3 style={{ margin: '0 0 8px 0', fontSize: '1.25rem' }}>
-                {searchQuery.trim() ? '找不到相關文章' : '暫無文章'}
-              </h3>
-              <p style={{ margin: '0', fontSize: '0.875rem' }}>
-                {searchQuery.trim() 
-                  ? `沒有找到包含 "${searchQuery}" 的文章，請嘗試其他關鍵字`
-                  : '請稍後再來查看最新內容'
-                }
+              <h1 className="blog-header-title" style={{
+                marginBottom: '24px',
+                color: '#667eea'
+              }}>
+                Blog
+              </h1>
+              <p className="blog-header-description" style={{
+                color: 'var(--bs-body-color, #6b7280)',
+                marginBottom: '0',
+                textAlign: 'center'
+              }}>
+                <strong>dse.best</strong> 為香港中學文憑試（DSE）考生提供最全面的學習資源和最新考試資訊，包括歷屆試題、詳細答案、溫習策略和心得分享。
               </p>
             </div>
-          )}
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
+            {/* Filter and Sort Bar */}
+            <FilterSortBar
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+              selectedSort={selectedSort}
+              onSortChange={setSelectedSort}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
             />
-          )}
+
+            {/* Blog Posts Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+              gap: '24px',
+              marginBottom: '40px',
+              maxWidth: '1200px',
+              margin: '0 auto'
+            }} className="blog-grid-container">
+              {currentPosts.map((post, index) => (
+                <BlogCard key={post.id} post={post} index={index} />
+              ))}
+            </div>
+
+            <style jsx>{`
+              .blog-grid-container {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+                gap: 24px !important;
+                max-width: 1200px !important;
+                margin: 0 auto 40px auto !important;
+              }
+              
+              @media (max-width: 767px) {
+                .blog-grid-container {
+                  grid-template-columns: 1fr !important;
+                  gap: 20px !important;
+                }
+              }
+              
+              @media (min-width: 768px) and (max-width: 991px) {
+                .blog-grid-container {
+                  grid-template-columns: repeat(2, 1fr) !important;
+                }
+              }
+              
+              @media (min-width: 992px) {
+                .blog-grid-container {
+                  grid-template-columns: repeat(3, 1fr) !important;
+                }
+              }
+            `}</style>
+
+            {/* No Results */}
+            {currentPosts.length === 0 && (
+              <div style={{
+                textAlign: 'center',
+                padding: '60px 20px',
+                color: 'var(--bs-body-color, #6b7280)',
+                maxWidth: '600px',
+                margin: '0 auto'
+              }}>
+                <BiFileBlank style={{ fontSize: '64px', marginBottom: '16px', opacity: 0.5 }} />
+                <h3 style={{ margin: '0 0 8px 0', fontSize: '1.4rem', fontFamily: "'Noto Sans HK', sans-serif" }}>
+                  {searchQuery.trim() ? '找不到相關文章' : '暫無文章'}
+                </h3>
+                <p style={{ margin: '0', fontSize: '1rem', fontFamily: "'Noto Sans HK', sans-serif" }}>
+                  {searchQuery.trim() 
+                    ? `沒有找到包含 "${searchQuery}" 的文章，請嘗試其他關鍵字`
+                    : '請稍後再來查看最新內容'
+                  }
+                </p>
+              </div>
+            )}
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>

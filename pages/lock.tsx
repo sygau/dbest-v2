@@ -188,7 +188,7 @@ export default function LockPage() {
             color: '#6b7280'
           }}
         >
-          &copy; 2025 Hung Mau Technologes Inc | All rights reserved
+          &copy; 2025 Hung Mau Technologes Inc
         </div>
       </div>
     </>
