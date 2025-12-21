@@ -511,7 +511,13 @@ html[data-bs-theme] body {
   
   /* Fix excessive spacing from Contentful */
   .post-content br + br {
-    display: none !important;
+    display: block !important;
+  }
+
+  .post-content br {
+    display: block;
+    content: "";
+    margin-top: 0.25em;
   }
   
   .post-content p:empty {
