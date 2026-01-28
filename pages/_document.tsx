@@ -9,6 +9,12 @@ export default function Document() {
         <script dangerouslySetInnerHTML={{ 
           __html: `(function(){try{var theme=localStorage.getItem('selectedTheme')||'light';document.documentElement.setAttribute('data-bs-theme',theme);document.documentElement.style.setProperty('--bs-body-bg',theme==='dark'?'#212529':theme==='blue-theme'?'#0f1535':'#eff1f3')}catch(e){document.documentElement.setAttribute('data-bs-theme','light');document.documentElement.style.setProperty('--bs-body-bg','#eff1f3')}})()` 
         }} />
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              "html:not([data-bs-theme]) .card,html[data-bs-theme='light'] .card,html[data-bs-theme='semi-dark'] .card{background-color:#ffffff !important;}html:not([data-bs-theme]) .card.rounded-4,html[data-bs-theme='light'] .card.rounded-4,html[data-bs-theme='semi-dark'] .card.rounded-4{background-color:#ffffff !important;}"
+          }}
+        />
         <meta property="og:site_name" content="dse.best" />
         <meta property="og:locale" content="zh_HK" />
         <meta property="og:locale:alternate" content="en_US" />
