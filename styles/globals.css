@@ -425,7 +425,26 @@ html[data-bs-theme] body {
   /* Image wrapper from Contentful */
   .post-content .custom-image-block img,
   .post-content div img {
-    max-width: 600px !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  @media (min-width: 769px) {
+    .post-content .custom-image-block img,
+    .post-content div img {
+      max-width: 600px !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .post-content ul,
+    .post-content ol {
+      padding-left: 1.25em !important;
+    }
+
+    .post-content li {
+      padding-left: 0.25em !important;
+    }
   }
   
   /* Links - Modern hover effects */
