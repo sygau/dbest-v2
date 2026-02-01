@@ -67,7 +67,6 @@ const SORT_OPTIONS = [
 function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost, index: number, viewCount: number | undefined, isLoadingCounts: boolean }) {
   const [imageUrl, setImageUrl] = useState<string>('');
   const [isImageReady, setIsImageReady] = useState(false);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
   
   // Update image URL when zoom level changes
   useEffect(() => {
@@ -92,7 +91,6 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
         setImageUrl(post.featuredImage);
       }
       setIsImageReady(true);
-      setIsImageLoaded(false);
     };
 
     updateImageUrl();
@@ -160,12 +158,6 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
           borderTopRightRadius: '16px',
           overflow: 'hidden'
         }}>
-          {!isImageLoaded && (
-            <div className="blog-skeleton" style={{
-              width: '100%',
-              height: '100%'
-            }} />
-          )}
           {isImageReady && imageUrl && (
             <img 
               src={imageUrl} 
@@ -175,10 +167,9 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
                 height: '100%',
                 objectFit: 'cover',
                 transition: 'transform 0.3s ease',
-                display: isImageLoaded ? 'block' : 'none'
+                display: 'block'
               }}
               loading="lazy"
-              onLoad={() => setIsImageLoaded(true)}
               onError={(e) => {
                 // Fallback to a simpler dummy image if the main one fails
                 const target = e.target as HTMLImageElement;
