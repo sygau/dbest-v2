@@ -6,6 +6,7 @@ import path from 'path'
 import { useEffect, useState, useMemo } from 'react'
 import Image from 'next/image'
 import NavigationLink from '../../components/NavigationLink'
+import DefaultThumb from '../../components/DefaultThumb'
 import { generateBlogStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData'
 import { getMainPageMetadata } from '../../utils/structuredData';
 
@@ -66,54 +67,6 @@ const SORT_OPTIONS = [
 
 // Individual blog card component
 function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost, index: number, viewCount: number | undefined, isLoadingCounts: boolean }) {
-  const [imageUrl, setImageUrl] = useState<string>('');
-  const [isImageReady, setIsImageReady] = useState(false);
-  
-  // Update image URL when zoom level changes
-  useEffect(() => {
-    const updateImageUrl = () => {
-      if (!post.featuredImage) {
-        const categoryName = post.category || 'Uncategorized';
-        const textColor = '000000';
-        const category = CATEGORIES.find(cat => cat.value === post.category) || CATEGORIES[0];
-        const colorCode = category.color.replace('#', '');
-        
-        // Adaptive resolution based on device pixel ratio and zoom level
-        const pixelRatio = window.devicePixelRatio || 1;
-        const zoomLevel = window.visualViewport?.scale || 1;
-        const effectiveScale = pixelRatio * zoomLevel;
-        
-        // Calculate responsive dimensions
-        const baseWidth = Math.round(400 * effectiveScale);
-        const baseHeight = Math.round(250 * effectiveScale);
-        
-        setImageUrl(`https://placehold.co/${baseWidth}x${baseHeight}/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`);
-      } else {
-        setImageUrl(post.featuredImage);
-      }
-      setIsImageReady(true);
-    };
-
-    updateImageUrl();
-
-    // Listen for zoom level changes
-    const handleResize = () => {
-      updateImageUrl();
-    };
-
-    window.addEventListener('resize', handleResize);
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', handleResize);
-    }
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      if (window.visualViewport) {
-        window.visualViewport.removeEventListener('resize', handleResize);
-      }
-    };
-  }, [post.featuredImage, post.category]);
-  
   const category = CATEGORIES.find(cat => cat.value === post.category) || CATEGORIES[0];
   
 
@@ -159,9 +112,9 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
           borderTopRightRadius: '16px',
           overflow: 'hidden'
         }}>
-          {isImageReady && imageUrl && (
+          {post.featuredImage ? (
             <Image
-              src={imageUrl}
+              src={post.featuredImage}
               alt={post.title}
               fill
               sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -169,13 +122,9 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
                 objectFit: 'cover',
                 transition: 'transform 0.3s ease'
               }}
-              onError={() => {
-                const categoryName = post.category || 'Uncategorized';
-                const textColor = '000000';
-                const colorCode = category.color.replace('#', '');
-                setImageUrl(`https://placehold.co/400x250/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`);
-              }}
             />
+          ) : (
+            <DefaultThumb title={post.title} subtitle={category.label} color={category.color} />
           )}
           {/* Category Badge */}
           <div className="blog-card-category" style={{
@@ -223,9 +172,7 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
             wordWrap: 'break-word',
             wordBreak: 'break-word'
           }}>
-            {isImageReady ? post.title : (
-              <span className="blog-skeleton" style={{ display: 'block', height: '18px', width: '85%', borderRadius: '8px' }} />
-            )}
+            {post.title}
           </h3>
           
           {/* Excerpt */}
@@ -243,13 +190,7 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
             wordWrap: 'break-word',
             wordBreak: 'break-word'
           }}>
-            {isImageReady ? (post.excerpt || post.content.substring(0, 120) + '...') : (
-              <span style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <span className="blog-skeleton" style={{ display: 'block', height: '12px', width: '100%', borderRadius: '8px' }} />
-                <span className="blog-skeleton" style={{ display: 'block', height: '12px', width: '90%', borderRadius: '8px' }} />
-                <span className="blog-skeleton" style={{ display: 'block', height: '12px', width: '70%', borderRadius: '8px' }} />
-              </span>
-            )}
+            {post.excerpt || post.content.substring(0, 120) + '...'}
           </p>
           
           {/* Meta Info - All three items */}
@@ -263,48 +204,35 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
             flexWrap: 'wrap',
             flexShrink: 0
           }}>
-            {isImageReady ? (
-              <>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <BiCalendarEvent style={{ fontSize: '12px' }} />
-                  {formatDate(post.date)}
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <BiCalendarEvent style={{ fontSize: '12px' }} />
+              {formatDate(post.date)}
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <BiTimeFive style={{ fontSize: '12px' }} />
+              {post.readingTime || Math.ceil(post.content.length / 500)}m
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <BiShow style={{ fontSize: '12px' }} />
+              {isLoadingCounts ? (
+                <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '28px', borderRadius: '6px' }} />
+              ) : (
+                (viewCount || 0)
+              )}
+            </span>
+            {post.comments && (
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <BiComment style={{ fontSize: '12px' }} />
+                <span 
+                  data-disqus-identifier={post.slug}
+                  style={{ 
+                    color: 'inherit', 
+                    fontSize: 'inherit'
+                  }}
+                >
+                  0
                 </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <BiTimeFive style={{ fontSize: '12px' }} />
-                  {post.readingTime || Math.ceil(post.content.length / 500)}m
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <BiShow style={{ fontSize: '12px' }} />
-                  {isLoadingCounts ? (
-                    <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '28px', borderRadius: '6px' }} />
-                  ) : (
-                    (viewCount || 0)
-                  )}
-                </span>
-                {post.comments && (
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <BiComment style={{ fontSize: '12px' }} />
-                    <span 
-                      data-disqus-identifier={post.slug}
-                      style={{ 
-                        color: 'inherit', 
-                        fontSize: 'inherit'
-                      }}
-                    >
-                      0
-                    </span>
-                  </span>
-                )}
-              </>
-            ) : (
-              <>
-                <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '90px', borderRadius: '6px' }} />
-                <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '50px', borderRadius: '6px' }} />
-                <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '40px', borderRadius: '6px' }} />
-                {post.comments && (
-                  <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '40px', borderRadius: '6px' }} />
-                )}
-              </>
+              </span>
             )}
           </div>
         </div>
