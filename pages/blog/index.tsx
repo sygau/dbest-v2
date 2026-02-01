@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next'
 import fs from 'fs'
 import path from 'path'
 import { useEffect, useState, useMemo } from 'react'
+import Image from 'next/image'
 import NavigationLink from '../../components/NavigationLink'
 import { generateBlogStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData'
 import { getMainPageMetadata } from '../../utils/structuredData';
@@ -159,24 +160,20 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
           overflow: 'hidden'
         }}>
           {isImageReady && imageUrl && (
-            <img 
-              src={imageUrl} 
+            <Image
+              src={imageUrl}
               alt={post.title}
+              fill
+              sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={{
-                width: '100%',
-                height: '100%',
                 objectFit: 'cover',
-                transition: 'transform 0.3s ease',
-                display: 'block'
+                transition: 'transform 0.3s ease'
               }}
-              loading="lazy"
-              onError={(e) => {
-                // Fallback to a simpler dummy image if the main one fails
-                const target = e.target as HTMLImageElement;
+              onError={() => {
                 const categoryName = post.category || 'Uncategorized';
                 const textColor = '000000';
                 const colorCode = category.color.replace('#', '');
-                target.src = `https://placehold.co/400x250/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`;
+                setImageUrl(`https://placehold.co/400x250/${colorCode}/${textColor}?text=${encodeURIComponent(categoryName)}`);
               }}
             />
           )}

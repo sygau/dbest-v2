@@ -35,6 +35,7 @@ interface BlogPost {
   createdAt: string;
   updatedAt: string;
   robots: string;
+  faqs?: { question: string; answer: string }[];
 }
 
 interface BlogPostProps {
@@ -153,6 +154,8 @@ export default function BlogPost({ post, relatedPosts }: BlogPostProps) {
   const categoryDisplayName = getCategoryDisplayName(post.category);
   const featuredImageUrl = post.featuredImage || 'https://dse.best/assets/images/logo-icon.webp';
   const { viewCount, isLoading } = useViewCount(post.slug);
+  const canonicalUrl = `https://dse.best/blog/${post.slug}`;
+  const faqItems = post.faqs?.filter(f => f?.question && f?.answer) || [];
 
   // Process HTML content and extract headings
   useEffect(() => {
@@ -249,12 +252,13 @@ export default function BlogPost({ post, relatedPosts }: BlogPostProps) {
         <title>{post.seoTitle}</title>
         <meta name="description" content={post.seoDescription} />
         <meta name="robots" content={post.robots} />
+        <link rel="canonical" href={canonicalUrl} />
 
         {/* Open Graph Meta Tags */}
         <meta property="og:title" content={post.seoTitle} />
         <meta property="og:description" content={post.seoDescription} />
         <meta property="og:image" content={featuredImageUrl} />
-        <meta property="og:url" content={`https://dse.best/blog/${post.slug}`} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="article" />
         <meta name="theme-color" content="#0f1535" />
 
@@ -267,11 +271,12 @@ export default function BlogPost({ post, relatedPosts }: BlogPostProps) {
               "@type": "BlogPosting",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "@id": `https://dse.best/blog/${post.slug}`
+                "@id": canonicalUrl
               },
               "headline": post.seoTitle,
               "description": post.seoDescription,
-              "image": "https://dse.best/assets/images/logo-icon.webp",
+              "image": [featuredImageUrl],
+              "url": canonicalUrl,
               "author": {
                 "@type": "Person",
                 "name": post.author
@@ -285,10 +290,32 @@ export default function BlogPost({ post, relatedPosts }: BlogPostProps) {
                 }
               },
               "datePublished": post.createdAt,
-              "dateModified": post.updatedAt
+              "dateModified": post.updatedAt,
+              "keywords": post.tags,
+              "articleSection": post.category
             })
           }}
         />
+
+        {faqItems.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqItems.map((f) => ({
+                  "@type": "Question",
+                  "name": f.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f.answer
+                  }
+                }))
+              })
+            }}
+          />
+        )}
       </Head>
 
       {/* Breadcrumb */}

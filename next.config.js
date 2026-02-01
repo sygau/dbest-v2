@@ -28,6 +28,7 @@ const nextConfig = {
     domains: [
       'images.ctfassets.net', // Contentful CDN
       'dummyimage.com', // Fallback images
+      'placehold.co', // Placeholder images
       'dse.best', // Your domain
       'nextjs.dse.best' // Preview domain
     ],
