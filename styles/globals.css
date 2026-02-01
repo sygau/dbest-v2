@@ -264,7 +264,7 @@ html[data-bs-theme] body {
   .post-content ul,
   .post-content ol {
     margin-bottom: 0 !important;
-    padding-left: 2.5em !important;
+    padding-left: 1.4em !important;
     font-size: 17px !important;
     line-height: 1.85 !important;
     margin-top: 1em !important;
@@ -296,7 +296,7 @@ html[data-bs-theme] body {
   
   .post-content li {
     margin-bottom: 0.75em !important;
-    padding-left: 0.5em !important;
+    padding-left: 0.15em !important;
     line-height: 1.8 !important;
   }
   

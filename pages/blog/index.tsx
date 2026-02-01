@@ -7,7 +7,6 @@ import { useEffect, useState, useMemo } from 'react'
 import NavigationLink from '../../components/NavigationLink'
 import { generateBlogStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData'
 import { getMainPageMetadata } from '../../utils/structuredData';
-import { useViewCount } from '@/hooks/useViewCount';
 
 // Define types
 interface BlogPost {
@@ -65,10 +64,10 @@ const SORT_OPTIONS = [
 ];
 
 // Individual blog card component
-function BlogCard({ post, index }: { post: BlogPost, index: number }) {
-  const { viewCount, isLoading } = useViewCount(post.slug);
+function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost, index: number, viewCount: number | undefined, isLoadingCounts: boolean }) {
   const [imageUrl, setImageUrl] = useState<string>('');
   const [isImageReady, setIsImageReady] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   
   // Update image URL when zoom level changes
   useEffect(() => {
@@ -93,6 +92,7 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
         setImageUrl(post.featuredImage);
       }
       setIsImageReady(true);
+      setIsImageLoaded(false);
     };
 
     updateImageUrl();
@@ -160,6 +160,12 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
           borderTopRightRadius: '16px',
           overflow: 'hidden'
         }}>
+          {!isImageLoaded && (
+            <div className="blog-skeleton" style={{
+              width: '100%',
+              height: '100%'
+            }} />
+          )}
           {isImageReady && imageUrl && (
             <img 
               src={imageUrl} 
@@ -169,8 +175,10 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
                 height: '100%',
                 objectFit: 'cover',
                 transition: 'transform 0.3s ease',
-                display: 'block'
+                display: isImageLoaded ? 'block' : 'none'
               }}
+              loading="lazy"
+              onLoad={() => setIsImageLoaded(true)}
               onError={(e) => {
                 // Fallback to a simpler dummy image if the main one fails
                 const target = e.target as HTMLImageElement;
@@ -227,7 +235,9 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
             wordWrap: 'break-word',
             wordBreak: 'break-word'
           }}>
-            {post.title}
+            {isImageReady ? post.title : (
+              <span className="blog-skeleton" style={{ display: 'block', height: '18px', width: '85%', borderRadius: '8px' }} />
+            )}
           </h3>
           
           {/* Excerpt */}
@@ -245,7 +255,13 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
             wordWrap: 'break-word',
             wordBreak: 'break-word'
           }}>
-            {post.excerpt || post.content.substring(0, 120) + '...'}
+            {isImageReady ? (post.excerpt || post.content.substring(0, 120) + '...') : (
+              <span style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <span className="blog-skeleton" style={{ display: 'block', height: '12px', width: '100%', borderRadius: '8px' }} />
+                <span className="blog-skeleton" style={{ display: 'block', height: '12px', width: '90%', borderRadius: '8px' }} />
+                <span className="blog-skeleton" style={{ display: 'block', height: '12px', width: '70%', borderRadius: '8px' }} />
+              </span>
+            )}
           </p>
           
           {/* Meta Info - All three items */}
@@ -259,33 +275,48 @@ function BlogCard({ post, index }: { post: BlogPost, index: number }) {
             flexWrap: 'wrap',
             flexShrink: 0
           }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <BiCalendarEvent style={{ fontSize: '12px' }} />
-              {formatDate(post.date)}
-            </span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <BiTimeFive style={{ fontSize: '12px' }} />
-              {post.readingTime || Math.ceil(post.content.length / 500)}m
-            </span>
-            {!isLoading && (
-              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <BiShow style={{ fontSize: '12px' }} />
-                {viewCount || 0}
-              </span>
-            )}
-            {post.comments && (
-              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <BiComment style={{ fontSize: '12px' }} />
-                <span 
-                  data-disqus-identifier={post.slug}
-                  style={{ 
-                    color: 'inherit', 
-                    fontSize: 'inherit'
-                  }}
-                >
-                  0
+            {isImageReady ? (
+              <>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <BiCalendarEvent style={{ fontSize: '12px' }} />
+                  {formatDate(post.date)}
                 </span>
-              </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <BiTimeFive style={{ fontSize: '12px' }} />
+                  {post.readingTime || Math.ceil(post.content.length / 500)}m
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <BiShow style={{ fontSize: '12px' }} />
+                  {isLoadingCounts ? (
+                    <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '28px', borderRadius: '6px' }} />
+                  ) : (
+                    (viewCount || 0)
+                  )}
+                </span>
+                {post.comments && (
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <BiComment style={{ fontSize: '12px' }} />
+                    <span 
+                      data-disqus-identifier={post.slug}
+                      style={{ 
+                        color: 'inherit', 
+                        fontSize: 'inherit'
+                      }}
+                    >
+                      0
+                    </span>
+                  </span>
+                )}
+              </>
+            ) : (
+              <>
+                <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '90px', borderRadius: '6px' }} />
+                <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '50px', borderRadius: '6px' }} />
+                <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '40px', borderRadius: '6px' }} />
+                {post.comments && (
+                  <span className="blog-skeleton" style={{ display: 'inline-block', height: '12px', width: '40px', borderRadius: '6px' }} />
+                )}
+              </>
             )}
           </div>
         </div>
@@ -727,7 +758,7 @@ function Pagination({
           borderRadius: '12px',
           border: '2px solid var(--bs-border-color, #e5e7eb)',
           background: 'var(--bs-card-bg, #ffffff)',
-          color: currentPage === 1 ? '#9ca3af' : '#ffffff',
+          color: currentPage === 1 ? '#9ca3af' : 'var(--bs-body-color, #374151)',
           cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
           transition: 'all 0.2s ease',
           fontSize: '0.875rem',
@@ -747,7 +778,7 @@ function Pagination({
             borderRadius: '12px',
             border: page === currentPage ? '2px solid var(--bs-primary, #3b82f6)' : '2px solid var(--bs-border-color, #e5e7eb)',
             background: page === currentPage ? 'var(--bs-primary, #3b82f6)' : 'var(--bs-card-bg, #ffffff)',
-            color: page === currentPage ? '#fff' : '#ffffff',
+            color: page === currentPage ? '#fff' : 'var(--bs-body-color, #374151)',
             cursor: page === '...' ? 'default' : 'pointer',
             transition: 'all 0.2s ease',
             fontSize: '0.875rem',
@@ -767,7 +798,7 @@ function Pagination({
           borderRadius: '12px',
           border: '2px solid var(--bs-border-color, #e5e7eb)',
           background: 'var(--bs-card-bg, #ffffff)',
-          color: currentPage === totalPages ? '#9ca3af' : '#ffffff',
+          color: currentPage === totalPages ? '#9ca3af' : 'var(--bs-body-color, #374151)',
           cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
           transition: 'all 0.2s ease',
           fontSize: '0.875rem',
@@ -791,13 +822,8 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
   const [isLoadingCounts, setIsLoadingCounts] = useState(false);
   const postsPerPage = 6; // Show 6 posts per page
 
-  // Fetch all view counts on mount (cached for the session) - TEMPORARILY DISABLED
+  // Fetch all view counts on mount (cached for the session)
   useEffect(() => {
-    // Redis connection issues - disable batch fetching for now
-    setViewCounts({});
-    setIsLoadingCounts(false);
-    
-    /* TEMPORARILY DISABLED
     const fetchViewCounts = async () => {
       // Check if we already have cached counts in sessionStorage
       const cached = sessionStorage.getItem('blogViewCounts');
@@ -812,17 +838,31 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
 
       setIsLoadingCounts(true);
       try {
-        const slugs = posts.map(p => p.slug).join(',');
-        const response = await fetch(`/api/view-counts-batch?slugs=${encodeURIComponent(slugs)}`);
-        
-        if (response.ok) {
-          const data = await response.json();
-          setViewCounts(data.counts || {});
-          
-          // Cache the results
-          sessionStorage.setItem('blogViewCounts', JSON.stringify(data.counts || {}));
-          sessionStorage.setItem('blogViewCountsTime', now.toString());
+        const maxPostsForCounts = 100;
+        const slugList = [...posts]
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          .slice(0, maxPostsForCounts)
+          .map(p => p.slug);
+        const chunkSize = 80;
+        const mergedCounts: Record<string, number> = {};
+
+        for (let i = 0; i < slugList.length; i += chunkSize) {
+          const chunk = slugList.slice(i, i + chunkSize);
+          const slugs = chunk.join(',');
+          const response = await fetch(`https://api-v2.dse.best/view-count?slugs=${encodeURIComponent(slugs)}`);
+
+          if (response.ok) {
+            const data = await response.json();
+            const counts = data.counts || {};
+            Object.assign(mergedCounts, counts);
+          }
         }
+
+        setViewCounts(mergedCounts);
+
+        // Cache the results
+        sessionStorage.setItem('blogViewCounts', JSON.stringify(mergedCounts));
+        sessionStorage.setItem('blogViewCountsTime', now.toString());
       } catch (error) {
         console.error('Failed to fetch view counts:', error);
       } finally {
@@ -831,7 +871,6 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
     };
 
     fetchViewCounts();
-    */
   }, [posts]);
 
   // Filter and sort posts
@@ -865,7 +904,8 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
           // Sort by view count (descending)
           const countA = viewCounts[a.slug] || 0;
           const countB = viewCounts[b.slug] || 0;
-          return countB - countA;
+          if (countB !== countA) return countB - countA;
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
         default:
           return 0;
       }
@@ -992,7 +1032,13 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
               margin: '0 auto'
             }} className="blog-grid-container">
               {currentPosts.map((post, index) => (
-                <BlogCard key={post.id} post={post} index={index} />
+                <BlogCard 
+                  key={post.id} 
+                  post={post} 
+                  index={index} 
+                  viewCount={viewCounts[post.slug]} 
+                  isLoadingCounts={isLoadingCounts}
+                />
               ))}
             </div>
 
@@ -1003,6 +1049,22 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                 gap: 24px !important;
                 max-width: 1200px !important;
                 margin: 0 auto 40px auto !important;
+              }
+
+              .blog-skeleton {
+                background: linear-gradient(
+                  90deg,
+                  rgba(148, 163, 184, 0.18) 25%,
+                  rgba(148, 163, 184, 0.32) 37%,
+                  rgba(148, 163, 184, 0.18) 63%
+                );
+                background-size: 400% 100%;
+                animation: blogShimmer 1.2s ease-in-out infinite;
+              }
+
+              @keyframes blogShimmer {
+                0% { background-position: 100% 0; }
+                100% { background-position: -100% 0; }
               }
               
               @media (max-width: 767px) {
