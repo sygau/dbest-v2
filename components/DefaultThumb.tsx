@@ -11,8 +11,32 @@ function truncate(text: string, max: number) {
   return text.length > max ? text.slice(0, max - 1) + '…' : text
 }
 
+function splitIntoLines(text: string, charsPerLine: number, maxLines: number) {
+  const chars = Array.from(text || '')
+  const lines: string[] = []
+
+  for (let i = 0; i < chars.length && lines.length < maxLines; i += charsPerLine) {
+    lines.push(chars.slice(i, i + charsPerLine).join(''))
+  }
+
+  const usedChars = lines.join('').length
+  const hasMore = usedChars < chars.length
+
+  if (hasMore && lines.length > 0) {
+    const last = Array.from(lines[lines.length - 1])
+    if (last.length > 0) {
+      last[last.length - 1] = '…'
+      lines[lines.length - 1] = last.join('')
+    } else {
+      lines[lines.length - 1] = '…'
+    }
+  }
+
+  return lines
+}
+
 export default function DefaultThumb({ title, subtitle, color = '#5b5fc7' }: DefaultThumbProps) {
-  const safeTitle = useMemo(() => truncate(title, 26), [title])
+  const titleLines = useMemo(() => splitIntoLines(title, 16, 2), [title])
   const safeSubtitle = useMemo(() => (subtitle ? truncate(subtitle, 18) : ''), [subtitle])
 
   return (
@@ -64,7 +88,11 @@ export default function DefaultThumb({ title, subtitle, color = '#5b5fc7' }: Def
         letterSpacing="-0.5"
         fontFamily="'Noto Sans HK','PingFang HK','Microsoft JhengHei',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
       >
-        {safeTitle}
+        {(titleLines.length ? titleLines : ['']).map((line, i) => (
+          <tspan key={i} x="72" dy={i === 0 ? 0 : 76}>
+            {line}
+          </tspan>
+        ))}
       </text>
 
       <text

@@ -350,7 +350,9 @@ export default function BlogPost({ post, relatedPosts }: BlogPostProps) {
                     lineHeight: '1.3',
                     marginBottom: '1.5rem',
                     color: 'var(--bs-heading-color)',
-                    fontFamily: "'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif"
+                    fontFamily: "'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif",
+                    overflowWrap: 'anywhere',
+                    wordBreak: 'break-word'
                   }}>
                     {post.title}
                   </h1>

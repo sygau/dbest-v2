@@ -169,6 +169,7 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
+            overflowWrap: 'anywhere',
             wordWrap: 'break-word',
             wordBreak: 'break-word'
           }}>
@@ -187,6 +188,7 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
             minHeight: 0,
+            overflowWrap: 'anywhere',
             wordWrap: 'break-word',
             wordBreak: 'break-word'
           }}>
