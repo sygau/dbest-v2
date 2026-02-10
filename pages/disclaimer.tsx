@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { getMainPageMetadata } from '../utils/structuredData';
 
 export default function DisclaimerPage() {
-  const metadata = getMainPageMetadata('disclaimer');
+    const metadata = getMainPageMetadata('disclaimer');
 
     return (
         <>
@@ -37,62 +37,72 @@ export default function DisclaimerPage() {
                 <div className="card-body">
                     <h1>免責聲明 Disclaimer</h1>
                     <br />
+
+                    {/* 中文版 */}
                     <h3>中文</h3>
                     <div className="disclaimer-content">
-                        <p><strong>網站目的與性質</strong></p>
-                        <p>本網站旨在為學生提供學習資源和參考資料，包括但不限於考試資訊、學習材料、成績分析等。本網站純屬教育性質，旨在協助學生學習和準備考試。</p>
-                        
-                        <p><strong>資訊準確性</strong></p>
-                        <p>本網站提供的所有資訊僅供參考，我們努力確保資訊的準確性和時效性，但不保證所有資訊的完全準確性、完整性或最新性。資訊可能隨時更新或變更，恕不另行通知。</p>
-                        
-                        <p><strong>免責聲明</strong></p>
-                        <p>使用本網站及其內容的風險由用戶自行承擔。本網站不對以下情況承擔任何責任：</p>
+                        <p><strong>1. 網站目的與工具性質</strong></p>
+                        <p>本網站（下稱「本站」）旨在為學生提供學習輔助工具（如操卷計時器）及參考資料。本站並非香港考試及評核局（考評局）之官方網站，與考評局無任何隸屬或關聯關係。本站純屬教育輔助性質，旨在協助學生進行模擬練習。</p>
+
+                        <p><strong>2. 資訊與時間準確性</strong></p>
+                        <p>本站提供的所有資訊及計時設定僅供參考。我們努力確保資訊的準確性和時效性，但不保證所有資訊的完全準確性、完整性或最新性。</p>
                         <ul>
-                            <li>因使用本網站資訊而導致的任何直接或間接損失</li>
-                            <li>資訊的準確性、完整性或適用性</li>
-                            <li>因網站技術問題導致的服務中斷或延誤</li>
+                            <li><strong>技術誤差聲明：</strong> 網頁計時工具之準確度可能受用戶硬件設備、瀏覽器效能、系統休眠或網絡狀況影響。用戶應理解本工具僅供模擬練習參考，不應視為唯一精確的計時標準。</li>
+                            <li>如因計時誤差或技術故障導致之任何後果（如模擬考試時間不準），本站概不負責。</li>
+                        </ul>
+
+                        <p><strong>3. 免責聲明與風險承擔</strong></p>
+                        <p>使用本網站及其內容的風險由用戶自行承擔。在法律允許的最大範圍內，本站不對以下情況承擔任何責任：</p>
+                        <ul>
+                            <li>因使用本網站資訊或工具而導致的任何直接或間接損失</li>
+                            <li>因網站技術問題、伺服器維護或第三方服務故障導致的服務中斷或延誤</li>
                             <li>第三方網站連結的內容或服務</li>
                         </ul>
-                        
-                        <p><strong>教育建議</strong></p>
-                        <p>本網站提供的學習建議和策略僅供參考，不應視為專業教育建議。學生應根據自身情況和需求，結合專業教師指導，制定適合的學習計劃。</p>
-                        
-                        <p><strong>版權聲明</strong></p>
-                        <p>本網站內容受版權保護，未經許可不得複製、分發或商業使用。部分內容可能來自第三方，其版權歸原作者所有。</p>
-                        
-                        <p><strong>聯絡我們</strong></p>
+
+                        <p><strong>4. 版權與商標聲明</strong></p>
+                        <p>本站原創之代碼、介面設計及內容受版權保護。本站所引述或提及之「HKDSE」、「DSE」及相關科目名稱，其商標及版權均屬其原權利人（包括香港考試及評核局）所有。本站使用該等名稱僅作識別及教育用途（Fair Use），並不代表本站擁有該等權利，亦不暗示任何官方認可。</p>
+
+                        <p><strong>5. 教育建議</strong></p>
+                        <p>本網站提供的學習建議和策略僅供參考，不應視為專業教育建議。學生應根據自身情況，結合學校老師及專業導師的指導，制定適合的學習計劃。</p>
+
+                        <p><strong>6. 聯絡我們</strong></p>
                         <p>如對本免責聲明有任何疑問，請通過網站聯絡頁面與我們聯繫。</p>
-                        
+
                         <p><em>最後更新：2024年12月30日</em></p>
                     </div>
-                    
-                    <hr />
+
+                    <hr className="my-4" />
+
+                    {/* 英文版 */}
                     <h3>English</h3>
                     <div className="disclaimer-content">
-                        <p><strong>Website Purpose and Nature</strong></p>
-                        <p>This website is designed to provide educational resources and reference materials for students, including but not limited to examination information, study materials, grade analysis, and academic guidance. This website is purely educational in nature and aims to assist students in their learning and exam preparation.</p>
-                        
-                        <p><strong>Information Accuracy</strong></p>
-                        <p>All information provided on this website is for reference purposes only. While we strive to ensure the accuracy and timeliness of information, we do not guarantee the complete accuracy, completeness, or currency of all information. Information may be updated or changed at any time without prior notice.</p>
-                        
-                        <p><strong>Disclaimer of Liability</strong></p>
-                        <p>The risk of using this website and its content is borne by the user. This website shall not be liable for the following circumstances:</p>
+                        <p><strong>1. Purpose and Nature of the Website</strong></p>
+                        <p>This website (hereinafter referred to as "this Site") aims to provide educational auxiliary tools (such as exam timers) and reference materials for students. This Site is NOT an official website of the Hong Kong Examinations and Assessment Authority (HKEAA) and has no affiliation or association with the HKEAA. This Site is purely educational in nature, intended to assist students in mock practice.</p>
+
+                        <p><strong>2. Accuracy of Information and Timing</strong></p>
+                        <p>All information and timer settings provided on this Site are for reference only. While we strive to ensure accuracy, we do not guarantee the complete accuracy, completeness, or currency of all information.</p>
                         <ul>
-                            <li>Any direct or indirect losses resulting from the use of information on this website</li>
-                            <li>The accuracy, completeness, or applicability of information</li>
-                            <li>Service interruptions or delays due to technical issues</li>
-                            <li>Content or services of third-party website links</li>
+                            <li><strong>Technical Discrepancy Disclaimer:</strong> The accuracy of web-based timing tools may be affected by user hardware, browser performance, system sleep modes, or network conditions. Users should understand that these tools are for simulation reference only and should not be regarded as the sole precise standard for timing.</li>
+                            <li>This Site shall not be liable for any consequences (e.g., inaccurate mock exam timing) resulting from timing errors or technical malfunctions.</li>
                         </ul>
-                        
-                        <p><strong>Educational Advice</strong></p>
-                        <p>Learning suggestions and strategies provided on this website are for reference only and should not be considered as professional educational advice. Students should develop appropriate study plans based on their individual circumstances and needs, in consultation with professional educators.</p>
-                        
-                        <p><strong>Copyright Notice</strong></p>
-                        <p>The content of this website is protected by copyright and may not be reproduced, distributed, or used commercially without permission. Some content may be sourced from third parties, and the copyright belongs to the original authors.</p>
-                        
-                        <p><strong>Contact Us</strong></p>
+
+                        <p><strong>3. Disclaimer of Liability</strong></p>
+                        <p>The risk of using this Site and its content is borne solely by the user. To the fullest extent permitted by law, this Site shall not be liable for:</p>
+                        <ul>
+                            <li>Any direct or indirect losses resulting from the use of information or tools on this Site</li>
+                            <li>Service interruptions or delays due to technical issues, server maintenance, or third-party service failures</li>
+                            <li>Content or services of third-party external links</li>
+                        </ul>
+
+                        <p><strong>4. Copyright and Trademark Notice</strong></p>
+                        <p>Original code, interface design, and content of this Site are protected by copyright. Trademarks and copyrights for "HKDSE," "DSE," and related subject names mentioned on this Site belong to their respective owners (including the HKEAA). The use of such names on this Site is for identification and educational purposes only (Fair Use), does not imply ownership by this Site, and does not imply any official endorsement.</p>
+
+                        <p><strong>5. Educational Advice</strong></p>
+                        <p>Learning suggestions and strategies provided on this Site are for reference only and should not be considered professional educational advice. Students should develop study plans based on their own circumstances and guidance from professional educators.</p>
+
+                        <p><strong>6. Contact Us</strong></p>
                         <p>If you have any questions about this disclaimer, please contact us through the website's contact page.</p>
-                        
+
                         <p><em>Last updated: December 30, 2024</em></p>
                     </div>
                 </div>
