@@ -115,7 +115,7 @@ export default function CountdownPage() {
                         <div className="countdown-grid">
                             <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.days}>
-                                    {timeLeft.days.toString().padStart(3, '0')}
+                                    {timeLeft.days}
                                 </div>
                                 <div className="card-label">
                                     <span className="label-zh">天</span>
@@ -125,7 +125,7 @@ export default function CountdownPage() {
 
                             <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.hours}>
-                                    {timeLeft.hours.toString().padStart(2, '0')}
+                                    {timeLeft.hours}
                                 </div>
                                 <div className="card-label">
                                     <span className="label-zh">小時</span>
@@ -135,7 +135,7 @@ export default function CountdownPage() {
 
                             <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.minutes}>
-                                    {timeLeft.minutes.toString().padStart(2, '0')}
+                                    {timeLeft.minutes}
                                 </div>
                                 <div className="card-label">
                                     <span className="label-zh">分鐘</span>
@@ -145,7 +145,7 @@ export default function CountdownPage() {
 
                             <div className="countdown-card">
                                 <div className="card-number" data-value={timeLeft.seconds}>
-                                    {timeLeft.seconds.toString().padStart(2, '0')}
+                                    {timeLeft.seconds}
                                 </div>
                                 <div className="card-label">
                                     <span className="label-zh">秒</span>
@@ -307,32 +307,24 @@ export default function CountdownPage() {
         }
 
         .countdown-page .countdown-card {
-          background: rgba(128, 128, 128, 0.1);
+          background: rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(20px);
-          border: 1px solid var(--bs-border-color);
+          border: 1px solid #adbecf;
           border-radius: 24px;
           padding: 2rem 1.5rem;
           text-align: center;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           aspect-ratio: 0;
           display: flex;
           flex-direction: column;
           justify-content: center;
           min-height: 160px;
           box-shadow: 
-            0 10px 25px -5px var(--shadow-color),
+            0 4px 15px -5px var(--shadow-color),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
           position: relative;
           overflow: hidden;
         }
 
-        .countdown-page .countdown-card:hover {
-          transform: translateY(-8px) scale(1.03);
-          background: rgba(128, 128, 128, 0.15);
-          box-shadow: 
-            0 20px 40px -10px var(--shadow-color),
-            inset 0 1px 0 rgba(255, 255, 255, 0.15);
-        }
 
         .countdown-page .card-number {
           font-family: 'Roboto', 'Segoe UI', sans-serif;
@@ -356,10 +348,6 @@ export default function CountdownPage() {
           color: #8b5cf6;
         }
 
-        .countdown-page .countdown-card:hover .card-number {
-          transform: scale(1.08);
-          text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
 
         .countdown-page .card-label {
           display: flex;
