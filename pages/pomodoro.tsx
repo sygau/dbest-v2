@@ -1,239 +1,194 @@
 import Head from 'next/head';
 import { useState, useEffect, useRef } from 'react';
-import { 
+import {
   generatePomodoroStructuredData,
-  getMainPageMetadata 
+  getMainPageMetadata
 } from '../utils/structuredData';
-import { BiPlay, BiPause, BiRefresh, BiSkipNext, BiCog } from 'react-icons/bi';
+import { BiReset, BiPlay, BiPause, BiCog, BiTime, BiCheckCircle, BiBulb, BiListCheck, BiTrophy } from 'react-icons/bi';
+
+// 1. Types & Config
+type TimerMode = 'pomodoro' | 'shortBreak' | 'longBreak';
+
+// Static config for Colors and Labels
+const MODE_CONFIG: Record<TimerMode, { label: string; color: string; lightColor: string }> = {
+  pomodoro: { label: '專注模式', color: '#e55050', lightColor: '#ffe5e5' },
+  shortBreak: { label: '短暫休息', color: '#38858a', lightColor: '#e0f5f6' },
+  longBreak: { label: '長休息', color: '#397097', lightColor: '#e0edf6' },
+};
 
 export default function PomodoroPage() {
-  const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutes in seconds
-  const [isActive, setIsActive] = useState(false);
-  const [isBreak, setIsBreak] = useState(false);
-  const [sessions, setSessions] = useState(0);
-  const [totalTime, setTotalTime] = useState(0); // Total time in seconds
-  const [isPaused, setIsPaused] = useState(false);
-  const [timerMode, setTimerMode] = useState('work'); // 'work', 'break', 'longBreak'
-  const [workDuration, setWorkDuration] = useState<number | string>(25);
-  const [breakDuration, setBreakDuration] = useState<number | string>(5);
-  const [longBreakDuration, setLongBreakDuration] = useState<number | string>(15);
-  const [startTime, setStartTime] = useState<number | null>(null);
-  
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  // --- State ---
+  const [mode, setMode] = useState<TimerMode>('pomodoro');
+
+  // Custom durations (in minutes)
+  const [durations, setDurations] = useState({
+    pomodoro: 25,
+    shortBreak: 5,
+    longBreak: 15
+  });
+
+  const [timeLeft, setTimeLeft] = useState<number>(25 * 60);
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [showSettings, setShowSettings] = useState<boolean>(false);
+
+  // Statistics State (sessions + totalSeconds)
+  const [stats, setStats] = useState({
+    sessions: 0,
+    totalSeconds: 0
+  });
+
+  // --- Refs ---
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const startTimeRef = useRef<number>(0);
+  const timeLeftRef = useRef<number>(timeLeft);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  // --- Metadata ---
   const metadata = getMainPageMetadata('pomodoro');
+  const structuredData = generatePomodoroStructuredData ? generatePomodoroStructuredData() : {};
 
-  // Save timer state to localStorage
-  const saveTimerState = () => {
-    const state = {
-      timeLeft,
-      isActive,
-      isBreak,
-      sessions,
-      totalTime,
-      isPaused,
-      timerMode,
-      workDuration,
-      breakDuration,
-      longBreakDuration,
-      startTime
-    };
-    localStorage.setItem('pomodoroState', JSON.stringify(state));
-  };
+  // --- Effects ---
 
-  // Load timer state from localStorage
-  const loadTimerState = () => {
-    // Load settings first
-    const savedSettings = localStorage.getItem('pomodoroSettings');
-    if (savedSettings) {
-      try {
-        const settings = JSON.parse(savedSettings);
-        setWorkDuration(settings.workDuration || 25);
-        setBreakDuration(settings.breakDuration || 5);
-        setLongBreakDuration(settings.longBreakDuration || 15);
-      } catch (e) {
-        console.error('Failed to load settings:', e);
-      }
-    }
-
-    // Load timer state
-    const saved = localStorage.getItem('pomodoroState');
-    if (saved) {
-      try {
-        const state = JSON.parse(saved);
-        const savedTimeLeft = state.timeLeft || 25 * 60;
-        const savedIsActive = state.isActive || false;
-        const savedStartTime = state.startTime || null;
-        
-        // If timer was active, calculate elapsed time
-        if (savedIsActive && savedStartTime) {
-          const elapsed = Math.floor((Date.now() - savedStartTime) / 1000);
-          const newTimeLeft = Math.max(0, savedTimeLeft - elapsed);
-          
-          if (newTimeLeft <= 0) {
-            // Timer should have completed
-            setTimeLeft(0);
-            setIsActive(false);
-            setIsPaused(false);
-            setStartTime(null);
-            // Trigger completion logic
-            setTimeout(() => {
-              handleTimerComplete();
-            }, 100);
-          } else {
-            setTimeLeft(newTimeLeft);
-            setIsActive(true);
-            setStartTime(savedStartTime);
-          }
-        } else {
-          setTimeLeft(savedTimeLeft);
-          setIsActive(false);
-          setStartTime(null);
-        }
-        
-        setIsBreak(state.isBreak || false);
-        setSessions(state.sessions || 0);
-        setTotalTime(state.totalTime || 0);
-        setIsPaused(state.isPaused || false);
-        setTimerMode(state.timerMode || 'work');
-      } catch (e) {
-        console.error('Failed to load timer state:', e);
-      }
-    }
-  };
-
-  // Load state on mount
+  // 1. Load Stats from LocalStorage on Mount
   useEffect(() => {
-    loadTimerState();
+    const savedStats = localStorage.getItem('pomodoroStats');
+    const savedDurations = localStorage.getItem('pomodoroDurations');
+
+    if (savedStats) {
+      setStats(JSON.parse(savedStats));
+    }
+    if (savedDurations) {
+      setDurations(JSON.parse(savedDurations));
+    }
   }, []);
 
-  // Save state whenever it changes
+  // 2. Save Stats & Durations whenever they change
   useEffect(() => {
-    saveTimerState();
-  }, [timeLeft, isActive, isBreak, sessions, totalTime, isPaused, timerMode, workDuration, breakDuration, longBreakDuration, startTime]);
-
-  // Save settings when they change
-  useEffect(() => {
-    const settings = {
-      workDuration: typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25,
-      breakDuration: typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5,
-      longBreakDuration: typeof longBreakDuration === 'number' ? longBreakDuration : parseInt(longBreakDuration) || 15
-    };
-    localStorage.setItem('pomodoroSettings', JSON.stringify(settings));
-  }, [workDuration, breakDuration, longBreakDuration]);
+    localStorage.setItem('pomodoroStats', JSON.stringify(stats));
+  }, [stats]);
 
   useEffect(() => {
-    if (isActive && timeLeft > 0) {
-      intervalRef.current = setInterval(() => {
-        setTimeLeft(time => time - 1);
-      }, 1000);
-    } else if (timeLeft === 0) {
-      handleTimerComplete();
-    } else {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    }
+    localStorage.setItem('pomodoroDurations', JSON.stringify(durations));
+  }, [durations]);
 
+  // Cleanup Timer on unmount
+  useEffect(() => {
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
+      if (timerRef.current) clearInterval(timerRef.current);
+      document.title = "番茄鐘 Pomodoro";
     };
-  }, [isActive, timeLeft]);
+  }, []);
 
-  const handleTimerComplete = () => {
+  // --- Logic ---
+
+  const switchMode = (newMode: TimerMode) => {
+    setMode(newMode);
     setIsActive(false);
-    playNotificationSound();
-    
-    const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
-    const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
-    
-    if (!isBreak) {
-      // Work session completed
-      const newSessions = sessions + 1;
-      setSessions(newSessions);
-      setTotalTime(prev => prev + (workTime * 60));
-      
-      // Set break time
-      setIsBreak(true);
-      setTimeLeft(breakTime * 60);
+    if (timerRef.current) clearInterval(timerRef.current);
+
+    // Set time based on the custom duration
+    const newTime = durations[newMode] * 60;
+    setTimeLeft(newTime);
+
+    document.title = "番茄鐘 Pomodoro";
+  };
+
+  const handleDurationChange = (key: TimerMode, value: string) => {
+    const numVal = parseInt(value);
+    if (!isNaN(numVal) && numVal > 0 && numVal <= 180) {
+      setDurations(prev => ({ ...prev, [key]: numVal }));
+
+      // Update timer immediately if we are editing the active mode and it's paused
+      if (mode === key && !isActive) {
+        setTimeLeft(numVal * 60);
+      }
+    }
+  };
+
+  const toggleTimer = () => {
+    if (isActive) {
+      setIsActive(false);
+      if (timerRef.current) clearInterval(timerRef.current);
     } else {
-      // Break completed
-      setIsBreak(false);
-      setTimeLeft(workTime * 60);
+      setIsActive(true);
+      startTimeRef.current = Date.now();
+      timeLeftRef.current = timeLeft;
+
+      timerRef.current = setInterval(() => {
+        const secondsPassed = Math.floor((Date.now() - startTimeRef.current) / 1000);
+        const newTimeLeft = timeLeftRef.current - secondsPassed;
+
+        if (newTimeLeft <= 0) {
+          finishTimer();
+        } else {
+          setTimeLeft(newTimeLeft);
+          document.title = `${formatTime(newTimeLeft)} - ${MODE_CONFIG[mode].label}`;
+        }
+      }, 100);
     }
   };
-
-  const playNotificationSound = () => {
-    // Create a simple notification sound using Web Audio API
-    if (typeof window !== 'undefined') {
-      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-      oscillator.frequency.setValueAtTime(600, audioContext.currentTime + 0.1);
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.5);
+  const sendNotification = (title: string, body: string) => {
+    if (Notification.permission === 'granted') {
+      new Notification(title, { body, icon: 'https://dse.best/favicon.ico' });
+    } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission();
     }
   };
-
-  const startTimer = () => {
-    setIsActive(true);
-    setIsPaused(false);
-    setStartTime(Date.now());
-  };
-
-  const pauseTimer = () => {
+  const finishTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
     setIsActive(false);
-    setIsPaused(true);
+    setTimeLeft(0);
+    playAlarm();
+
+    // Update Stats only if it was a Pomodoro session
+    if (mode === 'pomodoro') {
+      const sessionSeconds = durations.pomodoro * 60;
+      setStats(prev => ({
+        sessions: prev.sessions + 1,
+        totalSeconds: prev.totalSeconds + sessionSeconds
+      }));
+    }
+    sendNotification(
+      mode === 'pomodoro' ? '專注時段結束！' : '休息時間完咗啦！',
+      mode === 'pomodoro' ? '做得好！休息一下先啦。' : '準備好繼續努力未？'
+    );
   };
 
   const resetTimer = () => {
     setIsActive(false);
-    setIsPaused(false);
-    const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
-    const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
-    setTimeLeft(isBreak ? breakTime * 60 : workTime * 60);
+    if (timerRef.current) clearInterval(timerRef.current);
+    setTimeLeft(durations[mode] * 60);
+    document.title = "番茄鐘 Pomodoro";
   };
 
-  const skipSession = () => {
-    handleTimerComplete();
-  };
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
-
-  const formatTotalTime = (seconds: number) => {
-    const hours = Math.floor(seconds / 3600);
-    const mins = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-    if (hours > 0) {
-      return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  const playAlarm = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(e => console.log("Audio play failed", e));
     }
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const getProgressPercentage = () => {
-    const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
-    const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
-    const totalTime = isBreak ? breakTime * 60 : workTime * 60;
-    return ((totalTime - timeLeft) / totalTime) * 100;
+  // Format MM:SS for the main timer
+  const formatTime = (seconds: number) => {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
+  // Format HH:MM:SS for total stats
+  const formatTotalTime = (totalSec: number) => {
+    const h = Math.floor(totalSec / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    const s = totalSec % 60;
 
+    const hDisplay = h < 10 ? `0${h}` : h;
+    const mDisplay = m < 10 ? `0${m}` : m;
+    const sDisplay = s < 10 ? `0${s}` : s;
+
+    return `${hDisplay}:${mDisplay}:${sDisplay}`;
+  };
+
+  const currentTheme = MODE_CONFIG[mode];
 
   return (
     <>
@@ -258,1135 +213,497 @@ export default function PomodoroPage() {
         />
       </Head>
 
-      {/* Breadcrumb */}
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">工具</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item active" aria-current="page">番茄鐘 Pomodoro</li>
-            </ol>
-          </nav>
+      <div className="page-wrapper">
+
+        {/* Breadcrumb */}
+        <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+          <div className="breadcrumb-title pe-3">工具</div>
+          <div className="ps-3">
+            <nav aria-label="breadcrumb">
+              <ol className="breadcrumb mb-0 p-0">
+                <li className="breadcrumb-item active" aria-current="page">番茄鐘 Pomodoro</li>
+              </ol>
+            </nav>
+          </div>
         </div>
-      </div>
 
-      {/* Main Content Card */}
-      <div className="card rounded-4 pomodoro-page">
-        <div className="card-body text-center">
-          {/* Header */}
-          <h1 className="fw-bold mb-4 pomodoro-title" style={{color: '#667eea'}}>
-            番茄鐘 Pomodoro Timer
-          </h1>
+        <div className="layout-center">
+          <audio ref={audioRef} src="/sounds/alarm.mp3" preload="auto" />
 
+          <div className="content-stack">
 
-          {/* Timer Mode Selector */}
-          <div className="timer-mode-selector mb-4">
-            <div className="tab-switcher">
-              <button 
-                className={`tab ${timerMode === 'work' ? 'active' : ''}`}
-                onClick={() => {
-                  setTimerMode('work');
-                  setIsBreak(false);
-                  const workTime = typeof workDuration === 'number' ? workDuration : parseInt(workDuration) || 25;
-                  setTimeLeft(workTime * 60);
-                }}
-              >
-                <span className="desktop-text">工作 Work</span>
-                <span className="mobile-text">Work</span>
-              </button>
-              
-              <button 
-                className={`tab ${timerMode === 'break' ? 'active' : ''}`}
-                onClick={() => {
-                  setTimerMode('break');
-                  setIsBreak(true);
-                  const breakTime = typeof breakDuration === 'number' ? breakDuration : parseInt(breakDuration) || 5;
-                  setTimeLeft(breakTime * 60);
-                }}
-              >
-                <span className="desktop-text">短休息 Break</span>
-                <span className="mobile-text">Break</span>
-              </button>
-              
-              <button 
-                className={`tab ${timerMode === 'longBreak' ? 'active' : ''}`}
-                onClick={() => {
-                  setTimerMode('longBreak');
-                  setIsBreak(true);
-                  const longBreakTime = typeof longBreakDuration === 'number' ? longBreakDuration : parseInt(longBreakDuration) || 15;
-                  setTimeLeft(longBreakTime * 60);
-                }}
-              >
-                <span className="desktop-text">長休息 Long Break</span>
-                <span className="mobile-text">Long</span>
-              </button>
-            </div>
-          </div>
+            {/* --- 1. MAIN TIMER CARD --- */}
+            <div className="timer-card">
 
-          {/* Timer Display */}
-          <div className="timer-container mb-5">
-            <div className="timer-wrapper">
-              <div className="timer-circle-container">
-                <div className={`timer-circle ${isBreak ? 'break' : 'work'}`}>
-                  <div className="timer-inner">
-                    <div className="timer-time">
-                      {formatTime(timeLeft)}
-                    </div>
-                  </div>
-                  <svg className="timer-progress" viewBox="0 0 100 100">
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      fill="none"
-                      stroke="rgba(255,255,255,0.2)"
-                      strokeWidth="2"
-                    />
-                    <circle
-                      cx="50"
-                      cy="50"
-                      r="45"
-                      fill="none"
-                      stroke="rgba(255,255,255,0.8)"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      strokeDasharray={`${2 * Math.PI * 45}`}
-                      strokeDashoffset={`${2 * Math.PI * 45 * (1 - getProgressPercentage() / 100)}`}
-                      transform="rotate(-90 50 50)"
-                    />
-                  </svg>
-                </div>
+              {/* Header Title (Bigger) */}
+              <h1 className="card-title">番茄鐘 Pomodoro</h1>
+
+              {/* Mode Switcher */}
+              <div className="mode-switcher">
+                {(Object.keys(MODE_CONFIG) as TimerMode[]).map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => switchMode(m)}
+                    className={`mode-btn ${mode === m ? 'active' : ''}`}
+                  >
+                    {MODE_CONFIG[m].label}
+                  </button>
+                ))}
               </div>
-            </div>
-          </div>
 
+              {/* Time Display */}
+              <div className="time-display">
+                {formatTime(timeLeft)}
+              </div>
 
-          {/* Control Buttons */}
-          <div className="control-buttons mb-5">
-            <div className="button-group">
-              {!isActive ? (
-                <button 
-                  className="btn btn-primary btn-lg control-btn reactive-btn"
-                  onClick={startTimer}
+              {/* Action Area */}
+              <div className="actions">
+                <button
+                  className={`primary-btn ${isActive ? 'active-state' : ''}`}
+                  onClick={toggleTimer}
                 >
-                  <BiPlay style={{ fontSize: '32px' }} />
-                  {isPaused ? '繼續 Continue' : '開始 Start'}
+                  {isActive ? <BiPause style={{ fontSize: '23px', marginRight: '-8px', marginTop: '2px' }} /> : <BiPlay style={{ fontSize: '23px', marginRight: '-8px', marginTop: '2px' }} />}
+                  <span>{isActive ? '暫停 (PAUSE)' : '開始 (START)'}</span>
                 </button>
-              ) : (
-                <button 
-                  className="btn btn-warning btn-lg control-btn reactive-btn"
-                  onClick={pauseTimer}
+
+                <button
+                  className="reset-btn"
+                  onClick={resetTimer}
+                  aria-label="Reset Timer"
                 >
-                  <BiPause style={{ fontSize: '32px' }} />
-                  暫停 Pause
+                  <BiReset />
                 </button>
-              )}
-              
-              <button 
-                className="btn btn-secondary btn-lg control-btn reactive-btn"
-                onClick={resetTimer}
+              </div>
+
+              {/* Settings Toggle */}
+              <button
+                className="settings-toggle-btn"
+                onClick={() => setShowSettings(!showSettings)}
               >
-                <BiRefresh style={{ fontSize: '32px' }} />
-                重置 Reset
+                <BiCog style={{ marginTop: '3px' }} /> Settings
               </button>
-              
-              <button 
-                className="btn btn-info btn-lg control-btn reactive-btn"
-                onClick={skipSession}
-              >
-                <BiSkipNext style={{ fontSize: '32px' }} />
-                跳過 Skip
-              </button>
-              
-            </div>
-          </div>
 
-          {/* Session Info */}
-          <div className="session-info mb-5">
-            <div className="row g-3">
-              <div className="col-md-4">
-                <div className="stat-card">
-                  <div className="stat-icon">🍅</div>
-                  <div className="stat-content">
-                    <h6 className="stat-title">已完成 Completed</h6>
-                    <div className="stat-value">{sessions}</div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="stat-card">
-                  <div className="stat-icon">📊</div>
-                  <div className="stat-content">
-                    <h6 className="stat-title">總計 Total</h6>
-                    <div className="stat-value">{formatTotalTime(totalTime)}</div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="stat-card">
-                  <div className="stat-icon">{isActive ? '▶️' : isPaused ? '⏸️' : '⏹️'}</div>
-                  <div className="stat-content">
-                    <h6 className="stat-title">狀態 Status</h6>
-                    <div className="stat-value">{isActive ? '進行中 Active' : isPaused ? '已暫停 Paused' : '未開始 Ready'}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Settings */}
-          <div className="settings-section">
-            <h4 className="mb-4 text-center d-flex align-items-center justify-content-center">
-              <BiCog className="me-2" />
-              設定 Settings
-            </h4>
-            <div className="row justify-content-center">
-              <div className="col-md-6 col-lg-4">
-                <div className="row g-3">
-                  <div className="col-12">
-                    <label htmlFor="workDuration" className="form-label">工作時間 Work Time (分鐘)</label>
-                    <input 
-                      type="number" 
-                      className="form-control"
-                      id="workDuration"
-                      value={workDuration}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        if (value === '') {
-                          setWorkDuration('');
-                        } else {
-                          const numValue = parseInt(value);
-                          if (!isNaN(numValue) && numValue >= 1 && numValue <= 60) {
-                            setWorkDuration(numValue);
-                          }
-                        }
-                      }}
-                      onBlur={(e) => {
-                        if (e.target.value === '' || parseInt(e.target.value) < 1) {
-                          setWorkDuration(25);
-                        }
-                      }}
-                      min="1"
-                      max="60"
-                      placeholder="25"
+              {/* Collapsible Settings Panel */}
+              <div className={`settings-panel ${showSettings ? 'open' : ''}`}>
+                <div className="settings-grid">
+                  <div className="setting-item">
+                    <label>專注 (分)</label>
+                    <input
+                      type="number"
+                      value={durations.pomodoro}
+                      onChange={(e) => handleDurationChange('pomodoro', e.target.value)}
                     />
                   </div>
-                  <div className="col-12">
-                    <label htmlFor="breakDuration" className="form-label">短休息 Short Break (分鐘)</label>
-                    <input 
-                      type="number" 
-                      className="form-control"
-                      id="breakDuration"
-                      value={breakDuration}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        if (value === '') {
-                          setBreakDuration('');
-                        } else {
-                          const numValue = parseInt(value);
-                          if (!isNaN(numValue) && numValue >= 1 && numValue <= 30) {
-                            setBreakDuration(numValue);
-                          }
-                        }
-                      }}
-                      onBlur={(e) => {
-                        if (e.target.value === '' || parseInt(e.target.value) < 1) {
-                          setBreakDuration(5);
-                        }
-                      }}
-                      min="1"
-                      max="30"
-                      placeholder="5"
+                  <div className="setting-item">
+                    <label>短休 (分)</label>
+                    <input
+                      type="number"
+                      value={durations.shortBreak}
+                      onChange={(e) => handleDurationChange('shortBreak', e.target.value)}
                     />
                   </div>
-                  <div className="col-12">
-                    <label htmlFor="longBreakDuration" className="form-label">長休息 Long Break (分鐘)</label>
-                    <input 
-                      type="number" 
-                      className="form-control"
-                      id="longBreakDuration"
-                      value={longBreakDuration}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        if (value === '') {
-                          setLongBreakDuration('');
-                        } else {
-                          const numValue = parseInt(value);
-                          if (!isNaN(numValue) && numValue >= 1 && numValue <= 60) {
-                            setLongBreakDuration(numValue);
-                          }
-                        }
-                      }}
-                      onBlur={(e) => {
-                        if (e.target.value === '' || parseInt(e.target.value) < 1) {
-                          setLongBreakDuration(15);
-                        }
-                      }}
-                      min="1"
-                      max="60"
-                      placeholder="15"
+                  <div className="setting-item">
+                    <label>長休 (分)</label>
+                    <input
+                      type="number"
+                      value={durations.longBreak}
+                      onChange={(e) => handleDurationChange('longBreak', e.target.value)}
                     />
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Instructions */}
-          <div className="instructions mt-5">
-            <h4 className="mb-3">使用方法 How to Use</h4>
-            <div className="row">
-              <div className="col-md-6">
-                <div className="instruction-card">
-                  <h5>🍅 番茄工作法 Pomodoro Technique</h5>
-                  <ul className="text-start">
-                    <li>專注工作 25 分鐘 | Focus for 25 minutes</li>
-                    <li>短休息 5 分鐘 | Short break 5 minutes</li>
-                    <li>每 4 個工作週期後長休息 15 分鐘 | Long break 15 minutes after 4 cycles</li>
-                    <li>保持專注，避免分心 | Stay focused, avoid distractions</li>
-                  </ul>
+            </div>
+
+            {/* --- 2. STATISTICS CARDS (Moved Below) --- */}
+            <div className="stats-container">
+              <div className="stat-card">
+                <div className="stat-icon" style={{ background: '#e0f2fe', color: '#0284c7' }}>
+                  <BiTime />
+                </div>
+                <div className="stat-info">
+                  <span className="stat-label">總專注時間 Total Focus Time</span>
+                  <span className="stat-value">{formatTotalTime(stats.totalSeconds)}</span>
                 </div>
               </div>
-              <div className="col-md-6">
-                <div className="instruction-card">
-                  <h5>📚 DSE 學習建議 Study Tips</h5>
-                  <ul className="text-start">
-                    <li>選擇一個科目專注學習 | Choose one subject to focus on</li>
-                    <li>準備好學習材料和筆記 | Prepare study materials and notes</li>
-                    <li>關閉手機通知 | Turn off phone notifications</li>
-                    <li>休息時完全放鬆 | Completely relax during breaks</li>
-                  </ul>
+
+              <div className="stat-card">
+                <div className="stat-icon" style={{ background: '#fce7f3', color: '#db2777' }}>
+                  🍅
+                </div>
+                <div className="stat-info">
+                  <span className="stat-label">完成次數 Total Sessions</span>
+                  <span className="stat-value">{stats.sessions} 次</span>
                 </div>
               </div>
             </div>
+
+            <div className="info-card">
+
+              <h3 className="info-title">
+                <BiBulb className="title-icon" />
+                使用指南 & DSE 備戰貼士
+              </h3>
+
+              <div className="info-section">
+                <h4>🍅 如何使用番茄工作法？</h4>
+                <p>番茄鐘 (Pomodoro) 係一個極高效率嘅時間管理方法，幫你喺溫書時保持專注：</p>
+                <ul>
+                  <li><strong>設定目標：</strong> 揀好一科或者一個 Past Paper 課題。</li>
+                  <li><strong>專注衝刺 (25分鐘)：</strong> 全心投入溫習，謝絕手機干擾。</li>
+                  <li><strong>短暫充電 (5分鐘)：</strong> 響鬧後必須停手！飲啖水、閉目養神或伸展吓。</li>
+                  <li><strong>長休息：</strong> 每完成 4 個循環，獎勵自己一個 15-30 分鐘嘅長休息。</li>
+                </ul>
+              </div>
+
+              <div className="divider"></div>
+
+              <div className="info-section">
+                <h4>🏆 對 DSE 同學有咩幫助？</h4>
+                <p>
+                  DSE 係一場持久戰，唔係鬥坐得耐，係鬥溫得入腦：
+                </p>
+                <ul>
+                  <li><strong>擊退拖延症：</strong> 覺得課題太難唔想開始？同自己講：「淨係專注 25 分鐘先」，心理壓力即刻減低。</li>
+                  <li><strong>避免 Burnout：</strong> 強制休息可以令大腦即使喺高壓下都能夠「回血」，加強記憶力同理解力。</li>
+                  <li><strong>數據化進度：</strong> 望住「完成次數」增加，會有一種實在嘅成功感，推動你繼續溫落去。</li>
+                </ul>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        /* Timer Mode Switcher */
-        .tab-switcher {
-          display: flex;
-          justify-content: center;
-          background: rgba(255, 255, 255, 0.1);
-          border-radius: 8px;
-          padding: 3px;
-          margin-bottom: 1.5rem;
-          backdrop-filter: blur(10px);
-          max-width: 500px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        
-        .tab {
-          flex: 1;
-          padding: 0.4rem 1.2rem;
-          border: none;
-          background: transparent;
-          color: var(--bs-body-color, rgba(255, 255, 255, 0.7));
-          opacity: 0.7;
-          font-weight: 600;
-          font-size: 0.95rem;
-          border-radius: 6px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          outline: none;
-          white-space: nowrap;
-          height: auto;
-        }
-        
-        /* Show/hide text based on screen size */
-        .desktop-text {
-          display: inline;
-        }
-        
-        .mobile-text {
-          display: none;
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-          .tab-switcher {
-            max-width: 100%;
-            margin: 0 1rem 1.5rem 1rem;
-          }
-          
-          .tab {
-            padding: 0.3rem 0.5rem;
-            font-size: 0.8rem;
-            min-width: 0;
-          }
-          
-          .desktop-text {
-            display: none;
-          }
-          
-          .mobile-text {
-            display: inline;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .tab {
-            padding: 0.2rem 0.3rem;
-            font-size: 0.7rem;
-          }
-          
-          .tab-switcher {
-            margin: 0 1rem 1rem 1rem;
-            padding: 2px;
-          }
-        }
-        
-        .tab:hover {
-          color: var(--bs-body-color, white);
-          background: var(--tab-hover-bg, rgba(255, 255, 255, 0.1));
-          opacity: 1;
-        }
-        
-        .tab.active {
-          background: #667eea;
-          color: white;
-          opacity: 1;
-          box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-        }
-        
-        /* Timer Styles */
-        .timer-wrapper {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin: 2rem 0;
-        }
-        
-        .timer-circle-container {
-          position: relative;
-          width: 280px;
-          height: 280px;
-        }
-        
-        /* Mobile timer sizing */
-        @media (max-width: 768px) {
-          .timer-circle-container {
-            width: 300px;
-            height: 300px;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          .timer-circle-container {
-            width: 280px;
-            height: 280px;
-          }
-        }
-        
-        .timer-circle {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          background:rgb(106, 129, 230);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-          transition: all 0.3s ease;
-        }
-        
-        .timer-circle.work {
-          background:rgb(55, 82, 203);
-        }
-        
-        .timer-circle.break {
-          background: #667eea;
-        }
-        
-        .timer-inner {
-          text-align: center;
-          z-index: 2;
-          position: relative;
-        }
-        
-        .timer-time {
-          font-size: 3.5rem;
-          font-weight: 700;
-          color: white;
-          margin-bottom: 0.5rem;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .timer-label {
-          font-size: 1.1rem;
-          color: rgba(255,255,255,0.9);
-          font-weight: 500;
-        }
-        
-        .timer-progress {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          transform: rotate(-90deg);
-        }
-        
-        /* Stats Cards */
-        .stat-card {
-          background: var(--card-bg, rgba(255, 255, 255, 0.1));
-          border-radius: 16px;
-          padding: 1.5rem;
-          backdrop-filter: blur(10px);
-          border: 3px solid var(--card-border, rgba(255, 255, 255, 0.2));
-          box-shadow: var(--card-shadow, 0 8px 25px rgba(0, 0, 0, 0.1));
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          transition: all 0.3s ease;
-          height: 100%;
-        }
-        
-        .stat-card:hover {
-          transform: translateY(-2px);
-          box-shadow: var(--card-shadow, 0 8px 25px rgba(0,0,0,0.1));
-        }
-        
-        .stat-icon {
-          font-size: 2rem;
-          opacity: 0.8;
-          color: var(--bs-body-color, white);
-        }
-        
-        .stat-content {
-          flex: 1;
-        }
-        
-        .stat-title {
-          font-size: 0.9rem;
-          color: var(--bs-body-color, rgba(255,255,255,0.7));
-          margin-bottom: 0.5rem;
-          font-weight: 500;
-          opacity: 0.8;
-        }
-        
-        .stat-value {
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: var(--bs-body-color, white);
-        }
-        
-        /* Control Buttons */
-        .button-group {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-        
-        .control-btn {
-          border-radius: 12px;
-          padding: 0.75rem 1.5rem;
-          font-weight: 600;
-          transition: all 0.3s ease;
-          border: none;
-          min-width: 140px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-        }
-        
-        .control-btn svg {
-          width: 32px;
-          height: 32px;
-          flex-shrink: 0;
-          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
-        }
-        
-        .control-btn:hover {
-          opacity: 0.9;
-        }
-        
-        .control-btn:active {
-          opacity: 0.8;
-        }
-        
-        .control-btn.btn-primary {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          border: none;
-        }
-        
-        .control-btn.btn-primary:hover {
-          background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
-        }
-        
-        .control-btn.btn-warning {
-          background: linear-gradient(135deg, #ffc107 0%, #ff8c00 100%);
-          border: none;
-        }
-        
-        .control-btn.btn-warning:hover {
-          background: linear-gradient(135deg, #e0a800 0%, #e67e00 100%);
-        }
-        
-        .control-btn.btn-info {
-          background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
-          border: none;
-        }
-        
-        .control-btn.btn-info:hover {
-          background: linear-gradient(135deg, #138496 0%, #117a8b 100%);
-        }
-        
-        .control-btn.btn-danger {
-          background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-          border: none;
-        }
-        
-        .control-btn.btn-danger:hover {
-          background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
-        }
-        
-        .control-btn.btn-secondary {
-          background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
-          border: none;
-        }
-        
-        .control-btn.btn-secondary:hover {
-          background: linear-gradient(135deg, #5a6268 0%, #495057 100%);
-        }
-        
-        /* Settings Section */
-        .settings-section {
-          background: var(--section-bg, rgba(255, 255, 255, 0.05));
-          border-radius: 16px;
-          padding: 2rem;
-          margin-top: 2rem;
-          backdrop-filter: blur(10px);
-          border: 3px solid var(--section-border, rgba(255, 255, 255, 0.1));
-          box-shadow: var(--card-shadow, 0 12px 35px rgba(0, 0, 0, 0.1));
-        }
-        
-        .settings-section h4 {
-          color: var(--bs-heading-color, white);
-          margin-bottom: 1.5rem;
-          font-weight: 600;
-        }
-        
-        .settings-section .form-label {
-          color: var(--bs-body-color, rgba(255,255,255,0.8));
-          font-weight: 500;
-          margin-bottom: 0.5rem;
-        }
-        
-        .settings-section .form-control {
-          background: rgba(255, 255, 255, 0.1);
-          border: 2px solid rgba(255, 255, 255, 0.2);
-          color: var(--bs-body-color, white);
-          border-radius: 8px;
-          transition: all 0.3s ease;
-          font-size: 1rem;
-          padding: 0.75rem;
-        }
-        
-        .settings-section .form-control:focus {
-          background: var(--input-focus-bg, rgba(255, 255, 255, 0.15));
-          border-color: var(--primary-color, #667eea);
-          box-shadow: 0 0 0 0.2rem var(--primary-shadow, rgba(102, 126, 234, 0.25));
-          color: var(--bs-body-color, white);
-        }
-        
-        .settings-section .form-floating > label {
-          color: var(--bs-body-color, rgba(255,255,255,0.8));
-        }
-        
-        .settings-section .form-floating > .form-control:focus ~ label,
-        .settings-section .form-floating > .form-control:not(:placeholder-shown) ~ label {
-          color: var(--bs-body-color, white);
-          opacity: 0.8;
-        }
-        
-        /* Instructions */
-        .instructions {
-          background: var(--section-bg, rgba(255, 255, 255, 0.05));
-          border-radius: 16px;
-          padding: 2rem;
-          backdrop-filter: blur(10px);
-          border: 3px solid var(--section-border, rgba(255, 255, 255, 0.1));
-          box-shadow: var(--card-shadow, 0 12px 35px rgba(0, 0, 0, 0.1));
-        }
-        
-        .instructions h4 {
-          color: var(--bs-heading-color, white);
-          margin-bottom: 1.5rem;
-          font-weight: 600;
-        }
-        
-        .instruction-card {
-          background: transparent;
-          border-radius: 12px;
-          padding: 1.5rem;
-          backdrop-filter: none;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          box-shadow: none;
-          height: 100%;
-        }
-        
-        .instruction-card h5 {
-          color: var(--bs-heading-color, white);
-          margin-bottom: 1rem;
-          font-weight: 600;
-        }
-        
-        .instruction-card ul {
-          color: var(--bs-body-color, rgba(255,255,255,0.8));
-          padding-left: 1.2rem;
-        }
-        
-        .instruction-card li {
-          margin-bottom: 0.5rem;
-          line-height: 1.5;
-        }
-        
-        /* Theme-specific overrides */
-        [data-bs-theme="light"] .pomodoro-page {
-          --card-bg: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-          --card-border: rgba(0, 0, 0, 0.25);
-          --card-shadow: 0 12px 35px rgba(0,0,0,0.15), 0 6px 16px rgba(0, 0, 0, 0.12);
-          --section-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-          --section-border: rgba(0, 0, 0, 0.25);
-          --input-bg: #fff;
-          --input-border: rgba(0, 0, 0, 0.3);
-          --input-focus-bg: #fff;
-          --primary-color: #667eea;
-          --primary-shadow: rgba(102, 126, 234, 0.25);
-          --tab-hover-bg: rgba(0, 0, 0, 0.05);
-        }
-        
-        [data-bs-theme="dark"] .pomodoro-page {
-          --card-bg: rgba(255, 255, 255, 0.1);
-          --card-border: rgba(255, 255, 255, 0.2);
-          --card-shadow: 0 8px 25px rgba(0,0,0,0.3);
-          --section-bg: rgba(255, 255, 255, 0.05);
-          --section-border: rgba(255, 255, 255, 0.1);
-          --input-bg: rgba(255, 255, 255, 0.1);
-          --input-border: rgba(255, 255, 255, 0.2);
-          --input-focus-bg: rgba(255, 255, 255, 0.15);
-          --primary-color: #667eea;
-          --primary-shadow: rgba(102, 126, 234, 0.25);
-          --tab-hover-bg: rgba(255, 255, 255, 0.1);
-        }
-        
-        [data-bs-theme="blue-theme"] .pomodoro-page {
-          --card-bg: rgba(255, 255, 255, 0.15);
-          --card-border: rgba(255, 255, 255, 0.3);
-          --card-shadow: 0 8px 25px rgba(0,0,0,0.2);
-          --section-bg: rgba(255, 255, 255, 0.1);
-          --section-border: rgba(255, 255, 255, 0.2);
-          --input-bg: rgba(255, 255, 255, 0.15);
-          --input-border: rgba(255, 255, 255, 0.3);
-          --input-focus-bg: rgba(255, 255, 255, 0.2);
-          --primary-color: #667eea;
-          --primary-shadow: rgba(102, 126, 234, 0.25);
-          --tab-hover-bg: rgba(255, 255, 255, 0.1);
-        }
-        
-        /* iPad specific fixes */
-        @media (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-          /* iPad specific styling to fix white instruction cards */
-          .instruction-card {
-            background: transparent !important;
-            border: 2px solid rgba(255, 255, 255, 0.3) !important;
-            backdrop-filter: none !important;
-            color: white !important;
-          }
-          
-          .instruction-card h5 {
-            color: white !important;
-          }
-          
-          .instruction-card ul {
-            color: rgba(255, 255, 255, 0.8) !important;
-          }
-          
-          .stat-card {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 2px solid rgba(255, 255, 255, 0.2) !important;
-            backdrop-filter: blur(15px) !important;
-            color: white !important;
-          }
-          
-          .stat-card .stat-title {
-            color: rgba(255, 255, 255, 0.7) !important;
-          }
-          
-          .stat-card .stat-value {
-            color: white !important;
-          }
-          
-          .settings-section {
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 2px solid rgba(255, 255, 255, 0.1) !important;
-            backdrop-filter: blur(15px) !important;
-          }
-          
-          .instructions {
-            background: rgba(255, 255, 255, 0.05) !important;
-            border: 2px solid rgba(255, 255, 255, 0.1) !important;
-            backdrop-filter: blur(15px) !important;
-          }
-          
-          .instructions h4 {
-            color: white !important;
-          }
-        }
-        
-        /* Light theme specific fixes for better visibility */
-        [data-bs-theme=light] .tab-switcher {
-          background: #ffffff !important;
-          border: 1px solid rgba(148, 163, 184, 0.9) !important;
-          box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12) !important;
-          backdrop-filter: none !important;
-        }
-        
-        [data-bs-theme="light"] .timer-circle {
-          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
-          border: 3px solid rgba(255, 255, 255, 0.8) !important;
-        }
-        
-        [data-bs-theme="light"] .timer-circle.work {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-        }
-        
-        [data-bs-theme="light"] .timer-circle.break {
-          background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
-        }
-        
-        
-        [data-bs-theme="light"] .stat-card:hover {
-          transform: translateY(-5px) !important;
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 10px 25px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-          border-color: rgba(0, 0, 0, 0.35) !important;
-        }
-        
-        [data-bs-theme="light"] .instruction-card:hover {
-          transform: translateY(-4px) !important;
-          box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28), 0 8px 20px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
-          border-color: rgba(0, 0, 0, 0.35) !important;
-        }
-        
-        /* Main title styling */
-        .pomodoro-title {
-          font-size: 2.5rem;
-        }
-        
-        /* Theme-specific styling for all themes */
-        
-        /* Light theme styling - scoped properly like countdown.tsx */
-        [data-bs-theme=light] .pomodoro-page .stat-card {
-          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
-          border: 1px solid rgba(148, 163, 184, 0.9) !important;
-          color: #212529 !important;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
-          border-radius: 16px !important;
-          padding: 1.5rem !important;
-          display: flex !important;
-          align-items: center !important;
-          gap: 1rem !important;
-          transition: all 0.3s ease !important;
-          height: 100% !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .instruction-card {
-          background: #ffffff !important;
-          border: 1px solid rgba(148, 163, 184, 0.9) !important;
-          box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
-          border-radius: 12px !important;
-          padding: 1.5rem !important;
-          height: 100% !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .settings-section,
-        [data-bs-theme=light] .pomodoro-page .instructions {
-          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
-          border: 1px solid rgba(148, 163, 184, 0.9) !important;
-          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15) !important;
-          border-radius: 16px !important;
-          padding: 2rem !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .settings-section h4,
-        [data-bs-theme=light] .pomodoro-page .instructions h4,
-        [data-bs-theme=light] .pomodoro-page .instruction-card h5 {
-          color: #212529 !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .instruction-card ul {
-          color: #495057 !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .stat-title {
-          color: #6c757d !important;
-          font-size: 0.9rem !important;
-          margin-bottom: 0.5rem !important;
-          font-weight: 500 !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .stat-value {
-          color: #212529 !important;
-          font-size: 1.8rem !important;
-          font-weight: 700 !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .form-label {
-          color: #495057 !important;
-          font-weight: 600 !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page input#workDuration,
-        [data-bs-theme=light] .pomodoro-page input#breakDuration,
-        [data-bs-theme=light] .pomodoro-page input#longBreakDuration {
-          background: #ffffff !important;
-          border: 2px solid #333333 !important;
-          color: #212529 !important;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-          border-radius: 8px !important;
-          padding: 0.75rem !important;
-          font-size: 1rem !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .settings-section .form-control:focus {
-          border-color: #667eea !important;
-          box-shadow: 0 0 0 0.3rem rgba(102, 126, 234, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-          color: #212529 !important;
-          background: #ffffff !important;
-        }
-        
-        /* Title colors to match sidebar icon across all themes */
-        .pomodoro-page .pomodoro-title {
-          color: #667eea !important;
-        }
-        
-        [data-bs-theme=light] .pomodoro-page .pomodoro-title {
-          color: #667eea !important;
-        }
-        
-        [data-bs-theme=dark] .pomodoro-page .pomodoro-title {
-          color: #667eea !important;
-        }
-        
-        [data-bs-theme=blue-theme] .pomodoro-page .pomodoro-title {
-          color: #667eea !important;
-        }
-        
-        /* Dark theme styling */
-        [data-bs-theme=dark] .pomodoro-page .settings-section .form-control {
-          background: rgba(255, 255, 255, 0.1) !important;
-          border: 2px solid rgba(255, 255, 255, 0.3) !important;
-          color: white !important;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-          border-radius: 8px !important;
-          padding: 0.75rem !important;
-          font-size: 1rem !important;
-        }
-        
-        [data-bs-theme=dark] .pomodoro-page .settings-section .form-control:focus {
-          border-color: #667eea !important;
-          box-shadow: 0 0 0 0.3rem rgba(102, 126, 234, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-          color: white !important;
-          background: rgba(255, 255, 255, 0.15) !important;
-        }
-        
-        [data-bs-theme=dark] .stat-card {
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: white;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        [data-bs-theme=dark] .instruction-card {
-          background: transparent;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          box-shadow: none;
-        }
-        
-        [data-bs-theme=dark] .settings-section,
-        [data-bs-theme=dark] .instructions {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        [data-bs-theme=dark] .form-control {
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: white;
-        }
-        
-        [data-bs-theme=dark] .form-control:focus {
-          background: rgba(255, 255, 255, 0.15);
-          border-color: #667eea;
-          box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-          color: white;
-        }
-        
-        /* Blue theme styling */
-        [data-bs-theme=blue-theme] .pomodoro-page .settings-section .form-control {
-          background: rgba(255, 255, 255, 0.15) !important;
-          border: 2px solid rgba(255, 255, 255, 0.4) !important;
-          color: white !important;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-          border-radius: 8px !important;
-          padding: 0.75rem !important;
-          font-size: 1rem !important;
-        }
-        
-        [data-bs-theme=blue-theme] .pomodoro-page .settings-section .form-control:focus {
-          border-color: #667eea !important;
-          box-shadow: 0 0 0 0.3rem rgba(102, 126, 234, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-          color: white !important;
-          background: rgba(255, 255, 255, 0.2) !important;
-        }
-        
-        [data-bs-theme=blue-theme] .stat-card {
-          background: rgba(255, 255, 255, 0.15);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          color: white;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        [data-bs-theme=blue-theme] .instruction-card {
-          background: transparent;
-          border: 2px solid rgba(255, 255, 255, 0.3);
-          box-shadow: none;
-        }
-        
-        [data-bs-theme=blue-theme] .settings-section,
-        [data-bs-theme=blue-theme] .instructions {
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        [data-bs-theme=blue-theme] .form-control {
-          background: rgba(255, 255, 255, 0.15);
-          border: 1px solid rgba(255, 255, 255, 0.3);
-          color: white;
-        }
-        
-        [data-bs-theme=blue-theme] .form-control:focus {
-          background: rgba(255, 255, 255, 0.2);
-          border-color: #667eea;
-          box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-          color: white;
-        }
-        
-        
-        /* Add inner borders for extra definition */
-        [data-bs-theme="light"] .stat-card::before {
-          content: '';
-          position: absolute;
-          top: 1px;
-          left: 1px;
-          right: 1px;
-          bottom: 1px;
-          border-radius: 14px;
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          pointer-events: none;
-        }
-        
-        [data-bs-theme="light"] .instruction-card::before {
-          content: '';
-          position: absolute;
-          top: 1px;
-          left: 1px;
-          right: 1px;
-          bottom: 1px;
-          border-radius: 10px;
-          border: 1px solid rgba(255, 255, 255, 0.8);
-          pointer-events: none;
-        }
-        
-        /* Ensure cards have relative positioning for pseudo-elements */
-        [data-bs-theme="light"] .stat-card,
-        [data-bs-theme="light"] .instruction-card {
-          position: relative !important;
+        .page-wrapper {
+            padding: 1rem;
+            min-height: 80vh;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-          .timer-circle-container {
-            width: 240px;
-            height: 240px;
-          }
-          
-          .timer-time {
-            font-size: 3.2rem;
-          }
-          
-          .button-group {
-            flex-direction: column;
-            align-items: center;
-          }
-          
-          .control-btn {
-            width: 100%;
-            max-width: 200px;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-          }
-          
-          .control-btn svg {
-            width: 28px;
-            height: 28px;
-          }
-          
-          .stat-card {
-            flex-direction: column;
-            text-align: center;
-            gap: 0.5rem;
-          }
-          
-          .stat-icon {
-            font-size: 1.5rem;
-          }
-          
-          .stat-value {
-            font-size: 1.5rem;
-          }
-          
-          /* Add spacing between instruction cards on mobile */
-          .instruction-card {
-            margin-bottom: 1.5rem;
-          }
-          
-          .instruction-card:last-child {
-            margin-bottom: 0;
-          }
+        .layout-center {
+          display: flex;
+          justify-content: center;
+          padding-top: 2rem; 
+          padding-bottom: 4rem;
+        }
+
+        .content-stack {
+          width: 100%;
+          max-width: 420px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px; /* Spacing between Timer and Stats */
+        }
+
+        /* --- TIMER CARD --- */
+        .timer-card {
+          background: #ffffff;
+          border-radius: 24px;
+          padding: 2.5rem;
+          box-shadow: 
+            0 10px 15px -3px rgba(0, 0, 0, 0.05),
+            0 4px 6px -2px rgba(0, 0, 0, 0.025);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: relative;
+          border-top: 6px solid ${currentTheme.color}; 
+          transition: border-color 0.3s ease;
+        }
+
+        .card-title {
+          font-size: 1.8rem; /* Made bigger */
+          font-weight: 800;
+          color: #374151;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          line-height: 1.2;
+        }
+
+        /* Mode Switcher */
+        .mode-switcher {
+          display: flex;
+          background: #f3f4f6;
+          padding: 4px;
+          border-radius: 12px;
+          margin-bottom: 2rem;
+          width: 100%;
+        }
+
+        .mode-btn {
+          flex: 1;
+          border: none;
+          background: transparent;
+          padding: 8px 4px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #6b7280;
+          cursor: pointer;
+          border-radius: 8px;
+          transition: all 0.2s;
+          white-space: nowrap;
+        }
+
+        .mode-btn.active {
+          background: white;
+          color: ${currentTheme.color};
+          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        /* Time Display */
+        .time-display {
+          font-size: 5rem;
+          font-weight: 700;
+          color: #1f2937;
+          font-feature-settings: "tnum";
+          font-variant-numeric: tabular-nums;
+          line-height: 1;
+          margin-bottom: 2.5rem;
+          letter-spacing: -2px;
+        }
+
+        /* Actions */
+        .actions {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          width: 100%;
+          margin-bottom: 1.5rem;
+        }
+
+        .primary-btn {
+          flex: 1;
+          height: 56px;
+          border: none;
+          background: ${currentTheme.color};
+          color: white;
+          font-size: 1.1rem;
+          font-weight: 700;
+          border-radius: 16px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          transition: transform 0.1s, opacity 0.2s, background-color 0.3s;
+          box-shadow: 0 4px 12px ${currentTheme.lightColor};
+        }
+
+        .primary-btn:hover {
+          opacity: 0.95;
+        }
+
+        .primary-btn:active {
+          transform: scale(0.98);
+        }
+
+        .primary-btn.active-state {
+            background: #f3f4f6;
+            color: #374151;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .reset-btn {
+          width: 56px;
+          height: 56px;
+          border: 2px solid #f3f4f6;
+          background: transparent;
+          border-radius: 16px;
+          color: #6b7280;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+          border-color: #e5e7eb;
+          background: #f9fafb;
+          color: #374151;
+        }
+
+        /* Settings Area */
+        .settings-toggle-btn {
+          background: none;
+          border: none;
+          color: #9ca3af;
+          font-size: 0.9rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 8px;
+          border-radius: 6px;
         }
         
+        .settings-toggle-btn:hover {
+          color: #4b5563;
+          background: #f9fafb;
+        }
+
+        .settings-panel {
+          width: 100%;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-in-out, margin-top 0.3s;
+          background: #f8fafc;
+          border-radius: 12px;
+        }
+
+        .settings-panel.open {
+          max-height: 200px;
+          margin-top: 1rem;
+          padding: 1rem;
+          border: 1px solid #e2e8f0;
+        }
+
+        .settings-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 10px;
+        }
+
+        .setting-item {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .setting-item label {
+          font-size: 0.75rem;
+          color: #64748b;
+          margin-bottom: 4px;
+        }
+
+        .setting-item input {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #cbd5e1;
+          border-radius: 8px;
+          font-size: 0.9rem;
+          text-align: center;
+        }
+
+        /* --- STATISTICS CARDS --- */
+        .stats-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .stat-card {
+          background: white;
+          border-radius: 16px;
+          padding: 16px 24px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+          border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .stat-icon {
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+        }
+
+        .stat-info {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .stat-label {
+          font-size: 0.85rem;
+          color: #6b7280;
+          font-weight: 500;
+        }
+
+        .stat-value {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #1f2937;
+          font-feature-settings: "tnum";
+          font-variant-numeric: tabular-nums;
+        }
+          .info-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 
+      0 10px 15px -3px rgba(0, 0, 0, 0.05),
+      0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    color: #4b5563;
+    margin-top: 1rem; /* Spacing from stats card */
+  }
+
+  .info-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .title-icon {
+    color: #f59e0b; /* Amber color for bulb */
+    font-size: 1.5rem;
+  }
+
+  .info-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .info-section ul {
+    padding-left: 1.2rem;
+    margin-bottom: 0;
+  }
+
+  .info-section li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .info-section li:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-section strong {
+    color: #111827;
+    font-weight: 600;
+  }
+
+  .divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 1.5rem 0;
+  }
+
         @media (max-width: 480px) {
-          .timer-circle-container {
-            width: 200px;
-            height: 200px;
+          .timer-card {
+            padding: 1.5rem;
           }
-          
-          .timer-time {
-            font-size: 2.8rem;
+          .time-display {
+            font-size: 4rem;
           }
-          
-          .timer-label {
-            font-size: 0.9rem;
-          }
-          
-          .control-btn {
-            max-width: 250px;
-            padding: 0.5rem 1.5rem;
-            font-size: 0.85rem;
-          }
-          
-          .control-btn svg {
-            width: 26px;
-            height: 26px;
+          .card-title {
+            font-size: 1.5rem;
           }
         }
       `}</style>
