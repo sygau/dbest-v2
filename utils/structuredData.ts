@@ -18,20 +18,7 @@ export {
   getMainPageMetadata 
 };
 
-const timerPageMetadata: PageMetadata = {
-  title: 'DSE 操卷計時器 Timer | 模擬考試倒數工具',
-  description: 'DSE 操卷計時器提供官方考試時限預設、15 分鐘剩餘提醒、完結提示音及全螢幕專注模式，協助考生在家模擬真實考場節奏。',
-  robots: 'index, follow',
-  ogTitle: 'DSE 操卷計時器 Timer | 模擬考試倒數工具',
-  ogDescription: '一鍵選擇科目與卷別，自動套用 香港考試及評核局 HKDSE 官方考試時間，提供 15 分鐘預警和完成提示音，支援全螢幕專注模式及多科快速切換。',
-  ogImage: 'https://dse.best/assets/images/logo-icon.png',
-  ogUrl: 'https://dse.best/timer',
-  ogType: 'website'
-};
 
-export function getTimerPageMetadata(): PageMetadata {
-  return timerPageMetadata;
-}
 
 export interface SubjectData {
   name: string;
@@ -740,8 +727,8 @@ export function generateHomepageStructuredData() {
         {
           "@type": "ListItem",
           "position": 17,
-          "name": "視覺藝術 Visual Arts Past Papers",
-          "item": "https://dse.best/visual-arts"
+          "name": "DSE 番茄鐘 Pomodoro Timer",
+          "item": "https://dse.best/pomodoro"
         }
       ]
     }
@@ -1076,7 +1063,22 @@ export function generatePageFAQStructuredData(pageKey: string) {
     }))
   };
 }
-
+export function getTimerPageMetadata(): PageMetadata {
+  return (
+    getMainPageMetadata('timer') ?? {
+      title: 'DSE 操卷計時器 Timer | 模擬考試倒數工具',
+      description:
+        'DSE 操卷計時器提供官方考試時限預設、15 分鐘剩餘提醒、完結提示音及全螢幕專注模式，協助考生在家模擬真實考場節奏。',
+      robots: 'index, follow',
+      ogTitle: 'DSE 操卷計時器 Timer | 模擬考試倒數工具',
+      ogDescription:
+        '一鍵選擇科目與卷別，自動套用 香港考試及評核局 HKDSE 官方考試時間，提供 15 分鐘預警和完成提示音，支援全螢幕專注模式及多科快速切換。',
+      ogImage: 'https://dse.best/assets/images/logo-icon.png',
+      ogUrl: 'https://dse.best/timer',
+      ogType: 'website'
+    }
+  );
+}
 // Generate Resources page structured data
 export function generateResourcesStructuredData() {
   return {
@@ -1128,20 +1130,20 @@ export function generateTimerStructuredData() {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "DSE 操卷計時器 Timer | 模擬考試倒數工具",
-    "description": "DSE 操卷計時器提供官方考試時限預設、15 分鐘剩餘提醒、完結提示音及全螢幕專注模式，協助考生在家模擬真實考場節奏。",
+    "name": "DSE 操卷計時器 | 官方考試時間預設 | 模擬考場倒數工具",
+    "description": "最強 DSE 操卷倒數工具。內置 DSE 各科官方考試時間，專為 Mock Exam 及練習 Past Paper 設計。助考生在家精準模擬真實考場節奏，提升答題速度，係 DSE 備戰必備工具。",
     "url": "https://dse.best/timer",
     "inLanguage": ["zh-HK", "en-HK"],
     "isPartOf": {
       "@type": "WebSite",
       "name": "dse.best",
       "url": "https://dse.best/",
-      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋全科歷屆試題及答案，助你掌握 DSE 考試趨勢。"
     },
     "mainEntity": {
       "@type": "SoftwareApplication",
       "name": "DSE 操卷計時器",
-      "description": "模擬 HKDSE 考試時間的網上倒數工具，提供官方時限預設、提醒提示音及全螢幕專注模式。",
+      "description": "模擬 HKDSE 官方考試時間的網上倒數工具，專為考生操練 Past Paper 及模擬試設計，助你精準掌握答題時間。",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Web Browser",
       "url": "https://dse.best/timer",
@@ -1155,11 +1157,11 @@ export function generateTimerStructuredData() {
         "audienceType": "HKDSE Students"
       },
       "featureList": [
-        "HKDSE 官方科目及卷別時限預設",
-        "15 分鐘剩餘視覺與聲效提示",
-        "時間結束自動通知與提示音",
-        "全螢幕專注模式",
-        "多科目快速切換與重設"
+        "內置 HKDSE 各科目官方卷別考試時限",
+        "精準模擬真實考場計時節奏",
+        "一鍵切換各科試卷時間設定",
+        "專為 Past Paper 操練而設的倒數功能",
+        "優化答題速度管理"
       ],
       "provider": {
         "@type": "Organization",
@@ -1173,14 +1175,14 @@ export function generateTimerStructuredData() {
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "學習工具 Tools",
-          "item": "https://dse.best/resources"
+          "name": "DSE 番茄鐘 Pomodoro Timer",
+          "item": "https://dse.best/pomodoro"
         },
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "DSE 操卷計時器 Timer",
-          "item": "https://dse.best/timer"
+          "name": "DSE 倒數計時器 Countdown Timer",
+          "item": "https://dse.best/countdown"
         }
       ]
     }

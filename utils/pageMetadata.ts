@@ -315,6 +315,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/pomodoro",
     "ogType": "website"
+  },
+  "timer": {
+    "title": "DSE 操卷計時器 Timer | 模擬DSE考試計時工具",
+    "description": "最強 DSE 一鍵操卷計時神器。內置 DSE 各科官方考試時間，專為 Mock Exam 及練習 Past Paper 設計。助考生在家精準模擬真實考場節奏，提升答題速度，係 DSE 備戰必備工具。",
+    "robots": "index, follow",
+    "ogTitle": "DSE 操卷計時器 Timer | 模擬DSE考試計時工具",
+    "ogDescription": "一鍵即選 DSE 各科官方考試時間。專為模擬試及操卷設計，助你精準掌控答題節奏，喺屋企完美模擬考場體驗，DSE 考生練卷必備。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/timer",
+    "ogType": "website"
   }
 };
 
