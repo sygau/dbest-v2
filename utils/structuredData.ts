@@ -18,6 +18,21 @@ export {
   getMainPageMetadata 
 };
 
+const timerPageMetadata: PageMetadata = {
+  title: 'DSE 操卷計時器 Timer | 模擬考試倒數工具',
+  description: 'DSE 操卷計時器提供官方考試時限預設、15 分鐘剩餘提醒、完結提示音及全螢幕專注模式，協助考生在家模擬真實考場節奏。',
+  robots: 'index, follow',
+  ogTitle: 'DSE 操卷計時器 Timer | 模擬考試倒數工具',
+  ogDescription: '一鍵選擇科目與卷別，自動套用 香港考試及評核局 HKDSE 官方考試時間，提供 15 分鐘預警和完成提示音，支援全螢幕專注模式及多科快速切換。',
+  ogImage: 'https://dse.best/assets/images/logo-icon.png',
+  ogUrl: 'https://dse.best/timer',
+  ogType: 'website'
+};
+
+export function getTimerPageMetadata(): PageMetadata {
+  return timerPageMetadata;
+}
+
 export interface SubjectData {
   name: string;
   englishName: string;
@@ -1007,8 +1022,40 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
       question: "如何找到特定科目的學習資源？",
       answer: "您可以通過導航菜單選擇特定科目，或直接訪問對應的科目頁面。每個科目頁面都包含該科目的歷屆試題、學習資源和相關資訊。"
     }
+  ],
+  timer: [
+    {
+      question: "DSE 操卷計時器提供哪些提醒功能？",
+      answer: "計時器會在剩餘 15 分鐘時顯示提示並播放聲效，時間歸零時亦會自動響鈴及顯示完成通知，協助你模擬真實考場節奏。"
+    },
+    {
+      question: "全螢幕專注模式有甚麼作用？",
+      answer: "啟動全螢幕後，瀏覽器標籤與工具列會隱藏，減少分心，讓你在家操卷時亦能維持考場級專注。"
+    },
+    {
+      question: "如何善用官方考試時限預設？",
+      answer: "選擇科目及卷別後，計時器會自動套用香港考試及評核局公布的正式考試時數。建議預留最後 5 至 10 分鐘檢查答案，透過多次限時練習建立時間感。"
+    },
+    {
+      question: "操卷時可以同時記錄多科進度嗎？",
+      answer: "可以。系統支援快速切換科目與卷別，你可按需要重設倒數或重新啟動，方便管理不同科目的操卷練習。"
+    },
+    {
+      question: "如何提升操卷效率與專注力？",
+      answer: "建議配合番茄鐘節奏使用：完成一份限時試卷後休息約 15 分鐘，再檢討錯題與整理重點，有助提升專注力與記憶效果。"
+    }
   ]
 };
+
+export function getPageFAQs(pageKey: string) {
+  const faqs = pageFAQs[pageKey];
+  if (!faqs) return [] as Array<{ id: string; question: string; answer: string }>;
+
+  return faqs.map((faq, index) => ({
+    id: `${pageKey}-faq-${index + 1}`,
+    ...faq
+  }));
+}
 
 // Generate FAQ structured data for pages
 export function generatePageFAQStructuredData(pageKey: string) {
@@ -1073,6 +1120,69 @@ export function generateResourcesStructuredData() {
       "@type": "Organization",
       "name": "dse.best",
       "url": "https://dse.best"
+    }
+  };
+}
+
+export function generateTimerStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "DSE 操卷計時器 Timer | 模擬考試倒數工具",
+    "description": "DSE 操卷計時器提供官方考試時限預設、15 分鐘剩餘提醒、完結提示音及全螢幕專注模式，協助考生在家模擬真實考場節奏。",
+    "url": "https://dse.best/timer",
+    "inLanguage": ["zh-HK", "en-HK"],
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "dse.best",
+      "url": "https://dse.best/",
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "DSE 操卷計時器",
+      "description": "模擬 HKDSE 考試時間的網上倒數工具，提供官方時限預設、提醒提示音及全螢幕專注模式。",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "url": "https://dse.best/timer",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "HKDSE Students"
+      },
+      "featureList": [
+        "HKDSE 官方科目及卷別時限預設",
+        "15 分鐘剩餘視覺與聲效提示",
+        "時間結束自動通知與提示音",
+        "全螢幕專注模式",
+        "多科目快速切換與重設"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "dse.best",
+        "url": "https://dse.best/"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "學習工具 Tools",
+          "item": "https://dse.best/resources"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DSE 操卷計時器 Timer",
+          "item": "https://dse.best/timer"
+        }
+      ]
     }
   };
 }

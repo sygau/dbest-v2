@@ -395,6 +395,12 @@ export default function App({ Component, pageProps }: AppProps) {
                   <div className="menu-title">番茄鐘 Pomodoro</div>
                 </NavigationLink>
               </li>
+              <li>
+                <NavigationLink href="/timer">
+                  <div className="parent-icon"><BiTestTube style={{ color: '#80deea', fontSize: 24 }} /></div>
+                  <div className="menu-title">操卷計時器 Paper Timer</div>
+                </NavigationLink>
+              </li>
               <li className="menu-label">其他</li>
               <li>
                 <NavigationLink href="/about">
