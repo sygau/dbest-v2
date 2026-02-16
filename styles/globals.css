@@ -30,8 +30,16 @@ html:root, html[data-bs-theme=light] {
   --bs-card-bg: #ffffff !important;
 }
 
+html[data-bs-theme=light] .card {
+  --bs-card-bg: unset !important;
+}
+
+html[data-bs-theme="light"] .card.rounded-4 .card.h-100.d-flex.flex-column {
+  background-color: #f3f4f6 !important;
+}
+
 html[data-bs-theme=dark] {
-  --bs-body-bg: #212529 !important;
+  --bs-body-bg: #212529 !important; 
   --bs-body-color: #dee2e6 !important;
   --bs-heading-color: inherit !important;
 }
