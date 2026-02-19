@@ -41,7 +41,7 @@ const SUBJECT_PRESETS: SubjectPreset[] = [
     nameEn: 'Mathematics',
     papers: [
       { id: 'p1', nameZh: '卷一', nameEn: 'Paper 1', durationMinutes: 120 },
-      { id: 'p2', nameZh: '卷二', nameEn: 'Paper 2 MC', durationMinutes: 75 }
+      { id: 'p2', nameZh: '卷二', nameEn: 'Paper 2 MC', durationMinutes: 135 }
     ]
   },
   {
