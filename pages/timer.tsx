@@ -20,8 +20,7 @@ const SUBJECT_PRESETS: SubjectPreset[] = [
     nameEn: 'Chinese Language',
     papers: [
       { id: 'p1', nameZh: '卷一 閱讀', nameEn: 'Paper 1 Reading', durationMinutes: 90 },
-      { id: 'p2', nameZh: '卷二 寫作', nameEn: 'Paper 2 Writing', durationMinutes: 105 },
-      { id: 'p3', nameZh: '卷三 聆聽及綜合', nameEn: 'Paper 3 Listening & Integrated', durationMinutes: 75 }
+      { id: 'p2', nameZh: '卷二 寫作', nameEn: 'Paper 2 Writing', durationMinutes: 135 }
     ]
   },
   {
@@ -31,7 +30,7 @@ const SUBJECT_PRESETS: SubjectPreset[] = [
     papers: [
       { id: 'p1', nameZh: '卷一 閱讀', nameEn: 'Paper 1 Reading', durationMinutes: 90 },
       { id: 'p2', nameZh: '卷二 寫作', nameEn: 'Paper 2 Writing', durationMinutes: 120 },
-      { id: 'p3', nameZh: '卷三 聆聽及綜合', nameEn: 'Paper 3 Listening & Integrated', durationMinutes: 120 },
+      { id: 'p3', nameZh: '卷三 聆聽及綜合', nameEn: 'Paper 3 Listening & Integrated', durationMinutes: 115 },
       { id: 'p4', nameZh: '卷四 說話', nameEn: 'Paper 4 Speaking', durationMinutes: 20 }
     ]
   },
@@ -40,8 +39,8 @@ const SUBJECT_PRESETS: SubjectPreset[] = [
     nameZh: '數學 (必修)',
     nameEn: 'Mathematics',
     papers: [
-      { id: 'p1', nameZh: '卷一', nameEn: 'Paper 1', durationMinutes: 120 },
-      { id: 'p2', nameZh: '卷二', nameEn: 'Paper 2 MC', durationMinutes: 135 }
+      { id: 'p1', nameZh: '卷一', nameEn: 'Paper 1', durationMinutes: 135 },
+      { id: 'p2', nameZh: '卷二', nameEn: 'Paper 2 MC', durationMinutes: 75 }
     ]
   },
   {
