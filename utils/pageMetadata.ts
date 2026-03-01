@@ -325,6 +325,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/timer",
     "ogType": "website"
+  },
+  "individual-response": {
+    "title": "DSE English Speaking Individual Response 練習計時器",
+    "description": "DSE English Speaking Practice Timer 專為 DSE 英文科口試 Individual Response 設計，提供 30+ 真題練習、語音朗讀、60秒計時功能，助你提升口試表現。模擬真實考試流程，自動播放題目、計時、提示完成。",
+    "robots": "index, follow",
+    "ogTitle": "DSE English Speaking Individual Response 練習計時器",
+    "ogDescription": "DSE 英文科口試 Individual Response 練習工具，30+ 真題隨機抽取，語音朗讀題目，60秒倒數計時，自動提示完成。專為 DSE 考生設計，提升口試答題技巧。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/individual-response",
+    "ogType": "website"
   }
 };
 

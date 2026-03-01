@@ -36,7 +36,8 @@ import {
   BiPlanet,
   BiMoon,
   BiDiamond,
-  BiGroup
+  BiGroup,
+  BiMicrophone
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import usePageInitialization from '../hooks/usePageInitialization'
@@ -399,6 +400,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <NavigationLink href="/timer">
                   <div className="parent-icon"><BiTestTube style={{ color: '#80deea', fontSize: 24 }} /></div>
                   <div className="menu-title">操卷計時器 Paper Timer</div>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink href="/individual-response">
+                  <div className="parent-icon"><BiMicrophone style={{ color: '#25D366', fontSize: 24 }} /></div>
+                  <div className="menu-title">Speaking IR 練習</div>
                 </NavigationLink>
               </li>
               <li className="menu-label">其他</li>

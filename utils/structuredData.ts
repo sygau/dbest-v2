@@ -1247,4 +1247,69 @@ export function generatePomodoroStructuredData() {
       ]
     }
   };
-} 
+}
+
+// Generate Individual Response page structured data
+export function generateIndividualResponseStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "DSE English Oral Individual Response 練習 | 口試計時器",
+    "description": "DSE English Oral Practice Timer 專為 DSE 英文科口試 Individual Response 設計，提供 30+ 真題練習、語音朗讀、60秒計時功能，助你提升口試表現。模擬真實考試流程，自動播放題目、計時、提示完成。",
+    "url": "https://dse.best/individual-response",
+    "inLanguage": ["zh-HK", "en-HK"],
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "dse.best",
+      "url": "https://dse.best/",
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "DSE English Speaking Individual Response 練習計時器",
+      "description": "專為 DSE 英文科口試 Individual Response 設計的練習計時器，提供 30+ 真題、語音朗讀、60秒倒數功能，助你提升口試表現。",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "url": "https://dse.best/individual-response",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "HKDSE Students"
+      },
+      "featureList": [
+        "30+ DSE Individual Response 真題",
+        "語音朗讀題目 (Text-to-Speech)",
+        "60秒倒數計時",
+        "自動播放提示音效",
+        "題目隨機抽取",
+        "練習進度保存"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "dse.best",
+        "url": "https://dse.best/"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "dse.best 主頁",
+          "item": "https://dse.best/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DSE English Oral Individual Response",
+          "item": "https://dse.best/individual-response"
+        }
+      ]
+    }
+  };
+}
