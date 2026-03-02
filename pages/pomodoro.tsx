@@ -236,7 +236,9 @@ export default function PomodoroPage() {
             <div className="timer-card">
 
               {/* Header Title (Bigger) */}
-              <h1 className="card-title">番茄鐘 Pomodoro</h1>
+              <div className="card-header-block">
+                <h1 className="card-title">番茄鐘 Pomodoro</h1>
+              </div>
 
               {/* Mode Switcher */}
               <div className="mode-switcher">
@@ -385,7 +387,6 @@ export default function PomodoroPage() {
         .layout-center {
           display: flex;
           justify-content: center;
-          padding-top: 2rem; 
           padding-bottom: 4rem;
         }
 
@@ -413,13 +414,19 @@ export default function PomodoroPage() {
           transition: border-color 0.3s ease;
         }
 
-        .card-title {
-          font-size: 1.8rem; /* Made bigger */
-          font-weight: 800;
-          color: #374151;
-          margin-bottom: 1.5rem;
+        .card-header-block {
           text-align: center;
-          line-height: 1.2;
+          margin-bottom: 1.5rem;
+          width: 100%;
+        }
+
+        .card-title {
+          font-size: 2.6rem;
+          font-weight: 800;
+          color: #111827;
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          margin: 0;
         }
 
         /* Mode Switcher */
@@ -703,7 +710,7 @@ export default function PomodoroPage() {
             font-size: 4rem;
           }
           .card-title {
-            font-size: 1.5rem;
+            font-size: 1.9rem;
           }
         }
       `}</style>

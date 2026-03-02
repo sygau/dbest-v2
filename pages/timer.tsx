@@ -267,6 +267,7 @@ export default function PaperTimerPage() {
       intervalRef.current = setInterval(() => {
         setTimeLeft(t => {
           const next = t - 1;
+
           if (next === 900 && !notified15Min.current) {
             showInAppNotification("⚠️ 剩餘 15 分鐘！", "warning");
             notified15Min.current = true;
@@ -274,6 +275,7 @@ export default function PaperTimerPage() {
           if (next <= 0) {
             showInAppNotification("⏰ 考試結束！", "finish");
             setIsActive(false);
+            setIsPaused(false);
             return 0;
           }
           return next;
@@ -284,6 +286,17 @@ export default function PaperTimerPage() {
     }
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, [isActive, timeLeft, selectedPaper]);
+
+  const handleToggleStartPause = () => {
+    if (!selectedPaper || timeLeft === 0) return;
+    if (isActive) {
+      setIsActive(false);
+      setIsPaused(true);
+      return;
+    }
+    setIsActive(true);
+    setIsPaused(false);
+  };
 
   return (
     <>
@@ -311,6 +324,7 @@ export default function PaperTimerPage() {
             box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
             position: relative;
             overflow: hidden; 
+            border-top: 5px solid #3a1c9dff;
             /* Smooth transition for fullscreen change */
             transition: all 0.3s ease-in-out;
           }
@@ -398,6 +412,84 @@ export default function PaperTimerPage() {
              font-size: 1.2rem; color: #64748b; font-weight: 600;
              text-align: center; width: 80%;
           }
+
+          .card-header-block { text-align: center; margin-bottom: 1.5rem; width: 100%; }
+
+          .timer-card-modern .card-title {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #111827 !important;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin: 0;
+          }
+
+          .exam-durations-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid #f1f5f9;
+          }
+
+          .exam-durations-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #111827;
+            margin: 0 0 0.75rem 0;
+            letter-spacing: -0.02em;
+          }
+
+          .exam-durations-subtitle {
+            font-size: 0.95rem;
+            color: #4b5563;
+            margin: 0 0 1.25rem 0;
+            line-height: 1.6;
+          }
+
+          .table-responsive {
+            overflow-x: auto;
+          }
+
+          .durations-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            min-width: 520px;
+          }
+
+          .durations-table th,
+          .durations-table td {
+            padding: 0.9rem 0.85rem;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: top;
+          }
+
+          .durations-table th {
+            background: #f9fafb;
+            font-weight: 700;
+            color: #374151;
+            position: sticky;
+            top: 0;
+          }
+
+          .subject-cell {
+            font-weight: 700;
+            color: #111827;
+            white-space: nowrap;
+          }
+
+          .paper-cell {
+            color: #374151;
+            font-weight: 600;
+          }
+
+          .duration-cell {
+            color: #111827;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+          }
         `}</style>
       </Head>
 
@@ -454,8 +546,10 @@ export default function PaperTimerPage() {
             </div>
           )}
 
-          <h2 className="fw-bold mb-4 hide-on-fs" style={{ letterSpacing: '-0.02em', color: '#0f172a' }}>DSE 操卷計時器</h2>
-          
+          <div className="card-header-block hide-on-fs">
+            <h1 className="card-title">DSE 操卷計時器</h1>
+          </div>
+
           <div className="row g-3 mb-5 hide-on-fs">
             {/* Select inputs remain the same... */}
             <div className="col-6 text-start">
@@ -484,13 +578,43 @@ export default function PaperTimerPage() {
 
           <div className="d-flex justify-content-center hide-on-fs">
              {/* Standardized Chinese button text */}
-            <button className="action-btn btn-start flex-grow-1" disabled={!selectedPaper || timeLeft === 0} onClick={() => setIsActive(!isActive)}>
+            <button className="action-btn btn-start flex-grow-1" disabled={!selectedPaper || timeLeft === 0} onClick={handleToggleStartPause}>
               {isActive ? '暫停 (Pause)' : isPaused ? '繼續 (Continue)' : '開始 (Start)'}
             </button>
             <button className="action-btn btn-reset" onClick={() => {
                 const s = (selectedPaper?.durationMinutes || 0) * 60;
                 setTimeLeft(s); setTotalTime(s); setIsActive(false); setIsPaused(false); notified15Min.current = false; setNotification(null);
               }}>重置 (Reset)</button>
+          </div>
+        </div>
+
+        <div className="mt-4 hide-on-fs">
+          <div className="exam-durations-card">
+            <h3 className="exam-durations-title">DSE 各科考核時間一覽</h3>
+            <p className="exam-durations-subtitle">以下時間來自官方指引，用作快速參考與規劃操卷時間。</p>
+
+            <div className="table-responsive">
+              <table className="durations-table">
+                <thead>
+                  <tr>
+                    <th style={{ width: '30%' }}>科目</th>
+                    <th>試卷</th>
+                    <th style={{ width: '18%' }}>時間</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {SUBJECT_PRESETS.flatMap(subject =>
+                    subject.papers.map(paper => (
+                      <tr key={`${subject.id}-${paper.id}`}>
+                        <td className="subject-cell">{subject.nameZh}</td>
+                        <td className="paper-cell">{paper.nameZh}</td>
+                        <td className="duration-cell">{paper.durationMinutes} 分鐘</td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 

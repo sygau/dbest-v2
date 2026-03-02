@@ -145,23 +145,20 @@ function shuffleArray<T>(array: T[]): T[] {
   return arr;
 }
 
-// Estimate how long TTS will take for a given text, add 2s buffer
-// Based on ~0.85 rate, ~130 words/min → ~460ms/word
 function estimateSpeakDurationMs(text: string): number {
   const wordCount = text.trim().split(/\s+/).length;
   return Math.ceil((wordCount / 130) * 60 * 1000 / 0.85) + 2000;
 }
 
-// When TTS is off, give students time to read the question
-// Base 1:00 + 3s buffer + 1s per 4 words → tighter, more realistic reading pace
 function readingBufferSeconds(text: string): number {
   const wordCount = text.trim().split(/\s+/).length;
   return 60 + 3 + Math.floor(wordCount / 4);
 }
 
-
 const STORAGE_KEY = 'dse-ir-state';
-type TimerState = 'idle' | 'reading' | 'running' | 'finished';
+const TTS_STORAGE_KEY = 'dse-ir-tts-enabled';
+// Added 'paused' state
+type TimerState = 'idle' | 'reading' | 'running' | 'paused' | 'finished';
 interface StoredState { queue: number[]; doneIds: number[]; }
 
 export default function IndividualResponsePage() {
@@ -174,7 +171,6 @@ export default function IndividualResponsePage() {
   const [queue, setQueue] = useState<number[]>([]);
   const [doneIds, setDoneIds] = useState<Set<number>>(new Set());
   const [openFaq, setOpenFaq] = useState<string | null>(null);
-  // TTS toggle — default OFF so Safari users never hit the bug
   const [ttsEnabled, setTtsEnabled] = useState(false);
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -199,8 +195,22 @@ export default function IndividualResponsePage() {
         if (parsed.queue?.length > 0) setQueue(parsed.queue);
         if (parsed.doneIds) setDoneIds(new Set(parsed.doneIds));
       }
-    } catch (e) {}
+    } catch (e) { }
   }, []);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(TTS_STORAGE_KEY);
+      if (stored === '1') setTtsEnabled(true);
+      if (stored === '0') setTtsEnabled(false);
+    } catch (e) { }
+  }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(TTS_STORAGE_KEY, ttsEnabled ? '1' : '0');
+    } catch (e) { }
+  }, [ttsEnabled]);
 
   useEffect(() => {
     if (queue.length > 0) {
@@ -214,6 +224,7 @@ export default function IndividualResponsePage() {
     }
   }, [queue.length]);
 
+  // Timer only ticks when 'running' — paused state freezes it
   useEffect(() => {
     if (timerState === 'running' && timeLeft > 0) {
       timerRef.current = setInterval(() => {
@@ -254,7 +265,7 @@ export default function IndividualResponsePage() {
       gain.gain.setValueAtTime(0.3, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
       osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.2);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const playBellSound = () => {
@@ -270,7 +281,7 @@ export default function IndividualResponsePage() {
         gain.gain.exponentialRampToValueAtTime(0.01, t + 0.4);
         osc.start(t); osc.stop(t + 0.4);
       });
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const markCurrentDone = () => {
@@ -288,16 +299,13 @@ export default function IndividualResponsePage() {
     return { id: remaining[0], newQueue: remaining.slice(1) };
   };
 
-  // Resilient TTS: races against a hard timeout so Safari can never get stuck
   const speakQuestionResilient = (text: string): Promise<void> => {
     return new Promise((resolve) => {
       const timeout = estimateSpeakDurationMs(text);
-      // Hard fallback — always resolves within estimated duration
       const fallbackTimer = setTimeout(() => {
-        try { speechSynthesis.cancel(); } catch (e) {}
+        try { speechSynthesis.cancel(); } catch (e) { }
         resolve();
       }, timeout);
-
       try {
         speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
@@ -340,23 +348,27 @@ export default function IndividualResponsePage() {
       playBeep();
       setTimeLeft(60);
     } else {
-      // Give students time to read — 1:06 base + 1s per 3 words for longer questions
       setTimeLeft(readingBufferSeconds(questionText));
     }
 
     setTimerState('running');
   };
 
-  const handleStop = () => {
+  // Pause: freeze the timer in place
+  const handlePause = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    try { speechSynthesis.cancel(); } catch (e) {}
-    setTimerState('finished');
-    markCurrentDone();
+    setTimerState('paused');
   };
 
+  // Continue: resume from where we left off
+  const handleContinue = () => {
+    setTimerState('running');
+  };
+
+  // Skip to next question (abandon current)
   const handleNextQuestion = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    try { speechSynthesis.cancel(); } catch (e) {}
+    try { speechSynthesis.cancel(); } catch (e) { }
     markCurrentDone();
     setCurrentQuestionId(null);
     setTimerState('idle');
@@ -372,17 +384,23 @@ export default function IndividualResponsePage() {
   const progressPercent = ((60 - timeLeft) / 60) * 100;
   const isIdle = timerState === 'idle';
   const isReading = timerState === 'reading';
+  const isPaused = timerState === 'paused';
+  const isFinished = timerState === 'finished';
 
+  // Label logic:
+  // idle → START, reading → 讀緊題目…, running → PAUSE, paused → CONTINUE, finished → NEXT
   const mainBtnLabel = () => {
     if (isIdle) return 'START';
     if (isReading) return '讀緊題目…';
-    if (timerState === 'running') return 'STOP';
-    return 'NEXT';
+    if (timerState === 'running') return 'PAUSE';
+    if (isPaused) return 'CONTINUE';
+    return 'NEXT'; // finished
   };
 
   const mainBtnAction = () => {
-    if (isIdle || timerState === 'finished') return handleStart();
-    if (timerState === 'running') return handleStop();
+    if (isIdle || isFinished) return handleStart();
+    if (timerState === 'running') return handlePause();
+    if (isPaused) return handleContinue();
   };
 
   return (
@@ -415,30 +433,6 @@ export default function IndividualResponsePage() {
           <div className="content-stack">
 
             <div className="timer-card">
-              {/* TTS Toggle — top right of card */}
-              <div className="card-top-controls">
-                <button
-                  className={`tts-toggle${ttsEnabled ? ' tts-on' : ''}`}
-                  onClick={() => setTtsEnabled(v => !v)}
-                  title={ttsEnabled ? '關閉朗讀' : '開啟朗讀'}
-                  aria-label="Toggle read aloud"
-                  aria-pressed={ttsEnabled}
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                    {ttsEnabled ? (
-                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                    ) : (
-                      <>
-                        <line x1="23" y1="9" x2="17" y2="15"/>
-                        <line x1="17" y1="9" x2="23" y2="15"/>
-                      </>
-                    )}
-                  </svg>
-                  {ttsEnabled ? '朗讀 ON' : '朗讀 OFF'}
-                </button>
-              </div>
-
               <div className="card-header-block">
                 <h1 className="card-title">Individual Response 練習工具</h1>
               </div>
@@ -454,7 +448,7 @@ export default function IndividualResponsePage() {
                 )}
               </div>
 
-              <div className={`time-display${isReading ? ' time-reading' : ''}${timerState === 'finished' ? ' time-done' : ''}`}>
+              <div className={`time-display${isReading ? ' time-reading' : ''}${isFinished ? ' time-done' : ''}${isPaused ? ' time-paused' : ''}`}>
                 {isReading ? '—' : formatTime(timeLeft)}
               </div>
 
@@ -462,23 +456,49 @@ export default function IndividualResponsePage() {
                 <div className="progress-bar-inner" style={{ width: `${isIdle ? 0 : progressPercent}%` }} />
               </div>
 
+              {/* Button row: main action + skip icon */}
               <div className="controls">
                 <button
-                  className={`primary-btn${timerState === 'running' ? ' btn-stop' : ''}${isReading ? ' btn-reading' : ''}`}
+                  className={`primary-btn${timerState === 'running' ? ' btn-pause' : ''}${isPaused ? ' btn-continue' : ''}${isReading ? ' btn-reading' : ''}`}
                   onClick={mainBtnAction}
                   disabled={isReading}
                 >
                   {mainBtnLabel()}
                 </button>
 
-                {(timerState === 'running' || timerState === 'finished') && (
-                  <button className="icon-btn" onClick={handleNextQuestion} title="下一題" aria-label="Skip to next question">
+                {/* Skip button: only visible while running or paused — NOT on finished */}
+                {(timerState === 'running' || isPaused) && (
+                  <button className="icon-btn" onClick={handleNextQuestion} title="跳過此題" aria-label="Skip to next question">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="5 4 15 12 5 20 5 4"/>
-                      <line x1="19" y1="5" x2="19" y2="19"/>
+                      <polygon points="5 4 15 12 5 20 5 4" />
+                      <line x1="19" y1="5" x2="19" y2="19" />
                     </svg>
                   </button>
                 )}
+              </div>
+
+              {/* TTS toggle — centred below controls */}
+              <div className="tts-row">
+                <button
+                  className={`tts-toggle${ttsEnabled ? ' tts-on' : ''}`}
+                  onClick={() => setTtsEnabled(v => !v)}
+                  title={ttsEnabled ? '關閉朗讀' : '開啟朗讀'}
+                  aria-label="Toggle read aloud"
+                  aria-pressed={ttsEnabled}
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                    {ttsEnabled ? (
+                      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                    ) : (
+                      <>
+                        <line x1="23" y1="9" x2="17" y2="15" />
+                        <line x1="17" y1="9" x2="23" y2="15" />
+                      </>
+                    )}
+                  </svg>
+                  {ttsEnabled ? '朗讀 ON' : '朗讀 OFF'}
+                </button>
               </div>
             </div>
 
@@ -486,8 +506,8 @@ export default function IndividualResponsePage() {
             <p className="audio-footnote">
               * 朗讀功能依賴瀏覽器內置語音合成，部分裝置（尤其 Safari / iOS）可能出現聲音異常或不支援。如遇問題請關閉朗讀模式。
             </p>
-
-                        {/* SEO Guide / Wiki Section */}
+            
+            {/* SEO Guide / Wiki Section */}
             <div className="guide-container">
               <div className="guide-header">
                 <h2>📘 DSE Speaking | Individual Response 攻略</h2>
@@ -521,7 +541,7 @@ export default function IndividualResponsePage() {
                 </div>
               </div>
 
-                            <div className="guide-section">
+              <div className="guide-section">
                 <h3>2. 不同程度回答示範 (Sample Responses)</h3>
                 <p>一個理想嘅 Individual Response 應該維持喺 50-60 秒左右。以下示範點樣利用 PREP 框架將答案「豐富化」(Elaborate)：</p>
                 
@@ -544,7 +564,7 @@ export default function IndividualResponsePage() {
                     <span className="example-q">"Do you think social media makes people feel more lonely?"</span>
                   </div>
                   <div className="example-body">
-                    <span className="highlight point-hl">That’s a highly debated issue nowadays, but from my perspective, I strongly agree that social media actually makes people feel more lonely.</span>{' '}
+                    <span className="highlight point-hl">That's a highly debated issue nowadays, but from my perspective, I strongly agree that social media actually makes people feel more lonely.</span>{' '}
                     <span className="highlight reason-hl">Even though platforms like Instagram or TikTok give us the illusion of being constantly 'connected' to hundreds of peers, these digital interactions are often very superficial and entirely lack the warmth of physical, face-to-face communication. We are substituting real, deep conversations with meaningless likes and emojis.</span>{' '}
                     <span className="highlight example-hl">A prime example of this is how many teenagers, including some of my own classmates, spend hours every night endlessly scrolling through influencers' perfectly curated feeds. Seeing others constantly posting about their glamorous holidays, luxury meals, or massive friend groups inevitably triggers a toxic cycle of social comparison. It creates this intense 'Fear Of Missing Out'—or FOMO—which makes young people feel inadequate and isolated in their own bedrooms, despite having thousands of online followers.</span>{' '}
                     <span className="highlight point-hl">Therefore, I firmly believe that while social media connects us technologically, it ironically widens the emotional gap between people in reality, leaving us feeling more disconnected and lonely than ever before.</span>
@@ -617,7 +637,7 @@ export default function IndividualResponsePage() {
                 </div>
               </div>
             </div>
-
+            
             {/* FAQ */}
             <div className="faq-container">
               <p className="faq-label">DSE Speaking 常見問題</p>
@@ -634,7 +654,7 @@ export default function IndividualResponsePage() {
                       width="16" height="16" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
                     >
-                      <polyline points="6 9 12 15 18 9"/>
+                      <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </button>
                   {openFaq === faq.id && (
@@ -657,6 +677,7 @@ export default function IndividualResponsePage() {
           background: #ffffff;
           border-radius: 24px;
           padding: 2.25rem 2.5rem;
+          padding-bottom: 15px;
           box-shadow: 0 4px 24px rgba(0,0,0,0.07);
           display: flex;
           flex-direction: column;
@@ -665,38 +686,7 @@ export default function IndividualResponsePage() {
           position: relative;
         }
 
-        /* TTS toggle */
-        .card-top-controls {
-          position: absolute;
-          top: 1.1rem;
-          right: 1.25rem;
-        }
-
-        .tts-toggle {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          border: 1.5px solid #e5e7eb;
-          background: #f9fafb;
-          color: #9ca3af;
-          border-radius: 99px;
-          padding: 4px 10px 4px 8px;
-          font-size: 0.72rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.15s;
-          letter-spacing: 0.02em;
-        }
-
-        .tts-toggle.tts-on {
-          border-color: #25D366;
-          background: #f0fdf4;
-          color: #128C7E;
-        }
-
-        .tts-toggle:hover { border-color: #25D366; color: #128C7E; }
-
-        .card-header-block { text-align: center; margin-bottom: 1.5rem; width: 100%; margin-top: 0.5rem; }
+        .card-header-block { text-align: center; margin-bottom: 1.5rem; width: 100%; }
 
         .card-title {
           font-size: 2.6rem;
@@ -738,6 +728,7 @@ export default function IndividualResponsePage() {
 
         .time-reading { color: #d1d5db; letter-spacing: 0; font-size: 4rem; }
         .time-done { color: #25D366; }
+        .time-paused { color: #f59e0b; }
 
         .progress-track { width: 100%; height: 14px; background: #f3f4f6; border-radius: 99px; overflow: hidden; margin-bottom: 1.75rem; }
         .progress-bar-inner { height: 100%; background: linear-gradient(90deg, #25D366, #128C7E); transition: width 1s linear; border-radius: 99px; }
@@ -760,8 +751,15 @@ export default function IndividualResponsePage() {
 
         .primary-btn:hover:not(:disabled) { background: #128C7E; }
         .primary-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .primary-btn.btn-stop { background: #ef4444; color: #ffffff; }
-        .primary-btn.btn-stop:hover:not(:disabled) { background: #dc2626; }
+
+        /* PAUSE state — amber */
+        .primary-btn.btn-pause { background: #f59e0b; color: #ffffff; }
+        .primary-btn.btn-pause:hover:not(:disabled) { background: #d97706; }
+
+        /* CONTINUE state — blue */
+        .primary-btn.btn-continue { background: #3b82f6; color: #ffffff; }
+        .primary-btn.btn-continue:hover:not(:disabled) { background: #2563eb; }
+
         .primary-btn.btn-reading { background: #9ca3af; color: #ffffff; cursor: not-allowed; }
 
         .icon-btn {
@@ -782,6 +780,38 @@ export default function IndividualResponsePage() {
         .icon-btn:hover:not(:disabled) { border-color: #25D366; color: #128C7E; }
         .icon-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 
+        /* TTS toggle row — centred below controls */
+        .tts-row {
+          display: flex;
+          justify-content: center;
+          margin-top: 0.85rem;
+          width: 100%;
+        }
+
+        .tts-toggle {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          border: 1.5px solid #e5e7eb;
+          background: #f9fafb;
+          color: #9ca3af;
+          border-radius: 99px;
+          padding: 4px 12px 4px 10px;
+          font-size: 0.72rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.15s;
+          letter-spacing: 0.02em;
+        }
+
+        .tts-toggle.tts-on {
+          border-color: #25D366;
+          background: #f0fdf4;
+          color: #128C7E;
+        }
+
+        .tts-toggle:hover { border-color: #25D366; color: #128C7E; }
+
         /* Footnote */
         .audio-footnote {
           font-size: 0.75rem;
@@ -791,207 +821,6 @@ export default function IndividualResponsePage() {
           padding: 0 0.5rem;
           line-height: 1.5;
         }
-
-                /* Guide Container */
-        .guide-container {
-          background: #ffffff;
-          border-radius: 20px;
-          padding: 2.5rem;
-          box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-          margin-bottom: 1rem;
-        }
-
-        .guide-header h2 {
-          font-size: 1.5rem;
-          font-weight: 800;
-          color: #111827;
-          margin-bottom: 0.75rem;
-        }
-        
-        .guide-header p {
-          color: #4b5563;
-          font-size: 0.95rem;
-          line-height: 1.6;
-          margin-bottom: 2rem;
-        }
-
-        .guide-section {
-          margin-bottom: 2.5rem;
-        }
-        
-        .guide-section:last-child {
-          margin-bottom: 0;
-        }
-
-        .guide-section h3 {
-          font-size: 1.2rem;
-          font-weight: 700;
-          color: #1f2937;
-          margin-bottom: 1rem;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-        }
-        
-        .guide-section p {
-          color: #4b5563;
-          font-size: 0.95rem;
-          margin-bottom: 1.25rem;
-        }
-
-        /* PREP Grid Blocks */
-        .prep-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 1rem;
-        }
-
-        .prep-card {
-          padding: 1.25rem;
-          border-radius: 12px;
-          position: relative;
-        }
-
-        .prep-badge {
-          width: 32px;
-          height: 32px;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 800;
-          font-size: 1.1rem;
-          margin-bottom: 0.75rem;
-        }
-
-        .prep-card h4 { margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 700; }
-        .prep-card p { margin: 0; font-size: 0.85rem; line-height: 1.5; color: #4b5563; }
-
-        /* Color Coding for PREP */
-        .prep-card.point { background: #eff6ff; border: 1px solid #bfdbfe; }
-        .prep-card.point .prep-badge { background: #3b82f6; color: white; }
-        .prep-card.point h4 { color: #1d4ed8; }
-
-        .prep-card.reason { background: #f0fdf4; border: 1px solid #bbf7d0; }
-        .prep-card.reason .prep-badge { background: #22c55e; color: white; }
-        .prep-card.reason h4 { color: #15803d; }
-
-        .prep-card.example { background: #fffbeb; border: 1px solid #fde68a; }
-        .prep-card.example .prep-badge { background: #f59e0b; color: white; }
-        .prep-card.example h4 { color: #b45309; }
-
-        .prep-card.point-end { background: #faf5ff; border: 1px solid #e9d5ff; }
-        .prep-card.point-end .prep-badge { background: #a855f7; color: white; }
-        .prep-card.point-end h4 { color: #7e22ce; }
-
-        /* Text Highlights matching PREP colors */
-        .highlight { border-radius: 4px; padding: 0.1rem 0.25rem; }
-        .point-hl { background: #eff6ff; color: #1d4ed8; }
-        .reason-hl { background: #f0fdf4; color: #15803d; }
-        .example-hl { background: #fffbeb; color: #b45309; }
-
-        /* Example Boxes */
-        .example-box {
-          background: #f9fafb;
-          border: 1px solid #e5e7eb;
-          border-radius: 12px;
-          padding: 1.25rem;
-          margin-bottom: 1rem;
-        }
-
-        .example-header {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 0.75rem;
-          padding-bottom: 0.75rem;
-          border-bottom: 1px solid #e5e7eb;
-        }
-
-        .level-badge {
-          font-size: 0.7rem;
-          font-weight: 700;
-          padding: 2px 8px;
-          border-radius: 99px;
-          text-transform: uppercase;
-        }
-        .level-badge.easy { background: #dcfce7; color: #166534; }
-        .level-badge.hard { background: #fee2e2; color: #991b1b; }
-
-        .example-q { font-weight: 600; font-size: 0.95rem; color: #111827; }
-        .example-body { font-size: 0.95rem; line-height: 1.8; color: #374151; }
-
-        /* Wiki Table */
-        .table-responsive { overflow-x: auto; }
-        .vocab-table {
-          width: 100%;
-          border-collapse: collapse;
-          font-size: 0.9rem;
-        }
-        
-        .vocab-table th, .vocab-table td {
-          padding: 1rem;
-          text-align: left;
-          border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .vocab-table th { background: #f9fafb; font-weight: 600; color: #374151; }
-        .vocab-table td { color: #4b5563; line-height: 1.5; }
-        .vocab-table tbody tr:hover { background: #f9fafb; }
-
-        /* Two Column Layout */
-        .two-col-layout {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-        }
-
-        .action-list { padding-left: 0; margin: 0; list-style: none; }
-        .action-list li { margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; color: #4b5563; }
-        
-        .action-list:not(.numbered) li {
-          padding-left: 1.5rem;
-          position: relative;
-        }
-        
-        .action-list:not(.numbered) li::before {
-          content: '💡';
-          position: absolute;
-          left: 0;
-          top: 0;
-          font-size: 0.9rem;
-        }
-
-        .action-list strong { color: #111827; display: block; margin-bottom: 0.2rem; }
-        .action-list span { font-style: italic; color: #128C7E; background: #f0fdf4; padding: 2px 6px; border-radius: 4px; display: inline-block;}
-
-        .numbered { counter-reset: wiki-counter; }
-        .numbered li { position: relative; padding-left: 1.75rem; }
-        .numbered li::before {
-          counter-increment: wiki-counter;
-          content: counter(wiki-counter);
-          position: absolute;
-          left: 0;
-          top: 0;
-          background: #111827;
-          color: white;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.7rem;
-          font-weight: 700;
-        }
-
-        @media (max-width: 768px) {
-          .guide-container { padding: 1.5rem; }
-          .two-col-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-          .example-body { line-height: 2; }
-          .highlight { display: inline; } /* Keep highlights inline on mobile to prevent weird wrapping */
-        }
-
 
         /* FAQ */
         .faq-container { background: #ffffff; border-radius: 20px; padding: 1.5rem 1.75rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
@@ -1025,6 +854,78 @@ export default function IndividualResponsePage() {
           .timer-card { padding: 1.5rem; }
           .time-display { font-size: 4.5rem; }
           .card-title { font-size: 1.9rem; }
+        }
+          /* Guide Container */
+        .guide-container {
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 2.5rem;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+          margin-bottom: 1rem;
+        }
+
+        .guide-header h2 { font-size: 1.5rem; font-weight: 800; color: #111827; margin-bottom: 0.75rem; }
+        .guide-header p { color: #4b5563; font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; }
+
+        .guide-section { margin-bottom: 2.5rem; }
+        .guide-section:last-child { margin-bottom: 0; }
+        .guide-section h3 { font-size: 1.2rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem; }
+        .guide-section p { color: #4b5563; font-size: 0.95rem; margin-bottom: 1.25rem; }
+
+        .prep-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+        .prep-card { padding: 1.25rem; border-radius: 12px; position: relative; }
+        .prep-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; margin-bottom: 0.75rem; }
+        .prep-card h4 { margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 700; }
+        .prep-card p { margin: 0; font-size: 0.85rem; line-height: 1.5; color: #4b5563; }
+
+        .prep-card.point { background: #eff6ff; border: 1px solid #bfdbfe; }
+        .prep-card.point .prep-badge { background: #3b82f6; color: white; }
+        .prep-card.point h4 { color: #1d4ed8; }
+        .prep-card.reason { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .prep-card.reason .prep-badge { background: #22c55e; color: white; }
+        .prep-card.reason h4 { color: #15803d; }
+        .prep-card.example { background: #fffbeb; border: 1px solid #fde68a; }
+        .prep-card.example .prep-badge { background: #f59e0b; color: white; }
+        .prep-card.example h4 { color: #b45309; }
+        .prep-card.point-end { background: #faf5ff; border: 1px solid #e9d5ff; }
+        .prep-card.point-end .prep-badge { background: #a855f7; color: white; }
+        .prep-card.point-end h4 { color: #7e22ce; }
+
+        .highlight { border-radius: 4px; padding: 0.1rem 0.25rem; }
+        .point-hl { background: #eff6ff; color: #1d4ed8; }
+        .reason-hl { background: #f0fdf4; color: #15803d; }
+        .example-hl { background: #fffbeb; color: #b45309; }
+
+        .example-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
+        .example-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #e5e7eb; }
+        .level-badge { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 99px; text-transform: uppercase; }
+        .level-badge.easy { background: #dcfce7; color: #166534; }
+        .level-badge.hard { background: #fee2e2; color: #991b1b; }
+        .example-q { font-weight: 600; font-size: 0.95rem; color: #111827; }
+        .example-body { font-size: 0.95rem; line-height: 1.8; color: #374151; }
+
+        .table-responsive { overflow-x: auto; }
+        .vocab-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+        .vocab-table th, .vocab-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+        .vocab-table th { background: #f9fafb; font-weight: 600; color: #374151; }
+        .vocab-table td { color: #4b5563; line-height: 1.5; }
+        .vocab-table tbody tr:hover { background: #f9fafb; }
+
+        .two-col-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .action-list { padding-left: 0; margin: 0; list-style: none; }
+        .action-list li { margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; color: #4b5563; }
+        .action-list:not(.numbered) li { padding-left: 1.5rem; position: relative; }
+        .action-list:not(.numbered) li::before { content: '💡'; position: absolute; left: 0; top: 0; font-size: 0.9rem; }
+        .action-list strong { color: #111827; display: block; margin-bottom: 0.2rem; }
+        .action-list span { font-style: italic; color: #128C7E; background: #f0fdf4; padding: 2px 6px; border-radius: 4px; display: inline-block; }
+        .numbered { counter-reset: wiki-counter; }
+        .numbered li { position: relative; padding-left: 1.75rem; }
+        .numbered li::before { counter-increment: wiki-counter; content: counter(wiki-counter); position: absolute; left: 0; top: 0; background: #111827; color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; }
+
+        @media (max-width: 768px) {
+          .guide-container { padding: 1.5rem; }
+          .two-col-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+          .example-body { line-height: 2; }
         }
       `}</style>
     </>
