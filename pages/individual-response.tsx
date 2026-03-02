@@ -490,39 +490,40 @@ export default function IndividualResponsePage() {
                         {/* SEO Guide / Wiki Section */}
             <div className="guide-container">
               <div className="guide-header">
-                <h2>📘 DSE English Oral: Individual Response 全攻略</h2>
-                <p>想喺 DSE 英文口試 Part B 攞高分？Individual Response (IR) 唔只考你英文底子，仲考你嘅臨場反應同組織能力。以下係為大家整理嘅奪星秘笈：</p>
+                <h2>📘 DSE Speaking | Individual Response 攻略</h2>
+                <p>想喺 DSE 英文 Speaking IR 攞高分？Individual Response 唔止考你英文底好唔好，仲挑戰你嘅臨場反應同組織能力。以下係為大家整理嘅秘笈：</p>
               </div>
 
               <div className="guide-section">
                 <h3>1. 萬用答題結構：PREP 框架</h3>
-                <p>好多同學一緊張就會「斷片」，或者講兩句就完。記住呢個結構，保證你言之有物，講足 1 分鐘：</p>
+                <p>好多同學一緊張就會「斷片」，或者講兩句就完。記住呢個結構，保證你講足 1 分鐘：</p>
                 <div className="prep-grid">
                   <div className="prep-card point">
                     <div className="prep-badge">P</div>
-                    <h4>Point (立場)</h4>
-                    <p>直接回答問題，表達你的個人立場 (Yes/No / Agree/Disagree)。</p>
+                    <h4>Point/Thesis Statement (立場)</h4>
+                    <p>直接回答問題，表達你的個人立場 (Yes/No/Agree/Disagree)</p>
                   </div>
                   <div className="prep-card reason">
                     <div className="prep-badge">R</div>
                     <h4>Reason (原因)</h4>
-                    <p>解釋點解你有呢個想法，提出一個強而有力嘅論點。</p>
+                    <p>解釋點解你有呢個想法，提出一個強而有力嘅論點</p>
                   </div>
                   <div className="prep-card example">
                     <div className="prep-badge">E</div>
                     <h4>Example (例子)</h4>
-                    <p>舉出具體例子、個人經歷，或者詳細描述一個社會情景作補充。</p>
+                    <p>舉出具體例子、個人經歷，或者詳細描述一個社會情景作補充</p>
                   </div>
                   <div className="prep-card point-end">
                     <div className="prep-badge">P</div>
                     <h4>Point (總結)</h4>
-                    <p>簡單用一句重申立場，完美作結，等考官知道你講完。</p>
+                    <p>簡單用幾句重申立場作結 + Recite previous context/conclude (optional)</p>
                   </div>
                 </div>
               </div>
 
-              <div className="guide-section">
-                <h3>2. 不同難度題目示範 (Sample Response)</h3>
+                            <div className="guide-section">
+                <h3>2. 不同程度回答示範 (Sample Responses)</h3>
+                <p>一個理想嘅 Individual Response 應該維持喺 50-60 秒左右。以下示範點樣利用 PREP 框架將答案「豐富化」(Elaborate)：</p>
                 
                 <div className="example-box easy-example">
                   <div className="example-header">
@@ -530,10 +531,10 @@ export default function IndividualResponsePage() {
                     <span className="example-q">"Do you like people taking photographs of you?"</span>
                   </div>
                   <div className="example-body">
-                    <span className="highlight point-hl">To be honest, I really enjoy it.</span> 
-                    <span className="highlight reason-hl">It’s a great way to capture memories with my friends and family.</span> 
-                    <span className="highlight example-hl">For instance, during graduation or birthday parties, these photos become precious mementos that I can look back on in the future.</span> 
-                    <span className="highlight point-hl">So, I usually feel quite happy and excited when someone takes a photo of me.</span>
+                    <span className="highlight point-hl">To be honest, I actually really enjoy it when people take photographs of me.</span>{' '}
+                    <span className="highlight reason-hl">I feel that taking photos is one of the most effective ways to capture fleeting moments and preserve precious memories with my friends and family. In our fast-paced lives, it's so easy to forget the little details of our happy times together.</span>{' '}
+                    <span className="highlight example-hl">For instance, during my recent secondary school graduation or even just casual weekend hangouts at cafés, my friends and I took tons of pictures. Whenever I feel stressed from studying, looking back at these candid shots on my phone instantly brings a smile to my face and reminds me of those joyful experiences. It also gives me something fun to post on my Instagram to share my life updates.</span>{' '}
+                    <span className="highlight point-hl">So, all in all, instead of feeling shy or awkward, I usually feel quite happy and flattered when someone wants to take a photo of me, as it means they want to remember our time together.</span>
                   </div>
                 </div>
 
@@ -543,23 +544,23 @@ export default function IndividualResponsePage() {
                     <span className="example-q">"Do you think social media makes people feel more lonely?"</span>
                   </div>
                   <div className="example-body">
-                    <span className="highlight point-hl">That’s a controversial issue, but I tend to agree.</span> 
-                    <span className="highlight reason-hl">Although we are 'connected' online, these interactions are often superficial and lack physical presence.</span> 
-                    <span className="highlight example-hl">Many teenagers spend hours scrolling through others' idealized lives, which leads to social comparison and a sense of isolation.</span> 
-                    <span className="highlight point-hl">Therefore, while social media connects us digitally, it might actually widen the emotional gap between people.</span>
+                    <span className="highlight point-hl">That’s a highly debated issue nowadays, but from my perspective, I strongly agree that social media actually makes people feel more lonely.</span>{' '}
+                    <span className="highlight reason-hl">Even though platforms like Instagram or TikTok give us the illusion of being constantly 'connected' to hundreds of peers, these digital interactions are often very superficial and entirely lack the warmth of physical, face-to-face communication. We are substituting real, deep conversations with meaningless likes and emojis.</span>{' '}
+                    <span className="highlight example-hl">A prime example of this is how many teenagers, including some of my own classmates, spend hours every night endlessly scrolling through influencers' perfectly curated feeds. Seeing others constantly posting about their glamorous holidays, luxury meals, or massive friend groups inevitably triggers a toxic cycle of social comparison. It creates this intense 'Fear Of Missing Out'—or FOMO—which makes young people feel inadequate and isolated in their own bedrooms, despite having thousands of online followers.</span>{' '}
+                    <span className="highlight point-hl">Therefore, I firmly believe that while social media connects us technologically, it ironically widens the emotional gap between people in reality, leaving us feeling more disconnected and lonely than ever before.</span>
                   </div>
                 </div>
               </div>
 
               <div className="guide-section">
                 <h3>3. 加分詞彙表 (Essential Vocabulary)</h3>
-                <p>要拎高分，唔可以成日用 "and" 同 "but"。試下用呢啲 Connectors：</p>
+                <p>要拎高分，避免成日用 "and", "but", "so that"...。試下用呢啲 Phrases/Sentence Patterns：</p>
                 <div className="table-responsive">
                   <table className="vocab-table">
                     <thead>
                       <tr>
                         <th>用途 (Purpose)</th>
-                        <th>推薦詞彙 (Vocabulary)</th>
+                        <th>推薦詞彙 (Phrase/Vocabulary)</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -593,15 +594,15 @@ export default function IndividualResponsePage() {
                   <h3>4. 遇到唔識聽/答點算？</h3>
                   <ul className="action-list">
                     <li>
-                      <strong>爭取時間思考：</strong>
+                      <strong>爭取時間思考</strong>
                       <span>"That's a very interesting question. Let me think for a second..."</span>
                     </li>
                     <li>
-                      <strong>轉移視角：</strong>
+                      <strong>轉移視角</strong>
                       <span>"I've never really thought about it that way, but I guess..."</span>
                     </li>
                     <li>
-                      <strong>要求重覆 (唔扣分嘅)：</strong>
+                      <strong>要求重覆 (正常情況，有一次機會)</strong>
                       <span>"Could you please rephrase the question for me?"</span>
                     </li>
                   </ul>
@@ -609,9 +610,9 @@ export default function IndividualResponsePage() {
                 <div className="col">
                   <h3>5. 點樣練最有效？</h3>
                   <ol className="action-list numbered">
-                    <li><strong>隨機抽題：</strong> 模擬真實考試，唔好只揀識答嘅題目。</li>
-                    <li><strong>錄音重聽：</strong> 聽下自己有無太多 "er...er..."，留意語速。</li>
-                    <li><strong>觀察時鐘：</strong> 練到大約 50-60 秒講完，唔好講到一半被考官截斷。</li>
+                    <li><strong>隨機抽題</strong> 模擬真實考試，唔好只揀識答嘅題目。</li>
+                    <li><strong>聽錄音</strong> 聽下自己有無太多 "er...er..."，留意語速。</li>
+                    <li><strong>觀察時鐘</strong> 練到大約 55-60s 講完，唔好講到一半被考官截斷。</li>
                   </ol>
                 </div>
               </div>
