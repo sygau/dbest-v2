@@ -5,30 +5,123 @@ import { BiBookReader, BiPencil } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
 import { PassageConfig } from '../../types/12p';
 import { get12pMetadata } from '../../utils/12pMetadata';
-import { generate12pStructuredData, generate12pFAQStructuredData, generate12pBreadcrumbStructuredData } from '../../utils/12pStructuredData';
+import {
+  generate12pStructuredData,
+  generate12pFAQStructuredData,
+  generate12pBreadcrumbStructuredData,
+} from '../../utils/12pStructuredData';
 
 interface HomeProps {
   config: PassageConfig;
 }
 
-// Helper function to get passage information
-function getPassageInfo(passageId: string): string {
-  const info: Record<string, string> = {
-    'lunyu': '記錄孔子同徒弟嘅對話。教人要做君子，核心價值係「仁」（修養自己、愛人）同「孝」（尊敬父母、真心），講得出就要做得到（言行一致）',
-    'yuwosuoyuye': '用「魚同熊掌」比喻「義」比「生命」更重要。強調人性本善，唔好為咗富貴名利冇咗「本心」，必要時要識得「捨生取義」',
-    'xiaoyaoyou': '道家代表作。用大鵬鳥同樗樹做比喻，講咩係真正嘅「逍遙」。話唔好依賴外在條件（無待），要睇得穿世俗標準，明白「無用之用」先最自由',
-    'quanxue': '強調「學不可以已」（學習唔停得）。學習可以改變本性（化性起偽），只要堅持（鍥而不舍）、累積（積）同專心，普通人都可以變聖人',
-    'lianpolin': '通過「完璧歸趙」、「澠池之會」同「負荊請罪」三個故事，讚藺相如識大體、廉頗肯認錯。最緊要係將國家安全放喺個人恩怨前面',
-    'chusibiao': '諸葛亮北伐前寫畀後主劉禪嘅信。勸佢要廣開言路（聽人意見）、賞罰分明、親賢遠小（親近好官），表達自己對漢室嘅死忠',
-    'shishuo': '批評唐代唔尊師重道嘅風氣。強調「古之學者必有師」，老師係用嚟傳道、解惑。只要識「道」，任何人都可以係老師，唔分貴賤年紀',
-    'shidexishan': '被貶永州時發現西山，用西山嘅「特立」嚟比喻自己嘅高尚人品。透過遊山玩水達到「天人合一」嘅境界，解開心中鬱結',
-    'yueyanglouj': '借岳陽樓景色講道理。話仁人志士唔似普通人咁易受環境影響心情，提出「先天下之憂而憂，後天下之樂而樂」嘅偉大抱負',
-    'liuguolun': '借古諷今。話六國滅亡係因為「賂秦」（割地求和），唔係因為兵力弱。警告北宋朝廷唔好重蹈覆轍，唔好以為畀錢買怕就可以安樂',
-    'shi3': '《山居秋暝》: 寫秋天山景好靚，想隱居唔做官，追求平淡自然\n《月下獨酌》: 自己同個影飲酒，表面好歡樂，其實好孤獨，展現浪漫想像\n《登樓》: 登樓望遠，見到春景靚但國家亂，感嘆時勢艱難，仍然心繫朝廷',
-    'ci3': '《念奴嬌》: 借赤壁懷古，感嘆古代英雄幾勁都變塵土，自己老咗又冇成就，最後以此睇化人生如夢\n《聲聲慢》: 寫秋天景物（淡酒、黃花、梧桐雨）嚟表達國破家亡、死老公嘅極度悲慘孤獨\n《青玉案》: 寫元宵節勁熱鬧，但有個靚女（作者自喻）獨自喺「燈火闌珊處」，話自己唔同流合污'
-  };
-  return info[passageId] || '經典文言文篇章';
-}
+// Moved outside component — never changes, no reason to recreate on each render
+const PASSAGE_COLORS = [
+  { bg: 'rgba(239, 68, 68, 0.08)',   border: '#ef4444', text: '#991b1b' },
+  { bg: 'rgba(249, 115, 22, 0.08)',  border: '#f97316', text: '#9a3412' },
+  { bg: 'rgba(234, 179, 8, 0.08)',   border: '#eab308', text: '#854d0e' },
+  { bg: 'rgba(34, 197, 94, 0.08)',   border: '#22c55e', text: '#14532d' },
+  { bg: 'rgba(20, 184, 166, 0.08)',  border: '#14b8a6', text: '#134e4a' },
+  { bg: 'rgba(59, 130, 246, 0.08)',  border: '#3b82f6', text: '#1e3a8a' },
+  { bg: 'rgba(99, 102, 241, 0.08)',  border: '#6366f1', text: '#312e81' },
+  { bg: 'rgba(168, 85, 247, 0.08)',  border: '#a855f7', text: '#581c87' },
+  { bg: 'rgba(236, 72, 153, 0.08)',  border: '#ec4899', text: '#831843' },
+  { bg: 'rgba(244, 63, 94, 0.08)',   border: '#f43f5e', text: '#881337' },
+  { bg: 'rgba(14, 165, 233, 0.08)',  border: '#0ea5e9', text: '#0c4a6e' },
+  { bg: 'rgba(139, 92, 246, 0.08)',  border: '#8b5cf6', text: '#4c1d95' },
+];
+
+// Accurate, formal passage descriptions in Wikipedia/documentation style.
+// Each entry: author info → text type → core argument → DSE exam relevance.
+const PASSAGE_INFO: Record<string, { meta: string; summary: string }> = {
+  lunyu: {
+    meta: '孔子 (551–479 BCE)｜《論語》｜語錄體｜先秦儒家',
+    summary:
+      '《論仁》闡述仁德的內涵與實踐方法，指出仁者無論處困境或逸樂皆守仁，甚至「殺身成仁」。《論孝》論孝道之本質在於「無違」於禮，養父母需兼備敬意而非僅供養。《論君子》界定君子的品格標準：嚴於律己、言行一致、坦蕩無懼，並以對比手法區分君子與小人。考試常考跨篇章比較（如《岳陽樓記》）及論證手法（排比、對比、雙重否定）。',
+  },
+  yuwosuoyuye: {
+    meta: '孟子 (372–289 BCE)｜《孟子·告子上》｜論說文｜先秦儒家',
+    summary:
+      '以「魚與熊掌不可兼得」為喻，論證當生命（生）與道義（義）不能並存時，應捨生取義。全篇貫穿性善說：人天生具備本心（辨義之心），但因貪圖富貴、苟且偷生而喪失本心。文章三段論證結構清晰，先以比喻立論，次舉乞食之例反面論證，末以對比指出貧富境況下本心之存亡。考試重點：論證層次、「本心」的涵義及其喪失的原因。',
+  },
+  xiaoyaoyou: {
+    meta: '莊子 (369–286 BCE)｜《莊子·內篇》首篇｜寓言散文｜先秦道家',
+    summary:
+      '借鯤鵬化形、遠徙南溟的寓言，說明小知不及大知，凡有所待（依賴外在條件）者皆非真正逍遙。文末以「無用之用」（大樗之木）為例，批判世俗的功利標準。全篇核心概念為「無待」——絕對自由須擺脫對外物的依附。DSE節錄考核寓言手法、「逍遙」的具體所指，以及莊子對世俗價值觀的批判態度。',
+  },
+  quanxue: {
+    meta: '荀子 (313–238 BCE)｜《荀子》首篇｜論說文｜先秦儒家',
+    summary:
+      '開篇「學不可以已」統領全文，論證持續學習的必要性與方法。荀子主張性惡說，認為人須透過後天學習與禮義規範（化性起偽）改變本性。文章以比喻論證為主（青出於藍、輮木為輪等），強調三要素：積累（積土成山）、堅持（鍥而不舍）、專一（用心一也）。與孟子性善說形成對照，常作跨篇章考題。考試重點：比喻的論證作用及與《論仁》思想之異同。',
+  },
+  lianpolin: {
+    meta: '司馬遷 (145–86 BCE)｜《史記·廉頗藺相如列傳》｜紀傳體史傳｜西漢',
+    summary:
+      '記述戰國趙國名臣藺相如與廉頗的事蹟，包含三段核心情節：完璧歸趙（智勇抗秦）、澠池之會（維護趙王尊嚴）、負荊請罪（廉頗認錯，將相和好）。全篇以人物行動與對話塑造形象：藺相如機智果敢、以大局為重；廉頗勇猛直率、知錯能改。主題為「先國家之急而後私仇」。考試重點：人物描寫手法（語言、行動、對比）及敘事節奏的安排。',
+  },
+  chusibiao: {
+    meta: '諸葛亮 (181–234 CE)｜出師表｜奏疏（上書體）｜三國蜀漢',
+    summary:
+      '諸葛亮北伐前呈後主劉禪的奏疏，全文提出三項施政建議：廣開言路（納諫）、嚴明賞罰、親賢遠佞。文章前半理性陳述治國方略，後半轉為個人自述，回顧受先帝知遇之恩，表達鞠躬盡瘁的忠誠。文體兼備說理與抒情，感情真摯而不濫。為中國古典散文中「忠臣奏議」的代表作，歷代被視為忠義精神的典範。考試重點：行文結構、情理交融的表達手法及「親賢遠佞」的具體主張。',
+  },
+  shishuo: {
+    meta: '韓愈 (768–824 CE)｜《韓昌黎集》｜論說文｜唐代古文運動',
+    summary:
+      '針對唐代士大夫階層恥於從師問學的風氣而作。開篇定義師道：「古之學者必有師；師者，所以傳道受業解惑也。」提出擇師標準以「道」為先，不論年齒貴賤——「道之所存，師之所存也」。文中批評時人「恥學於師」的矛盾行為（教子讀書卻不肯自師），並舉孔子問禮於老聃為例。韓愈此文為唐代古文運動的重要篇章。考試重點：論點的推進邏輯、批評對象的具體行為，及與其他篇章「學習」主題的比較。',
+  },
+  shidexishan: {
+    meta: '柳宗元 (773–819 CE)｜《永州八記》之首｜山水遊記｜唐代',
+    summary:
+      '柳宗元被貶永州期間所作，記述發現西山的經過與感受。文章前半寫貶謫生涯中漫無目的的遊歷，與西山之遊形成對比，突出西山「特立」的形象。登西山遠眺天地相融，作者達至「心凝形釋，與萬化冥合」的境界，象徵精神上的解脫。山水既是實景描寫，亦是作者人格的隱喻（高潔自持）。考試重點：景物描寫的象徵意義、作者借景抒懷的手法，及「始得」二字所含的轉折意涵。',
+  },
+  yueyanglouj: {
+    meta: '范仲淹 (989–1052 CE)｜岳陽樓記｜寫景記事文｜北宋',
+    summary:
+      '應好友滕子京之邀為重修岳陽樓而作。文章先寫洞庭湖的陰晴景色及遷客騷人的悲喜反應，繼而以「古仁人」作對比——古仁人不以物喜、不以己悲，「居廟堂之高則憂其民，處江湖之遠則憂其君」。末段提出千古名句「先天下之憂而憂，後天下之樂而樂」，彰顯士大夫的政治理想與道德責任。考試重點：對比手法的運用、「古仁人」與「遷客騷人」的分別，及與《論仁·論君子》的跨篇章比較。',
+  },
+  liuguolun: {
+    meta: '蘇洵 (1009–1066 CE)｜《嘉祐集》｜史論（政論文）｜北宋',
+    summary:
+      '借戰國六國滅亡的歷史教訓，論證六國失敗的根本原因在於以土地賄賂秦國（賂秦），而非兵力或謀略不足。文章採用歸納論證，逐一分析「賂秦而力虧」與「不賂者以賂者喪」兩類情況，並以「抱薪救火」為喻批評妥協政策。末段借古諷今，暗指北宋以歲幣換和平的對外政策同樣危險。考試重點：論證結構（破題、立論、舉例、結論）、類比手法，及文章的「借古諷今」寫作意圖。',
+  },
+  shi3: {
+    meta: '唐代詩三首｜五言律詩 / 七言古詩 / 七言律詩',
+    summary:
+      '《山居秋暝》（王維，699–759 CE）：五言律詩，寫秋日山中雨後清景，以動寫靜，融入禪宗「空寂」美學，表達歸隱之志。《月下獨酌》其一（李白，701–762 CE）：七言古詩，以月與影為伴飲酒，以浪漫誇張手法掩飾深層孤獨，風格飄逸奔放。《登樓》（杜甫，712–770 CE）：七言律詩，安史之亂期間登樓遠眺，春色繁華與國勢衰落形成對比，體現「憂國憂民」情懷。三詩常作比較題，考核意象運用、情景交融手法及詩人創作背景。',
+  },
+  ci3: {
+    meta: '宋代詞三首｜豪放派 / 婉約派',
+    summary:
+      '《念奴嬌·赤壁懷古》（蘇軾，1037–1101 CE）：豪放派代表，借赤壁古戰場感慨英雄業績，以周瑜之壯年功業反襯自身仕途坎坷，末以「人生如夢」作佛家式的豁達收結。《聲聲慢·秋情》（李清照，1084–約1155 CE）：婉約派傑作，以疊字開篇（「尋尋覓覓」），累積秋日意象（淡酒、黃花、梧桐、細雨），渲染國破夫亡後的極度悲涼。《青玉案·元夕》（辛棄疾，1140–1207 CE）：元宵燈節人海中，以「燈火闌珊處」的孤獨女子自喻，寄托不與世俗同流的高潔志節。',
+  },
+};
+
+const FAQS = [
+  {
+    id: 'f1',
+    question: '📚 點解要操練十二篇範文詞語？',
+    answer:
+      '十二篇範文係 DSE 中文科指定篇章，考試必出。熟悉詞語意義有助理解文章內容，提升閱讀卷及聆聽卷表現。',
+  },
+  {
+    id: 'f2',
+    question: '🔄 溫習模式同測驗模式有咩分別？',
+    answer:
+      '溫習模式用閃卡形式，可以慢慢睇、反覆記憶。測驗模式就係自我測試，即時評分，檢查學習成果。',
+  },
+  {
+    id: 'f3',
+    question: '💡 應該點樣用呢個工具？',
+    answer:
+      '建議先用溫習模式熟悉詞語，記得七七八八之後再做測驗模式，咁樣效果最好。可以集中操練某幾篇，或者全部一齊溫。',
+  },
+  {
+    id: 'f4',
+    question: '👥 呢個練習適合邊啲人？',
+    answer:
+      '適合所有 DSE 中文科考生，特別係想加強文言文詞彙理解嘅同學。無論你係初學定溫故知新都啱用。',
+  },
+];
 
 export default function TwelvePassagesHome({ config }: HomeProps) {
   const metadata = get12pMetadata('index');
@@ -42,27 +135,14 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         <meta name="robots" content={metadata.robots} />
-        
-        {/* Open Graph Meta Tags */}
         <meta property="og:title" content={metadata.ogTitle} />
         <meta property="og:description" content={metadata.ogDescription} />
         <meta property="og:image" content={metadata.ogImage} />
         <meta property="og:url" content={metadata.ogUrl} />
         <meta property="og:type" content={metadata.ogType} />
-
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }} />
       </Head>
 
       {/* Breadcrumb */}
@@ -85,277 +165,292 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
       </div>
 
       {/* Main Content */}
-      <div className="card rounded-4 page-12p" style={{ height: "auto" }}>
-        <div className="card-body">
-          <h1 className="mb-3 text-center" style={{ color: '#d97706', fontWeight: 800, marginTop: '1.5rem' }}>十二篇範文語譯練習</h1>
-          
-          <p className="mb-4 text-center" style={{ fontSize: '0.95rem', maxWidth: '800px', margin: '0 auto 2rem' }}>
-            全面掌握 DSE 中文科十二篇指定範文的詞語意義及語譯技巧。透過互動式閃卡溫習及測驗模式，深化對文言文詞彙的理解，提升閱讀理解及應試能力。涵蓋《論語》、《孟子》、《莊子》等經典篇章，助你輕鬆應對 DSE 中文科考試。
+      <div className="card rounded-4 page-12p">
+        <div className="card-body p-4">
+
+          {/* Title — matches IR page style */}
+          <h1 className="page-title">十二篇範文語譯練習</h1>
+          <p className="page-subtitle">
+            全面掌握 DSE 中文科十二篇指定範文的詞語意義及語譯技巧。透過互動式閃卡溫習及測驗模式，深化對文言文詞彙的理解，提升閱讀理解及應試能力。
           </p>
 
-          <hr className="my-4" />
+          <hr className="divider" />
 
           {/* Mode Selection */}
-          <div className="row g-4 mb-5">
-            <div className="col-md-6">
-              <NavigationLink href="/12p/study" className="text-decoration-none d-block">
-                <div className="mode-card study-mode">
-                  <div className="mode-icon-wrapper">
-                    <BiBookReader className="mode-icon" size={52} />
+          <div className="row g-3 mb-4">
+            <div className="col-sm-6">
+              <NavigationLink href="/12p/study" className="text-decoration-none d-block h-100">
+                <div className="mode-card mode-study">
+                  <div className="mode-ghost-icon" aria-hidden="true">
+                    <BiBookReader size={88} />
                   </div>
-                  <h3 className="mode-title">溫習模式</h3>
-                  <p className="mode-description">
-                    使用閃卡形式溫習詞語意義<br />
-                    輕鬆翻閱，加深記憶
-                  </p>
+                  <div className="mode-title mode-title-study">溫習模式</div>
+                  <div className="mode-desc">閃卡形式逐詞溫習，輕鬆翻閱加深記憶</div>
+                  <div className="mode-arrow mode-arrow-study">開始溫習 →</div>
+                  <div className="mode-bar mode-bar-study" />
                 </div>
               </NavigationLink>
             </div>
-
-            <div className="col-md-6">
-              <NavigationLink href="/12p/quiz" className="text-decoration-none d-block">
-                <div className="mode-card quiz-mode">
-                  <div className="mode-icon-wrapper">
-                    <BiPencil className="mode-icon" size={52} style={{ color: '#0b9860ff' }} />
+            <div className="col-sm-6">
+              <NavigationLink href="/12p/quiz" className="text-decoration-none d-block h-100">
+                <div className="mode-card mode-quiz">
+                  <div className="mode-ghost-icon" aria-hidden="true">
+                    <BiPencil size={88} />
                   </div>
-                  <h3 className="mode-title">測驗模式</h3>
-                  <p className="mode-description">
-                    自我測試詞語理解能力<br />
-                    即時評分，追蹤進度
-                  </p>
+                  <div className="mode-title mode-title-quiz">測驗模式</div>
+                  <div className="mode-desc">自我測試詞語理解，即時評分追蹤進度</div>
+                  <div className="mode-arrow mode-arrow-quiz">開始測驗 →</div>
+                  <div className="mode-bar mode-bar-quiz" />
                 </div>
               </NavigationLink>
             </div>
           </div>
 
-          <hr className="my-4" />
+          <hr className="divider" />
 
           {/* Passages List */}
-          <h2 className="mb-4 text-center">📖 十二篇指定篇章</h2>
+          <h2 className="section-heading">📖 十二篇指定篇章</h2>
           <div className="row g-3 mb-4">
             {config.passages.map((passage, index) => {
-              const colors = [
-                { bg: 'rgba(239, 68, 68, 0.1)', border: '#ef4444', text: '#991b1b' },
-                { bg: 'rgba(249, 115, 22, 0.1)', border: '#f97316', text: '#9a3412' },
-                { bg: 'rgba(234, 179, 8, 0.1)', border: '#eab308', text: '#854d0e' },
-                { bg: 'rgba(34, 197, 94, 0.1)', border: '#22c55e', text: '#14532d' },
-                { bg: 'rgba(20, 184, 166, 0.1)', border: '#14b8a6', text: '#134e4a' },
-                { bg: 'rgba(59, 130, 246, 0.1)', border: '#3b82f6', text: '#1e3a8a' },
-                { bg: 'rgba(99, 102, 241, 0.1)', border: '#6366f1', text: '#312e81' },
-                { bg: 'rgba(168, 85, 247, 0.1)', border: '#a855f7', text: '#581c87' },
-                { bg: 'rgba(236, 72, 153, 0.1)', border: '#ec4899', text: '#831843' },
-                { bg: 'rgba(244, 63, 94, 0.1)', border: '#f43f5e', text: '#881337' },
-                { bg: 'rgba(14, 165, 233, 0.1)', border: '#0ea5e9', text: '#0c4a6e' },
-                { bg: 'rgba(139, 92, 246, 0.1)', border: '#8b5cf6', text: '#4c1d95' },
-              ];
-              const color = colors[index % colors.length];
+              const color = PASSAGE_COLORS[index % PASSAGE_COLORS.length];
+              const info = PASSAGE_INFO[passage.id];
               return (
-                <div key={passage.id} className="col-md-4">
-                  <div className="passage-card" style={{
-                    background: color.bg,
-                    borderLeft: `4px solid ${color.border}`
-                  }}>
-                    <div className="passage-card-emoji">{passage.emoji}</div>
-                    <div className="passage-card-title" style={{ color: color.text }}>{passage.title}</div>
-                    <div className="passage-card-subtitle">{passage.subtitle}</div>
-                    <div className="passage-card-info" style={{ color: color.text }}>
-                      {getPassageInfo(passage.id)}
+                <div key={passage.id} className="col-md-6">
+                  <div
+                    className="passage-card"
+                    style={{
+                      background: color.bg,
+                      borderLeft: `3px solid ${color.border}`,
+                    }}
+                  >
+                    <div className="passage-header">
+                      <span className="passage-emoji">{passage.emoji}</span>
+                      <div>
+                        <div className="passage-title" style={{ color: color.text }}>
+                          {passage.title}
+                        </div>
+                        <div className="passage-subtitle">{passage.subtitle}</div>
+                      </div>
                     </div>
+                    {info && (
+                      <>
+                        <div className="passage-meta">{info.meta}</div>
+                        <p className="passage-summary">{info.summary}</p>
+                      </>
+                    )}
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <hr className="my-4" />
+          <hr className="divider" />
 
-          {/* FAQ Section */}
-          <h3 className="mb-3 text-center">❓ 常見問題</h3>
-          <div className="row g-3 mb-4">
-            <div className="col-md-6">
-              <div className="faq-card">
-                <div className="faq-question">📚 點解要操練十二篇範文詞語？</div>
-                <div className="faq-answer">十二篇範文係 DSE 中文科指定篇章，考試必出。熟悉詞語意義有助理解文章內容，提升閱讀卷及聆聽卷表現。</div>
+          {/* FAQ */}
+          <h3 className="section-heading">❓ 常見問題</h3>
+          <div className="row g-3 mb-2">
+            {FAQS.map((faq) => (
+              <div key={faq.id} className="col-md-6">
+                <div className="faq-card">
+                  <div className="faq-question">{faq.question}</div>
+                  <div className="faq-answer">{faq.answer}</div>
+                </div>
               </div>
-            </div>
-            <div className="col-md-6">
-              <div className="faq-card">
-                <div className="faq-question">🔄 溫習模式同測驗模式有咩分別？</div>
-                <div className="faq-answer">溫習模式用閃卡形式，可以慢慢睇、反覆記憶。測驗模式就係自我測試，即時評分，檢查學習成果。</div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="faq-card">
-                <div className="faq-question">💡 應該點樣用呢個工具？</div>
-                <div className="faq-answer">建議先用溫習模式熟悉詞語，記得七七八八之後再做測驗模式，咁樣效果最好。可以集中操練某幾篇，或者全部一齊溫。</div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="faq-card">
-                <div className="faq-question">👥 呢個練習適合邊啲人？</div>
-                <div className="faq-answer">適合所有 DSE 中文科考生，特別係想加強文言文詞彙理解嘅同學。無論你係初學定溫故知新都啱用。</div>
-              </div>
-            </div>
+            ))}
           </div>
+
         </div>
       </div>
 
       <style jsx>{`
+        /* ── Page title — matches Individual Response card title ── */
+        .page-title {
+          font-size: 2.4rem;
+          font-weight: 800;
+          color: var(--bs-heading-color);
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          margin: 1.25rem 0 0.75rem;
+          text-align: center;
+        }
+
+        .page-subtitle {
+          font-size: 0.92rem;
+          color: var(--bs-secondary-color);
+          max-width: 680px;
+          margin: 0 auto 1.5rem;
+          text-align: center;
+          line-height: 1.65;
+        }
+
+        .divider {
+          border-color: var(--bs-border-color);
+          margin: 1.5rem 0;
+        }
+
+        .section-heading {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: var(--bs-heading-color);
+          margin-bottom: 1rem;
+        }
+
+        /* ── Mode cards — style G: grey bg, ghost icon top-right, bottom bar ── */
         .mode-card {
           position: relative;
-          padding: 3rem 2rem;
-          border-radius: 1.25rem;
-          transition: all 0.25s ease;
           overflow: hidden;
-          min-height: 300px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-          background: var(--bs-card-bg);
-          border: 2px solid var(--bs-border-color);
-          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .study-mode {
-          background: rgba(20, 88, 196, 0.12);
-        }
-
-        .quiz-mode {
-          background: rgba(34, 197, 94, 0.12);
+          border-radius: 10px;
+          padding: 1.4rem 1.5rem 1.6rem;
+          height: 100%;
+          background: #f1f5f9;
+          cursor: pointer;
+          transition: background 0.15s;
         }
 
         .mode-card:hover {
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+          background: #e8eef6;
         }
 
-        .study-mode {
-          border-color: #3b82f6 !important;
+        /* Ghost icon — large, faded, top-right corner */
+        .mode-ghost-icon {
+          position: absolute;
+          top: 50%;
+          right: -6px;
+          transform: translateY(-50%);
+          opacity: 0.055;
+          pointer-events: none;
+          line-height: 0;
         }
 
-        .study-mode:hover {
-          border-color: #2563eb !important;
+        /* Bottom bar */
+        .mode-bar {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
         }
 
-        .quiz-mode {
-          border-color: #22c55e !important;
-        }
-
-        .quiz-mode:hover {
-          border-color: #16a34a !important;
-        }
-
-        .mode-icon-wrapper {
-          margin-bottom: 1.5rem;
-        }
-
-        .mode-icon {
-          color: #22c55e !important;
-        }
-
-        .study-mode .mode-icon {
-          color: var(--bs-primary) !important;
-        }
+        .mode-bar-study { background: #3b82f6; }
+        .mode-bar-quiz  { background: #22c55e; }
 
         .mode-title {
-          font-size: 1.5rem;
-          font-weight: 600;
-          margin-bottom: 1rem;
-          color: var(--bs-heading-color);
-        }
-
-        .mode-description {
-          color: var(--bs-body-color);
-          opacity: 0.9;
-          margin-bottom: 0;
-          line-height: 1.7;
-          font-size: 0.95rem;
-        }
-
-        [data-bs-theme=light] .mode-description {
-          color: #000000;
-          opacity: 0.75;
-        }
-
-        .passage-card {
-          padding: 1.5rem;
-          border-radius: 0.75rem;
-          height: 100%;
-          transition: all 0.2s ease;
-          cursor: default;
-        }
-
-        .passage-card-emoji {
-          font-size: 2.5rem;
-          margin-bottom: 0.75rem;
-        }
-
-        .passage-card-title {
+          font-size: 1.15rem;
           font-weight: 700;
-          font-size: 1.1rem;
-          margin-bottom: 0.5rem;
-          line-height: 1.3;
+          margin-bottom: 0.3rem;
+          position: relative; /* sit above ghost icon */
         }
 
-        .passage-card-subtitle {
-          font-size: 0.85rem;
-          color: var(--bs-body-color);
-          opacity: 0.7;
+        .mode-title-study { color: #1d4ed8; }
+        .mode-title-quiz  { color: #15803d; }
+
+        .mode-desc {
+          font-size: 0.855rem;
+          color: #64748b;
+          line-height: 1.55;
           margin-bottom: 0.75rem;
+          position: relative;
         }
 
-        .passage-card-info {
+        .mode-arrow {
           font-size: 0.8rem;
-          line-height: 1.5;
-          opacity: 0.8;
+          font-weight: 600;
+          position: relative;
         }
 
+        .mode-arrow-study { color: #3b82f6; }
+        .mode-arrow-quiz  { color: #22c55e; }
+
+        /* ── Passage cards — GitHub/Wikipedia doc style ── */
+        .passage-card {
+          padding: 1.1rem 1.25rem;
+          border-radius: 6px;
+          height: 100%;
+        }
+
+        .passage-header {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          margin-bottom: 0.6rem;
+        }
+
+        .passage-emoji {
+          font-size: 1.75rem;
+          line-height: 1;
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        .passage-title {
+          font-weight: 700;
+          font-size: 1rem;
+          line-height: 1.3;
+          margin-bottom: 0.2rem;
+        }
+
+        .passage-subtitle {
+          font-size: 0.8rem;
+          color: var(--bs-secondary-color);
+        }
+
+        /* Monospace metadata bar — like a GitHub file header */
+        .passage-meta {
+          font-size: 0.72rem;
+          font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+          color: var(--bs-secondary-color);
+          background: var(--bs-tertiary-bg);
+          border: 1px solid var(--bs-border-color);
+          border-radius: 4px;
+          padding: 3px 8px;
+          margin-bottom: 0.6rem;
+          line-height: 1.6;
+          word-break: break-word;
+        }
+
+        .passage-summary {
+          font-size: 0.82rem;
+          color: var(--bs-body-color);
+          line-height: 1.65;
+          margin: 0;
+        }
+
+        /* ── FAQ cards — theme-aware, no hardcoded white ── */
         .faq-card {
-          padding: 1.5rem;
-          border-radius: 0.75rem;
-          background: var(--bs-card-bg);
+          padding: 1.25rem 1.5rem;
+          border-radius: 8px;
+          background: var(--bs-secondary-bg);
           border: 1px solid var(--bs-border-color);
           height: 100%;
-          transition: all 0.2s ease;
-        }
-
-        .faq-card:hover {
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .faq-question {
           font-weight: 600;
-          font-size: 1rem;
-          margin-bottom: 0.75rem;
+          font-size: 0.95rem;
+          margin-bottom: 0.6rem;
           color: var(--bs-heading-color);
         }
 
         .faq-answer {
-          font-size: 0.9rem;
-          line-height: 1.6;
-          color: var(--bs-body-color);
-          opacity: 0.85;
+          font-size: 0.875rem;
+          line-height: 1.65;
+          color: var(--bs-secondary-color);
         }
 
-        @media (max-width: 768px) {
+        /* ── Responsive ── */
+        @media (max-width: 575px) {
+          .page-title {
+            font-size: 1.75rem;
+          }
           .mode-card {
-            min-height: 260px;
-            padding: 2.5rem 1.5rem;
+            padding: 1.2rem 1.25rem 1.45rem;
           }
-
-          .mode-title {
-            font-size: 1.35rem;
-          }
-
-          .passage-card {
-            padding: 1.25rem;
-          }
-
-          .passage-card-emoji {
-            font-size: 2rem;
+          .mode-ghost-icon {
+            top: 50%;
+            right: -4px;
           }
         }
-        
+
         :global(.page-12p) {
           font-family: 'Noto Sans HK', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
@@ -367,14 +462,9 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const fs = require('fs');
   const path = require('path');
-  
-  const configPath = path.join(process.cwd(), 'public', '12p', 'config.json');
-  const configData = fs.readFileSync(configPath, 'utf8');
-  const config: PassageConfig = JSON.parse(configData);
 
-  return {
-    props: {
-      config,
-    },
-  };
+  const configPath = path.join(process.cwd(), 'public', '12p', 'config.json');
+  const config: PassageConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+
+  return { props: { config } };
 };
