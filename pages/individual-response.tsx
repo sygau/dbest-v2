@@ -153,11 +153,12 @@ function estimateSpeakDurationMs(text: string): number {
 }
 
 // When TTS is off, give students time to read the question
-// Base 1:06 + 1s per 3 words → short ~66s, longer ~70s
+// Base 1:00 + 3s buffer + 1s per 4 words → tighter, more realistic reading pace
 function readingBufferSeconds(text: string): number {
   const wordCount = text.trim().split(/\s+/).length;
-  return 60 + 6 + Math.floor(wordCount / 3);
+  return 60 + 3 + Math.floor(wordCount / 4);
 }
+
 
 const STORAGE_KEY = 'dse-ir-state';
 type TimerState = 'idle' | 'reading' | 'running' | 'finished';
