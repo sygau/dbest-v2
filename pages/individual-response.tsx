@@ -487,6 +487,136 @@ export default function IndividualResponsePage() {
               * 朗讀功能依賴瀏覽器內置語音合成，部分裝置（尤其 Safari / iOS）可能出現聲音異常或不支援。如遇問題請關閉朗讀模式。
             </p>
 
+                        {/* SEO Guide / Wiki Section */}
+            <div className="guide-container">
+              <div className="guide-header">
+                <h2>📘 DSE English Oral: Individual Response 全攻略</h2>
+                <p>想喺 DSE 英文口試 Part B 攞高分？Individual Response (IR) 唔只考你英文底子，仲考你嘅臨場反應同組織能力。以下係為大家整理嘅奪星秘笈：</p>
+              </div>
+
+              <div className="guide-section">
+                <h3>1. 萬用答題結構：PREP 框架</h3>
+                <p>好多同學一緊張就會「斷片」，或者講兩句就完。記住呢個結構，保證你言之有物，講足 1 分鐘：</p>
+                <div className="prep-grid">
+                  <div className="prep-card point">
+                    <div className="prep-badge">P</div>
+                    <h4>Point (立場)</h4>
+                    <p>直接回答問題，表達你的個人立場 (Yes/No / Agree/Disagree)。</p>
+                  </div>
+                  <div className="prep-card reason">
+                    <div className="prep-badge">R</div>
+                    <h4>Reason (原因)</h4>
+                    <p>解釋點解你有呢個想法，提出一個強而有力嘅論點。</p>
+                  </div>
+                  <div className="prep-card example">
+                    <div className="prep-badge">E</div>
+                    <h4>Example (例子)</h4>
+                    <p>舉出具體例子、個人經歷，或者詳細描述一個社會情景作補充。</p>
+                  </div>
+                  <div className="prep-card point-end">
+                    <div className="prep-badge">P</div>
+                    <h4>Point (總結)</h4>
+                    <p>簡單用一句重申立場，完美作結，等考官知道你講完。</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="guide-section">
+                <h3>2. 不同難度題目示範 (Sample Response)</h3>
+                
+                <div className="example-box easy-example">
+                  <div className="example-header">
+                    <span className="level-badge easy">Easy</span>
+                    <span className="example-q">"Do you like people taking photographs of you?"</span>
+                  </div>
+                  <div className="example-body">
+                    <span className="highlight point-hl">To be honest, I really enjoy it.</span> 
+                    <span className="highlight reason-hl">It’s a great way to capture memories with my friends and family.</span> 
+                    <span className="highlight example-hl">For instance, during graduation or birthday parties, these photos become precious mementos that I can look back on in the future.</span> 
+                    <span className="highlight point-hl">So, I usually feel quite happy and excited when someone takes a photo of me.</span>
+                  </div>
+                </div>
+
+                <div className="example-box hard-example">
+                  <div className="example-header">
+                    <span className="level-badge hard">Hard</span>
+                    <span className="example-q">"Do you think social media makes people feel more lonely?"</span>
+                  </div>
+                  <div className="example-body">
+                    <span className="highlight point-hl">That’s a controversial issue, but I tend to agree.</span> 
+                    <span className="highlight reason-hl">Although we are 'connected' online, these interactions are often superficial and lack physical presence.</span> 
+                    <span className="highlight example-hl">Many teenagers spend hours scrolling through others' idealized lives, which leads to social comparison and a sense of isolation.</span> 
+                    <span className="highlight point-hl">Therefore, while social media connects us digitally, it might actually widen the emotional gap between people.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="guide-section">
+                <h3>3. 加分詞彙表 (Essential Vocabulary)</h3>
+                <p>要拎高分，唔可以成日用 "and" 同 "but"。試下用呢啲 Connectors：</p>
+                <div className="table-responsive">
+                  <table className="vocab-table">
+                    <thead>
+                      <tr>
+                        <th>用途 (Purpose)</th>
+                        <th>推薦詞彙 (Vocabulary)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>表達立場</strong></td>
+                        <td>Personally, I believe... / From my perspective... / I tend to agree that...</td>
+                      </tr>
+                      <tr>
+                        <td><strong>遞進/補充</strong></td>
+                        <td>Furthermore, / Moreover, / On top of that, / In addition...</td>
+                      </tr>
+                      <tr>
+                        <td><strong>對比/轉折</strong></td>
+                        <td>On the other hand, / However, / Nevertheless, / Conversely...</td>
+                      </tr>
+                      <tr>
+                        <td><strong>舉例說明</strong></td>
+                        <td>For instance, / A prime example is... / To illustrate this...</td>
+                      </tr>
+                      <tr>
+                        <td><strong>總結立場</strong></td>
+                        <td>All in all, / Therefore, / To sum up, / In a nutshell...</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="guide-section two-col-layout">
+                <div className="col">
+                  <h3>4. 遇到唔識聽/答點算？</h3>
+                  <ul className="action-list">
+                    <li>
+                      <strong>爭取時間思考：</strong>
+                      <span>"That's a very interesting question. Let me think for a second..."</span>
+                    </li>
+                    <li>
+                      <strong>轉移視角：</strong>
+                      <span>"I've never really thought about it that way, but I guess..."</span>
+                    </li>
+                    <li>
+                      <strong>要求重覆 (唔扣分嘅)：</strong>
+                      <span>"Could you please rephrase the question for me?"</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="col">
+                  <h3>5. 點樣練最有效？</h3>
+                  <ol className="action-list numbered">
+                    <li><strong>隨機抽題：</strong> 模擬真實考試，唔好只揀識答嘅題目。</li>
+                    <li><strong>錄音重聽：</strong> 聽下自己有無太多 "er...er..."，留意語速。</li>
+                    <li><strong>觀察時鐘：</strong> 練到大約 50-60 秒講完，唔好講到一半被考官截斷。</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
             {/* FAQ */}
             <div className="faq-container">
               <p className="faq-label">DSE Speaking 常見問題</p>
@@ -660,6 +790,207 @@ export default function IndividualResponsePage() {
           padding: 0 0.5rem;
           line-height: 1.5;
         }
+
+                /* Guide Container */
+        .guide-container {
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 2.5rem;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+          margin-bottom: 1rem;
+        }
+
+        .guide-header h2 {
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: #111827;
+          margin-bottom: 0.75rem;
+        }
+        
+        .guide-header p {
+          color: #4b5563;
+          font-size: 0.95rem;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+
+        .guide-section {
+          margin-bottom: 2.5rem;
+        }
+        
+        .guide-section:last-child {
+          margin-bottom: 0;
+        }
+
+        .guide-section h3 {
+          font-size: 1.2rem;
+          font-weight: 700;
+          color: #1f2937;
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        
+        .guide-section p {
+          color: #4b5563;
+          font-size: 0.95rem;
+          margin-bottom: 1.25rem;
+        }
+
+        /* PREP Grid Blocks */
+        .prep-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 1rem;
+        }
+
+        .prep-card {
+          padding: 1.25rem;
+          border-radius: 12px;
+          position: relative;
+        }
+
+        .prep-badge {
+          width: 32px;
+          height: 32px;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 800;
+          font-size: 1.1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .prep-card h4 { margin: 0 0 0.5rem 0; font-size: 1rem; font-weight: 700; }
+        .prep-card p { margin: 0; font-size: 0.85rem; line-height: 1.5; color: #4b5563; }
+
+        /* Color Coding for PREP */
+        .prep-card.point { background: #eff6ff; border: 1px solid #bfdbfe; }
+        .prep-card.point .prep-badge { background: #3b82f6; color: white; }
+        .prep-card.point h4 { color: #1d4ed8; }
+
+        .prep-card.reason { background: #f0fdf4; border: 1px solid #bbf7d0; }
+        .prep-card.reason .prep-badge { background: #22c55e; color: white; }
+        .prep-card.reason h4 { color: #15803d; }
+
+        .prep-card.example { background: #fffbeb; border: 1px solid #fde68a; }
+        .prep-card.example .prep-badge { background: #f59e0b; color: white; }
+        .prep-card.example h4 { color: #b45309; }
+
+        .prep-card.point-end { background: #faf5ff; border: 1px solid #e9d5ff; }
+        .prep-card.point-end .prep-badge { background: #a855f7; color: white; }
+        .prep-card.point-end h4 { color: #7e22ce; }
+
+        /* Text Highlights matching PREP colors */
+        .highlight { border-radius: 4px; padding: 0.1rem 0.25rem; }
+        .point-hl { background: #eff6ff; color: #1d4ed8; }
+        .reason-hl { background: #f0fdf4; color: #15803d; }
+        .example-hl { background: #fffbeb; color: #b45309; }
+
+        /* Example Boxes */
+        .example-box {
+          background: #f9fafb;
+          border: 1px solid #e5e7eb;
+          border-radius: 12px;
+          padding: 1.25rem;
+          margin-bottom: 1rem;
+        }
+
+        .example-header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 0.75rem;
+          padding-bottom: 0.75rem;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        .level-badge {
+          font-size: 0.7rem;
+          font-weight: 700;
+          padding: 2px 8px;
+          border-radius: 99px;
+          text-transform: uppercase;
+        }
+        .level-badge.easy { background: #dcfce7; color: #166534; }
+        .level-badge.hard { background: #fee2e2; color: #991b1b; }
+
+        .example-q { font-weight: 600; font-size: 0.95rem; color: #111827; }
+        .example-body { font-size: 0.95rem; line-height: 1.8; color: #374151; }
+
+        /* Wiki Table */
+        .table-responsive { overflow-x: auto; }
+        .vocab-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 0.9rem;
+        }
+        
+        .vocab-table th, .vocab-table td {
+          padding: 1rem;
+          text-align: left;
+          border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .vocab-table th { background: #f9fafb; font-weight: 600; color: #374151; }
+        .vocab-table td { color: #4b5563; line-height: 1.5; }
+        .vocab-table tbody tr:hover { background: #f9fafb; }
+
+        /* Two Column Layout */
+        .two-col-layout {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
+        }
+
+        .action-list { padding-left: 0; margin: 0; list-style: none; }
+        .action-list li { margin-bottom: 1rem; font-size: 0.9rem; line-height: 1.5; color: #4b5563; }
+        
+        .action-list:not(.numbered) li {
+          padding-left: 1.5rem;
+          position: relative;
+        }
+        
+        .action-list:not(.numbered) li::before {
+          content: '💡';
+          position: absolute;
+          left: 0;
+          top: 0;
+          font-size: 0.9rem;
+        }
+
+        .action-list strong { color: #111827; display: block; margin-bottom: 0.2rem; }
+        .action-list span { font-style: italic; color: #128C7E; background: #f0fdf4; padding: 2px 6px; border-radius: 4px; display: inline-block;}
+
+        .numbered { counter-reset: wiki-counter; }
+        .numbered li { position: relative; padding-left: 1.75rem; }
+        .numbered li::before {
+          counter-increment: wiki-counter;
+          content: counter(wiki-counter);
+          position: absolute;
+          left: 0;
+          top: 0;
+          background: #111827;
+          color: white;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.7rem;
+          font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+          .guide-container { padding: 1.5rem; }
+          .two-col-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+          .example-body { line-height: 2; }
+          .highlight { display: inline; } /* Keep highlights inline on mobile to prevent weird wrapping */
+        }
+
 
         /* FAQ */
         .faq-container { background: #ffffff; border-radius: 20px; padding: 1.5rem 1.75rem; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
