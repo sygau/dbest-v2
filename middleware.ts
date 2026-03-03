@@ -99,8 +99,20 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  return NextResponse.next()
+    // --- Start No Ads (?na) Cookie Logic ---
+  const response = NextResponse.next()
+
+  if (request.nextUrl.searchParams.has('na')) {
+    // Set cookie for 7 days (604800 seconds)
+    response.cookies.set('noAds', '1', { 
+      maxAge: 604800, 
+      path: '/' 
+    })
+  }
+
+  return response
 }
+
 
 export const config = {
   // Exclude assets, Next internals, AND API routes
