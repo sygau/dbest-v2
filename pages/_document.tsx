@@ -35,16 +35,37 @@ export default function Document() {
         {/* Noto Sans HK for 12p pages */}
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
-        {/* No-ads handling: persist ?na flag and hide AdSense units on client */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=window.location?window.location.search||'':'';var p=new URLSearchParams(s);if(p.has('na')){try{localStorage.setItem('noAds','1')}catch(e){}}var n=false;try{n=localStorage.getItem('noAds')==='1'}catch(e){n=false}if(n){try{window.__noAds=true}catch(e){window.__noAds=true}try{var st=document.createElement('style');st.innerHTML='.adsbygoogle{display:none !important;}';document.head&&document.head.appendChild(st)}catch(e){}}}catch(e){}})();`
-          }}
-        />
-
-        {/* Google AdSense */}
+                {/* Smart No-Ads & Dynamic AdSense Loader */}
         {process.env.PASSCODE_MODE !== 'true' && (
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){
+                try {
+                  var params = new URLSearchParams(window.location.search);
+                  var hasNa = params.has('na');
+                  var hasCookie = document.cookie.includes('noAds=1');
+                  var hasLocal = false;
+                  try { hasLocal = localStorage.getItem('noAds') === '1'; } catch(e) {}
+                  
+                  if (hasNa || hasCookie || hasLocal) {
+                    // User is Ad-Free. Save state and block ads.
+                    try { localStorage.setItem('noAds', '1'); } catch(e) {}
+                    window.__noAds = true;
+                    var st = document.createElement('style');
+                    st.innerHTML = '.adsbygoogle { display:none !important; }';
+                    document.head.appendChild(st);
+                  } else {
+                    // User gets ads. Inject the script dynamically.
+                    var adScript = document.createElement('script');
+                    adScript.async = true;
+                    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921";
+                    adScript.crossOrigin = "anonymous";
+                    document.head.appendChild(adScript);
+                  }
+                } catch(e) {}
+              })();`
+            }}
+          />
         )}
 
         {/* Google Analytics */}
