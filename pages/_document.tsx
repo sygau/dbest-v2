@@ -35,38 +35,37 @@ export default function Document() {
         {/* Noto Sans HK for 12p pages */}
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
-                {/* Smart No-Ads & Dynamic AdSense Loader */}
+                {/* Optimized Ad-Free Logic (Static-Safe) */}
         {process.env.PASSCODE_MODE !== 'true' && (
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(){
                 try {
-                  var params = new URLSearchParams(window.location.search);
-                  var hasNa = params.has('na');
-                  var hasCookie = document.cookie.includes('noAds=1');
-                  var hasLocal = false;
-                  try { hasLocal = localStorage.getItem('noAds') === '1'; } catch(e) {}
+                  var p = new URLSearchParams(window.location.search);
+                  var isNa = p.has('na');
+                  var isCookie = document.cookie.indexOf('noAds=1') !== -1;
+                  var isLocal = false;
+                  try { isLocal = localStorage.getItem('noAds') === '1'; } catch(e) {}
                   
-                  if (hasNa || hasCookie || hasLocal) {
-                    // User is Ad-Free. Save state and block ads.
-                    try { localStorage.setItem('noAds', '1'); } catch(e) {}
+                  if (isNa || isCookie || isLocal) {
                     window.__noAds = true;
+                    try { localStorage.setItem('noAds', '1'); } catch(e) {}
                     var st = document.createElement('style');
-                    st.innerHTML = '.adsbygoogle { display:none !important; }';
+                    st.innerHTML = '.adsbygoogle, ins.adsbygoogle, [id^="google_ads"] { display:none !important; visibility:hidden !important; height:0 !important; }';
                     document.head.appendChild(st);
                   } else {
-                    // User gets ads. Inject the script dynamically.
-                    var adScript = document.createElement('script');
-                    adScript.async = true;
-                    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921";
-                    adScript.crossOrigin = "anonymous";
-                    document.head.appendChild(adScript);
+                    var s = document.createElement('script');
+                    s.async = true;
+                    s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921";
+                    s.setAttribute('crossorigin', 'anonymous');
+                    document.head.appendChild(s);
                   }
                 } catch(e) {}
               })();`
             }}
           />
         )}
+
 
         {/* Google Analytics */}
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
