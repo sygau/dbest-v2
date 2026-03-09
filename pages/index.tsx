@@ -99,7 +99,7 @@ export default function HomePage() {
               WebkitTextFillColor: 'transparent',
               filter: 'drop-shadow(2px 2px 4px rgba(139, 92, 246, 0.3))'
             }}>
-              歡迎來到 DSE.BEST
+              歡迎來到 dse.best
             </span>
           </h1>
 
@@ -111,8 +111,6 @@ export default function HomePage() {
           <hr className="my-4" />
           <br />
           <br />
-
-          {/* Copyright Notice Section */}
           
           {/* Past Papers Section */}
           <Private>

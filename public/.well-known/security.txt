@@ -5,4 +5,6 @@ Canonical: https://dse.best/.well-known/security.txt
 Policy: https://dse.best/privacy-policy
 Hiring: https://dse.best/contact
 
-# DSEBest Security Policy
+# dse.best Security Policy
+
+# EFN

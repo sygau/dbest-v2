@@ -6,8 +6,8 @@ export default function Document() {
     <Html lang="zh-Hant">
       <Head>
         {/* BLOCKING theme script - MUST execute before any rendering */}
-        <script dangerouslySetInnerHTML={{ 
-          __html: `(function(){try{var theme=localStorage.getItem('selectedTheme')||'light';document.documentElement.setAttribute('data-bs-theme',theme);document.documentElement.style.setProperty('--bs-body-bg',theme==='dark'?'#212529':theme==='blue-theme'?'#0f1535':'#eff1f3')}catch(e){document.documentElement.setAttribute('data-bs-theme','light');document.documentElement.style.setProperty('--bs-body-bg','#eff1f3')}})()` 
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(){try{var theme=localStorage.getItem('selectedTheme')||'light';document.documentElement.setAttribute('data-bs-theme',theme);document.documentElement.style.setProperty('--bs-body-bg',theme==='dark'?'#212529':theme==='blue-theme'?'#0f1535':'#eff1f3')}catch(e){document.documentElement.setAttribute('data-bs-theme','light');document.documentElement.style.setProperty('--bs-body-bg','#eff1f3')}})()`
         }} />
         <style
           dangerouslySetInnerHTML={{
@@ -28,12 +28,17 @@ export default function Document() {
         <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+
         {/* Fonts */}
-        {/* <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" as="style" />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" /> */}
-        
-        {/* Noto Sans HK for 12p pages */}
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap"
+          as="style"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap"
+          rel="stylesheet"
+        />
 
         {/* No-ads handling: persist ?na flag and hide AdSense units on client */}
         <script
