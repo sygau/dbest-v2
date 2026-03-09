@@ -40,17 +40,37 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        {/* No-ads handling: persist ?na flag and hide AdSense units on client */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=window.location?window.location.search||'':'';var p=new URLSearchParams(s);if(p.has('na')){try{localStorage.setItem('noAds','1')}catch(e){}}var n=false;try{n=localStorage.getItem('noAds')==='1'}catch(e){n=false}if(n){try{window.__noAds=true}catch(e){window.__noAds=true}try{var st=document.createElement('style');st.innerHTML='.adsbygoogle{display:none !important;}';document.head&&document.head.appendChild(st)}catch(e){}}}catch(e){}})();`
-          }}
-        />
-
-        {/* Google AdSense */}
+                {/* Optimized Ad-Free Logic (Static-Safe) */}
         {process.env.PASSCODE_MODE !== 'true' && (
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921" crossOrigin="anonymous"></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){
+                try {
+                  var p = new URLSearchParams(window.location.search);
+                  var isNa = p.has('na');
+                  var isCookie = document.cookie.indexOf('noAds=1') !== -1;
+                  var isLocal = false;
+                  try { isLocal = localStorage.getItem('noAds') === '1'; } catch(e) {}
+                  
+                  if (isNa || isCookie || isLocal) {
+                    window.__noAds = true;
+                    try { localStorage.setItem('noAds', '1'); } catch(e) {}
+                    var st = document.createElement('style');
+                    st.innerHTML = '.adsbygoogle, ins.adsbygoogle, [id^="google_ads"] { display:none !important; visibility:hidden !important; height:0 !important; }';
+                    document.head.appendChild(st);
+                  } else {
+                    var s = document.createElement('script');
+                    s.async = true;
+                    s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921";
+                    s.setAttribute('crossorigin', 'anonymous');
+                    document.head.appendChild(s);
+                  }
+                } catch(e) {}
+              })();`
+            }}
+          />
         )}
+
 
         {/* Google Analytics */}
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
