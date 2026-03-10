@@ -79,13 +79,17 @@ function shuffleArray<T>(arr: T[]): T[] {
   return a;
 }
 
-// 1:06 base + 1s per 3 words
+// 1:00 base + small buffer (max 5s)
 function readingBufferSeconds(text: string): number {
-  return 66 + Math.floor(text.trim().split(/\s+/).length / 3);
+  const wordCount = text.trim().split(/\s+/).length;
+  // approx 3 words per second for breathing space, capped at 5 seconds extra
+  const buffer = Math.min(Math.ceil(wordCount / 3), 5);
+  return 60 + buffer;
 }
 
 const STORAGE_KEY = 'dse-ir-state';
 const TTS_STORAGE_KEY = 'dse-ir-tts';
+const HIDE_Q_STORAGE_KEY = 'dse-ir-hide-q';
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
@@ -113,12 +117,16 @@ export default function IndividualResponsePage() {
     return options;
   }, []);
   const [timerState, setTimerState] = useState<TimerState>('idle');
-  const [timeLeft, setTimeLeft] = useState(66);
+  const [timeLeft, setTimeLeft] = useState(60);
+  const [initialTime, setInitialTime] = useState(60);
   const [currentId, setCurrentId] = useState<string | null>(null);
   const [queue, setQueue] = useState<string[]>([]);
   const [doneIds, setDoneIds] = useState<Set<string>>(new Set());
   const [openFaq, setOpenFaq] = useState<string | null>(null);
   const [ttsEnabled, setTtsEnabled] = useState(false);
+  const [hideQuestion, setHideQuestion] = useState(false);
+  const [isBlurred, setIsBlurred] = useState(false);
+  const [manualRevealed, setManualRevealed] = useState(false);
   // "all" or "paperKey__setKey"
   const [selectedSource, setSelectedSource] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>('Any');
@@ -138,9 +146,11 @@ export default function IndividualResponsePage() {
   useEffect(() => {
     try { const s = localStorage.getItem(STORAGE_KEY); if (s) { const p: StoredState = JSON.parse(s); if (p.queue?.length) setQueue(p.queue); if (p.doneIds) setDoneIds(new Set(p.doneIds)); } } catch (e) { }
     try { const t = localStorage.getItem(TTS_STORAGE_KEY); if (t === '1') setTtsEnabled(true); else if (t === '0') setTtsEnabled(false); } catch (e) { }
+    try { const h = localStorage.getItem(HIDE_Q_STORAGE_KEY); if (h === '1') setHideQuestion(true); else if (h === '0') setHideQuestion(false); } catch (e) { }
   }, []);
 
   useEffect(() => { try { localStorage.setItem(TTS_STORAGE_KEY, ttsEnabled ? '1' : '0'); } catch (e) { } }, [ttsEnabled]);
+  useEffect(() => { try { localStorage.setItem(HIDE_Q_STORAGE_KEY, hideQuestion ? '1' : '0'); } catch (e) { } }, [hideQuestion]);
   useEffect(() => { if (queue.length > 0) try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ queue, doneIds: Array.from(doneIds) })); } catch (e) { } }, [queue, doneIds]);
 
   // ── Filtered pool ─────────────────────────────────────────────────────────
@@ -158,7 +168,7 @@ export default function IndividualResponsePage() {
   useEffect(() => {
     if (timerRef.current) clearInterval(timerRef.current);
     try { speechSynthesis.cancel(); } catch (e) { }
-    setCurrentId(null); setTimerState('idle'); setTimeLeft(66); setQueue([]); setDoneIds(new Set());
+    setCurrentId(null); setTimerState('idle'); setTimeLeft(60); setInitialTime(60); setQueue([]); setDoneIds(new Set());
   }, [selectedSource, selectedDifficulty]);
 
   // Seed queue
@@ -170,21 +180,41 @@ export default function IndividualResponsePage() {
 
   useEffect(() => {
     if (timerState === 'running' && timeLeft > 0) {
+      // Blur logic for hide question
+      if (hideQuestion && !manualRevealed) {
+        // Blur ONLY after the buffer period (when timeLeft <= 60)
+        if (timeLeft <= 60) {
+          setIsBlurred(true);
+        } else {
+          setIsBlurred(false);
+        }
+      }
+
       timerRef.current = setInterval(() => {
         setTimeLeft(t => {
-          if (t <= 1) { clearInterval(timerRef.current!); setTimerState('finished'); playBell(); markDone(); return 0; }
+          if (t <= 1) { 
+            clearInterval(timerRef.current!); 
+            setTimerState('finished'); 
+            setIsBlurred(false);
+            playBell(); 
+            markDone(); 
+            return 0; 
+          }
+          // Non-TTS mode: check if it's time to blur
+          if (hideQuestion && !ttsEnabled && !manualRevealed && t - 1 === 60) {
+            setIsBlurred(true);
+          }
           return t - 1;
         });
       }, 1000);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
-  }, [timerState]);
+  }, [hideQuestion, timerState, timeLeft]);
 
   // ── Derived ───────────────────────────────────────────────────────────────
 
   const currentQ = useMemo(() => ALL_QUESTIONS.find(q => q.id === currentId) ?? null, [currentId]);
-  const totalSecs = useMemo(() => currentQ ? readingBufferSeconds(currentQ.text) : 66, [currentQ]);
-  const progress = timerState === 'idle' ? 0 : Math.min(((totalSecs - timeLeft) / totalSecs) * 100, 100);
+  const progress = timerState === 'idle' ? 0 : Math.min(((initialTime - timeLeft) / initialTime) * 100, 100);
 
   const diffColour = currentQ?.difficulty === 'Easy' ? '#16a34a'
     : currentQ?.difficulty === 'Medium' ? '#d97706' : '#dc2626';
@@ -218,10 +248,11 @@ export default function IndividualResponsePage() {
     } catch (e) { }
   };
 
-  const trySpeak = (text: string) => {
+  const trySpeak = (text: string, onEnd?: () => void) => {
     try {
       speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
+      if (onEnd) u.onend = onEnd;
       const pick = voicesRef.current.find(v =>
         v.lang.startsWith('en') && (
           v.name.toLowerCase().includes('male') || v.name.toLowerCase().includes('david') ||
@@ -254,10 +285,30 @@ export default function IndividualResponsePage() {
     setCurrentId(id); setQueue(newQueue);
     if (currentId) setDoneIds(newDone);
     const text = ALL_QUESTIONS.find(q => q.id === id)?.text ?? '';
-    setTimeLeft(readingBufferSeconds(text));
-    setTimerState('running');
+    
+    setManualRevealed(false);
+    
+    setIsBlurred(false); 
+
     playBeep();
-    if (ttsEnabled) trySpeak(text);
+
+    if (ttsEnabled) {
+      setTimerState('paused'); 
+      setTimeLeft(60); 
+      setInitialTime(60);
+      setIsBlurred(true); // Blur immediately when TTS starts speaking
+      trySpeak(text, () => {
+        setInitialTime(60);
+        setTimeLeft(60);
+        setTimerState('running');
+      });
+    } else {
+      const bufferTime = readingBufferSeconds(text);
+      setTimeLeft(bufferTime);
+      setInitialTime(bufferTime);
+      setIsBlurred(false); // Start visible for breathing space
+      setTimerState('running');
+    }
   };
 
   const handlePause = () => { if (timerRef.current) clearInterval(timerRef.current); setTimerState('paused'); };
@@ -265,7 +316,9 @@ export default function IndividualResponsePage() {
   const handleSkip = () => {
     if (timerRef.current) clearInterval(timerRef.current);
     try { speechSynthesis.cancel(); } catch (e) { }
-    markDone(); setCurrentId(null); setTimerState('idle'); setTimeLeft(66);
+    markDone(); setCurrentId(null); setTimerState('idle'); setTimeLeft(60); setInitialTime(60);
+    setIsBlurred(false);
+    setManualRevealed(false);
   };
 
   const fmt = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
@@ -375,13 +428,30 @@ export default function IndividualResponsePage() {
                         {currentQ?.difficulty} · q{currentQ?.qNum}
                       </span>
                     </div>
-                    <div className="question-text">{currentQ?.text}</div>
+                    <div 
+                      className="question-text-wrapper" 
+                      onClick={() => { 
+                        setIsBlurred(false); 
+                        setManualRevealed(true); 
+                      }}
+                    >
+                      <div className={`question-text${isBlurred ? ' question-blurred' : ''}`}>{currentQ?.text}</div>
+                      {isBlurred && (
+                        <div className="blur-overlay">
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                            <line x1="1" y1="1" x2="23" y2="23" />
+                          </svg>
+                          <span>點擊顯示題目</span>
+                        </div>
+                      )}
+                    </div>
                   </>
                 )}
               </div>
 
               {/* ── Timer ── */}
-              <div className={`time-display${isFinished ? ' time-done' : ''}${isPaused ? ' time-paused' : ''}`}>
+              <div className={`time-display${isFinished ? ' time-done' : ''}`}>
                 {fmt(timeLeft)}
               </div>
 
@@ -407,10 +477,10 @@ export default function IndividualResponsePage() {
                 )}
               </div>
 
-              {/* ── TTS toggle ── */}
-              <div className="tts-row">
+              {/* ── Settings toggles ── */}
+              <div className="settings-row">
                 <button
-                  className={`tts-toggle${ttsEnabled ? ' tts-on' : ''}`}
+                  className={`settings-toggle tts-toggle${ttsEnabled ? ' tts-on' : ''}`}
                   onClick={() => setTtsEnabled(v => !v)}
                   aria-label="Toggle read aloud" aria-pressed={ttsEnabled}
                 >
@@ -421,6 +491,27 @@ export default function IndividualResponsePage() {
                       : <><line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" /></>}
                   </svg>
                   {ttsEnabled ? '朗讀 ON' : '朗讀 OFF'}
+                </button>
+
+                <button
+                  className={`settings-toggle hide-q-toggle${hideQuestion ? ' hide-on' : ''}`}
+                  onClick={() => setHideQuestion(v => !v)}
+                  aria-label="Toggle hide question" aria-pressed={hideQuestion}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    {hideQuestion ? (
+                      <>
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                        <line x1="1" y1="1" x2="23" y2="23" />
+                      </>
+                    ) : (
+                      <>
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </>
+                    )}
+                  </svg>
+                  {hideQuestion ? '隱藏題目 ON' : '隱藏題目 OFF'}
                 </button>
               </div>
 
@@ -534,7 +625,7 @@ export default function IndividualResponsePage() {
 
         .timer-card { background: #ffffff; border-radius: 24px; padding: 2.25rem 2.5rem 1.25rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: center; border-top: 5px solid #25D366; }
         .card-header-block { text-align: center; margin-bottom: 1.25rem; width: 100%; }
-        .card-title { font-size: 2.6rem; font-weight: 800; color: #111827; letter-spacing: -0.03em; line-height: 1.1; margin: 0; }
+        .card-title { font-size: 2.6rem; font-weight: 800; color: #111827; margin: 0; white-space: nowrap; }
 
         .filter-row { display: flex; gap: 12px; width: 100%; margin-bottom: 1.25rem; }
         .filter-group { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
@@ -550,11 +641,13 @@ export default function IndividualResponsePage() {
         .question-source { font-size: 1rem; color: #128C7E; font-weight: 700; letter-spacing: 0.04em; }
         .question-topic  { font-size: 0.9rem; color: #6b7280; }
         .question-diff   { font-size: 0.65rem; font-weight: 700; padding: 1px 6px; border-radius: 99px; border: 1.5px solid; text-transform: uppercase; letter-spacing: 0.04em; margin-left: auto; }
-        .question-text   { font-size: 1.12rem; color: #0f1724; line-height: 1.65; font-weight: 600; }
+        .question-text   { font-size: 1.12rem; color: #0f1724; line-height: 1.65; font-weight: 600; transition: filter 0.3s ease; }
+        .question-blurred { filter: blur(20px); pointer-events: none; user-select: none; }
+        .question-text-wrapper { position: relative; cursor: pointer; }
+        .blur-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #128C7E; font-weight: 700; font-size: 0.9rem; }
 
         .time-display { font-size: 5.5rem; font-weight: 800; color: #111827; font-variant-numeric: tabular-nums; letter-spacing: -3px; line-height: 1; margin-bottom: 1rem; transition: color 0.3s; }
         .time-done   { color: #25D366; }
-        .time-paused { color: #f59e0b; }
         .progress-track { width: 100%; height: 14px; background: #f3f4f6; border-radius: 99px; overflow: hidden; margin-bottom: 1.75rem; }
         .progress-bar-inner { height: 100%; background: linear-gradient(90deg, #25D366, #128C7E); transition: width 1s linear; border-radius: 99px; }
 
@@ -566,10 +659,10 @@ export default function IndividualResponsePage() {
         .icon-btn { width: 52px; height: 52px; border: 1.5px solid #e5e7eb; background: #fff; border-radius: 14px; color: #6b7280; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: border-color 0.15s, color 0.15s; }
         .icon-btn:hover { border-color: #25D366; color: #128C7E; }
 
-        .tts-row { display: flex; justify-content: center; margin-top: 0.85rem; width: 100%; }
-        .tts-toggle { display: flex; align-items: center; gap: 5px; border: 1.5px solid #e5e7eb; background: #f9fafb; color: #9ca3af; border-radius: 99px; padding: 4px 12px 4px 10px; font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em; }
-        .tts-toggle.tts-on { border-color: #25D366; background: #f0fdf4; color: #128C7E; }
-        .tts-toggle:hover  { border-color: #25D366; color: #128C7E; }
+        .settings-row { display: flex; justify-content: center; gap: 10px; margin-top: 0.85rem; width: 100%; }
+        .settings-toggle { display: flex; align-items: center; gap: 5px; border: 1.5px solid #e5e7eb; background: #f9fafb; color: #9ca3af; border-radius: 99px; padding: 4px 12px 4px 10px; font-size: 0.72rem; font-weight: 600; cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em; }
+        .settings-toggle.tts-on, .settings-toggle.hide-on { border-color: #25D366; background: #f0fdf4; color: #128C7E; }
+        .settings-toggle:hover  { border-color: #25D366; color: #128C7E; }
 
         .audio-footnote { font-size: 0.75rem; color: #9ca3af; text-align: center; margin: 0; padding: 0 0.5rem; line-height: 1.5; }
 
