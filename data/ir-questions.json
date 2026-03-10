@@ -1,98 +1,254 @@
 {
-  "papers": {
-    "sample_paper": {
-      "label": "Sample Paper",
-      "sets": {
-        "1.1": {
-          "topic": "Media & Privacy",
-          "questions": {
-            "q1": "Why do some people not want to be famous?",
-            "q2": "Why is it sometimes difficult being famous?",
-            "q3": "What are some of the advantages of being famous?",
-            "q4": "Why is personal privacy so important to some people?",
-            "q5": "Can famous people expect to keep their private lives secret?",
-            "q6": "How are family members of famous people affected by their fame?",
-            "q7": "Why do some people dislike the gossip magazines in Hong Kong?",
-            "q8": "Do the public have the right to know about the private lives of famous people?",
-            "q9": "Why is freedom of expression important for the media?",
-            "q10": "Are there any types of stories which gossip magazines should not publish?"
-          }
+    "papers": {
+        "2026_tip_9tip": {
+            "label": "2026 Tip",
+            "comments": "👇🏻based on what mfs said on threads, abstrast, proceed with caution",
+            "sets": {
+                "3.1": {
+                    "topic": "Digital Literacy & Social Media",
+                    "questions": {
+                        "q1": "How many hours a day do you typically spend on social media?",
+                        "q2": "What are your favorite types of content to watch online?",
+                        "q3": "Do you prefer getting news from social media or traditional TV channels?",
+                        "q4": "Why do some teenagers find it hard to 'log off'?",
+                        "q5": "How does social media change the way we interact with friends?",
+                        "q6": "Do you think social media has made people more lonely or more connected?",
+                        "q7": "What are the hidden dangers of 'influencer culture' for young people?",
+                        "q8": "Should parents be allowed to monitor their teenager’s social media activity?",
+                        "q9": "How can schools better prepare students to identify fake news?",
+                        "q10": "To what extent should the government regulate social media content to protect minors?"
+                    }
+                },
+                "3.2": {
+                    "topic": "Sustainable Living",
+                    "questions": {
+                        "q1": "Do you try to recycle your plastic bottles at school?",
+                        "q2": "What is one simple habit you have to save electricity at home?",
+                        "q3": "Would you buy second-hand clothes instead of new ones?",
+                        "q4": "Why do you think some people find it difficult to live an eco-friendly life?",
+                        "q5": "How does 'fast fashion' impact our environment in Hong Kong?",
+                        "q6": "Do you believe individuals have a real impact on climate change?",
+                        "q7": "What are the biggest challenges of reducing food waste in local households?",
+                        "q8": "Should the government ban all single-use plastic utensils in restaurants?",
+                        "q9": "How can businesses be incentivized to become more sustainable?",
+                        "q10": "Is it fair to expect developing nations to adopt the same carbon-reduction standards as wealthy ones?"
+                    }
+                },
+                "3.3": {
+                    "topic": "Mental Well-being",
+                    "questions": {
+                        "q1": "What do you usually do to relieve stress after school?",
+                        "q2": "Do you find the academic workload in Hong Kong reasonable?",
+                        "q3": "Who do you turn to when you are feeling down?",
+                        "q4": "Why is it often considered a 'taboo' to talk about mental health?",
+                        "q5": "How does social media comparison affect the self-esteem of teenagers?",
+                        "q6": "What are the early signs that someone might be struggling with burnout?",
+                        "q7": "How can a school environment be made more supportive for students' mental health?",
+                        "q8": "Do you think the 'lying flat' culture is a healthy coping mechanism for youth?",
+                        "q9": "Is it the responsibility of teachers to act as counselors for their students?",
+                        "q10": "How can society balance the drive for academic excellence with the need for emotional well-being?"
+                    }
+                },
+                "3.4": {
+                    "topic": "AI & Education",
+                    "questions": {
+                        "q1": "Do you use AI tools like ChatGPT for your homework?",
+                        "q2": "What do you think is the best way to use AI as a learning assistant?",
+                        "q3": "Do you worry that AI might eventually make certain jobs redundant?",
+                        "q4": "Why might relying on AI affect a student's critical thinking skills?",
+                        "q5": "What are the benefits of personalized AI tutoring compared to traditional classroom teaching?",
+                        "q6": "How should schools decide what counts as 'cheating' in the age of AI?",
+                        "q7": "What skills do you think humans will need to learn that AI cannot replicate?",
+                        "q8": "Should every student in Hong Kong be taught how to code or understand AI?",
+                        "q9": "How can we ensure that AI tools are used ethically in an academic setting?",
+                        "q10": "Will AI eventually replace the traditional role of a teacher in the classroom?"
+                    }
+                },
+                "3.5": {
+                    "topic": "Intergenerational Connection",
+                    "questions": {
+                        "q1": "How often do you spend time with your grandparents?",
+                        "q2": "What is one thing you have learned from an older relative?",
+                        "q3": "Do you think elderly people in Hong Kong are well-cared for?",
+                        "q4": "Why do many young people struggle to communicate with the older generation?",
+                        "q5": "How has the definition of 'family' changed in modern Hong Kong?",
+                        "q6": "What can be done to reduce the feeling of isolation among the elderly?",
+                        "q7": "Do you think it is the duty of children to support their parents financially in their old age?",
+                        "q8": "How can technology bridge the generation gap?",
+                        "q9": "Should the government prioritize building more elderly homes or more youth housing?",
+                        "q10": "To what extent is the 'generation gap' a result of a difference in values rather than technology?"
+                    }
+                },
+                "3.6": {
+                    "topic": "The Silver Economy",
+                    "questions": {
+                        "q1": "Would you ever buy a robot to help your grandparents at home?",
+                        "q2": "What kind of products should be designed specifically for the elderly?",
+                        "q3": "Is Hong Kong an 'elderly-friendly' city compared to other places?",
+                        "q4": "Why is the government encouraging the 'Silver Economy' right now?",
+                        "q5": "Should teenagers be required to do community service for the elderly?",
+                        "q6": "How can technology reduce the loneliness of seniors living alone?",
+                        "q7": "Do you think elderly people are open to learning how to use new gadgets?",
+                        "q8": "Who should be responsible for elderly care: the family or the state?",
+                        "q9": "How can a 'Silver Q-Mark' help consumers make better choices?",
+                        "q10": "In what ways can the experience of the older generation benefit a high-tech society?"
+                    }
+                },
+                "3.7": {
+                    "topic": "The 'Lowkey' Lifestyle",
+                    "questions": {
+                        "q1": "Do you prefer a big party or a small gathering with a few friends?",
+                        "q2": "What does 'slow living' mean to you?",
+                        "q3": "Why is 'doing nothing' sometimes better than being productive?",
+                        "q4": "Why are low-cost social activities becoming more popular in Hong Kong?",
+                        "q5": "How does the 'always-on' culture of Hong Kong affect our mental health?",
+                        "q6": "Do you think social media makes us feel like we always need to be 'doing something'?",
+                        "q7": "What are the benefits of 'unstructured' free time for secondary students?",
+                        "q8": "Should schools provide more 'quiet zones' for students to just relax?",
+                        "q9": "How can we find a balance between ambition and 'lying flat'?",
+                        "q10": "Does a 'low-energy' lifestyle hinder the economic growth of a city?"
+                    }
+                },
+                "3.8": {
+                    "topic": "Pets in the City",
+                    "questions": {
+                        "q1": "Do you have a pet, or would you like to have one in the future?",
+                        "q2": "What are the most popular pets for people living in small Hong Kong flats?",
+                        "q3": "Should dogs be allowed on the MTR and buses?",
+                        "q4": "Why do some people treat their pets like their own children?",
+                        "q5": "What are the challenges of owning a pet in a crowded city?",
+                        "q6": "Do you agree that restaurants should be allowed to let dogs enter?",
+                        "q7": "How can having a pet help improve a person's mental health?",
+                        "q8": "Should there be a 'pet tax' to help fund more public dog parks?",
+                        "q9": "Why is the 'pet economy' growing so fast even when the economy is slow?",
+                        "q10": "Is it ethical to keep large animals as pets in urban environments?"
+                    }
+                },
+                "3.9": {
+                    "topic": "Authenticity & AI",
+                    "questions": {
+                        "q1": "Can you usually tell if an image or video was made by AI?",
+                        "q2": "Do you trust a 'human' review more than an AI-generated summary?",
+                        "q3": "Would you pay more for a product if it was '100% human-made'?",
+                        "q4": "Why is 'authenticity' becoming so important to young people today?",
+                        "q5": "How does 'influencer fatigue' change the way you shop online?",
+                        "q6": "Should AI-generated content be clearly labeled with a warning?",
+                        "q7": "What happens to our creativity if we let AI do all the 'boring' work?",
+                        "q8": "Is it possible for an AI to ever be a 'true' friend or mentor?",
+                        "q9": "How can we protect our personal identity in an age of deepfakes?",
+                        "q10": "Will 'human judgment' become the most valuable skill in the future job market?"
+                    }
+                },
+                "4.0": {
+                    "topic": "The Future of Urban Space",
+                    "questions": {
+                        "q1": "Would you feel comfortable receiving a delivery from a drone?",
+                        "q2": "What is your favorite 'old' building or district in Hong Kong?",
+                        "q3": "Should we build more housing or preserve more green spaces?",
+                        "q4": "How can 'low-altitude' technology (like drones) change our daily lives?",
+                        "q5": "Why do many young people enjoy 'city walks' in traditional neighborhoods?",
+                        "q6": "Is it worth spending billions on new sports stadiums and mega-events?",
+                        "q7": "How can we revitalize old districts without losing their original soul?",
+                        "q8": "Should the government prioritize 'smart city' tech over traditional infrastructure?",
+                        "q9": "What defines the 'identity' of Hong Kong more: its skyscrapers or its street food?",
+                        "q10": "How do we make a city both 'efficient' for work and 'liveable' for people?"
+                    }
+                }
+            }
         },
-        "1.2": {
-          "topic": "Youth Culture",
-          "questions": {
-            "q1": "What do you think of teenagers who have tattoos and body piercing?",
-            "q2": "Why do teenagers think body art is 'cool?'",
-            "q3": "Do any of your friends have tattoos and body piercing?",
-            "q4": "Have you ever thought about having a tattoo or body piercing?",
-            "q5": "Why is it important for teenagers to express their individuality?",
-            "q6": "How do adults and parents feel about teenagers who have body modifications?",
-            "q7": "Do teenagers go too far with body modifications these days?",
-            "q8": "What do you think are the long term problems of having a tattoo?",
-            "q9": "What other ways do young people try to 'stand out' from the crowd?",
-            "q10": "What advice would you give to a friend who wanted a tattoo or some kind of body-piercing?"
-          }
+        "sample_paper": {
+            "label": "Sample Paper",
+            "sets": {
+                "1.1": {
+                    "topic": "Media & Privacy",
+                    "questions": {
+                        "q1": "Why do some people not want to be famous?",
+                        "q2": "Why is it sometimes difficult being famous?",
+                        "q3": "What are some of the advantages of being famous?",
+                        "q4": "Why is personal privacy so important to some people?",
+                        "q5": "Can famous people expect to keep their private lives secret?",
+                        "q6": "How are family members of famous people affected by their fame?",
+                        "q7": "Why do some people dislike the gossip magazines in Hong Kong?",
+                        "q8": "Do the public have the right to know about the private lives of famous people?",
+                        "q9": "Why is freedom of expression important for the media?",
+                        "q10": "Are there any types of stories which gossip magazines should not publish?"
+                    }
+                },
+                "1.2": {
+                    "topic": "Youth Culture",
+                    "questions": {
+                        "q1": "What do you think of teenagers who have tattoos and body piercing?",
+                        "q2": "Why do teenagers think body art is 'cool?'",
+                        "q3": "Do any of your friends have tattoos and body piercing?",
+                        "q4": "Have you ever thought about having a tattoo or body piercing?",
+                        "q5": "Why is it important for teenagers to express their individuality?",
+                        "q6": "How do adults and parents feel about teenagers who have body modifications?",
+                        "q7": "Do teenagers go too far with body modifications these days?",
+                        "q8": "What do you think are the long term problems of having a tattoo?",
+                        "q9": "What other ways do young people try to 'stand out' from the crowd?",
+                        "q10": "What advice would you give to a friend who wanted a tattoo or some kind of body-piercing?"
+                    }
+                },
+                "1.3": {
+                    "topic": "Work & Life",
+                    "questions": {
+                        "q1": "Do you have any friends or family members who work too hard?",
+                        "q2": "What are some of the disadvantages of working on Saturday and Sunday?",
+                        "q3": "Do you think young people now work harder than their parents did in the past?",
+                        "q4": "How do you think children are affected by parents who work long hours?",
+                        "q5": "How can children in Hong Kong help parents who have to work long hours?",
+                        "q6": "How much do you believe success depends on hard work?",
+                        "q7": "How might a workplace be disadvantaged by having workaholics on its staff?",
+                        "q8": "Why do you think work addiction is known as the 'respectable addiction' in the USA?",
+                        "q9": "Why do you think some people enjoy working so much?",
+                        "q10": "Some people live to work and others work to live. Can you tell us which kind of person you think you are and why?"
+                    }
+                }
+            }
         },
-        "1.3": {
-          "topic": "Work & Life",
-          "questions": {
-            "q1": "Do you have any friends or family members who work too hard?",
-            "q2": "What are some of the disadvantages of working on Saturday and Sunday?",
-            "q3": "Do you think young people now work harder than their parents did in the past?",
-            "q4": "How do you think children are affected by parents who work long hours?",
-            "q5": "How can children in Hong Kong help parents who have to work long hours?",
-            "q6": "How much do you believe success depends on hard work?",
-            "q7": "How might a workplace be disadvantaged by having workaholics on its staff?",
-            "q8": "Why do you think work addiction is known as the 'respectable addiction' in the USA?",
-            "q9": "Why do you think some people enjoy working so much?",
-            "q10": "Some people live to work and others work to live. Can you tell us which kind of person you think you are and why?"
-          }
+        "practice_paper": {
+            "label": "Practice Paper",
+            "sets": {
+                "2.1": {
+                    "topic": "Consumerism",
+                    "questions": {
+                        "q1": "What do teenagers buy that they do not need?",
+                        "q2": "What should children spend their money on?",
+                        "q3": "What new things do teens all want to have?",
+                        "q4": "How can parents teach their children not to become so materialistic?",
+                        "q5": "Why do young people want to buy brand name products?",
+                        "q6": "What problems can result from becoming too materialistic?",
+                        "q7": "Why do some parents give in to their children's demands?",
+                        "q8": "How can teenagers develop more self-control over their spending?"
+                    }
+                },
+                "2.2": {
+                    "topic": "Employment",
+                    "questions": {
+                        "q1": "What kind of summer part-time job would you like?",
+                        "q2": "What kind of job would be a dream job for you?",
+                        "q3": "What kind of things do students who have a part-time job spend their money on?",
+                        "q4": "Do you think students should do part-time jobs during the summer?",
+                        "q5": "What skills can students learn from doing part-time jobs that they can't learn at school?",
+                        "q6": "Do you think part-time jobs affect school work?",
+                        "q7": "What should you do in order to be successful in a job interview?",
+                        "q8": "What kinds of part-time jobs should secondary school students avoid?"
+                    }
+                },
+                "2.3": {
+                    "topic": "Science & Belief",
+                    "questions": {
+                        "q1": "What do you think aliens would look like?",
+                        "q2": "Do you enjoy watching movies about aliens?",
+                        "q3": "Would you believe someone if they said they had met an alien?",
+                        "q4": "What information about human beings do you think might be useful for aliens to learn?",
+                        "q5": "Is it worth spending money on trying to locate alien life in the universe?",
+                        "q6": "If there are no aliens, why do so many people claim to have met them?",
+                        "q7": "If there were aliens, what would they think about human life on earth?",
+                        "q8": "What positive outcomes could result from learning about alien culture?"
+                    }
+                }
+            }
         }
-      }
-    },
-    "practice_paper": {
-      "label": "Practice Paper",
-      "sets": {
-        "2.1": {
-          "topic": "Consumerism",
-          "questions": {
-            "q1": "What do teenagers buy that they do not need?",
-            "q2": "What should children spend their money on?",
-            "q3": "What new things do teens all want to have?",
-            "q4": "How can parents teach their children not to become so materialistic?",
-            "q5": "Why do young people want to buy brand name products?",
-            "q6": "What problems can result from becoming too materialistic?",
-            "q7": "Why do some parents give in to their children's demands?",
-            "q8": "How can teenagers develop more self-control over their spending?"
-          }
-        },
-        "2.2": {
-          "topic": "Employment",
-          "questions": {
-            "q1": "What kind of summer part-time job would you like?",
-            "q2": "What kind of job would be a dream job for you?",
-            "q3": "What kind of things do students who have a part-time job spend their money on?",
-            "q4": "Do you think students should do part-time jobs during the summer?",
-            "q5": "What skills can students learn from doing part-time jobs that they can't learn at school?",
-            "q6": "Do you think part-time jobs affect school work?",
-            "q7": "What should you do in order to be successful in a job interview?",
-            "q8": "What kinds of part-time jobs should secondary school students avoid?"
-          }
-        },
-        "2.3": {
-          "topic": "Science & Belief",
-          "questions": {
-            "q1": "What do you think aliens would look like?",
-            "q2": "Do you enjoy watching movies about aliens?",
-            "q3": "Would you believe someone if they said they had met an alien?",
-            "q4": "What information about human beings do you think might be useful for aliens to learn?",
-            "q5": "Is it worth spending money on trying to locate alien life in the universe?",
-            "q6": "If there are no aliens, why do so many people claim to have met them?",
-            "q7": "If there were aliens, what would they think about human life on earth?",
-            "q8": "What positive outcomes could result from learning about alien culture?"
-          }
-        }
-      }
     }
-  }
 }

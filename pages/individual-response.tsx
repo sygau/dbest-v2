@@ -41,13 +41,13 @@ for (const [paperKey, paper] of Object.entries(IR_DATA.papers) as any) {
     for (const [qKey, text] of Object.entries(set.questions) as any) {
       const qNum = parseInt(qKey.replace('q', ''), 10);
       ALL_QUESTIONS.push({
-        id:         `${paperKey}__${setKey}__${qKey}`,
+        id: `${paperKey}__${setKey}__${qKey}`,
         paperKey,
         paperLabel: paper.label,
         setKey,
-        topic:      set.topic,
+        topic: set.topic,
         qNum,
-        text:       text as string,
+        text: text as string,
         difficulty: diffFromNum(qNum),
       });
     }
@@ -56,22 +56,17 @@ for (const [paperKey, paper] of Object.entries(IR_DATA.papers) as any) {
 
 // ─── Build source dropdown groups from papers ────────────────────────────────
 
-interface SourceOpt  { value: string; label: string; }
+interface SourceOpt { value: string; label: string; }
 interface SourceGroup { group: string; options: SourceOpt[]; }
 
-const SOURCE_OPTIONS: { value: string; label: string }[] =
-  (Object.entries(IR_DATA.papers) as any[]).map(([paperKey, paper]) => ({
-    value: paperKey,
-    label: paper.label,
-  }));
 
 // ─── Static helpers ───────────────────────────────────────────────────────────
 
 const FAQS = [
-  { id: 'f1', question: 'DSE 英文口試 Individual Response 係點考法？',        answer: '考生會獨立回答考官提問，唔需要同其他同學討論。考官會就某個社會議題或日常話題發問，考生需要即場表達個人意見並作出解釋，時間大約係 1 分鐘左右。' },
-  { id: 'f2', question: 'Individual Response 評分係睇咩？',                    answer: 'DSE 英文口試主要評核四個範疇：pronunciation & delivery（發音流暢度）、communication strategies（溝通技巧）、vocabulary & language patterns（詞彙運用）、ideas & organisation（內容組織）。流暢同清晰比講得複雜更重要。' },
-  { id: 'f3', question: '唔識答某條題目點算？',                                answer: '唔好直接話「I don\'t know」然後停低。可以先講「That\'s an interesting question」爭取一兩秒思考，再從一個你識講嘅角度切入。即使答案唔完整，保持流暢同自信係最緊要。' },
-  { id: 'f4', question: '練習 Individual Response 最有效嘅方法係咩？',         answer: '最有效係計時練習——每次限 1 分鐘，模擬真實考試壓力。題目最好隨機抽，唔好每次都準備固定答案，因為考試當日題目係即場發問。練完之後可以錄音重聽，留意自己嘅停頓同語速。' },
+  { id: 'f1', question: 'DSE 英文口試 Individual Response 係點考法？', answer: '考生會獨立回答考官提問，唔需要同其他同學討論。考官會就某個社會議題或日常話題發問，考生需要即場表達個人意見並作出解釋，時間大約係 1 分鐘左右。' },
+  { id: 'f2', question: 'Individual Response 評分係睇咩？', answer: 'DSE 英文口試主要評核四個範疇：pronunciation & delivery（發音流暢度）、communication strategies（溝通技巧）、vocabulary & language patterns（詞彙運用）、ideas & organisation（內容組織）。流暢同清晰比講得複雜更重要。' },
+  { id: 'f3', question: '唔識答某條題目點算？', answer: '唔好直接話「I don\'t know」然後停低。可以先講「That\'s an interesting question」爭取一兩秒思考，再從一個你識講嘅角度切入。即使答案唔完整，保持流暢同自信係最緊要。' },
+  { id: 'f4', question: '練習 Individual Response 最有效嘅方法係咩？', answer: '最有效係計時練習——每次限 1 分鐘，模擬真實考試壓力。題目最好隨機抽，唔好每次都準備固定答案，因為考試當日題目係即場發問。練完之後可以錄音重聽，留意自己嘅停頓同語速。' },
   { id: 'f5', question: 'Individual Response 同 Group Discussion 有咩分別？', answer: 'Individual Response 係你一個人回答考官問題，唔需要理會其他考生。Group Discussion 就係幾個考生一齊討論，需要學識 agree / disagree、接話、引導討論等技巧。兩者評分側重點有所不同。' },
 ];
 
@@ -89,28 +84,47 @@ function readingBufferSeconds(text: string): number {
   return 66 + Math.floor(text.trim().split(/\s+/).length / 3);
 }
 
-const STORAGE_KEY     = 'dse-ir-state';
+const STORAGE_KEY = 'dse-ir-state';
 const TTS_STORAGE_KEY = 'dse-ir-tts';
 
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function IndividualResponsePage() {
-  const metadata       = useMemo(() => getMainPageMetadata('individual-response'), []);
+  const metadata = useMemo(() => getMainPageMetadata('individual-response'), []);
   const structuredData = useMemo(() => generateIndividualResponseStructuredData(), []);
+  const SOURCE_OPTIONS = useMemo(() => {
+    const options: { value: string; label: string; isComment?: boolean }[] = [];
 
-  const [timerState,         setTimerState]         = useState<TimerState>('idle');
-  const [timeLeft,           setTimeLeft]           = useState(66);
-  const [currentId,          setCurrentId]          = useState<string | null>(null);
-  const [queue,              setQueue]              = useState<string[]>([]);
-  const [doneIds,            setDoneIds]            = useState<Set<string>>(new Set());
-  const [openFaq,            setOpenFaq]            = useState<string | null>(null);
-  const [ttsEnabled,         setTtsEnabled]         = useState(false);
+    // Add default
+    options.push({ value: 'all', label: 'All (Random)', isComment: false });
+
+    // Generate from JSON
+    Object.entries(IR_DATA.papers).forEach(([paperKey, paper]: [string, any]) => {
+      if (paper.comments) {
+        options.push({
+          value: `note_${paperKey}`,
+          label: `${paper.comments}`,
+          isComment: true
+        });
+      }
+      options.push({ value: paperKey, label: paper.label, isComment: false });
+    });
+
+    return options;
+  }, []);
+  const [timerState, setTimerState] = useState<TimerState>('idle');
+  const [timeLeft, setTimeLeft] = useState(66);
+  const [currentId, setCurrentId] = useState<string | null>(null);
+  const [queue, setQueue] = useState<string[]>([]);
+  const [doneIds, setDoneIds] = useState<Set<string>>(new Set());
+  const [openFaq, setOpenFaq] = useState<string | null>(null);
+  const [ttsEnabled, setTtsEnabled] = useState(false);
   // "all" or "paperKey__setKey"
-  const [selectedSource,     setSelectedSource]     = useState<string>('all');
+  const [selectedSource, setSelectedSource] = useState<string>('all');
   const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>('Any');
 
-  const timerRef  = useRef<NodeJS.Timeout | null>(null);
-  const audioRef  = useRef<AudioContext | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const audioRef = useRef<AudioContext | null>(null);
   const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
 
   // Voices
@@ -122,12 +136,12 @@ export default function IndividualResponsePage() {
 
   // Restore persisted state
   useEffect(() => {
-    try { const s = localStorage.getItem(STORAGE_KEY); if (s) { const p: StoredState = JSON.parse(s); if (p.queue?.length) setQueue(p.queue); if (p.doneIds) setDoneIds(new Set(p.doneIds)); } } catch (e) {}
-    try { const t = localStorage.getItem(TTS_STORAGE_KEY); if (t === '1') setTtsEnabled(true); else if (t === '0') setTtsEnabled(false); } catch (e) {}
+    try { const s = localStorage.getItem(STORAGE_KEY); if (s) { const p: StoredState = JSON.parse(s); if (p.queue?.length) setQueue(p.queue); if (p.doneIds) setDoneIds(new Set(p.doneIds)); } } catch (e) { }
+    try { const t = localStorage.getItem(TTS_STORAGE_KEY); if (t === '1') setTtsEnabled(true); else if (t === '0') setTtsEnabled(false); } catch (e) { }
   }, []);
 
-  useEffect(() => { try { localStorage.setItem(TTS_STORAGE_KEY, ttsEnabled ? '1' : '0'); } catch (e) {} }, [ttsEnabled]);
-  useEffect(() => { if (queue.length > 0) try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ queue, doneIds: Array.from(doneIds) })); } catch (e) {} }, [queue, doneIds]);
+  useEffect(() => { try { localStorage.setItem(TTS_STORAGE_KEY, ttsEnabled ? '1' : '0'); } catch (e) { } }, [ttsEnabled]);
+  useEffect(() => { if (queue.length > 0) try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ queue, doneIds: Array.from(doneIds) })); } catch (e) { } }, [queue, doneIds]);
 
   // ── Filtered pool ─────────────────────────────────────────────────────────
 
@@ -143,7 +157,7 @@ export default function IndividualResponsePage() {
   // Reset when filters change
   useEffect(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    try { speechSynthesis.cancel(); } catch (e) {}
+    try { speechSynthesis.cancel(); } catch (e) { }
     setCurrentId(null); setTimerState('idle'); setTimeLeft(66); setQueue([]); setDoneIds(new Set());
   }, [selectedSource, selectedDifficulty]);
 
@@ -168,12 +182,12 @@ export default function IndividualResponsePage() {
 
   // ── Derived ───────────────────────────────────────────────────────────────
 
-  const currentQ  = useMemo(() => ALL_QUESTIONS.find(q => q.id === currentId) ?? null, [currentId]);
+  const currentQ = useMemo(() => ALL_QUESTIONS.find(q => q.id === currentId) ?? null, [currentId]);
   const totalSecs = useMemo(() => currentQ ? readingBufferSeconds(currentQ.text) : 66, [currentQ]);
-  const progress  = timerState === 'idle' ? 0 : Math.min(((totalSecs - timeLeft) / totalSecs) * 100, 100);
+  const progress = timerState === 'idle' ? 0 : Math.min(((totalSecs - timeLeft) / totalSecs) * 100, 100);
 
-  const diffColour = currentQ?.difficulty === 'Easy'   ? '#16a34a'
-                   : currentQ?.difficulty === 'Medium' ? '#d97706' : '#dc2626';
+  const diffColour = currentQ?.difficulty === 'Easy' ? '#16a34a'
+    : currentQ?.difficulty === 'Medium' ? '#d97706' : '#dc2626';
 
   // ── Audio ─────────────────────────────────────────────────────────────────
 
@@ -188,7 +202,7 @@ export default function IndividualResponsePage() {
       o.connect(g); g.connect(c.destination); o.frequency.value = 880; o.type = 'sine';
       g.gain.setValueAtTime(0.3, c.currentTime); g.gain.exponentialRampToValueAtTime(0.01, c.currentTime + 0.2);
       o.start(c.currentTime); o.stop(c.currentTime + 0.2);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const playBell = () => {
@@ -201,7 +215,7 @@ export default function IndividualResponsePage() {
         g.gain.setValueAtTime(0.3, t); g.gain.exponentialRampToValueAtTime(0.01, t + 0.4);
         o.start(t); o.stop(t + 0.4);
       });
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const trySpeak = (text: string) => {
@@ -217,7 +231,7 @@ export default function IndividualResponsePage() {
       if (pick) u.voice = pick;
       u.lang = 'en-US'; u.rate = 0.85;
       speechSynthesis.speak(u);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   // ── Actions ───────────────────────────────────────────────────────────────
@@ -246,21 +260,21 @@ export default function IndividualResponsePage() {
     if (ttsEnabled) trySpeak(text);
   };
 
-  const handlePause    = () => { if (timerRef.current) clearInterval(timerRef.current); setTimerState('paused'); };
+  const handlePause = () => { if (timerRef.current) clearInterval(timerRef.current); setTimerState('paused'); };
   const handleContinue = () => setTimerState('running');
-  const handleSkip     = () => {
+  const handleSkip = () => {
     if (timerRef.current) clearInterval(timerRef.current);
-    try { speechSynthesis.cancel(); } catch (e) {}
+    try { speechSynthesis.cancel(); } catch (e) { }
     markDone(); setCurrentId(null); setTimerState('idle'); setTimeLeft(66);
   };
 
   const fmt = (s: number) => `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, '0')}`;
 
-  const isIdle     = timerState === 'idle';
-  const isPaused   = timerState === 'paused';
+  const isIdle = timerState === 'idle';
+  const isPaused = timerState === 'paused';
   const isFinished = timerState === 'finished';
 
-  const mainLabel  = isIdle ? 'START' : timerState === 'running' ? 'PAUSE' : isPaused ? 'CONTINUE' : 'NEXT';
+  const mainLabel = isIdle ? 'START' : timerState === 'running' ? 'PAUSE' : isPaused ? 'CONTINUE' : 'NEXT';
   const mainAction = () => {
     if (isIdle || isFinished) return handleStart();
     if (timerState === 'running') return handlePause();
@@ -274,12 +288,12 @@ export default function IndividualResponsePage() {
       <Head>
         <title>{metadata?.title || 'DSE English Oral Individual Response 練習工具 | dse.best'}</title>
         <meta name="description" content={metadata?.description || 'DSE 英文口試 Individual Response 免費練習工具，隨機抽題、語音朗讀、計時，模擬真實考試環境。'} />
-        <meta name="robots"          content={metadata?.robots    || 'index, follow'} />
-        <meta property="og:title"   content={metadata?.ogTitle   || 'DSE Individual Response 練習工具'} />
+        <meta name="robots" content={metadata?.robots || 'index, follow'} />
+        <meta property="og:title" content={metadata?.ogTitle || 'DSE Individual Response 練習工具'} />
         <meta property="og:description" content={metadata?.ogDescription || ''} />
-        <meta property="og:image"   content={metadata?.ogImage   || 'https://dse.best/assets/images/logo-icon.png'} />
-        <meta property="og:url"     content={metadata?.ogUrl     || 'https://dse.best/individual-response'} />
-        <meta property="og:type"    content={metadata?.ogType    || 'website'} />
+        <meta property="og:image" content={metadata?.ogImage || 'https://dse.best/assets/images/logo-icon.png'} />
+        <meta property="og:url" content={metadata?.ogUrl || 'https://dse.best/individual-response'} />
+        <meta property="og:type" content={metadata?.ogType || 'website'} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       </Head>
 
@@ -314,8 +328,21 @@ export default function IndividualResponsePage() {
                     onChange={e => setSelectedSource(e.target.value)}
                     disabled={timerState === 'running'}
                   >
-                    <option value="all">All (Random)</option>
-                    {SOURCE_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                    {SOURCE_OPTIONS.map(o => (
+                      <option
+                        key={o.value}
+                        value={o.value}
+                        disabled={o.isComment}
+                        style={{
+                          fontWeight: o.isComment ? 'bold' : 'normal',
+                          color: o.isComment ? '#9ca3af' : '#111827',
+                          backgroundColor: o.isComment ? '#f3f4f6' : '#fff',
+                          textAlign: o.isComment ? 'center' : 'left'
+                        }}
+                      >
+                        {o.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -374,7 +401,7 @@ export default function IndividualResponsePage() {
                 {(timerState === 'running' || isPaused) && (
                   <button className="icon-btn" onClick={handleSkip} title="跳過此題" aria-label="Skip question">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/>
+                      <polygon points="5 4 15 12 5 20 5 4" /><line x1="19" y1="5" x2="19" y2="19" />
                     </svg>
                   </button>
                 )}
@@ -388,10 +415,10 @@ export default function IndividualResponsePage() {
                   aria-label="Toggle read aloud" aria-pressed={ttsEnabled}
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
                     {ttsEnabled
-                      ? <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                      : <><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></>}
+                      ? <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                      : <><line x1="23" y1="9" x2="17" y2="15" /><line x1="17" y1="9" x2="23" y2="15" /></>}
                   </svg>
                   {ttsEnabled ? '朗讀 ON' : '朗讀 OFF'}
                 </button>
@@ -488,7 +515,7 @@ export default function IndividualResponsePage() {
                   <button className="faq-question" onClick={() => setOpenFaq(openFaq === faq.id ? null : faq.id)} aria-expanded={openFaq === faq.id}>
                     <span>{faq.question}</span>
                     <svg className={`faq-chevron${openFaq === faq.id ? ' open' : ''}`} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="6 9 12 15 18 9"/>
+                      <polyline points="6 9 12 15 18 9" />
                     </svg>
                   </button>
                   {openFaq === faq.id && <div className="faq-answer">{faq.answer}</div>}
