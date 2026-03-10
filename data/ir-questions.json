@@ -1,0 +1,98 @@
+{
+  "papers": {
+    "sample_paper": {
+      "label": "Sample Paper",
+      "sets": {
+        "1.1": {
+          "topic": "Media & Privacy",
+          "questions": {
+            "q1": "Why do some people not want to be famous?",
+            "q2": "Why is it sometimes difficult being famous?",
+            "q3": "What are some of the advantages of being famous?",
+            "q4": "Why is personal privacy so important to some people?",
+            "q5": "Can famous people expect to keep their private lives secret?",
+            "q6": "How are family members of famous people affected by their fame?",
+            "q7": "Why do some people dislike the gossip magazines in Hong Kong?",
+            "q8": "Do the public have the right to know about the private lives of famous people?",
+            "q9": "Why is freedom of expression important for the media?",
+            "q10": "Are there any types of stories which gossip magazines should not publish?"
+          }
+        },
+        "1.2": {
+          "topic": "Youth Culture",
+          "questions": {
+            "q1": "What do you think of teenagers who have tattoos and body piercing?",
+            "q2": "Why do teenagers think body art is 'cool?'",
+            "q3": "Do any of your friends have tattoos and body piercing?",
+            "q4": "Have you ever thought about having a tattoo or body piercing?",
+            "q5": "Why is it important for teenagers to express their individuality?",
+            "q6": "How do adults and parents feel about teenagers who have body modifications?",
+            "q7": "Do teenagers go too far with body modifications these days?",
+            "q8": "What do you think are the long term problems of having a tattoo?",
+            "q9": "What other ways do young people try to 'stand out' from the crowd?",
+            "q10": "What advice would you give to a friend who wanted a tattoo or some kind of body-piercing?"
+          }
+        },
+        "1.3": {
+          "topic": "Work & Life",
+          "questions": {
+            "q1": "Do you have any friends or family members who work too hard?",
+            "q2": "What are some of the disadvantages of working on Saturday and Sunday?",
+            "q3": "Do you think young people now work harder than their parents did in the past?",
+            "q4": "How do you think children are affected by parents who work long hours?",
+            "q5": "How can children in Hong Kong help parents who have to work long hours?",
+            "q6": "How much do you believe success depends on hard work?",
+            "q7": "How might a workplace be disadvantaged by having workaholics on its staff?",
+            "q8": "Why do you think work addiction is known as the 'respectable addiction' in the USA?",
+            "q9": "Why do you think some people enjoy working so much?",
+            "q10": "Some people live to work and others work to live. Can you tell us which kind of person you think you are and why?"
+          }
+        }
+      }
+    },
+    "practice_paper": {
+      "label": "Practice Paper",
+      "sets": {
+        "2.1": {
+          "topic": "Consumerism",
+          "questions": {
+            "q1": "What do teenagers buy that they do not need?",
+            "q2": "What should children spend their money on?",
+            "q3": "What new things do teens all want to have?",
+            "q4": "How can parents teach their children not to become so materialistic?",
+            "q5": "Why do young people want to buy brand name products?",
+            "q6": "What problems can result from becoming too materialistic?",
+            "q7": "Why do some parents give in to their children's demands?",
+            "q8": "How can teenagers develop more self-control over their spending?"
+          }
+        },
+        "2.2": {
+          "topic": "Employment",
+          "questions": {
+            "q1": "What kind of summer part-time job would you like?",
+            "q2": "What kind of job would be a dream job for you?",
+            "q3": "What kind of things do students who have a part-time job spend their money on?",
+            "q4": "Do you think students should do part-time jobs during the summer?",
+            "q5": "What skills can students learn from doing part-time jobs that they can't learn at school?",
+            "q6": "Do you think part-time jobs affect school work?",
+            "q7": "What should you do in order to be successful in a job interview?",
+            "q8": "What kinds of part-time jobs should secondary school students avoid?"
+          }
+        },
+        "2.3": {
+          "topic": "Science & Belief",
+          "questions": {
+            "q1": "What do you think aliens would look like?",
+            "q2": "Do you enjoy watching movies about aliens?",
+            "q3": "Would you believe someone if they said they had met an alien?",
+            "q4": "What information about human beings do you think might be useful for aliens to learn?",
+            "q5": "Is it worth spending money on trying to locate alien life in the universe?",
+            "q6": "If there are no aliens, why do so many people claim to have met them?",
+            "q7": "If there were aliens, what would they think about human life on earth?",
+            "q8": "What positive outcomes could result from learning about alien culture?"
+          }
+        }
+      }
+    }
+  }
+}
