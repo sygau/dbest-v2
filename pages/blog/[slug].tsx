@@ -88,7 +88,7 @@ function getCategoryColor(category: string): string {
   return map[category] || '#5b5fc7';
 }
 
-function useReadingProgress(ref: React.RefObject<HTMLDivElement>) {
+function useReadingProgress(ref: React.RefObject<HTMLDivElement | null>) {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
     let raf: number | null = null;
