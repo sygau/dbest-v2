@@ -3,19 +3,14 @@ const fs = require('fs-extra');
 const path = require('path');
 
 async function generateBlogData() {
-  console.log('🔄 Generating blog data for static export...');
+  console.log('🔄 Generating blog data (Smart Diff Mode)...');
   
   try {
-    // Fetch all posts from Contentful
     const posts = await getAllPosts();
-    
-    // Create data directory if it doesn't exist
     const dataDir = path.join(__dirname, '..', 'data');
     const postsDir = path.join(dataDir, 'posts');
-    await fs.ensureDir(dataDir);
     await fs.ensureDir(postsDir);
     
-    // Load existing posts to detect changes
     let existingPosts = {};
     try {
       const existingIndex = await fs.readJson(path.join(dataDir, 'blog-index.json'));
@@ -24,33 +19,35 @@ async function generateBlogData() {
       console.log('ℹ️  No existing blog index found, generating fresh');
     }
     
-    // Track changes
     const newPosts = [];
     const updatedPosts = [];
+    let skippedCount = 0;
     const currentSlugs = new Set();
     
-    // Process current posts
     for (const post of posts) {
       currentSlugs.add(post.slug);
       const existingPost = existingPosts[post.slug];
+      const filePath = path.join(postsDir, `${post.slug}.json`);
       
+      // MAGIC HAPPENS HERE: Only write if new or actually changed
       if (!existingPost) {
         newPosts.push(post);
         console.log(`🆕 New post: ${post.title}`);
+        await fs.writeJson(filePath, post, { spaces: 2 });
       } else if (existingPost.updatedAt !== post.updatedAt) {
         updatedPosts.push(post);
         console.log(`🔄 Updated post: ${post.title}`);
+        await fs.writeJson(filePath, post, { spaces: 2 });
+      } else {
+        // If the file exists and hasn't changed, DO NOTHING.
+        // This preserves the file timestamp so Next.js build cache skips it.
+        skippedCount++;
       }
-      
-      // Always write/update the post file
-      await fs.writeJson(path.join(postsDir, `${post.slug}.json`), post, { spaces: 2 });
     }
     
-    // Detect deleted posts
     const existingSlugs = Object.keys(existingPosts);
     const deletedSlugs = existingSlugs.filter(slug => !currentSlugs.has(slug));
     
-    // Remove deleted post files
     for (const slug of deletedSlugs) {
       const filePath = path.join(postsDir, `${slug}.json`);
       if (await fs.pathExists(filePath)) {
@@ -59,25 +56,17 @@ async function generateBlogData() {
       }
     }
     
-    // Generate blog index data
     const indexablePosts = posts
       .filter(post => post.indexPageVis)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     
     await fs.writeJson(path.join(dataDir, 'blog-index.json'), indexablePosts, { spaces: 2 });
     
-    // Generate posts manifest for static paths
     const slugs = posts.map(post => post.slug);
     await fs.writeJson(path.join(dataDir, 'post-slugs.json'), slugs, { spaces: 2 });
     
-    // Summary
-    console.log('📊 Blog data generation summary:');
-    console.log(`   📝 Total posts: ${posts.length}`);
-    console.log(`   🆕 New posts: ${newPosts.length}`);
-    console.log(`   🔄 Updated posts: ${updatedPosts.length}`);
-    console.log(`   🗑️  Deleted posts: ${deletedSlugs.length}`);
-    console.log(`   📋 Indexable posts: ${indexablePosts.length}`);
-    console.log('🎉 Blog data generation completed successfully!');
+    console.log('📊 Smart Sync Summary:');
+    console.log(`   🆕 New: ${newPosts.length} | 🔄 Updated: ${updatedPosts.length} | ⏭️ Skipped: ${skippedCount} | 🗑️ Deleted: ${deletedSlugs.length}`);
     
   } catch (error) {
     console.error('❌ Error generating blog data:', error);
@@ -85,10 +74,8 @@ async function generateBlogData() {
   }
 }
 
-// Run if called directly
 if (require.main === module) {
   generateBlogData();
 }
-
 
 module.exports = { generateBlogData };
