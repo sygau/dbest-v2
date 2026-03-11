@@ -441,7 +441,18 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         }
         .post-content blockquote p { margin-bottom: 0; }
 
-        .post-content img { max-width: 100%; border-radius: 8px; margin: 1.5rem auto; display: block; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .post-content img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+          margin: 1.5rem auto;
+          display: block;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+          /* Added to prevent flickering/layout shifts on iOS */
+          content-visibility: auto;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+        }
         .post-content ul, .post-content ol { padding-left: 1.6rem; margin-bottom: 1.35rem; }
         .post-content li { margin-bottom: 0.4rem; }
         .post-content li::marker { color: var(--bs-primary); }
