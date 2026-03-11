@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 async function generateBlogData() {
-  console.log('🔄 Generating blog data (Deep Sync Mode)...');
+  console.log('🔄 Generating blog data (Full Deep Sync)...');
   
   try {
     const posts = await getAllPosts();
@@ -11,19 +11,20 @@ async function generateBlogData() {
     const postsDir = path.join(dataDir, 'posts');
     await fs.ensureDir(postsDir);
     
-    // 1. SECURE CHECK: Scan the actual physical files, not just the index
+    // 1. SECURE CHECK: Scan the physical files to see what's actually there
     const existingPosts = {};
-    const localFiles = await fs.readdir(postsDir);
-    
-    for (const file of localFiles) {
-      if (file.endsWith('.json')) {
-        try {
-          const content = await fs.readJson(path.join(postsDir, file));
-          if (content.slug) {
-            existingPosts[content.slug] = content;
+    if (await fs.pathExists(postsDir)) {
+      const localFiles = await fs.readdir(postsDir);
+      for (const file of localFiles) {
+        if (file.endsWith('.json')) {
+          try {
+            const content = await fs.readJson(path.join(postsDir, file));
+            if (content.slug) {
+              existingPosts[content.slug] = content;
+            }
+          } catch (e) {
+            // Skip corrupted files
           }
-        } catch (e) {
-          // Skip malformed files
         }
       }
     }
@@ -40,7 +41,7 @@ async function generateBlogData() {
       const existingPost = existingPosts[post.slug];
       const filePath = path.join(postsDir, `${post.slug}.json`);
       
-      // 2. ROBUST COMPARISON: Force both to strings to avoid Date object mismatches
+      // 2. ROBUST COMPARISON: Compare dates as Strings
       const isNew = !existingPost;
       const isChanged = existingPost && String(existingPost.updatedAt) !== String(post.updatedAt);
 
@@ -57,7 +58,7 @@ async function generateBlogData() {
       }
     }
     
-    // 3. CLEANUP: Remove files that no longer exist in Contentful
+    // 3. CLEANUP: Delete files that were removed from Contentful
     const existingSlugs = Object.keys(existingPosts);
     const deletedSlugs = existingSlugs.filter(slug => !currentSlugs.has(slug));
     
@@ -67,21 +68,19 @@ async function generateBlogData() {
       console.log(`🗑️  Deleted: ${slug}`);
     }
     
-    // 4. GENERATE INDICES (Optimized for the frontend)
+    // 4. GENERATE INDICES (Preserving ALL fields, including content)
     const indexablePosts = posts
       .filter(post => post && post.indexPageVis)
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      // We map to a smaller object for the index to keep the file size tiny
-      .map(({ content, ...summary }) => summary); 
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     
+    // Writes the full data to blog-index.json (Content included)
     await fs.writeJson(path.join(dataDir, 'blog-index.json'), indexablePosts, { spaces: 2 });
     
     const allSlugs = posts.map(post => post.slug).filter(Boolean);
     await fs.writeJson(path.join(dataDir, 'post-slugs.json'), allSlugs, { spaces: 2 });
     
     console.log('---');
-    console.log('📊 Smart Sync Summary:');
-    console.log(`🆕 New: ${newPosts.length} | 🔄 Updated: ${updatedPosts.length} | ⏭️ Skipped: ${skippedCount} | 🗑️ Deleted: ${deletedSlugs.length}`);
+    console.log(`📊 Smart Sync Summary: 🆕 ${newPosts.length} | 🔄 ${updatedPosts.length} | ⏭️ ${skippedCount} | 🗑️ ${deletedSlugs.length}`);
     console.log('---');
     
   } catch (error) {
