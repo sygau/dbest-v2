@@ -278,7 +278,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
 .mobile-toc-toggle {
   position: fixed;
   bottom: 22px;
-  right: 354px !important;
+  left: 16px !important;
   width: 45px;
   height: 45px;
   padding: 0;
@@ -326,7 +326,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
 @media (max-width: 768px) {
   .mobile-toc-toggle {
     bottom: 22px !important;
-    right: 354px !important;
+    left: 16px !important;
     width: 40px !important;
     height: 40px !important;
     font-size: 16px !important;
