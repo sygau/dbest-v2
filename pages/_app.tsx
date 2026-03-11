@@ -266,12 +266,6 @@ export default function App({ Component, pageProps }: AppProps) {
                 </li>
               )}
               <li>
-                <NavigationLink href="/forums">
-                  <div className="parent-icon"><BiMessageSquare style={{ color: '#8b5cf6', fontSize: 24 }} /></div>
-                  <div className="menu-title">討論區 Forums</div>
-                </NavigationLink>
-              </li>
-              <li>
                 <NavigationLink href="/blog">
                   <div className="parent-icon"><BiFile style={{ color: '#2fc4d4', fontSize: 24 }} /></div>
                   <div className="menu-title">Blog</div>

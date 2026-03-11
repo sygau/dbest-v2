@@ -19,7 +19,7 @@
     "blog:sync": "node scripts/generate-blog-data.js",
     "css:build": "node scripts/combine-css.js",
     "css:test": "node scripts/test-css-bundle.js",
-    "sitemap": "node scripts/generate-sitemap.js",
+    "sitemap": "node scripts/generate-sitemaps.js",
     "cutoff:process": "node scripts/process-cutoff-data.js",
     "cutoff:validate": "node scripts/validate-csv-structure.js",
     "obfuscate:appendlinksx": "node scripts/obfuscate-appendlinksx.js",

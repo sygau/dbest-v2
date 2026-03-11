@@ -1,12 +1,17 @@
 const { getAllPosts } = require('../lib/contentful');
 const fs = require('fs-extra');
 const path = require('path');
+const { generateAllSitemaps } = require('./generate-sitemaps');
 
 async function generateBlogData() {
   console.log('🔄 Generating blog data (System Meta Sync)...');
   
   try {
     const posts = await getAllPosts();
+    
+    // Generate all sitemaps (Core, Subjects, Blog)
+    await generateAllSitemaps();
+
     const dataDir = path.join(__dirname, '..', 'data');
     const postsDir = path.join(dataDir, 'posts');
     await fs.ensureDir(postsDir);
