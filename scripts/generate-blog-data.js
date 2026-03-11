@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 async function generateBlogData() {
-  console.log('🔄 Generating blog data (Full Deep Sync)...');
+  console.log('🔄 Generating blog data (System Meta Sync)...');
   
   try {
     const posts = await getAllPosts();
@@ -11,7 +11,7 @@ async function generateBlogData() {
     const postsDir = path.join(dataDir, 'posts');
     await fs.ensureDir(postsDir);
     
-    // 1. SECURE CHECK: Scan the physical files to see what's actually there
+    // 1. Scan physical files to build the "Existing" map
     const existingPosts = {};
     if (await fs.pathExists(postsDir)) {
       const localFiles = await fs.readdir(postsDir);
@@ -41,24 +41,29 @@ async function generateBlogData() {
       const existingPost = existingPosts[post.slug];
       const filePath = path.join(postsDir, `${post.slug}.json`);
       
-      // 2. ROBUST COMPARISON: Compare dates as Strings
+      // 2. SMART DIFF LOGIC
+      // We compare against 'post.updatedAt' (which in our contentful.js transform 
+      // is mapped to post.sys.updatedAt). This ensures any change in Contentful 
+      // triggers an update even if custom fields aren't touched.
       const isNew = !existingPost;
+      
+      // Ensure we compare strings to avoid object-reference mismatches
       const isChanged = existingPost && String(existingPost.updatedAt) !== String(post.updatedAt);
 
       if (isNew) {
         newPosts.push(post);
-        console.log(`🆕 New: ${post.title}`);
+        console.log(`🆕 New post: ${post.title}`);
         await fs.writeJson(filePath, post, { spaces: 2 });
       } else if (isChanged) {
         updatedPosts.push(post);
-        console.log(`🔄 Updated: ${post.title}`);
+        console.log(`🔄 Updated post: ${post.title} (System change detected)`);
         await fs.writeJson(filePath, post, { spaces: 2 });
       } else {
         skippedCount++;
       }
     }
     
-    // 3. CLEANUP: Delete files that were removed from Contentful
+    // 3. CLEANUP: Delete files that no longer exist in Contentful
     const existingSlugs = Object.keys(existingPosts);
     const deletedSlugs = existingSlugs.filter(slug => !currentSlugs.has(slug));
     
@@ -68,12 +73,11 @@ async function generateBlogData() {
       console.log(`🗑️  Deleted: ${slug}`);
     }
     
-    // 4. GENERATE INDICES (Preserving ALL fields, including content)
+    // 4. REGENERATE INDICES (All fields preserved)
     const indexablePosts = posts
       .filter(post => post && post.indexPageVis)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     
-    // Writes the full data to blog-index.json (Content included)
     await fs.writeJson(path.join(dataDir, 'blog-index.json'), indexablePosts, { spaces: 2 });
     
     const allSlugs = posts.map(post => post.slug).filter(Boolean);
@@ -84,7 +88,7 @@ async function generateBlogData() {
     console.log('---');
     
   } catch (error) {
-    console.error('❌ Critical Sync Error:', error);
+    console.error('❌ Sync Failed:', error);
     process.exit(1);
   }
 }
