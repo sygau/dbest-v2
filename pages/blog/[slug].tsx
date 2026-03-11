@@ -1,15 +1,11 @@
 import Head from 'next/head'
-import { BiCategory, BiUserCircle, BiCalendarEvent, BiTimeFive, BiShow, BiComment, BiListUl, BiShare, BiLink } from 'react-icons/bi';
+import { BiCategory, BiUserCircle, BiCalendarEvent, BiTimeFive, BiShow, BiListUl, BiShare, BiLink } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useEffect, useState, useCallback, useRef } from 'react'
 import fs from 'fs'
 import path from 'path'
 import NavigationLink from '../../components/NavigationLink'
 import { useViewCount } from '@/hooks/useViewCount'
-
-declare global {
-  interface Window { DISQUS?: any; }
-}
 
 interface BlogPost {
   id: string; slug: string; title: string; seoTitle: string;
@@ -108,16 +104,16 @@ function useReadingProgress(ref: React.RefObject<HTMLDivElement | null>) {
 
 export default function BlogPost({ post, relatedPosts, processedContent, headings }: BlogPostProps) {
   const [activeId, setActiveId] = useState('');
-  const [copied, setCopied]     = useState(false);
-  const contentRef              = useRef<HTMLDivElement>(null);
-  const readingProgress         = useReadingProgress(contentRef);
+  const [copied, setCopied] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const readingProgress = useReadingProgress(contentRef);
 
   const categoryDisplayName = getCategoryDisplayName(post.category);
-  const categoryColor       = getCategoryColor(post.category);
+  const categoryColor = getCategoryColor(post.category);
   const { viewCount, isLoading } = useViewCount(post.slug);
-  const canonicalUrl  = `https://dse.best/blog/${post.slug}`;
-  const ogImage       = post.featuredImage || 'https://dse.best/assets/images/logo-icon.webp';
-  const faqItems      = post.faqs?.filter(f => f?.question && f?.answer) || [];
+  const canonicalUrl = `https://dse.best/blog/${post.slug}`;
+  const ogImage = post.featuredImage || 'https://dse.best/assets/images/logo-icon.webp';
+  const faqItems = post.faqs?.filter(f => f?.question && f?.answer) || [];
 
   useEffect(() => {
     if (!headings.length) return;
@@ -135,19 +131,6 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
     return () => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf); };
   }, [headings]);
 
-  useEffect(() => {
-    if (!post.comments) return;
-    const t = setTimeout(() => {
-      if (document.getElementById('disqus_thread') && !window.DISQUS) {
-        const s = document.createElement('script');
-        s.src = 'https://dsebest.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', String(+new Date()));
-        (document.head || document.body).appendChild(s);
-      }
-    }, 400);
-    return () => clearTimeout(t);
-  }, [post.comments]);
-
   const scrollToHeading = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); setActiveId(id); window.history.replaceState(null, '', `#${id}`); }
@@ -155,9 +138,9 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
 
   const handleShare = useCallback(async () => {
     if (navigator.share) {
-      try { await navigator.share({ title: post.title, url: canonicalUrl }); return; } catch {}
+      try { await navigator.share({ title: post.title, url: canonicalUrl }); return; } catch { }
     }
-    try { await navigator.clipboard.writeText(canonicalUrl); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch {}
+    try { await navigator.clipboard.writeText(canonicalUrl); setCopied(true); setTimeout(() => setCopied(false), 2000); } catch { }
   }, [post.title, canonicalUrl]);
 
   return (
@@ -173,21 +156,25 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="article" />
         <meta name="theme-color" content="#0f1535" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          '@context': 'https://schema.org', '@type': 'BlogPosting',
-          mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
-          headline: post.seoTitle, description: post.seoDescription,
-          image: [ogImage], url: canonicalUrl,
-          author: { '@type': 'Person', name: post.author },
-          publisher: { '@type': 'Organization', name: 'dse.best', logo: { '@type': 'ImageObject', url: 'https://dse.best/assets/images/logo-icon.webp' } },
-          datePublished: post.createdAt, dateModified: post.updatedAt,
-          keywords: post.tags, articleSection: post.category,
-        }) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org', '@type': 'BlogPosting',
+            mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+            headline: post.seoTitle, description: post.seoDescription,
+            image: [ogImage], url: canonicalUrl,
+            author: { '@type': 'Person', name: post.author },
+            publisher: { '@type': 'Organization', name: 'dse.best', logo: { '@type': 'ImageObject', url: 'https://dse.best/assets/images/logo-icon.webp' } },
+            datePublished: post.createdAt, dateModified: post.updatedAt,
+            keywords: post.tags, articleSection: post.category,
+          })
+        }} />
         {faqItems.length > 0 && (
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            '@context': 'https://schema.org', '@type': 'FAQPage',
-            mainEntity: faqItems.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
-          }) }} />
+          <script type="application/ld+json" dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org', '@type': 'FAQPage',
+              mainEntity: faqItems.map(f => ({ '@type': 'Question', name: f.question, acceptedAnswer: { '@type': 'Answer', text: f.answer } })),
+            })
+          }} />
         )}
       </Head>
 
@@ -228,8 +215,15 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         }
         .post-content h3 { font-size: 1.2rem; }
         .post-content h4 { font-size: 1.05rem; }
-        .post-content p { margin-bottom: 1.35rem; }
+        .post-content p { margin-bottom: 1.35rem; white-space: pre-line;}
+          .post-content hr:has(+ h2) {
+  display: none;
+}
 
+/* 2. Hide empty paragraphs to prevent invisible mega-gaps */
+.post-content p:empty {
+  display: none;
+}
         /* ── Inline formatting ────────────────────────────────────────────── */
         .post-content strong, .post-content b { font-weight: 700; color: var(--bs-heading-color); }
         .post-content em, .post-content i { font-style: italic; }
@@ -401,23 +395,9 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                   </button>
                 </div>
 
-                <hr style={{ borderColor: 'var(--bs-border-color-translucent)'}} />
+                <hr style={{ borderColor: 'var(--bs-border-color-translucent)' }} />
 
                 <div className="post-content" dangerouslySetInnerHTML={{ __html: processedContent }} />
-
-                {post.comments && (
-                  <>
-                    <hr className="my-5" style={{ borderColor: 'var(--bs-border-color-translucent)' }} />
-                    <div className="comments-section px-3 py-2">
-                      <h4 className="mb-4" style={{ fontFamily: "'Noto Sans HK', sans-serif", fontSize: '1.5rem' }}>
-                        <BiComment style={{ fontSize: '1.2em', marginRight: '0.5em', color: 'var(--bs-body-color, #6c757d)' }} />
-                        留言討論
-                      </h4>
-                      <div id="disqus_thread" />
-                      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    </div>
-                  </>
-                )}
 
               </div>
             </div>

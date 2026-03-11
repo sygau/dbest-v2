@@ -222,20 +222,6 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
                 (viewCount || 0)
               )}
             </span>
-            {post.comments && (
-              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <BiComment style={{ fontSize: '12px' }} />
-                <span 
-                  data-disqus-identifier={post.slug}
-                  style={{ 
-                    color: 'inherit', 
-                    fontSize: 'inherit'
-                  }}
-                >
-                  0
-                </span>
-              </span>
-            )}
           </div>
         </div>
       </article>
@@ -882,13 +868,6 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
           }}
         />
       </Head>
-
-      {/* Disqus Comment Count Script */}
-      <script 
-        id="dsq-count-scr" 
-        src="https://dsebest.disqus.com/count.js" 
-        async
-      />
 
       {/*breadcrumb*/}
       <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">

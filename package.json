@@ -2,7 +2,7 @@
   "private": true,
   "name": "dbest-v1",
   "version": "1.0.0",
-  "description": "DSE.BEST - Hong Kong DSE Past Papers and Blog",
+  "description": "dse.best",
   "main": "contentful/contentful.js",
   "scripts": {
     "dev": "next dev",

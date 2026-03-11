@@ -625,7 +625,7 @@ export default function IndividualResponsePage() {
 
         .timer-card { background: #ffffff; border-radius: 24px; padding: 2.25rem 2.5rem 1.25rem; box-shadow: 0 4px 24px rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: center; border-top: 5px solid #25D366; }
         .card-header-block { text-align: center; margin-bottom: 1.25rem; width: 100%; }
-        .card-title { font-size: 2.6rem; font-weight: 800; color: #111827; margin: 0; white-space: nowrap; }
+        .card-title { font-size: 2.4rem; font-weight: 800; color: #111827; margin: 0; letter-spacing: -0.03em; line-height: 1.1; }
 
         .filter-row { display: flex; gap: 12px; width: 100%; margin-bottom: 1.25rem; }
         .filter-group { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
