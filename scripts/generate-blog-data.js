@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 async function generateBlogData() {
-  console.log('🔄 Generating blog data (Smart Diff Mode)...');
+  console.log('🔄 Generating blog data (Deep Sync Mode)...');
   
   try {
     const posts = await getAllPosts();
@@ -11,12 +11,21 @@ async function generateBlogData() {
     const postsDir = path.join(dataDir, 'posts');
     await fs.ensureDir(postsDir);
     
-    let existingPosts = {};
-    try {
-      const existingIndex = await fs.readJson(path.join(dataDir, 'blog-index.json'));
-      existingPosts = Object.fromEntries(existingIndex.map(post => [post.slug, post]));
-    } catch (e) {
-      console.log('ℹ️  No existing blog index found, generating fresh');
+    // 1. SECURE CHECK: Scan the actual physical files, not just the index
+    const existingPosts = {};
+    const localFiles = await fs.readdir(postsDir);
+    
+    for (const file of localFiles) {
+      if (file.endsWith('.json')) {
+        try {
+          const content = await fs.readJson(path.join(postsDir, file));
+          if (content.slug) {
+            existingPosts[content.slug] = content;
+          }
+        } catch (e) {
+          // Skip malformed files
+        }
+      }
     }
     
     const newPosts = [];
@@ -25,51 +34,58 @@ async function generateBlogData() {
     const currentSlugs = new Set();
     
     for (const post of posts) {
+      if (!post.slug) continue;
       currentSlugs.add(post.slug);
+      
       const existingPost = existingPosts[post.slug];
       const filePath = path.join(postsDir, `${post.slug}.json`);
       
-      // MAGIC HAPPENS HERE: Only write if new or actually changed
-      if (!existingPost) {
+      // 2. ROBUST COMPARISON: Force both to strings to avoid Date object mismatches
+      const isNew = !existingPost;
+      const isChanged = existingPost && String(existingPost.updatedAt) !== String(post.updatedAt);
+
+      if (isNew) {
         newPosts.push(post);
-        console.log(`🆕 New post: ${post.title}`);
+        console.log(`🆕 New: ${post.title}`);
         await fs.writeJson(filePath, post, { spaces: 2 });
-      } else if (existingPost.updatedAt !== post.updatedAt) {
+      } else if (isChanged) {
         updatedPosts.push(post);
-        console.log(`🔄 Updated post: ${post.title}`);
+        console.log(`🔄 Updated: ${post.title}`);
         await fs.writeJson(filePath, post, { spaces: 2 });
       } else {
-        // If the file exists and hasn't changed, DO NOTHING.
-        // This preserves the file timestamp so Next.js build cache skips it.
         skippedCount++;
       }
     }
     
+    // 3. CLEANUP: Remove files that no longer exist in Contentful
     const existingSlugs = Object.keys(existingPosts);
     const deletedSlugs = existingSlugs.filter(slug => !currentSlugs.has(slug));
     
     for (const slug of deletedSlugs) {
       const filePath = path.join(postsDir, `${slug}.json`);
-      if (await fs.pathExists(filePath)) {
-        await fs.remove(filePath);
-        console.log(`🗑️  Deleted post file: ${slug}`);
-      }
+      await fs.remove(filePath);
+      console.log(`🗑️  Deleted: ${slug}`);
     }
     
+    // 4. GENERATE INDICES (Optimized for the frontend)
     const indexablePosts = posts
-      .filter(post => post.indexPageVis)
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      .filter(post => post && post.indexPageVis)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      // We map to a smaller object for the index to keep the file size tiny
+      .map(({ content, ...summary }) => summary); 
     
     await fs.writeJson(path.join(dataDir, 'blog-index.json'), indexablePosts, { spaces: 2 });
     
-    const slugs = posts.map(post => post.slug);
-    await fs.writeJson(path.join(dataDir, 'post-slugs.json'), slugs, { spaces: 2 });
+    const allSlugs = posts.map(post => post.slug).filter(Boolean);
+    await fs.writeJson(path.join(dataDir, 'post-slugs.json'), allSlugs, { spaces: 2 });
     
+    console.log('---');
     console.log('📊 Smart Sync Summary:');
-    console.log(`   🆕 New: ${newPosts.length} | 🔄 Updated: ${updatedPosts.length} | ⏭️ Skipped: ${skippedCount} | 🗑️ Deleted: ${deletedSlugs.length}`);
+    console.log(`🆕 New: ${newPosts.length} | 🔄 Updated: ${updatedPosts.length} | ⏭️ Skipped: ${skippedCount} | 🗑️ Deleted: ${deletedSlugs.length}`);
+    console.log('---');
     
   } catch (error) {
-    console.error('❌ Error generating blog data:', error);
+    console.error('❌ Critical Sync Error:', error);
     process.exit(1);
   }
 }
