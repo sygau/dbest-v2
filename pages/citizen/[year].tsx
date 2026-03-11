@@ -87,7 +87,7 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
                 "keywords": [`DSE ${year}`, "公民與社會發展科", "Citizenship and Social Development", "Past Papers"],
                 "creator": {
                   "@type": "Organization",
-                  "name": "DSE.BEST"
+                  "name": "dse.best"
                 }
               }
             })

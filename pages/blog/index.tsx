@@ -66,7 +66,7 @@ const SORT_OPTIONS = [
 ];
 
 // Individual blog card component
-function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost, index: number, viewCount: number | undefined, isLoadingCounts: boolean }) {
+function BlogCard({ post, index, viewCount, isLoadingCounts, priority}: { post: BlogPost, index: number, viewCount: number | undefined, isLoadingCounts: boolean, priority?: boolean   }) {
   const category = CATEGORIES.find(cat => cat.value === post.category) || CATEGORIES[0];
   
 
@@ -117,6 +117,7 @@ function BlogCard({ post, index, viewCount, isLoadingCounts }: { post: BlogPost,
               src={post.featuredImage}
               alt={post.title}
               fill
+              priority={priority}
               sizes="(max-width: 767px) 100vw, (max-width: 1200px) 50vw, 33vw"
               style={{
                 objectFit: 'cover',
@@ -933,6 +934,7 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                   key={post.id} 
                   post={post} 
                   index={index} 
+                  priority={index < 2 && currentPage === 1}
                   viewCount={viewCounts[post.slug]} 
                   isLoadingCounts={isLoadingCounts}
                 />
