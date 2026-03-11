@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { BiCategory, BiUserCircle, BiCalendarEvent, BiTimeFive, BiShow, BiListUl, BiShare, BiLink } from 'react-icons/bi';
+import { BiCategory, BiUserCircle, BiCalendarEvent, BiTimeFive, BiShow, BiListUl, BiShare, BiLink, BiChevronUp, BiChevronDown, BiHome } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useEffect, useState, useCallback, useRef } from 'react'
 import fs from 'fs'
@@ -41,13 +41,9 @@ function processHtmlContentServer(htmlContent: string): { processedHtml: string;
     }
   );
 
-  // Wrap every <table> in a scrollable div — fixes mobile overflow
-  html = html.replace(/<table(\s[^>]*)?>/gi, (match) => {
-    return `<div class="table-scroll-wrapper">${match}`;
-  });
+  html = html.replace(/<table(\s[^>]*)?>/gi, (match) => `<div class="table-scroll-wrapper">${match}`);
   html = html.replace(/<\/table>/gi, '</table></div>');
 
-  // Nofollow external links
   html = html.replace(/<a\s([^>]*?)>/gi, (_match, attrs: string) => {
     const href = (attrs.match(/href="([^"]*)"/i) || [])[1] || '';
     const isInternal = !href || href.startsWith('#') || href.startsWith('/') || href.includes('dse.best');
@@ -105,6 +101,7 @@ function useReadingProgress(ref: React.RefObject<HTMLDivElement | null>) {
 export default function BlogPost({ post, relatedPosts, processedContent, headings }: BlogPostProps) {
   const [activeId, setActiveId] = useState('');
   const [copied, setCopied] = useState(false);
+  const [mobileTocOpen, setMobileTocOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const readingProgress = useReadingProgress(contentRef);
 
@@ -131,9 +128,27 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
     return () => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf); };
   }, [headings]);
 
+  // Close mobile TOC when clicking outside
+  useEffect(() => {
+    if (!mobileTocOpen) return;
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.mobile-toc-panel') && !target.closest('.mobile-toc-toggle')) {
+        setMobileTocOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [mobileTocOpen]);
+
   const scrollToHeading = useCallback((id: string) => {
     const el = document.getElementById(id);
-    if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); setActiveId(id); window.history.replaceState(null, '', `#${id}`); }
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveId(id);
+      window.history.replaceState(null, '', `#${id}`);
+      setMobileTocOpen(false);
+    }
   }, []);
 
   const handleShare = useCallback(async () => {
@@ -178,28 +193,183 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         )}
       </Head>
 
+      {/* Reading progress bar */}
       <div style={{ position: 'fixed', top: 0, left: 0, right: 0, height: '3px', zIndex: 9999, background: 'var(--bs-border-color)' }}>
         <div style={{ height: '100%', width: `${readingProgress}%`, background: `linear-gradient(90deg, ${categoryColor}, #8b5cf6)`, transition: 'width 0.1s linear' }} />
       </div>
 
+      {/* ── Mobile TOC floating button + panel (mobile only, bottom-left) ── */}
+      {headings.length > 0 && (
+        <>
+          <button
+            className="mobile-toc-toggle"
+            onClick={() => setMobileTocOpen(o => !o)}
+            aria-label="目錄 Table of Contents"
+          >
+            <BiListUl style={{ fontSize: 20 }} />
+          </button>
+
+          <div className={`mobile-toc-panel${mobileTocOpen ? ' open' : ''}`}>
+            {/* Panel header */}
+            <div style={{
+              padding: '12px 16px',
+              borderBottom: '1px solid var(--bs-border-color)',
+              display: 'flex', alignItems: 'center', gap: '8px',
+              fontWeight: 700, fontSize: '0.88rem',
+              fontFamily: "'Noto Sans HK', sans-serif",
+              color: 'var(--bs-heading-color)',
+              background: 'var(--bs-secondary-bg)',
+              flexShrink: 0,
+            }}>
+              <BiListUl style={{ color: categoryColor, fontSize: '1.1em' }} />
+              目錄 <span style={{ fontWeight: 400, color: 'var(--bs-secondary-color)', fontSize: '0.8rem' }}>Contents</span>
+            </div>
+            {/* Scrollable links */}
+            <nav style={{ overflowY: 'auto', padding: '8px', flex: 1 }}>
+              {headings.map((h, i) => {
+                const active = activeId === h.id;
+                return (
+                  <a key={i} href={`#${h.id}`}
+                    onClick={e => { e.preventDefault(); scrollToHeading(h.id); }}
+                    style={{
+                      display: 'block',
+                      color: active ? categoryColor : 'var(--bs-body-color)',
+                      background: active ? `${categoryColor}15` : 'transparent',
+                      textDecoration: 'none',
+                      paddingLeft: `${8 + (h.level - 1) * 10}px`,
+                      paddingRight: '8px', paddingTop: '7px', paddingBottom: '7px',
+                      marginBottom: '1px', borderRadius: '6px',
+                      fontFamily: "'Noto Sans HK', sans-serif",
+                      fontSize: h.level <= 2 ? '0.85rem' : '0.79rem',
+                      fontWeight: active ? 600 : 400,
+                      borderLeft: active ? `3px solid ${categoryColor}` : '3px solid transparent',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    {h.text}
+                  </a>
+                );
+              })}
+            </nav>
+          </div>
+        </>
+      )}
+
       <style>{`
         .blog-content-wrapper { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
-        @media (max-width: 991px) { .blog-content-wrapper { grid-template-columns: 1fr; } .blog-sidebar { display: none; } }
 
-        /* ── Post title — bigger on mobile ───────────────────────────────── */
+        /* ── Desktop: sidebar visible, mobile TOC hidden ── */
+        @media (min-width: 992px) {
+          .blog-sidebar { display: block; }
+          .mobile-toc-toggle { display: none !important; }
+          .mobile-toc-panel { display: none !important; }
+          .mobile-only { display: none !important; }
+        }
+
+        /* ── Mobile layout ── */
+        @media (max-width: 991px) {
+          .blog-content-wrapper { grid-template-columns: 1fr; }
+          .blog-sidebar { display: none; }
+          .mobile-toc-toggle { display: flex !important; }
+  .mobile-toc-panel { display: flex !important; }
+        }
+
+        /* ── Mobile TOC button — mirrors back-to-top-btn-modern exactly ── */
+.mobile-toc-toggle {
+  position: fixed;
+  bottom: 22px;
+  right: 354px !important;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  border-radius: 12px;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  z-index: 999;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--bs-body-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.mobile-toc-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Theme variants — same as BTT */
+[data-bs-theme="dark"] .mobile-toc-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+[data-bs-theme="dark"] .mobile-toc-toggle:hover { background: rgba(255, 255, 255, 0.2); }
+
+[data-bs-theme="light"] .mobile-toc-toggle {
+  background: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #333333;
+}
+[data-bs-theme="light"] .mobile-toc-toggle:hover { background: rgba(0, 0, 0, 0.2); }
+
+[data-bs-theme="blue-theme"] .mobile-toc-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+[data-bs-theme="blue-theme"] .mobile-toc-toggle:hover { background: rgba(255, 255, 255, 0.25); }
+
+/* Mobile size adjustment — mirrors BTT @media rule */
+@media (max-width: 768px) {
+  .mobile-toc-toggle {
+    bottom: 22px !important;
+    right: 354px !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 16px !important;
+    border-radius: 10px !important;
+  }
+}
+
+        /* ── Mobile TOC panel — pops up above the button, bottom-left ── */
+        .mobile-toc-panel {
+          position: fixed;
+          bottom: 76px;
+          left: 16px;
+          z-index: 1000;
+          display: none;
+          flex-direction: column;
+          width: min(300px, calc(100vw - 32px));
+          max-height: 55vh;
+          background: var(--bs-card-bg);
+          border: 1px solid var(--bs-border-color);
+          border-radius: 14px;
+          0 0px 8px rgba(0,0,0,0.18)
+          overflow: hidden;
+          opacity: 0;
+          pointer-events: none;
+        }
+        .mobile-toc-panel.open {
+          opacity: 1;
+          pointer-events: auto;
+        }
+        @media (max-width: 991px) {
+          .mobile-toc-panel { display: flex; }
+        }
+
+        /* ── Post title ── */
         .post-title {
-          font-size: 2rem;
-          font-weight: 700;
-          line-height: 1.3;
-          margin-bottom: 1.25rem;
+          font-size: 2rem; font-weight: 700; line-height: 1.3; margin-bottom: 1.25rem;
           color: var(--bs-heading-color);
           font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
-          overflow-wrap: anywhere;
-          word-break: break-word;
+          overflow-wrap: anywhere; word-break: break-word;
         }
         @media (min-width: 576px) { .post-title { font-size: 2.35rem; } }
 
-        /* ── Prose typography ─────────────────────────────────────────────── */
+        /* ── Prose typography ── */
         .post-content {
           font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
           font-size: 1.05rem; line-height: 1.9; color: var(--bs-body-color);
@@ -209,22 +379,14 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
           font-weight: 700; line-height: 1.35;
           margin-top: 2.25rem; margin-bottom: 0.9rem; color: var(--bs-heading-color);
         }
-        .post-content h2 {
-          font-size: 1.55rem; padding-bottom: 0.45rem;
-          border-bottom: 2px solid var(--bs-border-color);
-        }
+        .post-content h2 { font-size: 1.55rem; padding-bottom: 0.45rem; border-bottom: 2px solid var(--bs-border-color); }
         .post-content h3 { font-size: 1.2rem; }
         .post-content h4 { font-size: 1.05rem; }
-        .post-content p { margin-bottom: 1.35rem; white-space: pre-line;}
-          .post-content hr:has(+ h2) {
-  display: none;
-}
+        .post-content p { margin-bottom: 1.35rem; white-space: pre-line; }
+        .post-content hr:has(+ h2) { display: none; }
+        .post-content p:empty { display: none; }
 
-/* 2. Hide empty paragraphs to prevent invisible mega-gaps */
-.post-content p:empty {
-  display: none;
-}
-        /* ── Inline formatting ────────────────────────────────────────────── */
+        /* ── Inline formatting ── */
         .post-content strong, .post-content b { font-weight: 700; color: var(--bs-heading-color); }
         .post-content em, .post-content i { font-style: italic; }
         .post-content u { text-decoration: underline; text-underline-offset: 3px; }
@@ -232,102 +394,50 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         .post-content sup { font-size: 0.72em; vertical-align: super; line-height: 0; }
         .post-content sub { font-size: 0.72em; vertical-align: sub; line-height: 0; }
 
-        /* Highlight / mark */
-        .post-content mark {
-          background: #fff176;
-          color: #1a1a1a;
-          border-radius: 3px;
-          padding: 0.05em 0.25em;
-        }
-        /* Dark mode mark */
+        .post-content mark { background: #fff176; color: #1a1a1a; border-radius: 3px; padding: 0.05em 0.25em; }
         [data-bs-theme="dark"] .post-content mark,
-        [data-bs-theme="blue-theme"] .post-content mark {
-          background: #6d6000;
-          color: #fff176;
-        }
+        [data-bs-theme="blue-theme"] .post-content mark { background: #6d6000; color: #fff176; }
 
-        /* Inline code */
         .post-content code {
           font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
-          font-size: 0.86em;
-          background: var(--bs-secondary-bg, rgba(0,0,0,0.06));
-          padding: 0.15em 0.45em;
-          border-radius: 4px;
-          color: #e83e8c;
-          border: 1px solid var(--bs-border-color-translucent);
-          word-break: break-word;
+          font-size: 0.86em; background: var(--bs-secondary-bg, rgba(0,0,0,0.06));
+          padding: 0.15em 0.45em; border-radius: 4px; color: #e83e8c;
+          border: 1px solid var(--bs-border-color-translucent); word-break: break-word;
         }
         [data-bs-theme="dark"] .post-content code,
         [data-bs-theme="blue-theme"] .post-content code {
-          background: rgba(255,255,255,0.08);
-          color: #f78fb3;
-          border-color: rgba(255,255,255,0.1);
+          background: rgba(255,255,255,0.08); color: #f78fb3; border-color: rgba(255,255,255,0.1);
         }
 
-        /* Code block — overrides inline code styles */
         .post-content pre {
-          background: #1e1e2e;
-          color: #cdd6f4;
-          border-radius: 10px;
-          padding: 1.25rem 1.5rem;
-          overflow-x: auto;
-          margin: 1.75rem 0;
-          font-size: 0.9rem;
-          line-height: 1.7;
-          border: none;
+          background: #1e1e2e; color: #cdd6f4; border-radius: 10px;
+          padding: 1.25rem 1.5rem; overflow-x: auto; margin: 1.75rem 0;
+          font-size: 0.9rem; line-height: 1.7; border: none;
         }
         .post-content pre code {
-          background: none !important;
-          color: inherit !important;
-          padding: 0 !important;
-          border: none !important;
-          font-size: inherit;
-          word-break: normal;
+          background: none !important; color: inherit !important;
+          padding: 0 !important; border: none !important; font-size: inherit; word-break: normal;
         }
 
-        /* ── Table — scrollable wrapper injected at build time ────────────── */
+        /* ── Table ── */
         .post-content .table-scroll-wrapper {
-          width: 100%;
-          overflow-x: auto;
-          -webkit-overflow-scrolling: touch;
-          margin: 1.75rem 0;
-          border-radius: 8px;
-          border: 1px solid var(--bs-border-color);
-          /* subtle scroll hint shadow */
+          width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+          margin: 1.75rem 0; border-radius: 8px; border: 1px solid var(--bs-border-color);
           box-shadow: inset -8px 0 12px -8px rgba(0,0,0,0.08);
         }
-        .post-content table {
-          /* remove margin — wrapper handles spacing */
-          width: 100%;
-          min-width: 500px;      /* forces scroll on narrow screens */
-          border-collapse: collapse;
-          margin: 0;
-          font-size: 0.95rem;
-          border-radius: 0;
-          border: none;          /* wrapper has the border */
-        }
-        .post-content th {
-          background: var(--bs-secondary-bg, #f8f9fa);
-          font-weight: 600; padding: 10px 14px;
-          text-align: left; border-bottom: 2px solid var(--bs-border-color);
-          white-space: nowrap;   /* header cells don't wrap while scrolling */
-        }
+        .post-content table { width: 100%; min-width: 500px; border-collapse: collapse; margin: 0; font-size: 0.95rem; border-radius: 0; border: none; }
+        .post-content th { background: var(--bs-secondary-bg, #f8f9fa); font-weight: 600; padding: 10px 14px; text-align: left; border-bottom: 2px solid var(--bs-border-color); white-space: nowrap; }
         .post-content td { padding: 9px 14px; border-bottom: 1px solid var(--bs-border-color-translucent); }
         .post-content tr:last-child td { border-bottom: none; }
         .post-content tr:hover td { background: rgba(13,110,253,0.03); }
 
-        .post-content a {
-          color: var(--bs-primary); text-decoration: underline;
-          text-decoration-color: rgba(13,110,253,0.3); text-underline-offset: 3px;
-          transition: text-decoration-color 0.15s;
-        }
+        .post-content a { color: var(--bs-primary); text-decoration: underline; text-decoration-color: rgba(13,110,253,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.15s; }
         .post-content a:hover { text-decoration-color: var(--bs-primary); }
 
         .post-content blockquote {
           border-left: 4px solid var(--bs-primary); margin: 1.75rem 0;
           padding: 1rem 1.5rem; background: rgba(13,110,253,0.04);
-          border-radius: 0 8px 8px 0; font-style: italic;
-          color: var(--bs-secondary-color, #6c757d);
+          border-radius: 0 8px 8px 0; font-style: italic; color: var(--bs-secondary-color, #6c757d);
         }
         .post-content blockquote p { margin-bottom: 0; }
 
@@ -337,10 +447,33 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         .post-content li::marker { color: var(--bs-primary); }
         .post-content hr { border: none; border-top: 2px solid var(--bs-border-color); margin: 2.5rem 0; }
 
-        /* ── TOC ──────────────────────────────────────────────────────────── */
+        /* ── AdSense: prevent post-content styles bleeding into injected <ins> ── */
+        .post-content ins { all: revert; }
+        .post-content ins img {
+          margin: 0 !important; display: inline !important;
+          box-shadow: none !important; border-radius: 0 !important;
+        }
+
+        /* ── Card overflow fix for AdSense ── */
+        .card { overflow: visible !important; }
+
+        /* ── Desktop TOC ── */
         .toc-nav { max-height: 55vh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--bs-border-color) transparent; padding-right: 2px; }
         .toc-nav::-webkit-scrollbar { width: 3px; }
         .toc-nav::-webkit-scrollbar-thumb { background: var(--bs-border-color); border-radius: 99px; }
+
+
+
+        /* ── Mobile related posts ── */
+        .mobile-related-card {
+          display: flex; gap: 12px; padding: 12px;
+          background: var(--bs-body-bg); border-radius: 10px;
+          border: 1px solid var(--bs-border-color);
+          text-decoration: none; color: var(--bs-body-color);
+          transition: border-color 0.2s, background 0.2s;
+          font-family: 'Noto Sans HK', sans-serif;
+        }
+        .mobile-related-card:hover { border-color: var(--bs-primary); background: rgba(13,110,253,0.03); }
       `}</style>
 
       <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -361,7 +494,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         <div className="blog-content-wrapper">
 
           <div className="blog-main-content">
-            <div className="card rounded-4" style={{ overflow: 'hidden' }}>
+            <div className="card rounded-4" style={{ isolation: 'isolate' }}>
               <div className="card-body" style={{ padding: 'clamp(1.25rem, 4vw, 2rem)' }} ref={contentRef}>
 
                 <h1 className="post-title">{post.title}</h1>
@@ -391,7 +524,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                       transition: 'all 0.2s', fontFamily: "'Noto Sans HK', sans-serif",
                     }}
                   >
-                    {copied ? <><BiLink style={{ fontSize: '1.1em' }} /></> : <><BiShare style={{ fontSize: '1.1em' }} /></>}
+                    {copied ? <BiLink style={{ fontSize: '1.1em' }} /> : <BiShare style={{ fontSize: '1.1em' }} />}
                   </button>
                 </div>
 
@@ -401,8 +534,105 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
 
               </div>
             </div>
+
+            {/* ── Mobile-only: Related Posts + Back to Blog ── */}
+            {(relatedPosts.length > 0) && (
+              <div className="mobile-only" style={{ marginTop: '24px' }}>
+                <div style={{
+                  background: 'var(--bs-card-bg)', borderRadius: '16px',
+                  border: '1px solid var(--bs-border-color)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)', overflow: 'hidden',
+                }}>
+                  {/* Section header */}
+                  <div style={{
+                    padding: '16px 18px 12px',
+                    borderBottom: '1px solid var(--bs-border-color)',
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                  }}>
+                    <span style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      width: '30px', height: '30px', borderRadius: '8px',
+                      background: `${categoryColor}18`, color: categoryColor, fontSize: '1.1rem',
+                    }}>
+                      <BiListUl />
+                    </span>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: '1.15rem', fontFamily: "'Noto Sans HK', sans-serif", color: 'var(--bs-heading-color)',textAlign: 'center',  lineHeight: 1.2 }}>
+                        相關文章
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* Related post cards */}
+                  <div style={{ padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {relatedPosts.slice(0, 5).map((rp, i) => (
+                      <NavigationLink key={i} href={`/blog/${rp.slug}`} className="mobile-related-card">
+                        {/* Category colour strip */}
+                        <div style={{
+                          width: '4px', borderRadius: '4px', flexShrink: 0,
+                          background: getCategoryColor(rp.category), alignSelf: 'stretch',
+                        }} />
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{
+                            fontSize: '0.87rem', fontWeight: 600, lineHeight: 1.45,
+                            marginBottom: '5px', fontFamily: "'Noto Sans HK', sans-serif",
+                            overflow: 'hidden', display: '-webkit-box',
+                            WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+                          }}>
+                            {rp.title}
+                          </div>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.73rem', color: 'var(--bs-secondary-color)', fontFamily: "'Noto Sans HK', sans-serif" }}>
+                            <span style={{
+                              background: `${getCategoryColor(rp.category)}18`,
+                              color: getCategoryColor(rp.category),
+                              padding: '1px 8px', borderRadius: '999px', fontWeight: 600, fontSize: '0.7rem',
+                            }}>
+                              {getCategoryDisplayName(rp.category)}
+                            </span>
+                            <span>{rp.date}</span>
+                            <span>·</span>
+                            <span>{rp.readingTime} min</span>
+                          </div>
+                        </div>
+                      </NavigationLink>
+                    ))}
+                  </div>
+
+                  {/* Back to blog button */}
+                  <div style={{ padding: '0 12px 12px' }}>
+                    <NavigationLink href="/blog/" style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                      padding: '12px', background: 'var(--bs-primary)', color: '#fff',
+                      borderRadius: '10px', textDecoration: 'none', fontWeight: 600,
+                      fontSize: '0.92rem', fontFamily: "'Noto Sans HK', sans-serif",
+                      transition: 'opacity 0.2s',
+                    }}>
+                      <BiHome style={{ fontSize: '1.15em' }} />
+                      瀏覽所有文章<span style={{ fontWeight: 400, fontSize: '0.82rem', opacity: 0.85 }}></span>
+                    </NavigationLink>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Mobile back button when no related posts */}
+            {relatedPosts.length === 0 && (
+              <div className="mobile-only" style={{ marginTop: '24px' }}>
+                <NavigationLink href="/blog/" style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                  padding: '13px', background: 'var(--bs-primary)', color: '#fff',
+                  borderRadius: '12px', textDecoration: 'none', fontWeight: 600,
+                  fontSize: '0.92rem', fontFamily: "'Noto Sans HK', sans-serif",
+                }}>
+                  <BiHome style={{ fontSize: '1.15em' }} />
+                  瀏覽所有文章<span style={{ fontWeight: 400, fontSize: '0.82rem', opacity: 0.85 }}></span>
+                </NavigationLink>
+              </div>
+            )}
           </div>
 
+          {/* ── Desktop Sidebar ── */}
           <aside className="blog-sidebar">
             <div style={{ position: 'sticky', top: '100px' }}>
 
@@ -524,7 +754,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const relatedPosts = allPosts
       .filter(p => p.slug !== slug)
       .map(p => { let s = p.category === post.category ? 3 : 0; s += p.tags.filter(t => post.tags.includes(t)).length; return { post: p, score: s }; })
-      .filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 3).map(x => x.post);
+      .filter(x => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 5).map(x => x.post);
     return { props: { post, relatedPosts, processedContent: processedHtml, headings } };
   } catch { return { notFound: true }; }
 };

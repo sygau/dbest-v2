@@ -5173,3 +5173,12 @@ html[data-bs-theme] body {
     font-size: 1.1rem !important;
   }
 }
+/* Force cards to allow AdSense ads to render inside */
+.card {
+  overflow: visible !important;
+  isolation: isolate;
+}
+
+.card ins.adsbygoogle {
+  overflow: visible !important;
+}
