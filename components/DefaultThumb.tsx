@@ -75,7 +75,7 @@ export default function DefaultThumb({ title, subtitle, color = '#5b5fc7' }: Def
         fontWeight="700"
         fontFamily="'Noto Sans HK','PingFang HK','Microsoft JhengHei',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"
       >
-        {safeSubtitle || 'DSE.BEST'}
+        {safeSubtitle || 'dse.best'}
       </text>
 
       <text
