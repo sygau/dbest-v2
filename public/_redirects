@@ -7,3 +7,4 @@
 # Clean URLs - remove .html extensions
 /:page.html /:page 301
 /blog/:slug.html /blog/:slug 301
+/ads.txt https://srv.adstxtmanager.com/19390/dse.best 301
