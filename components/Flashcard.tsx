@@ -6,8 +6,8 @@ interface FlashcardProps {
   passageTitle: string;
   isFlipped?: boolean;
   onFlip?: () => void;
-}
-
+} 
+ 
 export default function Flashcard({ question, passageTitle, isFlipped: externalIsFlipped, onFlip }: FlashcardProps) {
   const [internalIsFlipped, setInternalIsFlipped] = useState(false);
   
