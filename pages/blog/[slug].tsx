@@ -373,6 +373,15 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         .post-content {
           font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
           font-size: 1.05rem; line-height: 1.9; color: var(--bs-body-color);
+          text-align: left !important;
+        }
+        .post-content p, .post-content li {
+          text-align: left !important;
+          text-justify: auto !important;
+          word-spacing: normal !important;
+          letter-spacing: normal !important;
+          word-break: break-word !important;
+          hyphens: none !important;
         }
         .post-content h1, .post-content h2, .post-content h3, .post-content h4 {
           font-family: 'Noto Sans HK', 'PingFang HK', sans-serif;

@@ -250,8 +250,7 @@ html[data-bs-theme] body {
     margin-top: 0 !important;
     font-size: 17px !important;
     line-height: 1.75 !important;
-    text-align: justify !important;
-    text-justify: inter-character !important;
+    text-align: left !important;
   }
   
   /* Bold - Stronger weight */
@@ -1108,9 +1107,6 @@ html[data-bs-theme] body {
     font-size: 15px;
     border: 0;
   }
-  .sidebar-wrapper .sidebar-nav .sidebar-menu ul a i {
-    margin-right: 5px;
-  }
   .sidebar-wrapper .sidebar-nav .sidebar-menu ul ul a {
     padding: 8px 15px 8px 30px;
   }
@@ -1754,7 +1750,6 @@ html[data-bs-theme] body {
   
   body.pwa-ios img {
     -webkit-user-drag: none !important;
-    user-drag: none !important;
   }
   
   body.pwa-ios ::-webkit-scrollbar {
@@ -1787,7 +1782,6 @@ html[data-bs-theme] body {
   body.pwa-ios input[type="button"],
   body.pwa-ios input[type="submit"] {
     -webkit-tap-highlight-color: transparent !important;
-    tap-highlight-color: transparent !important;
     touch-action: manipulation !important;
   }
   
@@ -2154,8 +2148,7 @@ html[data-bs-theme] body {
   /* Fix paragraph spacing */
   .post-content p {
     margin-bottom: 1.8rem;
-    text-align: justify;
-    text-justify: inter-word;
+    text-align: left;
   }
   /* OLD CSS REMOVED - Using new modern styling above */
   /* Responsive adjustments */
