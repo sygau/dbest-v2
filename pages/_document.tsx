@@ -91,15 +91,6 @@ export default function Document() {
 
         {/* Hide download buttons */}
         {/* <Public><style dangerouslySetInnerHTML={{ __html: `a[data-paper-id],.btn-info:has(svg),.btn-info svg{display:none!important}` }} /></Public> */}
-        {/* EZOIC */}
-        <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
-        <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
-        <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-        <script>
-          window.ezstandalone = window.ezstandalone || { };
-          ezstandalone.cmd = ezstandalone.cmd || [];
-        </script>
-        <script src="//ezoicanalytics.com/analytics.js"></script>
 
         {/* Consolidated Main Script */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.mainScript }} />
