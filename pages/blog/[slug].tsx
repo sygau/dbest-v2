@@ -119,7 +119,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
       let active = '';
       for (let i = headings.length - 1; i >= 0; i--) {
         const el = document.getElementById(headings[i].id);
-        if (el && el.getBoundingClientRect().top <= 150) { active = headings[i].id; break; }
+        if (el && el.getBoundingClientRect().top <= 200) { active = headings[i].id; break; }
       }
       if (active !== last) { last = active; setActiveId(active); }
     };
@@ -448,10 +448,6 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
           margin: 1.5rem auto;
           display: block;
           box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-          /* Added to prevent flickering/layout shifts on iOS */
-          content-visibility: auto;
-          transform: translateZ(0);
-          backface-visibility: hidden;
         }
         .post-content ul, .post-content ol { padding-left: 1.6rem; margin-bottom: 1.35rem; }
         .post-content li { margin-bottom: 0.4rem; }
