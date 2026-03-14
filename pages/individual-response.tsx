@@ -637,9 +637,9 @@ export default function IndividualResponsePage() {
         .question-idle-text { font-size: 1rem; color: var(--bs-secondary-color, #9ca3af); font-weight: 500; text-align: center; }
         .question-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem; flex-wrap: wrap; }
         .question-source { font-size: 1rem; color: #128C7E; font-weight: 700; letter-spacing: 0.04em; }
-        .question-topic  { font-size: 0.9rem; color: var(--bs-secondary-color, #6b7280); }
+        .question-topic  { font-size: 0.9rem; color: var(--bs-primary-color, #6b7280); }
         .question-diff   { font-size: 0.65rem; font-weight: 700; padding: 1px 6px; border-radius: 99px; border: 1.5px solid; text-transform: uppercase; letter-spacing: 0.04em; margin-left: auto; }
-        .question-text   { font-size: 1.12rem; color: var(--bs-body-color, #0f1724); line-height: 1.65; font-weight: 600; transition: filter 0.3s ease; }
+        .question-text   { font-size: 1.12rem; color: var(--bs-primary-color, #0f1724); line-height: 1.65; font-weight: 600; transition: filter 0.3s ease; }
         .question-blurred { filter: blur(20px); pointer-events: none; user-select: none; }
         .question-text-wrapper { position: relative; cursor: pointer; }
         .blur-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #128C7E; font-weight: 700; font-size: 0.9rem; }

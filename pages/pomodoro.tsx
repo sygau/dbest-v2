@@ -351,10 +351,10 @@ export default function PomodoroPage() {
                 <h4>🍅 如何使用番茄工作法？</h4>
                 <p>番茄鐘 (Pomodoro) 係一個極高效率嘅時間管理方法，幫你喺溫書時保持專注：</p>
                 <ul>
-                  <li><strong>設定目標：</strong> 揀好一科或者一個 Past Paper 課題。</li>
-                  <li><strong>專注衝刺 (25分鐘)：</strong> 全心投入溫習，謝絕手機干擾。</li>
-                  <li><strong>短暫充電 (5分鐘)：</strong> 響鬧後必須停手！飲啖水、閉目養神或伸展吓。</li>
-                  <li><strong>長休息：</strong> 每完成 4 個循環，獎勵自己一個 15-30 分鐘嘅長休息。</li>
+                  <li><strong>設定目標<br></br></strong> 揀好一科或者一個 Past Paper 課題。</li>
+                  <li><strong>專注衝刺 (25分鐘)<br></br></strong> 全心投入溫習，謝絕手機干擾。</li>
+                  <li><strong>短暫充電 (5分鐘)<br></br></strong> 響鬧後必須停手！飲啖水、閉目養神或伸展吓。</li>
+                  <li><strong>長休息<br></br></strong> 每完成 4 個循環，獎勵自己一個 15-30 分鐘嘅長休息。</li>
                 </ul>
               </div>
 
@@ -366,9 +366,9 @@ export default function PomodoroPage() {
                   DSE 係一場持久戰，唔係鬥坐得耐，係鬥溫得入腦：
                 </p>
                 <ul>
-                  <li><strong>擊退拖延症：</strong> 覺得課題太難唔想開始？同自己講：「淨係專注 25 分鐘先」，心理壓力即刻減低。</li>
-                  <li><strong>避免 Burnout：</strong> 強制休息可以令大腦即使喺高壓下都能夠「回血」，加強記憶力同理解力。</li>
-                  <li><strong>數據化進度：</strong> 望住「完成次數」增加，會有一種實在嘅成功感，推動你繼續溫落去。</li>
+                  <li><strong>擊退拖延症<br></br></strong> 覺得課題太難唔想開始？同自己講：「淨係專注 25 分鐘先」，心理壓力即刻減低。</li>
+                  <li><strong>避免 Burnout<br></br></strong> 強制休息可以令大腦即使喺高壓下都能夠「回血」，加強記憶力同理解力。</li>
+                  <li><strong>數據化進度<br></br></strong> 望住「完成次數」增加，會有一種實在嘅成功感，推動你繼續溫落去。</li>
                 </ul>
               </div>
 
@@ -497,7 +497,6 @@ export default function PomodoroPage() {
           justify-content: center;
           gap: 8px;
           transition: transform 0.1s, opacity 0.2s, background-color 0.3s;
-          box-shadow: 0 4px 12px ${currentTheme.lightColor};
         }
 
         .primary-btn:hover {
