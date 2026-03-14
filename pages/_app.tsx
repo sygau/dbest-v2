@@ -37,7 +37,8 @@ import {
   BiMoon,
   BiDiamond,
   BiGroup,
-  BiMicrophone
+  BiMicrophone,
+  BiTransferAlt
 } from 'react-icons/bi';
 import PageTransition from '../components/PageTransition'
 import usePageInitialization from '../hooks/usePageInitialization'
@@ -382,6 +383,12 @@ export default function App({ Component, pageProps }: AppProps) {
                 <NavigationLink href="/12p">
                   <div className="parent-icon"><BiBookReader style={{ color: '#ff6b9d', fontSize: 24 }} /></div>
                   <div className="menu-title">十二篇語譯練習</div>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink href="/translator">
+                  <div className="parent-icon"><BiTransferAlt style={{ color: '#8ad10eff', fontSize: 24 }} /></div>
+                  <div className="menu-title">文言文翻譯機</div>
                 </NavigationLink>
               </li>
               <li>
