@@ -385,12 +385,12 @@ export default function App({ Component, pageProps }: AppProps) {
                   <div className="menu-title">十二篇語譯練習</div>
                 </NavigationLink>
               </li>
-              <li>
+              {/* <li>
                 <NavigationLink href="/translator">
                   <div className="parent-icon"><BiTransferAlt style={{ color: '#8ad10eff', fontSize: 24 }} /></div>
                   <div className="menu-title">文言文翻譯機</div>
                 </NavigationLink>
-              </li>
+              </li> */}
               <li>
                 <NavigationLink href="/pomodoro">
                   <div className="parent-icon"><BiTimeFive style={{ color: '#667eea', fontSize: 24 }} /></div>
