@@ -148,7 +148,6 @@ export default function CutoffIndexPage() {
                         className="cutoff-year-pill"
                         style={{
                           background: `linear-gradient(135deg, ${accentColor}33, ${accentColor}18)`,
-                          color: '#0f172a',
                         }}
                       >
                         2012–2025
@@ -164,7 +163,7 @@ export default function CutoffIndexPage() {
           {/* Information Section */}
           <div className="row g-4 mb-4">
             <div className="col-lg-6">
-              <div className="card border-0 bg-light h-100">
+              <div className="card h-100" style={{ border: '1px solid var(--bs-border-color)' }}>
                 <div className="card-body">
                   <div className="d-flex align-items-center mb-3">
                     <BiBookOpen className="me-2 text-primary" size={24} />
@@ -179,7 +178,7 @@ export default function CutoffIndexPage() {
               </div>
             </div>
             <div className="col-lg-6">
-              <div className="card border-0 bg-light h-100">
+              <div className="card h-100" style={{ border: '1px solid var(--bs-border-color)' }}>
                 <div className="card-body">
                   <div className="d-flex align-items-center mb-3">
                     <BiTrendingUp className="me-2 text-success" size={24} />
@@ -196,7 +195,7 @@ export default function CutoffIndexPage() {
           </div>
 
           {/* Data Source & Credits */}
-          <div className="alert alert-info mb-4 cutoff-data-source" role="alert">
+          <div className="alert alert-info mb-4" role="alert">
             <div className="d-flex align-items-start">
               <i className="bx bx-info-circle me-2 mt-1"></i>
               <div>
@@ -238,14 +237,6 @@ export default function CutoffIndexPage() {
       </div>
 
       <style jsx>{`
-        .hover-card {
-          transition: all 0.2s ease-in-out;
-        }
-        .hover-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-        }
-
         .cutoff-subject-list {
           display: flex;
           flex-direction: column;
@@ -258,12 +249,6 @@ export default function CutoffIndexPage() {
           justify-content: space-between;
           padding: 0.75rem 1rem;
           border-radius: 999px;
-          transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
-        }
-
-        .cutoff-subject-row:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
         }
 
         .cutoff-subject-icon-wrapper {
@@ -294,19 +279,9 @@ export default function CutoffIndexPage() {
           border-radius: 999px;
           font-size: 0.75rem;
           font-weight: 500;
-          background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(129, 140, 248, 0.12));
-          color: #1e3a8a;
+          color: var(--bs-body-color);
         }
 
-        .cutoff-data-source {
-          background-color: #e3f2fd;
-          border-color: #90caf9;
-          color: #0d47a1;
-        }
-
-        .cutoff-data-source .text-muted {
-          color: rgba(13, 71, 161, 0.8) !important;
-        }
 
         @media (max-width: 576px) {
           .cutoff-subject-row {

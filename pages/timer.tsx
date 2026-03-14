@@ -317,16 +317,17 @@ export default function PaperTimerPage() {
           .timer-wrapper { max-width: 700px; margin: 0 auto; }
           
           .timer-card-modern { 
-            background: #ffffff; 
+            background: var(--bs-card-bg, #ffffff); 
             border-radius: 32px; 
-            border: 1px solid #f1f5f9; 
+            border: 1px solid var(--bs-border-color, #f1f5f9); 
             padding: 24px; 
             box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
             position: relative;
             overflow: hidden; 
-            border-top: 5px solid #3a1c9dff;
+            border-top: 5px solid var(--bs-primary-color, #3a1c9dff);
             /* Smooth transition for fullscreen change */
             transition: all 0.3s ease-in-out;
+            color: var(--bs-body-color, #5b6166);
           }
           
           @media (min-width: 768px) {
@@ -339,38 +340,38 @@ export default function PaperTimerPage() {
             font-size: clamp(3.5rem, 13vw, 7.5rem); 
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.02em; 
-            color: #1e293b; 
+            color: var(--bs-heading-color, #1e293b); 
             margin: 15px 0; 
             line-height: 1; 
           }
 
-          .modern-select { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 14px 20px; font-weight: 500; appearance: none; cursor: pointer; }
-          .progress-track { height: 12px; background: #f1f5f9; border-radius: 20px; overflow: hidden; margin-bottom: 35px; }
-          .progress-bar-inner { background: #6366f1; transition: width 1s linear; border-radius: 20px; }
+          .modern-select { background: var(--bs-tertiary-bg, #f8fafc); border: 1px solid var(--bs-border-color, #e2e8f0); border-radius: 16px; padding: 14px 20px; font-weight: 500; appearance: none; cursor: pointer; color: var(--bs-body-color, #374151); }
+          .progress-track { height: 12px; background: var(--bs-tertiary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 35px; }
+          .progress-bar-inner { background: var(--bs-primary-color, #6366f1); transition: width 1s linear; border-radius: 20px; }
           
           .action-btn { border-radius: 16px; padding: 18px 36px; font-weight: 700; border: none; transition: background 0.2s; }
-          .btn-start { background: #6366f1; color: white; }
-          .btn-start:hover { background: #4f46e5; }
-          .btn-start:disabled { background: #a5a6f6; cursor: not-allowed; }
-          .btn-reset { background: #f1f5f9; color: #64748b; margin-left: 12px; }
+          .btn-start { background: var(--bs-primary-color, #6366f1); color: white; }
+          .btn-start:hover { background: var(--bs-primary-color-dark, #4f46e5); }
+          .btn-start:disabled { background: var(--bs-tertiary-bg, #a5a6f6); cursor: not-allowed; color: var(--bs-secondary-color, #94a3b8); }
+          .btn-reset { background: var(--bs-tertiary-bg, #f1f5f9); color: var(--bs-secondary-color, #64748b); margin-left: 12px; }
           
           /* Top controls bar */
           .top-controls {
              position: absolute; top: 25px; right: 25px; display: flex; gap: 15px; z-index: 10;
           }
 
-          .icon-btn { background: none; border: none; color: #cbd5e1; cursor: pointer; transition: color 0.2s; padding: 4px; }
-          .icon-btn:hover { color: #6366f1; }
-          .icon-btn.active { color: #6366f1; }
+          .icon-btn { background: none; border: none; color: var(--bs-secondary-color, #cbd5e1); cursor: pointer; transition: color 0.2s; padding: 4px; }
+          .icon-btn:hover { color: var(--bs-primary-color, #6366f1); }
+          .icon-btn.active { color: var(--bs-primary-color, #6366f1); }
 
           .toast-notification {
             position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-            background: #1e293b; color: white; padding: 12px 24px; border-radius: 50px;
+            background: var(--bs-body-bg, #1e293b); color: white; padding: 12px 24px; border-radius: 50px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-weight: 600; z-index: 100;
             animation: slideDown 0.3s ease-out; white-space: nowrap; display: flex; align-items: center; gap: 10px;
           }
-          .toast-warning { background: #f59e0b; color: #fff; }
-          .toast-finish { background: #ef4444; color: #fff; }
+          .toast-warning { background: var(--bs-warning-color, #f59e0b); color: #fff; }
+          .toast-finish { background: var(--bs-danger-color, #ef4444); color: #fff; }
           @keyframes slideDown { from { top: -50px; opacity: 0; } to { top: 20px; opacity: 1; } }
 
           /* --- 3. Mobile Fullscreen Optimization --- */
@@ -378,7 +379,7 @@ export default function PaperTimerPage() {
             width: 100vw; 
             /* Use dvh for mobile browsers to account for address bars */
             height: 100dvh; 
-            background: #ffffff;
+            background: var(--bs-card-bg, #ffffff);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             border-radius: 0; border: none; padding: 0;
             /* Ensure it sits on top of everything on mobile */
@@ -397,19 +398,19 @@ export default function PaperTimerPage() {
           /* 1. Fullscreen Exit Button style */
           .fs-exit-btn {
               position: absolute; top: 30px; right: 30px;
-              background: rgba(241, 245, 249, 0.8);
+              background: var(--bs-secondary-bg, rgba(241, 245, 249, 0.8));
               backdrop-filter: blur(5px);
               padding: 10px 20px; border-radius: 12px;
-              font-weight: 600; color: #475569; border: none;
+              font-weight: 600; color: var(--bs-body-color, #475569); border: 1px solid var(--bs-border-color, transparent);
               display: flex; align-items: center; gap: 8px;
               transition: background 0.2s; cursor: pointer;
           }
-          .fs-exit-btn:hover { background: #e2e8f0; color: #0f172a; }
+          .fs-exit-btn:hover { background: var(--bs-tertiary-bg, #e2e8f0); color: var(--bs-heading-color, #0f172a); }
           
           /* 2. Fullscreen Context Header style */
           .fs-context-header {
              position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
-             font-size: 1.2rem; color: #64748b; font-weight: 600;
+             font-size: 1.2rem; color: var(--bs-secondary-color, #64748b); font-weight: 600;
              text-align: center; width: 80%;
           }
 
@@ -418,31 +419,32 @@ export default function PaperTimerPage() {
           .timer-card-modern .card-title {
             font-size: 2.6rem;
             font-weight: 800;
-            color: #111827 !important;
+            color: var(--bs-heading-color, #111827) !important;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin: 0;
           }
 
           .exam-durations-card {
-            background: #ffffff;
+            background: var(--bs-card-bg, #ffffff);
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            border: 1px solid #f1f5f9;
+            border: 1px solid var(--bs-border-color, #f1f5f9);
+            color: var(--bs-body-color, #5b6166);
           }
 
           .exam-durations-title {
             font-size: 1.25rem;
             font-weight: 800;
-            color: #111827;
+            color: var(--bs-heading-color, #111827);
             margin: 0 0 0.75rem 0;
             letter-spacing: -0.02em;
           }
 
           .exam-durations-subtitle {
             font-size: 0.95rem;
-            color: #4b5563;
+            color: var(--bs-secondary-color, #4b5563);
             margin: 0 0 1.25rem 0;
             line-height: 1.6;
           }
@@ -456,37 +458,38 @@ export default function PaperTimerPage() {
             border-collapse: collapse;
             font-size: 0.92rem;
             min-width: 520px;
+            color: var(--bs-body-color, #374151);
           }
 
           .durations-table th,
           .durations-table td {
             padding: 0.9rem 0.85rem;
             text-align: left;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid var(--bs-border-color, #e5e7eb);
             vertical-align: top;
           }
 
           .durations-table th {
-            background: #f9fafb;
+            background: var(--bs-tertiary-bg, #f9fafb);
             font-weight: 700;
-            color: #374151;
+            color: var(--bs-heading-color, #374151);
             position: sticky;
             top: 0;
           }
 
           .subject-cell {
             font-weight: 700;
-            color: #111827;
+            color: var(--bs-heading-color, #111827);
             white-space: nowrap;
           }
 
           .paper-cell {
-            color: #374151;
+            color: var(--bs-body-color, #374151);
             font-weight: 600;
           }
 
           .duration-cell {
-            color: #111827;
+            color: var(--bs-heading-color, #111827);
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
           }

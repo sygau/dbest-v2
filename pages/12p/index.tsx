@@ -226,7 +226,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
                     <div className="passage-header">
                       <span className="passage-emoji">{passage.emoji}</span>
                       <div>
-                        <div className="passage-title" style={{ color: color.text }}>
+                        <div className="passage-title">
                           {passage.title}
                         </div>
                         <div className="passage-subtitle">{passage.subtitle}</div>
@@ -302,13 +302,13 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
           border-radius: 10px;
           padding: 1.4rem 1.5rem 1.6rem;
           height: 100%;
-          background: #f1f5f9;
+          background: var(--bs-tertiary-bg, #f1f5f9);
           cursor: pointer;
           transition: background 0.15s;
         }
 
         .mode-card:hover {
-          background: #e8eef6;
+          background: var(--bs-secondary-bg, #e8eef6);
         }
 
         /* Ghost icon — large, faded, top-right corner */
@@ -346,7 +346,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 
         .mode-desc {
           font-size: 0.855rem;
-          color: #64748b;
+          color: var(--bs-secondary-color, #64748b);
           line-height: 1.55;
           margin-bottom: 0.75rem;
           position: relative;
@@ -387,6 +387,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
           font-size: 1rem;
           line-height: 1.3;
           margin-bottom: 0.2rem;
+          color: var(--bs-heading-color);
         }
 
         .passage-subtitle {

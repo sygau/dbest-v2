@@ -335,6 +335,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogImage": "https://dse.best/assets/images/logo-icon.png",
     "ogUrl": "https://dse.best/individual-response",
     "ogType": "website"
+  },
+  "translator": {
+    "title": "文言文翻譯機 Classical Chinese Translator | AI 古文翻譯工具",
+    "description": "免費 AI 文言文翻譯機，即時將古文翻譯成現代白話文。專為 DSE 中文科學生設計，支援《岳陽樓記》、《出師表》、《六國論》等常見文言文篇章翻譯。輕鬆理解古文意思，提升中文閱讀能力。",
+    "robots": "index, follow",
+    "ogTitle": "文言文翻譯機 Classical Chinese Translator | AI 古文翻譯工具",
+    "ogDescription": "免費 AI 文言文翻譯機，即時將古文翻譯成現代白話文。專為 DSE 中文科學生設計，支援常見文言文篇章翻譯。輕鬆理解古文意思，提升中文閱讀能力。",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/translator",
+    "ogType": "website"
   }
 };
 

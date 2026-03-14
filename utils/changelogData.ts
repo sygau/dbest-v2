@@ -4,9 +4,9 @@ export interface ChangelogEntry {
 }
 
 export const changelogData: ChangelogEntry = {
-  date: "1/3/2026",
+  date: "14/3/2026",
   changes: [
-    "Added new IR prep tool instead of revising my dse",
-    "Claude slop cleanup"
+    "Fixed the styling debt and inconsistency in dark blue, dark theme",
+    "Claudemaxxing"
   ]
 };

@@ -1313,3 +1313,67 @@ export function generateIndividualResponseStructuredData() {
     }
   };
 }
+
+// Generate Translator page structured data
+export function generateTranslatorStructuredData() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "文言文翻譯機 Classical Chinese Translator | AI 古文翻譯工具",
+    "description": "免費 AI 文言文翻譯機，即時將古文翻譯成現代白話文。專為 DSE 中文科學生設計，支援《岳陽樓記》、《出師表》、《六國論》等常見文言文篇章翻譯。輕鬆理解古文意思，提升中文閱讀能力。",
+    "url": "https://dse.best/translator",
+    "inLanguage": ["zh-HK", "zh-CN"],
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "dse.best",
+      "url": "https://dse.best/",
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "文言文翻譯機 Classical Chinese Translator",
+      "description": "AI 驅動的文言文翻譯工具，即時將古文翻譯成現代白話文，專為 DSE 中文科學生設計，助你理解文言文篇章。",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web Browser",
+      "url": "https://dse.best/translator",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "HKD"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "HKDSE Students"
+      },
+      "featureList": [
+        "AI 即時翻譯文言文至白話文",
+        "支援 DSE 常見文言文篇章",
+        "簡潔易用的翻譯介面",
+        "免費使用無限制",
+        "提升中文閱讀理解能力"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "dse.best",
+        "url": "https://dse.best/"
+      }
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "dse.best 主頁",
+          "item": "https://dse.best/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "文言文翻譯機",
+          "item": "https://dse.best/translator"
+        }
+      ]
+    }
+  };
+}

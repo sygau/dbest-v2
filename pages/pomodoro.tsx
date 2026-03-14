@@ -400,7 +400,7 @@ export default function PomodoroPage() {
 
         /* --- TIMER CARD --- */
         .timer-card {
-          background: #ffffff;
+          background: var(--bs-card-bg, #ffffff);
           border-radius: 24px;
           padding: 2.5rem;
           box-shadow: 
@@ -410,8 +410,10 @@ export default function PomodoroPage() {
           flex-direction: column;
           align-items: center;
           position: relative;
+          border: 1px solid var(--bs-border-color, transparent);
           border-top: 6px solid ${currentTheme.color}; 
           transition: border-color 0.3s ease;
+          color: var(--bs-body-color, #5b6166);
         }
 
         .card-header-block {
@@ -423,7 +425,7 @@ export default function PomodoroPage() {
         .card-title {
           font-size: 2.6rem;
           font-weight: 800;
-          color: #111827;
+          color: var(--bs-heading-color, #111827);
           letter-spacing: -0.03em;
           line-height: 1.1;
           margin: 0;
@@ -432,7 +434,7 @@ export default function PomodoroPage() {
         /* Mode Switcher */
         .mode-switcher {
           display: flex;
-          background: #f3f4f6;
+          background: var(--bs-tertiary-bg, #f3f4f6);
           padding: 4px;
           border-radius: 12px;
           margin-bottom: 2rem;
@@ -446,7 +448,7 @@ export default function PomodoroPage() {
           padding: 8px 4px;
           font-size: 0.85rem;
           font-weight: 600;
-          color: #6b7280;
+          color: var(--bs-secondary-color, #6b7280);
           cursor: pointer;
           border-radius: 8px;
           transition: all 0.2s;
@@ -454,16 +456,16 @@ export default function PomodoroPage() {
         }
 
         .mode-btn.active {
-          background: white;
+          background: var(--bs-secondary-bg, white);
           color: ${currentTheme.color};
-          box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+          box-shadow: 0 1px 4px rgba(0,0,0,0.15);
         }
 
         /* Time Display */
         .time-display {
           font-size: 5rem;
           font-weight: 700;
-          color: #1f2937;
+          color: var(--bs-heading-color, #1f2937);
           font-feature-settings: "tnum";
           font-variant-numeric: tabular-nums;
           line-height: 1;
@@ -507,18 +509,18 @@ export default function PomodoroPage() {
         }
 
         .primary-btn.active-state {
-            background: #f3f4f6;
-            color: #374151;
+            background: var(--bs-tertiary-bg, #f3f4f6);
+            color: var(--bs-body-color, #374151);
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .reset-btn {
           width: 56px;
           height: 56px;
-          border: 2px solid #f3f4f6;
+          border: 2px solid var(--bs-border-color, #f3f4f6);
           background: transparent;
           border-radius: 16px;
-          color: #6b7280;
+          color: var(--bs-secondary-color, #6b7280);
           font-size: 1.5rem;
           display: flex;
           align-items: center;
@@ -528,16 +530,16 @@ export default function PomodoroPage() {
         }
 
         .reset-btn:hover {
-          border-color: #e5e7eb;
-          background: #f9fafb;
-          color: #374151;
+          border-color: var(--bs-border-color, #e5e7eb);
+          background: var(--bs-tertiary-bg, #f9fafb);
+          color: var(--bs-body-color, #374151);
         }
 
         /* Settings Area */
         .settings-toggle-btn {
           background: none;
           border: none;
-          color: #9ca3af;
+          color: var(--bs-secondary-color, #9ca3af);
           font-size: 0.9rem;
           cursor: pointer;
           display: flex;
@@ -548,8 +550,8 @@ export default function PomodoroPage() {
         }
         
         .settings-toggle-btn:hover {
-          color: #4b5563;
-          background: #f9fafb;
+          color: var(--bs-body-color, #4b5563);
+          background: var(--bs-tertiary-bg, #f9fafb);
         }
 
         .settings-panel {
@@ -557,7 +559,7 @@ export default function PomodoroPage() {
           max-height: 0;
           overflow: hidden;
           transition: max-height 0.3s ease-in-out, margin-top 0.3s;
-          background: #f8fafc;
+          background: var(--bs-tertiary-bg, #f8fafc);
           border-radius: 12px;
         }
 
@@ -565,7 +567,7 @@ export default function PomodoroPage() {
           max-height: 200px;
           margin-top: 1rem;
           padding: 1rem;
-          border: 1px solid #e2e8f0;
+          border: 1px solid var(--bs-border-color, #e2e8f0);
         }
 
         .settings-grid {
@@ -581,17 +583,19 @@ export default function PomodoroPage() {
 
         .setting-item label {
           font-size: 0.75rem;
-          color: #64748b;
+          color: var(--bs-secondary-color, #64748b);
           margin-bottom: 4px;
         }
 
         .setting-item input {
           width: 100%;
           padding: 8px;
-          border: 1px solid #cbd5e1;
+          border: 1px solid var(--bs-border-color, #cbd5e1);
           border-radius: 8px;
           font-size: 0.9rem;
           text-align: center;
+          color: var(--bs-body-color, #374151);
+          background-color: var(--bs-card-bg, #fff);
         }
 
         /* --- STATISTICS CARDS --- */
@@ -602,14 +606,15 @@ export default function PomodoroPage() {
         }
 
         .stat-card {
-          background: white;
+          background: var(--bs-card-bg, white);
           border-radius: 16px;
           padding: 16px 24px;
           display: flex;
           align-items: center;
           gap: 16px;
           box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-          border: 1px solid rgba(0,0,0,0.04);
+          border: 1px solid var(--bs-border-color, rgba(0,0,0,0.04));
+          color: var(--bs-body-color, #5b6166);
         }
 
         .stat-icon {
@@ -629,32 +634,31 @@ export default function PomodoroPage() {
 
         .stat-label {
           font-size: 0.85rem;
-          color: #6b7280;
+          color: var(--bs-secondary-color, #6b7280);
           font-weight: 500;
         }
 
         .stat-value {
           font-size: 1.25rem;
           font-weight: 700;
-          color: #1f2937;
+          color: var(--bs-heading-color, #1f2937);
           font-feature-settings: "tnum";
           font-variant-numeric: tabular-nums;
         }
           .info-card {
-    background: white;
+    background: var(--bs-card-bg, white);
     border-radius: 24px;
     padding: 2rem;
-    box-shadow: 
-      0 10px 15px -3px rgba(0, 0, 0, 0.05),
-      0 4px 6px -2px rgba(0, 0, 0, 0.025);
-    color: #4b5563;
-    margin-top: 1rem; /* Spacing from stats card */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    color: var(--bs-body-color, #4b5563);
+    margin-top: 1rem;
+    border: 1px solid var(--bs-border-color, transparent);
   }
 
   .info-title {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #1f2937;
+    color: var(--bs-heading-color, #1f2937);
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
@@ -669,7 +673,7 @@ export default function PomodoroPage() {
   .info-section h4 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #374151;
+    color: var(--bs-heading-color, #374151);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -692,13 +696,13 @@ export default function PomodoroPage() {
   }
 
   .info-section strong {
-    color: #111827;
+    color: var(--bs-emphasis-color, #111827);
     font-weight: 600;
   }
 
   .divider {
     height: 1px;
-    background: #e5e7eb;
+    background: var(--bs-border-color, #e5e7eb);
     margin: 1.5rem 0;
   }
 

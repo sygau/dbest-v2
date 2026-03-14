@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import fs from 'fs';
+import path from 'path';
 import { 
   BiBarChartAlt2, 
-  BiArrowBack, 
   BiBook, 
   BiCalculator, 
   BiBot, 
@@ -19,14 +20,13 @@ import NavigationLink from '../../components/NavigationLink';
 import { 
   getCutoffSEOConfig, 
   generateCutoffMetadata, 
-  hasSubjectCutoffData,
   AVAILABLE_CUTOFF_SUBJECTS,
   CUTOFF_SUBJECT_NAMES 
 } from '../../utils/cutoffSlugSEO';
 import { generateSubjectStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData';
 import CutoffTable from '../../components/CutoffTable';
-import { loadSubjectData, CutoffTableData, SubjectConfig } from '../../utils/clientCutoffData';
-import { getSubjectCutoffLastUpdated, getOtherPageLastUpdated } from '../../utils/lastUpdated';
+import { csvToCutoffData, dataToTableFormat, CutoffTableData, SubjectConfig, CutoffConfig } from '../../utils/clientCutoffData';
+import { getSubjectCutoffLastUpdated } from '../../utils/lastUpdated';
 
 // Subject icon mapping based on sidebar colors
 const SUBJECT_ICONS: Record<string, { icon: any, color: string }> = {
@@ -48,53 +48,18 @@ const SUBJECT_ICONS: Record<string, { icon: any, color: string }> = {
   'ths': { icon: BiPlanet, color: '#2196f3' }
 };
 
-export default function CutoffSubjectPage() {
-  const router = useRouter();
-  const { subject } = router.query;
-  const subjectStr = Array.isArray(subject) ? subject[0] : subject;
+interface CutoffSubjectPageProps {
+  subjectStr: string;
+  cutoffData: CutoffTableData;
+  cutoffConfig: SubjectConfig | null;
+  lastUpdated: string | null;
+}
 
-  const [cutoffData, setCutoffData] = useState<CutoffTableData | null>(null);
-  const [cutoffConfig, setCutoffConfig] = useState<SubjectConfig | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  // Get SEO configuration
-  const seoConfig = subjectStr ? getCutoffSEOConfig(subjectStr) : null;
-  const metadata = subjectStr ? generateCutoffMetadata(subjectStr) : null;
+export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig, lastUpdated }: CutoffSubjectPageProps) {
+  const seoConfig = getCutoffSEOConfig(subjectStr);
+  const metadata = generateCutoffMetadata(subjectStr);
   const structuredData = generateSubjectStructuredData('cutoff');
   const faqData = generatePageFAQStructuredData('cutoff');
-  const lastUpdated = subjectStr ? getSubjectCutoffLastUpdated(subjectStr) : null;
-
-  // Load cutoff data for the subject
-  useEffect(() => {
-    if (!subjectStr) return;
-
-    const loadData = async () => {
-      setLoading(true);
-      setError('');
-
-      try {
-        const { data, config } = await loadSubjectData(subjectStr);
-        setCutoffData(data);
-        setCutoffConfig(config);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load cutoff data');
-        setCutoffData(null);
-        setCutoffConfig(null);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
-  }, [subjectStr]);
-
-  // If no subject string, this will be handled by Next.js 404
-  if (!subjectStr) {
-    return null;
-  }
-
-  // Get other subjects for the bottom section
   const otherSubjects = AVAILABLE_CUTOFF_SUBJECTS.filter(s => s !== subjectStr);
 
   return (
@@ -162,12 +127,9 @@ export default function CutoffSubjectPage() {
 
           {/* Last Updated Message Bubble */}
           {lastUpdated && (
-            <div className="alert alert-info alert-dismissible fade show mb-4" role="alert" style={{ backgroundColor: '#e3f2fd', borderColor: '#90caf9', color: '#0d47a1' }}>
+            <div className="alert alert-info fade show mb-4" role="alert">
               <div className="d-flex align-items-center">
-                <svg className="bi flex-shrink-0 me-2" width="16" height="16" fill="currentColor">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                </svg>
+                <i className="bx bx-info-circle me-2"></i>
                 <div>
                   <strong>資料更新 Data Updated:</strong> {lastUpdated}
                 </div>
@@ -175,25 +137,11 @@ export default function CutoffSubjectPage() {
             </div>
           )}
 
-          {/* Error Display */}
-          {error && (
-            <div className="alert alert-danger alert-dismissible fade show mb-4">
-              <strong>錯誤 Error:</strong> {error}
-              <button
-                type="button"
-                className="btn-close"
-                onClick={() => setError('')}
-                aria-label="Close"
-              />
-            </div>
-          )}
-
           {/* Cut-off Table */}
           <CutoffTable 
-            data={cutoffData || {}}
+            data={cutoffData}
             config={cutoffConfig || undefined}
             subject={subjectStr}
-            loading={loading}
           />
 
           {/* Other Subjects Section */}
@@ -209,7 +157,7 @@ export default function CutoffSubjectPage() {
                   return (
                     <div key={otherSubject} className="col-lg-4 col-md-6">
                       <NavigationLink href={`/cutoff/${otherSubject}`} className="text-decoration-none">
-                        <div className="card h-100 border-0 shadow-sm hover-card">
+                        <div className="card h-100 shadow-sm" style={{ border: '1px solid var(--bs-border-color)' }}>
                           <div className="card-body d-flex align-items-center">
                             <div className="me-3">
                               <div className="bg-opacity-10 rounded-circle p-2" style={{ backgroundColor: `${iconColor}20` }}>
@@ -253,15 +201,54 @@ export default function CutoffSubjectPage() {
         </div>
       </div>
 
-      <style jsx>{`
-        .hover-card {
-          transition: all 0.2s ease-in-out;
-        }
-        .hover-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-        }
-      `}</style>
     </>
   );
 }
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = AVAILABLE_CUTOFF_SUBJECTS.map((subject) => ({
+    params: { subject },
+  }));
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps<CutoffSubjectPageProps> = async ({ params }) => {
+  const subjectStr = params?.subject as string;
+
+  // Read cutoff config at build time
+  const configPath = path.join(process.cwd(), 'public', 'config', 'cutoff-config.json');
+  const configJson: CutoffConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  const subjectConfig = configJson[subjectStr] || null;
+
+  // Read all CSV files for this subject at build time
+  let cutoffData: CutoffTableData = {};
+  if (subjectConfig) {
+    const allData: any[] = [];
+    for (const tableConfig of subjectConfig.tables) {
+      const csvPath = path.join(process.cwd(), 'public', 'data', 'cutoff', subjectStr, tableConfig.file);
+      try {
+        const csvContent = fs.readFileSync(csvPath, 'utf8');
+        const tableData = csvToCutoffData(csvContent, subjectStr);
+        tableData.forEach(item => {
+          item.tableId = tableConfig.id;
+          item.tableTitle = tableConfig.title;
+        });
+        allData.push(...tableData);
+      } catch (e) {
+        console.warn(`Failed to read CSV ${csvPath}:`, e);
+      }
+    }
+    cutoffData = dataToTableFormat(allData);
+  }
+
+  const lastUpdated = getSubjectCutoffLastUpdated(subjectStr);
+
+  return {
+    props: {
+      subjectStr,
+      cutoffData,
+      cutoffConfig: subjectConfig,
+      lastUpdated: lastUpdated || null,
+    },
+  };
+};
