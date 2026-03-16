@@ -588,6 +588,12 @@ export const pageData: Record<string, PageData> = {
     url: 'https://dse.best/countdown',
     type: 'countdown'
   },
+  countdown2027: {
+    name: 'DSE 2027 Countdown 考試日期倒數',
+    description: 'DSE 2027倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。',
+    url: 'https://dse.best/countdown2027',
+    type: 'countdown'
+  },
   blog: {
     name: 'dse.best Blog',
     description: 'DSE學習資源、考試技巧、科目指南和最新資訊',
@@ -598,6 +604,7 @@ export const pageData: Record<string, PageData> = {
 
 // Website structured data
 export function generateWebsiteStructuredData() {
+  // ... rest of the code remains the same ...
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -780,6 +787,51 @@ export function generateCountdownStructuredData() {
   };
 }
 
+// Countdown 2027 page structured data
+export function generateCountdown2027StructuredData() {
+  const page = pageData.countdown2027;
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": page.name,
+    "description": page.description,
+    "url": page.url,
+    "inLanguage": ["zh-HK", "en-HK"],
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "dse.best",
+      "url": "https://dse.best/",
+      "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026、2027 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+    },
+    "mainEntity": {
+      "@type": "Event",
+      "name": "Hong Kong Diploma of Secondary Education Examination 2027",
+      "description": "The 2027 Hong Kong Diploma of Secondary Education (HKDSE) examination",
+      "startDate": "2027-04-15",
+      "endDate": "2027-05-15",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Hong Kong",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "HK"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Hong Kong Examinations and Assessment Authority",
+        "url": "https://www.hkeaa.edu.hk"
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Secondary School Students"
+      }
+    }
+  };
+}
+
 // Chat page structured data
 export function generateChatStructuredData() {
   return {
@@ -912,6 +964,24 @@ const pageFAQs: Record<string, Array<{question: string, answer: string}>> = {
     {
       question: "如何查詢DSE考試成績？",
       answer: "DSE成績通常在7月公佈，考生可通過香港考試及評核局網站或手機應用程式查詢成績。學校考生會收到成績通知書，自修生則需自行查詢。"
+    }
+  ],
+  countdown2027: [
+    {
+      question: "DSE 2027考試日期是什麼時候？",
+      answer: "DSE 2027考試日期尚未由香港考試及評核局(HKEAA)正式公佈。根據2026年考試日期推算，預計於2027年4月至5月舉行。考生應密切關注官方公佈的考試時間表。"
+    },
+    {
+      question: "2027年DSE考試日期確定了嗎？",
+      answer: "目前2027年DSE考試日期尚未正式公佈。此倒數計時器基於2026年考試日期推算，實際日期可能有所不同。請以香港考試及評核局官方公佈為準。"
+    },
+    {
+      question: "如何有效利用倒數時間準備DSE？",
+      answer: "建議制定詳細的溫習計劃，按科目和課題分配時間。多做歷屆試題，掌握出題模式。保持規律作息，適當休息，確保身心健康。"
+    },
+    {
+      question: "DSE考試包括哪些科目？",
+      answer: "DSE包括核心科目（中文、英文、數學、公民與社會發展）和選修科目（物理、化學、生物、ICT、M1、M2、地理、歷史、中國歷史、經濟、BAFS等）。"
     }
   ],
   blog: [

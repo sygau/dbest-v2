@@ -256,6 +256,16 @@ export const mainPagesMetadata: Record<string, PageMetadata> = {
     "ogUrl": "https://dse.best/countdown",
     "ogType": "website"
   },
+  "countdown2027": {
+    "title": "DSE 2027 Countdown Timer 考試日期倒數",
+    "description": "DSE 2027 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2027 DSE Examination?",
+    "robots": "index, follow",
+    "ogTitle": "DSE 2027 Countdown Timer 考試日期倒數",
+    "ogDescription": "DSE 2027 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2027 DSE Examination?",
+    "ogImage": "https://dse.best/assets/images/logo-icon.png",
+    "ogUrl": "https://dse.best/countdown2027",
+    "ogType": "website"
+  },
   "disclaimer": {
     "title": "免責聲明 Disclaimer",
     "description": "DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。",
