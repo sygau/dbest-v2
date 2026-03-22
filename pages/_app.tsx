@@ -201,8 +201,8 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
             <div className="logo-name flex-grow-1">
               <NavigationLink href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <h5 className="mb-0" style={{ 
-                  fontSize: '1.5rem', 
+                <h5 className="mb-0" style={{
+                  fontSize: '1.5rem',
                   fontFamily: 'Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif',
                   textTransform: 'none',
                   display: 'flex',
@@ -270,6 +270,13 @@ export default function App({ Component, pageProps }: AppProps) {
                 <NavigationLink href="/blog">
                   <div className="parent-icon"><BiFile style={{ color: '#2fc4d4', fontSize: 24 }} /></div>
                   <div className="menu-title">Blog</div>
+                </NavigationLink>
+              </li>
+              <li className="menu-label">Offer</li>
+              <li>
+                <NavigationLink href="/eng-writing">
+                  <div className="parent-icon"><BiBot style={{ color: '#ffd600', fontSize: 24 }} /></div>
+                  <div className="menu-title">免費英文寫作批改</div>
                 </NavigationLink>
               </li>
               {/* <li>
@@ -448,7 +455,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
           {/* Footer */}
           <footer className="footer d-flex flex-column flex-md-row align-items-center justify-content-between gap-1 py-0 border-top px-xl-4 px-3">
-            <p className="mb-0" style={{ marginTop: '15px' }}>© 2026 dse.best | Jable Television (Tuvalu) Inc. All rights reserved</p>
+            <p className="mb-0" style={{ marginTop: '15px' }}>© 2026 dse.best | Jable Television Inc.</p>
             {/* 試題屬香港考試及評核局（HKEAA）所有，嚴禁未經授權之轉載、發佈、售賣或商業用途，下載後請於 24 小時內刪除。如發現本網站內容有任何侵權或違規情況，請<NavigationLink href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>聯絡我們</NavigationLink> */}
           </footer>
         </main>
