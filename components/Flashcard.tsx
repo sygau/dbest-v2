@@ -131,6 +131,12 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
           -webkit-backface-visibility: hidden;
         }
 
+        .flashcard-face :global(.card),
+        .flashcard-face :global(.card-body) {
+          height: 100%;
+          min-height: 100%;
+        }
+
         .flashcard-back {
           transform: rotateY(180deg);
         }

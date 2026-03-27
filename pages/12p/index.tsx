@@ -289,10 +289,11 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
         }
 
         .section-heading {
-          font-size: 1.15rem;
+          font-size: 1.5rem;
           font-weight: 700;
           color: var(--bs-heading-color);
-          margin-bottom: 1rem;
+          margin-bottom: 1.25rem;
+          text-align: center;
         }
 
         /* ── Mode cards — style G: grey bg, ghost icon top-right, bottom bar ── */
@@ -453,7 +454,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
         }
 
         :global(.page-12p) {
-          font-family: 'Noto Sans HK', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: var(--font-noto-sans-hk), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
       `}</style>
     </>

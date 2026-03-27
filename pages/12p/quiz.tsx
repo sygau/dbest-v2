@@ -467,24 +467,18 @@ export default function QuizMode({ config }: QuizProps) {
 
               <div className="quiz-setting-row">
                 <label className="setting-label">⏱️ 限時模式</label>
-                <div className="d-flex align-items-center justify-content-center gap-2">
-                  <div className="form-check form-switch">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="timeLimited"
-                      checked={settings.timeLimited}
-                      onChange={(e) => setSettings(prev => ({
-                        ...prev,
-                        timeLimited: e.target.checked,
-                      }))}
-                      style={{ width: '3rem', height: '1.5rem' }}
-                    />
-                  </div>
-                  <label className="form-check-label" htmlFor="timeLimited" style={{ marginLeft: '0.25rem', fontSize: '1.1rem' }}>
-                    {settings.timeLimited ? '開啟' : '關閉'}
-                  </label>
-                </div>
+                <button
+                  type="button"
+                  className={`timer-toggle ${settings.timeLimited ? 'active' : ''}`}
+                  onClick={() => setSettings(prev => ({ ...prev, timeLimited: !prev.timeLimited }))}
+                  role="switch"
+                  aria-checked={settings.timeLimited}
+                >
+                  <span className="timer-toggle-track">
+                    <span className="timer-toggle-thumb" />
+                  </span>
+                  <span className="timer-toggle-label">{settings.timeLimited ? '開啟' : '關閉'}</span>
+                </button>
               </div>
 
               {settings.timeLimited && (
@@ -542,7 +536,7 @@ export default function QuizMode({ config }: QuizProps) {
 
         <style jsx>{`
           :global(.page-12p) {
-            font-family: 'Noto Sans HK', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-noto-sans-hk), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           }
 
           .passages-grid {
@@ -681,14 +675,72 @@ export default function QuizMode({ config }: QuizProps) {
             margin-bottom: 0;
           }
 
-          .start-btn {
-            padding: 1rem 2rem;
+          .timer-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 1rem;
             border-radius: 0.75rem;
+            border: 2px solid var(--bs-border-color);
+            background: var(--bs-card-bg);
+            cursor: pointer;
+            transition: all 0.2s ease;
+          }
+
+          .timer-toggle:hover {
+            border-color: var(--bs-primary);
+          }
+
+          .timer-toggle.active {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.05);
+          }
+
+          .timer-toggle-track {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            border-radius: 12px;
+            background: var(--bs-tertiary-bg);
+            transition: background 0.2s;
+            flex-shrink: 0;
+          }
+
+          .timer-toggle.active .timer-toggle-track {
+            background: #22c55e;
+          }
+
+          .timer-toggle-thumb {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+          }
+
+          .timer-toggle.active .timer-toggle-thumb {
+            transform: translateX(20px);
+          }
+
+          .timer-toggle-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--bs-body-color);
+          }
+
+          .start-btn {
+            width: 100%;
+            padding: 0.65rem 2rem;
+            border-radius: 0.5rem;
             border: 3px solid #22c55e;
             background: #22c55e;
             color: #ffffff;
             font-weight: 700;
-            font-size: 1.125rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -708,8 +760,8 @@ export default function QuizMode({ config }: QuizProps) {
             width: 100%;
             padding: 0.65rem 1.5rem;
             border-radius: 0.5rem;
-            border: none;
-            background: var(--bs-card-bg);
+            border: 1px solid var(--bs-border-color);
+            background: var(--bs-tertiary-bg);
             color: var(--bs-body-color);
             font-weight: 600;
             font-size: 1rem;
@@ -722,7 +774,7 @@ export default function QuizMode({ config }: QuizProps) {
           }
 
           .back-btn:hover {
-            opacity: 0.8;
+            background: var(--bs-secondary-bg);
           }
 
           @media (max-width: 992px) {
@@ -1086,13 +1138,14 @@ export default function QuizMode({ config }: QuizProps) {
           }
 
           .quiz-submit-btn {
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
+            width: 100%;
+            padding: 0.65rem 2rem;
+            border-radius: 0.5rem;
             border: 3px solid #d97706;
             background: #d97706;
             color: #ffffff;
             font-weight: 700;
-            font-size: 1.125rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
           }

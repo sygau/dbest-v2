@@ -43,7 +43,23 @@ export const useThemeSwitcher = () => {
   const switchTheme = (newTheme: string) => {
     try {
       console.log(`Switching theme to: ${newTheme}`);
+      // Map data-bs-theme → data-theme (matches blocking script in _document.tsx)
+      const themeMap: Record<string, string> = {
+        'blue-theme': 'blue',
+        'dark': 'dark',
+        'semi-dark': 'light',
+        'light': 'light',
+      };
+      const bgMap: Record<string, string> = {
+        'dark': '#212529',
+        'blue': '#0f1535',
+        'light': '#eff1f3',
+      };
+      const dataTheme = themeMap[newTheme] || newTheme;
       document.documentElement.setAttribute('data-bs-theme', newTheme);
+      document.documentElement.setAttribute('data-theme', dataTheme);
+      document.documentElement.style.setProperty('--color-body-bg', bgMap[dataTheme] || '#eff1f3');
+      document.body.style.backgroundColor = bgMap[dataTheme] || '#eff1f3';
       localStorage.setItem('selectedTheme', newTheme);
       setTheme(newTheme);
     } catch (error) {

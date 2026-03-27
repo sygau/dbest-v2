@@ -273,7 +273,7 @@ export default function StudyMode({ config }: StudyProps) {
             <>
               {/* Flashcard Screen */}
               {/* Desktop Header */}
-              <div className="d-none d-md-flex justify-content-between align-items-center mb-4">
+              <div className="hidden md:flex justify-between items-center mb-4">
                 <button
                   className="end-btn"
                   onClick={() => {
@@ -285,21 +285,21 @@ export default function StudyMode({ config }: StudyProps) {
                   <span className="end-btn-text">離開溫習</span>
                 </button>
                 
-                <div className="d-flex align-items-center gap-3">
+                <div className="flex items-center gap-3">
                   <div className="progress-badge">
                     <strong>{currentIndex + 1}</strong> / {questions.length}
                   </div>
                 </div>
               </div>
 
-              <div className="text-center mb-3 d-none d-md-block">
+              <div className="text-center mb-3 hidden md:block">
                 <h1 className="mb-0" style={{ fontSize: '2.5rem', fontWeight: 700 }}>
                   {passageMap.get(questions[currentIndex].id) || ''}
                 </h1>
               </div>
 
               {/* Mobile Header */}
-              <div className="d-md-none study-header-mobile">
+              <div className="md:hidden study-header-mobile">
                 <div className="study-header-top">
                   <button
                     className="end-btn"
@@ -336,7 +336,7 @@ export default function StudyMode({ config }: StudyProps) {
               </div>
 
               {/* Navigation */}
-              <div className="d-flex justify-content-between align-items-center mt-4">
+              <div className="flex justify-between items-center mt-4">
                 <button 
                   className="nav-btn"
                   onClick={handlePrevious}
@@ -382,7 +382,7 @@ export default function StudyMode({ config }: StudyProps) {
 
       <style jsx>{`
         :global(.page-12p) {
-          font-family: 'Noto Sans HK', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-family: var(--font-noto-sans-hk), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         
         .passages-grid {
@@ -492,13 +492,14 @@ export default function StudyMode({ config }: StudyProps) {
         }
 
         .start-btn {
-          padding: 1rem 2rem;
-          border-radius: 0.75rem;
+          width: 100%;
+          padding: 0.65rem 2rem;
+          border-radius: 0.5rem;
           border: none;
           background: var(--bs-primary);
           color: #ffffff;
           font-weight: 700;
-          font-size: 1.125rem;
+          font-size: 1rem;
           cursor: pointer;
           transition: all 0.2s ease;
         }
@@ -516,8 +517,8 @@ export default function StudyMode({ config }: StudyProps) {
           width: 100%;
           padding: 0.65rem 1.5rem;
           border-radius: 0.5rem;
-          border: none;
-          background: var(--bs-card-bg);
+          border: 1px solid var(--bs-border-color);
+          background: var(--bs-tertiary-bg);
           color: var(--bs-body-color);
           font-weight: 600;
           font-size: 1rem;
@@ -530,14 +531,14 @@ export default function StudyMode({ config }: StudyProps) {
         }
 
         .back-btn:hover {
-          opacity: 0.8;
+          background: var(--bs-secondary-bg);
         }
 
         .nav-btn {
           padding: 0.75rem 1.5rem;
           border-radius: 0.5rem;
-          border: none;
-          background: var(--bs-card-bg);
+          border: 1px solid var(--bs-border-color);
+          background: var(--bs-tertiary-bg);
           color: var(--bs-body-color);
           font-weight: 600;
           cursor: pointer;
@@ -546,6 +547,7 @@ export default function StudyMode({ config }: StudyProps) {
 
         .nav-btn:hover:not(:disabled) {
           color: var(--bs-primary);
+          background: var(--bs-secondary-bg);
         }
 
         .nav-btn:disabled {

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { BiCategory, BiUserCircle, BiCalendarEvent, BiTimeFive, BiShow, BiListUl, BiShare, BiLink, BiChevronUp, BiChevronDown, BiHome } from 'react-icons/bi';
+import { BiCategory, BiUserCircle, BiCalendarEvent, BiTimeFive, BiShow, BiListUl, BiShare, BiLink, BiHome } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useEffect, useState, useCallback, useRef } from 'react'
 import fs from 'fs'
@@ -216,7 +216,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
               borderBottom: '1px solid var(--bs-border-color)',
               display: 'flex', alignItems: 'center', gap: '8px',
               fontWeight: 700, fontSize: '0.88rem',
-              fontFamily: "'Noto Sans HK', sans-serif",
+              fontFamily: "var(--font-noto-sans-hk), sans-serif",
               color: 'var(--bs-heading-color)',
               background: 'var(--bs-secondary-bg)',
               flexShrink: 0,
@@ -239,7 +239,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                       paddingLeft: `${8 + (h.level - 1) * 10}px`,
                       paddingRight: '8px', paddingTop: '7px', paddingBottom: '7px',
                       marginBottom: '1px', borderRadius: '6px',
-                      fontFamily: "'Noto Sans HK', sans-serif",
+                      fontFamily: "var(--font-noto-sans-hk), sans-serif",
                       fontSize: h.level <= 2 ? '0.85rem' : '0.79rem',
                       fontWeight: active ? 600 : 400,
                       borderLeft: active ? `3px solid ${categoryColor}` : '3px solid transparent',
@@ -271,68 +271,71 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
           .blog-content-wrapper { grid-template-columns: 1fr; }
           .blog-sidebar { display: none; }
           .mobile-toc-toggle { display: flex !important; }
-  .mobile-toc-panel { display: flex !important; }
+          .mobile-toc-panel { display: flex !important; }
+          .blog-main-content { min-width: 0; }
+          .blog-main-content .card { max-width: 100%; overflow-x: hidden; }
+          .blog-main-content .card-body { overflow-wrap: anywhere; word-break: break-word; }
         }
 
         /* ── Mobile TOC button — mirrors back-to-top-btn-modern exactly ── */
-.mobile-toc-toggle {
-  position: fixed;
-  bottom: 22px;
-  left: 16px !important;
-  width: 45px;
-  height: 45px;
-  padding: 0;
-  border-radius: 12px;
-  font-size: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
-  z-index: 999;
-  transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  color: var(--bs-body-color);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.mobile-toc-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
+        .mobile-toc-toggle {
+          position: fixed;
+          bottom: 22px;
+          left: 16px !important;
+          width: 45px;
+          height: 45px;
+          padding: 0;
+          border-radius: 12px;
+          font-size: 18px;
+          box-shadow: 0 4px 12px rgba(0,0,0,.15);
+          z-index: 999;
+          transition: all 0.3s ease;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(10px);
+          color: var(--bs-body-color);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+        .mobile-toc-toggle:hover {
+          background: rgba(255, 255, 255, 0.2);
+          box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
 
-/* Theme variants — same as BTT */
-[data-bs-theme="dark"] .mobile-toc-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-[data-bs-theme="dark"] .mobile-toc-toggle:hover { background: rgba(255, 255, 255, 0.2); }
+        /* Theme variants — same as BTT */
+        [data-bs-theme="dark"] .mobile-toc-toggle {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.2);
+          color: #ffffff;
+        }
+        [data-bs-theme="dark"] .mobile-toc-toggle:hover { background: rgba(255, 255, 255, 0.2); }
 
-[data-bs-theme="light"] .mobile-toc-toggle {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.2);
-  color: #333333;
-}
-[data-bs-theme="light"] .mobile-toc-toggle:hover { background: rgba(0, 0, 0, 0.2); }
+        [data-bs-theme="light"] .mobile-toc-toggle {
+          background: rgba(0, 0, 0, 0.1);
+          border-color: rgba(0, 0, 0, 0.2);
+          color: #333333;
+        }
+        [data-bs-theme="light"] .mobile-toc-toggle:hover { background: rgba(0, 0, 0, 0.2); }
 
-[data-bs-theme="blue-theme"] .mobile-toc-toggle {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-}
-[data-bs-theme="blue-theme"] .mobile-toc-toggle:hover { background: rgba(255, 255, 255, 0.25); }
+        [data-bs-theme="blue-theme"] .mobile-toc-toggle {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.3);
+          color: #ffffff;
+        }
+        [data-bs-theme="blue-theme"] .mobile-toc-toggle:hover { background: rgba(255, 255, 255, 0.25); }
 
-/* Mobile size adjustment — mirrors BTT @media rule */
-@media (max-width: 768px) {
-  .mobile-toc-toggle {
-    bottom: 22px !important;
-    left: 16px !important;
-    width: 40px !important;
-    height: 40px !important;
-    font-size: 16px !important;
-    border-radius: 10px !important;
-  }
-}
+        /* Mobile size adjustment — mirrors BTT @media rule */
+        @media (max-width: 768px) {
+          .mobile-toc-toggle {
+            bottom: 22px !important;
+            left: 16px !important;
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 16px !important;
+            border-radius: 10px !important;
+          }
+        }
 
         /* ── Mobile TOC panel — pops up above the button, bottom-left ── */
         .mobile-toc-panel {
@@ -347,7 +350,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
           background: var(--bs-card-bg);
           border: 1px solid var(--bs-border-color);
           border-radius: 14px;
-          0 0px 8px rgba(0,0,0,0.18)
+          box-shadow: 0 0px 8px rgba(0,0,0,0.18);
           overflow: hidden;
           opacity: 0;
           pointer-events: none;
@@ -364,14 +367,14 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         .post-title {
           font-size: 2rem; font-weight: 700; line-height: 1.3; margin-bottom: 1.25rem;
           color: var(--bs-heading-color);
-          font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+          font-family: var(--font-noto-sans-hk), 'PingFang HK', 'Microsoft JhengHei', sans-serif;
           overflow-wrap: anywhere; word-break: break-word;
         }
         @media (min-width: 576px) { .post-title { font-size: 2.35rem; } }
 
         /* ── Prose typography ── */
         .post-content {
-          font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+          font-family: var(--font-noto-sans-hk), 'PingFang HK', 'Microsoft JhengHei', sans-serif;
           font-size: 1.05rem; line-height: 1.9; color: var(--bs-body-color);
           text-align: left !important;
         }
@@ -384,7 +387,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
           hyphens: none !important;
         }
         .post-content h1, .post-content h2, .post-content h3, .post-content h4 {
-          font-family: 'Noto Sans HK', 'PingFang HK', sans-serif;
+          font-family: var(--font-noto-sans-hk), 'PingFang HK', sans-serif;
           font-weight: 700; line-height: 1.35;
           margin-top: 2.25rem; margin-bottom: 0.9rem; color: var(--bs-heading-color);
         }
@@ -487,7 +490,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
           border: 1px solid var(--bs-border-color);
           text-decoration: none; color: var(--bs-body-color);
           transition: border-color 0.2s, background 0.2s;
-          font-family: 'Noto Sans HK', sans-serif;
+          font-family: var(--font-noto-sans-hk), sans-serif;
         }
         .mobile-related-card:hover { border-color: var(--bs-primary); background: rgba(13,110,253,0.03); }
       `}</style>
@@ -498,7 +501,6 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb mb-0 p-0">
               <li className="breadcrumb-item">
-                <BiCategory style={{ verticalAlign: 'text-bottom', fontSize: '1.2em', marginRight: '0.25em' }} />
                 {categoryDisplayName}
               </li>
             </ol>
@@ -510,7 +512,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
         <div className="blog-content-wrapper">
 
           <div className="blog-main-content">
-            <div className="card rounded-4" style={{ isolation: 'isolate' }}>
+            <article className="card rounded-4">
               <div className="card-body" style={{ padding: 'clamp(1.25rem, 4vw, 2rem)' }} ref={contentRef}>
 
                 <h1 className="post-title">{post.title}</h1>
@@ -537,7 +539,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                       border: '1px solid var(--bs-border-color)', borderRadius: '999px',
                       padding: '4px 14px', fontSize: '0.82rem', fontWeight: 500,
                       cursor: 'pointer', color: copied ? '#198754' : 'var(--bs-body-color)',
-                      transition: 'all 0.2s', fontFamily: "'Noto Sans HK', sans-serif",
+                      transition: 'all 0.2s', fontFamily: "var(--font-noto-sans-hk), sans-serif",
                     }}
                   >
                     {copied ? <BiLink style={{ fontSize: '1.1em' }} /> : <BiShare style={{ fontSize: '1.1em' }} />}
@@ -549,7 +551,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                 <div className="post-content" dangerouslySetInnerHTML={{ __html: processedContent }} />
 
               </div>
-            </div>
+            </article>
 
             {/* ── Mobile-only: Related Posts + Back to Blog ── */}
             {(relatedPosts.length > 0) && (
@@ -573,10 +575,9 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                       <BiListUl />
                     </span>
                     <div>
-                      <div style={{ fontWeight: 700, fontSize: '1.15rem', fontFamily: "'Noto Sans HK', sans-serif", color: 'var(--bs-heading-color)',textAlign: 'center',  lineHeight: 1.2 }}>
+                      <div style={{ fontWeight: 700, fontSize: '1.15rem', fontFamily: "var(--font-noto-sans-hk), sans-serif", color: 'var(--bs-heading-color)', textAlign: 'center', lineHeight: 1.2 }}>
                         相關文章
                       </div>
-
                     </div>
                   </div>
 
@@ -592,13 +593,13 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{
                             fontSize: '0.87rem', fontWeight: 600, lineHeight: 1.45,
-                            marginBottom: '5px', fontFamily: "'Noto Sans HK', sans-serif",
+                            marginBottom: '5px', fontFamily: "var(--font-noto-sans-hk), sans-serif",
                             overflow: 'hidden', display: '-webkit-box',
                             WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
                           }}>
                             {rp.title}
                           </div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.73rem', color: 'var(--bs-secondary-color)', fontFamily: "'Noto Sans HK', sans-serif" }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.73rem', color: 'var(--bs-secondary-color)', fontFamily: "var(--font-noto-sans-hk), sans-serif" }}>
                             <span style={{
                               background: `${getCategoryColor(rp.category)}18`,
                               color: getCategoryColor(rp.category),
@@ -621,7 +622,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
                       padding: '12px', background: 'var(--bs-primary)', color: '#fff',
                       borderRadius: '10px', textDecoration: 'none', fontWeight: 600,
-                      fontSize: '0.92rem', fontFamily: "'Noto Sans HK', sans-serif",
+                      fontSize: '0.92rem', fontFamily: "var(--font-noto-sans-hk), sans-serif",
                       transition: 'opacity 0.2s',
                     }}>
                       <BiHome style={{ fontSize: '1.15em' }} />
@@ -639,7 +640,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
                   padding: '13px', background: 'var(--bs-primary)', color: '#fff',
                   borderRadius: '12px', textDecoration: 'none', fontWeight: 600,
-                  fontSize: '0.92rem', fontFamily: "'Noto Sans HK', sans-serif",
+                  fontSize: '0.92rem', fontFamily: "var(--font-noto-sans-hk), sans-serif",
                 }}>
                   <BiHome style={{ fontSize: '1.15em' }} />
                   瀏覽所有文章<span style={{ fontWeight: 400, fontSize: '0.82rem', opacity: 0.85 }}></span>
@@ -668,7 +669,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                             paddingLeft: `${4 + (h.level - 1) * 10}px`,
                             paddingRight: '8px', paddingTop: '7px', paddingBottom: '7px',
                             marginBottom: '1px', borderRadius: '6px', transition: 'all 0.15s',
-                            fontFamily: "'Noto Sans HK', sans-serif",
+                            fontFamily: "var(--font-noto-sans-hk), sans-serif",
                             fontSize: h.level <= 2 ? '0.88rem' : '0.82rem',
                             fontWeight: active ? 600 : 400, cursor: 'pointer',
                             borderLeft: active ? '3px solid var(--bs-primary)' : '3px solid transparent',
@@ -691,7 +692,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                       <span key={i} style={{
                         display: 'inline-block', background: '#0d6efd', color: '#fff',
                         borderRadius: '999px', padding: '0.3em 0.85em', fontWeight: 500,
-                        fontSize: '0.8rem', fontFamily: "'Noto Sans HK', sans-serif", cursor: 'default',
+                        fontSize: '0.8rem', fontFamily: "var(--font-noto-sans-hk), sans-serif", cursor: 'default',
                       }}>#{tag}</span>
                     ))}
                   </div>
@@ -701,7 +702,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
               <SidebarCard title="分類" icon={<BiCategory />}>
                 <span style={{
                   display: 'inline-block', padding: '6px 16px', borderRadius: '20px',
-                  fontSize: '0.88rem', fontWeight: 600, fontFamily: "'Noto Sans HK', sans-serif",
+                  fontSize: '0.88rem', fontWeight: 600, fontFamily: "var(--font-noto-sans-hk), sans-serif",
                   background: `${categoryColor}18`, color: categoryColor, border: `1px solid ${categoryColor}40`,
                 }}>
                   {categoryDisplayName}
@@ -713,7 +714,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {relatedPosts.map((rp, i) => (
                       <NavigationLink key={i} href={`/blog/${rp.slug}`}
-                        style={{ display: 'block', padding: '11px 12px', background: 'var(--bs-body-bg)', borderRadius: '8px', textDecoration: 'none', color: 'var(--bs-body-color)', border: '1px solid var(--bs-border-color)', transition: 'border-color 0.2s', fontFamily: "'Noto Sans HK', sans-serif" }}
+                        style={{ display: 'block', padding: '11px 12px', background: 'var(--bs-body-bg)', borderRadius: '8px', textDecoration: 'none', color: 'var(--bs-body-color)', border: '1px solid var(--bs-border-color)', transition: 'border-color 0.2s', fontFamily: "var(--font-noto-sans-hk), sans-serif" }}
                         onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = 'var(--bs-primary)'; }}
                         onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => { e.currentTarget.style.borderColor = 'var(--bs-border-color)'; }}
                       >
@@ -728,7 +729,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
               )}
 
               <div style={{ background: 'var(--bs-card-bg)', borderRadius: '12px', padding: '16px', border: '1px solid var(--bs-border-color)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-                <NavigationLink href="/blog/" style={{ display: 'block', textAlign: 'center', padding: '10px', background: 'var(--bs-primary)', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem', fontFamily: "'Noto Sans HK', sans-serif" }}>
+                <NavigationLink href="/blog/" style={{ display: 'block', textAlign: 'center', padding: '10px', background: 'var(--bs-primary)', color: '#fff', borderRadius: '8px', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem', fontFamily: "var(--font-noto-sans-hk), sans-serif" }}>
                   ← 返回所有文章
                 </NavigationLink>
               </div>
@@ -745,7 +746,7 @@ export default function BlogPost({ post, relatedPosts, processedContent, heading
 function SidebarCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
     <div style={{ background: 'var(--bs-card-bg)', borderRadius: '12px', padding: '18px', marginBottom: '16px', border: '1px solid var(--bs-border-color)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-      <h5 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '14px', fontFamily: "'Noto Sans HK', sans-serif", color: 'var(--bs-heading-color)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+      <h5 style={{ fontSize: '0.95rem', fontWeight: 700, marginBottom: '14px', fontFamily: "var(--font-noto-sans-hk), sans-serif", color: 'var(--bs-heading-color)', display: 'flex', alignItems: 'center', gap: '6px' }}>
         {icon}{title}
       </h5>
       {children}

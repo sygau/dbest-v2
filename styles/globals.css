@@ -78,7 +78,7 @@ body {
   letter-spacing: 0.5px;
   background-color: var(--bs-body-bg) !important;
   color: var(--bs-body-color) !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+  font-family: var(--font-noto-sans-hk), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans HK Fallback', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
 }
 
 /* Force theme background immediately - highest specificity */
@@ -89,7 +89,7 @@ html[data-bs-theme] body {
 /* CLS Prevention - Apply to ALL cards */
 .card.rounded-4 {
   min-height: 800px !important;
-  contain: layout;
+  /* contain: layout removed — it blocks AdSense in-article ad injection */
   height: auto !important;
 }
 
@@ -106,6 +106,12 @@ html[data-bs-theme='dark'] .card.rounded-4 {
 html[data-bs-theme='blue-theme'] .card.rounded-4 {
   background-color: var(--bs-card-bg) !important;
   border: 1px solid var(--bs-border-color) !important;
+}
+
+/* Blog post cards in blue theme: slightly lighter bg for distinction */
+html[data-bs-theme='blue-theme'] .blog-card {
+  background-color: #0e1640 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 /* Override any inline height: auto styles */
@@ -187,10 +193,7 @@ img {
   min-height: 100vh;
 }
 
-/* Prevent layout shifts for card bodies */
-.card-body {
-  contain: layout;
-}
+/* contain: layout removed from .card-body — it blocks AdSense in-article ad injection */
 
 /* ===== BLOG LAYOUT & TYPOGRAPHY ===== */
 
@@ -243,7 +246,7 @@ img {
 .blog-card-title,
 .blog-card-excerpt,
 .post-content {
-  font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-noto-sans-hk), 'Noto Sans HK Fallback', 'PingFang HK', 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Blog Post Content Typography - Modern Next.js Style */
@@ -283,7 +286,7 @@ html {
 .post-content h4,
 .post-content h5,
 .post-content h6 {
-  font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif !important;
+  font-family: var(--font-noto-sans-hk), 'Noto Sans HK Fallback', 'PingFang HK', 'Microsoft JhengHei', sans-serif !important;
   font-weight: 700 !important;
   line-height: 1.3 !important;
   margin-top: 2.5em !important;
@@ -559,11 +562,43 @@ html {
 
   .post-content ul,
   .post-content ol {
-    padding-left: 1.25em !important;
+    padding-left: 0.9em !important;
   }
 
   .post-content li {
-    padding-left: 0.25em !important;
+    padding-left: 0.15em !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .post-content p {
+    text-align: left;
+  }
+
+  .post-content ul li,
+  .post-content ol li {
+    padding-left: 0.4rem;
+  }
+
+  .post-content h1 {
+    font-size: 1.7rem;
+    margin-top: 2rem;
+  }
+
+  .post-content h2 {
+    font-size: 1.5rem;
+    margin-top: 1.8rem;
+  }
+
+  .post-content h3 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+
+  .post-content h4 {
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
   }
 }
 
@@ -683,14 +718,14 @@ html {
 
 /* Blog Header Typography */
 .blog-header-title {
-  font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+  font-family: var(--font-noto-sans-hk), 'PingFang HK', 'Microsoft JhengHei', sans-serif;
   font-size: 2.8rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
 .blog-header-description {
-  font-family: 'Noto Sans HK', 'PingFang HK', 'Microsoft JhengHei', sans-serif;
+  font-family: var(--font-noto-sans-hk), 'PingFang HK', 'Microsoft JhengHei', sans-serif;
   font-size: 1.1rem;
   line-height: 1.7;
 }
@@ -1748,7 +1783,7 @@ body.pwa-ios .sidebar-wrapper .sidebar-nav {
 
   .post-content ul li,
   .post-content ol li {
-    padding-left: 1.5rem;
+    padding-left: 0.4rem;
   }
 
   .post-content h1 {
@@ -4418,7 +4453,84 @@ html {
 /* Force cards to allow AdSense ads to render inside */
 .card {
   overflow: visible !important;
-  isolation: isolate;
+  /* isolation: isolate removed — it blocks AdSense in-article ad injection */
+}
+
+/* ===== DARK/GREY THEME: Link contrast fix ===== */
+/* Bootstrap default link #0d6efd is too dark on dark card backgrounds */
+[data-bs-theme="dark"] .card a:not(.btn):not([class*="nav"]):not([class*="breadcrumb"]) {
+  color: #6ea8fe !important;
+}
+[data-bs-theme="dark"] .card a:not(.btn):not([class*="nav"]):not([class*="breadcrumb"]):hover {
+  color: #9ec5fe !important;
+}
+
+/* ===== DARK/GREY THEME: Tool-specific contrast fixes ===== */
+
+/* Timer & Pomodoro: button backgrounds need to be visibly different from card-bg */
+[data-bs-theme="dark"] .btn-reset,
+[data-bs-theme="dark"] .btn-start:disabled,
+[data-bs-theme="dark"] .reset-btn {
+  background: #3a3f47 !important;
+  border-color: #4a5058 !important;
+}
+
+/* Timer & IR: progress track must contrast with card background */
+[data-bs-theme="dark"] .progress-track {
+  background: #3a3f47 !important;
+}
+
+/* Pomodoro: mode switcher wrapper needs visible bg */
+[data-bs-theme="dark"] .mode-switcher {
+  background: #1a1d21 !important;
+  border: 1px solid #3a3f47 !important;
+}
+
+/* Pomodoro: inactive mode buttons */
+[data-bs-theme="dark"] .mode-btn {
+  color: rgba(222, 226, 230, 0.6) !important;
+}
+
+/* Pomodoro: active mode button */
+[data-bs-theme="dark"] .mode-btn.active {
+  background: #2b3035 !important;
+  color: inherit !important;
+}
+
+/* 12p: mode-cards need distinct bg in dark/grey (they use --bs-tertiary-bg which = card-bg in dark) */
+[data-bs-theme="dark"] .mode-card {
+  background: #1e2228 !important;
+  border: 1px solid #3a3f47 !important;
+}
+
+[data-bs-theme="dark"] .mode-card:hover {
+  background: #23282f !important;
+}
+
+/* 12p: mode titles in dark/blue theme — hardcoded dark blue/green unreadable on dark bg */
+[data-bs-theme="dark"] .mode-title-study,
+[data-bs-theme="blue-theme"] .mode-title-study {
+  color: #e2e8f0 !important;
+}
+
+[data-bs-theme="dark"] .mode-title-quiz,
+[data-bs-theme="blue-theme"] .mode-title-quiz {
+  color: #e2e8f0 !important;
+}
+
+[data-bs-theme="dark"] .mode-arrow-study,
+[data-bs-theme="blue-theme"] .mode-arrow-study {
+  color: #60a5fa !important;
+}
+
+[data-bs-theme="dark"] .mode-arrow-quiz,
+[data-bs-theme="blue-theme"] .mode-arrow-quiz {
+  color: #4ade80 !important;
+}
+
+/* IR page: progress bar track */
+[data-bs-theme="dark"] .progress {
+  background-color: #3a3f47 !important;
 }
 
 .card ins.adsbygoogle {

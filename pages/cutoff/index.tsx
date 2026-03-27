@@ -88,7 +88,7 @@ export default function CutoffIndexPage() {
 
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
-        <div className="card-body">
+        <div className="card-body" style={{ fontFamily: "var(--font-noto-sans-hk), 'PingFang HK', 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, sans-serif" }}>
           <div className="d-flex align-items-center mb-4">
             <h1 className="mb-0">DSE Cut-off Scores 分數線 (2012-2025)</h1>
           </div>

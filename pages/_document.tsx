@@ -7,38 +7,16 @@ export default function Document() {
       <Head>
         {/* BLOCKING theme script - MUST execute before any rendering */}
         <script dangerouslySetInnerHTML={{
-          __html: `(function(){try{var theme=localStorage.getItem('selectedTheme')||'light';document.documentElement.setAttribute('data-bs-theme',theme);document.documentElement.style.setProperty('--bs-body-bg',theme==='dark'?'#212529':theme==='blue-theme'?'#0f1535':'#eff1f3')}catch(e){document.documentElement.setAttribute('data-bs-theme','light');document.documentElement.style.setProperty('--bs-body-bg','#eff1f3')}})()`
+          __html: `(function(){try{var t=localStorage.getItem('selectedTheme')||'light';var m={'blue-theme':'blue','dark':'dark','semi-dark':'light','light':'light'};var theme=m[t]||t;document.documentElement.setAttribute('data-theme',theme);document.documentElement.setAttribute('data-bs-theme',t);document.documentElement.style.setProperty('--color-body-bg',theme==='dark'?'#212529':theme==='blue'?'#0f1535':'#eff1f3')}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.setProperty('--color-body-bg','#eff1f3')}})()`
         }} />
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              "html:not([data-bs-theme]) .card,html[data-bs-theme='light'] .card,html[data-bs-theme='semi-dark'] .card{background-color:#ffffff !important;}html:not([data-bs-theme]) .card.rounded-4,html[data-bs-theme='light'] .card.rounded-4,html[data-bs-theme='semi-dark'] .card.rounded-4{background-color:#ffffff !important;}"
-          }}
-        />
         <meta property="og:site_name" content="dse.best" />
         <meta property="og:locale" content="zh_HK" />
         <meta property="og:locale:alternate" content="en_US" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* Font preconnects removed — Noto Sans HK now self-hosted via next/font/google in _app.tsx */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#0f1535" />
 
-        {/* Bootstrap CSS */}
-        <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" as="style" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-
-        {/* Fonts */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap"
-          as="style"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;500;600;700;900&display=swap"
-          rel="stylesheet"
-        />
 
         {/* Optimized Ad-Free Logic (Static-Safe) */}
         {process.env.PASSCODE_MODE !== 'true' && (
@@ -76,6 +54,7 @@ export default function Document() {
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
         <script defer dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
 
+
         {/* PWA */}
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
@@ -86,14 +65,18 @@ export default function Document() {
         <meta name="apple-touch-fullscreen" content="yes" />
         <meta name="apple-touch-callout" content="none" />
 
+
         {/* PWA iOS Styles */}
         <style dangerouslySetInnerHTML={{ __html: pwaStyles }} />
+
 
         {/* Hide download buttons */}
         {/* <Public><style dangerouslySetInnerHTML={{ __html: `a[data-paper-id],.btn-info:has(svg),.btn-info svg{display:none!important}` }} /></Public> */}
 
+
         {/* Consolidated Main Script */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.mainScript }} />
+
 
         {process.env.PASSCODE_MODE === 'true' && (
           <script defer src="https://x.dse.best/_vercel/insights/script.js"></script>
@@ -102,8 +85,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        {/* Critical Scripts - Load in dependency order */}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 
         {process.env.PASSCODE_MODE === 'true' ? (
           <script src={`/assets/js/appendLinksX.js?v=${Date.now()}`} async></script>

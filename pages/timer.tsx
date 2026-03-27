@@ -337,7 +337,7 @@ export default function PaperTimerPage() {
           .clock-face { 
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
             font-weight: 800; 
-            font-size: clamp(3.5rem, 13vw, 7.5rem); 
+            font-size: clamp(4.5rem, 13vw, 7.5rem); 
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.02em; 
             color: var(--bs-heading-color, #1e293b); 
@@ -529,7 +529,7 @@ export default function PaperTimerPage() {
                )}
             </button>
 
-            <button className="icon-btn" onClick={toggleFullscreen} title="Enter Focus Mode" aria-label="Enter Fullscreen">
+            <button className="icon-btn icon-btn-fs" onClick={toggleFullscreen} title="Enter Focus Mode" aria-label="Enter Fullscreen">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
             </button>
           </div>

@@ -27,17 +27,17 @@ export default function FAQSection({ title = "常見問題 FAQ", faqs, className
   }
 
   return (
-    <section className={`container my-5 ${className}`} id="faq">
-      <h2 className="fw-bold mb-4 text-center">{title}</h2>
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
+    <section className={`max-w-4xl mx-auto my-10 ${className}`} id="faq">
+      <h2 className="font-bold mb-4 text-center text-[var(--color-heading)]">{title}</h2>
+      <div className="flex justify-center">
+        <div className="w-full max-w-2xl">
           <div className="custom-accordion">
             {faqs.map((faq, index) => {
               const isOpen = openItems.has(faq.id)
               return (
                 <div key={faq.id} className="faq-item mb-3">
                   <button
-                    className={`faq-question w-100 text-start p-3 fw-semibold d-flex align-items-center justify-content-between ${
+                    className={`faq-question w-full text-left p-3 font-semibold flex items-center justify-between ${
                       isOpen ? 'faq-active' : ''
                     }`}
                     type="button"
@@ -45,7 +45,7 @@ export default function FAQSection({ title = "常見問題 FAQ", faqs, className
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${faq.id}`}
                   >
-                    <span className="me-3">{faq.question}</span>
+                    <span className="mr-3">{faq.question}</span>
                     {isOpen ? (
                       <BiChevronUp className="faq-icon" style={{ fontSize: '1.2rem', flexShrink: 0 }} />
                     ) : (
@@ -68,7 +68,7 @@ export default function FAQSection({ title = "常見問題 FAQ", faqs, className
         </div>
       </div>
 
-      <style jsx>{`.custom-accordion{}.faq-item{border-radius:0.75rem;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:all 0.2s ease}.faq-question{background-color:var(--bs-card-bg,#ffffff);border:1px solid var(--bs-border-color);border-radius:0.75rem;color:var(--bs-body-color);transition:all 0.2s ease;cursor:pointer;outline:none}.faq-question:hover{background-color:var(--bs-card-bg,#ffffff);border-color:var(--bs-primary);color:var(--bs-body-color)}.faq-question.faq-active{background-color:var(--bs-card-bg,#ffffff);border-color:var(--bs-primary);color:var(--bs-body-color);border-bottom-left-radius:0;border-bottom-right-radius:0}.faq-icon{color:var(--bs-body-color);transition:transform 0.2s ease}.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;background-color:var(--bs-card-bg,#ffffff);border:1px solid var(--bs-border-color);border-top:none;border-radius:0 0 0.75rem 0.75rem;margin-top:-1px}.faq-answer.faq-open{max-height:500px}.faq-content{color:var(--bs-body-color)}`}</style>
+      <style jsx>{`.custom-accordion{}.faq-item{border-radius:0.75rem;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05);transition:all 0.2s ease}.faq-question{background-color:var(--color-card-bg,#ffffff);border:1px solid var(--color-border);border-radius:0.75rem;color:var(--color-body);transition:all 0.2s ease;cursor:pointer;outline:none}.faq-question:hover{background-color:var(--color-card-bg,#ffffff);border-color:#0d6efd;color:var(--color-body)}.faq-question.faq-active{background-color:var(--color-card-bg,#ffffff);border-color:#0d6efd;color:var(--color-body);border-bottom-left-radius:0;border-bottom-right-radius:0}.faq-icon{color:var(--color-body);transition:transform 0.2s ease}.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;background-color:var(--color-card-bg,#ffffff);border:1px solid var(--color-border);border-top:none;border-radius:0 0 0.75rem 0.75rem;margin-top:-1px}.faq-answer.faq-open{max-height:500px}.faq-content{color:var(--color-body)}`}</style>
     </section>
   )
 }

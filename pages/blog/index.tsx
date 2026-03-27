@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { BiUserCircle, BiCalendarEvent, BiFileBlank, BiSort, BiShow, BiFilter, BiChevronDown, BiTimeFive, BiComment, BiSearch } from 'react-icons/bi';
+import { BiCalendarEvent, BiFileBlank, BiSort, BiShow, BiTimeFive, BiSearch } from 'react-icons/bi';
 import { GetStaticProps } from 'next'
 import fs from 'fs'
 import path from 'path'
@@ -247,7 +247,6 @@ function FilterSortBar({
   onSearchChange: (query: string) => void;
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
 
   return (
     <div className="filter-sort-bar" style={{
@@ -387,7 +386,7 @@ function FilterSortBar({
 
       {/* Mobile Layout */}
       <div className="d-block d-md-none">
-        {/* Category Section - Horizontal */}
+        {/* Category Section - Native Select for mobile */}
         <div style={{ marginBottom: '12px' }}>
           <label style={{
             display: 'block',
@@ -399,74 +398,28 @@ function FilterSortBar({
             分類 Categories
           </label>
           
-          <div style={{ position: 'relative' }}>
-            <button
-              onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '8px 12px',
-                borderRadius: '8px',
-                border: '1px solid var(--bs-border-color, #e5e7eb)',
-                background: 'var(--bs-card-bg, #ffffff)',
-                color: 'var(--bs-body-color, #374151)',
-                fontSize: '0.8rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                width: '100%',
-                justifyContent: 'space-between'
-              }}
-            >
-              <span>
-                {CATEGORIES.find(cat => cat.value === selectedCategory)?.label || 'Select Category'}
-              </span>
-              <BiChevronDown style={{ fontSize: '14px' }} />
-            </button>
-            
-            {isCategoryDropdownOpen && (
-              <div style={{
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                right: 0,
-                background: 'var(--bs-card-bg, #ffffff)',
-                borderRadius: '8px',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
-                border: '1px solid var(--bs-border-color, #e5e7eb)',
-                zIndex: 1000,
-                marginTop: '2px',
-                maxHeight: '200px',
-                overflowY: 'auto'
-              }}>
-                {CATEGORIES.map((category) => (
-                  <button
-                    key={category.value}
-                    onClick={() => {
-                      onCategoryChange(category.value);
-                      setIsCategoryDropdownOpen(false);
-                    }}
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      padding: '8px 12px',
-                      border: 'none',
-                      background: 'transparent',
-                      color: selectedCategory === category.value ? 'var(--bs-primary, #3b82f6)' : 'var(--bs-body-color, #374151)',
-                      fontSize: '0.8rem',
-                      fontWeight: selectedCategory === category.value ? '600' : '400',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      transition: 'background 0.2s ease'
-                    }}
-                  >
-                    {category.label}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          <select
+            value={selectedCategory}
+            onChange={(e) => onCategoryChange(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '10px 12px',
+              borderRadius: '8px',
+              border: '1px solid var(--bs-border-color, #e5e7eb)',
+              background: 'var(--bs-card-bg, #ffffff)',
+              color: 'var(--bs-body-color, #374151)',
+              fontSize: '0.875rem',
+              fontWeight: '500',
+              cursor: 'pointer',
+              appearance: 'auto'
+            }}
+          >
+            {CATEGORIES.map((category) => (
+              <option key={category.value} value={category.value}>
+                {category.label}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Sort Section - Mobile Only */}
@@ -996,10 +949,10 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
                 margin: '0 auto'
               }}>
                 <BiFileBlank style={{ fontSize: '64px', marginBottom: '16px', opacity: 0.5 }} />
-                <h3 style={{ margin: '0 0 8px 0', fontSize: '1.4rem', fontFamily: "'Noto Sans HK', sans-serif" }}>
+                <h3 style={{ margin: '0 0 8px 0', fontSize: '1.4rem', fontFamily: "var(--font-noto-sans-hk), sans-serif" }}>
                   {searchQuery.trim() ? '找不到相關文章' : '暫無文章'}
                 </h3>
-                <p style={{ margin: '0', fontSize: '1rem', fontFamily: "'Noto Sans HK', sans-serif" }}>
+                <p style={{ margin: '0', fontSize: '1rem', fontFamily: "var(--font-noto-sans-hk), sans-serif" }}>
                   {searchQuery.trim() 
                     ? `沒有找到包含 "${searchQuery}" 的文章，請嘗試其他關鍵字`
                     : '請稍後再來查看最新內容'

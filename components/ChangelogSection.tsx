@@ -7,21 +7,19 @@ interface ChangelogSectionProps {
 
 export default function ChangelogSection({ date, changes }: ChangelogSectionProps) {
   return (
-    <div className="container my-5 changelog-section">
-      <div className="row justify-content-center">
-        <div className="col-lg-8">
-          <div className="card border-primary border-2">
-            <div className="card-body">
-              <h3 className="mb-4 text-primary text-center">
+    <div className="max-w-4xl mx-auto my-10">
+      <div className="flex justify-center">
+        <div className="w-full max-w-2xl">
+          <div className="card rounded-4">
+            <div className="card-body p-4">
+              <h3 className="mb-3 text-center font-bold text-[var(--color-heading)]">
                 Changelog / 更新日誌
               </h3>
-              <div className="changelog-entry">
-                <div className="fw-bold text-primary mb-2 text-center">{date}</div>
-                <div className="text-center">
-                  {changes.map((change, index) => (
-                    <p key={index} className="mb-2">{change}</p>
-                  ))}
-                </div>
+              <div className="font-bold text-[var(--color-muted)] mb-2 text-center text-sm">{date}</div>
+              <div className="text-center text-[var(--color-body)]">
+                {changes.map((change, index) => (
+                  <p key={index} className="mb-2">{change}</p>
+                ))}
               </div>
             </div>
           </div>
@@ -29,4 +27,4 @@ export default function ChangelogSection({ date, changes }: ChangelogSectionProp
       </div>
     </div>
   );
-} 
+}
