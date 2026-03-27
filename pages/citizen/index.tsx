@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { BiDownload } from 'react-icons/bi';
 import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
 import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
+import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 
 export default function CitizenPage() {
   const metadata = getSubjectMetadata('citizen');
@@ -79,42 +79,8 @@ export default function CitizenPage() {
                     <h2 style={{ textAlign: "center" }}>模擬試卷</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">問題簿</h5>
-                                    <p className="card-text">Sample Question Book</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_question"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答題簿</h5>
-                                    <p className="card-text">Sample Answering Book</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_answer"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="問題簿" description="Sample Question Book" paperId="sp_question" buttonText="下載" />
+                        <DownloadCard title="答題簿" description="Sample Answering Book" paperId="sp_answer" buttonText="下載" />
                     </div>
                     <hr className="my-4" />
 
@@ -122,42 +88,8 @@ export default function CitizenPage() {
                     <h2 style={{ textAlign: "center" }}>2024</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">問題簿</h5>
-                                    <p className="card-text">2024 問題簿</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2024_question"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答題簿</h5>
-                                    <p className="card-text">2024 答題簿</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2024_answer"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="問題簿" description="2024 問題簿" paperId="2024_question" buttonText="下載" />
+                        <DownloadCard title="答題簿" description="2024 答題簿" paperId="2024_answer" buttonText="下載" />
                     </div>
                     <hr className="my-4" />
                     

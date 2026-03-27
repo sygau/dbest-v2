@@ -28,11 +28,13 @@ async function getSecretsVersion(): Promise<string | null> {
 }
 
 export async function middleware(request: NextRequest) {
-  // Redirect pages.dev subdomain to main domain
-  const hostname = request.headers.get('host') || ''
-  if (hostname.includes('.pages.dev')) {
-    const redirectUrl = new URL(`https://dse.best${request.nextUrl.pathname}${request.nextUrl.search}`)
-    return NextResponse.redirect(redirectUrl, 301)
+  const hostname = request.headers.get('host') || '';
+  const isProdEnv = process.env.IS_PROD === 'true';
+
+  // Only redirect if we are in the Prod environment and hitting the pages.dev alias
+  if (isProdEnv && hostname.includes('.pages.dev')) {
+    const redirectUrl = new URL(`https://dse.best${request.nextUrl.pathname}${request.nextUrl.search}`);
+    return NextResponse.redirect(redirectUrl, 301);
   }
 
   // Redirect xv-dbest.vercel.app to x.dse.best

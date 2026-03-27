@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
-import { BiDownload } from 'react-icons/bi';
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
 import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
+import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 
 export default function GeographyPage() {
   const metadata = getSubjectMetadata('geography');
@@ -81,121 +81,18 @@ export default function GeographyPage() {
                     <h2 style={{ textAlign: "center" }}>評核內容 / Syllabus</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">中文 評核內容</h5>
-                                    <p className="card-text">DSE地理 評核內容 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="syllabus_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">English Syllabus</h5>
-                                    <p className="card-text">DSE Geography Syllabus (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="syllabus_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="中文 評核內容" description="DSE地理 評核內容 (中文)" paperId="syllabus_chi" buttonText="下載" />
+                        <DownloadCard title="English Syllabus" description="DSE Geography Syllabus (English)" paperId="syllabus_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* Exam Info */}
                     <h2 style={{ textAlign: "center" }}>考試資訊 / Exam Info</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">2024 考試資訊</h5>
-                                    <p className="card-text">2024 DSE地理考試資訊 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2024_exam_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">2024 Exam Info</h5>
-                                    <p className="card-text">
-                                        2024 DSE Geography Exam Info (English)
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2024_exam_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">2023 考試資訊</h5>
-                                    <p className="card-text">2023 DSE地理考試資訊 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_exam_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">2023 Exam Info</h5>
-                                    <p className="card-text">
-                                        2023 DSE Geography Exam Info (English)
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_exam_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="2024 考試資訊" description="2024 DSE地理考試資訊 (中文)" paperId="2024_exam_chi" buttonText="下載" />
+                        <DownloadCard title="2024 Exam Info" description="2024 DSE Geography Exam Info (English)" paperId="2024_exam_eng" />
+                        <DownloadCard title="2023 考試資訊" description="2023 DSE地理考試資訊 (中文)" paperId="2023_exam_chi" buttonText="下載" />
+                        <DownloadCard title="2023 Exam Info" description="2023 DSE Geography Exam Info (English)" paperId="2023_exam_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2023 */}
@@ -203,182 +100,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2023 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2023 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2023 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2023 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2023 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2023 Paper 1 (中文)" paperId="2023_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2023 Paper 2 (中文)" paperId="2023_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2023 Map Book (中文)" paperId="2023_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2023 Marking Scheme (中文)" paperId="2023_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2023 Performance (中文)" paperId="2023_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2023 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2023 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2023 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2023 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2023 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2023 Paper 1 (English)" paperId="2023_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2023 Paper 2 (English)" paperId="2023_p2_eng" />
+                        <DownloadCard title="Map Book" description="2023 Map Book (English)" paperId="2023_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2023 Marking Scheme (English)" paperId="2023_ans_eng" />
+                        <DownloadCard title="Performance" description="2023 Performance (English)" paperId="2023_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2022 */}
@@ -386,130 +118,14 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2022 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2022 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2022 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2022 Paper 1 (中文)" paperId="2022_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2022 Paper 2 (中文)" paperId="2022_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2022 Map Book (中文)" paperId="2022_map_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2022 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2022 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2022 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2022 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2022 Paper 1 (English)" paperId="2022_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2022 Paper 2 (English)" paperId="2022_p2_eng" />
+                        <DownloadCard title="Map Book" description="2022 Map Book (English)" paperId="2022_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2022 Marking Scheme (English)" paperId="2022_ans_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2021 */}
@@ -517,182 +133,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2021 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2021 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2021 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2021 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2021 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2021 Paper 1 (中文)" paperId="2021_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2021 Paper 2 (中文)" paperId="2021_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2021 Map Book (中文)" paperId="2021_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2021 Marking Scheme (中文)" paperId="2021_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2021 Performance (中文)" paperId="2021_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2021 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2021 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2021 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2021 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2021 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2021 Paper 1 (English)" paperId="2021_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2021 Paper 2 (English)" paperId="2021_p2_eng" />
+                        <DownloadCard title="Map Book" description="2021 Map Book (English)" paperId="2021_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2021 Marking Scheme (English)" paperId="2021_ans_eng" />
+                        <DownloadCard title="Performance" description="2021 Performance (English)" paperId="2021_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2020 */}
@@ -700,182 +151,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2020 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2020 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2020 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2020 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2020 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2020 Paper 1 (中文)" paperId="2020_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2020 Paper 2 (中文)" paperId="2020_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2020 Map Book (中文)" paperId="2020_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2020 Marking Scheme (中文)" paperId="2020_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2020 Performance (中文)" paperId="2020_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2020 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2020 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2020 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2020 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2020 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2020 Paper 1 (English)" paperId="2020_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2020 Paper 2 (English)" paperId="2020_p2_eng" />
+                        <DownloadCard title="Map Book" description="2020 Map Book (English)" paperId="2020_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2020 Marking Scheme (English)" paperId="2020_ans_eng" />
+                        <DownloadCard title="Performance" description="2020 Performance (English)" paperId="2020_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2019 */}
@@ -883,165 +169,16 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2019 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2019 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2019 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2019 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2019 Paper 1 (中文)" paperId="2019_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2019 Paper 2 (中文)" paperId="2019_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2019 Map Book (中文)" paperId="2019_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2019 Marking Scheme (中文)" paperId="2019_ans_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2019 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2019 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2019 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2019 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2019 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2019 Paper 1 (English)" paperId="2019_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2019 Paper 2 (English)" paperId="2019_p2_eng" />
+                        <DownloadCard title="Map Book" description="2019 Map Book (English)" paperId="2019_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2019 Marking Scheme (English)" paperId="2019_ans_eng" />
+                        <DownloadCard title="Performance" description="2019 Performance (English)" paperId="2019_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2018 */}
@@ -1049,182 +186,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2018 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2018 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2018 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2018 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2018 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2018 Paper 1 (中文)" paperId="2018_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2018 Paper 2 (中文)" paperId="2018_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2018 Map Book (中文)" paperId="2018_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2018 Marking Scheme (中文)" paperId="2018_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2018 Performance (中文)" paperId="2018_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2018 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2018 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2018 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2018 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2018 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2018 Paper 1 (English)" paperId="2018_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2018 Paper 2 (English)" paperId="2018_p2_eng" />
+                        <DownloadCard title="Map Book" description="2018 Map Book (English)" paperId="2018_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2018 Marking Scheme (English)" paperId="2018_ans_eng" />
+                        <DownloadCard title="Performance" description="2018 Performance (English)" paperId="2018_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2017 */}
@@ -1232,182 +204,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2017 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2017 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2017 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2017 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2017 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2017 Paper 1 (中文)" paperId="2017_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2017 Paper 2 (中文)" paperId="2017_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2017 Map Book (中文)" paperId="2017_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2017 Marking Scheme (中文)" paperId="2017_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2017 Performance (中文)" paperId="2017_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2017 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2017 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2017 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2017 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2017 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2017 Paper 1 (English)" paperId="2017_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2017 Paper 2 (English)" paperId="2017_p2_eng" />
+                        <DownloadCard title="Map Book" description="2017 Map Book (English)" paperId="2017_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2017 Marking Scheme (English)" paperId="2017_ans_eng" />
+                        <DownloadCard title="Performance" description="2017 Performance (English)" paperId="2017_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* Practice & Sample Papers */}
@@ -1415,149 +222,15 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Practice Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">練習卷一</h5>
-                                    <p className="card-text">Practice Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">練習卷二</h5>
-                                    <p className="card-text">Practice Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">練習卷答案</h5>
-                                    <p className="card-text">Practice Paper Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">練習卷表現評述</h5>
-                                    <p className="card-text">Practice Paper Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="練習卷一" description="Practice Paper 1 (中文)" paperId="pp_p1_chi" buttonText="下載" />
+                        <DownloadCard title="練習卷二" description="Practice Paper 2 (中文)" paperId="pp_p2_chi" buttonText="下載" />
+                        <DownloadCard title="練習卷答案" description="Practice Paper Marking Scheme (中文)" paperId="pp_ans_chi" buttonText="下載" />
+                        <DownloadCard title="練習卷表現評述" description="Practice Paper Performance (中文)" paperId="pp_per_chi" buttonText="下載" />
                         {/* English Practice Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Practice Paper 1</h5>
-                                    <p className="card-text">Practice Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Practice Paper 2</h5>
-                                    <p className="card-text">Practice Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Practice Paper Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Practice Paper Marking Scheme (English)
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Practice Paper Performance</h5>
-                                    <p className="card-text">Practice Paper Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Practice Paper 1" description="Practice Paper 1 (English)" paperId="pp_p1_eng" />
+                        <DownloadCard title="Practice Paper 2" description="Practice Paper 2 (English)" paperId="pp_p2_eng" />
+                        <DownloadCard title="Practice Paper Marking Scheme" description="Practice Paper Marking Scheme (English)" paperId="pp_ans_eng" />
+                        <DownloadCard title="Practice Paper Performance" description="Practice Paper Performance (English)" paperId="pp_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* Sample Papers */}
@@ -1565,95 +238,12 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Sample Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">樣本試卷一</h5>
-                                    <p className="card-text">Sample Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">樣本試卷二</h5>
-                                    <p className="card-text">Sample Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="樣本試卷一" description="Sample Paper 1 (中文)" paperId="sp_p1_chi" buttonText="下載" />
+                        <DownloadCard title="樣本試卷二" description="Sample Paper 2 (中文)" paperId="sp_p2_chi" buttonText="下載" />
                         {/* English Sample Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Sample Paper 1</h5>
-                                    <p className="card-text">Sample Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Sample Paper 2</h5>
-                                    <p className="card-text">Sample Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Sample Paper Marking Scheme</h5>
-                                    <p className="card-text">Sample Paper Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Sample Paper 1" description="Sample Paper 1 (English)" paperId="sp_p1_eng" />
+                        <DownloadCard title="Sample Paper 2" description="Sample Paper 2 (English)" paperId="sp_p2_eng" />
+                        <DownloadCard title="Sample Paper Marking Scheme" description="Sample Paper Marking Scheme (English)" paperId="sp_ans_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2016 */}
@@ -1661,164 +251,16 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2016 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2016 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2016 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2016 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2016 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2016 Paper 1 (中文)" paperId="2016_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2016 Paper 2 (中文)" paperId="2016_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2016 Map Book (中文)" paperId="2016_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2016 Marking Scheme (中文)" paperId="2016_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2016 Performance (中文)" paperId="2016_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2016 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2016 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2016 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2016 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2016 Paper 1 (English)" paperId="2016_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2016 Paper 2 (English)" paperId="2016_p2_eng" />
+                        <DownloadCard title="Map Book" description="2016 Map Book (English)" paperId="2016_map_eng" />
+                        <DownloadCard title="Performance" description="2016 Performance (English)" paperId="2016_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2015 */}
@@ -1826,182 +268,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2015 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2015 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2015 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2015 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2015 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2015 Paper 1 (中文)" paperId="2015_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2015 Paper 2 (中文)" paperId="2015_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2015 Map Book (中文)" paperId="2015_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2015 Marking Scheme (中文)" paperId="2015_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2015 Performance (中文)" paperId="2015_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2015 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2015 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2015 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2015 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2015 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2015 Paper 1 (English)" paperId="2015_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2015 Paper 2 (English)" paperId="2015_p2_eng" />
+                        <DownloadCard title="Map Book" description="2015 Map Book (English)" paperId="2015_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2015 Marking Scheme (English)" paperId="2015_ans_eng" />
+                        <DownloadCard title="Performance" description="2015 Performance (English)" paperId="2015_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2014 */}
@@ -2009,182 +286,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2014 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2014 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2014 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2014 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2014 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2014 Paper 1 (中文)" paperId="2014_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2014 Paper 2 (中文)" paperId="2014_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2014 Map Book (中文)" paperId="2014_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2014 Marking Scheme (中文)" paperId="2014_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2014 Performance (中文)" paperId="2014_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2014 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2014 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2014 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2014 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2014 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2014 Paper 1 (English)" paperId="2014_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2014 Paper 2 (English)" paperId="2014_p2_eng" />
+                        <DownloadCard title="Map Book" description="2014 Map Book (English)" paperId="2014_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2014 Marking Scheme (English)" paperId="2014_ans_eng" />
+                        <DownloadCard title="Performance" description="2014 Performance (English)" paperId="2014_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2013 */}
@@ -2192,182 +304,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2013 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2013 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2013 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2013 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2013 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2013 Paper 1 (中文)" paperId="2013_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2013 Paper 2 (中文)" paperId="2013_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2013 Map Book (中文)" paperId="2013_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2013 Marking Scheme (中文)" paperId="2013_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2013 Performance (中文)" paperId="2013_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2013 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2013 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2013 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2013 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2013 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2013 Paper 1 (English)" paperId="2013_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2013 Paper 2 (English)" paperId="2013_p2_eng" />
+                        <DownloadCard title="Map Book" description="2013 Map Book (English)" paperId="2013_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2013 Marking Scheme (English)" paperId="2013_ans_eng" />
+                        <DownloadCard title="Performance" description="2013 Performance (English)" paperId="2013_per_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2012 */}
@@ -2375,182 +322,17 @@ export default function GeographyPage() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* Chinese Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷一</h5>
-                                    <p className="card-text">2012 Paper 1 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_p1_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">卷二</h5>
-                                    <p className="card-text">2012 Paper 2 (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_p2_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">地圖冊</h5>
-                                    <p className="card-text">2012 Map Book (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_map_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">答案</h5>
-                                    <p className="card-text">2012 Marking Scheme (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_ans_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">表現評述</h5>
-                                    <p className="card-text">2012 Performance (中文)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_per_chi"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />下載
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="卷一" description="2012 Paper 1 (中文)" paperId="2012_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2012 Paper 2 (中文)" paperId="2012_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2012 Map Book (中文)" paperId="2012_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2012 Marking Scheme (中文)" paperId="2012_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2012 Performance (中文)" paperId="2012_per_chi" buttonText="下載" />
                         {/* English Papers */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 1</h5>
-                                    <p className="card-text">2012 Paper 1 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_p1_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper 2</h5>
-                                    <p className="card-text">2012 Paper 2 (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_p2_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Map Book</h5>
-                                    <p className="card-text">2012 Map Book (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_map_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2012 Marking Scheme (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_ans_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance</h5>
-                                    <p className="card-text">2012 Performance (English)</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_per_eng"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper 1" description="2012 Paper 1 (English)" paperId="2012_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2012 Paper 2 (English)" paperId="2012_p2_eng" />
+                        <DownloadCard title="Map Book" description="2012 Map Book (English)" paperId="2012_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2012 Marking Scheme (English)" paperId="2012_ans_eng" />
+                        <DownloadCard title="Performance" description="2012 Performance (English)" paperId="2012_per_eng" />
                     </div>
                     <hr className="my-4" />
                 </div>

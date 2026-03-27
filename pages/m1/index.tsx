@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData'
-import { BiDownload } from 'react-icons/bi';
+import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
 import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
+import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 
 export default function M1Page() {
   const metadata = getSubjectMetadata('m1');
@@ -81,26 +81,7 @@ export default function M1Page() {
                     <h2 style={{ textAlign: "center" }}>Syllabus</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M1 Syllabus</h5>
-                                    <p className="card-text">
-                                        DSE Mathematics Extended Part Module 1 Syllabus
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="syll"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M1 Syllabus" description="DSE Mathematics Extended Part Module 1 Syllabus" paperId="syll" />
                     </div>
                     <hr className="my-4" />
                     {/* By Topic */}
@@ -108,251 +89,20 @@ export default function M1Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* BK1 BK2 first */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Book 1 Topic 1-6</h5>
-                                    <p className="card-text">M1 Book 1 Topic 1-6</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_bk1"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Book 2 Topic 7-11</h5>
-                                    <p className="card-text">M1 Book 2 Topic 7-11</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_bk2"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Book 1 Topic 1-6" description="M1 Book 1 Topic 1-6" paperId="bytopic_bk1" />
+                        <DownloadCard title="Book 2 Topic 7-11" description="M1 Book 2 Topic 7-11" paperId="bytopic_bk2" />
                         {/* Numbered topics 1-11 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 1 Binomial Expansion</h5>
-                                    <p className="card-text">M1 Topic 1</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_1"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 2 Exponential and Logarithmic Functions
-                                    </h5>
-                                    <p className="card-text">M1 Topic 2</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_2"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 3 Derivatives and Differentiation of Functions
-                                    </h5>
-                                    <p className="card-text">M1 Topic 3</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_3"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 4 Applications of Differentiation
-                                    </h5>
-                                    <p className="card-text">M1 Topic 4</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_4"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 5 Indefinite Integrals</h5>
-                                    <p className="card-text">M1 Topic 5</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_5"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 6 Definite Integrals</h5>
-                                    <p className="card-text">M1 Topic 6</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_6"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 7 Further Probability</h5>
-                                    <p className="card-text">M1 Topic 7</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_7"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 8 Discrete Random Variables</h5>
-                                    <p className="card-text">M1 Topic 8</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_8"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 9 Binomial, Geometric and Poisson Distributions
-                                    </h5>
-                                    <p className="card-text">M1 Topic 9</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_9"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Topic 10 Normal Distribution</h5>
-                                    <p className="card-text">M1 Topic 10</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_10"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">
-                                        Topic 11 Point and Interval Estimation
-                                    </h5>
-                                    <p className="card-text">M1 Topic 11</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="bytopic_11"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Topic 1 Binomial Expansion" description="M1 Topic 1" paperId="bytopic_1" />
+                        <DownloadCard title="Topic 2 Exponential and Logarithmic Functions" description="M1 Topic 2" paperId="bytopic_2" />
+                        <DownloadCard title="Topic 3 Derivatives and Differentiation of Functions" description="M1 Topic 3" paperId="bytopic_3" />
+                        <DownloadCard title="Topic 4 Applications of Differentiation" description="M1 Topic 4" paperId="bytopic_4" />
+                        <DownloadCard title="Topic 5 Indefinite Integrals" description="M1 Topic 5" paperId="bytopic_5" />
+                        <DownloadCard title="Topic 6 Definite Integrals" description="M1 Topic 6" paperId="bytopic_6" />
+                        <DownloadCard title="Topic 7 Further Probability" description="M1 Topic 7" paperId="bytopic_7" />
+                        <DownloadCard title="Topic 8 Discrete Random Variables" description="M1 Topic 8" paperId="bytopic_8" />
+                        <DownloadCard title="Topic 9 Binomial, Geometric and Poisson Distributions" description="M1 Topic 9" paperId="bytopic_9" />
+                        <DownloadCard title="Topic 10 Normal Distribution" description="M1 Topic 10" paperId="bytopic_10" />
+                        <DownloadCard title="Topic 11 Point and Interval Estimation" description="M1 Topic 11" paperId="bytopic_11" />
                     </div>
                     <hr className="my-4" />
                     {/* DSE Papers by Year */}
@@ -362,774 +112,128 @@ export default function M1Page() {
                     <h2 style={{ textAlign: "center" }}>2024</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2024 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2024_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2024 Paper" paperId="2024_pp" />
                     </div>
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 style={{ textAlign: "center" }}>2023</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2023 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2023_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2023 Paper" paperId="2023_pp" />
                     </div>
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 style={{ textAlign: "center" }}>2022</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2022 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2022 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2022_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2022 Paper" paperId="2022_pp" />
+                        <DownloadCard title="Marking Scheme" description="2022 Answer" paperId="2022_ans" />
                     </div>
                     <hr className="my-4" />
                     {/* 2021 */}
                     <h2 style={{ textAlign: "center" }}>2021</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2021 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2021 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2021 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2021_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2021 Paper" paperId="2021_pp" />
+                        <DownloadCard title="Marking Scheme" description="2021 Answer" paperId="2021_ans" />
+                        <DownloadCard title="Performance Report" description="2021 Performance Report" paperId="2021_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2020 */}
                     <h2 style={{ textAlign: "center" }}>2020</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2020 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2020 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2020 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2020_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2020 Paper" paperId="2020_pp" />
+                        <DownloadCard title="Marking Scheme" description="2020 Answer" paperId="2020_ans" />
+                        <DownloadCard title="Performance Report" description="2020 Performance Report" paperId="2020_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2019 */}
                     <h2 style={{ textAlign: "center" }}>2019</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2019 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2019 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2019 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2019_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2019 Paper" paperId="2019_pp" />
+                        <DownloadCard title="Marking Scheme" description="2019 Answer" paperId="2019_ans" />
+                        <DownloadCard title="Performance Report" description="2019 Performance Report" paperId="2019_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2018 */}
                     <h2 style={{ textAlign: "center" }}>2018</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2018 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2018 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2018 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2018_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2018 Paper" paperId="2018_pp" />
+                        <DownloadCard title="Marking Scheme" description="2018 Answer" paperId="2018_ans" />
+                        <DownloadCard title="Performance Report" description="2018 Performance Report" paperId="2018_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2017 */}
                     <h2 style={{ textAlign: "center" }}>2017</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2017 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2017 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2017 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2017_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2017 Paper" paperId="2017_pp" />
+                        <DownloadCard title="Marking Scheme" description="2017 Answer" paperId="2017_ans" />
+                        <DownloadCard title="Performance Report" description="2017 Performance Report" paperId="2017_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2016 */}
                     <h2 style={{ textAlign: "center" }}>2016</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2016 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2016 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2016 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2016_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2016 Paper" paperId="2016_pp" />
+                        <DownloadCard title="Marking Scheme" description="2016 Answer" paperId="2016_ans" />
+                        <DownloadCard title="Performance Report" description="2016 Performance Report" paperId="2016_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2015 */}
                     <h2 style={{ textAlign: "center" }}>2015</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2015 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2015 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2015 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2015_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2015 Paper" paperId="2015_pp" />
+                        <DownloadCard title="Marking Scheme" description="2015 Answer" paperId="2015_ans" />
+                        <DownloadCard title="Performance Report" description="2015 Performance Report" paperId="2015_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2014 */}
                     <h2 style={{ textAlign: "center" }}>2014</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2014 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2014 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2014 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2014_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2014 Paper" paperId="2014_pp" />
+                        <DownloadCard title="Marking Scheme" description="2014 Answer" paperId="2014_ans" />
+                        <DownloadCard title="Performance Report" description="2014 Performance Report" paperId="2014_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2013 */}
                     <h2 style={{ textAlign: "center" }}>2013</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2013 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2013 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2013 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2013_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2013 Paper" paperId="2013_pp" />
+                        <DownloadCard title="Marking Scheme" description="2013 Answer" paperId="2013_ans" />
+                        <DownloadCard title="Performance Report" description="2013 Performance Report" paperId="2013_per" />
                     </div>
                     <hr className="my-4" />
                     {/* 2012 */}
                     <h2 style={{ textAlign: "center" }}>2012</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Paper</h5>
-                                    <p className="card-text">2012 Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Marking Scheme</h5>
-                                    <p className="card-text">2012 Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Performance Report</h5>
-                                    <p className="card-text">2012 Performance Report</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="2012_per"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Paper" description="2012 Paper" paperId="2012_pp" />
+                        <DownloadCard title="Marking Scheme" description="2012 Answer" paperId="2012_ans" />
+                        <DownloadCard title="Performance Report" description="2012 Performance Report" paperId="2012_per" />
                     </div>
                     <hr className="my-4" />
                     {/* Practice Papers */}
                     <h2 style={{ textAlign: "center" }}>練習卷 / Practice Papers</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Practice Paper</h5>
-                                    <p className="card-text">Practice Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Practice Paper Marking Scheme</h5>
-                                    <p className="card-text">Practice Paper Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="pp_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Practice Paper" description="Practice Paper" paperId="pp_pp" />
+                        <DownloadCard title="Practice Paper Marking Scheme" description="Practice Paper Answer" paperId="pp_ans" />
                     </div>
                     <hr className="my-4" />
                     {/* Sample Papers */}
                     <h2 style={{ textAlign: "center" }}>樣本試卷 / Sample Papers</h2>
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Sample Paper</h5>
-                                    <p className="card-text">Sample Paper</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_pp"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">Sample Paper Marking Scheme</h5>
-                                    <p className="card-text">Sample Paper Answer</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="sp_ans"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="Sample Paper" description="Sample Paper" paperId="sp_pp" />
+                        <DownloadCard title="Sample Paper Marking Scheme" description="Sample Paper Answer" paperId="sp_ans" />
                     </div>
                     <hr className="my-4" />
                     {/* Historical M&S Papers */}
@@ -1139,707 +243,59 @@ export default function M1Page() {
                     <br />
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {/* 2013 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2013</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2013</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2013"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2013 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2013 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2013_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2013" description="Mathematics &amp; Statistics 2013" paperId="mands_2013" />
+                        <DownloadCard title="M&amp;S 2013 Marking Scheme" description="Mathematics &amp; Statistics 2013 Marking Scheme" paperId="mands_2013_ms" />
                         {/* 2012 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2012</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2012</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2012"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2012 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2012 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2012_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2012" description="Mathematics &amp; Statistics 2012" paperId="mands_2012" />
+                        <DownloadCard title="M&amp;S 2012 Marking Scheme" description="Mathematics &amp; Statistics 2012 Marking Scheme" paperId="mands_2012_ms" />
                         {/* 2011 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2011</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2011</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2011"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2011 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2011 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2011_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2011" description="Mathematics &amp; Statistics 2011" paperId="mands_2011" />
+                        <DownloadCard title="M&amp;S 2011 Marking Scheme" description="Mathematics &amp; Statistics 2011 Marking Scheme" paperId="mands_2011_ms" />
                         {/* 2010 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2010</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2010</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2010"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2010 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2010 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2010_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2010" description="Mathematics &amp; Statistics 2010" paperId="mands_2010" />
+                        <DownloadCard title="M&amp;S 2010 Marking Scheme" description="Mathematics &amp; Statistics 2010 Marking Scheme" paperId="mands_2010_ms" />
                         {/* 2009 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2009</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2009</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2009"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2009 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2009 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2009_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2009" description="Mathematics &amp; Statistics 2009" paperId="mands_2009" />
+                        <DownloadCard title="M&amp;S 2009 Marking Scheme" description="Mathematics &amp; Statistics 2009 Marking Scheme" paperId="mands_2009_ms" />
                         {/* 2008 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2008</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2008</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2008"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2008 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2008 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2008_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2008" description="Mathematics &amp; Statistics 2008" paperId="mands_2008" />
+                        <DownloadCard title="M&amp;S 2008 Marking Scheme" description="Mathematics &amp; Statistics 2008 Marking Scheme" paperId="mands_2008_ms" />
                         {/* 2007 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2007</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2007</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2007"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2007 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2007 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2007_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2007" description="Mathematics &amp; Statistics 2007" paperId="mands_2007" />
+                        <DownloadCard title="M&amp;S 2007 Marking Scheme" description="Mathematics &amp; Statistics 2007 Marking Scheme" paperId="mands_2007_ms" />
                         {/* 2006 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2006</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2006</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2006"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2006 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2006 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2006_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2006" description="Mathematics &amp; Statistics 2006" paperId="mands_2006" />
+                        <DownloadCard title="M&amp;S 2006 Marking Scheme" description="Mathematics &amp; Statistics 2006 Marking Scheme" paperId="mands_2006_ms" />
                         {/* 2005 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2005</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2005</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2005"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2005 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2005 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2005_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2005" description="Mathematics &amp; Statistics 2005" paperId="mands_2005" />
+                        <DownloadCard title="M&amp;S 2005 Marking Scheme" description="Mathematics &amp; Statistics 2005 Marking Scheme" paperId="mands_2005_ms" />
                         {/* 2004 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2004</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2004</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2004"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2004 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2004 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2004_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2004" description="Mathematics &amp; Statistics 2004" paperId="mands_2004" />
+                        <DownloadCard title="M&amp;S 2004 Marking Scheme" description="Mathematics &amp; Statistics 2004 Marking Scheme" paperId="mands_2004_ms" />
                         {/* 2003 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2003</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2003</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2003"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2003 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2003 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2003_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2003" description="Mathematics &amp; Statistics 2003" paperId="mands_2003" />
+                        <DownloadCard title="M&amp;S 2003 Marking Scheme" description="Mathematics &amp; Statistics 2003 Marking Scheme" paperId="mands_2003_ms" />
                         {/* 2002 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2002</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2002</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2002"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2002 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2002 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2002_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2002" description="Mathematics &amp; Statistics 2002" paperId="mands_2002" />
+                        <DownloadCard title="M&amp;S 2002 Marking Scheme" description="Mathematics &amp; Statistics 2002 Marking Scheme" paperId="mands_2002_ms" />
                         {/* 2001 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2001</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2001</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2001"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2001 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2001 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2001_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2001" description="Mathematics &amp; Statistics 2001" paperId="mands_2001" />
+                        <DownloadCard title="M&amp;S 2001 Marking Scheme" description="Mathematics &amp; Statistics 2001 Marking Scheme" paperId="mands_2001_ms" />
                         {/* 2000 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2000</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 2000</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2000"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 2000 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 2000 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_2000_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 2000" description="Mathematics &amp; Statistics 2000" paperId="mands_2000" />
+                        <DownloadCard title="M&amp;S 2000 Marking Scheme" description="Mathematics &amp; Statistics 2000 Marking Scheme" paperId="mands_2000_ms" />
                         {/* 1999 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1999</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 1999</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1999"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1999 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 1999 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1999_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 1999" description="Mathematics &amp; Statistics 1999" paperId="mands_1999" />
+                        <DownloadCard title="M&amp;S 1999 Marking Scheme" description="Mathematics &amp; Statistics 1999 Marking Scheme" paperId="mands_1999_ms" />
                         {/* 1998 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1998</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 1998</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1998"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1998 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 1998 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1998_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 1998" description="Mathematics &amp; Statistics 1998" paperId="mands_1998" />
+                        <DownloadCard title="M&amp;S 1998 Marking Scheme" description="Mathematics &amp; Statistics 1998 Marking Scheme" paperId="mands_1998_ms" />
                         {/* 1997 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1997</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 1997</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1997"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1997 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 1997 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1997_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 1997" description="Mathematics &amp; Statistics 1997" paperId="mands_1997" />
+                        <DownloadCard title="M&amp;S 1997 Marking Scheme" description="Mathematics &amp; Statistics 1997 Marking Scheme" paperId="mands_1997_ms" />
                         {/* 1996 */}
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1996</h5>
-                                    <p className="card-text">Mathematics &amp; Statistics 1996</p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1996"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
-                                <div className="card-body">
-                                    <h5 className="card-title">M&amp;S 1996 Marking Scheme</h5>
-                                    <p className="card-text">
-                                        Mathematics &amp; Statistics 1996 Marking Scheme
-                                    </p>
-                                </div>
-                                <div className="card-footer bg-transparent border-0">
-                                    <a
-                                        href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
-                                        data-paper-id="mands_1996_ms"
-                                    >
-                                        <BiDownload style={{ fontSize: 22 }} />
-                                        Download
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <DownloadCard title="M&amp;S 1996" description="Mathematics &amp; Statistics 1996" paperId="mands_1996" />
+                        <DownloadCard title="M&amp;S 1996 Marking Scheme" description="Mathematics &amp; Statistics 1996 Marking Scheme" paperId="mands_1996_ms" />
                     </div>
                     <hr className="my-4" />
                 </div>
