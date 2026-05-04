@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(python3 -c \"import json,sys; p=json.load\\(sys.stdin\\); print\\('SCRIPTS:', list\\(p.get\\('scripts',{}\\).keys\\(\\)\\)\\); print\\('DEPS:', list\\(p.get\\('dependencies',{}\\).keys\\(\\)\\)\\); print\\('DEVDEPS:', list\\(p.get\\('devDependencies',{}\\).keys\\(\\)\\)\\)\")",
+      "Bash(node *)",
+      "Bash(cp /c/Users/C18/documents/github/dbest-v1/utils/pageMetadata.legacy.ts /c/Users/C18/documents/github/dbest-v1/utils/pageMetadata.ts)",
+      "Bash(rm /c/Users/C18/documents/github/dbest-v1/utils/pageMetadata.legacy.ts)",
+      "Bash(npx next *)",
+      "Bash(grep \"^\\\\\\\\.\" styles/globals.css)",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -I http://localhost:3001/blog)",
+      "Bash(pkill -f \"next dev\")",
+      "PowerShell(Get-Process node)",
+      "PowerShell(Stop-Process -Force 2>$null)",
+      "PowerShell($null)"
+    ]
+  }
+}

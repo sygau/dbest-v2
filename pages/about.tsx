@@ -1,38 +1,19 @@
-import Head from 'next/head'
-import { getMainPageMetadata } from '../utils/structuredData';
+import PageSEO from '../components/PageSEO'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 
 export default function AboutPage() {
-  const metadata = getMainPageMetadata('about');
-
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
+            <PageSEO
+              title="關於 dse.best"
+              description="關於 dse.best，我們致力於為香港DSE考生提供最優質的學習資源，包括歷屆試題、考試技巧和學習指南。"
+              ogTitle="關於 dse.best"
+              ogDescription="關於 dse.best，我們致力於為香港DSE考生提供最優質的學習資源，包括歷屆試題、考試技巧和學習指南。"
+              ogUrl="https://dse.best/about"
+              robots={['index', 'follow']}
+            />
 
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-            </Head>
-
-                {/*breadcrumb*/}
-                <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div className="breadcrumb-title pe-3">其他</div>
-                    <div className="ps-3">
-                        <nav aria-label="breadcrumb">
-                            <ol className="breadcrumb mb-0 p-0">
-                                <li className="breadcrumb-item active" aria-current="page">
-                                    關於我們
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-                {/*end breadcrumb*/}
+                <PageBreadcrumb section="其他" text="關於我們" />
                 <div className="card rounded-4" style={{ height: "auto" }}>
                     <div className="card-body">
                         <h1>關於我們 About Us</h1>

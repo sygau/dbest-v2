@@ -8,9 +8,9 @@ import {
   BiPlanet
 } from 'react-icons/bi'
 import { getChatConfig } from '../../utils/chatToggle'
-import { Private } from '../Private'
 import NavigationLink from '../NavigationLink'
 import { cn } from '../../lib/cn'
+import { useTheme } from './ThemeProvider'
 
 interface SidebarProps {
   isOpen: boolean
@@ -35,7 +35,7 @@ function NavItem({ href, icon, label, isCollapsed, isMobileSheet }: NavItemProps
       <NavigationLink
         href={href}
         className={cn(
-          'flex items-center gap-2.5 py-[6px] text-[15px] rounded transition-colors duration-200 tracking-wide',
+          'flex items-center gap-2.5 py-[6px] text-[15px] transition-colors duration-200 tracking-wide',
           isCollapsed && !isMobileSheet ? 'justify-center px-0' : 'px-3',
           'text-[var(--color-sidebar-text)] hover:text-[var(--color-sidebar-active)] hover:bg-[var(--color-sidebar-hover)]',
           isActive && 'text-[var(--color-sidebar-active)] bg-[var(--color-sidebar-hover)]'
@@ -74,8 +74,10 @@ function SidebarLogo() {
 }
 
 function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: boolean; isMobileSheet: boolean; onClose: () => void }) {
+  const { theme } = useTheme()
   const chatConfig = getChatConfig()
   const collapsed = isCollapsed && !isMobileSheet
+  const dotColor = theme === 'light' ? '#4a148c' : '#c390ff'
 
   return (
     <>
@@ -101,7 +103,7 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
                 marginTop: '3px',
                 marginBottom: 0
               }}>
-                dse<span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#c4b5fd' }}>●</span><span style={{ fontWeight: 'bold' }}>best</span>
+                dse<span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: dotColor }}>●</span><span style={{ fontWeight: 'bold' }}>best</span>
               </h5>
             </NavigationLink>
           </div>
@@ -131,27 +133,25 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>Offer</MenuLabel>
           <NavItem href="/eng-writing" icon={<BiBot style={{ color: '#d4a017', fontSize: 23 }} />} label="免費英文寫作批改" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
-          <Private>
-            <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>核心科目</MenuLabel>
-            <NavItem href="/chinese" icon={<BiBook style={{ color: '#ff69b4', fontSize: 23 }} />} label="中文 Chinese" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/english" icon={<BiBook style={{ color: '#40c4ff', fontSize: 23 }} />} label="英文 English" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/math" icon={<BiCalculator style={{ color: '#d4a017', fontSize: 23 }} />} label="數學 Math" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/citizen" icon={<BiGlobe style={{ color: '#28a745', fontSize: 23 }} />} label="公民 CSD" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>核心科目</MenuLabel>
+          <NavItem href="/chinese" icon={<BiBook style={{ color: '#ff69b4', fontSize: 23 }} />} label="中文 Chinese" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/english" icon={<BiBook style={{ color: '#40c4ff', fontSize: 23 }} />} label="英文 English" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/math" icon={<BiCalculator style={{ color: '#d4a017', fontSize: 23 }} />} label="數學 Math" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/citizen" icon={<BiGlobe style={{ color: '#28a745', fontSize: 23 }} />} label="公民 CSD" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
-            <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>選修科目</MenuLabel>
-            <NavItem href="/physics" icon={<BiBot style={{ color: '#7c3aed', fontSize: 23 }} />} label="物理 Physics" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/chemistry" icon={<BiTestTube style={{ color: '#059669', fontSize: 23 }} />} label="化學 Chemistry" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/biology" icon={<BiLeaf style={{ color: '#15803d', fontSize: 23 }} />} label="生物 Biology" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/ict" icon={<BiLaptop style={{ color: '#ff3d00', fontSize: 23 }} />} label="資訊及通訊科技 ICT" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/m1" icon={<BiCalculator style={{ color: '#b388ff', fontSize: 23 }} />} label="M1" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/m2" icon={<BiCalculator style={{ color: '#0d9488', fontSize: 23 }} />} label="M2" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/geography" icon={<BiGlobe style={{ color: '#0f766e', fontSize: 23 }} />} label="地理 Geography" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/economics" icon={<BiMoney style={{ color: '#d97706', fontSize: 23 }} />} label="經濟 Economics" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/bafs" icon={<BiBriefcase style={{ color: '#0d9488', fontSize: 23 }} />} label="企業、會計與財務概論 BAFS" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/history" icon={<BiBook style={{ color: '#ffab91', fontSize: 23 }} />} label="歷史 History" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/chinese-history" icon={<BiBook style={{ color: '#ff1744', fontSize: 23 }} />} label="中國歷史 Chinese History" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-            <NavItem href="/ths" icon={<BiPlanet style={{ color: '#2196f3', fontSize: 23 }} />} label="旅遊與款待 Tourism & Hospitality" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-          </Private>
+          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>選修科目</MenuLabel>
+          <NavItem href="/physics" icon={<BiBot style={{ color: '#7c3aed', fontSize: 23 }} />} label="物理 Physics" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/chemistry" icon={<BiTestTube style={{ color: '#059669', fontSize: 23 }} />} label="化學 Chemistry" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/biology" icon={<BiLeaf style={{ color: '#15803d', fontSize: 23 }} />} label="生物 Biology" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/ict" icon={<BiLaptop style={{ color: '#ff3d00', fontSize: 23 }} />} label="資訊及通訊科技 ICT" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/m1" icon={<BiCalculator style={{ color: '#b388ff', fontSize: 23 }} />} label="M1" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/m2" icon={<BiCalculator style={{ color: '#0d9488', fontSize: 23 }} />} label="M2" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/geography" icon={<BiGlobe style={{ color: '#0f766e', fontSize: 23 }} />} label="地理 Geography" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/economics" icon={<BiMoney style={{ color: '#d97706', fontSize: 23 }} />} label="經濟 Economics" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/bafs" icon={<BiBriefcase style={{ color: '#0d9488', fontSize: 23 }} />} label="企業、會計與財務概論 BAFS" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/history" icon={<BiBook style={{ color: '#ffab91', fontSize: 23 }} />} label="歷史 History" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/chinese-history" icon={<BiBook style={{ color: '#ff1744', fontSize: 23 }} />} label="中國歷史 Chinese History" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/ths" icon={<BiPlanet style={{ color: '#2196f3', fontSize: 23 }} />} label="旅遊與款待 Tourism & Hospitality" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>工具</MenuLabel>
           <NavItem href="/12p" icon={<BiBookReader style={{ color: '#ff6b9d', fontSize: 23 }} />} label="十二篇語譯練習" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />

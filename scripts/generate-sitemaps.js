@@ -2,16 +2,14 @@ const fs = require('fs-extra');
 const path = require('path');
 const { generateCoreSitemap } = require('./generate-sitemap-core');
 const { generateSubjectsSitemap } = require('./generate-sitemap-subjects');
-const { generateBlogSitemap } = require('./generate-blog-sitemap');
-
 async function generateAllSitemaps() {
   console.log('🚀 Starting full sitemap generation...');
-  
+
   try {
     // 1. Generate individual sitemaps
     await generateCoreSitemap();
     await generateSubjectsSitemap();
-    await generateBlogSitemap();
+    // blog sitemap: pending Sanity implementation
     
     // 2. Create sitemap index (sitemap.xml)
     const sitemapXmlPath = path.join(__dirname, '..', 'public', 'sitemap.xml');

@@ -1,38 +1,19 @@
-import Head from 'next/head'
-import { getMainPageMetadata } from '../utils/structuredData';
+import PageSEO from '../components/PageSEO'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 
 export default function DisclaimerPage() {
-    const metadata = getMainPageMetadata('disclaimer');
-
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
+            <PageSEO
+              title="免責聲明 Disclaimer"
+              description="dse.best 免責聲明。本網站提供的所有DSE學習資源及資訊僅供參考，不構成任何法律或學術建議。"
+              ogTitle="免責聲明 Disclaimer"
+              ogDescription="dse.best 免責聲明。本網站提供的所有DSE學習資源及資訊僅供參考。"
+              ogUrl="https://dse.best/disclaimer"
+              robots={['index', 'follow']}
+            />
 
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-            </Head>
-
-            {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">其他</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item active" aria-current="page">
-                                免責聲明
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            {/*end breadcrumb*/}
+            <PageBreadcrumb section="其他" text="免責聲明" />
             <div className="card rounded-4" style={{ minHeight: 'auto' }}>
                 <div className="card-body">
                     <h1>免責聲明 Disclaimer</h1>

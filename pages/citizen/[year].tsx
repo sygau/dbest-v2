@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import PageSEO from '../../components/PageSEO'
+import PageBreadcrumb from '../../components/PageBreadcrumb'
 import { BiDownload } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import fs from 'fs'
@@ -58,57 +59,33 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
 
   return (
     <>
-      <Head>
-        <title>{meta.seoTitle}</title>
-        <meta name="description" content={meta.seoDescription} />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content={meta.seoTitle} />
-        <meta property="og:description" content={meta.seoDescription} />
-        <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-        <meta property="og:url" content={`https://dse.best/citizen/${year}`} />
-        <meta property="og:type" content="website" />
-        
-        {/* Structured Data for Year Page */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": meta.seoTitle,
-              "description": meta.seoDescription,
-              "url": `https://dse.best/citizen/${year}`,
-              "mainEntity": {
-                "@type": "Dataset",
-                "name": `DSE 公民與社會發展科 ${year} 歷屆試題`,
-                "description": `${year}年香港中學文憑試公民與社會發展科試卷及答案`,
-                "keywords": [`DSE ${year}`, "公民與社會發展科", "Citizenship and Social Development", "Past Papers"],
-                "creator": {
-                  "@type": "Organization",
-                  "name": "dse.best"
-                }
-              }
-            })
-          }}
-        />
-      </Head>
+      <PageSEO
+        title={meta.seoTitle}
+        description={meta.seoDescription}
+        ogImage="https://dse.best/assets/images/logo-icon.png"
+        ogUrl={`https://dse.best/citizen/${year}`}
+        robots={['index', 'follow']}
+        jsonLd={[{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": meta.seoTitle,
+          "description": meta.seoDescription,
+          "url": `https://dse.best/citizen/${year}`,
+          "mainEntity": {
+            "@type": "Dataset",
+            "name": `DSE 公民與社會發展科 ${year} 歷屆試題`,
+            "description": `${year}年香港中學文憑試公民與社會發展科試卷及答案`,
+            "keywords": [`DSE ${year}`, "公民與社會發展科", "Citizenship and Social Development", "Past Papers"],
+            "creator": {
+              "@type": "Organization",
+              "name": "dse.best"
+            }
+          }
+        }]}
+      />
 
       {/* Breadcrumb */}
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">公民與社會發展科</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item">
-                <NavigationLink href="/citizen">DSE Past Paper</NavigationLink>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">{year}</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageBreadcrumb section="公民與社會發展科" text={year} />
 
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
@@ -124,10 +101,10 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
           
           {/* Papers Grid */}
           {papers.length > 0 ? (
-            <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {papers.map((paper) => (
                 <div key={paper.paperId} className="col">
-                  <div className="card h-100 d-flex flex-column">
+                  <div className="card h-full flex flex-col">
                     <div className="card-body">
                       <h5 className="card-title">{paper.title}</h5>
                       <p className="card-text">{paper.description}</p>
@@ -135,7 +112,7 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
                     <div className="card-footer bg-transparent border-0">
                       <a
                         href="#"
-                        className="btn btn-info px-4 d-inline-flex gap-2"
+                        className="btn btn-info px-4 inline-flex gap-2"
                         data-paper-id={paper.paperId}
                       >
                         <BiDownload style={{ fontSize: 22 }} />
@@ -147,8 +124,8 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
               ))}
             </div>
           ) : (
-            <div className="alert alert-info" role="alert">
-              <h5 className="alert-heading">暫無{year}年試卷</h5>
+            <div className="bg-blue-50 border border-blue-400 text-blue-800 px-4 py-3 rounded" role="alert">
+              <h5 className="font-semibold mb-2">暫無{year}年試卷</h5>
               <p className="mb-0">
                 {year}年公民與社會發展科試卷尚未上載，請稍後再查看或瀏覽其他年份的試卷。
               </p>
@@ -158,10 +135,10 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
           <hr className="my-4" />
 
           {/* Year Navigation */}
-          <div className="row mt-5">
-            <div className="col-12">
+          <div className="mt-5">
+            <div>
               <h3 className="mb-4">其他年份</h3>
-              <div className="d-flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {AVAILABLE_YEARS.map((yearStr) => {
                   const yearNum = parseInt(yearStr);
                   const isCurrentYear = yearNum === parseInt(year);
@@ -207,7 +184,7 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
             <p className="mb-4">Access all years (2024+), sample papers, and comprehensive study materials.</p>
             <NavigationLink 
               href="/citizen" 
-              className="btn btn-primary btn-lg d-inline-flex align-items-center gap-3"
+              className="btn btn-primary btn-lg inline-flex align-items-center gap-3"
               style={{
                 borderRadius: '25px',
                 padding: '1rem 2rem',

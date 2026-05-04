@@ -3,9 +3,9 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { Noto_Sans_HK } from 'next/font/google'
 import '../styles/tailwind.css'
+import '../styles/blog-post.css'
 import { ThemeProvider } from '../components/tw/ThemeProvider'
 import Layout from '../components/tw/Layout'
-import PageTransition from '../components/PageTransition'
 import usePdfTracking from '../hooks/usePdfTracking'
 import { useRouter } from 'next/router'
 
@@ -38,9 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </Head>
 
         <Layout>
-          <PageTransition>
-            <Component {...pageProps} />
-          </PageTransition>
+          <Component {...pageProps} />
         </Layout>
       </ThemeProvider>
     </div>

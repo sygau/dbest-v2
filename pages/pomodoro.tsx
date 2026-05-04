@@ -1,9 +1,6 @@
-import Head from 'next/head';
 import { useState, useEffect, useRef } from 'react';
-import {
-  generatePomodoroStructuredData,
-  getMainPageMetadata
-} from '../utils/structuredData';
+import PageSEO from '../components/PageSEO';
+import PageBreadcrumb from '../components/PageBreadcrumb';
 import { BiReset, BiPlay, BiPause, BiCog, BiTime, BiCheckCircle, BiBulb, BiListCheck, BiTrophy } from 'react-icons/bi';
 
 // 1. Types & Config
@@ -42,10 +39,6 @@ export default function PomodoroPage() {
   const startTimeRef = useRef<number>(0);
   const timeLeftRef = useRef<number>(timeLeft);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  // --- Metadata ---
-  const metadata = getMainPageMetadata('pomodoro');
-  const structuredData = generatePomodoroStructuredData ? generatePomodoroStructuredData() : {};
 
   // --- Effects ---
 
@@ -192,40 +185,19 @@ export default function PomodoroPage() {
 
   return (
     <>
-      <Head>
-        <title>{metadata?.title || 'DSE 番茄鐘 Pomodoro Timer | 專注學習工具'}</title>
-        <meta name="description" content={metadata?.description || 'DSE 番茄鐘 Pomodoro Timer 專注學習工具，幫助DSE學生提高學習效率，合理安排學習和休息時間。'} />
-        <meta name="robots" content={metadata?.robots || 'index, follow'} />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content={metadata?.ogTitle || 'DSE 番茄鐘 Pomodoro Timer | 專注學習工具'} />
-        <meta property="og:description" content={metadata?.ogDescription || 'DSE 番茄鐘 Pomodoro Timer 專注學習工具，幫助DSE學生提高學習效率，合理安排學習和休息時間。'} />
-        <meta property="og:image" content={metadata?.ogImage || 'https://dse.best/assets/images/logo-icon.png'} />
-        <meta property="og:url" content={metadata?.ogUrl || 'https://dse.best/pomodoro'} />
-        <meta property="og:type" content={metadata?.ogType || 'website'} />
-
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(generatePomodoroStructuredData())
-          }}
-        />
-      </Head>
+      <PageSEO
+        title="番茄鐘 Pomodoro Timer | DSE 學習工具"
+        description="番茄鐘 Pomodoro Timer | DSE 學習工具，幫助DSE學生提高學習效率，合理安排學習和休息時間。採用番茄工作法，25分鐘專注學習，5分鐘休息，提升學習效果。"
+        ogTitle="番茄鐘 Pomodoro Timer | DSE 學習工具"
+        ogDescription="番茄鐘 Pomodoro Timer DSE 學習工具，幫助DSE學生提高學習效率，合理安排學習和休息時間。採用番茄工作法，25分鐘專注學習，5分鐘休息。"
+        ogUrl="https://dse.best/pomodoro"
+        robots={['index', 'follow']}
+        pageKey="pomodoro"
+      />
 
       <div className="page-wrapper">
 
-        {/* Breadcrumb */}
-        <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-          <div className="breadcrumb-title pe-3">工具</div>
-          <div className="ps-3">
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb mb-0 p-0">
-                <li className="breadcrumb-item active" aria-current="page">番茄鐘 Pomodoro</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
+        <PageBreadcrumb section="工具" text="番茄鐘 Pomodoro" />
 
         <div className="layout-center">
           <audio ref={audioRef} src="/sounds/alarm.mp3" preload="auto" />
@@ -395,25 +367,22 @@ export default function PomodoroPage() {
           max-width: 420px;
           display: flex;
           flex-direction: column;
-          gap: 20px; /* Spacing between Timer and Stats */
+          gap: 20px;
         }
 
-        /* --- TIMER CARD --- */
         .timer-card {
-          background: var(--bs-card-bg, #ffffff);
+          background: var(--color-card-bg, #ffffff);
           border-radius: 24px;
           padding: 2.5rem;
-          box-shadow: 
-            0 10px 15px -3px rgba(0, 0, 0, 0.05),
-            0 4px 6px -2px rgba(0, 0, 0, 0.025);
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
           display: flex;
           flex-direction: column;
           align-items: center;
           position: relative;
-          border: 1px solid var(--bs-border-color, transparent);
-          border-top: 6px solid ${currentTheme.color}; 
+          border: 1px solid var(--color-border-color, transparent);
+          border-top: 6px solid ${currentTheme.color};
           transition: border-color 0.3s ease;
-          color: var(--bs-body-color, #5b6166);
+          color: var(--color-body, #5b6166);
         }
 
         .card-header-block {
@@ -425,16 +394,15 @@ export default function PomodoroPage() {
         .card-title {
           font-size: 2.6rem;
           font-weight: 800;
-          color: var(--bs-heading-color, #111827);
+          color: var(--color-heading-color, #111827);
           letter-spacing: -0.03em;
           line-height: 1.1;
           margin: 0;
         }
 
-        /* Mode Switcher */
         .mode-switcher {
           display: flex;
-          background: var(--bs-tertiary-bg, #f3f4f6);
+          background: var(--color-tertiary-bg, #f3f4f6);
           padding: 4px;
           border-radius: 12px;
           margin-bottom: 2rem;
@@ -448,7 +416,7 @@ export default function PomodoroPage() {
           padding: 8px 4px;
           font-size: 0.85rem;
           font-weight: 600;
-          color: var(--bs-secondary-color, #6b7280);
+          color: var(--color-secondary-color, #6b7280);
           cursor: pointer;
           border-radius: 8px;
           transition: all 0.2s;
@@ -456,16 +424,15 @@ export default function PomodoroPage() {
         }
 
         .mode-btn.active {
-          background: var(--bs-secondary-bg, white);
+          background: var(--color-secondary-bg, white);
           color: ${currentTheme.color};
           box-shadow: 0 1px 4px rgba(0,0,0,0.15);
         }
 
-        /* Time Display */
         .time-display {
           font-size: 5rem;
           font-weight: 700;
-          color: var(--bs-heading-color, #1f2937);
+          color: var(--color-heading-color, #1f2937);
           font-feature-settings: "tnum";
           font-variant-numeric: tabular-nums;
           line-height: 1;
@@ -473,7 +440,6 @@ export default function PomodoroPage() {
           letter-spacing: -2px;
         }
 
-        /* Actions */
         .actions {
           display: flex;
           align-items: center;
@@ -508,18 +474,18 @@ export default function PomodoroPage() {
         }
 
         .primary-btn.active-state {
-            background: var(--bs-tertiary-bg, #f3f4f6);
-            color: var(--bs-body-color, #374151);
+            background: var(--color-tertiary-bg, #f3f4f6);
+            color: var(--color-body, #374151);
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .reset-btn {
           width: 56px;
           height: 56px;
-          border: 2px solid var(--bs-border-color, #f3f4f6);
+          border: 2px solid var(--color-border-color, #f3f4f6);
           background: transparent;
           border-radius: 16px;
-          color: var(--bs-secondary-color, #6b7280);
+          color: var(--color-secondary-color, #6b7280);
           font-size: 1.5rem;
           display: flex;
           align-items: center;
@@ -529,16 +495,15 @@ export default function PomodoroPage() {
         }
 
         .reset-btn:hover {
-          border-color: var(--bs-border-color, #e5e7eb);
-          background: var(--bs-tertiary-bg, #f9fafb);
-          color: var(--bs-body-color, #374151);
+          border-color: var(--color-border-color, #e5e7eb);
+          background: var(--color-tertiary-bg, #f9fafb);
+          color: var(--color-body, #374151);
         }
 
-        /* Settings Area */
         .settings-toggle-btn {
           background: none;
           border: none;
-          color: var(--bs-secondary-color, #9ca3af);
+          color: var(--color-secondary-color, #9ca3af);
           font-size: 0.9rem;
           cursor: pointer;
           display: flex;
@@ -547,10 +512,10 @@ export default function PomodoroPage() {
           padding: 8px;
           border-radius: 6px;
         }
-        
+
         .settings-toggle-btn:hover {
-          color: var(--bs-body-color, #4b5563);
-          background: var(--bs-tertiary-bg, #f9fafb);
+          color: var(--color-body, #4b5563);
+          background: var(--color-tertiary-bg, #f9fafb);
         }
 
         .settings-panel {
@@ -558,7 +523,7 @@ export default function PomodoroPage() {
           max-height: 0;
           overflow: hidden;
           transition: max-height 0.3s ease-in-out, margin-top 0.3s;
-          background: var(--bs-tertiary-bg, #f8fafc);
+          background: var(--color-tertiary-bg, #f8fafc);
           border-radius: 12px;
         }
 
@@ -566,7 +531,7 @@ export default function PomodoroPage() {
           max-height: 200px;
           margin-top: 1rem;
           padding: 1rem;
-          border: 1px solid var(--bs-border-color, #e2e8f0);
+          border: 1px solid var(--color-border-color, #e2e8f0);
         }
 
         .settings-grid {
@@ -582,22 +547,21 @@ export default function PomodoroPage() {
 
         .setting-item label {
           font-size: 0.75rem;
-          color: var(--bs-secondary-color, #64748b);
+          color: var(--color-secondary-color, #64748b);
           margin-bottom: 4px;
         }
 
         .setting-item input {
           width: 100%;
           padding: 8px;
-          border: 1px solid var(--bs-border-color, #cbd5e1);
+          border: 1px solid var(--color-border-color, #cbd5e1);
           border-radius: 8px;
           font-size: 0.9rem;
           text-align: center;
-          color: var(--bs-body-color, #374151);
-          background-color: var(--bs-card-bg, #fff);
+          color: var(--color-body, #374151);
+          background-color: var(--color-card-bg, #fff);
         }
 
-        /* --- STATISTICS CARDS --- */
         .stats-container {
             display: flex;
             flex-direction: column;
@@ -605,15 +569,15 @@ export default function PomodoroPage() {
         }
 
         .stat-card {
-          background: var(--bs-card-bg, white);
+          background: var(--color-card-bg, white);
           border-radius: 16px;
           padding: 16px 24px;
           display: flex;
           align-items: center;
           gap: 16px;
           box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-          border: 1px solid var(--bs-border-color, rgba(0,0,0,0.04));
-          color: var(--bs-body-color, #5b6166);
+          border: 1px solid var(--color-border-color, rgba(0,0,0,0.04));
+          color: var(--color-body, #5b6166);
         }
 
         .stat-icon {
@@ -633,77 +597,78 @@ export default function PomodoroPage() {
 
         .stat-label {
           font-size: 0.85rem;
-          color: var(--bs-secondary-color, #6b7280);
+          color: var(--color-secondary-color, #6b7280);
           font-weight: 500;
         }
 
         .stat-value {
           font-size: 1.25rem;
           font-weight: 700;
-          color: var(--bs-heading-color, #1f2937);
+          color: var(--color-heading-color, #1f2937);
           font-feature-settings: "tnum";
           font-variant-numeric: tabular-nums;
         }
-          .info-card {
-    background: var(--bs-card-bg, white);
-    border-radius: 24px;
-    padding: 2rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
-    color: var(--bs-body-color, #4b5563);
-    margin-top: 1rem;
-    border: 1px solid var(--bs-border-color, transparent);
-  }
 
-  .info-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--bs-heading-color, #1f2937);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+        .info-card {
+          background: var(--color-card-bg, white);
+          border-radius: 24px;
+          padding: 2rem;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+          color: var(--color-body, #4b5563);
+          margin-top: 1rem;
+          border: 1px solid var(--color-border-color, transparent);
+        }
 
-  .title-icon {
-    color: #f59e0b; /* Amber color for bulb */
-    font-size: 1.5rem;
-  }
+        .info-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--color-heading-color, #1f2937);
+          margin-bottom: 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
 
-  .info-section h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--bs-heading-color, #374151);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+        .title-icon {
+          color: #f59e0b;
+          font-size: 1.5rem;
+        }
 
-  .info-section ul {
-    padding-left: 1.2rem;
-    margin-bottom: 0;
-  }
+        .info-section h4 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--color-heading-color, #374151);
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
 
-  .info-section li {
-    margin-bottom: 0.8rem;
-    line-height: 1.6;
-    font-size: 0.95rem;
-  }
+        .info-section ul {
+          padding-left: 1.2rem;
+          margin-bottom: 0;
+        }
 
-  .info-section li:last-child {
-    margin-bottom: 0;
-  }
+        .info-section li {
+          margin-bottom: 0.8rem;
+          line-height: 1.6;
+          font-size: 0.95rem;
+        }
 
-  .info-section strong {
-    color: var(--bs-emphasis-color, #111827);
-    font-weight: 600;
-  }
+        .info-section li:last-child {
+          margin-bottom: 0;
+        }
 
-  .divider {
-    height: 1px;
-    background: var(--bs-border-color, #e5e7eb);
-    margin: 1.5rem 0;
-  }
+        .info-section strong {
+          color: var(--color-emphasis-color, #111827);
+          font-weight: 600;
+        }
+
+        .divider {
+          height: 1px;
+          background: var(--color-border-color, #e5e7eb);
+          margin: 1.5rem 0;
+        }
 
         @media (max-width: 480px) {
           .timer-card {

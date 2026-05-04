@@ -81,7 +81,6 @@ The site was migrated from a jQuery + Bootstrap SCSS setup to Next.js + Tailwind
 | Light | `light` | `#eff1f3` | `#ffffff` |
 | Dark | `dark` | `#212529` | `#2b3035` |
 | Blue | `blue` | `#0f1535` | `#070c29` |
-| Semi-Dark | `light` (same as light for content) | `#eff1f3` | `#ffffff` |
 
 Semi-dark uses light content area with dark sidebar — handled via sidebar-specific overrides.
 

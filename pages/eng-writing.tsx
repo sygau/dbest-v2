@@ -1,53 +1,20 @@
-import Head from 'next/head'
 import Image from 'next/image'
+import PageSEO from '../components/PageSEO'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 
 export default function EngWritingPage() {
-    const metadata = {
-        title: 'Free DSE English Writing Marking Service | dse.best',
-        description: 'Get personalized feedback on your DSE English Paper 2 writing from Louise, an experienced tutor. Free marking service with detailed comments on grammar, vocabulary, and structure.',
-        robots: 'noindex, nofollow',
-        ogTitle: 'Free DSE English Writing Marking Service',
-        ogDescription: 'Get personalized feedback on your DSE English Paper 2 writing from an experienced tutor. Completely free marking service.',
-        ogImage: 'https://dse.best/assets/images/logo-icon.png',
-        ogUrl: 'https://dse.best/eng-writing',
-        ogType: 'website'
-    };
-
     return (
         <>
-            <Head>
-                <title>{metadata.title}</title>
-                <meta name="description" content={metadata.description} />
-                <meta name="robots" content={metadata.robots} />
+            <PageSEO
+              title="Free DSE English Writing Marking Service"
+              description="Get personalized feedback on your DSE English Paper 2 writing from Louise, an experienced tutor. Free marking service with detailed comments on grammar, vocabulary, and structure."
+              ogTitle="Free DSE English Writing Marking Service"
+              ogDescription="Get personalized feedback on your DSE English Paper 2 writing from an experienced tutor. Completely free marking service."
+              ogUrl="https://dse.best/eng-writing"
+              robots={['noindex', 'nofollow']}
+            />
 
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata.ogTitle} />
-                <meta property="og:description" content={metadata.ogDescription} />
-                <meta property="og:image" content={metadata.ogImage} />
-                <meta property="og:url" content={metadata.ogUrl} />
-                <meta property="og:type" content={metadata.ogType} />
-
-                {/* Twitter Card Meta Tags */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={metadata.ogTitle} />
-                <meta name="twitter:description" content={metadata.ogDescription} />
-                <meta name="twitter:image" content={metadata.ogImage} />
-            </Head>
-
-            {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">English</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item active" aria-current="page">
-                                English Writing Marking
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            {/*end breadcrumb*/}
+            <PageBreadcrumb section="English" text="English Writing Marking" />
 
             <div className="card rounded-4" style={{ height: "auto" }}>
     <div className="card-body">

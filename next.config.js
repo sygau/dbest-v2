@@ -27,10 +27,7 @@ const nextConfig = {
     unoptimized: true,
     domains: [
       'images.ctfassets.net', // Contentful CDN
-      'dummyimage.com', // Fallback images
-      'placehold.co', // Placeholder images
       'dse.best', // Your domain
-      'nextjs.dse.best' // Preview domain
     ],
   },
   
@@ -104,15 +101,7 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
-          },
-          /* {
-            key: 'Content-Security-Policy-Report-Only',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://cdn.jsdelivr.net https://code.jquery.com https://vercel.com https://cdn.ably.com https://rest.ably.io https://*.pages.dev https://*.disqus.com https://*.liadm.com https://*.privacymanager.io; style-src 'self' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com https://*.googleadservices.com https://cdn.jsdelivr.net https://dbest-cdn.pages.dev; font-src 'self' https://*.gstatic.com https://*.googleapis.com https://cdn.jsdelivr.net https://dbest-cdn.pages.dev; img-src 'self' data: https: https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://images.ctfassets.net https://dbest-cdn.pages.dev https://dummyimage.com https://*.disqus.com https://*.liadm.com https://*.privacymanager.io https://www.hkeaa.edu.hk; connect-src 'self' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://dse.best https://dbest-cdn.pages.dev https://vercel.com https://cdn.ably.com https://rest.ably.io https://*.ably-realtime.com wss://realtime.ably.io https://api.web3forms.com https://*.disqus.com https://disqus.com https://*.liadm.com https://*.privacymanager.io; frame-src 'self' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://dbest-cdn.pages.dev https://*.dse.best https://*.disqus.com https://disqus.com https://*.liadm.com https://*.privacymanager.io; frame-ancestors 'none';"
-          }, */
-          {
-            key: 'Content-Security-Policy-Report-Only',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com https://cdn.jsdelivr.net https://code.jquery.com https://vercel.com https://cdn.ably.com https://rest.ably.io https://*.pages.dev https://*.disqus.com https://*.privacymanager.io https://launchpad-wrapper.privacymanager.io https://launchpad.privacymanager.io; style-src 'self' 'unsafe-inline' https://*.googleapis.com https://*.gstatic.com https://*.googleadservices.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://dbest-cdn.pages.dev; font-src 'self' https://*.gstatic.com https://*.googleapis.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://dbest-cdn.pages.dev; img-src 'self' data: https: https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://images.ctfassets.net https://dbest-cdn.pages.dev https://dummyimage.com https://placehold.co https://*.disqus.com https://*.liadm.com https://*.privacymanager.io https://www.hkeaa.edu.hk; connect-src 'self' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://fundingchoicesmessages.google.com https://dse.best https://api-v2.dse.best https://dbest-cdn.pages.dev https://vercel.com https://cdn.ably.com https://rest.ably.io https://*.ably-realtime.com wss://realtime.ably.io https://api.web3forms.com https://*.disqus.com https://disqus.com https://*.liadm.com https://*.privacymanager.io https://rp.liadm.com; frame-src 'self' https://*.google.com https://*.googleapis.com https://*.gstatic.com https://*.googlesyndication.com https://*.googleadservices.com https://*.doubleclick.net https://*.googletagmanager.com https://*.google-analytics.com https://*.adsensecustomsearchads.com https://*.adtrafficquality.google https://googleads.g.doubleclick.net https://dbest-cdn.pages.dev https://*.dse.best https://*.disqus.com https://*.privacymanager.io; frame-ancestors 'none';"
-          } 
+          }
         ],
       },
       // Exclude CSP for personal projects in public and dev folders
@@ -146,10 +135,6 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:; style-src 'self' 'unsafe-inline' https: http:; font-src 'self' data: https: http:; img-src 'self' data: blob: https: http:; connect-src 'self' https: http: ws: wss:; frame-src 'self' https: http:; object-src 'none'; base-uri 'self';"
           }
         ],
       },
@@ -183,15 +168,11 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: http:; style-src 'self' 'unsafe-inline' https: http:; font-src 'self' data: https: http:; img-src 'self' data: blob: https: http:; connect-src 'self' https: http: ws: wss:; frame-src 'self' https: http:; object-src 'none'; base-uri 'self';"
           }
         ],
       }
     ]
   },
 }
-
+ 
 module.exports = nextConfig

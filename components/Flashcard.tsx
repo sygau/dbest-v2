@@ -6,12 +6,11 @@ interface FlashcardProps {
   passageTitle: string;
   isFlipped?: boolean;
   onFlip?: () => void;
-} 
- 
+}
+
 export default function Flashcard({ question, passageTitle, isFlipped: externalIsFlipped, onFlip }: FlashcardProps) {
   const [internalIsFlipped, setInternalIsFlipped] = useState(false);
-  
-  // Use external flip state if provided, otherwise use internal
+
   const isFlipped = externalIsFlipped !== undefined ? externalIsFlipped : internalIsFlipped;
 
   const handleFlip = () => {
@@ -22,15 +21,13 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
     }
   };
 
-  // Replace {{word}} with highlighted version
-  const renderSentence = (sentence: string, target: string) => {
+  const renderSentence = (sentence: string) => {
     const regex = /\{\{(.+?)\}\}/g;
     const parts = sentence.split(regex);
-    
     return parts.map((part, index) => {
       if (index % 2 === 1) {
         return (
-          <mark key={index} className="bg-warning px-2 py-1 rounded fw-bold">
+          <mark key={index} style={{ background: '#ffc107', padding: '0.25rem 0.5rem', borderRadius: '0.375rem', fontWeight: 700 }}>
             {part}
           </mark>
         );
@@ -39,7 +36,6 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
     });
   };
 
-  // Calculate dynamic font size based on text length
   const getQuestionFontSize = () => {
     const length = question.sentence.length;
     if (length < 30) return '2.25rem';
@@ -61,11 +57,11 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
       <div className={`flashcard ${isFlipped ? 'flipped' : ''}`}>
         {/* Front Side */}
         <div className="flashcard-face flashcard-front">
-          <div className="card shadow-lg h-100">
-            <div className="card-body d-flex flex-column justify-content-center align-items-center p-4">
-              <div className="flex-grow-1 d-flex align-items-center justify-content-center w-100">
+          <div className="fc-card fc-shadow h-full">
+            <div className="fc-body flex flex-col justify-center items-center p-4">
+              <div className="grow flex items-center justify-center w-full">
                 <p className="text-center mb-0" style={{ fontSize: getQuestionFontSize(), lineHeight: '1.8', fontWeight: 500 }}>
-                  {renderSentence(question.sentence, question.target)}
+                  {renderSentence(question.sentence)}
                 </p>
               </div>
               <div className="mt-3">
@@ -77,21 +73,21 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
 
         {/* Back Side */}
         <div className="flashcard-face flashcard-back">
-          <div className="card shadow-lg h-100 bg-light">
-            <div className="card-body d-flex flex-column justify-content-center align-items-center p-4">
-              <div className="flex-grow-1 d-flex flex-column align-items-center justify-content-center w-100">
-                <div className="d-flex align-items-center justify-content-center gap-3 flex-wrap">
-                  <mark className="bg-warning rounded fw-bold text-dark px-3 py-2" style={{ fontSize: '2rem' }}>
+          <div className="fc-card fc-card-back fc-shadow h-full">
+            <div className="fc-body flex flex-col justify-center items-center p-4">
+              <div className="grow flex flex-col items-center justify-center w-full">
+                <div className="flex items-center justify-center gap-3 flex-wrap">
+                  <mark style={{ background: '#ffc107', borderRadius: '0.375rem', fontWeight: 700, color: '#212529', padding: '0.5rem 0.75rem', fontSize: '2rem' }}>
                     {question.target}
                   </mark>
                   <span style={{ fontSize: '1.5rem', fontWeight: 500 }}>=</span>
-                  <p className="mb-0" style={{ fontSize: '1.625rem', lineHeight: '1.7', fontWeight: 500 }}>
+                  <p className="mb-0" style={{ fontSize: getAnswerFontSize(), lineHeight: '1.7', fontWeight: 500 }}>
                     {question.meaning}
                   </p>
                 </div>
               </div>
               {question.notes && (
-                <div className="alert alert-info mt-3 w-100">
+                <div className="alert alert-info mt-3 w-full">
                   <small>📌 {question.notes}</small>
                 </div>
               )}
@@ -131,24 +127,32 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
           -webkit-backface-visibility: hidden;
         }
 
-        .flashcard-face :global(.card),
-        .flashcard-face :global(.card-body) {
-          height: 100%;
-          min-height: 100%;
-        }
-
         .flashcard-back {
           transform: rotateY(180deg);
         }
 
-        .card {
-          border: 2px solid var(--bs-border-color);
+        .fc-card {
+          background: var(--color-card-bg, var(--bs-card-bg));
+          border: 2px solid var(--color-border, var(--bs-border-color));
+          border-radius: 0.5rem;
+        }
+
+        .fc-card-back {
+          background: var(--color-tertiary-bg, var(--bs-tertiary-bg));
+        }
+
+        .fc-shadow {
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        [data-bs-theme=light] .card {
+        [data-bs-theme=light] .fc-card {
           border: 2px solid rgba(0, 0, 0, 0.12);
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .fc-body {
+          height: 100%;
+          min-height: 100%;
         }
 
         mark {
@@ -159,13 +163,9 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
           .flashcard-container {
             min-height: 280px;
           }
-          
+
           .flashcard {
             min-height: 280px;
-          }
-          
-          .card-body p {
-            font-size: 1.2rem !important;
           }
         }
       `}</style>

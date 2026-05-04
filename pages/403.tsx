@@ -1,44 +1,25 @@
-import Head from 'next/head'
 import NavigationLink from '../components/NavigationLink'
-import { getMainPageMetadata } from '../utils/structuredData';
+import PageSEO from '../components/PageSEO'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 
 export default function Custom403() {
-  const metadata = getMainPageMetadata('403');
-
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
-
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-            </Head>
+            <PageSEO
+              title="403 Forbidden"
+              description="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及公民與社會全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+              ogTitle="403 Forbidden"
+              ogDescription="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及公民與社會等全科歷屆試題及答案。"
+              ogUrl="https://dse.best/403"
+              robots={['noindex', 'nofollow']}
+            />
 
 
-            {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">錯誤</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item active" aria-current="page">
-                                403
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            {/*end breadcrumb*/}
+            <PageBreadcrumb section="錯誤" text="403" />
             <div className="card rounded-4" style={{ height: "auto", padding: 20 }}>
                 <div className="card-body text-center">
                     <h1
-                        className="fw-bold mb-4"
+                        className="font-bold mb-4"
                         style={{ marginTop: 50, fontSize: "3.0rem" }}
                     >
                         <span

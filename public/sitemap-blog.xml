@@ -3,9 +3,21 @@
   <!-- Blog Index -->
   <url>
     <loc>https://dse.best/blog</loc>
-    <lastmod>2026-03-27</lastmod>
+    <lastmod>2026-04-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/blog/dse-2025-paper-3-task-4</loc>
+    <lastmod>2026-04-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://dse.best/blog/dse-2025-paper-2-q5</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://dse.best/blog/2026-dse-speaking-day-1-analysis</loc>

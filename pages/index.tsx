@@ -1,5 +1,3 @@
-import Head from 'next/head'
-import { Private } from '../components/Private'
 import {
   BiBook, BiCalculator, BiBot, BiTestTube, BiLeaf, BiLaptop,
   BiGlobe, BiMoney, BiBriefcase, BiPlanet, BiLogoInstagram
@@ -7,13 +5,9 @@ import {
 import SubjectCard from '../components/tw/SubjectCard'
 import FAQSection from '../components/FAQSection'
 import ChangelogSection from '../components/ChangelogSection'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 import { changelogData } from '../utils/changelogData'
-import {
-  generateWebsiteStructuredData,
-  generateHomepageStructuredData,
-  generatePageFAQStructuredData,
-  getMainPageMetadata
-} from '../utils/structuredData'
+import PageSEO from '../components/PageSEO'
 
 const homepageFAQs = [
   {
@@ -24,41 +18,26 @@ const homepageFAQs = [
 ]
 
 export default function HomePage() {
-  const metadata = getMainPageMetadata('homepage')
-
   return (
     <>
-      <Head>
-        <title>{metadata?.title}</title>
-        <meta name="description" content={metadata?.description} />
-        <meta name="robots" content={metadata?.robots} />
-        <meta property="og:title" content={metadata?.ogTitle} />
-        <meta property="og:description" content={metadata?.ogDescription} />
-        <meta property="og:image" content={metadata?.ogImage} />
-        <meta property="og:url" content={metadata?.ogUrl} />
-        <meta property="og:type" content={metadata?.ogType} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebsiteStructuredData()) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateHomepageStructuredData()) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generatePageFAQStructuredData('homepage')) }} />
-      </Head>
+      <PageSEO
+        title="DSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio"
+        description="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+        ogTitle="DSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio等"
+        ogDescription="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。"
+        ogUrl="https://dse.best/"
+        robots={['index', 'follow']}
+        pageKey="homepage"
+      />
 
       {/* Breadcrumb */}
-      <div className="hidden sm:flex items-center mb-3">
-        <div className="text-xl font-medium pr-3 border-r border-[var(--color-border)] text-[var(--color-heading)]">首頁</div>
-        <div className="pl-3">
-          <nav aria-label="breadcrumb">
-            <ol className="list-none flex p-0 m-0">
-              <li className="text-base text-[var(--color-body)]" aria-current="page">Home</li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageBreadcrumb section="首頁" text="Home" />
 
       {/* Main Content Card */}
-      <div className="bg-[var(--color-card-bg)] rounded-2xl p-5 mb-6 shadow-sm border border-[var(--color-border)]" style={{ minHeight: 800 }}>
+      <div className="bg-[var(--color-card-bg)] rounded-2xl px-7 sm:px-9 py-5 mb-6 shadow-sm border border-[var(--color-border)]" style={{ minHeight: 800 }}>
         <div className="text-center">
           {/* Hero Section */}
-          <h1 className="fw-bold mb-4" style={{ marginTop: '50px', fontSize: 'clamp(2rem, 7vw, 3rem)' }}>
+          <h1 className="font-bold mb-4" style={{ marginTop: '50px', fontSize: 'clamp(2.3rem, 8vw, 3rem)' }}>
             <span style={{
               background: '#8b5cf6',
               WebkitBackgroundClip: 'text',
@@ -70,18 +49,16 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <p className="mb-4 mt-10 text-base sm:text-[1.4rem] text-[var(--color-body)]">
+          <p className="mb-4 mt-10 text-lg sm:text-xl md:text-[1.4rem] text-[var(--color-body)]">
             本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。
           </p>
 
           <br />
-          <hr className="my-4" style={{ borderColor: 'var(--bs-body-color)', opacity: 0.25 }} />
+          <hr className="my-4" style={{ borderColor: 'var(--color-body)', opacity: 0.25 }} />
           <br /><br />
 
           {/* Past Papers Section */}
-          <Private>
-            <h1 className="font-bold mb-4 text-[var(--color-heading)]">歷屆試題</h1>
-          </Private>
+          <h1 className="font-bold mb-4 text-[var(--color-heading)]">歷屆試題</h1>
 
           <br /><br />
 
@@ -114,48 +91,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Instagram Follow Section */}
-        <div className="max-w-3xl mx-auto my-12" style={{backgroundColor: '#332225'}}>
-          <div className="bg-[var(--color-card-bg)] border border-[var(--color-border)] rounded-2xl">
-            <div className="text-center p-6">
-              <h3 className="mb-3 font-bold" style={{ background: '#bc1888', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                Follow dse.best on Instagram
-              </h3>
-              <p className="mb-3 text-[var(--color-body)]">
-                追蹤我們的 Instagram 獲取最新消息和更新！
-              </p>
-              <a
-                href="https://www.instagram.com/dse_best"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-lg d-inline-flex align-items-center gap-2"
-                style={{
-                  background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
-                  border: 'none',
-                  borderRadius: 25,
-                  padding: '12px 32px',
-                  textDecoration: 'none',
-                  color: 'white',
-                  fontWeight: 600,
-                  boxShadow: '0 4px 15px rgba(240,148,51,0.3)',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8
-                }}
-                onClick={(e) => {
-                  if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                    e.preventDefault()
-                    window.location.href = 'instagram://user?username=dse_best'
-                    setTimeout(() => { window.location.href = 'https://www.instagram.com/dse_best' }, 2000)
-                  }
-                }}
-              >
-                <BiLogoInstagram style={{ fontSize: '1.4rem' }} />
-                <span>Follow us on Instagram</span>
-              </a>
-            </div>
-          </div>
-        </div>
+        
 
         {/* Changelog Section */}
         <ChangelogSection date={changelogData.date} changes={changelogData.changes} />

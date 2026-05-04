@@ -2,21 +2,22 @@ import { useState, useCallback, useEffect, ReactNode } from 'react'
 import { useRouter } from 'next/router'
 import Sidebar from './Sidebar'
 import TopNavbar from './TopNavbar'
-import ThemeSwitcher from './ThemeSwitcher'
+import Preferences from './Preferences'
 import BackToTop from './BackToTop'
+import ScrollProgress from './ScrollProgress'
 import { cn } from '../../lib/cn'
 
 interface LayoutProps {
   children: ReactNode
 }
 
-const MINIMAL_PAGES = ['/maintenance', '/lock', '/404', '/_error']
+const MINIMAL_PAGES = ['/404', '/_error']
 
 export default function Layout({ children }: LayoutProps) {
   const router = useRouter()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
-  const [themeSwitcherOpen, setThemeSwitcherOpen] = useState(false)
+  const [preferencesOpen, setPreferencesOpen] = useState(false)
 
   // Skip layout for minimal pages
   if (MINIMAL_PAGES.includes(router.pathname)) {
@@ -44,6 +45,8 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <>
+      <ScrollProgress />
+
       <Sidebar
         isOpen={sidebarOpen}
         isCollapsed={sidebarCollapsed}
@@ -52,7 +55,7 @@ export default function Layout({ children }: LayoutProps) {
 
       <TopNavbar
         onToggleSidebar={toggleSidebar}
-        onOpenThemeSwitcher={() => setThemeSwitcherOpen(true)}
+        onOpenPreferences={() => setPreferencesOpen(true)}
         sidebarCollapsed={sidebarCollapsed}
         sidebarOpen={sidebarOpen}
       />
@@ -75,9 +78,9 @@ export default function Layout({ children }: LayoutProps) {
         </footer>
       </main>
 
-      <ThemeSwitcher
-        isOpen={themeSwitcherOpen}
-        onClose={() => setThemeSwitcherOpen(false)}
+      <Preferences
+        isOpen={preferencesOpen}
+        onClose={() => setPreferencesOpen(false)}
       />
 
       <BackToTop />

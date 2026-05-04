@@ -1,64 +1,25 @@
-import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
-import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
-export default function ChemistryPage() {
-  const metadata = getSubjectMetadata('chemistry');
+import PageSEO from '../../components/PageSEO';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 
-    const subjectKey = 'chemistry';
-    const structuredData = generateSubjectStructuredData(subjectKey);
-    const faqData = generateSubjectFAQStructuredData(subjectKey);
-    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
+export default function ChemistryPage() {
+    const lastUpdated = getSubjectIndexLastUpdated('chemistry');
 
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
-
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-
-                {/* Structured Data */}
-                {structuredData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(structuredData)
-                        }}
-                    />
-                )}
-                {faqData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(faqData)
-                        }}
-                    />
-                )}
-            </Head>
-
+            <PageSEO
+                title="DSE 化學 Chemistry Past Paper | By Year + By Topic"
+                description="DSE 化學科 Chemistry 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Chemistry實驗技巧及理論知識。"
+                ogTitle="DSE 化學 Chemistry 歷屆試題 Past Papers | By Year + By Topic"
+                ogDescription="DSE 化學科 Chemistry 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Chemistry實驗技巧及理論知識。"
+                ogUrl="https://dse.best/chemistry"
+                robots={['index', 'follow']}
+                subjectKey="chemistry"
+            />
             {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">化學</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-
-                            <li className="breadcrumb-item active" aria-current="page">
-                                DSE Past Paper
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+            <PageBreadcrumb section="\u5316\u5b78" text="DSE Past Paper" />
             {/*end breadcrumb*/}
             <div className="card rounded-4" style={{ height: "auto" }}>
                 <div className="card-body">
@@ -77,25 +38,25 @@ export default function ChemistryPage() {
                     <hr className="my-4" />
                     <br />
                     {/* Syllabus */}
-                    <h2 style={{ textAlign: "center" }}>評核內容 / Syllabus</h2>
+                    <h2 className="text-center">評核內容 / Syllabus</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="中文 評核內容" description="DSE化學 評核內容 (中文)" paperId="syllabus_chi" buttonText="下載" />
                         <DownloadCard title="English Syllabus" description="DSE Chemistry Syllabus (English)" paperId="syllabus_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2024 */}
-                    <h2 style={{ textAlign: "center" }}>2024</h2>
+                    <h2 className="text-center">2024</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="Paper 1" description="2024 Paper 1 (English)" paperId="2024_p1_eng" />
                         <DownloadCard title="Answers" description="2024 Answer Booklet (English)" paperId="2024_ans_eng" />
                     </div>
                     <hr className="my-4" />
                     {/* 2023 */}
-                    <h2 style={{ textAlign: "center" }}>2023</h2>
+                    <h2 className="text-center">2023</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2023 Paper 1 (中文)" paperId="2023_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2023 Paper 2 (中文)" paperId="2023_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2023 參考答案 (中文)" paperId="2023_ans_chi" buttonText="下載" />
@@ -107,9 +68,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2022 */}
-                    <h2 style={{ textAlign: "center" }}>2022</h2>
+                    <h2 className="text-center">2022</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2022 Paper 1 (中文)" paperId="2022_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2022 Paper 2 (中文)" paperId="2022_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2022 參考答案 (中文)" paperId="2022_ans_chi" buttonText="下載" />
@@ -120,9 +81,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2021 */}
-                    <h2 style={{ textAlign: "center" }}>2021</h2>
+                    <h2 className="text-center">2021</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2021 Paper 1 (中文)" paperId="2021_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2021 Paper 2 (中文)" paperId="2021_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2021 參考答案 (中文)" paperId="2021_ans_chi" buttonText="下載" />
@@ -132,9 +93,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2020 */}
-                    <h2 style={{ textAlign: "center" }}>2020</h2>
+                    <h2 className="text-center">2020</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2020 Paper 1 (中文)" paperId="2020_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2020 Paper 2 (中文)" paperId="2020_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2020 參考答案 (中文)(中文)" paperId="2020_ans_chi" buttonText="下載" />
@@ -144,9 +105,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2019 */}
-                    <h2 style={{ textAlign: "center" }}>2019</h2>
+                    <h2 className="text-center">2019</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2019 Paper 1 (中文)" paperId="2019_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2019 Paper 2 (中文)" paperId="2019_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2019 參考答案 (中文)" paperId="2019_ans_chi" buttonText="下載" />
@@ -156,9 +117,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2018 */}
-                    <h2 style={{ textAlign: "center" }}>2018</h2>
+                    <h2 className="text-center">2018</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2018 Paper 1 (中文)" paperId="2018_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2018 Paper 2 (中文)" paperId="2018_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2018 參考答案 (中文)" paperId="2018_ans_chi" buttonText="下載" />
@@ -168,9 +129,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2017 */}
-                    <h2 style={{ textAlign: "center" }}>2017</h2>
+                    <h2 className="text-center">2017</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2017 Paper 1 (中文)" paperId="2017_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2017 Paper 2 (中文)" paperId="2017_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2017 參考答案 (中文)" paperId="2017_ans_chi" buttonText="下載" />
@@ -182,9 +143,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2016 */}
-                    <h2 style={{ textAlign: "center" }}>2016</h2>
+                    <h2 className="text-center">2016</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2016 Paper 1 (中文)" paperId="2016_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2016 Paper 2 (中文)" paperId="2016_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2016 參考答案 (中文)" paperId="2016_ans_chi" buttonText="下載" />
@@ -196,9 +157,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2015 */}
-                    <h2 style={{ textAlign: "center" }}>2015</h2>
+                    <h2 className="text-center">2015</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2015 Paper 1 (中文)" paperId="2015_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2015 Paper 2 (中文)" paperId="2015_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2015 參考答案 (中文)" paperId="2015_ans_chi" buttonText="下載" />
@@ -210,9 +171,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2014 */}
-                    <h2 style={{ textAlign: "center" }}>2014</h2>
+                    <h2 className="text-center">2014</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2014 Paper 1 (中文)" paperId="2014_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2014 Paper 2 (中文)" paperId="2014_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2014 參考答案 (中文)" paperId="2014_ans_chi" buttonText="下載" />
@@ -224,9 +185,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2013 */}
-                    <h2 style={{ textAlign: "center" }}>2013</h2>
+                    <h2 className="text-center">2013</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2013 Paper 1 (中文)" paperId="2013_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2013 Paper 2 (中文)" paperId="2013_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2013 參考答案 (中文)" paperId="2013_ans_chi" buttonText="下載" />
@@ -238,9 +199,9 @@ export default function ChemistryPage() {
                     </div>
                     <hr className="my-4" />
                     {/* 2012 */}
-                    <h2 style={{ textAlign: "center" }}>2012</h2>
+                    <h2 className="text-center">2012</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="卷一" description="2012 Paper 1 (中文)" paperId="2012_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2012 Paper 2 (中文)" paperId="2012_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2012 參考答案 (中文)" paperId="2012_ans_chi" buttonText="下載" />
@@ -251,9 +212,9 @@ export default function ChemistryPage() {
                         <DownloadCard title="Performance" description="2012 Performance Descriptors (English)" paperId="2012_per_eng" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>主題練習（中文）</h2>
+                    <h2 className="text-center">主題練習（中文）</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="主題一 地球" description="地球" paperId="bytopic_1_chi" buttonText="下載" />
                         <DownloadCard title="主題二 微觀世界 I" description="微觀世界 I" paperId="bytopic_2_chi" buttonText="下載" />
                         <DownloadCard title="主題三 金屬" description="金屬" paperId="bytopic_3_chi" buttonText="下載" />
@@ -279,16 +240,16 @@ export default function ChemistryPage() {
                         <DownloadCard title="All (excluding E1, E2)" description="All (excluding E1, E2) (中文)" paperId="bytopic_all_chi" buttonText="下載" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>By Topic (English)</h2>
+                    <h2 className="text-center">By Topic (English)</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="Topic 1 Laboratory Safety" description="Laboratory Safety and Precautions" paperId="bytopic_1_eng" />
                         <DownloadCard title="Topic 2 Planet Earth" description="Planet Earth" paperId="bytopic_2_eng" />
                         <DownloadCard title="Topic 3 Microscopic World" description="Microscopic World" paperId="bytopic_3_eng" />
                         <DownloadCard title="Topic 4 Metals" description="Metals" paperId="bytopic_4_eng" />
                         <DownloadCard title="Topic 5 Acid and Bases" description="Acid and Bases" paperId="bytopic_5_eng" />
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
+                        <div>
+                            <div className="card h-full flex flex-col">
                                 <div className="card-body">
                                     <h5 className="card-title">Topic 6 Fossil fuels</h5>
                                     <p className="card-text">Fossil fuels and Carbon Compounds (file missing)</p>
@@ -296,7 +257,7 @@ export default function ChemistryPage() {
                                 <div className="card-footer bg-transparent border-0">
                                     <a
                                         href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        className="btn btn-info px-4 inline-flex gap-2"
                                         data-paper-id=""
                                     >
                                         
@@ -319,9 +280,9 @@ export default function ChemistryPage() {
                         <DownloadCard title="Book 3 E1+E2" description="By Topic Book 3 (English)" paperId="bytopic_bk3_eng" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>練習卷 / Practice Paper</h2>
+                    <h2 className="text-center">練習卷 / Practice Paper</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Practice Papers (Chinese) */}
                         <DownloadCard title="練習卷 答案" description="練習卷 Answers (中文)" paperId="pp_ans_chi" buttonText="下載" />
                         <DownloadCard title="練習卷 1" description="練習卷 1 (中文)" paperId="pp_p1_chi" buttonText="下載" />
@@ -332,9 +293,9 @@ export default function ChemistryPage() {
                         <DownloadCard title="Practice Paper 2" description="Practice Paper 2 (English)" paperId="pp_p2_eng" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>樣本卷 / Sample Paper</h2>
+                    <h2 className="text-center">樣本卷 / Sample Paper</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Sample Papers (Chinese) */}
                         <DownloadCard title="樣本卷 1" description="樣本卷 1 (中文)" paperId="sp_p1_chi" buttonText="下載" />
                         <DownloadCard title="樣本卷 2" description="樣本卷 2 (中文)" paperId="sp_p2_chi" buttonText="下載" />

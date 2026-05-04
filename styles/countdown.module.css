@@ -51,8 +51,7 @@
 }
 
 /* Purple accent for title - theme aware */
-:global([data-bs-theme=light]) .mainTitle,
-:global([data-bs-theme=semi-dark]) .mainTitle {
+:global([data-bs-theme=light]) .mainTitle {
   color: rgb(117, 76, 241);
 }
 
@@ -112,8 +111,7 @@
 }
 
 /* Purple accent for numbers - theme aware */
-:global([data-bs-theme=light]) .number,
-:global([data-bs-theme=semi-dark]) .number {
+:global([data-bs-theme=light]) .number {
   color: rgb(131, 92, 248);
   text-shadow: none;
 }

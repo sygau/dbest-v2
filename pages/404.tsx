@@ -1,29 +1,21 @@
-import Head from 'next/head'
 import Link from 'next/link'
 import NavigationLink from '../components/NavigationLink'
-import { getMainPageMetadata } from '../utils/structuredData';
 import { useRouter } from 'next/router'
+import PageSEO from '../components/PageSEO'
 
 export default function Custom404() {
   const router = useRouter()
-  
-  // Normal mode - show minimal 404 design without layout elements
-  const metadata = getMainPageMetadata('404');
 
   return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
-
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-            </Head>
+            <PageSEO
+              title="404 Not Found"
+              description="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+              ogTitle="404 Not Found"
+              ogDescription="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案。"
+              ogUrl="https://dse.best/404"
+              robots={['noindex', 'nofollow']}
+            />
 
             {/* Minimal 404 page without layout elements */}
             <div style={{
@@ -31,8 +23,8 @@ export default function Custom404() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: 'var(--bs-body-bg, #f8f9fa)',
-              color: 'var(--bs-body-color, #333)',
+              background: 'var(--color-body-bg)',
+              color: 'var(--color-body)',
               margin: 0,
               padding: 20
             }}>

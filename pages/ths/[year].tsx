@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import PageSEO from '../../components/PageSEO'
+import PageBreadcrumb from '../../components/PageBreadcrumb'
 import { useRouter } from 'next/router'
 import { BiDownload } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next'
@@ -7,7 +8,7 @@ import path from 'path'
 import NavigationLink from '../../components/NavigationLink'
 import { usePdfTracking } from '../../hooks/usePdfTracking';
 import { generateYearMeta } from '../../utils/yearSlugSEO';
-import { generateSubjectFAQStructuredData } from '../../utils/structuredData';
+import { buildYearSlugJsonLd } from '../../data/jsonld/year-slug';
 import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
@@ -62,7 +63,6 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
   // Use the clean single function approach
   const meta = generateYearMeta('ths', year);
   const lastUpdated = getSubjectYearSlugLastUpdated('ths');
-  const faqData = generateSubjectFAQStructuredData('ths');
 
   // If the page is not yet generated, this will be displayed
   // until getStaticProps() finishes running
@@ -72,58 +72,15 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
 
   return (
     <>
-      <Head>
-        <title>{meta.seoTitle}</title>
-        <meta name="description" content={meta.seoDescription} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={meta.seoTitle} />
-        <meta property="og:description" content={meta.seoDescription} />
-        <meta property="og:image" content="https://dse.best/assets/images/logo-icon.webp" />
-        <meta property="og:url" content={`https://dse.best/ths/${year}`} />
-        <meta property="og:type" content="website" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": meta.seoTitle,
-              "description": meta.seoDescription,
-              "url": `https://dse.best/ths/${year}`,
-              "mainEntity": {
-                "@type": "EducationalResource",
-                "name": meta.seoTitle,
-                "description": meta.seoDescription,
-                "educationalLevel": "Secondary Education",
-                "inLanguage": ["zh-HK", "en-HK"]
-              }
-            })
-          }}
-        />
-        {faqData && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(faqData)
-            }}
-          />
-        )}
-      </Head>
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">旅遊與款待</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item">
-                <a href="/ths">DSE Past Paper</a>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                {year}
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageSEO
+        title={meta.seoTitle}
+        description={meta.seoDescription}
+        ogImage="https://dse.best/assets/images/logo-icon.webp"
+        ogUrl={`https://dse.best/ths/${year}`}
+        robots={['index', 'follow']}
+        jsonLd={[buildYearSlugJsonLd('ths', year)]}
+      />
+      <PageBreadcrumb section="旅遊與款待" text={year} />
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
           <h1 className="mb-4">{meta.pageTitle}</h1>
@@ -137,16 +94,16 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
           <br />
           <hr className="my-4" />
           <br />
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {papers.map((paper) => (
               <div key={paper.paperId} className="col">
-                <div className="card h-100 d-flex flex-column">
+                <div className="card h-full flex flex-col">
                   <div className="card-body">
                     <h5 className="card-title">{paper.title}</h5>
                     <p className="card-text">{paper.description}</p>
                   </div>
                   <div className="card-footer bg-transparent border-0">
-                    <a href="#" className="btn btn-info px-4 d-inline-flex gap-2" data-paper-id={paper.paperId}>
+                    <a href="#" className="btn btn-info px-4 inline-flex gap-2" data-paper-id={paper.paperId}>
                       <BiDownload style={{ fontSize: 22 }} />下載
                     </a>
                   </div>
@@ -160,7 +117,7 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
       {/* Related Years */}
       <div className="mt-5 text-center">
         <h3 className="mb-4">其他年份 / Other Years</h3>
-        <div className="d-flex flex-wrap justify-content-center gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {AVAILABLE_YEARS.map((yearStr) => {
             const yearNum = parseInt(yearStr);
             const isCurrentYear = yearNum === parseInt(year);
@@ -217,7 +174,7 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
         <p className="mb-4">瀏覽所有年份 (2012-2023) 的完整試題集合。</p>
         <NavigationLink 
           href="/ths" 
-          className="btn btn-primary btn-lg d-inline-flex align-items-center gap-3"
+          className="btn btn-primary btn-lg inline-flex align-items-center gap-3"
           style={{
             borderRadius: '25px',
             padding: '1rem 2rem',

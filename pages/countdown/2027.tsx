@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { generateCountdown2027StructuredData, generatePageFAQStructuredData, getMainPageMetadata } from '../../utils/structuredData'
 import NavigationLink from '../../components/NavigationLink'
+import PageBreadcrumb from '../../components/PageBreadcrumb'
 import styles from '../../styles/countdown.module.css'
+import PageSEO from '../../components/PageSEO'
 
 interface TimeLeft {
   days: number
@@ -12,7 +12,6 @@ interface TimeLeft {
 }
 
 export default function Countdown2027Page() {
-  const metadata = getMainPageMetadata('countdown2027')
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
@@ -41,42 +40,22 @@ export default function Countdown2027Page() {
 
   return (
     <>
-      <Head>
-        <title>{metadata?.title}</title>
-        <meta name="description" content={metadata?.description} />
-        <meta name="robots" content={metadata?.robots} />
-        <meta property="og:title" content={metadata?.ogTitle} />
-        <meta property="og:description" content={metadata?.ogDescription} />
-        <meta property="og:image" content={metadata?.ogImage} />
-        <meta property="og:url" content={metadata?.ogUrl} />
-        <meta property="og:type" content={metadata?.ogType} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateCountdown2027StructuredData()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generatePageFAQStructuredData('countdown2027')) }}
-        />
-      </Head>
+      <PageSEO
+        title="DSE 2027 Countdown Timer 考試日期倒數"
+        description="DSE 2027 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2027 DSE Examination?"
+        ogTitle="DSE 2027 Countdown Timer 考試日期倒數"
+        ogDescription="DSE 2027 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。"
+        ogUrl="https://dse.best/countdown/2027"
+        robots={['index', 'follow']}
+        pageKey="countdown2027"
+      />
 
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">其他</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item active" aria-current="page">
-                DSE 2027 Countdown
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageBreadcrumb section="其他" text="DSE 2027 Countdown" />
 
       <div className={`card rounded-4 ${styles.countdownPage}`}>
         <div className="card-body">
-          <div className="alert alert-warning d-flex align-items-center mb-4" role="alert">
-            <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+          <div className="bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded mb-4 flex items-center" role="alert">
+            <svg className="bi flex-shrink-0 mr-2" width="24" height="24" role="img" aria-label="Warning:">
               <use xlinkHref="#exclamation-triangle-fill" />
             </svg>
             <div>

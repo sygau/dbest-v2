@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react'
-import { BiMenu, BiLogoInstagram, BiCircleHalf } from 'react-icons/bi'
+import { BiMenu, BiLogoInstagram, BiCommand } from 'react-icons/bi'
 import { cn } from '../../lib/cn'
 
 interface TopNavbarProps {
   onToggleSidebar: () => void
-  onOpenThemeSwitcher: () => void
+  onOpenPreferences: () => void
   sidebarCollapsed: boolean
   sidebarOpen: boolean
 }
 
-export default function TopNavbar({ onToggleSidebar, onOpenThemeSwitcher, sidebarCollapsed, sidebarOpen }: TopNavbarProps) {
+export default function TopNavbar({ onToggleSidebar, onOpenPreferences, sidebarCollapsed, sidebarOpen }: TopNavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [isBlue, setIsBlue] = useState(false)
 
@@ -42,7 +42,7 @@ export default function TopNavbar({ onToggleSidebar, onOpenThemeSwitcher, sideba
         backgroundColor: isBlue
           ? (scrolled ? 'rgba(7, 12, 41, 0.55)' : 'transparent')
           : 'var(--color-navbar-bg)',
-        boxShadow: isBlue ? 'none' : (scrolled ? '0 2px 6px rgba(0,0,0,0.05)' : 'none'),
+        boxShadow: isBlue ? 'none' : '0 2px 6px 0 rgba(0,0,0,0.044), 0 2px 6px 0 rgba(0,0,0,0.049)',
         backdropFilter: isBlue && scrolled ? 'blur(2.625rem)' : undefined,
         WebkitBackdropFilter: isBlue && scrolled ? 'blur(2.625rem)' : undefined,
         borderBottom: scrolled ? '1px solid var(--bs-border-color)' : undefined,
@@ -92,11 +92,11 @@ export default function TopNavbar({ onToggleSidebar, onOpenThemeSwitcher, sideba
         <li>
           <button
             className="flex items-center justify-center w-[40px] h-[40px] bg-transparent border-0 cursor-pointer text-[var(--color-body)]"
-            aria-label="主題設定 Theme Settings"
-            title="主題設定 Theme Settings"
-            onClick={onOpenThemeSwitcher}
+            aria-label="偏好設定 Preferences"
+            title="偏好設定 Preferences"
+            onClick={onOpenPreferences}
           >
-            <BiCircleHalf style={{ fontSize: 22 }} />
+            <BiCommand style={{ fontSize: 22 }} />
           </button>
         </li>
       </ul>

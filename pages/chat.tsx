@@ -1,6 +1,6 @@
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { getMainPageMetadata, generateChatStructuredData, generatePageFAQStructuredData } from '../utils/structuredData';
+import PageSEO from '../components/PageSEO';
+import PageBreadcrumb from '../components/PageBreadcrumb';
 import { getChatConfig, getChatDisabledMessage } from '../utils/chatToggle';
 import ChatDisabled from '../components/ChatDisabled';
 import {
@@ -26,9 +26,6 @@ import {
 } from 'react-icons/bi'
 
 export default function ChatPage() {
-    const metadata = getMainPageMetadata('chat');
-    const chatStructuredData = generateChatStructuredData();
-    const chatFAQData = generatePageFAQStructuredData('chat');
     const chatConfig = getChatConfig();
     const [showRules, setShowRules] = useState(false);
     const [isClosingRules, setIsClosingRules] = useState(false);
@@ -350,26 +347,14 @@ export default function ChatPage() {
     if (!chatConfig.enabled) {
         return (
             <>
-                <Head>
-                    <title>Chat Disabled</title>
-                    <meta name="description" content="Chat is currently disabled" />
-                    <meta name="robots" content="noindex, nofollow" />
-                </Head>
+                <PageSEO
+                  title="dse.best Chatroom"
+                  description="dse.best 聊天室暫時停用。"
+                  ogUrl="https://dse.best/chat"
+                  robots={['noindex', 'nofollow']}
+                />
 
-                {/*breadcrumb*/}
-                <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                    <div className="breadcrumb-title pe-3">其他</div>
-                    <div className="ps-3">
-                        <nav aria-label="breadcrumb">
-                            <ol className="breadcrumb mb-0 p-0">
-                                <li className="breadcrumb-item active" aria-current="page">
-                                    聊天室 Chatroom (Disabled)
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-                {/*end breadcrumb*/}
+                <PageBreadcrumb section="其他" text="聊天室 Chatroom (Disabled)" />
 
                 <ChatDisabled 
                     message={getChatDisabledMessage()}
@@ -380,49 +365,17 @@ export default function ChatPage() {
 
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
+            <PageSEO
+                title="dse.best Chatroom"
+                description="加入dse.best學習社群聊天室，與其他同學即時討論DSE備考心得、學習技巧和考試經驗。支援實時對話、貼圖互動，打造友善的學習交流環境。"
+                ogTitle="dse.best Chatroom"
+                ogDescription="加入dse.best學習社群聊天室，與其他同學即時討論DSE備考心得、學習技巧和考試經驗。支援實時對話、貼圖互動，打造友善的學習交流環境。"
+                ogUrl="https://dse.best/chat"
+                robots={['noindex', 'nofollow']}
+                pageKey="chat"
+            />
 
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-
-                {/* Structured Data */}
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: JSON.stringify(chatStructuredData)
-                    }}
-                />
-                {chatFAQData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(chatFAQData)
-                        }}
-                    />
-                )}
-            </Head>
-
-            {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">其他</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item active" aria-current="page">
-                                聊天室 Chatroom
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            {/*end breadcrumb*/}
+            <PageBreadcrumb section="其他" text="聊天室 Chatroom" />
 
             {/* Modern Chat Container */}
             {isBot ? (
@@ -797,7 +750,7 @@ export default function ChatPage() {
                                 <input
                                     type="text"
                                     id="userNameInputMobile"
-                                    className="form-control"
+                                    className="w-full border border-gray-300 rounded px-3 py-2"
                                     maxLength={14}
                                     placeholder="Your name"
                                     style={{ fontSize: '16px' }}
@@ -844,7 +797,7 @@ export default function ChatPage() {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3>
-                                <BiSmile className="me-2" />
+                                <BiSmile className="mr-2" />
                                 Stickers
                             </h3>
                             <button
@@ -935,7 +888,7 @@ export default function ChatPage() {
                     <div className={`modal-content large ${isClosingRules ? 'hide' : 'show'}`} onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3>
-                                <BiBook className="me-2" />
+                                <BiBook className="mr-2" />
                                 DSEBest 聊天室規則 Chatroom Rules
                             </h3>
                             <button

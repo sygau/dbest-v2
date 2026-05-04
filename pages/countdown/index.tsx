@@ -1,8 +1,8 @@
-import Head from 'next/head'
 import { useEffect, useState } from 'react'
-import { generateCountdownStructuredData, generatePageFAQStructuredData, getMainPageMetadata } from '../../utils/structuredData'
 import NavigationLink from '../../components/NavigationLink'
+import PageBreadcrumb from '../../components/PageBreadcrumb'
 import styles from '../../styles/countdown.module.css'
+import PageSEO from '../../components/PageSEO'
 
 interface TimeLeft {
   days: number
@@ -12,7 +12,6 @@ interface TimeLeft {
 }
 
 export default function CountdownPage() {
-  const metadata = getMainPageMetadata('countdown')
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
@@ -41,37 +40,17 @@ export default function CountdownPage() {
 
   return (
     <>
-      <Head>
-        <title>{metadata?.title}</title>
-        <meta name="description" content={metadata?.description} />
-        <meta name="robots" content={metadata?.robots} />
-        <meta property="og:title" content={metadata?.ogTitle} />
-        <meta property="og:description" content={metadata?.ogDescription} />
-        <meta property="og:image" content={metadata?.ogImage} />
-        <meta property="og:url" content={metadata?.ogUrl} />
-        <meta property="og:type" content={metadata?.ogType} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateCountdownStructuredData()) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(generatePageFAQStructuredData('countdown')) }}
-        />
-      </Head>
-
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">其他</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item active" aria-current="page">
-                DSE 2026 Countdown
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageSEO
+        title="DSE 2026 Countdown Timer 考試日期倒數"
+        description="DSE 2026 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2026 DSE Examination?"
+        ogTitle="DSE 2026 Countdown Timer 考試日期倒數"
+        ogDescription="DSE 2026 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。"
+        ogUrl="https://dse.best/countdown"
+        robots={['index', 'follow']}
+        jsonLd={countdownFaqJsonLd ? [countdownJsonLd, countdownFaqJsonLd] : [countdownJsonLd]}
+      />
+pageKey="countdown"
+      <PageBreadcrumb section="其他" text="DSE 2026 Countdown" />
 
       <div className={`card rounded-4 ${styles.countdownPage}`}>
         <div className="card-body">

@@ -8,15 +8,4 @@ compatibility_flags = [ "nodejs_compat" ]
 # You can put non-secret vars here, but keep Contentful keys in the Dashboard
 NODE_VERSION = "22"
 
-[[redirects]]
-from = "/hkpl_link"
-to = "https://sls.hkpl.gov.hk/digital-collection/tc/collection_hkcee-and-hkale-papers-collection.html"
-status = 301
-
-[[redirects]]
-from = "/jable"
-to = "https://jable.tv/"
-status = 301
-
-# Next-on-pages handles most .html redirects automatically, 
-# but you can add specific ones back if needed.
+# Redirects are defined in public/_redirects for CF Pages

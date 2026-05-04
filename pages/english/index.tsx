@@ -1,65 +1,26 @@
-import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
-import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
+import PageSEO from '../../components/PageSEO';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 
 export default function EnglishPage() {
-  const metadata = getSubjectMetadata('english');
-
-    const subjectKey = 'english';
-    const structuredData = generateSubjectStructuredData(subjectKey);
-    const faqData = generateSubjectFAQStructuredData(subjectKey);
-    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated('english');
 
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
-
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-
-                {/* Structured Data */}
-                {structuredData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(structuredData)
-                        }}
-                    />
-                )}
-                {faqData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(faqData)
-                        }}
-                    />
-                )}
-            </Head>
+            <PageSEO
+              title="DSE 英文 English Past Paper | Reading, Listening, Writing, Speaking"
+              description="DSE 英國語文科 English Language 歷屆試題下載 (2012-2025)，包含Paper 1, Paper 2, Paper 3, Paper 4, Answers/Marking Scheme。提供完整試卷下載，全面提升DSE English語言運用及應試技巧。"
+              ogTitle="HKDSE 英文 English Past Paper | Reading, Listening, Writing, Speaking"
+              ogDescription="DSE 英國語文科 English Language 歷屆試題下載(2012-2025)，包含Paper 1, Paper 2, Paper 3, Paper 4, Answers/Marking Scheme。提供完整試卷下載，全面提升DSE English語言運用及應試技巧。"
+              ogUrl="https://dse.best/english"
+              robots={['index', 'follow']}
+              subjectKey="english"
+            />
 
             {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">英文</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-
-                            <li className="breadcrumb-item active" aria-current="page">
-                                DSE Past Paper
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+            <PageBreadcrumb section="英文" text="DSE Past Paper" />
             {/*end breadcrumb*/}
             <div className="card rounded-4" style={{ height: "auto" }}>
                 <div className="card-body">
@@ -77,38 +38,38 @@ export default function EnglishPage() {
                     {/* Navigation Section */}
                     <div className="text-center mb-4">
                         {/* All Years Row */}
-                        <div className="mb-2 d-flex flex-wrap justify-content-center align-items-center">
-                            <a href="#year-2024" className="text-decoration-none text-info fw-bold nav-link-year">2024</a>
+                        <div className="mb-2 flex flex-wrap justify-center items-center">
+                            <a href="#year-2024" className="no-underline text-info font-bold nav-link-year">2024</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2023" className="text-decoration-none text-info fw-bold nav-link-year">2023</a>
+                            <a href="#year-2023" className="no-underline text-info font-bold nav-link-year">2023</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2022" className="text-decoration-none text-info fw-bold nav-link-year">2022</a>
+                            <a href="#year-2022" className="no-underline text-info font-bold nav-link-year">2022</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2021" className="text-decoration-none text-info fw-bold nav-link-year">2021</a>
+                            <a href="#year-2021" className="no-underline text-info font-bold nav-link-year">2021</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2020" className="text-decoration-none text-info fw-bold nav-link-year">2020</a>
+                            <a href="#year-2020" className="no-underline text-info font-bold nav-link-year">2020</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2019" className="text-decoration-none text-info fw-bold nav-link-year">2019</a>
+                            <a href="#year-2019" className="no-underline text-info font-bold nav-link-year">2019</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2018" className="text-decoration-none text-info fw-bold nav-link-year">2018</a>
+                            <a href="#year-2018" className="no-underline text-info font-bold nav-link-year">2018</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2017" className="text-decoration-none text-info fw-bold nav-link-year">2017</a>
+                            <a href="#year-2017" className="no-underline text-info font-bold nav-link-year">2017</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2016" className="text-decoration-none text-info fw-bold nav-link-year">2016</a>
+                            <a href="#year-2016" className="no-underline text-info font-bold nav-link-year">2016</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2015" className="text-decoration-none text-info fw-bold nav-link-year">2015</a>
+                            <a href="#year-2015" className="no-underline text-info font-bold nav-link-year">2015</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2014" className="text-decoration-none text-info fw-bold nav-link-year">2014</a>
+                            <a href="#year-2014" className="no-underline text-info font-bold nav-link-year">2014</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2013" className="text-decoration-none text-info fw-bold nav-link-year">2013</a>
+                            <a href="#year-2013" className="no-underline text-info font-bold nav-link-year">2013</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2012" className="text-decoration-none text-info fw-bold nav-link-year">2012</a>
+                            <a href="#year-2012" className="no-underline text-info font-bold nav-link-year">2012</a>
                         </div>
                         {/* Sections Row */}
-                        <div className="d-flex flex-wrap justify-content-center align-items-center">
-                            <a href="#practice-papers" className="text-decoration-none text-info fw-bold nav-link-section">Practice Papers</a>
+                        <div className="flex flex-wrap justify-center items-center">
+                            <a href="#practice-papers" className="no-underline text-info font-bold nav-link-section">Practice Papers</a>
                             <span className="nav-separator">|</span>
-                            <a href="#sample-papers" className="text-decoration-none text-info fw-bold nav-link-section">Sample Papers</a>
+                            <a href="#sample-papers" className="no-underline text-info font-bold nav-link-section">Sample Papers</a>
                         </div>
                     </div>
                     

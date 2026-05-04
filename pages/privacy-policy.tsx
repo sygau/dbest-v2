@@ -1,38 +1,19 @@
-import Head from 'next/head'
-import { getMainPageMetadata } from '../utils/structuredData';
+import PageSEO from '../components/PageSEO'
+import PageBreadcrumb from '../components/PageBreadcrumb'
 
 export default function PrivacyPolicyPage() {
-  const metadata = getMainPageMetadata('privacy-policy');
-
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
+            <PageSEO
+              title="私隱政策 Privacy Policy"
+              description="dse.best 私隱政策。了解我們如何收集、使用及保護您的個人資料，確保您在使用本網站時的私隱安全。"
+              ogTitle="私隱政策 Privacy Policy"
+              ogDescription="dse.best 私隱政策。了解我們如何收集、使用及保護您的個人資料。"
+              ogUrl="https://dse.best/privacy-policy"
+              robots={['index', 'follow']}
+            />
 
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-            </Head>
-
-            {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">其他</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-                            <li className="breadcrumb-item active" aria-current="page">
-                                私隱政策
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-            {/*end breadcrumb*/}
+            <PageBreadcrumb section="其他" text="私隱政策" />
             <div className="card rounded-4" style={{ height: "auto" }}>
                 <div className="card-body">
                     <h1>私隱政策 Privacy Policy</h1>

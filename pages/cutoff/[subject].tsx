@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import PageSEO from '../../components/PageSEO';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
@@ -23,7 +25,6 @@ import {
   AVAILABLE_CUTOFF_SUBJECTS,
   CUTOFF_SUBJECT_NAMES 
 } from '../../utils/cutoffSlugSEO';
-import { generateSubjectStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData';
 import CutoffTable from '../../components/CutoffTable';
 import { csvToCutoffData, dataToTableFormat, CutoffTableData, SubjectConfig, CutoffConfig } from '../../utils/clientCutoffData';
 import { getSubjectCutoffLastUpdated } from '../../utils/lastUpdated';
@@ -58,61 +59,36 @@ interface CutoffSubjectPageProps {
 export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig, lastUpdated }: CutoffSubjectPageProps) {
   const seoConfig = getCutoffSEOConfig(subjectStr);
   const metadata = generateCutoffMetadata(subjectStr);
-  const structuredData = generateSubjectStructuredData('cutoff');
-  const faqData = generatePageFAQStructuredData('cutoff');
   const otherSubjects = AVAILABLE_CUTOFF_SUBJECTS.filter(s => s !== subjectStr);
 
   return (
     <>
+      <PageSEO
+        title={metadata?.title || `DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} Cut-off Scores`}
+        description={metadata?.description || `DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} cut-off scores and grade boundaries`}
+        ogTitle={metadata?.ogTitle || metadata?.title}
+        ogDescription={metadata?.ogDescription || metadata?.description}
+        ogImage={metadata?.ogImage || "https://dse.best/assets/images/logo-icon.png"}
+        ogUrl={metadata?.ogUrl || `https://dse.best/cutoff/${subjectStr}`}
+        ogType={metadata?.ogType || "website"}
+        robots={['index', 'follow']}
+        canonical={`https://dse.best/cutoff/${subjectStr}`}
+        pageKey="cutoff"
+      />
       <Head>
-        <title>{metadata?.title || `DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} Cut-off Scores`}</title>
-        <meta name="description" content={metadata?.description || `DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} cut-off scores and grade boundaries`} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={metadata?.ogTitle || metadata?.title} />
-        <meta property="og:description" content={metadata?.ogDescription || metadata?.description} />
-        <meta property="og:image" content={metadata?.ogImage || "https://dse.best/assets/images/logo-icon.png"} />
-        <meta property="og:url" content={metadata?.ogUrl || `https://dse.best/cutoff/${subjectStr}`} />
-        <meta property="og:type" content={metadata?.ogType || "website"} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={metadata?.title} />
         <meta name="twitter:description" content={metadata?.description} />
         <meta name="twitter:image" content={metadata?.ogImage || "https://dse.best/assets/images/logo-icon.png"} />
-        <link rel="canonical" href={`https://dse.best/cutoff/${subjectStr}`} />
-        
-        {/* Structured Data */}
-        {structuredData && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-          />
-        )}
-        {faqData && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
-          />
-        )}
       </Head>
 
       {/* Breadcrumb */}
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">DSE Cut-off 分數</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-
-              <li className="breadcrumb-item active" aria-current="page">
-                {CUTOFF_SUBJECT_NAMES[subjectStr]}
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageBreadcrumb section="DSE Cut-off 分數" text={CUTOFF_SUBJECT_NAMES[subjectStr]} showHome />
 
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
-          <div className="d-flex align-items-center mb-4">
+          <div className="flex items-center mb-4">
             <h1 className="mb-0">{seoConfig?.pageTitle || `DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} Cut-off Scores`}</h1>
           </div>
           
@@ -127,9 +103,9 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
 
           {/* Last Updated Message Bubble */}
           {lastUpdated && (
-            <div className="alert alert-info fade show mb-4" role="alert">
-              <div className="d-flex align-items-center">
-                <i className="bx bx-info-circle me-2"></i>
+            <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-4" role="alert">
+              <div className="flex items-center">
+                <i className="bx bx-info-circle mr-2"></i>
                 <div>
                   <strong>資料更新 Data Updated:</strong> {lastUpdated}
                 </div>
@@ -148,23 +124,23 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
           {otherSubjects.length > 0 && (
             <div className="mt-5">
               <h3 className="mb-4 text-center">DSE 科目分數線 | Cut-off scores for DSE Subjects</h3>
-              <div className="row g-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {otherSubjects.map((otherSubject) => {
                   const subjectIcon = SUBJECT_ICONS[otherSubject];
                   const IconComponent = subjectIcon?.icon || BiBarChartAlt2;
                   const iconColor = subjectIcon?.color || '#6c757d';
-                  
+
                   return (
-                    <div key={otherSubject} className="col-lg-4 col-md-6">
-                      <NavigationLink href={`/cutoff/${otherSubject}`} className="text-decoration-none">
-                        <div className="card h-100 shadow-sm" style={{ border: '1px solid var(--bs-border-color)' }}>
-                          <div className="card-body d-flex align-items-center">
-                            <div className="me-3">
-                              <div className="bg-opacity-10 rounded-circle p-2" style={{ backgroundColor: `${iconColor}20` }}>
+                    <div key={otherSubject}>
+                      <NavigationLink href={`/cutoff/${otherSubject}`} className="no-underline">
+                        <div className="card h-full shadow-sm" style={{ border: '1px solid var(--bs-border-color)' }}>
+                          <div className="card-body flex items-center">
+                            <div className="mr-3">
+                              <div className="bg-opacity-10 rounded-full p-2" style={{ backgroundColor: `${iconColor}20` }}>
                                 <IconComponent style={{ color: iconColor }} size={20} />
                               </div>
                             </div>
-                            <div className="flex-grow-1">
+                            <div className="flex-grow">
                               <h6 className="card-title mb-0">{CUTOFF_SUBJECT_NAMES[otherSubject]}</h6>
                             </div>
                             <div>
@@ -181,9 +157,9 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
           )}
 
           {/* Warning Message */}
-          <div className="alert alert-warning mt-4 mb-0" role="alert">
-            <div className="d-flex align-items-start">
-              <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+          <div className="bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded mt-4 mb-0" role="alert">
+            <div className="flex items-start">
+              <svg className="bi flex-shrink-0 mr-2" width="24" height="24" role="img" aria-label="Warning:">
                 <use href="#exclamation-triangle-fill"/>
               </svg>
               <div>

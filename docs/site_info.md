@@ -85,7 +85,7 @@ html[data-bs-theme="dark"] {
 ```
 
 ### Component Architecture
-- **Legacy**: Bootstrap-based components (AnnouncementBar, FAQSection)
+- **Legacy**: Bootstrap-based components (FAQSection)
 - **Modern**: Tailwind components in `/components/tw/` (Layout, Sidebar, ThemeSwitcher)
 - **Hybrid**: Pages often mix both systems during migration
 

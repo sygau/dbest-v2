@@ -1,18 +1,8 @@
-import Head from 'next/head';
 import { useState, useRef, useMemo } from 'react';
 import { BiCopy, BiTrash, BiLoaderAlt, BiBookContent, BiMessageDetail, BiCheckCircle, BiInfoCircle } from 'react-icons/bi';
-import { 
-  getMainPageMetadata, 
-  generateTranslatorStructuredData,
-  generatePageFAQStructuredData,
-  getPageFAQs
-} from '../utils/structuredData';
-
+import PageSEO from '../components/PageSEO';
+import PageBreadcrumb from '../components/PageBreadcrumb';
 export default function TranslatorPage() {
-  const metadata = useMemo(() => getMainPageMetadata('translator'), []);
-  const structuredData = useMemo(() => generateTranslatorStructuredData(), []);
-  const faqStructuredData = useMemo(() => generatePageFAQStructuredData('chinese'), []);
-  const faqs = useMemo(() => getPageFAQs('chinese'), []);
 
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
@@ -111,39 +101,18 @@ export default function TranslatorPage() {
 
   return (
     <>
-      <Head>
-        <title>{metadata?.title || '文言文翻譯機'}</title>
-        <meta name="description" content={metadata?.description || 'AI 文言文翻譯工具'} />
-        <meta name="robots" content={metadata?.robots || 'index, follow'} />
-        <meta property="og:title" content={metadata?.ogTitle || '文言文翻譯機'} />
-        <meta property="og:description" content={metadata?.ogDescription || 'AI 文言文翻譯工具'} />
-        <meta property="og:image" content={metadata?.ogImage || 'https://dse.best/assets/images/logo-icon.png'} />
-        <meta property="og:url" content={metadata?.ogUrl || 'https://dse.best/translator'} />
-        <meta property="og:type" content={metadata?.ogType || 'website'} />
-        
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-        {faqStructuredData && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-          />
-        )}
-      </Head>
+      <PageSEO
+        title="文言文翻譯機 Classical Chinese Translator | AI 古文翻譯工具"
+        description="免費 AI 文言文翻譯機，即時將古文翻譯成現代白話文。專為 DSE 中文科學生設計，支援《岳陽樓記》、《出師表》、《六國論》等常見文言文篇章翻譯。輕鬆理解古文意思，提升中文閱讀能力。"
+        ogTitle="文言文翻譯機 Classical Chinese Translator | AI 古文翻譯工具"
+        ogDescription="免費 AI 文言文翻譯機，即時將古文翻譯成現代白話文。專為 DSE 中文科學生設計，支援常見文言文篇章翻譯。輕鬆理解古文意思，提升中文閱讀能力。"
+        ogUrl="https://dse.best/translator"
+        robots={['index', 'follow']}
+        pageKey="translator"
+      />
 
       <div className="page-wrapper">
-        <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-          <div className="breadcrumb-title pe-3">工具</div>
-          <div className="ps-3">
-            <nav aria-label="breadcrumb">
-              <ol className="breadcrumb mb-0 p-0">
-                <li className="breadcrumb-item active">文言文翻譯機</li>
-              </ol>
-            </nav>
-          </div>
-        </div>
+        <PageBreadcrumb section="工具" text="文言文翻譯機" />
 
         <div className="translator-container">
           <h1 className="translator-title">文言文翻譯機</h1>
@@ -240,7 +209,7 @@ export default function TranslatorPage() {
           </div>
 
           <div className="card rounded-4 border-0 shadow-sm mb-4">
-            <div className="card-body p-4 p-lg-5">
+            <div className="card-body p-4 lg:p-5">
               <div className="article-content mt-0">
                 <h1 className="article-title text-center">文言文翻譯全攻略：從基礎到 DSE 應試技巧</h1>
                 <p className="article-meta text-center border-0 p-0">本指南旨在協助 DSE 考生掌握古文解碼邏輯，將晦澀的文言文轉化為易懂的現代白話文。</p>
@@ -414,7 +383,7 @@ export default function TranslatorPage() {
         .translator-title {
           font-size: 2.5rem;
           font-weight: 800;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
           text-align: center;
           margin-bottom: 0.5rem;
           letter-spacing: -0.02em;
@@ -422,7 +391,7 @@ export default function TranslatorPage() {
 
         .translator-subtitle {
           text-align: center;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           font-size: 1rem;
           margin-bottom: 2rem;
         }
@@ -441,8 +410,8 @@ export default function TranslatorPage() {
         }
 
         .translation-panel {
-          background: var(--bs-card-bg);
-          border: 1px solid var(--bs-border-color);
+          background: var(--color-card-bg);
+          border: 1px solid var(--color-border-color);
           border-radius: 16px;
           overflow: hidden;
           display: flex;
@@ -454,13 +423,13 @@ export default function TranslatorPage() {
           justify-content: space-between;
           align-items: center;
           padding: 12px 16px;
-          background: var(--bs-tertiary-bg);
-          border-bottom: 1px solid var(--bs-border-color);
+          background: var(--color-tertiary-bg);
+          border-bottom: 1px solid var(--color-border-color);
         }
 
         .panel-label {
           font-weight: 600;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
           font-size: 0.9rem;
         }
 
@@ -472,7 +441,7 @@ export default function TranslatorPage() {
         .action-btn {
           background: transparent;
           border: none;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           cursor: pointer;
           padding: 4px 8px;
           border-radius: 6px;
@@ -484,8 +453,8 @@ export default function TranslatorPage() {
         }
 
         .action-btn:hover:not(:disabled) {
-          background: var(--bs-secondary-bg);
-          color: var(--bs-body-color);
+          background: var(--color-secondary-bg);
+          color: var(--color-body);
         }
 
         .action-btn:disabled {
@@ -502,8 +471,8 @@ export default function TranslatorPage() {
           height: 250px;
           padding: 1.2rem;
           border: none;
-          background: var(--bs-card-bg);
-          color: var(--bs-body-color);
+          background: var(--color-card-bg);
+          color: var(--color-body);
           font-size: 1.1rem;
           resize: none;
           transition: background-color 0.2s;
@@ -525,7 +494,7 @@ export default function TranslatorPage() {
 
         .char-count {
           font-size: 0.75rem;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           opacity: 0.6;
           font-family: 'JetBrains Mono', monospace;
         }
@@ -542,7 +511,7 @@ export default function TranslatorPage() {
           right: 12px;
           background: none;
           border: none;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           font-size: 1.2rem;
           cursor: pointer;
           padding: 4px;
@@ -559,7 +528,7 @@ export default function TranslatorPage() {
         }
 
         .output-text {
-          color: var(--bs-body-color);
+          color: var(--color-body);
           font-size: 1rem;
           line-height: 1.6;
           white-space: pre-wrap;
@@ -575,9 +544,9 @@ export default function TranslatorPage() {
           height: 16px;
           background: linear-gradient(
             90deg,
-            var(--bs-tertiary-bg) 25%,
-            var(--bs-secondary-bg) 50%,
-            var(--bs-tertiary-bg) 75%
+            var(--color-tertiary-bg) 25%,
+            var(--color-secondary-bg) 50%,
+            var(--color-tertiary-bg) 75%
           );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite;
@@ -611,7 +580,7 @@ export default function TranslatorPage() {
         }
 
         .translate-btn {
-          background: var(--bs-primary, #6366f1);
+          background: var(--color-primary, #6366f1);
           color: white;
           border: none;
           padding: 14px 48px;
@@ -651,12 +620,12 @@ export default function TranslatorPage() {
 
         .translate-disclaimer {
           font-size: 0.85rem;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           opacity: 0.8;
         }
 
         .article-content {
-          color: var(--bs-body-color);
+          color: var(--color-body);
           line-height: 1.8;
           font-size: 1.15rem;
         }
@@ -664,7 +633,7 @@ export default function TranslatorPage() {
         .article-title {
           font-size: 2.8rem;
           font-weight: 800;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
           margin-bottom: 1.5rem;
           letter-spacing: -0.02em;
           line-height: 1.2;
@@ -672,30 +641,30 @@ export default function TranslatorPage() {
 
         .article-meta {
           font-size: 1.2rem;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           margin-bottom: 3rem;
         }
 
         .section-h2 {
           font-size: 1.8rem;
           font-weight: 700;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
           margin: 3.5rem 0 1.5rem 0;
           padding-bottom: 0.5rem;
-          border-bottom: 1px solid var(--bs-border-color);
+          border-bottom: 1px solid var(--color-border-color);
         }
 
         .section-h3 {
           font-size: 1.4rem;
           font-weight: 700;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
           margin: 2rem 0 1rem 0;
         }
 
         .section-h4 {
           font-size: 1.2rem;
           font-weight: 700;
-          color: var(--bs-primary);
+          color: var(--color-primary);
           margin-bottom: 0.75rem;
         }
 
@@ -720,8 +689,8 @@ export default function TranslatorPage() {
           font-family: 'JetBrains Mono', monospace;
           font-size: 0.9rem;
           font-weight: 700;
-          color: var(--bs-primary);
-          background: var(--bs-tertiary-bg);
+          color: var(--color-primary);
+          background: var(--color-tertiary-bg);
           padding: 2px 6px;
           border-radius: 4px;
           margin-top: 4px;
@@ -747,29 +716,29 @@ export default function TranslatorPage() {
 
         .vocab-table th, .vocab-table td {
           padding: 1rem;
-          border: 1px solid var(--bs-border-color);
+          border: 1px solid var(--color-border-color);
           text-align: left;
         }
 
         .vocab-table th {
-          background: var(--bs-tertiary-bg);
+          background: var(--color-tertiary-bg);
           font-weight: 700;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
         }
 
         .analysis-box {
-          background: var(--bs-tertiary-bg);
+          background: var(--color-tertiary-bg);
           padding: 2rem;
           border-radius: 12px;
           margin: 2rem 0;
-          border-left: 6px solid var(--bs-primary);
+          border-left: 6px solid var(--color-primary);
         }
 
         .example-box {
-          background: var(--bs-secondary-bg);
+          background: var(--color-secondary-bg);
           padding: 1.5rem;
           border-radius: 12px;
-          border: 1px dashed var(--bs-border-color);
+          border: 1px dashed var(--color-border-color);
         }
 
         @media (max-width: 768px) {

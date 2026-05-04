@@ -13,6 +13,7 @@ yarn-error.log*
 .next/
 out/
 .vercel
+tsconfig.tsbuildinfo
 
 # Build outputs
 public/blog/

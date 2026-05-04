@@ -1,10 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
+import PageSEO from '../../components/PageSEO';
 import { BiBookReader, BiPencil } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 import { PassageConfig } from '../../types/12p';
-import { get12pMetadata } from '../../utils/12pMetadata';
 import {
   generate12pStructuredData,
   generate12pFAQStructuredData,
@@ -124,45 +124,24 @@ const FAQS = [
 ];
 
 export default function TwelvePassagesHome({ config }: HomeProps) {
-  const metadata = get12pMetadata('index');
   const structuredData = generate12pStructuredData();
   const faqData = generate12pFAQStructuredData();
   const breadcrumbData = generate12pBreadcrumbStructuredData('index');
 
   return (
     <>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="robots" content={metadata.robots} />
-        <meta property="og:title" content={metadata.ogTitle} />
-        <meta property="og:description" content={metadata.ogDescription} />
-        <meta property="og:image" content={metadata.ogImage} />
-        <meta property="og:url" content={metadata.ogUrl} />
-        <meta property="og:type" content={metadata.ogType} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }} />
-      </Head>
+      <PageSEO
+        title="DSE 中文 十二篇範文語譯溫習工具"
+        description="DSE 中文科十二篇範文詞語意義練習平台。提供溫習模式及測驗模式，涵蓋《論語》、《孟子》、《莊子》等12篇指定篇章，助你掌握古文詞語解釋，提升閱讀理解能力。"
+        ogTitle="DSE 中文 十二篇範文語譯溫習工具"
+        ogDescription="DSE 中文科十二篇範文詞語意義練習平台。提供溫習模式及測驗模式，涵蓋12篇指定篇章，助你掌握古文詞語解釋。"
+        ogImage="https://dse.best/assets/images/logo-icon.webp"
+        ogUrl="https://dse.best/12p"
+        robots={['index', 'follow']}
+        jsonLd={[structuredData, faqData, breadcrumbData].filter(Boolean) as object[]}
+      />
 
-      {/* Breadcrumb */}
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">工具</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item">
-                <NavigationLink href="/">
-                  <i className="bx bx-home-alt"></i>
-                </NavigationLink>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                十二篇範文練習 📝
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageBreadcrumb section="工具" text="十二篇範文練習 📝" showHome />
 
       {/* Main Content */}
       <div className="card rounded-4 page-12p">
@@ -177,68 +156,61 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
           <hr className="divider" />
 
           {/* Mode Selection */}
-          <div className="row g-3 mb-4">
-            <div className="col-sm-6">
-              <NavigationLink href="/12p/study" className="text-decoration-none d-block h-100">
-                <div className="mode-card mode-study">
-                  <div className="mode-ghost-icon" aria-hidden="true">
-                    <BiBookReader size={88} />
-                  </div>
-                  <div className="mode-title mode-title-study">溫習模式</div>
-                  <div className="mode-desc">閃卡形式逐詞溫習，輕鬆翻閱加深記憶</div>
-                  <div className="mode-arrow mode-arrow-study">開始溫習 →</div>
-                  <div className="mode-bar mode-bar-study" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <NavigationLink href="/12p/study" className="no-underline block h-full">
+              <div className="mode-card mode-study">
+                <div className="mode-ghost-icon" aria-hidden="true">
+                  <BiBookReader size={88} />
                 </div>
-              </NavigationLink>
-            </div>
-            <div className="col-sm-6">
-              <NavigationLink href="/12p/quiz" className="text-decoration-none d-block h-100">
-                <div className="mode-card mode-quiz">
-                  <div className="mode-ghost-icon" aria-hidden="true">
-                    <BiPencil size={88} />
-                  </div>
-                  <div className="mode-title mode-title-quiz">測驗模式</div>
-                  <div className="mode-desc">自我測試詞語理解，即時評分追蹤進度</div>
-                  <div className="mode-arrow mode-arrow-quiz">開始測驗 →</div>
-                  <div className="mode-bar mode-bar-quiz" />
+                <div className="mode-title mode-title-study">溫習模式</div>
+                <div className="mode-desc">閃卡形式逐詞溫習，輕鬆翻閱加深記憶</div>
+                <div className="mode-arrow mode-arrow-study">開始溫習 →</div>
+                <div className="mode-bar mode-bar-study" />
+              </div>
+            </NavigationLink>
+            <NavigationLink href="/12p/quiz" className="no-underline block h-full">
+              <div className="mode-card mode-quiz">
+                <div className="mode-ghost-icon" aria-hidden="true">
+                  <BiPencil size={88} />
                 </div>
-              </NavigationLink>
-            </div>
+                <div className="mode-title mode-title-quiz">測驗模式</div>
+                <div className="mode-desc">自我測試詞語理解，即時評分追蹤進度</div>
+                <div className="mode-arrow mode-arrow-quiz">開始測驗 →</div>
+                <div className="mode-bar mode-bar-quiz" />
+              </div>
+            </NavigationLink>
           </div>
 
           <hr className="divider" />
 
           {/* Passages List */}
           <h2 className="section-heading">📖 十二篇指定篇章</h2>
-          <div className="row g-3 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
             {config.passages.map((passage, index) => {
               const color = PASSAGE_COLORS[index % PASSAGE_COLORS.length];
               const info = PASSAGE_INFO[passage.id];
               return (
-                <div key={passage.id} className="col-md-6">
-                  <div
-                    className="passage-card"
-                    style={{
-                      background: color.bg,
-                      borderLeft: `3px solid ${color.border}`,
-                    }}
-                  >
-                    <div className="passage-header">
-                      <span className="passage-emoji">{passage.emoji}</span>
-                      <div>
-                        <div className="passage-title">
-                          {passage.title}
-                        </div>
-                        <div className="passage-subtitle">{passage.subtitle}</div>
-                      </div>
+                <div
+                  key={passage.id}
+                  className="passage-card"
+                  style={{
+                    background: color.bg,
+                    borderLeft: `3px solid ${color.border}`,
+                  }}
+                >
+                  <div className="passage-header">
+                    <span className="passage-emoji">{passage.emoji}</span>
+                    <div>
+                      <div className="passage-title">{passage.title}</div>
+                      <div className="passage-subtitle">{passage.subtitle}</div>
                     </div>
-                    {info && (
-                      <>
-                        <div className="passage-meta">{info.meta}</div>
-                        <p className="passage-summary">{info.summary}</p>
-                      </>
-                    )}
                   </div>
+                  {info && (
+                    <>
+                      <div className="passage-meta">{info.meta}</div>
+                      <p className="passage-summary">{info.summary}</p>
+                    </>
+                  )}
                 </div>
               );
             })}
@@ -248,13 +220,11 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 
           {/* FAQ */}
           <h3 className="section-heading">❓ 常見問題</h3>
-          <div className="row g-3 mb-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2">
             {FAQS.map((faq) => (
-              <div key={faq.id} className="col-md-6">
-                <div className="faq-card">
-                  <div className="faq-question">{faq.question}</div>
-                  <div className="faq-answer">{faq.answer}</div>
-                </div>
+              <div key={faq.id} className="faq-card">
+                <div className="faq-question">{faq.question}</div>
+                <div className="faq-answer">{faq.answer}</div>
               </div>
             ))}
           </div>
@@ -267,7 +237,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
         .page-title {
           font-size: 2.4rem;
           font-weight: 800;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
           letter-spacing: -0.03em;
           line-height: 1.1;
           margin: 1.25rem 0 0.75rem;
@@ -276,7 +246,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 
         .page-subtitle {
           font-size: 0.92rem;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           max-width: 680px;
           margin: 0 auto 1.5rem;
           text-align: center;
@@ -284,14 +254,14 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
         }
 
         .divider {
-          border-color: var(--bs-border-color);
+          border-color: var(--color-border-color);
           margin: 1.5rem 0;
         }
 
         .section-heading {
           font-size: 1.5rem;
           font-weight: 700;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
           margin-bottom: 1.25rem;
           text-align: center;
         }
@@ -303,13 +273,13 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
           border-radius: 10px;
           padding: 1.4rem 1.5rem 1.6rem;
           height: 100%;
-          background: var(--bs-tertiary-bg, #f1f5f9);
+          background: var(--color-tertiary-bg, #f1f5f9);
           cursor: pointer;
           transition: background 0.15s;
         }
 
         .mode-card:hover {
-          background: var(--bs-secondary-bg, #e8eef6);
+          background: var(--color-secondary-bg, #e8eef6);
         }
 
         /* Ghost icon — large, faded, top-right corner */
@@ -388,19 +358,19 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
           font-size: 1rem;
           line-height: 1.3;
           margin-bottom: 0.2rem;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
         }
 
         .passage-subtitle {
           font-size: 0.8rem;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
         }
 
         /* Monospace metadata bar — like a GitHub file header */
         .passage-meta {
           font-size: 0.72rem;
           font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
           background: var(--bs-tertiary-bg);
           border: 1px solid var(--bs-border-color);
           border-radius: 4px;
@@ -412,7 +382,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 
         .passage-summary {
           font-size: 0.82rem;
-          color: var(--bs-body-color);
+          color: var(--color-body);
           line-height: 1.65;
           margin: 0;
         }
@@ -430,13 +400,13 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
           font-weight: 600;
           font-size: 0.95rem;
           margin-bottom: 0.6rem;
-          color: var(--bs-heading-color);
+          color: var(--color-heading-color);
         }
 
         .faq-answer {
           font-size: 0.875rem;
           line-height: 1.65;
-          color: var(--bs-secondary-color);
+          color: var(--color-secondary-color);
         }
 
         /* ── Responsive ── */

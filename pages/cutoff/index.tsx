@@ -1,11 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
 import { BiBarChartAlt2, BiTrendingUp, BiBookOpen, BiBook, BiCalculator, BiBot, BiTestTube, BiLeaf, BiLaptop, BiGlobe, BiMoney, BiBriefcase, BiPlanet } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 import { AVAILABLE_CUTOFF_SUBJECTS, CUTOFF_SUBJECT_NAMES } from '../../utils/cutoffSlugSEO';
-import { getPageMetadata } from '../../utils/pageMetadata';
-import { generateSubjectStructuredData, generatePageFAQStructuredData } from '../../utils/structuredData';
 import { getCutoffIndexLastUpdated } from '../../utils/lastUpdated';
+import PageSEO from '../../components/PageSEO';
 
 const SUBJECT_STYLES: Record<string, { icon: any; color: string }> = {
   chinese: { icon: BiBook, color: '#ff69b4' },
@@ -27,69 +26,27 @@ const SUBJECT_STYLES: Record<string, { icon: any; color: string }> = {
 };
 
 export default function CutoffIndexPage() {
-  const metadata = getPageMetadata('cutoff') || {
-    title: '【DSE Cut Off 分數】全港最齊 2012–2025 全部科目等級分界線｜英文、中文、數學等',
-    description: '【DSE Cut Off 分數一覽】全港最齊2012–2025年全部科目等級分界線！涵蓋英文、中文、數學、物理、化學、生物、ICT、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術等。做完past paper？立即對cut off分數，精準預測你嘅DSE Level！',
-  };
-  const structuredData = generateSubjectStructuredData('cutoff');
-  const faqData = generatePageFAQStructuredData('cutoff');
   const lastUpdated = getCutoffIndexLastUpdated();
 
   return (
     <>
-      <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
-        <meta property="og:image" content="https://dse.best/assets/images/logo-icon.png" />
-        <meta property="og:url" content="https://dse.best/cutoff" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={metadata.title} />
-        <meta name="twitter:description" content={metadata.description} />
-        <meta name="twitter:image" content="https://dse.best/assets/images/logo-icon.png" />
-        <link rel="canonical" href="https://dse.best/cutoff" />
-        
-        {/* Structured Data */}
-        {structuredData && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-          />
-        )}
-        {faqData && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqData) }}
-          />
-        )}
-      </Head>
+      <PageSEO
+        title="【DSE Cut Off 分數】全港最齊 2012–2025 全部科目等級分界線｜英文、中文、數學等"
+        description="【DSE Cut Off 分數一覽】全港最齊2012–2025年全部科目等級分界線！涵蓋英文、中文、數學、物理、化學、生物、ICT、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術等。做完past paper？立即對cut off分數，精準預測你嘅DSE Level！"
+        ogTitle="【DSE Cut Off 分數】全港最齊 2012–2025 全部科目等級分界線｜英文、中文、數學等"
+        ogDescription="【DSE Cut Off 分數一覽】全港最齊2012–2025年全部科目等級分界線！涵蓋英文、中文、數學、物理、化學、生物、ICT、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術等。"
+        ogUrl="https://dse.best/cutoff"
+        robots={['index', 'follow']}
+        pageKey="cutoff"
+      />
 
       {/* Breadcrumb */}
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">DSE Cut-off 分數</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item">
-                <NavigationLink href="/">
-                  <i className="bx bx-home-alt"></i>
-                </NavigationLink>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                Cut-off 分數
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageBreadcrumb section="DSE Cut-off 分數" text="Cut-off 分數" showHome />
 
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body" style={{ fontFamily: "var(--font-noto-sans-hk), 'PingFang HK', 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, sans-serif" }}>
-          <div className="d-flex align-items-center mb-4">
+          <div className="flex items-center mb-4">
             <h1 className="mb-0">DSE Cut-off Scores 分數線 (2012-2025)</h1>
           </div>
           
@@ -111,7 +68,7 @@ export default function CutoffIndexPage() {
                 <NavigationLink
                   key={subject}
                   href={`/cutoff/${subject}`}
-                  className="text-decoration-none d-block mb-2"
+                  className="no-underline block mb-2"
                 >
                   <div
                     className="cutoff-subject-row"
@@ -121,7 +78,7 @@ export default function CutoffIndexPage() {
                       boxShadow: `0 10px 24px ${accentColor}1f`,
                     }}
                   >
-                    <div className="d-flex align-items-center gap-3 cutoff-subject-left">
+                    <div className="flex items-center gap-3 cutoff-subject-left">
                       <div
                         className="cutoff-subject-icon-wrapper"
                         style={{
@@ -143,7 +100,7 @@ export default function CutoffIndexPage() {
                         </div>
                       </div>
                     </div>
-                    <div className="d-flex align-items-center gap-2 cutoff-subject-meta">
+                    <div className="flex items-center gap-2 cutoff-subject-meta">
                       <span
                         className="cutoff-year-pill"
                         style={{
@@ -161,12 +118,12 @@ export default function CutoffIndexPage() {
           </div>
 
           {/* Information Section */}
-          <div className="row g-4 mb-4">
-            <div className="col-lg-6">
-              <div className="card h-100" style={{ border: '1px solid var(--bs-border-color)' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <div>
+              <div className="card h-full" style={{ border: '1px solid var(--bs-border-color)' }}>
                 <div className="card-body">
-                  <div className="d-flex align-items-center mb-3">
-                    <BiBookOpen className="me-2 text-primary" size={24} />
+                  <div className="flex items-center mb-3">
+                    <BiBookOpen className="mr-2 text-primary" size={24} />
                     <h5 className="mb-0">關於Cut-off分數 About Cut-off Scores</h5>
                   </div>
                   <p className="mb-0">
@@ -177,11 +134,11 @@ export default function CutoffIndexPage() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-6">
-              <div className="card h-100" style={{ border: '1px solid var(--bs-border-color)' }}>
+            <div>
+              <div className="card h-full" style={{ border: '1px solid var(--bs-border-color)' }}>
                 <div className="card-body">
-                  <div className="d-flex align-items-center mb-3">
-                    <BiTrendingUp className="me-2 text-success" size={24} />
+                  <div className="flex items-center mb-3">
+                    <BiTrendingUp className="mr-2 text-success" size={24} />
                     <h5 className="mb-0">如何使用 How to Use</h5>
                   </div>
                   <p className="mb-0">
@@ -195,9 +152,9 @@ export default function CutoffIndexPage() {
           </div>
 
           {/* Data Source & Credits */}
-          <div className="alert alert-info mb-4" role="alert">
-            <div className="d-flex align-items-start">
-              <i className="bx bx-info-circle me-2 mt-1"></i>
+          <div className="bg-blue-50 border border-blue-400 text-blue-800 px-4 py-3 rounded mb-4" role="alert">
+            <div className="flex items-start">
+              <i className="bx bx-info-circle mr-2 mt-1"></i>
               <div>
                 <strong>資料來源 Data Sources:</strong>
                 <br />
@@ -219,8 +176,8 @@ export default function CutoffIndexPage() {
           </div>
 
           {/* Warning Message */}
-          <div className="alert alert-warning mb-4" role="alert">
-            <div className="d-flex align-items-start">
+          <div className="bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded mb-4" role="alert">
+            <div className="flex items-start">
               <div>
                 <strong>注意事項 Important Notice:</strong>
                 <br />

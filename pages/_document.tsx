@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         {/* BLOCKING theme script - MUST execute before any rendering */}
         <script dangerouslySetInnerHTML={{
-          __html: `(function(){try{var t=localStorage.getItem('selectedTheme')||'light';var m={'blue-theme':'blue','dark':'dark','semi-dark':'light','light':'light'};var theme=m[t]||t;document.documentElement.setAttribute('data-theme',theme);document.documentElement.setAttribute('data-bs-theme',t);document.documentElement.style.setProperty('--color-body-bg',theme==='dark'?'#212529':theme==='blue'?'#0f1535':'#eff1f3')}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.setProperty('--color-body-bg','#eff1f3')}})()`
+          __html: `(function(){try{var raw=localStorage.getItem('selectedTheme')||document.documentElement.getAttribute('data-bs-theme')||document.documentElement.getAttribute('data-theme')||'light';var pref=raw==='blue'?'blue-theme':raw==='bodered'?'bodered-theme':raw;if(pref!=='dark'&&pref!=='blue-theme'&&pref!=='bodered-theme'&&pref!=='light'){pref='light'}var theme=pref==='dark'?'dark':pref==='blue-theme'?'blue':'light';var bg=theme==='dark'?'#212529':theme==='blue'?'#0f1535':'#eff1f3';document.documentElement.setAttribute('data-theme',theme);document.documentElement.setAttribute('data-bs-theme',pref);document.documentElement.style.setProperty('--color-body-bg',bg);document.documentElement.style.colorScheme=theme==='light'?'light':'dark';var meta=document.querySelector('meta[name=\"theme-color\"]');if(meta){meta.setAttribute('content',bg)}}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.setAttribute('data-bs-theme','light');document.documentElement.style.setProperty('--color-body-bg','#eff1f3');document.documentElement.style.colorScheme='light'}})()`
         }} />
         <meta property="og:site_name" content="dse.best" />
         <meta property="og:locale" content="zh_HK" />
@@ -16,38 +16,34 @@ export default function Document() {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
         <meta name="theme-color" content="#0f1535" />
-
-
         {/* Optimized Ad-Free Logic (Static-Safe) */}
-        {process.env.PASSCODE_MODE !== 'true' && (
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function(){
-                try {
-                  var p = new URLSearchParams(window.location.search);
-                  var isNa = p.has('na');
-                  var isCookie = document.cookie.indexOf('noAds=1') !== -1;
-                  var isLocal = false;
-                  try { isLocal = localStorage.getItem('noAds') === '1'; } catch(e) {}
-                  
-                  if (isNa || isCookie || isLocal) {
-                    window.__noAds = true;
-                    try { localStorage.setItem('noAds', '1'); } catch(e) {}
-                    var st = document.createElement('style');
-                    st.innerHTML = '.adsbygoogle, ins.adsbygoogle, [id^="google_ads"] { display:none !important; visibility:hidden !important; height:0 !important; }';
-                    document.head.appendChild(st);
-                  } else {
-                    var s = document.createElement('script');
-                    s.async = true;
-                    s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921";
-                    s.setAttribute('crossorigin', 'anonymous');
-                    document.head.appendChild(s);
-                  }
-                } catch(e) {}
-              })();`
-            }}
-          />
-        )}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+              try {
+                var p = new URLSearchParams(window.location.search);
+                var isNa = p.has('na');
+                var isCookie = document.cookie.indexOf('noAds=1') !== -1;
+                var isLocal = false;
+                try { isLocal = localStorage.getItem('noAds') === '1'; } catch(e) {}
+                
+                if (isNa || isCookie || isLocal) {
+                  window.__noAds = true;
+                  try { localStorage.setItem('noAds', '1'); } catch(e) {}
+                  var st = document.createElement('style');
+                  st.innerHTML = '.adsbygoogle, ins.adsbygoogle, [id^="google_ads"] { display:none !important; visibility:hidden !important; height:0 !important; }';
+                  document.head.appendChild(st);
+                } else {
+                  var s = document.createElement('script');
+                  s.async = true;
+                  s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9807119599898921";
+                  s.setAttribute('crossorigin', 'anonymous');
+                  document.head.appendChild(s);
+                }
+              } catch(e) {}
+            })();`
+          }}
+        />
 
 
         {/* Google Analytics */}
@@ -68,30 +64,13 @@ export default function Document() {
 
         {/* PWA iOS Styles */}
         <style dangerouslySetInnerHTML={{ __html: pwaStyles }} />
-
-
-        {/* Hide download buttons */}
-        {/* <Public><style dangerouslySetInnerHTML={{ __html: `a[data-paper-id],.btn-info:has(svg),.btn-info svg{display:none!important}` }} /></Public> */}
-
-
         {/* Consolidated Main Script */}
         <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.mainScript }} />
-
-
-        {process.env.PASSCODE_MODE === 'true' && (
-          <script defer src="https://x.dse.best/_vercel/insights/script.js"></script>
-        )}
       </Head>
       <body>
         <Main />
         <NextScript />
-
-
-        {process.env.PASSCODE_MODE === 'true' ? (
-          <script src={`/assets/js/appendLinksX.js?v=${Date.now()}`} async></script>
-        ) : (
-          <script src={`/assets/js/appendLinks.min.js?v=${Date.now()}`} async></script>
-        )}
+        <script src={`/assets/js/appendLinks.min.js`} async></script>
       </body>
     </Html>
   )

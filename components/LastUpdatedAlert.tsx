@@ -1,4 +1,5 @@
-import React from 'react';
+import { Alert, AlertTitle, AlertDescription } from './ui/Alert';
+import { LuInfo } from 'react-icons/lu';
 
 interface LastUpdatedAlertProps {
   date: string;
@@ -7,17 +8,12 @@ interface LastUpdatedAlertProps {
 
 const LastUpdatedAlert: React.FC<LastUpdatedAlertProps> = ({ date, className = '' }) => {
   return (
-    <div className={`alert alert-border-primary alert-dismissible fade show ${className}`}>
-      <div className="">
-        <b>最後更新: </b>{date}
-      </div>
-      <button
-        type="button"
-        className="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      />
-    </div>
+    <Alert variant="default" className={className}>
+      <AlertTitle icon={<LuInfo size={16} />}>
+        最後更新
+      </AlertTitle>
+      <AlertDescription>{date}</AlertDescription>
+    </Alert>
   );
 };
 

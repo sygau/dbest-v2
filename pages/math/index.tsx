@@ -1,65 +1,26 @@
-import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
-import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
+import PageSEO from '../../components/PageSEO';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 
 export default function MathPage() {
-  const metadata = getSubjectMetadata('math');
-
-    const subjectKey = 'math';
-    const structuredData = generateSubjectStructuredData(subjectKey);
-    const faqData = generateSubjectFAQStructuredData(subjectKey);
-    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated('math');
 
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
-
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-
-                {/* Structured Data */}
-                {structuredData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(structuredData)
-                        }}
-                    />
-                )}
-                {faqData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(faqData)
-                        }}
-                    />
-                )}
-            </Head>
+            <PageSEO
+                title="DSE 數學 Mathematics Past Paper | Paper 1, Paper 2, Answers/Marking Scheme"
+                description="DSE 數學科 Mathematics 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Mathematics基礎概念及解題技巧。"
+                ogTitle="DSE 數學 Mathematics 歷屆試題 Past Papers | 數學試卷及答案"
+                ogDescription="DSE 數學科 Mathematics 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Mathematics基礎概念及解題技巧。"
+                ogUrl="https://dse.best/math"
+                robots={['index', 'follow']}
+                subjectKey="math"
+            />
 
             {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">數學</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-
-                            <li className="breadcrumb-item active" aria-current="page">
-                                DSE Past Paper
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+            <PageBreadcrumb section="數學" text="DSE Past Paper" />
             {/*end breadcrumb*/}
             <div className="card rounded-4" style={{ height: "auto" }}>
                 <div className="card-body">
@@ -79,42 +40,42 @@ export default function MathPage() {
                     {/* Navigation Section */}
                     <div className="text-center mb-4">
                         {/* All Years Row */}
-                        <div className="mb-2 d-flex flex-wrap justify-content-center align-items-center">
-                            <a href="#year-2025" className="text-decoration-none text-info fw-bold nav-link-year">2025</a>
+                        <div className="mb-2 flex flex-wrap justify-center items-center">
+                            <a href="#year-2025" className="no-underline text-info font-bold nav-link-year">2025</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2024" className="text-decoration-none text-info fw-bold nav-link-year">2024</a>
+                            <a href="#year-2024" className="no-underline text-info font-bold nav-link-year">2024</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2023" className="text-decoration-none text-info fw-bold nav-link-year">2023</a>
+                            <a href="#year-2023" className="no-underline text-info font-bold nav-link-year">2023</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2022" className="text-decoration-none text-info fw-bold nav-link-year">2022</a>
+                            <a href="#year-2022" className="no-underline text-info font-bold nav-link-year">2022</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2021" className="text-decoration-none text-info fw-bold nav-link-year">2021</a>
+                            <a href="#year-2021" className="no-underline text-info font-bold nav-link-year">2021</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2020" className="text-decoration-none text-info fw-bold nav-link-year">2020</a>
+                            <a href="#year-2020" className="no-underline text-info font-bold nav-link-year">2020</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2019" className="text-decoration-none text-info fw-bold nav-link-year">2019</a>
+                            <a href="#year-2019" className="no-underline text-info font-bold nav-link-year">2019</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2018" className="text-decoration-none text-info fw-bold nav-link-year">2018</a>
+                            <a href="#year-2018" className="no-underline text-info font-bold nav-link-year">2018</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2017" className="text-decoration-none text-info fw-bold nav-link-year">2017</a>
+                            <a href="#year-2017" className="no-underline text-info font-bold nav-link-year">2017</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2016" className="text-decoration-none text-info fw-bold nav-link-year">2016</a>
+                            <a href="#year-2016" className="no-underline text-info font-bold nav-link-year">2016</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2015" className="text-decoration-none text-info fw-bold nav-link-year">2015</a>
+                            <a href="#year-2015" className="no-underline text-info font-bold nav-link-year">2015</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2014" className="text-decoration-none text-info fw-bold nav-link-year">2014</a>
+                            <a href="#year-2014" className="no-underline text-info font-bold nav-link-year">2014</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2013" className="text-decoration-none text-info fw-bold nav-link-year">2013</a>
+                            <a href="#year-2013" className="no-underline text-info font-bold nav-link-year">2013</a>
                             <span className="nav-separator">|</span>
-                            <a href="#year-2012" className="text-decoration-none text-info fw-bold nav-link-year">2012</a>
+                            <a href="#year-2012" className="no-underline text-info font-bold nav-link-year">2012</a>
                         </div>
                         {/* Sections Row */}
-                        <div className="d-flex flex-wrap justify-content-center align-items-center">
-                            <a href="#by-topic" className="text-decoration-none text-info fw-bold nav-link-section">按主題 By Topic</a>
+                        <div className="flex flex-wrap justify-center items-center">
+                            <a href="#by-topic" className="no-underline text-info font-bold nav-link-section">按主題 By Topic</a>
                             <span className="nav-separator">|</span>
-                            <a href="#practice-papers" className="text-decoration-none text-info fw-bold nav-link-section">練習卷 Practice Papers</a>
+                            <a href="#practice-papers" className="no-underline text-info font-bold nav-link-section">練習卷 Practice Papers</a>
                             <span className="nav-separator">|</span>
-                            <a href="#sample-papers" className="text-decoration-none text-info fw-bold nav-link-section">模擬試卷 Sample Papers</a>
+                            <a href="#sample-papers" className="no-underline text-info font-bold nav-link-section">模擬試卷 Sample Papers</a>
                         </div>
                     </div>
                     
@@ -247,9 +208,9 @@ export default function MathPage() {
                         <DownloadCard title="Topic 18 Statistics" description="Paper 1 Topic 18" paperId="topic_p1_18" />
                         <DownloadCard title="Topic 1-18" description="Paper 1 Topic 1-18" paperId="topic_p1_book1" />
                     </PaperSection>
-                    <h2 style={{ textAlign: "center" }}>By Topic (Paper 2)</h2>
+                    <h2 className="text-center">By Topic (Paper 2)</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="Topic 0 Number System" description="Paper 2 Topic 0" paperId="topic_p2_0" />
                         <DownloadCard title="Topic 1 Percentages" description="Paper 2 Topic 1" paperId="topic_p2_1" />
                         <DownloadCard title="Topic 2 Functions and Graphs" description="Paper 2 Topic 2" paperId="topic_p2_2" />

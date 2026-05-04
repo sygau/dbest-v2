@@ -1,13 +1,9 @@
 import Head from 'next/head'
+import PageBreadcrumb from '../components/PageBreadcrumb';
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import FAQSection from '../components/FAQSection'
-import {
-  generatePageFAQStructuredData,
-  generateTimerStructuredData,
-  getPageFAQs,
-  getTimerPageMetadata
-} from '../utils/structuredData'
+import PageSEO from '../components/PageSEO'
 
 // --- Types ---
 type PaperPreset = { id: string; nameZh: string; nameEn?: string; durationMinutes: number }
@@ -184,10 +180,6 @@ const ALERT_SOUND_URL = "https://actions.google.com/sounds/v1/alarms/beep_short.
 
 export default function PaperTimerPage() {
 
-  const metadata = useMemo(() => getTimerPageMetadata(), [])
-  const structuredData = useMemo(() => generateTimerStructuredData(), [])
-  const faqStructuredData = useMemo(() => generatePageFAQStructuredData('timer'), [])
-
   const [selectedSubjectId, setSelectedSubjectId] = useState('');
   const [selectedPaperId, setSelectedPaperId] = useState('');
   const [timeLeft, setTimeLeft] = useState(0);
@@ -300,117 +292,105 @@ export default function PaperTimerPage() {
 
   return (
     <>
+      <PageSEO
+        title="DSE 操卷計時器 Timer | 模擬DSE考試計時工具"
+        description="最強 DSE 一鍵操卷計時神器。內置 DSE 各科官方考試時間，專為 Mock Exam 及練習 Past Paper 設計。助考生在家精準模擬真實考場節奏，提升答題速度，係 DSE 備戰必備工具。"
+        ogTitle="DSE 操卷計時器 Timer | 模擬DSE考試計時工具"
+        ogDescription="一鍵即選 DSE 各科官方考試時間。專為模擬試及操卷設計，助你精準掌控答題節奏，喺屋企完美模擬考場體驗，DSE 考生練卷必備。"
+        ogUrl="https://dse.best/timer"
+        robots={['index', 'follow']}
+        pageKey="timer"
+      />
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        {metadata.robots && <meta name="robots" content={metadata.robots} />}
-        {metadata.ogUrl && <link rel="canonical" href={metadata.ogUrl} />}
-        <meta property="og:title" content={metadata.ogTitle} />
-        <meta property="og:description" content={metadata.ogDescription} />
-        <meta property="og:image" content={metadata.ogImage} />
-        <meta property="og:url" content={metadata.ogUrl} />
-        <meta property="og:type" content={metadata.ogType} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData)}} />
-        {faqStructuredData && (<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData)}} />)}
-
         <style>{`
           .timer-wrapper { max-width: 700px; margin: 0 auto; }
-          
-          .timer-card-modern { 
-            background: var(--bs-card-bg, #ffffff); 
-            border-radius: 32px; 
-            border: 1px solid var(--bs-border-color, #f1f5f9); 
-            padding: 24px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03); 
+
+          .timer-card-modern {
+            background: var(--color-card-bg, #ffffff);
+            border-radius: 32px;
+            border: 1px solid var(--color-border-color, #f1f5f9);
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
             position: relative;
-            overflow: hidden; 
-            border-top: 5px solid var(--bs-primary-color, #3a1c9dff);
-            /* Smooth transition for fullscreen change */
+            overflow: hidden;
+            border-top: 5px solid var(--color-primary, #3a1c9dff);
             transition: all 0.3s ease-in-out;
-            color: var(--bs-body-color, #5b6166);
+            color: var(--color-body, #5b6166);
           }
-          
+
           @media (min-width: 768px) {
             .timer-card-modern { padding: 40px; }
           }
-          
-          .clock-face { 
+
+          .clock-face {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-            font-weight: 800; 
-            font-size: clamp(4.5rem, 13vw, 7.5rem); 
+            font-weight: 800;
+            font-size: clamp(4.5rem, 13vw, 7.5rem);
             font-variant-numeric: tabular-nums;
-            letter-spacing: -0.02em; 
-            color: var(--bs-heading-color, #1e293b); 
-            margin: 15px 0; 
-            line-height: 1; 
+            letter-spacing: -0.02em;
+            color: var(--color-heading-color, #1e293b);
+            margin: 15px 0;
+            line-height: 1;
           }
 
-          .modern-select { background: var(--bs-tertiary-bg, #f8fafc); border: 1px solid var(--bs-border-color, #e2e8f0); border-radius: 16px; padding: 14px 20px; font-weight: 500; appearance: none; cursor: pointer; color: var(--bs-body-color, #374151); }
-          .progress-track { height: 12px; background: var(--bs-tertiary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 35px; }
-          .progress-bar-inner { background: var(--bs-primary-color, #6366f1); transition: width 1s linear; border-radius: 20px; }
-          
+          .modern-select { background: var(--color-tertiary-bg, #f8fafc); border: 1px solid var(--color-border-color, #e2e8f0); border-radius: 16px; padding: 14px 20px; font-weight: 500; appearance: none; cursor: pointer; color: var(--color-body, #374151); }
+          .progress-track { height: 12px; background: var(--color-tertiary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 35px; }
+          .progress-bar-inner { background: var(--color-primary, #6366f1); transition: width 1s linear; border-radius: 20px; }
+
           .action-btn { border-radius: 16px; padding: 18px 36px; font-weight: 700; border: none; transition: background 0.2s; }
-          .btn-start { background: var(--bs-primary-color, #6366f1); color: white; }
-          .btn-start:hover { background: var(--bs-primary-color-dark, #4f46e5); }
-          .btn-start:disabled { background: var(--bs-tertiary-bg, #a5a6f6); cursor: not-allowed; color: var(--bs-secondary-color, #94a3b8); }
-          .btn-reset { background: var(--bs-tertiary-bg, #f1f5f9); color: var(--bs-secondary-color, #64748b); margin-left: 12px; }
-          
-          /* Top controls bar */
+          .btn-start { background: var(--color-primary, #6366f1); color: white; }
+          .btn-start:hover { background: #4f46e5; }
+          .btn-start:disabled { background: #a5a6f6; cursor: not-allowed; color: var(--color-secondary-color, #94a3b8); }
+          .btn-reset { background: var(--color-tertiary-bg, #f1f5f9); color: var(--color-secondary-color, #64748b); margin-left: 12px; }
+
           .top-controls {
              position: absolute; top: 25px; right: 25px; display: flex; gap: 15px; z-index: 10;
           }
 
-          .icon-btn { background: none; border: none; color: var(--bs-secondary-color, #cbd5e1); cursor: pointer; transition: color 0.2s; padding: 4px; }
-          .icon-btn:hover { color: var(--bs-primary-color, #6366f1); }
-          .icon-btn.active { color: var(--bs-primary-color, #6366f1); }
+          .icon-btn { background: none; border: none; color: var(--color-secondary-color, #cbd5e1); cursor: pointer; transition: color 0.2s; padding: 4px; }
+          .icon-btn:hover { color: var(--color-primary, #6366f1); }
+          .icon-btn.active { color: var(--color-primary, #6366f1); }
 
           .toast-notification {
             position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--bs-body-bg, #1e293b); color: white; padding: 12px 24px; border-radius: 50px;
+            background: var(--color-body-bg, #1e293b); color: white; padding: 12px 24px; border-radius: 50px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2); font-weight: 600; z-index: 100;
             animation: slideDown 0.3s ease-out; white-space: nowrap; display: flex; align-items: center; gap: 10px;
           }
-          .toast-warning { background: var(--bs-warning-color, #f59e0b); color: #fff; }
-          .toast-finish { background: var(--bs-danger-color, #ef4444); color: #fff; }
+          .toast-warning { background: #f59e0b; color: #fff; }
+          .toast-finish { background: #ef4444; color: #fff; }
           @keyframes slideDown { from { top: -50px; opacity: 0; } to { top: 20px; opacity: 1; } }
 
-          /* --- 3. Mobile Fullscreen Optimization --- */
           .timer-card-modern:fullscreen {
-            width: 100vw; 
-            /* Use dvh for mobile browsers to account for address bars */
-            height: 100dvh; 
-            background: var(--bs-card-bg, #ffffff);
+            width: 100vw;
+            height: 100dvh;
+            background: var(--color-card-bg, #ffffff);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             border-radius: 0; border: none; padding: 0;
-            /* Ensure it sits on top of everything on mobile */
             position: fixed; top: 0; left: 0; z-index: 9999;
           }
 
-          /* Helper classes for fullscreen visibility */
           .timer-card-modern:fullscreen .hide-on-fs { display: none !important; }
           .show-on-fs { display: none; }
           .timer-card-modern:fullscreen .show-on-fs { display: block; }
 
-          /* Adjustments for fullscreen elements */
           .timer-card-modern:fullscreen .clock-face { font-size: 18vw; margin: 20px 0; }
           .timer-card-modern:fullscreen .progress-track { width: 80%; margin-top: 30px; }
 
-          /* 1. Fullscreen Exit Button style */
           .fs-exit-btn {
               position: absolute; top: 30px; right: 30px;
-              background: var(--bs-secondary-bg, rgba(241, 245, 249, 0.8));
+              background: var(--color-secondary-bg, rgba(241, 245, 249, 0.8));
               backdrop-filter: blur(5px);
               padding: 10px 20px; border-radius: 12px;
-              font-weight: 600; color: var(--bs-body-color, #475569); border: 1px solid var(--bs-border-color, transparent);
+              font-weight: 600; color: var(--color-body, #475569); border: 1px solid var(--color-border-color, transparent);
               display: flex; align-items: center; gap: 8px;
               transition: background 0.2s; cursor: pointer;
           }
-          .fs-exit-btn:hover { background: var(--bs-tertiary-bg, #e2e8f0); color: var(--bs-heading-color, #0f172a); }
-          
-          /* 2. Fullscreen Context Header style */
+          .fs-exit-btn:hover { background: var(--color-tertiary-bg, #e2e8f0); color: var(--color-heading-color, #0f172a); }
+
           .fs-context-header {
              position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
-             font-size: 1.2rem; color: var(--bs-secondary-color, #64748b); font-weight: 600;
+             font-size: 1.2rem; color: var(--color-secondary-color, #64748b); font-weight: 600;
              text-align: center; width: 80%;
           }
 
@@ -419,32 +399,32 @@ export default function PaperTimerPage() {
           .timer-card-modern .card-title {
             font-size: 2.6rem;
             font-weight: 800;
-            color: var(--bs-heading-color, #111827) !important;
+            color: var(--color-heading-color, #111827) !important;
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin: 0;
           }
 
           .exam-durations-card {
-            background: var(--bs-card-bg, #ffffff);
+            background: var(--color-card-bg, #ffffff);
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            border: 1px solid var(--bs-border-color, #f1f5f9);
-            color: var(--bs-body-color, #5b6166);
+            border: 1px solid var(--color-border-color, #f1f5f9);
+            color: var(--color-body, #5b6166);
           }
 
           .exam-durations-title {
             font-size: 1.25rem;
             font-weight: 800;
-            color: var(--bs-heading-color, #111827);
+            color: var(--color-heading-color, #111827);
             margin: 0 0 0.75rem 0;
             letter-spacing: -0.02em;
           }
 
           .exam-durations-subtitle {
             font-size: 0.95rem;
-            color: var(--bs-secondary-color, #4b5563);
+            color: var(--color-secondary-color, #4b5563);
             margin: 0 0 1.25rem 0;
             line-height: 1.6;
           }
@@ -458,48 +438,45 @@ export default function PaperTimerPage() {
             border-collapse: collapse;
             font-size: 0.92rem;
             min-width: 520px;
-            color: var(--bs-body-color, #374151);
+            color: var(--color-body, #374151);
           }
 
           .durations-table th,
           .durations-table td {
             padding: 0.9rem 0.85rem;
             text-align: left;
-            border-bottom: 1px solid var(--bs-border-color, #e5e7eb);
+            border-bottom: 1px solid var(--color-border-color, #e5e7eb);
             vertical-align: top;
           }
 
           .durations-table th {
-            background: var(--bs-tertiary-bg, #f9fafb);
+            background: var(--color-tertiary-bg, #f9fafb);
             font-weight: 700;
-            color: var(--bs-heading-color, #374151);
+            color: var(--color-heading-color, #374151);
             position: sticky;
             top: 0;
           }
 
           .subject-cell {
             font-weight: 700;
-            color: var(--bs-heading-color, #111827);
+            color: var(--color-heading-color, #111827);
             white-space: nowrap;
           }
 
           .paper-cell {
-            color: var(--bs-body-color, #374151);
+            color: var(--color-body, #374151);
             font-weight: 600;
           }
 
           .duration-cell {
-            color: var(--bs-heading-color, #111827);
+            color: var(--color-heading-color, #111827);
             font-variant-numeric: tabular-nums;
             white-space: nowrap;
           }
         `}</style>
       </Head>
 
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-4 hide-on-fs">
-        <div className="breadcrumb-title pe-3">工具</div>
-        <div className="ps-3"><nav><ol className="breadcrumb mb-0 p-0"><li className="breadcrumb-item active">DSE 操卷計時器</li></ol></nav></div>
-      </div>
+      <PageBreadcrumb section="工具" text="DSE 操卷計時器" />
 
       <div className="timer-wrapper">
         <div className="timer-card-modern text-center" ref={timerContainerRef}>
@@ -553,18 +530,17 @@ export default function PaperTimerPage() {
             <h1 className="card-title">DSE 操卷計時器</h1>
           </div>
 
-          <div className="row g-3 mb-5 hide-on-fs">
-            {/* Select inputs remain the same... */}
-            <div className="col-6 text-start">
-              <label className="small fw-bold text-muted mb-2 d-block ms-1">科目</label>
-              <select className="modern-select w-100" value={selectedSubjectId} onChange={e => { setSelectedSubjectId(e.target.value); setSelectedPaperId(''); }}>
+          <div className="grid grid-cols-2 gap-4 mb-12 hide-on-fs">
+            <div className="text-left">
+              <label className="text-sm font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-2 block ml-1">科目</label>
+              <select className="modern-select w-full" value={selectedSubjectId} onChange={e => { setSelectedSubjectId(e.target.value); setSelectedPaperId(''); }}>
                 <option value="">Select Subject</option>
                 {SUBJECT_PRESETS.map(s => <option key={s.id} value={s.id}>{s.nameZh}</option>)}
               </select>
             </div>
-            <div className="col-6 text-start">
-              <label className="small fw-bold text-muted mb-2 d-block ms-1">試卷</label>
-              <select className="modern-select w-100" value={selectedPaperId} disabled={!selectedSubject} onChange={e => setSelectedPaperId(e.target.value)}>
+            <div className="text-left">
+              <label className="text-sm font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-2 block ml-1">試卷</label>
+              <select className="modern-select w-full" value={selectedPaperId} disabled={!selectedSubject} onChange={e => setSelectedPaperId(e.target.value)}>
                 <option value="">Select Paper</option>
                 {selectedSubject?.papers.map(p => <option key={p.id} value={p.id}>{p.nameZh}</option>)}
               </select>
@@ -576,12 +552,12 @@ export default function PaperTimerPage() {
           </div>
 
           <div className="progress-track">
-            <div className="progress-bar-inner h-100" style={{ width: `${progressPercent}%` }} />
+            <div className="progress-bar-inner h-full" style={{ width: `${progressPercent}%` }} />
           </div>
 
-          <div className="d-flex justify-content-center hide-on-fs">
+          <div className="flex justify-center hide-on-fs">
              {/* Standardized Chinese button text */}
-            <button className="action-btn btn-start flex-grow-1" disabled={!selectedPaper || timeLeft === 0} onClick={handleToggleStartPause}>
+            <button className="action-btn btn-start flex-grow" disabled={!selectedPaper || timeLeft === 0} onClick={handleToggleStartPause}>
               {isActive ? '暫停 (Pause)' : isPaused ? '繼續 (Continue)' : '開始 (Start)'}
             </button>
             <button className="action-btn btn-reset" onClick={() => {

@@ -1,64 +1,25 @@
-import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
-import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
-export default function BiologyPage() {
-  const metadata = getSubjectMetadata('biology');
+import PageSEO from '../../components/PageSEO';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 
-    const subjectKey = 'biology';
-    const structuredData = generateSubjectStructuredData(subjectKey);
-    const faqData = generateSubjectFAQStructuredData(subjectKey);
-    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
+export default function BiologyPage() {
+    const lastUpdated = getSubjectIndexLastUpdated('biology');
 
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
-
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-
-                {/* Structured Data */}
-                {structuredData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(structuredData)
-                        }}
-                    />
-                )}
-                {faqData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(faqData)
-                        }}
-                    />
-                )}
-            </Head>
-
+            <PageSEO
+                title="DSE 生物 Biology Past Paper | By Year + By Topic"
+                description="DSE 生物科 Biology 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Biology考試重點及實驗技巧。"
+                ogTitle="DSE 生物 Biology 歷屆試題 Past Papers | By Year + By Topic"
+                ogDescription="DSE 生物科 Biology 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Biology考試重點及實驗技巧。"
+                ogUrl="https://dse.best/biology"
+                robots={['index', 'follow']}
+                subjectKey="biology"
+            />
             {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">生物</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-
-                            <li className="breadcrumb-item active" aria-current="page">
-                                DSE Past Paper
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+            <PageBreadcrumb section="\u751f\u7269" text="DSE Past Paper" />
             {/*end breadcrumb*/}
             <div className="card rounded-4" style={{ height: "auto" }}>
                 <div className="card-body">
@@ -77,9 +38,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     <br />
                     {/* Syllabus */}
-                    <h2 style={{ textAlign: "center" }}>課程大綱 / Syllabus</h2>
+                    <h2 className="text-center">課程大綱 / Syllabus</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="中文 課程大綱" description="DSE生物 課程大綱 (中文)" paperId="syll_chi" buttonText="下載" />
                         <DownloadCard title="English Syllabus" description="DSE Biology Syllabus (English)" paperId="syll_eng" />
                     </div>
@@ -87,18 +48,18 @@ export default function BiologyPage() {
                     {/* DSE Papers by Year */}
                     
                     {/* 2024 */}
-                    <h2 style={{ textAlign: "center" }}>2024</h2>
+                    <h2 className="text-center">2024</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="Paper 1" description="2024 Paper 1 (English)" paperId="2024_p1_eng" />
                         <DownloadCard title="Paper 2" description="2024 Paper 2 (English)" paperId="2024_p2_eng" />
                     </div>
                     <hr className="my-4" />
                     
                     {/* 2023 */}
-                    <h2 style={{ textAlign: "center" }}>2023</h2>
+                    <h2 className="text-center">2023</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2023 Paper 1 (中文)" paperId="2023_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2023 Paper 2 (中文)" paperId="2023_p2_chi" buttonText="下載" />
@@ -113,9 +74,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2022 */}
-                    <h2 style={{ textAlign: "center" }}>2022</h2>
+                    <h2 className="text-center">2022</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2022 Paper 1 (中文)" paperId="2022_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2022 Paper 2 (中文)" paperId="2022_p2_chi" buttonText="下載" />
@@ -130,9 +91,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2021 */}
-                    <h2 style={{ textAlign: "center" }}>2021</h2>
+                    <h2 className="text-center">2021</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2021 Paper 1 (中文)" paperId="2021_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2021 Paper 2 (中文)" paperId="2021_p2_chi" buttonText="下載" />
@@ -147,9 +108,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2020 */}
-                    <h2 style={{ textAlign: "center" }}>2020</h2>
+                    <h2 className="text-center">2020</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2020 Paper 1 (中文)" paperId="2020_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2020 Paper 2 (中文)" paperId="2020_p2_chi" buttonText="下載" />
@@ -164,9 +125,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2019 */}
-                    <h2 style={{ textAlign: "center" }}>2019</h2>
+                    <h2 className="text-center">2019</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2019 Paper 1 (中文)" paperId="2019_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2019 Paper 2 (中文)" paperId="2019_p2_chi" buttonText="下載" />
@@ -181,9 +142,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2018 */}
-                    <h2 style={{ textAlign: "center" }}>2018</h2>
+                    <h2 className="text-center">2018</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2018 Paper 1 (中文)" paperId="2018_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2018 Paper 2 (中文)" paperId="2018_p2_chi" buttonText="下載" />
@@ -198,9 +159,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2017 */}
-                    <h2 style={{ textAlign: "center" }}>2017</h2>
+                    <h2 className="text-center">2017</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2017 Paper 1 (中文)" paperId="2017_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2017 Paper 2 (中文)" paperId="2017_p2_chi" buttonText="下載" />
@@ -215,14 +176,14 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2016 */}
-                    <h2 style={{ textAlign: "center" }}>2016</h2>
+                    <h2 className="text-center">2016</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2016 Paper 1 (中文)" paperId="2016_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2016 Paper 2 (中文)" paperId="2016_p2_chi" buttonText="下載" />
-                        <div className="col">
-                            <div className="card h-100 d-flex flex-column">
+                        <div>
+                            <div className="card h-full flex flex-col">
                                 <div className="card-body">
                                     <h5 className="card-title">考生表現</h5>
                                     <p className="card-text">2016 Performance (中文)</p>
@@ -230,7 +191,7 @@ export default function BiologyPage() {
                                 <div className="carAd-footer bg-transparent border-0">
                                     <a
                                         href="#"
-                                        className="btn btn-info px-4 d-inline-flex gap-2"
+                                        className="btn btn-info px-4 inline-flex gap-2"
                                         data-paper-id="2016_per_chi"
                                     >
                                         下載
@@ -248,9 +209,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2015 */}
-                    <h2 style={{ textAlign: "center" }}>2015</h2>
+                    <h2 className="text-center">2015</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2015 Paper 1 (中文)" paperId="2015_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2015 Paper 2 (中文)" paperId="2015_p2_chi" buttonText="下載" />
@@ -265,9 +226,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2014 */}
-                    <h2 style={{ textAlign: "center" }}>2014</h2>
+                    <h2 className="text-center">2014</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2014 Paper 1 (中文)" paperId="2014_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2014 Paper 2 (中文)" paperId="2014_p2_chi" buttonText="下載" />
@@ -282,9 +243,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2013 */}
-                    <h2 style={{ textAlign: "center" }}>2013</h2>
+                    <h2 className="text-center">2013</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2013 Paper 1 (中文)" paperId="2013_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2013 Paper 2 (中文)" paperId="2013_p2_chi" buttonText="下載" />
@@ -299,9 +260,9 @@ export default function BiologyPage() {
                     <hr className="my-4" />
                     
                     {/* 2012 */}
-                    <h2 style={{ textAlign: "center" }}>2012</h2>
+                    <h2 className="text-center">2012</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese */}
                         <DownloadCard title="卷一" description="2012 Paper 1 (中文)" paperId="2012_p1_chi" buttonText="下載" />
                         <DownloadCard title="卷二" description="2012 Paper 2 (中文)" paperId="2012_p2_chi" buttonText="下載" />
@@ -314,9 +275,9 @@ export default function BiologyPage() {
                         <DownloadCard title="Answers" description="2012 Answer Booklet (English)" paperId="2012_ans_eng" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>By Topic (English) Paper 1</h2>
+                    <h2 className="text-center">By Topic (English) Paper 1</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="All Topics (Paper 1)" description="By Topic All (Paper 1, English)" paperId="bytopic_p1_all_eng" />
                         <DownloadCard title="Topic 1 Cell and membrane transport" description="Cell and membrane transport" paperId="bytopic_p1_1_eng" />
                         <DownloadCard title="Topic 2 Enzymes" description="Enzymes" paperId="bytopic_p1_2_eng" />
@@ -340,9 +301,9 @@ export default function BiologyPage() {
                         <DownloadCard title="Topic 20 Evolution" description="Evolution" paperId="bytopic_p1_20_eng" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>By Topic (English) Paper 2</h2>
+                    <h2 className="text-center">By Topic (English) Paper 2</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="All Topics (excluding electives)" description="All Paper 2 topics 1-27" paperId="bytopic_p2_all_eng" />
                         <DownloadCard title="Topic 1 Body defence" description="Body defence" paperId="bytopic_p2_1_eng" />
                         <DownloadCard title="Topic 2 Cell activities" description="Cell activities" paperId="bytopic_p2_2_eng" />
@@ -377,11 +338,11 @@ export default function BiologyPage() {
                     </div>
                     <hr className="my-4" />
                     {/* Practice/Sample Papers */}
-                    <h2 style={{ textAlign: "center" }}>
+                    <h2 className="text-center">
                         練習卷 / Practice Papers / Sample Papers
                     </h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {/* Chinese Practice/Sample Papers */}
                         <DownloadCard title="練習卷一" description="Practice Paper 1 (Chinese)" paperId="pp_p1_chi" buttonText="下載" />
                         <DownloadCard title="練習卷二" description="Practice Paper 2 (Chinese)" paperId="pp_p2_chi" buttonText="下載" />

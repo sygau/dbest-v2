@@ -1,4 +1,5 @@
-import Head from 'next/head'
+import PageSEO from '../../components/PageSEO'
+import PageBreadcrumb from '../../components/PageBreadcrumb'
 import { BiDownload } from 'react-icons/bi';
 import { GetStaticProps, GetStaticPaths } from 'next'
 import fs from 'fs'
@@ -82,55 +83,34 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
 
 
 
+  const pageJsonLd = [{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": meta.seoTitle,
+    "description": meta.seoDescription,
+    "url": `https://dse.best/math/${year}`,
+    "mainEntity": {
+      "@type": "EducationalResource",
+      "name": meta.seoTitle,
+      "description": meta.seoDescription,
+      "educationalLevel": "Secondary Education",
+      "inLanguage": ["zh-HK", "en-HK"]
+    }
+  }];
+
   return (
     <>
-      <Head>
-        <title>{meta.seoTitle}</title>
-        <meta name="description" content={meta.seoDescription} />
-        <meta name="robots" content="index, follow" />
-        
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content={meta.seoTitle} />
-        <meta property="og:description" content={meta.seoDescription} />
-        <meta property="og:image" content="https://dse.best/assets/images/logo-icon.webp" />
-        <meta property="og:url" content={`https://dse.best/math/${year}`} />
-        <meta property="og:type" content="website" />
-
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": meta.seoTitle,
-              "description": meta.seoDescription,
-              "url": `https://dse.best/math/${year}`,
-              "mainEntity": {
-                "@type": "EducationalResource",
-                "name": meta.seoTitle,
-                "description": meta.seoDescription,
-                "educationalLevel": "Secondary Education",
-                "inLanguage": ["zh-HK", "en-HK"]
-              }
-            })
-          }}
-        />
-      </Head>
+      <PageSEO
+        title={meta.seoTitle}
+        description={meta.seoDescription}
+        ogImage="https://dse.best/assets/images/logo-icon.webp"
+        ogUrl={`https://dse.best/math/${year}`}
+        robots={['index', 'follow']}
+        jsonLd={pageJsonLd}
+      />
 
       {/*breadcrumb*/}
-      <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div className="breadcrumb-title pe-3">數學</div>
-        <div className="ps-3">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb mb-0 p-0">
-              <li className="breadcrumb-item active" aria-current="page">
-                DSE Past Paper
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
+      <PageBreadcrumb section="\u6578\u5b78" text="DSE Past Paper" />
 
       {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
@@ -156,7 +136,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
               <h3 className="text-center mb-4">
                 <span style={{ color: '#dc3545' }}>中文試卷</span>
               </h3>
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {chinesePapers
                   .sort((a, b) => {
                     // Sort order: Paper 1, Paper 2, then Answers
@@ -165,7 +145,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                   })
                   .map((paper) => (
                   <div key={paper.paperId} className="col">
-                    <div className="card h-100 d-flex flex-column border-danger border-2">
+                    <div className="card h-full flex flex-col border-danger border-2">
                       <div className="card-body">
                         <h5 className="card-title">{paper.title}</h5>
                         <p className="card-text">{paper.description}</p>
@@ -173,7 +153,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                       <div className="card-footer bg-transparent border-0">
                         <a
                           href="#"
-                          className="btn btn-danger px-4 d-inline-flex gap-2"
+                          className="btn btn-danger px-4 inline-flex gap-2"
                           data-paper-id={paper.paperId}
                         >
                           <BiDownload style={{ fontSize: 22 }} />
@@ -193,7 +173,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
               <h3 className="text-center mb-4">
                 <span style={{ color: '#0d6efd' }}>English Past Papers</span>
               </h3>
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {englishPapers
                   .sort((a, b) => {
                     // Sort order: Paper 1, Paper 2, then Answers
@@ -202,7 +182,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                   })
                   .map((paper) => (
                   <div key={paper.paperId} className="col">
-                    <div className="card h-100 d-flex flex-column border-primary border-2">
+                    <div className="card h-full flex flex-col border-primary border-2">
                       <div className="card-body">
                         <h5 className="card-title">{paper.title}</h5>
                         <p className="card-text">{paper.description}</p>
@@ -210,7 +190,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
                       <div className="card-footer bg-transparent border-0">
                         <a
                           href="#"
-                          className="btn btn-primary px-4 d-inline-flex gap-2"
+                          className="btn btn-primary px-4 inline-flex gap-2"
                           data-paper-id={paper.paperId}
                         >
                           <BiDownload style={{ fontSize: 22 }} />
@@ -229,7 +209,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
           {/* Related Years */}
           <div className="mt-5 text-center">
             <h3 className="mb-4">其他年份 / Other Years</h3>
-            <div className="d-flex flex-wrap justify-content-center gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {AVAILABLE_YEARS.map((yearStr) => {
                 const yearNum = parseInt(yearStr);
                 const isCurrentYear = yearNum === parseInt(year);
@@ -287,7 +267,7 @@ export default function MathYearPage({ subject, year, papers, availableFiles }: 
             <p className="mb-4">Access all years (2012-2025), topic-based practice, and comprehensive study materials.</p>
             <NavigationLink 
               href="/math" 
-              className="btn btn-primary btn-lg d-inline-flex align-items-center gap-3"
+              className="btn btn-primary btn-lg inline-flex align-items-center gap-3"
               style={{
                 borderRadius: '25px',
                 padding: '1rem 2rem',

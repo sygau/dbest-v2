@@ -1,65 +1,24 @@
-import Head from 'next/head'
-import { generateSubjectStructuredData, generateSubjectFAQStructuredData } from '../../utils/structuredData';
-import { getSubjectMetadata } from '../../utils/structuredData';
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
+import PageSEO from '../../components/PageSEO';
+import PageBreadcrumb from '../../components/PageBreadcrumb';
 
 export default function M2Page() {
-  const metadata = getSubjectMetadata('m2');
-
-    const subjectKey = 'm2';
-    const structuredData = generateSubjectStructuredData(subjectKey);
-    const faqData = generateSubjectFAQStructuredData(subjectKey);
-    const lastUpdated = getSubjectIndexLastUpdated(subjectKey);
+    const lastUpdated = getSubjectIndexLastUpdated('m2');
 
     return (
         <>
-            <Head>
-                <title>{metadata?.title}</title>
-                <meta name="description" content={metadata?.description} />
-                <meta name="robots" content={metadata?.robots} />
-
-                {/* Open Graph Meta Tags */}
-                <meta property="og:title" content={metadata?.ogTitle} />
-                <meta property="og:description" content={metadata?.ogDescription} />
-                <meta property="og:image" content={metadata?.ogImage} />
-                <meta property="og:url" content={metadata?.ogUrl} />
-                <meta property="og:type" content={metadata?.ogType} />
-
-                {/* Structured Data */}
-                {structuredData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(structuredData)
-                        }}
-                    />
-                )}
-                {faqData && (
-                    <script
-                        type="application/ld+json"
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify(faqData)
-                        }}
-                    />
-                )}
-                        </Head>
-
+            <PageSEO
+                title="DSE 數學延伸部分 M2 Mathematics Past Paper | By Year + By Topic"
+                description="DSE 數學延伸部分單元二 Mathematics Extended Part Module 2 歷屆試題下載 (2012-2025)，包含Paper 1卷一、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握M2代數與微積分進階理論。"
+                ogTitle="DSE 數學延伸部分 M2 Mathematics 歷屆試題 Past Papers | 代數與微積分"
+                ogDescription="DSE 數學延伸部分單元二 Mathematics Extended Part Module 2 歷屆試題下載 (2012-2025)，包含Paper 1卷一、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握M2代數與微積分進階理論。"
+                ogUrl="https://dse.best/m2"
+                robots={['index', 'follow']}
+              subjectKey="m2"
             {/*breadcrumb*/}
-            <div className="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-                <div className="breadcrumb-title pe-3">M2</div>
-                <div className="ps-3">
-                    <nav aria-label="breadcrumb">
-                        <ol className="breadcrumb mb-0 p-0">
-
-                            <li className="breadcrumb-item active" aria-current="page">
-                                DSE Past Paper
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
+            <PageBreadcrumb section="M2" text="DSE Past Paper" />
             {/*end breadcrumb*/}
             <div className="card rounded-4" style={{ height: "auto" }}>
                 <div className="card-body">
@@ -82,124 +41,124 @@ export default function M2Page() {
                     <br />
                     <hr className="my-4" />
                     {/* Syllabus Section */}
-                    <h2 style={{ textAlign: "center" }}>評核內容 / Syllabus</h2>
+                    <h2 className="text-center">評核內容 / Syllabus</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="Syllabus" description="Mathematics Module 2 Syllabus" paperId="syll" />
                     </div>
                     <hr className="my-4" />
                     {/* DSE by Year Section */}
-                    <h2 style={{ textAlign: "center" }}>DSE By Year</h2>
+                    <h2 className="text-center">DSE By Year</h2>
                     <br />
-                    <h2 style={{ textAlign: "center" }}>2025</h2>
+                    <h2 className="text-center">2025</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2025 Paper" description="2025 DSE Paper" paperId="2025_pp" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2024</h2>
+                    <h2 className="text-center">2024</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2024 Paper" description="2024 DSE Paper" paperId="2024_pp" />
                         <DownloadCard title="2024 Marking Scheme" description="2024 Marking Scheme" paperId="2024_ans" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2023</h2>
+                    <h2 className="text-center">2023</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2023 Paper" description="2023 DSE Paper" paperId="2023_pp" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2022</h2>
+                    <h2 className="text-center">2022</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2022 Paper" description="2022 DSE Paper" paperId="2022_pp" />
                         <DownloadCard title="2022 Marking Scheme" description="2022 Marking Scheme" paperId="2022_ans" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2021</h2>
+                    <h2 className="text-center">2021</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2021 Paper" description="2021 DSE Paper" paperId="2021_pp" />
                         <DownloadCard title="2021 Marking Scheme" description="2021 Marking Scheme" paperId="2021_ans" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2020</h2>
+                    <h2 className="text-center">2020</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2020 Paper" description="2020 DSE Paper" paperId="2020_pp" />
                         <DownloadCard title="2020 Marking Scheme" description="2020 Marking Scheme" paperId="2020_ans" />
                         <DownloadCard title="2020 Performance" description="2020 Performance Report" paperId="2020_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2019</h2>
+                    <h2 className="text-center">2019</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2019 Paper" description="2019 DSE Paper" paperId="2019_pp" />
                         <DownloadCard title="2019 Marking Scheme" description="2019 Marking Scheme" paperId="2019_ans" />
                         <DownloadCard title="2019 Performance" description="2019 Performance Report" paperId="2019_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2018</h2>
+                    <h2 className="text-center">2018</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2018 Paper" description="2018 DSE Paper" paperId="2018_pp" />
                         <DownloadCard title="2018 Marking Scheme" description="2018 Marking Scheme" paperId="2018_ans" />
                         <DownloadCard title="2018 Performance" description="2018 Performance Report" paperId="2018_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2017</h2>
+                    <h2 className="text-center">2017</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2017 Paper" description="2017 DSE Paper" paperId="2017_pp" />
                         <DownloadCard title="2017 Marking Scheme" description="2017 Marking Scheme" paperId="2017_ans" />
                         <DownloadCard title="2017 Performance" description="2017 Performance Report" paperId="2017_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2016</h2>
+                    <h2 className="text-center">2016</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2016 Paper" description="2016 DSE Paper" paperId="2016_pp" />
                         <DownloadCard title="2016 Marking Scheme" description="2016 Marking Scheme" paperId="2016_ans" />
                         <DownloadCard title="2016 Performance" description="2016 Performance Report" paperId="2016_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2015</h2>
+                    <h2 className="text-center">2015</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2015 Paper" description="2015 DSE Paper" paperId="2015_pp" />
                         <DownloadCard title="2015 Marking Scheme" description="2015 Marking Scheme" paperId="2015_ans" />
                         <DownloadCard title="2015 Performance" description="2015 Performance Report" paperId="2015_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2014</h2>
+                    <h2 className="text-center">2014</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2014 Paper" description="2014 DSE Paper" paperId="2014_pp" />
                         <DownloadCard title="2014 Marking Scheme" description="2014 Marking Scheme" paperId="2014_ans" />
                         <DownloadCard title="2014 Performance" description="2014 Performance Report" paperId="2014_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2013</h2>
+                    <h2 className="text-center">2013</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2013 Paper" description="2013 DSE Paper" paperId="2013_pp" />
                         <DownloadCard title="2013 Marking Scheme" description="2013 Marking Scheme" paperId="2013_ans" />
                         <DownloadCard title="2013 Performance" description="2013 Performance Report" paperId="2013_per" />
                     </div>
                     <hr className="my-4" />
-                    <h2 style={{ textAlign: "center" }}>2012</h2>
+                    <h2 className="text-center">2012</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2012 Paper" description="2012 DSE Paper" paperId="2012_pp" />
                         <DownloadCard title="2012 Marking Scheme" description="2012 Marking Scheme" paperId="2012_ans" />
                         <DownloadCard title="2012 Performance" description="2012 Performance Report" paperId="2012_per" />
                     </div>
                     <hr className="my-4" />
                     {/* By Topic Section */}
-                    <h2 style={{ textAlign: "center" }}>DSE By Topic</h2>
+                    <h2 className="text-center">DSE By Topic</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="Topic 1-13" description="By Topic Book 1" paperId="bytopic_bk1" />
                         <DownloadCard title="Topic 1 Mathematical Induction" description="By Topic 1" paperId="bytopic_1" />
                         <DownloadCard title="Topic 2 Binomial Theorem" description="By Topic 2" paperId="bytopic_2" />
@@ -217,24 +176,24 @@ export default function M2Page() {
                     </div>
                     <hr className="my-4" />
                     {/* Sample Papers Section */}
-                    <h2 style={{ textAlign: "center" }}>Sample Papers 樣本試卷</h2>
+                    <h2 className="text-center">Sample Papers 樣本試卷</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="Sample Paper" description="Sample Paper" paperId="sp_pp" />
                     </div>
                     <hr className="my-4" />
                     {/* Practice Papers Section */}
-                    <h2 style={{ textAlign: "center" }}>Practice Papers 練習試卷</h2>
+                    <h2 className="text-center">Practice Papers 練習試卷</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="Practice Paper" description="Practice Paper" paperId="pp_pp" />
                         <DownloadCard title="Practice Marking Scheme" description="Practice Marking Scheme" paperId="pp_ans" />
                     </div>
                     <hr className="my-4" />
                     {/* AMaths Section */}
-                    <h2 style={{ textAlign: "center" }}>Additional Mathematics</h2>
+                    <h2 className="text-center">Additional Mathematics</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2011 Paper" description="2011 Additional Mathematics Paper" paperId="amaths_2011_pp" />
                         <DownloadCard title="2011 Marking Scheme" description="2011 Additional Mathematics Marking Scheme" paperId="amaths_2011_ans" />
                         <DownloadCard title="2009 Paper" description="2009 Additional Mathematics Paper" paperId="amaths_2009_pp" />
@@ -349,9 +308,9 @@ export default function M2Page() {
                     </div>
                     <hr className="my-4" />
                     {/* PMaths Section */}
-                    <h2 style={{ textAlign: "center" }}>Pure Mathematics</h2>
+                    <h2 className="text-center">Pure Mathematics</h2>
                     <br />
-                    <div className="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="1995 Paper" description="1995 Pure Mathematics Paper" paperId="pmaths_1995" />
                         <DownloadCard title="1995 Marking Scheme" description="1995 Pure Mathematics Marking Scheme" paperId="pmaths_1995_ms" />
                         <DownloadCard title="1994 Paper" description="1994 Pure Mathematics Paper" paperId="pmaths_1994" />
