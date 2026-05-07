@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-08] — Sanity Blog Auto-Deploy via Webhook + GH Actions Cache
+What: Publish in Sanity → webhook hits /api/trigger-deploy → GitHub Actions workflow_dispatch → full deploy runs automatically (~2-4 min). Added GH Actions build cache for .next/cache + data + public/og so smart-sync and OG caching work between runs.
+Files: .github/workflows/deploy.yml, pages/api/trigger-deploy.ts
+Notes: ISR+KV rejected — moves pages from free ASSETS CDN to metered Worker invocations (regression on free tier). Requires 3 wrangler secrets: SANITY_WEBHOOK_SECRET, GH_DEPLOY_TOKEN, GITHUB_REPO. GitHub PAT needs repo + actions:write scopes.
+
 ## [2026-05-07] — 12p CF Workers compatibility fix
 What: Replaced `fs.readFileSync` in `getStaticProps` with static JSON imports so the 12p pages work in CF Workers runtime (unenv has no fs impl).
 Files: pages/12p/index.tsx, pages/12p/quiz.tsx, pages/12p/study.tsx

@@ -113,6 +113,7 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
           min-height: 400px;
           transition: transform 0.6s;
           transform-style: preserve-3d;
+          will-change: transform;
         }
 
         .flashcard.flipped {
