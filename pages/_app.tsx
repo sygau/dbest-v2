@@ -9,9 +9,10 @@ import Layout from '../components/tw/Layout'
 import { useRouter } from 'next/router'
 
 const notoSansHK = Noto_Sans_HK({
-  weight: ['400', '500', '700'],
   subsets: ['latin'],
-  display: 'swap',
+  weight: ['400', '700'],
+  display: 'optional',
+  preload: false,
   variable: '--font-noto-sans-hk',
 })
 

@@ -9,6 +9,10 @@ export default function Document() {
         <script dangerouslySetInnerHTML={{
           __html: `(function(){try{var raw=localStorage.getItem('selectedTheme')||document.documentElement.getAttribute('data-theme')||'light';var theme=['dark','blue'].includes(raw)?raw:'light';var bg=theme==='dark'?'#212529':theme==='blue'?'#0f1535':'#eff1f3';document.documentElement.setAttribute('data-theme',theme);document.documentElement.style.setProperty('--color-body-bg',bg);document.documentElement.style.colorScheme=theme==='light'?'light':'dark';var meta=document.querySelector('meta[name=\"theme-color\"]');if(meta){meta.setAttribute('content',bg)}}catch(e){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.setProperty('--color-body-bg','#eff1f3');document.documentElement.style.colorScheme='light'}})()`
         }} />
+        {/* BLOCKING sidebar script - prevents margin-left CLS on hydration */}
+        <script dangerouslySetInnerHTML={{
+          __html: `(function(){try{if(localStorage.getItem('sidebarCollapsed')==='true')document.documentElement.setAttribute('data-sidebar','collapsed')}catch(e){}})()`
+        }} />
         <meta property="og:site_name" content="dse.best" />
         <meta property="og:locale" content="zh_HK" />
         <meta property="og:locale:alternate" content="en_US" />
