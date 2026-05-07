@@ -23,7 +23,6 @@ jobs:
       NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
       NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
       NEXT_PUBLIC_SANITY_READ_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_READ_TOKEN }}
-      NEXT_PUBLIC_OPENAI_API_KEY: 'sk-d9j8mXoQyqLh9vH7sT3T3BlbkFJHHWl2nqjYpVZtqz5a'
     permissions:
       contents: read
       deployments: write
