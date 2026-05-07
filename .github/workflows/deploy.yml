@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - devTW1
 
 concurrency:
   group: deploy-${{ github.ref }}
@@ -30,8 +29,9 @@ jobs:
       - name: Prep build artifacts (blog data, OG images, sitemap)
         run: npm run build:prep
         env:
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_READ_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_READ_TOKEN }}
 
       - name: Build worker bundle
         run: npm run build:worker

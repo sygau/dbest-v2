@@ -6,7 +6,7 @@
  */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "dbest-v1",
+  "name": "dbest-v2",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-09-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
@@ -26,7 +26,7 @@
 
   "env": {
     "preview": {
-      "name": "dbest-v1-preview",
+      "name": "dbest-v2-preview",
       "vars": {
         "IS_PROD": "false"
       }

@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "dbest-v1",
-  "version": "1.0.0",
+  "name": "dbest-v2",
+  "version": "2.0.0",
   "description": "dse.best",
-  "main": "contentful/contentful.js",
+  "main": "",
   "scripts": {
     "dev": "next dev",
     "lint": "next lint",
@@ -58,7 +58,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/1fu/dbest-v1.git"
+    "url": "git+https://github.com/sygau/dbest-v2.git"
   },
   "keywords": [
     "dse",
@@ -71,9 +71,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/1fu/dbest-v1/issues"
+    "url": "https://github.com/sygau/dbest-v2/issues"
   },
-  "homepage": "https://github.com/1fu/dbest-v1#readme",
+  "homepage": "https://github.com/sygau/dbest-v2#readme",
   "devDependencies": {
     "csv-parser": "^3.0.0",
     "javascript-obfuscator": "^4.1.1",
