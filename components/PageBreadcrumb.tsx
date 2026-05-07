@@ -8,7 +8,7 @@ interface Props {
 
 export default function PageBreadcrumb({ section, text, showHome }: Props) {
   return (
-    <div className="page-breadcrumb hidden sm:flex items-center mb-4">
+    <div className="page-breadcrumb hidden lg:flex items-center mb-4">
       <div className="breadcrumb-title">{section}</div>
       <div>
         <nav aria-label="breadcrumb">

@@ -2,6 +2,19 @@ import React, { useState, useEffect } from 'react';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
 import { GetStaticProps } from 'next';
+import configData from '../../public/12p/config.json';
+import lunyuData from '../../public/12p/lunyu.json';
+import mengziData from '../../public/12p/mengzi.json';
+import zhuangziData from '../../public/12p/zhuangzi.json';
+import xunziData from '../../public/12p/xunzi.json';
+import lianpolinData from '../../public/12p/lianpolin.json';
+import chusibiaoData from '../../public/12p/chusibiao.json';
+import shishuoData from '../../public/12p/shishuo.json';
+import shidexishanData from '../../public/12p/shidexishan.json';
+import yueyangloujData from '../../public/12p/yueyanglouj.json';
+import liuguolunData from '../../public/12p/liuguolun.json';
+import shi3Data from '../../public/12p/shi3.json';
+import ci3Data from '../../public/12p/ci3.json';
 import { BiCheck, BiExit } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
 import Flashcard from '../../components/Flashcard';
@@ -451,22 +464,25 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
   );
 }
 
+const passageFileMap: Record<string, Question[]> = {
+  lunyu: lunyuData as Question[],
+  yuwosuoyuye: mengziData as Question[],
+  xiaoyaoyou: zhuangziData as Question[],
+  quanxue: xunziData as Question[],
+  lianpolin: lianpolinData as Question[],
+  chusibiao: chusibiaoData as Question[],
+  shishuo: shishuoData as Question[],
+  shidexishan: shidexishanData as Question[],
+  yueyanglouj: yueyangloujData as Question[],
+  liuguolun: liuguolunData as Question[],
+  shi3: shi3Data as Question[],
+  ci3: ci3Data as Question[],
+};
+
 export const getStaticProps: GetStaticProps = async () => {
-  const fs = require('fs');
-  const path = require('path');
-
-  const configPath = path.join(process.cwd(), 'public', '12p', 'config.json');
-  const config: PassageConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-
   const allPassageData: Record<string, Question[]> = {};
-  for (const passage of config.passages) {
-    try {
-      const filePath = path.join(process.cwd(), 'public', '12p', passage.file);
-      allPassageData[passage.id] = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    } catch {
-      allPassageData[passage.id] = [];
-    }
+  for (const passage of configData.passages) {
+    allPassageData[passage.id] = passageFileMap[passage.id] ?? [];
   }
-
-  return { props: { config, allPassageData } };
+  return { props: { config: configData, allPassageData } };
 };

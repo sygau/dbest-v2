@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
+import configData from '../../public/12p/config.json';
 import PageSEO from '../../components/PageSEO';
 import { BiBookReader, BiPencil } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
@@ -436,11 +437,5 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const fs = require('fs');
-  const path = require('path');
-
-  const configPath = path.join(process.cwd(), 'public', '12p', 'config.json');
-  const config: PassageConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-
-  return { props: { config } };
+  return { props: { config: configData } };
 };

@@ -319,37 +319,48 @@ export default function PaperTimerPage() {
           }
 
           @media (min-width: 768px) {
-            .timer-card-modern { padding: 40px; }
+            .timer-card-modern { padding: 40px 40px 28px; }
+            .sound-toggle-pill { display: none !important; }
+            .clock-face { margin: 28px 0; }
           }
 
           .clock-face {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
             font-weight: 800;
-            font-size: clamp(4.5rem, 13vw, 7.5rem);
+            font-size: clamp(3rem, 11vw, 6rem);
             font-variant-numeric: tabular-nums;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
             color: var(--color-heading-color, #1e293b);
-            margin: 15px 0;
+            margin: 16px 0;
             line-height: 1;
           }
 
-          .modern-select { background: var(--color-tertiary-bg, #f8fafc); border: 1px solid var(--color-border-color, #e2e8f0); border-radius: 16px; padding: 14px 20px; font-weight: 500; appearance: none; cursor: pointer; color: var(--color-body, #374151); }
-          .progress-track { height: 12px; background: var(--color-tertiary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 35px; }
+          .modern-select { background: var(--color-tertiary-bg, #f8fafc); border: 1px solid var(--color-border-color, #e2e8f0); border-radius: 8px; padding: 5px 8px; font-size: 0.78rem; font-weight: 500; appearance: none; cursor: pointer; color: var(--color-body, #374151); }
+          .progress-track { height: 10px; background: var(--color-tertiary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
           .progress-bar-inner { background: var(--color-primary, #6366f1); transition: width 1s linear; border-radius: 20px; }
 
-          .action-btn { border-radius: 16px; padding: 18px 36px; font-weight: 700; border: none; transition: background 0.2s; }
+          .action-btn { border-radius: 12px; padding: 10px 24px; font-size: 0.9rem; font-weight: 700; border: none; white-space: nowrap; transition: background 0.2s; }
           .btn-start { background: var(--color-primary, #6366f1); color: white; }
           .btn-start:hover { background: #4f46e5; }
-          .btn-start:disabled { background: #a5a6f6; cursor: not-allowed; color: var(--color-secondary-color, #94a3b8); }
-          .btn-reset { background: var(--color-tertiary-bg, #f1f5f9); color: var(--color-secondary-color, #64748b); margin-left: 12px; }
+          .btn-start:disabled { background: var(--color-tertiary-bg, #e2e8f0); cursor: not-allowed; color: var(--color-secondary-color, #94a3b8); }
+          .btn-reset { background: var(--color-tertiary-bg, #f1f5f9); color: var(--color-secondary-color, #64748b); margin-left: 8px; white-space: nowrap; }
 
           .top-controls {
-             position: absolute; top: 25px; right: 25px; display: flex; gap: 15px; z-index: 10;
+             position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 10;
           }
 
           .icon-btn { background: none; border: none; color: var(--color-secondary-color, #cbd5e1); cursor: pointer; transition: color 0.2s; padding: 4px; }
           .icon-btn:hover { color: var(--color-primary, #6366f1); }
           .icon-btn.active { color: var(--color-primary, #6366f1); }
+
+          @media (max-width: 767px) {
+            .icon-btn-fs { display: none !important; }
+            .icon-btn-sound { display: none !important; }
+          }
+
+          .sound-toggle { display: flex; align-items: center; gap: 5px; border: 1.5px solid var(--color-border-color, #e5e7eb); background: var(--color-tertiary-bg, #f9fafb); color: var(--color-secondary-color, #9ca3af); border-radius: 99px; padding: 4px 12px 4px 10px; font-size: 0.72rem; font-weight: 600; cursor: pointer; }
+          .sound-toggle.sound-on { border-color: var(--color-primary, #6366f1); background: #eff6ff; color: var(--color-primary, #6366f1); }
+          .timer-settings-row { display: flex; justify-content: center; gap: 10px; margin-top: 0.75rem; width: 100%; }
 
           .toast-notification {
             position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
@@ -394,10 +405,10 @@ export default function PaperTimerPage() {
              text-align: center; width: 80%;
           }
 
-          .card-header-block { text-align: center; margin-bottom: 1.5rem; width: 100%; }
+          .card-header-block { text-align: center; margin-bottom: 0.75rem; width: 100%; }
 
           .timer-card-modern .card-title {
-            font-size: 2.6rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--color-heading-color, #111827) !important;
             letter-spacing: -0.03em;
@@ -405,28 +416,32 @@ export default function PaperTimerPage() {
             margin: 0;
           }
 
+          @media (max-width: 480px) {
+            .timer-card-modern .card-title { font-size: 1.85rem; }
+          }
+
           .exam-durations-card {
             background: var(--color-card-bg, #ffffff);
-            border-radius: 20px;
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 1.25rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             border: 1px solid var(--color-border-color, #f1f5f9);
             color: var(--color-body, #5b6166);
           }
 
           .exam-durations-title {
-            font-size: 1.25rem;
-            font-weight: 800;
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--color-heading-color, #111827);
-            margin: 0 0 0.75rem 0;
-            letter-spacing: -0.02em;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.01em;
           }
 
           .exam-durations-subtitle {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--color-secondary-color, #4b5563);
-            margin: 0 0 1.25rem 0;
-            line-height: 1.6;
+            margin: 0 0 1rem 0;
+            line-height: 1.5;
           }
 
           .table-responsive {
@@ -436,14 +451,14 @@ export default function PaperTimerPage() {
           .durations-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.92rem;
-            min-width: 520px;
+            font-size: 0.85rem;
+            min-width: 480px;
             color: var(--color-body, #374151);
           }
 
           .durations-table th,
           .durations-table td {
-            padding: 0.9rem 0.85rem;
+            padding: 0.65rem 0.75rem;
             text-align: left;
             border-bottom: 1px solid var(--color-border-color, #e5e7eb);
             vertical-align: top;
@@ -487,27 +502,22 @@ export default function PaperTimerPage() {
             </div>
           )}
 
-          {/* --- Top Controls (Sound + Enter Fullscreen) --- */}
+          {/* --- Top Controls (desktop: sound icon + fullscreen) --- */}
           <div className="top-controls hide-on-fs">
-             {/* 4. Sound Toggle Button (ARIA compliant) */}
-            <button 
-                className={`icon-btn ${isMuted ? '' : 'active'}`} 
-                onClick={() => setIsMuted(!isMuted)} 
-                title={isMuted ? "Unmute Sound" : "Mute Sound"}
-                aria-label={isMuted ? "Unmute Sound" : "Mute Sound"}
-                aria-pressed={isMuted}
+            <button
+              className={`icon-btn icon-btn-sound${isMuted ? '' : ' active'}`}
+              onClick={() => setIsMuted(!isMuted)}
+              title={isMuted ? "Unmute Sound" : "Mute Sound"}
+              aria-label={isMuted ? "Unmute Sound" : "Mute Sound"}
+              aria-pressed={isMuted}
             >
-               {isMuted ? (
-                  /* Muted Icon */
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-               ) : (
-                  /* Sound On Icon */
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-               )}
+              {isMuted
+                ? <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                : <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              }
             </button>
-
             <button className="icon-btn icon-btn-fs" onClick={toggleFullscreen} title="Enter Focus Mode" aria-label="Enter Fullscreen">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
             </button>
           </div>
 
@@ -530,16 +540,16 @@ export default function PaperTimerPage() {
             <h1 className="card-title">DSE 操卷計時器</h1>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-12 hide-on-fs">
+          <div className="grid grid-cols-2 gap-2 mb-4 hide-on-fs">
             <div className="text-left">
-              <label className="text-sm font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-2 block ml-1">科目</label>
+              <label className="text-xs font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-1 block ml-1">科目</label>
               <select className="modern-select w-full" value={selectedSubjectId} onChange={e => { setSelectedSubjectId(e.target.value); setSelectedPaperId(''); }}>
                 <option value="">Select Subject</option>
                 {SUBJECT_PRESETS.map(s => <option key={s.id} value={s.id}>{s.nameZh}</option>)}
               </select>
             </div>
             <div className="text-left">
-              <label className="text-sm font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-2 block ml-1">試卷</label>
+              <label className="text-xs font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-1 block ml-1">試卷</label>
               <select className="modern-select w-full" value={selectedPaperId} disabled={!selectedSubject} onChange={e => setSelectedPaperId(e.target.value)}>
                 <option value="">Select Paper</option>
                 {selectedSubject?.papers.map(p => <option key={p.id} value={p.id}>{p.nameZh}</option>)}
@@ -556,7 +566,6 @@ export default function PaperTimerPage() {
           </div>
 
           <div className="flex justify-center hide-on-fs">
-             {/* Standardized Chinese button text */}
             <button className="action-btn btn-start flex-grow" disabled={!selectedPaper || timeLeft === 0} onClick={handleToggleStartPause}>
               {isActive ? '暫停 (Pause)' : isPaused ? '繼續 (Continue)' : '開始 (Start)'}
             </button>
@@ -564,6 +573,23 @@ export default function PaperTimerPage() {
                 const s = (selectedPaper?.durationMinutes || 0) * 60;
                 setTimeLeft(s); setTotalTime(s); setIsActive(false); setIsPaused(false); notified15Min.current = false; setNotification(null);
               }}>重置 (Reset)</button>
+          </div>
+
+          <div className="timer-settings-row sound-toggle-pill hide-on-fs">
+            <button
+              className={`sound-toggle${isMuted ? '' : ' sound-on'}`}
+              onClick={() => setIsMuted(!isMuted)}
+              aria-label={isMuted ? "Unmute Sound" : "Mute Sound"}
+              aria-pressed={isMuted}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                {isMuted
+                  ? <><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></>
+                  : <><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></>
+                }
+              </svg>
+              {isMuted ? '聲效 OFF' : '聲效 ON'}
+            </button>
           </div>
         </div>
 

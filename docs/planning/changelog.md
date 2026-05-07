@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-07] — 12p CF Workers compatibility fix
+What: Replaced `fs.readFileSync` in `getStaticProps` with static JSON imports so the 12p pages work in CF Workers runtime (unenv has no fs impl).
+Files: pages/12p/index.tsx, pages/12p/quiz.tsx, pages/12p/study.tsx
+Notes: JSON files stay in public/12p/ (still served as static assets). Webpack bundles them at build time via import. passageFileMap in quiz/study maps passage.id → imported data since id ≠ filename in some cases (e.g. yuwosuoyuye → mengzi.json).
+
 ## [2026-05-07] — Blog: YouTube embed + Alert block types
 What: Added youtubeEmbed (responsive 16:9 iframe, youtube-nocookie.com, optional caption) and blogAlert (info/success/warning/destructive, title + description) as Sanity body block types. Blog info alert overridden to sky-700 (#0369a1) instead of violet.
 Files: components/blog/PortableTextRenderer.tsx, blogRebuild/SanitySchema_ReadNReferenceOnly/post.ts, styles/blog-post.css
