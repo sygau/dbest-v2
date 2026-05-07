@@ -34,7 +34,9 @@ jobs:
           NEXT_PUBLIC_SANITY_READ_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_READ_TOKEN }}
 
       - name: Build worker bundle
-        run: npm run build:worker
+        run: |
+          echo "PROJECT_ID is: $NEXT_PUBLIC_SANITY_PROJECT_ID"
+          npm run build:worker
         env:
           NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
           NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
