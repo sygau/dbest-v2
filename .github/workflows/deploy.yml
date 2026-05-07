@@ -35,7 +35,10 @@ jobs:
 
       - name: Build worker bundle
         run: npm run build:worker
-
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_READ_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_READ_TOKEN }}
       - name: Deploy (production)
         if: github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
