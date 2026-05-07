@@ -88,7 +88,7 @@ export default function Preferences({ isOpen, onClose }: PreferencesProps) {
           <div className="border-t border-[var(--color-border)] pt-4">
             <h6 className="text-sm font-semibold text-[var(--color-heading)] mb-1">Disable Ads</h6>
             <p className="text-sm text-[var(--color-muted)] mb-3">
-              Remove advertisements from this page. This setting will persist for your session.
+              Disable display ads on this site.<br></br> (Don't 🙏)
             </p>
             <button
               className={cn(

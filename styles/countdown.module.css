@@ -51,12 +51,12 @@
 }
 
 /* Purple accent for title - theme aware */
-:global([data-bs-theme=light]) .mainTitle {
+:global([data-theme=light]) .mainTitle {
   color: rgb(117, 76, 241);
 }
 
-:global([data-bs-theme=dark]) .mainTitle,
-:global([data-bs-theme=blue-theme]) .mainTitle {
+:global([data-theme=dark]) .mainTitle,
+:global([data-theme=blue]) .mainTitle {
   color: #8b5cf6;
 }
 
@@ -111,13 +111,13 @@
 }
 
 /* Purple accent for numbers - theme aware */
-:global([data-bs-theme=light]) .number {
+:global([data-theme=light]) .number {
   color: rgb(131, 92, 248);
   text-shadow: none;
 }
 
-:global([data-bs-theme=dark]) .number,
-:global([data-bs-theme=blue-theme]) .number {
+:global([data-theme=dark]) .number,
+:global([data-theme=blue]) .number {
   color: #8b5cf6;
 }
 

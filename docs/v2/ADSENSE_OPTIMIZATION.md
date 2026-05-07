@@ -51,7 +51,7 @@ Noto Sans HK's `display: swap` causes a ~80ms layout reflow. AdSense measures du
    - The race condition between inline @font-face and Google Fonts CSS
    - The "wrong slice" problem (Latin text waiting for CJK CSS to parse)
    
-   Font files are now served from the same origin (Vercel edge CDN), and `adjustFontFallback` generates pre-calculated fallback metrics to minimize layout shift during font swap.
+   Font files are now served from the same origin (Cloudflare edge), and `adjustFontFallback` generates pre-calculated fallback metrics to minimize layout shift during font swap.
 
 9. ✅ **Removed Google Fonts CDN links** from `_document.tsx` — no longer needed with self-hosted fonts.
 

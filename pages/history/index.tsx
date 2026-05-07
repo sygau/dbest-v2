@@ -16,7 +16,8 @@ export default function HistoryPage() {
                 ogDescription="DSE 歷史科 History 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握History史料分析及論證技巧。"
                 ogUrl="https://dse.best/history"
                 robots={['index', 'follow']}
-              subjectKey="history"
+                subjectKey="history"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="歷史" text="DSE Past Paper" />
             {/*end breadcrumb*/}

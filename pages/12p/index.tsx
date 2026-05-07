@@ -157,8 +157,9 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 
           {/* Mode Selection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-            <NavigationLink href="/12p/study" className="no-underline block h-full">
-              <div className="mode-card mode-study">
+            <div className="h-full">
+              <NavigationLink href="/12p/study" className="no-underline block h-full">
+                <div className="mode-card mode-study">
                 <div className="mode-ghost-icon" aria-hidden="true">
                   <BiBookReader size={88} />
                 </div>
@@ -167,9 +168,11 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
                 <div className="mode-arrow mode-arrow-study">開始溫習 →</div>
                 <div className="mode-bar mode-bar-study" />
               </div>
-            </NavigationLink>
-            <NavigationLink href="/12p/quiz" className="no-underline block h-full">
-              <div className="mode-card mode-quiz">
+              </NavigationLink>
+            </div>
+            <div className="h-full">
+              <NavigationLink href="/12p/quiz" className="no-underline block h-full">
+                <div className="mode-card mode-quiz">
                 <div className="mode-ghost-icon" aria-hidden="true">
                   <BiPencil size={88} />
                 </div>
@@ -178,7 +181,8 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
                 <div className="mode-arrow mode-arrow-quiz">開始測驗 →</div>
                 <div className="mode-bar mode-bar-quiz" />
               </div>
-            </NavigationLink>
+              </NavigationLink>
+            </div>
           </div>
 
           <hr className="divider" />

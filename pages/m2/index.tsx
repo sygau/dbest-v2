@@ -16,7 +16,8 @@ export default function M2Page() {
                 ogDescription="DSE 數學延伸部分單元二 Mathematics Extended Part Module 2 歷屆試題下載 (2012-2025)，包含Paper 1卷一、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握M2代數與微積分進階理論。"
                 ogUrl="https://dse.best/m2"
                 robots={['index', 'follow']}
-              subjectKey="m2"
+                subjectKey="m2"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="M2" text="DSE Past Paper" />
             {/*end breadcrumb*/}

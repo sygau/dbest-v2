@@ -1,5 +1,40 @@
 # dse.best v2 Changelog
 
+## [2026-05-07] — Blog: YouTube embed + Alert block types
+What: Added youtubeEmbed (responsive 16:9 iframe, youtube-nocookie.com, optional caption) and blogAlert (info/success/warning/destructive, title + description) as Sanity body block types. Blog info alert overridden to sky-700 (#0369a1) instead of violet.
+Files: components/blog/PortableTextRenderer.tsx, blogRebuild/SanitySchema_ReadNReferenceOnly/post.ts, styles/blog-post.css
+Notes: No new Sanity plugin needed — both are inline objects. Copy updated post.ts body.of[] to Studio. YouTube accepts youtu.be or youtube.com/watch?v= URLs; ID extraction happens client-side.
+
+## [2026-05-07] — Blog custom Portable Text block types
+What: Added 4 custom block types to the Sanity blog: separator (HR line), rich table (sanity-plugin-rich-table), blog button (ButtonAnchor with 8 variants incl. linkout), code block (@sanity/code-input with filename + 10 languages). New components: ButtonAnchor (anchor tag mirror of Button, sky-blue default), RichTableRenderer.
+Files: components/blog/PortableTextRenderer.tsx, components/ui/ButtonAnchor.tsx, components/blog/RichTableRenderer.tsx, blogRebuild/SanitySchema_ReadNReferenceOnly/post.ts, pages/redesign-4.tsx, docs/v2/BlogComps_1.md
+Notes: Sanity Studio requires separate setup — install @sanity/code-input + sanity-plugin-rich-table, register separator schema type, copy updated post.ts body.of[]. ButtonAnchor default = sky (not violet like Button.tsx — intentional blog-only blue).
+
+## [2026-05-07] — Chat page: Bootstrap extraction & bubble fix
+What: Extracted Bootstrap utility classes chat.js depends on into page-scoped `<style jsx global>` block — chat page no longer depends on global Bootstrap compatibility layer. Fixed message bubble styles: removed all gradients (flat colors), added `width: fit-content` to prevent stretched messages/stickers.
+Files: pages/chat.tsx
+Notes: `<style jsx global>` approach used because Next.js Pages Router blocks global CSS imports outside _app.tsx — same effect (only rendered on chat page, code-split automatically).
+
+## [2026-05-06] — data-bs-theme → data-theme Migration
+What: Removed all `data-bs-theme` attribute usage across the entire active codebase. Unified to `data-theme` only (values: light/dark/blue). Removed `ThemePreference` type and `getBootstrapTheme` dead code. Renamed `globals.css` → `legacy-globals.css` (dead file, kept for safety). Uninstalled unused `bootstrap` npm package.
+Files: styles/globals.css→legacy-globals.css, styles/tailwind.css, styles/countdown.module.css, pages/_document.tsx, utils/theme.ts, hooks/useThemeSwitcher.ts, components/tw/TopNavbar.tsx, components/ui/Button.tsx, components/Flashcard.tsx, components/CutoffTable.tsx, pages/12p/study.tsx, pages/12p/quiz.tsx
+Notes: Bootstrap Compatibility Layer in tailwind.css (hand-written `--bs-*` var aliases) left in place — harmless and used by some inline styles. `public/assets/css/bootstrap*.css` files are legacy static assets, not imported by Next.js. Build passes clean.
+
+## [2026-05-05] — Category Lucide Icon Support
+What: Added optional `lucideIcon` field to category schema; renders icon in blog card badge, filter bar buttons, post category badge, and related posts badge
+Files: blogRebuild/SanitySchema_ReadNReferenceOnly/category.ts, lib/blogTypes.ts, lib/sanityQueries.ts, lib/catIcon.tsx (new), pages/blog/index.tsx, pages/blog/[slug].tsx
+Notes: Field is optional — no icon set = no change to existing display; icon name must match react-icons/lu export (e.g. LuBookOpen); `import * as LuIcons` skips tree-shaking so bundle grows slightly
+
+## [2026-05-05] — Edge-Cache Smart Blog Sync
+What: Incremental Sanity sync — diffs slug+_updatedAt against committed snapshot, fetches full data only for new/changed posts, removes deleted entries from both JSONs + OG files
+Files: scripts/blog-smart-sync.js (new), data/blog-snapshot.json (new), package.json, docs/v2/edge-cache-smart-blog-sync.md
+Notes: OG generator already had content-hash caching so it's untouched; CF Pages limitation: public/og/ is gitignored so OG still regenerates each deploy (R2 needed to fix); blog:sync --force for full re-sync; build:smart replaces build:full for normal use
+
+## [2026-05-05] — Blog Index Mockup (Sanity rebuild)
+What: New pages/blog/index.tsx — blog directory page rebuilt for Sanity, cloning old Contentful design in Tailwind/inline CSS vars with schema-correct dummy data
+Files: pages/blog/index.tsx (new)
+Notes: No card-rounded-4 wrapper; no card-inner-bg — post cards and filter bar use --color-card-bg (white in light, dark in dark/blue); author row added to card bottom with avatar/icon; pagination fixed for all three themes using --color-primary/--color-body/--color-muted (old hardcoded #374151/#9ca3af broke dark+blue); categories dynamic from props not hardcoded; client-side search on title/excerpt/tags/category; pinned posts always float to top; <img> not next/image (Cloudflare Pages); 8 dummy posts + 17 dummy categories matching Sanity schema shape
+
 ## [2026-05-04] — Blog Post Style Fixes (9-issue pass)
 What: Breadcrumb → PageBreadcrumb; badges → Badge component (sharp, 0.8rem/500); skeleton loading for hero + figure + related images with shadow/glow; link highlight style matching r4-link; blockquote non-italic; light-mode contrast fixes for blockquote/pre/table/share-btn/hr; blue-theme table header dark blue + zebra fix; related posts h3
 Files: pages/blog/post.tsx, styles/blog-post.css
@@ -181,3 +216,8 @@ Notes:
 What: Completely removed the legacy AnnouncementBar component, configuration, and associated CSS.
 Files: components/AnnouncementBar.tsx, config/announcement.ts, styles/globals.css, docs/site_info.md
 Notes: Cleaned up unused variables and elements related to the announcement UI system.
+
+## [2026-05-07] — CF Workers Migration (next-on-pages → @opennextjs/cloudflare)
+What: Full migration from CF Pages + next-on-pages (deprecated) to CF Workers via @opennextjs/cloudflare. All routes remain SSG/static; middleware preserved.
+Files: wrangler.toml→wrangler.jsonc, open-next.config.ts (new), next.config.js, middleware.ts, package.json, tsconfig.json, .gitignore, types/globals.d.ts, public/_redirects (deleted), public/_headers (deleted), .github/workflows/deploy.yml (new), docs/v2/workers_migration_report.md (new), docs/v2/workers_setup_guide.md (new), docs/site_info.md, docs/v2/ADSENSE_OPTIMIZATION.md
+Notes: All redirects/headers from CF Pages files folded into next.config.js. Middleware now also covers .workers.dev hosts and sets noindex on previews. Build pipeline broken into composable scripts (build:prep, build, build:worker, deploy, deploy:preview). GitHub Actions wires auto-deploy on push to main/devTW1. CI requires CF_API_TOKEN, CF_ACCOUNT_ID, plus Contentful secrets for build:prep. CSP cleaned of vercel.com/cdn.ably.com.

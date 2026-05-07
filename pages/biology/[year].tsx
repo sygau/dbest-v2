@@ -120,7 +120,7 @@ export default function BiologyYearPage({ subject, year, papers, availableFiles 
           {chinesePapers.length > 0 && (
             <div className="mb-5">
               <h3 className="text-center mb-4">
-                <span style={{ color: '#dc3545' }}>中文試題</span>
+                <span style={{ backgroundImage: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>中文試題</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {chinesePapers

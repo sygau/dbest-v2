@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import PageSEO from '../components/PageSEO'
 import { Button } from '../components/ui/Button'
+import { ButtonAnchor } from '../components/ui/ButtonAnchor'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/Card'
 import { Badge } from '../components/ui/Badge'
 import { Alert, AlertTitle, AlertDescription } from '../components/ui/Alert'
@@ -19,6 +20,7 @@ import { EmptyState } from '../components/ui/EmptyState'
 import { Callout } from '../components/ui/Callout'
 import { RadioGroup } from '../components/ui/RadioGroup'
 import { FileCard } from '../components/ui/FileCard'
+import { CodeBlock } from '../components/ui/CodeBlock'
 import { Toggle } from '../components/ui/Toggle'
 import { ConfigItem, ConfigSection } from '../components/ui/ConfigItem'
 import { Toast, ToastContainer } from '../components/ui/Toast'
@@ -34,7 +36,7 @@ import {
   LuAlignLeft, LuAlignCenter, LuAlignRight,
   LuPencil, LuTrash2, LuShare2, LuEllipsis, LuLink,
   LuBell, LuShield, LuUser, LuSettings, LuLogOut, LuCopy,
-  LuChevronDown,
+  LuChevronDown, LuExternalLink,
 } from 'react-icons/lu'
 
 const inputBase = [
@@ -282,7 +284,7 @@ export default function Redesign4() {
             <div className="r4-section-tag">Tier 2</div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="r4-heading-lg">Buttons</h2>
-              <Badge variant="secondary">12 variants</Badge>
+              <Badge variant="secondary">13 variants</Badge>
             </div>
             <Card>
               <CardContent className="pt-6 space-y-6">
@@ -333,6 +335,24 @@ export default function Redesign4() {
                     <Button variant="outline" size="md"><LuFilter size={14}/> Filter</Button>
                     <Button variant="ghost" size="md">Next <LuChevronRight size={14}/></Button>
                     <Button variant="default" size="md" disabled>Disabled</Button>
+                  </div>
+                </div>
+                <div>
+                  <div className="r4-heading-sm mb-1">Blog Anchor Buttons (ButtonAnchor)</div>
+                  <div className="r4-body-sm mb-3 opacity-75">
+                    Renders as <code>&lt;a&gt;</code> tag. Used in blog post body. Default = sky blue (independent from Button violet default).
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <ButtonAnchor href="#" variant="default">Default</ButtonAnchor>
+                    <ButtonAnchor href="#" variant="secondary">Secondary</ButtonAnchor>
+                    <ButtonAnchor href="#" variant="outline">Outline</ButtonAnchor>
+                    <ButtonAnchor href="#" variant="success">Success</ButtonAnchor>
+                    <ButtonAnchor href="#" variant="warning">Warning</ButtonAnchor>
+                    <ButtonAnchor href="#" variant="info">Info</ButtonAnchor>
+                    <ButtonAnchor href="#" variant="destructive">Danger</ButtonAnchor>
+                    <ButtonAnchor href="https://hkeaa.edu.hk" variant="info" target="_blank" rel="noopener noreferrer">
+                      HKEAA.edu.hk <LuExternalLink size={14} />
+                    </ButtonAnchor>
                   </div>
                 </div>
               </CardContent>
@@ -1149,6 +1169,92 @@ export default function Redesign4() {
                 />
               </Card>
             </div>
+          </div>
+
+          <div className="r4-divider" />
+
+          {/* ── 20. CODE BLOCK ── */}
+          <div className="r4-section">
+            <div className="r4-section-tag">Tier 8</div>
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="r4-heading-lg">Code Block</h2>
+              <Badge variant="secondary">Syntax · Copy · Scroll</Badge>
+            </div>
+            <p className="r4-body-sm mb-5">Click icon to copy. Three variants — pick one per context.</p>
+
+            <div className="r4-heading-sm mb-2">Short snippet</div>
+            <CodeBlock
+              language="tsx"
+              filename="components/Flashcard.tsx"
+              code={`import { useState } from 'react'
+
+export function Flashcard({ front, back }: { front: string; back: string }) {
+  const [flipped, setFlipped] = useState(false)
+
+  return (
+    <button
+      onClick={() => setFlipped(f => !f)}
+      className="flashcard rounded-xl"
+    >
+      {flipped ? back : front}
+    </button>
+  )
+}`}
+              className="mb-6"
+            />
+
+            <div className="r4-heading-sm mb-2">Long snippet — horizontal scroll test</div>
+            <CodeBlock
+              language="typescript"
+              filename="lib/dse-calculator.ts"
+              code={`import type { Subject, DSEGrade, JUPASProgram } from './types'
+
+const GRADE_POINTS: Record<DSEGrade, number> = {
+  '5**': 7, '5*': 6, '5': 5, '4': 4, '3': 3, '2': 2, '1': 1, 'U': 0,
+}
+
+export function gradeToPoints(grade: DSEGrade): number {
+  return GRADE_POINTS[grade] ?? 0
+}
+
+export function calcBestOf(grades: { subject: Subject; grade: DSEGrade }[], pick: number): number {
+  return grades
+    .map(g => gradeToPoints(g.grade))
+    .sort((a, b) => b - a)
+    .slice(0, pick)
+    .reduce((acc, v) => acc + v, 0)
+}
+
+export function meetsCutoff(
+  applicantGrades: { subject: Subject; grade: DSEGrade }[],
+  program: JUPASProgram,
+): boolean {
+  // Check every mandatory subject requirement against applicant grades
+  for (const req of program.requirements.mandatory) {
+    const match = applicantGrades.find(g => g.subject === req.subject)
+    if (!match || gradeToPoints(match.grade) < gradeToPoints(req.minimumGrade)) {
+      return false // mandatory subject not met — applicant ineligible for this program
+    }
+  }
+
+  // Calculate elective score using best-of rule
+  const electiveScore = calcBestOf(
+    applicantGrades.filter(g => program.requirements.electives.subjects.includes(g.subject)),
+    program.requirements.electives.pick,
+  )
+
+  return electiveScore >= program.requirements.electives.minimumTotal
+}
+
+export function rankPrograms(
+  grades: { subject: Subject; grade: DSEGrade }[],
+  programs: JUPASProgram[],
+): JUPASProgram[] {
+  return programs
+    .filter(p => meetsCutoff(grades, p))
+    .sort((a, b) => b.lastYearCutoff - a.lastYearCutoff)
+}`}
+            />
           </div>
 
         </div>

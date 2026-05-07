@@ -21,10 +21,10 @@ export default function TopNavbar({ onToggleSidebar, onOpenPreferences, sidebarC
   }, [])
 
   useEffect(() => {
-    const check = () => setIsBlue(document.documentElement.getAttribute('data-bs-theme') === 'blue-theme')
+    const check = () => setIsBlue(document.documentElement.getAttribute('data-theme') === 'blue')
     check()
     const obs = new MutationObserver(check)
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-bs-theme'] })
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] })
     return () => obs.disconnect()
   }, [])
 

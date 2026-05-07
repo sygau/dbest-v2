@@ -51,15 +51,18 @@ async function generateSubjectsSitemap() {
       }
     }
     
-    // Check for cutoff subject pages
-    const cutoffPath = `${baseUrl}/cutoff/${subject}`;
-    xml += `  <url>
+    // Check for cutoff subject pages (only for valid cutoff pages)
+    const validCutoffSubjects = ['math', 'english', 'physics', 'biology', 'chemistry', 'chinese', 'bafs', 'chinese-history', 'economics', 'history', 'geography', 'm1', 'm2', 'ict'];
+    if (validCutoffSubjects.includes(subject)) {
+      const cutoffPath = `${baseUrl}/cutoff/${subject}`;
+      xml += `  <url>
     <loc>${cutoffPath}</loc>
     <lastmod>${today}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 `;
+    }
   }
 
   xml += `</urlset>`;

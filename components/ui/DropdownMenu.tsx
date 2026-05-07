@@ -2,7 +2,7 @@ import { cn } from '../../lib/cn'
 import type { ReactNode } from 'react'
 
 export interface DropdownItem {
-  label: string
+  label?: string
   icon?: ReactNode
   onClick?: () => void
   variant?: 'default' | 'destructive'

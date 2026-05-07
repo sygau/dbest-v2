@@ -97,7 +97,7 @@ All existing `Link` components in the codebase have been replaced with `Navigati
 
 ## Environment Variables
 
-Add to your `.env.local` file:
+Add to your `.env` file:
 
 ```bash
 # For SPA mode (default)

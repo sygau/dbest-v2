@@ -34,7 +34,7 @@ function validateCutoffData(data) {
     
     // Validate year
     const year = parseInt(row.Year);
-    if (isNaN(year) || year < 2013 || year > 2024) {
+    if (isNaN(year) || year < 2012 || year > 2025) {
       errors.push(`Row ${index + 1}: Invalid year ${row.Year}`);
     }
     

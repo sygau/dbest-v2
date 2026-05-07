@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { BiCopy, BiTrash, BiLoaderAlt, BiBookContent, BiMessageDetail, BiCheckCircle, BiInfoCircle } from 'react-icons/bi';
 import PageSEO from '../components/PageSEO';
 import PageBreadcrumb from '../components/PageBreadcrumb';
@@ -81,7 +81,7 @@ export default function TranslatorPage() {
   };
 
   // Load Cloudflare Turnstile script
-  useMemo(() => {
+  useEffect(() => {
     if (typeof window !== 'undefined' && !document.querySelector('script[src*="turnstile"]')) {
       const script = document.createElement('script');
       script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';

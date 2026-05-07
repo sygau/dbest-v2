@@ -16,7 +16,8 @@ export default function CitizenPage() {
                 ogDescription="DSE 公民與社會發展科 Citizenship and Social Development 歷屆試題下載 (2024-2025)。包含Question Book, Answer Book, 試題簿、答題簿及答案。提供完整試卷下載，全面掌握公民科考試要點。"
                 ogUrl="https://dse.best/citizen"
                 robots={['index', 'follow']}
-              subjectKey="citizen"
+                subjectKey="citizen"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="公民與社會發展科" text="DSE Past Paper" />
             {/*end breadcrumb*/}

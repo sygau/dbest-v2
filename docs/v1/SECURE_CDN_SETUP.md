@@ -29,7 +29,7 @@ SECURE_CDN_URL=https://x7m2qv9gkz1w8n3r5t6b4c0aehjldpuoyfsvxiwqzmnk3g7r2t9b6c5ae
 4. Redeploy the project
 
 #### Local Development
-Create a `.env.local` file:
+Create a `.env` file:
 ```bash
 SECURE_CDN_URL=https://x7m2qv9gkz1w8n3r5t6b4c0aehjldpuoyfsvxiwqzmnk3g7r2t9b6c5aeh.pages.dev
 ```

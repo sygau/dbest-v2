@@ -244,9 +244,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const configPath = path.join(process.cwd(), 'public', 'config', 'citizen.json');
     const configData = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 
-    // Filter papers for the specific year
+    // Filter papers for the specific year or sample papers
     const availableFiles = Object.keys(configData).filter(key =>
-      key.startsWith(year) || key.includes(year)
+      key.startsWith(year) || key.startsWith('sp')
     );
 
     // Generate paper data

@@ -405,13 +405,11 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             justify-content: center;
           }
 
-          [data-bs-theme=dark] .passage-check,
           [data-theme=dark] .passage-check {
             background: rgba(40, 40, 40, 0.9);
             border: 1.5px solid rgba(34, 197, 94, 0.3);
           }
 
-          [data-bs-theme=blue-theme] .passage-check,
           [data-theme=blue] .passage-check {
             background: rgba(30, 40, 60, 0.9);
             border: 1.5px solid rgba(34, 197, 94, 0.3);

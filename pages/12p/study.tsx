@@ -291,13 +291,11 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
           color: var(--color-primary);
         }
 
-        [data-bs-theme=dark] .passage-check,
         [data-theme=dark] .passage-check {
           background: rgba(40, 40, 40, 0.9);
           border: 1.5px solid rgba(59, 130, 246, 0.3);
         }
 
-        [data-bs-theme=blue-theme] .passage-check,
         [data-theme=blue] .passage-check {
           background: rgba(30, 40, 60, 0.9);
           border: 1.5px solid rgba(59, 130, 246, 0.3);

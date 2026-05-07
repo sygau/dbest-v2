@@ -5,31 +5,32 @@ import PageBreadcrumb from '../../components/PageBreadcrumb';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { 
-  BiBarChartAlt2, 
-  BiBook, 
-  BiCalculator, 
-  BiBot, 
-  BiTestTube, 
-  BiLeaf, 
-  BiLaptop, 
-  BiGlobe, 
-  BiMoney, 
-  BiBriefcase, 
-  BiPlanet 
+import {
+  BiBarChartAlt2,
+  BiBook,
+  BiCalculator,
+  BiBot,
+  BiTestTube,
+  BiLeaf,
+  BiLaptop,
+  BiGlobe,
+  BiMoney,
+  BiBriefcase,
+  BiPlanet
 } from 'react-icons/bi';
+import { LuInfo, LuTriangleAlert, LuChevronRight } from 'react-icons/lu';
 import NavigationLink from '../../components/NavigationLink';
-import { 
-  getCutoffSEOConfig, 
-  generateCutoffMetadata, 
+import {
+  getCutoffSEOConfig,
+  generateCutoffMetadata,
   AVAILABLE_CUTOFF_SUBJECTS,
-  CUTOFF_SUBJECT_NAMES 
+  CUTOFF_SUBJECT_NAMES
 } from '../../utils/cutoffSlugSEO';
 import CutoffTable from '../../components/CutoffTable';
 import { csvToCutoffData, dataToTableFormat, CutoffTableData, SubjectConfig, CutoffConfig } from '../../utils/clientCutoffData';
 import { getSubjectCutoffLastUpdated } from '../../utils/lastUpdated';
+import { Alert, AlertTitle, AlertDescription } from '../../components/ui/Alert';
 
-// Subject icon mapping based on sidebar colors
 const SUBJECT_ICONS: Record<string, { icon: any, color: string }> = {
   'chinese': { icon: BiBook, color: '#ff69b4' },
   'english': { icon: BiBook, color: '#40c4ff' },
@@ -82,39 +83,49 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
         <meta name="twitter:image" content={metadata?.ogImage || "https://dse.best/assets/images/logo-icon.png"} />
       </Head>
 
-      {/* Breadcrumb */}
       <PageBreadcrumb section="DSE Cut-off 分數" text={CUTOFF_SUBJECT_NAMES[subjectStr]} showHome />
 
-      {/* Main Content */}
       <div className="card rounded-4" style={{ height: "auto" }}>
         <div className="card-body">
-          <div className="flex items-center mb-4">
-            <h1 className="mb-0">{seoConfig?.pageTitle || `DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} Cut-off Scores`}</h1>
-          </div>
-          
+
+          {/* Page title */}
+          <h1 className="mb-3">{seoConfig?.pageTitle || `DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} Cut-off Scores`}</h1>
+
           <div className="mb-4">
-            <p className="mb-3">
+            <p className="mb-2" style={{ color: 'var(--color-body)' }}>
               {seoConfig?.pageDescriptionChi || `瀏覽DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]}的Cut-off分數及等級界線資料，助您了解各等級的達標分數要求。`}
             </p>
-            <p className="mb-0">
+            <p className="mb-0" style={{ color: 'var(--color-body)' }}>
               {seoConfig?.pageDescriptionEng || `Browse DSE ${CUTOFF_SUBJECT_NAMES[subjectStr]} cut-off scores and grade boundaries to understand the score requirements for each grade level.`}
             </p>
           </div>
 
-          {/* Last Updated Message Bubble */}
+          {/* Data Updated Alert — using Alert component */}
           {lastUpdated && (
-            <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-4" role="alert">
-              <div className="flex items-center">
-                <i className="bx bx-info-circle mr-2"></i>
-                <div>
-                  <strong>資料更新 Data Updated:</strong> {lastUpdated}
-                </div>
-              </div>
-            </div>
+            <Alert variant="default" className="mb-4">
+              <AlertTitle icon={<LuInfo size={15} style={{ color: '#8b5cf6' }} />}>
+                資料更新 Data Updated
+              </AlertTitle>
+              <AlertDescription>
+                {lastUpdated}
+              </AlertDescription>
+            </Alert>
           )}
 
+          {/* Important Notice — moved to top, using Alert component */}
+          <Alert variant="warning" className="mb-4">
+            <AlertTitle icon={<LuTriangleAlert size={15} style={{ color: '#d97706' }} />}>
+              注意事項 Important Notice
+            </AlertTitle>
+            <AlertDescription>
+              Cut Off 資料僅供參考，可能存有錯誤，並會按年更新。實際分數要求請以香港考試及評核局公布為準。
+              <br />
+              This cut-off score data is for reference only. It may contain errors and is subject to annual updates. Please refer to official announcements from the Hong Kong Examinations and Assessment Authority for actual score requirements.
+            </AlertDescription>
+          </Alert>
+
           {/* Cut-off Table */}
-          <CutoffTable 
+          <CutoffTable
             data={cutoffData}
             config={cutoffConfig || undefined}
             subject={subjectStr}
@@ -123,7 +134,9 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
           {/* Other Subjects Section */}
           {otherSubjects.length > 0 && (
             <div className="mt-5">
-              <h3 className="mb-4 text-center">DSE 科目分數線 | Cut-off scores for DSE Subjects</h3>
+              <h3 className="mb-4 text-center" style={{ color: 'var(--color-heading)' }}>
+                DSE 科目分數線 | Cut-off scores for DSE Subjects
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {otherSubjects.map((otherSubject) => {
                   const subjectIcon = SUBJECT_ICONS[otherSubject];
@@ -131,52 +144,31 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
                   const iconColor = subjectIcon?.color || '#6c757d';
 
                   return (
-                    <div key={otherSubject}>
-                      <NavigationLink href={`/cutoff/${otherSubject}`} className="no-underline">
-                        <div className="card h-full shadow-sm" style={{ border: '1px solid var(--bs-border-color)' }}>
-                          <div className="card-body flex items-center">
-                            <div className="mr-3">
-                              <div className="bg-opacity-10 rounded-full p-2" style={{ backgroundColor: `${iconColor}20` }}>
-                                <IconComponent style={{ color: iconColor }} size={20} />
-                              </div>
-                            </div>
-                            <div className="flex-grow">
-                              <h6 className="card-title mb-0">{CUTOFF_SUBJECT_NAMES[otherSubject]}</h6>
-                            </div>
-                            <div>
-                              <i className="bx bx-chevron-right text-muted"></i>
-                            </div>
+                    <NavigationLink key={otherSubject} href={`/cutoff/${otherSubject}`} className="no-underline">
+                      <div
+                        className="rounded-xl p-3 flex items-center h-full"
+                        style={{
+                          backgroundColor: 'var(--color-card-inner-bg)',
+                          border: '1px solid var(--color-border)',
+                        }}
+                      >
+                        <IconComponent size={20} style={{ color: iconColor, marginRight: '0.75rem', flexShrink: 0, filter: `drop-shadow(0 0 5px ${iconColor}55)` }} />
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-sm truncate" style={{ color: 'var(--color-heading)' }}>
+                            {CUTOFF_SUBJECT_NAMES[otherSubject]}
                           </div>
                         </div>
-                      </NavigationLink>
-                    </div>
+                        <LuChevronRight size={16} style={{ color: 'var(--color-muted)', flexShrink: 0 }} />
+                      </div>
+                    </NavigationLink>
                   );
                 })}
               </div>
             </div>
           )}
 
-          {/* Warning Message */}
-          <div className="bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded mt-4 mb-0" role="alert">
-            <div className="flex items-start">
-              <svg className="bi flex-shrink-0 mr-2" width="24" height="24" role="img" aria-label="Warning:">
-                <use href="#exclamation-triangle-fill"/>
-              </svg>
-              <div>
-                <strong>⚠️ 注意事項 Important Notice:</strong>
-                <br />
-                Cut Off 資料僅供參考，可能存有錯誤，並會按年更新。實際分數要求請以香港考試及評核局公布為準。
-                <br />
-                <small className="text-muted">
-                  This cut-off score data is for reference only. It may contain errors and is subject to annual updates. Please refer to official announcements from the Hong Kong Examinations and Assessment Authority for actual score requirements.
-                </small>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
-
     </>
   );
 }
@@ -191,12 +183,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<CutoffSubjectPageProps> = async ({ params }) => {
   const subjectStr = params?.subject as string;
 
-  // Read cutoff config at build time
   const configPath = path.join(process.cwd(), 'public', 'config', 'cutoff-config.json');
   const configJson: CutoffConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   const subjectConfig = configJson[subjectStr] || null;
 
-  // Read all CSV files for this subject at build time
   let cutoffData: CutoffTableData = {};
   if (subjectConfig) {
     const allData: any[] = [];

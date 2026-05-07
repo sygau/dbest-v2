@@ -1,6 +1,5 @@
 # Environment variables
 .env
-.env.local
 .env.production
 
 # Dependencies
@@ -12,11 +11,13 @@ yarn-error.log*
 # Next.js build artifacts
 .next/
 out/
-.vercel
+.open-next/
+.wrangler/
 tsconfig.tsbuildinfo
 
 # Build outputs
 public/blog/
+.og-cache.json
 !data/blog-index.json
 dist/
 build/

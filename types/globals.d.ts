@@ -24,11 +24,6 @@ interface Window {
     };
   };
   
-  // Vercel Analytics
-  va?: (...args: any[]) => void;
-  vaq?: any[];
-  si?: (...args: any[]) => void;
-  siq?: any[];
 }
 
 // Declare module for CSS modules

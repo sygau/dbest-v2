@@ -47,9 +47,8 @@ export default function CountdownPage() {
         ogDescription="DSE 2026 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。"
         ogUrl="https://dse.best/countdown"
         robots={['index', 'follow']}
-        jsonLd={countdownFaqJsonLd ? [countdownJsonLd, countdownFaqJsonLd] : [countdownJsonLd]}
+        pageKey="countdown"
       />
-pageKey="countdown"
       <PageBreadcrumb section="其他" text="DSE 2026 Countdown" />
 
       <div className={`card rounded-4 ${styles.countdownPage}`}>

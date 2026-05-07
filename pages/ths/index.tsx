@@ -1,13 +1,10 @@
 import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
-import { usePdfTracking } from '../../hooks/usePdfTracking';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
 
 export default function THSPage() {
-  usePdfTracking();
-
     const lastUpdated = getSubjectIndexLastUpdated('ths');
 
     return (

@@ -16,7 +16,8 @@ export default function BafsPage() {
                 ogDescription="DSE 企業、會計與財務概論 Business, Accounting and Financial Studies 歷屆試題下載 (2012-2025)，包含Paper 1A 1B, Paper 2卷一卷二、Answers/Marking Scheme 答案、考生表現報告。提供完整試卷下載，助您全面掌握BAFS考試趨勢及重點。"
                 ogUrl="https://dse.best/bafs"
                 robots={['index', 'follow']}
-              subjectKey="bafs"
+                subjectKey="bafs"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="企業、會計與財務概課" text="DSE Past Paper" />
             {/*end breadcrumb*/}

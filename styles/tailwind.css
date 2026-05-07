@@ -56,7 +56,7 @@
   --color-sidebar-bg: #ffffff;
   --color-sidebar-text: #5f5f5f;
   --color-sidebar-hover: rgba(195, 66, 224, 0.15);
-  --color-sidebar-active: #0b63ab;
+  --color-sidebar-active: rgba(195, 66, 224);
   --color-navbar-bg: #ffffff;
   --color-card-inner-bg: #f3f4f6;
   --color-overlay-bg: rgba(0, 0, 0, 0.05);
@@ -304,8 +304,6 @@ hr {
 /* ===== DARK/BLUE THEME CARD BORDERS ===== */
 [data-theme="dark"] .card { border: 1px solid var(--color-border); }
 [data-theme="blue"] .card { border: 1px solid var(--color-border); }
-[data-bs-theme="dark"] .card { border: 1px solid var(--bs-border-color); }
-[data-bs-theme="blue-theme"] .card { border: 1px solid var(--bs-border-color); }
 
 .card.rounded-4 {
   background-color: var(--color-card-bg);
@@ -322,16 +320,6 @@ hr {
   border: 1px solid var(--color-border);
 }
 
-/* data-bs-theme selectors (Bootstrap theme system - used by most pages) */
-[data-bs-theme="dark"] .card.rounded-4 {
-  background-color: var(--bs-card-bg);
-  border: 1px solid var(--bs-border-color);
-}
-[data-bs-theme="blue-theme"] .card.rounded-4 {
-  background-color: var(--bs-card-bg);
-  border: 1px solid var(--bs-border-color);
-}
-
 /* ===== NESTED CARDS (inside .card.rounded-4) ===== */
 /* Smaller cards inside the main page container should use card-inner-bg for distinction */
 .card.rounded-4 .card {
@@ -343,16 +331,6 @@ hr {
 [data-theme="blue"] .card.rounded-4 .card {
   background-color: var(--color-card-inner-bg);
 }
-[data-bs-theme="light"] .card.rounded-4 .card {
-  background-color: var(--color-card-inner-bg);
-}
-[data-bs-theme="dark"] .card.rounded-4 .card {
-  background-color: var(--color-card-inner-bg);
-}
-[data-bs-theme="blue-theme"] .card.rounded-4 .card {
-  background-color: var(--color-card-inner-bg);
-}
-
 /* ===== SVG ICON ALIGNMENT FIX ===== */
 /* Icons (from react-icons, etc.) need line-height: 1 to align vertically 
    with inline text. Without this, flexbox aligns the icon box to the text's

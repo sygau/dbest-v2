@@ -8,12 +8,12 @@
 
 ### Technology Stack
 - **Framework**: Next.js 15.4.8 (Pages Router)
-- **Deployment**: Cloudflare Pages (static export) + Vercel (private mode)
+- **Deployment**: Cloudflare Workers via @opennextjs/cloudflare (formerly CF Pages + next-on-pages)
 - **Styling**: Hybrid CSS (Bootstrap 5 + Tailwind v4 + Custom CSS)
 - **Font**: Noto Sans HK (self-hosted via next/font/google)
 - **Content**: Contentful CMS for blog + JSON data for static content
 - **Real-time**: Ably for chat features
-- **Analytics**: Google Analytics + Vercel Analytics (private mode)
+- **Analytics**: Google Analytics
 
 ### Project Structure
 ```
@@ -136,9 +136,8 @@ html[data-bs-theme="dark"] {
 ```
 
 ### Deployment Targets
-- **Primary**: Cloudflare Pages (static export)
-- **Private Mode**: Vercel (x.dse.best)
-- **CDN**: Cloudflare for static assets
+- **Primary**: Cloudflare Workers (via @opennextjs/cloudflare)
+- **CDN**: Cloudflare for static assets (served from Workers static assets binding)
 
 ### Environment Configuration
 - **Development**: Local development with hot reload
@@ -248,7 +247,7 @@ html[data-bs-theme="dark"] {
 - **Performance**: Build optimization, CDN management
 
 ### Monitoring
-- **Analytics**: Google Analytics + Vercel Analytics
+- **Analytics**: Google Analytics
 - **Error Tracking**: Console monitoring
 - **Performance**: Core Web Vitals tracking
 - **Uptime**: Site availability monitoring

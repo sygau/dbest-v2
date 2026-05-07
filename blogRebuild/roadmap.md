@@ -12,8 +12,8 @@
 
 Before handing this off to an AI agent, add:
 
-- `schema/` — your Sanity schemaTypes (post, author, category, etc.)
-- `.env.local` values or a note like `env-example.md` listing: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `SANITY_API_TOKEN`
+- `SanitySchema_ReadNReferenceOnly/` — your Sanity schemaTypes (post, author, category, etc.)
+- `.env` values or a note like `env-example.md` listing: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`, `SANITY_API_TOKEN`
 - Any design notes or mockups for the new blog index and post layout
 - A note on what fields exist in Sanity (title, slug, body, publishedAt, author, tags, coverImage, etc.)
 

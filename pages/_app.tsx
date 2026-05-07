@@ -6,7 +6,6 @@ import '../styles/tailwind.css'
 import '../styles/blog-post.css'
 import { ThemeProvider } from '../components/tw/ThemeProvider'
 import Layout from '../components/tw/Layout'
-import usePdfTracking from '../hooks/usePdfTracking'
 import { useRouter } from 'next/router'
 
 const notoSansHK = Noto_Sans_HK({
@@ -18,13 +17,14 @@ const notoSansHK = Noto_Sans_HK({
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
-  usePdfTracking()
-  const canonicalUrl = `https://dse.best${router.asPath}`
 
   // Also propagate the CSS variable to <html> for :root-level CSS access
   useEffect(() => {
     document.documentElement.classList.add(notoSansHK.variable)
   }, [])
+
+  // Sanitize canonical URL by removing query params
+  const canonicalUrl = `https://dse.best${router.asPath.split('?')[0]}`
 
   return (
     <div

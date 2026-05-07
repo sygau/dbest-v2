@@ -16,7 +16,8 @@ export default function IctPage() {
                 ogDescription="DSE 資訊及通訊科技科 ICT 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握ICT應用技能及解難能力。"
                 ogUrl="https://dse.best/ict"
                 robots={['index', 'follow']}
-              subjectKey="ict"
+                subjectKey="ict"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="資訊及通訊科技" text="DSE Past Paper" />
             {/*end breadcrumb*/}

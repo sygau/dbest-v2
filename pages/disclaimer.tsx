@@ -55,6 +55,10 @@ export default function DisclaimerPage() {
                     <ul>
                         <li>如對本免責聲明有任何疑問，請通過網站聯絡頁面與我們聯繫。</li>
                     </ul>
+                    <h5>7. 適用法律</h5>
+                    <ul>
+                        <li>本免責聲明應受吐瓦魯法律管轄並依其解釋，不考慮其法律衝突原則。</li>
+                    </ul>
                     <p><em>最後更新：2024年12月30日</em></p>
 
                     <hr className="my-4" />
@@ -94,6 +98,10 @@ export default function DisclaimerPage() {
                     <h5>6. Contact Us</h5>
                     <ul>
                         <li>If you have any questions about this disclaimer, please contact us through the website&apos;s contact page.</li>
+                    </ul>
+                    <h5>7. Governing Law</h5>
+                    <ul>
+                        <li>This disclaimer shall be governed by and construed in accordance with the laws of Tuvalu, without regard to its conflict of law principles.</li>
                     </ul>
                     <p><em>Last updated: December 30, 2024</em></p>
                 </div>

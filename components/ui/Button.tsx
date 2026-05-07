@@ -39,13 +39,13 @@ export function Button({ className, variant = 'default', size = 'md', ...props }
           border: 2px solid #ede9fe;
           box-shadow: 0 4px 0 0 #ede9fe;
         }
-        [data-bs-theme="dark"] .btn-secondary {
+        [data-theme="dark"] .btn-secondary {
           background-color: #2a2a2a;
           color: #c4b5fd;
           border-color: #3f3f3f;
           box-shadow: 0 4px 0 0 #3f3f3f;
         }
-        [data-bs-theme="blue-theme"] .btn-secondary {
+        [data-theme="blue"] .btn-secondary {
           background-color: #1a2847;
           color: #a8c5ff;
           border-color: #2a3a5a;
@@ -58,13 +58,13 @@ export function Button({ className, variant = 'default', size = 'md', ...props }
           border: 2px solid #a78bfa;
           box-shadow: 0 4px 0 0 #d8b4fe;
         }
-        [data-bs-theme="dark"] .btn-outline {
+        [data-theme="dark"] .btn-outline {
           background-color: #1a1a1a;
           color: #d8b4fe;
           border-color: #6d28d9;
           box-shadow: 0 4px 0 0 #4c1d95;
         }
-        [data-bs-theme="blue-theme"] .btn-outline {
+        [data-theme="blue"] .btn-outline {
           background-color: #0f1a33;
           color: #b8d4ff;
           border-color: #5b7db3;

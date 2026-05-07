@@ -48,7 +48,7 @@
 
 /* ── Post title ── */
 .blog-post-title {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: 800;
   line-height: 1.25;
   letter-spacing: -0.025em;
@@ -59,7 +59,7 @@
 /* ── Author mini card ── */
 .blog-author-mini {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
   padding: 1.125rem;
   margin-bottom: 1.75rem;
@@ -441,6 +441,9 @@
   border: 1px solid var(--color-border);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.05);
   background: var(--color-card-inner-bg);
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blog-figure-wrap img {
@@ -457,6 +460,43 @@
   font-style: normal;
   letter-spacing: 0.01em;
   padding: 0 1rem;
+}
+
+/* ── YouTube Embed ── */
+.blog-yt-wrap {
+  margin: 1.75em 0;
+}
+
+.blog-yt-iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 0.625rem;
+  display: block;
+}
+
+.blog-yt-caption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  letter-spacing: 0.01em;
+}
+
+/* ── Blog Alert — info override (sky blue instead of violet) ── */
+.blog-prose .blog-alert.ui-alert-info,
+.blog-alert.ui-alert-info {
+  background: rgba(3, 105, 161, 0.07);
+  border-color: rgba(3, 105, 161, 0.2);
+  border-left-color: #0369a1;
+}
+[data-theme="dark"] .blog-prose .blog-alert.ui-alert-info,
+[data-theme="dark"] .blog-alert.ui-alert-info,
+[data-theme="blue"] .blog-prose .blog-alert.ui-alert-info,
+[data-theme="blue"] .blog-alert.ui-alert-info {
+  background: rgba(3, 105, 161, 0.15);
+  border-color: rgba(3, 105, 161, 0.32);
 }
 
 /* ── End-of-post Author Card ── */
@@ -507,7 +547,8 @@
   text-decoration: none;
   padding: 0.25rem 0.7rem;
   border: 1px solid var(--color-border);
-  border-radius: 9999px;
+  border-radius: 8px;
+  background: var(--color-card-inner-bg);
 }
 
 .blog-social-link:hover {
@@ -518,7 +559,17 @@
 /* ── Related Posts ── */
 .blog-related-section {
   margin-top: 3rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0;
+}
+
+
+@media (min-width: 640px) {
+  .blog-related-section {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding-left: calc(50vw - 50%);
+    padding-right: calc(50vw - 50%);
+  }
 }
 
 .blog-related-title {
@@ -551,7 +602,8 @@
   border-radius: 0.75rem;
   overflow: hidden;
   text-decoration: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: inherit;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 0.5px 1px rgba(0, 0, 0, 0.03);
 }
@@ -573,6 +625,13 @@
 
 .blog-related-body {
   padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-related-top {
+  flex: 1;
 }
 
 .blog-related-card-title {
@@ -599,6 +658,21 @@
   border-radius: 9999px;
   object-fit: cover;
   flex-shrink: 0;
+}
+
+/* ── Preserve blog post page button background colors in dark/blue themes only ── */
+.blog-post-wrap button[style],
+.blog-related-section button[style],
+.blog-post-wrap [style] button,
+.blog-related-section [style] button {
+  background-color: inherit !important;
+}
+
+html[data-theme="dark"] .blog-post-wrap button[style*="background"],
+html[data-theme="blue"] .blog-post-wrap button[style*="background"],
+html[data-theme="dark"] .blog-related-section button[style*="background"],
+html[data-theme="blue"] .blog-related-section button[style*="background"] {
+  background-color: inherit !important;
 }
 
 /* ── Badge dark/blue theme overrides ── */
@@ -671,5 +745,10 @@
 
   .blog-prose ol {
     padding-left: calc(1.625em - 8px);
+  }
+
+  /* Hide top share button on mobile */
+  .blog-share-btn {
+    display: none;
   }
 }

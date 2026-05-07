@@ -1,0 +1,182 @@
+import { useMemo } from 'react'
+import { PortableText, PortableTextComponents } from '@portabletext/react'
+import type { PortableTextBlock } from '@portabletext/types'
+import { createHeadingIdGenerator } from '../../lib/tocUtils'
+import { LuExternalLink, LuInfo, LuCircleCheck, LuTriangleAlert, LuCircleX } from 'react-icons/lu'
+import { urlFor } from '../../lib/sanity'
+import { Separator } from '../ui/Separator'
+import { CodeBlock } from '../ui/CodeBlock'
+import { ButtonAnchor } from '../ui/ButtonAnchor'
+import { RichTableRenderer } from './RichTableRenderer'
+import { Alert, AlertTitle, AlertDescription } from '../ui/Alert'
+
+function extractYouTubeId(url: string): string | null {
+  try {
+    const u = new URL(url)
+    if (u.hostname === 'youtu.be') return u.pathname.slice(1).split('?')[0]
+    if (u.hostname.includes('youtube.com')) {
+      if (u.searchParams.get('v')) return u.searchParams.get('v')
+      const m = u.pathname.match(/\/embed\/([^/?]+)/)
+      if (m) return m[1]
+    }
+  } catch {}
+  return null
+}
+
+const ALERT_META: Record<string, { icon: React.ReactNode; variant: any }> = {
+  info:        { icon: <LuInfo size={15} style={{ color: '#0369a1' }} />,        variant: 'default'     },
+  success:     { icon: <LuCircleCheck size={15} className="text-green-500" />,   variant: 'success'     },
+  warning:     { icon: <LuTriangleAlert size={15} className="text-amber-600" />, variant: 'warning'     },
+  destructive: { icon: <LuCircleX size={15} className="text-red-500" />,         variant: 'destructive' },
+}
+
+const components: PortableTextComponents = {
+  types: {
+    image: ({ value }: any) => {
+      if (!value?.asset) return null
+      const src = urlFor(value).width(1000).format('webp').auto('format').url()
+      return (
+        <figure>
+          <div className="blog-figure-wrap">
+            <img
+              src={src}
+              alt={value.alt || ''}
+              loading="lazy"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </div>
+          {value.caption && <figcaption>{value.caption}</figcaption>}
+        </figure>
+      )
+    },
+
+    code: ({ value }: any) => (
+      <CodeBlock
+        code={value?.code ?? ''}
+        language={value?.language}
+        filename={value?.filename}
+      />
+    ),
+
+    separator: () => <Separator className="my-6" />,
+
+    table: ({ value }: any) => <RichTableRenderer value={value} />,
+
+    blogButton: ({ value }: any) => {
+      if (!value?.href || !value?.label) return null
+      const isLinkout = value.variant === 'linkout'
+      const resolvedVariant = isLinkout ? 'info' : (value.variant || 'default')
+      const isExternal =
+        isLinkout ||
+        (/^https?:\/\//.test(value.href) && !value.href.includes('dse.best'))
+      return (
+        <ButtonAnchor
+          href={value.href}
+          variant={resolvedVariant}
+          size="md"
+          {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          {value.label}
+          {isLinkout && <LuExternalLink size={14} />}
+        </ButtonAnchor>
+      )
+    },
+
+    youtubeEmbed: ({ value }: any) => {
+      const id = value?.url ? extractYouTubeId(value.url) : null
+      if (!id) return null
+      return (
+        <div className="blog-yt-wrap">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${id}`}
+            title={value.caption || 'YouTube video'}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+            className="blog-yt-iframe"
+          />
+          {value.caption && (
+            <p className="blog-yt-caption">{value.caption}</p>
+          )}
+        </div>
+      )
+    },
+
+    blogAlert: ({ value }: any) => {
+      if (!value?.description && !value?.title) return null
+      const meta = ALERT_META[value.variant] ?? ALERT_META.info
+      return (
+        <Alert variant={meta.variant} className="blog-alert my-5">
+          {value.title && (
+            <AlertTitle icon={meta.icon}>{value.title}</AlertTitle>
+          )}
+          {value.description && (
+            <AlertDescription>{value.description}</AlertDescription>
+          )}
+        </Alert>
+      )
+    },
+  },
+
+  marks: {
+    link: ({ value, children }: any) => {
+      const href = value?.href || '#'
+      const external = /^https?:\/\//.test(href) && !href.includes('dse.best')
+      return (
+        <a
+          href={href}
+          {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          {children}
+        </a>
+      )
+    },
+  },
+}
+
+function makeHeadingComp(Tag: 'h1' | 'h2' | 'h3' | 'h4', keyToId: Map<string, string>) {
+  return ({ children, value }: any) => {
+    const id = keyToId.get(value?._key)
+    return (
+      <Tag id={id} style={{ scrollMarginTop: '110px' }}>
+        {children}
+      </Tag>
+    )
+  }
+}
+
+export default function PortableTextRenderer({
+  value,
+  showToc = false,
+}: {
+  value: PortableTextBlock[]
+  showToc?: boolean
+}) {
+  const keyToId = useMemo(() => {
+    const gen = createHeadingIdGenerator()
+    const map = new Map<string, string>()
+    for (const block of value) {
+      if ((block as any)._type !== 'block') continue
+      const style = (block as any).style as string | undefined
+      if (!style || !['h1', 'h2', 'h3', 'h4'].includes(style)) continue
+      const text = ((block as any).children as any[] | undefined)
+        ?.map((c) => c.text ?? '').join('').trim() ?? ''
+      if (text) map.set((block as any)._key, gen(text))
+    }
+    return map
+  }, [value])
+
+  if (!value?.length) return null
+  if (!showToc) return <PortableText value={value} components={components} />
+
+  const tocComponents: PortableTextComponents = {
+    ...components,
+    block: {
+      h1: makeHeadingComp('h1', keyToId),
+      h2: makeHeadingComp('h2', keyToId),
+      h3: makeHeadingComp('h3', keyToId),
+      h4: makeHeadingComp('h4', keyToId),
+    },
+  }
+  return <PortableText value={value} components={tocComponents} />
+}

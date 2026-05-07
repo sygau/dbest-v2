@@ -16,7 +16,8 @@ export default function M1Page() {
                 ogDescription="DSE 數學延伸部分單元一 Mathematics Extended Part Module 1 歷屆試題下載 (2012-2025)，包含Paper 1卷一、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握M1微積分與統計學進階概念。"
                 ogUrl="https://dse.best/m1"
                 robots={['index', 'follow']}
-              subjectKey="m1"
+                subjectKey="m1"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="M1" text="DSE Past Paper" />
             {/*end breadcrumb*/}

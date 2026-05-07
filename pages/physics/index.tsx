@@ -16,7 +16,8 @@ export default function PhysicsPage() {
                 ogDescription="DSE 物理科 Physics 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Physics實驗技能及理論應用能力。"
                 ogUrl="https://dse.best/physics"
                 robots={['index', 'follow']}
-              subjectKey="physics"
+                subjectKey="physics"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="物理" text="DSE Past Paper" />
             {/*end breadcrumb*/}

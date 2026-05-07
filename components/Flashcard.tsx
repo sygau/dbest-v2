@@ -145,7 +145,7 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        [data-bs-theme=light] .fc-card {
+        [data-theme=light] .fc-card {
           border: 2px solid rgba(0, 0, 0, 0.12);
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
         }

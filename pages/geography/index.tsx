@@ -16,7 +16,8 @@ export default function GeographyPage() {
                 ogDescription="DSE 地理科 Geography 歷屆試題下載 (2012-2025)，包含Paper 1 Paper 2卷一卷二、Answers/Marking Scheme 答案。提供完整試卷下載，全面掌握Geography地圖技能及實地考察技巧。"
                 ogUrl="https://dse.best/geography"
                 robots={['index', 'follow']}
-              subjectKey="geography"
+                subjectKey="geography"
+            />
             {/*breadcrumb*/}
             <PageBreadcrumb section="地理" text="DSE Past Paper" />
             {/*end breadcrumb*/}

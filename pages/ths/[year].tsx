@@ -6,7 +6,6 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import fs from 'fs'
 import path from 'path'
 import NavigationLink from '../../components/NavigationLink'
-import { usePdfTracking } from '../../hooks/usePdfTracking';
 import { generateYearMeta } from '../../utils/yearSlugSEO';
 import { buildYearSlugJsonLd } from '../../data/jsonld/year-slug';
 import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
@@ -58,7 +57,6 @@ function getPaperDisplayInfo(paperId: string, year: string): PaperData | null {
 
 export default function THSYearPage({ subject, year, papers, availableFiles }: YearPageProps) {
   const router = useRouter()
-  usePdfTracking();
 
   // Use the clean single function approach
   const meta = generateYearMeta('ths', year);

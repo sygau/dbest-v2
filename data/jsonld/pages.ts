@@ -38,8 +38,8 @@ export const pageJsonLd: Record<string, object> = {
       '@type': 'Event',
       name: 'Hong Kong Diploma of Secondary Education Examination 2026',
       description: 'The 2026 Hong Kong Diploma of Secondary Education (HKDSE) examination',
-      startDate: '2026-04-15',
-      endDate: '2026-05-15',
+      startDate: '2026-04-09',
+      endDate: '2026-05-16',
       eventStatus: 'https://schema.org/EventScheduled',
       location: {
         '@type': 'Place',
@@ -59,14 +59,14 @@ export const pageJsonLd: Record<string, object> = {
     ...webPageBase(
       'DSE 2027 Countdown 考試日期倒數',
       'DSE 2027倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。',
-      'https://dse.best/countdown2027'
+      'https://dse.best/countdown/2027'
     ),
     mainEntity: {
       '@type': 'Event',
       name: 'Hong Kong Diploma of Secondary Education Examination 2027',
       description: 'The 2027 Hong Kong Diploma of Secondary Education (HKDSE) examination',
-      startDate: '2027-04-15',
-      endDate: '2027-05-15',
+      startDate: '2027-04-08',
+      endDate: '2027-05-16',
       eventStatus: 'https://schema.org/EventScheduled',
       location: {
         '@type': 'Place',

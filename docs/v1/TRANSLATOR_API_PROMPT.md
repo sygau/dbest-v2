@@ -205,7 +205,7 @@ async function translateText(text: string): Promise<string> {
 ```
 
 ## Environment Variables Summary
-Add these to your `.env.local` file:
+Add these to your `.env` file:
 
 ```bash
 # Cloudflare Turnstile

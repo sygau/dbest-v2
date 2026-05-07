@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 
 import {
   applyThemeToDocument,
-  getInitialThemePreference,
-  normalizeThemePreference,
+  getInitialTheme,
+  normalizeTheme,
   persistTheme,
 } from '@/utils/theme';
 
 export const useThemeSwitcher = () => {
-  const [theme, setTheme] = useState<string>(() => {
-    return getInitialThemePreference();
-  });
+  const [theme, setTheme] = useState<string>('light');
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     try {
-      const initialTheme = getInitialThemePreference();
+      const initialTheme = getInitialTheme();
       applyThemeToDocument(initialTheme);
       setTheme(initialTheme);
     } catch {
@@ -24,14 +24,14 @@ export const useThemeSwitcher = () => {
 
   const switchTheme = (newTheme: string) => {
     try {
-      const normalizedTheme = normalizeThemePreference(newTheme);
+      const normalizedTheme = normalizeTheme(newTheme);
       applyThemeToDocument(normalizedTheme);
       persistTheme(normalizedTheme);
       setTheme(normalizedTheme);
     } catch {}
   };
 
-  const handleBlueTheme = () => switchTheme('blue-theme');
+  const handleBlueTheme = () => switchTheme('blue');
   const handleLightTheme = () => switchTheme('light');
   const handleDarkTheme = () => switchTheme('dark');
 
@@ -50,4 +50,4 @@ export const useThemeSwitcher = () => {
   };
 };
 
-export default useThemeSwitcher; 
+export default useThemeSwitcher;

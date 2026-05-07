@@ -1,3 +1,4 @@
+import type { JSX } from 'react'
 import { cn } from '../../lib/cn'
 import { LuDownload, LuClock, LuLock } from 'react-icons/lu'
 import { Badge } from './Badge'

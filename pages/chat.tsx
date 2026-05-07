@@ -127,7 +127,7 @@ export default function ChatPage() {
 
     const handleStickerClick = (sticker: any) => {
         console.log('Sticker clicked:', sticker); // Debug log
-        
+
         // Prevent any default behavior
         event?.preventDefault();
         event?.stopPropagation();
@@ -750,7 +750,7 @@ export default function ChatPage() {
                                 <input
                                     type="text"
                                     id="userNameInputMobile"
-                                    className="w-full border border-gray-300 rounded px-3 py-2"
+                                    className="form-control"
                                     maxLength={14}
                                     placeholder="Your name"
                                     style={{ fontSize: '16px' }}
@@ -797,7 +797,7 @@ export default function ChatPage() {
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3>
-                                <BiSmile className="mr-2" />
+                                <BiSmile className="me-2" />
                                 Stickers
                             </h3>
                             <button
@@ -888,7 +888,7 @@ export default function ChatPage() {
                     <div className={`modal-content large ${isClosingRules ? 'hide' : 'show'}`} onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3>
-                                <BiBook className="mr-2" />
+                                <BiBook className="me-2" />
                                 DSEBest 聊天室規則 Chatroom Rules
                             </h3>
                             <button
@@ -1017,6 +1017,35 @@ export default function ChatPage() {
                     </div>
                 </div>
             )}
+
+            {/* Bootstrap utility classes for chat.js generated messages */}
+            <style jsx global>{`
+              .d-flex { display: flex !important; }
+              .flex-column { flex-direction: column !important; }
+              .align-items-start { align-items: flex-start !important; }
+              .align-items-end { align-items: flex-end !important; }
+              .align-items-center { align-items: center !important; }
+              .justify-content-between { justify-content: space-between !important; }
+              .mb-1 { margin-bottom: 0.25rem !important; }
+              .ms-2 { margin-left: 0.5rem !important; }
+              .my-2 { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+              .p-2 { padding: 0.5rem !important; }
+              .text-center { text-align: center !important; }
+              .text-start { text-align: left !important; }
+              .text-info { color: #0dcaf0 !important; }
+              .text-warning { color: #ffc107 !important; }
+              .text-danger { color: #dc3545 !important; }
+              .text-decoration-none { text-decoration: none !important; }
+              .fw-bold { font-weight: 700 !important; }
+              .fst-italic { font-style: italic !important; }
+              .small { font-size: 0.875em !important; }
+              .bg-dark { background-color: #212529 !important; }
+              .bg-opacity-10 { background-color: rgba(33, 37, 41, 0.1) !important; }
+              .rounded { border-radius: 0.375rem !important; }
+              .btn { display: inline-block; font-weight: 400; line-height: 1.5; color: #212529; text-align: center; text-decoration: none; vertical-align: middle; cursor: pointer; -webkit-user-select: none; user-select: none; background-color: transparent; border: 1px solid transparent; padding: 0.375rem 0.75rem; font-size: 1rem; border-radius: 0.375rem; }
+              .btn-primary { color: #fff; background-color: #0d6efd; border-color: #0d6efd; }
+              .input-group { position: relative; display: flex; flex-wrap: wrap; align-items: stretch; width: 100%; }
+            `}</style>
 
             <style jsx>{`
                 /* SEO Content Styles for Search Engine Bots */
@@ -1878,9 +1907,10 @@ export default function ChatPage() {
                     }
                 }
 
-                /* Chat bubbles - Enhanced styling */
+                /* Chat bubbles */
                 :global(.chat-bubble) {
                     max-width: 80%;
+                    width: fit-content;
                     padding: 1rem 1.25rem;
                     border-radius: 1.25rem;
                     color: #fff;
@@ -1890,11 +1920,6 @@ export default function ChatPage() {
                     position: relative;
                     transition: all 0.2s ease;
                     animation: message-slide-in 0.3s ease-out;
-                }
-
-                :global(.chat-bubble:hover) {
-                    transform: translateY(-1px);
-                    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
                 }
 
                 :global(.chat-bubble.other) {
@@ -1927,61 +1952,43 @@ export default function ChatPage() {
                     transition: opacity 0.2s ease;
                 }
 
-                /* Moderator styles - Enhanced */
+                /* Moderator styles */
                 :global(.chat-bubble.moderator) {
-                    background: linear-gradient(145deg,
-                        #6d5000 0%,           /* Very dark gold - almost black */
-                        #8b6900 25%,          /* Deep warm gold */
-                        #b8860b 60%,          /* Goldenrod - warm but not yellow */
-                        #7c5a00 100%          /* Dark gold shadow */
-                    );
-                    color: #f5f5f5;         /* Light gray text */
+                    background: linear-gradient(145deg, #6d5000 0%, #8b6900 25%, #b8860b 60%, #7c5a00 100%);
+                    color: #f5f5f5;
                     font-weight: 500;
-                    border-radius: 1.3rem;
-                    padding: 14px 18px;
-                    position: relative;
+                    border-radius: 1.25rem;
+                    padding: 1rem 1.25rem;
                     max-width: 80%;
-                    box-shadow:
-                        0 6px 16px rgba(90, 60, 0, 0.3),
-                        0 2px 6px rgba(0, 0, 0, 0.2);
+                    width: fit-content;
+                    box-shadow: 0 4px 12px rgba(90, 60, 0, 0.3);
                     border: 1px solid rgba(80, 50, 0, 0.5);
                 }
 
-                /* Inner glow - subtle metallic shine */
-                :global(.chat-bubble.moderator::before) {
+                :global(.chat-bubble.moderator)::before {
                     content: '';
                     position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: radial-gradient(circle at 20% 20%,
-                        rgba(255, 255, 255, 0.1),
-                        transparent 70%
-                    );
-                    z-index: -1;
-                    border-radius: inherit;
-                    opacity: 0.4;
+                    top: -50%;
+                    left: -50%;
+                    width: 200%;
+                    height: 200%;
+                    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.12) 0%, transparent 70%);
                     pointer-events: none;
+                    border-radius: inherit;
                 }
 
-                /* Outer glow - deep gold tone */
-                :global(.chat-bubble.moderator::after) {
+                :global(.chat-bubble.moderator)::after {
                     content: '';
                     position: absolute;
-                    top: -4px;
-                    left: -4px;
-                    right: -4px;
-                    bottom: -4px;
-                    background: linear-gradient(145deg,
-                        rgba(120, 80, 0, 0.3),
-                        rgba(100, 70, 0, 0.2),
-                        rgba(120, 80, 0, 0.3)
-                    );
-                    z-index: -2;
-                    border-radius: 1.5rem;
+                    top: -2px;
+                    left: -2px;
+                    right: -2px;
+                    bottom: -2px;
+                    background: linear-gradient(145deg, rgba(255, 215, 0, 0.2), transparent 40%, rgba(255, 215, 0, 0.1));
+                    border-radius: inherit;
+                    z-index: -1;
                     filter: blur(4px);
-                    opacity: 0.8;
+                    pointer-events: none;
                 }
 
                 :global(.moderator-badge) {
@@ -2033,10 +2040,6 @@ export default function ChatPage() {
                 :global(.chat-bubble.ai-bot) {
                     background: linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 100%);
                     color: #ecfdf5;
-                }
-
-                :global(.chat-bubble.ai-bot.other) {
-                    background: linear-gradient(135deg, #14532d 0%, #166534 40%, #15803d 100%);
                 }
 
                 /* Username styling in chat bubbles */
