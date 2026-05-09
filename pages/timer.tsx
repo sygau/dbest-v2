@@ -336,14 +336,14 @@ export default function PaperTimerPage() {
           }
 
           .modern-select { background: var(--color-tertiary-bg, #f8fafc); border: 1px solid var(--color-border-color, #e2e8f0); border-radius: 8px; padding: 5px 8px; font-size: 0.78rem; font-weight: 500; appearance: none; cursor: pointer; color: var(--color-body, #374151); }
-          .progress-track { height: 10px; background: var(--color-tertiary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
+          .progress-track { height: 10px; background: var(--color-secondary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
           .progress-bar-inner { background: var(--color-primary, #6366f1); transition: width 1s linear; border-radius: 20px; }
 
           .action-btn { border-radius: 12px; padding: 10px 24px; font-size: 0.9rem; font-weight: 700; border: none; white-space: nowrap; transition: background 0.2s; }
           .btn-start { background: var(--color-primary, #6366f1); color: white; }
           .btn-start:hover { background: #4f46e5; }
           .btn-start:disabled { background: var(--color-tertiary-bg, #e2e8f0); cursor: not-allowed; color: var(--color-secondary-color, #94a3b8); }
-          .btn-reset { background: var(--color-tertiary-bg, #f1f5f9); color: var(--color-secondary-color, #64748b); margin-left: 8px; white-space: nowrap; }
+          .btn-reset { background: var(--color-card-inner-bg, #f1f5f9); color: var(--color-secondary-color, #64748b); margin-left: 8px; white-space: nowrap; border: 1px solid var(--color-border-color, transparent); }
 
           .top-controls {
              position: absolute; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 10;

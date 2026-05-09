@@ -131,7 +131,7 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
             <>
               {/* Selection Screen */}
               <div className="text-center" style={{ paddingTop: '1.5rem', marginBottom: '1.5rem' }}>
-                <h1 className="mb-3" style={{ color: '#d97706', fontWeight: 900 }}>十二篇範文 溫習模式 📚</h1>
+                <h1 className="mb-3" style={{ color: 'var(--color-primary)', fontWeight: 900 }}>十二篇範文 溫習模式 📚</h1>
                 <p className="lead mb-0" style={{ maxWidth: '700px', margin: '0 auto' }}>選擇要溫習的篇章，然後開始使用閃卡學習。</p>
               </div>
 
@@ -140,8 +140,8 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
               <div className="flex justify-between items-center mb-4 sel-header">
                 <h5 className="mb-0">選擇篇章 ({selectedPassages.length}/{config.passages.length})</h5>
                 <div className="flex gap-2">
-                  <button className="sel-btn sel-all" onClick={() => setSelectedPassages(config.passages.map(p => p.id))}>全選</button>
-                  <button className="sel-btn sel-clear" onClick={() => setSelectedPassages([])}>清除</button>
+                  <Button variant="default" size="sm" className="flex-1 whitespace-nowrap" onClick={() => setSelectedPassages(config.passages.map(p => p.id))}>全選</Button>
+                  <Button variant="secondary" size="sm" className="flex-1 whitespace-nowrap" onClick={() => setSelectedPassages([])}>清除</Button>
                 </div>
               </div>
 
@@ -173,15 +173,17 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
               <hr className="my-4" />
 
               <div className="grid gap-2">
-                <button
-                  className="start-btn"
+                <Button
+                  variant="default"
+                  size="lg"
+                  className="w-full"
                   onClick={startStudy}
                   disabled={selectedPassages.length === 0}
                 >
-                  🚀 開始溫習 ({selectedPassages.length} 篇)
-                </button>
+                  開始溫習 ({selectedPassages.length} 篇)
+                </Button>
                 <NavigationLink href="/12p">
-                  <button className="back-btn">返回</button>
+                  <Button variant="secondary" size="md" className="w-full">返回</Button>
                 </NavigationLink>
               </div>
 
@@ -196,12 +198,11 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
               {/* Flashcard Screen — Desktop Header */}
               <div className="hidden md:flex justify-between items-center mb-4">
                 <Button
-                  variant="outline"
+                  variant="default"
                   size="sm"
                   onClick={() => { setIsStarted(false); setCurrentIndex(0); }}
                 >
                   <BiExit size={18} />
-                  離開溫習
                 </Button>
                 <div className="progress-badge">
                   <strong>{currentIndex + 1}</strong> / {questions.length}
@@ -218,7 +219,7 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
               <div className="md:hidden mb-4">
                 <div className="flex justify-between items-center mb-2">
                   <Button
-                    variant="outline"
+                    variant="default"
                     size="sm"
                     onClick={() => { setIsStarted(false); setCurrentIndex(0); }}
                   >
@@ -246,8 +247,8 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
 
               {/* Navigation */}
               <div className="flex justify-between items-center mt-4">
-                <button className="nav-btn" onClick={handlePrevious} disabled={currentIndex === 0}>← 上一題</button>
-                <button className="nav-btn" onClick={handleNext} disabled={currentIndex === questions.length - 1}>下一題 →</button>
+                <Button variant="secondary" size="md" onClick={handlePrevious} disabled={currentIndex === 0}>← 上一題</Button>
+                <Button variant="secondary" size="md" onClick={handleNext} disabled={currentIndex === questions.length - 1}>下一題 →</Button>
               </div>
 
               <div className="text-center mt-3">
@@ -325,80 +326,6 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
           line-height: 1.3;
         }
 
-        /* ── Buttons ── */
-        .sel-btn {
-          padding: 0.5rem 1.25rem;
-          border-radius: 0.5rem;
-          font-weight: 600;
-          font-size: 0.875rem;
-          cursor: pointer;
-          border: 2px solid;
-        }
-
-        .sel-all {
-          background: #d97706;
-          border-color: #d97706;
-          color: #ffffff;
-        }
-
-        .sel-clear {
-          background: var(--color-card-bg);
-          border-color: var(--color-border);
-          color: var(--color-body);
-        }
-
-        .start-btn {
-          width: 100%;
-          padding: 0.65rem 2rem;
-          border-radius: 0.5rem;
-          border: none;
-          background: var(--color-primary);
-          color: #ffffff;
-          font-weight: 700;
-          font-size: 1rem;
-          cursor: pointer;
-        }
-
-        .start-btn:disabled {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .back-btn {
-          width: 100%;
-          padding: 0.65rem 1.5rem;
-          border-radius: 0.5rem;
-          border: 1px solid var(--color-border);
-          background: var(--color-tertiary-bg);
-          color: var(--color-body);
-          font-weight: 600;
-          font-size: 1rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .nav-btn {
-          padding: 0.75rem 1.5rem;
-          border-radius: 0.5rem;
-          border: 1px solid var(--color-border);
-          background: var(--color-tertiary-bg);
-          color: var(--color-body);
-          font-weight: 600;
-          cursor: pointer;
-        }
-
-        .nav-btn:not(:disabled):hover {
-          color: var(--color-primary);
-          background: var(--color-secondary-bg);
-        }
-
-        .nav-btn:disabled {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-
         .progress-badge {
           padding: 0.5rem 1rem;
           background: var(--color-primary);
@@ -452,11 +379,6 @@ export default function StudyMode({ config, allPassageData }: StudyProps) {
 
           .sel-header .flex {
             justify-content: center;
-          }
-
-          .sel-btn {
-            flex: 1;
-            white-space: nowrap;
           }
         }
       `}</style>

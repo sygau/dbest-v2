@@ -251,7 +251,7 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
           <div className="card-body">
 
             <div className="text-center" style={{ paddingTop: '1.5rem', marginBottom: '1.5rem' }}>
-              <h1 className="mb-3" style={{ color: '#d97706', fontWeight: 900 }}>十二篇範文語譯 測驗模式 ✍️</h1>
+              <h1 className="mb-3" style={{ color: '#22693a', fontWeight: 900 }}>十二篇範文語譯 測驗模式 ✍️</h1>
               <p className="lead mb-0" style={{ maxWidth: '700px', margin: '0 auto' }}>選擇篇章及設定測驗參數，然後開始自我測試。</p>
             </div>
 
@@ -260,8 +260,8 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             <div className="flex justify-between items-center mb-4 sel-header">
               <h5 className="mb-0">選擇篇章 ({settings.selectedPassages.length}/{config.passages.length})</h5>
               <div className="flex gap-2">
-                <button className="sel-btn sel-all" onClick={() => setSettings(prev => ({ ...prev, selectedPassages: config.passages.map(p => p.id) }))}>全選</button>
-                <button className="sel-btn sel-clear" onClick={() => setSettings(prev => ({ ...prev, selectedPassages: [] }))}>清除</button>
+                <Button variant="success" size="sm" className="flex-1 whitespace-nowrap" onClick={() => setSettings(prev => ({ ...prev, selectedPassages: config.passages.map(p => p.id) }))}>全選</Button>
+                <Button variant="secondary" size="sm" className="flex-1 whitespace-nowrap" onClick={() => setSettings(prev => ({ ...prev, selectedPassages: [] }))}>清除</Button>
               </div>
             </div>
 
@@ -273,12 +273,12 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
                     key={passage.id}
                     className="passage-item"
                     style={{
-                      background: isSelected ? '#22c55e' : 'var(--color-card-bg)',
-                      border: `2px solid ${isSelected ? '#22c55e' : 'var(--color-border)'}`,
+                      background: isSelected ? '#22693a' : 'var(--color-card-bg)',
+                      border: `2px solid ${isSelected ? '#22693a' : 'var(--color-border)'}`,
                     }}
                     onClick={() => handlePassageToggle(passage.id)}
                   >
-                    <div className="passage-check" style={{ color: '#22c55e' }}>
+                    <div className="passage-check" style={{ color: '#22693a' }}>
                       {isSelected && <BiCheck size={20} />}
                     </div>
                     <div className="passage-emoji">{passage.emoji}</div>
@@ -364,15 +364,17 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             <hr className="my-4" />
 
             <div className="grid gap-2">
-              <button
-                className="start-btn"
+              <Button
+                variant="success"
+                size="lg"
+                className="w-full"
                 onClick={loadQuestions}
                 disabled={settings.selectedPassages.length === 0}
               >
-                🚀 開始測驗 ({settings.selectedPassages.length} 篇)
-              </button>
+                開始測驗 ({settings.selectedPassages.length} 篇)
+              </Button>
               <NavigationLink href="/12p">
-                <button className="back-btn">返回</button>
+                <Button variant="secondary" size="md" className="w-full">返回</Button>
               </NavigationLink>
             </div>
 
@@ -402,7 +404,7 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
           }
 
           .passage-item:hover {
-            border-color: #22c55e !important;
+            border-color: #22693a !important;
           }
 
           .passage-check {
@@ -420,12 +422,12 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
 
           [data-theme=dark] .passage-check {
             background: rgba(40, 40, 40, 0.9);
-            border: 1.5px solid rgba(34, 197, 94, 0.3);
+            border: 1.5px solid rgba(34, 105, 58, 0.3);
           }
 
           [data-theme=blue] .passage-check {
             background: rgba(30, 40, 60, 0.9);
-            border: 1.5px solid rgba(34, 197, 94, 0.3);
+            border: 1.5px solid rgba(34, 105, 58, 0.3);
           }
 
           .passage-emoji {
@@ -437,27 +439,6 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             font-weight: 600;
             font-size: 0.875rem;
             line-height: 1.3;
-          }
-
-          .sel-btn {
-            padding: 0.5rem 1.25rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            font-size: 0.875rem;
-            cursor: pointer;
-            border: 2px solid;
-          }
-
-          .sel-all {
-            background: #d97706;
-            border-color: #d97706;
-            color: #ffffff;
-          }
-
-          .sel-clear {
-            background: var(--color-card-bg);
-            border-color: var(--color-border);
-            color: var(--color-body);
           }
 
           .quiz-settings {
@@ -493,8 +474,8 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
           }
 
           .timer-toggle.active {
-            border-color: #22c55e;
-            background: rgba(34, 197, 94, 0.05);
+            border-color: #22693a;
+            background: rgba(34, 105, 58, 0.05);
           }
 
           .timer-track {
@@ -507,7 +488,7 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
           }
 
           .timer-toggle.active .timer-track {
-            background: #22c55e;
+            background: #22693a;
           }
 
           .timer-thumb {
@@ -530,38 +511,6 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             font-size: 1rem;
             font-weight: 600;
             color: var(--color-body);
-          }
-
-          .start-btn {
-            width: 100%;
-            padding: 0.65rem 2rem;
-            border-radius: 0.5rem;
-            border: 3px solid #22c55e;
-            background: #22c55e;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-          }
-
-          .start-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-          }
-
-          .back-btn {
-            width: 100%;
-            padding: 0.65rem 1.5rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--color-border);
-            background: var(--color-tertiary-bg);
-            color: var(--color-body);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
           }
 
           @media (max-width: 992px) {
@@ -593,7 +542,6 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
 
             .sel-header h5 { text-align: center; }
             .sel-header .flex { justify-content: center; }
-            .sel-btn { flex: 1; white-space: nowrap; }
           }
         `}</style>
       </>
@@ -616,12 +564,11 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             {/* Header */}
             <div className="flex justify-between items-center mb-4">
               <Button
-                variant="outline"
+                variant="success"
                 size="sm"
                 onClick={() => { setState('setup'); setTimerActive(false); }}
               >
                 <BiExit size={18} />
-                <span className="hidden sm:inline">離開測驗</span>
               </Button>
 
               <div className="flex items-center gap-3">
@@ -689,21 +636,21 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
 
               <div className="grid gap-3">
                 {!showAnswer && feedback !== 'correct' && (
-                  <button type="submit" className="submit-btn">提交答案</button>
+                  <Button type="submit" variant="success" size="lg" className="w-full">提交答案</Button>
                 )}
 
                 {(feedback === 'correct' || showAnswer) && (
-                  <button type="button" className="next-btn" onClick={handleNext}>繼續 →</button>
+                  <Button type="button" variant="success" size="lg" className="w-full" onClick={handleNext}>繼續 →</Button>
                 )}
 
                 {feedback === 'incorrect' && !showAnswer && (
-                  <div className="action-btns">
-                    <button type="button" className="skip-btn" onClick={handleSkip}>
-                      <BiSkipNext size={20} style={{ marginRight: '0.4rem' }} />跳過
-                    </button>
-                    <button type="button" className="reveal-btn" onClick={handleRevealAnswer}>
-                      <BiShow size={16} style={{ marginRight: '0.4rem' }} />答案
-                    </button>
+                  <div className="grid grid-cols-2 gap-2">
+                    <Button type="button" variant="secondary" size="md" className="w-full" onClick={handleSkip}>
+                      <BiSkipNext size={20} />跳過
+                    </Button>
+                    <Button type="button" variant="outline" size="md" className="w-full" onClick={handleRevealAnswer}>
+                      <BiShow size={16} />答案
+                    </Button>
                   </div>
                 )}
               </div>
@@ -723,7 +670,7 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
         <style jsx>{`
           .timer-badge {
             padding: 0.5rem 1rem;
-            background: #d97706;
+            background: #22693a;
             color: #ffffff;
             border-radius: 0.5rem;
             font-weight: 600;
@@ -742,7 +689,7 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
 
           .progress-badge {
             padding: 0.5rem 1rem;
-            background: #d97706;
+            background: #22693a;
             color: #ffffff;
             border-radius: 0.5rem;
             font-size: 0.875rem;
@@ -774,8 +721,8 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
           }
 
           .quiz-input.correct {
-            border-color: #22c55e;
-            background: rgba(34, 197, 94, 0.05);
+            border-color: #22693a;
+            background: rgba(34, 105, 58, 0.05);
           }
 
           .quiz-input.incorrect {
@@ -793,8 +740,8 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
           }
 
           .feedback-msg.success {
-            background: rgba(34, 197, 94, 0.1);
-            color: #15803d;
+            background: rgba(34, 105, 58, 0.1);
+            color: #22693a;
           }
 
           .feedback-msg.error {
@@ -806,15 +753,15 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             margin-top: 1rem;
             padding: 2rem 1.5rem;
             border-radius: 0.75rem;
-            background: rgba(34, 197, 94, 0.1);
-            border: 2px solid rgba(34, 197, 94, 0.3);
+            background: rgba(34, 105, 58, 0.1);
+            border: 2px solid rgba(34, 105, 58, 0.3);
             text-align: center;
           }
 
           .answer-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #16a34a;
+            color: #22693a;
             margin-bottom: 1rem;
           }
 
@@ -832,56 +779,8 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
             margin-top: 1rem;
           }
 
-          .submit-btn {
-            width: 100%;
-            padding: 0.65rem 2rem;
-            border-radius: 0.5rem;
-            border: 3px solid #d97706;
-            background: #d97706;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-          }
-
-          .next-btn {
-            width: 100%;
-            padding: 1rem 2rem;
-            border-radius: 0.75rem;
-            border: 3px solid #22c55e;
-            background: #22c55e;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 1.125rem;
-            cursor: pointer;
-          }
-
-          .action-btns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.5rem;
-          }
-
-          .skip-btn, .reveal-btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            border: 2px solid var(--color-border);
-            background: var(--color-card-bg);
-            color: var(--color-body);
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .skip-btn:hover { border-color: #f59e0b; color: #f59e0b; }
-          .reveal-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
-
           @media (max-width: 768px) {
             .question-box { padding: 2rem 1rem; }
-            .action-btns { grid-template-columns: 1fr; }
           }
         `}</style>
       </>
@@ -945,8 +844,8 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
                 const question = questions.find(q => q.id === result.questionId);
                 if (!question) return null;
 
-                const resultColor = result.correct ? '#22c55e' : result.skipped ? '#f59e0b' : '#ef4444';
-                const resultBg = result.correct ? 'rgba(34,197,94,0.07)' : result.skipped ? 'rgba(245,158,11,0.07)' : 'rgba(239,68,68,0.07)';
+                const resultColor = result.correct ? '#22693a' : result.skipped ? '#f59e0b' : '#ef4444';
+                const resultBg = result.correct ? 'rgba(34,105,58,0.07)' : result.skipped ? 'rgba(245,158,11,0.07)' : 'rgba(239,68,68,0.07)';
 
                 return (
                   <div
@@ -979,29 +878,16 @@ export default function QuizMode({ config, allPassageData }: QuizProps) {
 
             {/* Action buttons */}
             <div className="flex gap-3 results-actions">
-              <button
-                className="btn btn-primary"
-                style={{ flex: 1, padding: '0.75rem 1.5rem', fontSize: '1rem' }}
+              <Button
+                variant="default"
+                size="md"
+                style={{ flex: 1 }}
                 onClick={() => { setState('setup'); setResults([]); setCurrentIndex(0); }}
               >
                 再測一次
-              </button>
+              </Button>
               <NavigationLink href="/12p" style={{ flex: 1 }}>
-                <button
-                  style={{
-                    width: '100%',
-                    padding: '0.75rem 1.5rem',
-                    borderRadius: '0.375rem',
-                    border: '1px solid var(--color-border)',
-                    background: 'transparent',
-                    color: 'var(--color-body)',
-                    fontWeight: 500,
-                    fontSize: '1rem',
-                    cursor: 'pointer',
-                  }}
-                >
-                  返回主頁
-                </button>
+                <Button variant="secondary" size="md" className="w-full">返回主頁</Button>
               </NavigationLink>
             </div>
 

@@ -81,13 +81,18 @@
   --color-danger: #ef4444;
   --bs-primary: #0d6efd;
   --bs-primary-bg-subtle: #cfe2ff;
+  /* Suffix aliases for component compatibility */
+  --color-heading-color: var(--color-heading);
+  --color-border-color: var(--color-border);
+  --color-secondary-color: var(--color-secondary);
+  --color-emphasis-color: var(--color-emphasis);
 }
 
 /* Dark theme */
 [data-theme="dark"] {
   --color-body-bg: #212529;
   --color-body: #dee2e6;
-  --color-heading: inherit;
+  --color-heading: #dee2e6;
   --color-card-bg: #2b3035;
   --color-border: #495057;
   --color-muted: rgba(222, 226, 230, 0.75);
@@ -122,6 +127,11 @@
   --color-danger: #f87171;
   --bs-primary: #0d6efd;
   --bs-primary-bg-subtle: #031633;
+  /* Suffix aliases for component compatibility */
+  --color-heading-color: var(--color-heading);
+  --color-border-color: var(--color-border);
+  --color-secondary-color: var(--color-secondary);
+  --color-emphasis-color: var(--color-emphasis);
 }
 
 /* Blue theme */
@@ -163,6 +173,11 @@
   --color-danger: #f87171;
   --bs-primary: #4361ee;
   --bs-primary-bg-subtle: #0a1240;
+  /* Suffix aliases for component compatibility */
+  --color-heading-color: var(--color-heading);
+  --color-border-color: var(--color-border);
+  --color-secondary-color: var(--color-secondary);
+  --color-emphasis-color: var(--color-emphasis);
 }
 
 /* ===== BASE STYLES ===== */
