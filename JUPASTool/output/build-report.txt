@@ -1,6 +1,6 @@
 JUPAS Data Build Report
 ========================
-Built: 2026-05-16T15:07:31.454Z
+Built: 2026-05-16T20:45:12.867Z
 
 Programmes: 385
 Universities: CITYU, CUHK, EDUHK, HKBU, HKMU, HKU, HKUST, LINGU, POLYU
@@ -12,4 +12,4 @@ Scoring features:
   With HKUST capped:     33
   With special formulas: 2
 
-Validation: 3 issues (see above)
+Validation: passed
