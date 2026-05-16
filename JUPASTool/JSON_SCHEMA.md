@@ -15,7 +15,7 @@ Array of programme objects, one per JUPAS programme (~385 entries across all 9 U
 | Field | Type | Description |
 |-------|------|-------------|
 | `id` | `string` | JUPAS programme code, e.g. `"JS7101"` |
-| `uni` | `string` | University short code: `HKU`, `CUHK`, `HKUST`, `POLYU`, `CITYU`, `HKBU`, `EDUHK`, `LINGU`, `HKMU`, `HKSYU`, `CHC` |
+| `uni` | `string` | University short code: `HKU`, `CUHK`, `HKUST`, `POLYU`, `CITYU`, `HKBU`, `EDUHK`, `LINGU`, `HKMU`|
 | `nameEn` | `string` | English programme name |
 | `nameCh` | `string` | Chinese programme name |
 | `faculty` | `string` | Faculty/school name |
@@ -346,7 +346,7 @@ Universities: HKU (all programmes), CUHK (all programmes EXCEPT JS4501/JS4502), 
 |-------|-----|----|---|---|---|---|---|---|
 | Score | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 
-Universities: HKBU, EdUHK, Lingnan University (LU), HKMU, HKSYU, CHC. Also CUHK Medicine: JS4501 (MBChB) and JS4502 (MBChB GPS) — these two programmes are the ONLY CUHK programmes on the standard scale. Official CUHK documents explicitly list these as exceptions.
+Universities: HKBU, EdUHK, Lingnan University (LU), HKMU. Also CUHK Medicine: JS4501 (MBChB) and JS4502 (MBChB GPS) — these two programmes are the ONLY CUHK programmes on the standard scale. Official CUHK documents explicitly list these as exceptions.
 
 **Implementation rule:**
 
@@ -358,7 +358,7 @@ elif uni == CUHK:
     use_standard_scale()
   else:
     use_enhanced_scale()
-else:  # HKBU, EDUHK, LINGU, HKMU, HKSYU, CHC
+else:  # HKBU, EDUHK, LINGU, HKMU
   use_standard_scale()
 ```
 

@@ -23,7 +23,7 @@ Active unknowns at the bottom.
 | 12 | max_weighted_electives usage | Only 2 programmes: JS5102, JS5103 (both HKUST Science Group A/B) | CSV audit |
 | 13 | Special formula programmes | 3 total (all HKU): JS6119, JS6688, JS6901. JS6119 and JS6901 share identical logic | CSV audit |
 | 14 | Subject code inventory | 47 unique type:code combinations extracted from weight expressions. No separate subjects.csv needed — derived at build time | CSV audit |
-| 15 | Non-standard formulas at small unis | Zero found. HKMU, HKSYU, CHC all use standard Best 5 | CSV audit |
+| 15 | Non-standard formulas at small unis | Zero found. HKMU all use standard Best 5 | CSV audit |
 | 16 | weight_regular conflicts flagged | All 5 flagged items were false positives: M1/M2 correctly in best_of groups; grade checks present in require_any | CSV audit |
 | 17 | Historical cutoff scale compatibility | Fully mapped. PolyU/CityU pre-2025 cutoffs flagged for scale warning. HKUST safe across all years | csv_decoder.md |
 | 18 | 5-subject student eligibility | NOT disqualified from Best 6/bonus formulas. Missing 6th subject simply not included; no bonus awarded. | JUPAS mechanism docs |

@@ -64,6 +64,13 @@ export default function PomodoroPage() {
     localStorage.setItem('pomodoroDurations', JSON.stringify(durations));
   }, [durations]);
 
+  // Update tab title after every render so it always wins over Next.js Head
+  useEffect(() => {
+    if (isActive) {
+      document.title = `${formatTime(timeLeft)} - ${MODE_CONFIG[mode].label}`;
+    }
+  });
+
   // Cleanup Timer on unmount
   useEffect(() => {
     return () => {
@@ -115,7 +122,6 @@ export default function PomodoroPage() {
           finishTimer();
         } else {
           setTimeLeft(newTimeLeft);
-          document.title = `${formatTime(newTimeLeft)} - ${MODE_CONFIG[mode].label}`;
         }
       }, 100);
     }
@@ -237,7 +243,7 @@ export default function PomodoroPage() {
                   onClick={toggleTimer}
                 >
                   {isActive ? <BiPause style={{ fontSize: '23px', marginRight: '-8px', marginTop: '2px' }} /> : <BiPlay style={{ fontSize: '23px', marginRight: '-8px', marginTop: '2px' }} />}
-                  <span>{isActive ? '暫停 (PAUSE)' : '開始 (START)'}</span>
+                  <span>{isActive ? '暫停' : '開始'}</span>
                 </button>
 
                 <button

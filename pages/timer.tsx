@@ -327,15 +327,15 @@ export default function PaperTimerPage() {
           .clock-face {
             font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
             font-weight: 800;
-            font-size: clamp(3rem, 11vw, 6rem);
+            font-size: clamp(4rem, 11vw, 7rem);
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.03em;
             color: var(--color-heading-color, #1e293b);
-            margin: 16px 0;
+            margin: 26px 0;
             line-height: 1;
           }
 
-          .modern-select { background: var(--color-tertiary-bg, #f8fafc); border: 1px solid var(--color-border-color, #e2e8f0); border-radius: 8px; padding: 5px 8px; font-size: 0.78rem; font-weight: 500; appearance: none; cursor: pointer; color: var(--color-body, #374151); }
+          .modern-select { background: var(--color-tertiary-bg, #f8fafc); border: 1px solid var(--color-border-color, #e2e8f0); border-radius: 8px; padding: 4px 8px; font-size: 0.78rem; font-weight: 500; appearance: none; cursor: pointer; color: var(--color-body, #374151); }
           .progress-track { height: 10px; background: var(--color-secondary-bg, #f1f5f9); border-radius: 20px; overflow: hidden; margin-bottom: 20px; }
           .progress-bar-inner { background: var(--color-primary, #6366f1); transition: width 1s linear; border-radius: 20px; }
 
@@ -417,7 +417,7 @@ export default function PaperTimerPage() {
           }
 
           @media (max-width: 480px) {
-            .timer-card-modern .card-title { font-size: 1.85rem; }
+            .timer-card-modern .card-title { font-size: 2rem; }
           }
 
           .exam-durations-card {
@@ -567,12 +567,12 @@ export default function PaperTimerPage() {
 
           <div className="flex justify-center hide-on-fs">
             <button className="action-btn btn-start flex-grow" disabled={!selectedPaper || timeLeft === 0} onClick={handleToggleStartPause}>
-              {isActive ? '暫停 (Pause)' : isPaused ? '繼續 (Continue)' : '開始 (Start)'}
+              {isActive ? '暫停' : isPaused ? '繼續' : '開始'}
             </button>
             <button className="action-btn btn-reset" onClick={() => {
                 const s = (selectedPaper?.durationMinutes || 0) * 60;
                 setTimeLeft(s); setTotalTime(s); setIsActive(false); setIsPaused(false); notified15Min.current = false; setNotification(null);
-              }}>重置 (Reset)</button>
+              }}>重置</button>
           </div>
 
           <div className="timer-settings-row sound-toggle-pill hide-on-fs">

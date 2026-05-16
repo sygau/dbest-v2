@@ -34,7 +34,7 @@ Enhanced scale (5**=8.5):
 
 Standard scale (5**=7):
 - HKBU, EdUHK, Lingnan University (LU)
-- HKMU, HKSYU, CHC
+- HKMU
 - CUHK Medicine only: JS4501 (MBChB), JS4502 (MBChB GPS) — the only CUHK programmes that retain the 7-point scale. Official CUHK documents explicitly list these two as exceptions. A "perfect" Medicine score under enhanced scale would be 51 (6×8.5), but the official CUHK Medicine maximum is 42 (6×7) — confirming the 7-point standard scale.
 
 **Why this fragmentation exists:** The enhanced scale allows universities to spread out high-achieving candidates across a wider score band, making it easier to differentiate among them for competitive programmes. The standard scale is simpler and may be preferred by universities where score differentiation at the very top is less critical.
@@ -131,7 +131,7 @@ These programmes were flagged with `isPolyTrio=TRUE` in the source data (a PolyU
 
 CityU focuses on subject relevance through weighting rather than subject count. The emphasis is on which subjects a student took, not just how many. Core subjects like English and Mathematics often receive higher weights, reflecting their importance to the degree programme. CityU provides a public score calculator that lets applicants experiment with different subject combinations.
 
-### Other Universities (HKBU, EdUHK, LU, HKMU, HKSYU, CHC)
+### Other Universities (HKBU, EdUHK, LU, HKMU)
 
 These typically use simpler Best 5 or Best 4 models with the standard grade conversion scale. Subject weighting is still applied but the formula architecture is less layered than the four research universities above.
 

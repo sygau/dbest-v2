@@ -170,13 +170,20 @@ function splitRow(line) {
 
 // ─── HELPERS ───────────────────────────────────────────────
 
-/** Coerce a string to a number, or null if empty/invalid. */
-function numOrNull(s) {
+/**
+ * Coerce a string to a number, or null if empty/invalid.
+ * @param {string} s - Value to parse
+ * @param {boolean} treatSentinel - If true, treat 799 as null (for cutoff/count fields).
+ *                                 Use true for: UQ, Median, LQ, vacancy, intake, years.
+ *                                 Use false for: weights (999 is unlikely but could be valid).
+ */
+function numOrNull(s, treatSentinel = true) {
   if (s === "" || s === undefined || s === null) return null;
   const n = Number(s);
   if (isNaN(n)) return null;
-  // 799 is the "no data" sentinel
-  if (n === 799) return null;
+  // 799 is the "no data" sentinel for COUNT and SCORE fields
+  // (but only for fields that would be null if missing, not for weights)
+  if (treatSentinel && n === 799) return null;
   return n;
 }
 
@@ -300,15 +307,27 @@ function parseRequireAny(raw) {
 /**
  * Parse formula column into a normalised object.
  */
-function parseFormula(raw) {
-  if (!raw || raw.trim() === "") return { type: "bestN", n: 5 }; // default
-  const key = raw.trim().toLowerCase();
-  if (FORMULA_MAP[key]) return { ...FORMULA_MAP[key] };
-  // Try to parse "Best N" pattern (handles "Best6", "Best 7", etc.)
-  const match = key.match(/^best\s*(\d+)/);
-  if (match) return { type: "bestN", n: parseInt(match[1], 10) };
-  // Fallback
-  return { type: "bestN", n: 5 };
+function parseFormula(raw, university) {
+  let f;
+  if (!raw || raw.trim() === "") {
+    f = { type: "bestN", n: 5 }; // default
+  } else {
+    const key = raw.trim().toLowerCase();
+    if (FORMULA_MAP[key]) {
+      f = { ...FORMULA_MAP[key] };
+    } else {
+      // Try to parse "Best N" pattern (handles "Best6", "Best 7", etc.)
+      const match = key.match(/^best\s*(\d+)/);
+      f = match ? { type: "bestN", n: parseInt(match[1], 10) } : { type: "bestN", n: 5 };
+    }
+  }
+  // PolyU's "Best 5" is really "Best 5 + 6th subject bonus" (PolyU 2025 admission
+  // score method). The CSV formula text does not distinguish this — override here.
+  // HKUST keeps its own "hkust" type (mapped explicitly via FORMULA_MAP).
+  if ((university || "").toUpperCase() === "POLYU" && f.type === "bestN") {
+    f = { type: "polyu" };
+  }
+  return f;
 }
 
 /**
@@ -351,7 +370,7 @@ function processMasterData(rows) {
       id: row["program_id"],
       uni: row["university"],
       nameEn: row["name"] || "",
-      formula: parseFormula(row["formula"]),
+      formula: parseFormula(row["formula"], row["university"]),
       gates: {
         minChi: numOrNull(row["min_core_chi"]),
         minEng: numOrNull(row["min_core_eng"]),
@@ -437,8 +456,8 @@ function merge(masterRows, jupasRows) {
       isGod: boolOrFalse(j["isGod"]),
       isInterview: isInterviewBool(j["isInterview_1"]),
       interviewType: strOrNull(j["isInterview_1"]),
-      firstYearIntake: numOrNull(j["first_year_intake"]),
-      numOfYear: numOrNull(j["numOfYear"]),
+      firstYearIntake: numOrNull(j["first_year_intake"], true), // treat 799 as null
+      numOfYear: numOrNull(j["numOfYear"], true), // treat 799 as null
       formula: m.formula,
       gates: m.gates,
       weights: m.weights,
@@ -449,21 +468,21 @@ function merge(masterRows, jupasRows) {
       special: m.special,
       cutoffs: {
         "2025": {
-          uq: numOrNull(j["UQ_2025"]),
-          median: numOrNull(j["Median_2025"]),
-          lq: numOrNull(j["LQ_2025"]),
-          vacancy: numOrNull(j["vacancy_2025"]),
+          uq: numOrNull(j["UQ_2025"], true), // treat 799 as null
+          median: numOrNull(j["Median_2025"], true), // treat 799 as null
+          lq: numOrNull(j["LQ_2025"], true), // treat 799 as null
+          vacancy: numOrNull(j["vacancy_2025"], true), // treat 799 as null
         },
         "2024": {
-          uq: numOrNull(j["UQ_2024"]),
-          median: numOrNull(j["Median_2024"]),
-          lq: numOrNull(j["LQ_2024"]),
-          vacancy: numOrNull(j["vacancy_2024"]),
+          uq: numOrNull(j["UQ_2024"], true), // treat 799 as null
+          median: numOrNull(j["Median_2024"], true), // treat 799 as null
+          lq: numOrNull(j["LQ_2024"], true), // treat 799 as null
+          vacancy: numOrNull(j["vacancy_2024"], true), // treat 799 as null
         },
         "2023": {
-          uq: numOrNull(j["UQ_2023"]),
-          median: numOrNull(j["Median_2023"]),
-          lq: numOrNull(j["LQ_2023"]),
+          uq: numOrNull(j["UQ_2023"], true), // treat 799 as null
+          median: numOrNull(j["Median_2023"], true), // treat 799 as null
+          lq: numOrNull(j["LQ_2023"], true), // treat 799 as null
         },
       },
     });
@@ -473,6 +492,32 @@ function merge(masterRows, jupasRows) {
 }
 
 // ─── VALIDATION ────────────────────────────────────────────
+
+/**
+ * Validate that cutoff values are logically consistent.
+ * Returns a summary of issues found.
+ */
+function validateCutoffs(p, year) {
+  const issues = [];
+  const c = p.cutoffs[year];
+  if (!c) return issues;
+
+  const { uq, median, lq } = c;
+
+  // Logical consistency: UQ >= Median >= LQ when all are present
+  // Note: we don't validate vacancy here since it's a count, not comparable to scores
+  if (uq !== null && median !== null && uq < median) {
+    issues.push(`Year ${year}: UQ(${uq}) < Median(${median}) — reversed or column-shifted`);
+  }
+  if (median !== null && lq !== null && median < lq) {
+    issues.push(`Year ${year}: Median(${median}) < LQ(${lq}) — reversed or column-shifted`);
+  }
+  if (uq !== null && lq !== null && uq < lq) {
+    issues.push(`Year ${year}: UQ(${uq}) < LQ(${lq}) — data error`);
+  }
+
+  return issues;
+}
 
 function validate(programmes) {
   const errors = [];
@@ -514,6 +559,14 @@ function validate(programmes) {
     if (p.formula.type === "bestN" && p.formula.n > 5 && !p.special && !p.hku.sixthMultiplier) {
       // Best 6+ without HKU multiplier or special formula is unusual — flag it
       // (not an error, but worth noting)
+    }
+
+    // Cutoff validation: check for data leaks and logical inconsistencies
+    for (const year of ["2023", "2024", "2025"]) {
+      const cutoffIssues = validateCutoffs(p, year);
+      for (const issue of cutoffIssues) {
+        errors.push(`${p.id}: ${issue}`);
+      }
     }
   }
 
@@ -560,12 +613,58 @@ function main() {
   console.log("\nValidating...");
   const errors = validate(programmes);
   if (errors.length > 0) {
-    console.log(`  ${errors.length} validation issues:`);
-    for (const e of errors.slice(0, 20)) {
-      console.log(`    ⚠  ${e}`);
+    console.log(`  ${errors.length} validation issues found:`);
+    
+    // Group errors by type for better readability
+    const errorsByType = {};
+    for (const e of errors) {
+      const type = e.includes("suspicious high") ? "DATA_LEAK" :
+                   e.includes("reversed or column-shifted") ? "LOGIC_ERROR" :
+                   e.includes("out of range") ? "GATE_ERROR" :
+                   "OTHER";
+      if (!errorsByType[type]) errorsByType[type] = [];
+      errorsByType[type].push(e);
     }
-    if (errors.length > 20) {
-      console.log(`    ... and ${errors.length - 20} more`);
+    
+    // Print by category
+    if (errorsByType.DATA_LEAK) {
+      console.log(`\n  ⚠ CRITICAL (Possible data leaks / column shifts):`);
+      for (const e of errorsByType.DATA_LEAK.slice(0, 10)) {
+        console.log(`    ${e}`);
+      }
+      if (errorsByType.DATA_LEAK.length > 10) {
+        console.log(`    ... and ${errorsByType.DATA_LEAK.length - 10} more`);
+      }
+    }
+    
+    if (errorsByType.LOGIC_ERROR) {
+      console.log(`\n  ⚠ HIGH (Logical inconsistencies):`);
+      for (const e of errorsByType.LOGIC_ERROR.slice(0, 10)) {
+        console.log(`    ${e}`);
+      }
+      if (errorsByType.LOGIC_ERROR.length > 10) {
+        console.log(`    ... and ${errorsByType.LOGIC_ERROR.length - 10} more`);
+      }
+    }
+    
+    if (errorsByType.GATE_ERROR) {
+      console.log(`\n  ⚠ MEDIUM (Gate validation errors):`);
+      for (const e of errorsByType.GATE_ERROR.slice(0, 5)) {
+        console.log(`    ${e}`);
+      }
+      if (errorsByType.GATE_ERROR.length > 5) {
+        console.log(`    ... and ${errorsByType.GATE_ERROR.length - 5} more`);
+      }
+    }
+    
+    if (errorsByType.OTHER) {
+      console.log(`\n  ⚠ Other issues:`);
+      for (const e of errorsByType.OTHER.slice(0, 5)) {
+        console.log(`    ${e}`);
+      }
+      if (errorsByType.OTHER.length > 5) {
+        console.log(`    ... and ${errorsByType.OTHER.length - 5} more`);
+      }
     }
   } else {
     console.log("  All clear.");
@@ -577,6 +676,21 @@ function main() {
   const programmesPath = path.join(OUTPUT_DIR, "programmes.json");
   fs.writeFileSync(programmesPath, JSON.stringify(programmes));
   console.log(`  programmes.json  → ${programmes.length} programmes (${(fs.statSync(programmesPath).size / 1024).toFixed(0)} KB)`);
+
+  // Lite catalogue — public fields only, served as a static asset to the
+  // frontend (e.g. the bookmarks page) so it can render programme cards
+  // without re-running the engine. Scoring internals are intentionally dropped.
+  const STRIP_KEYS = ["formula", "gates", "weights", "hku", "hkust", "maxWeightedElectives", "excludeRules", "special"];
+  const lite = programmes.map(p => {
+    const o = { ...p };
+    for (const k of STRIP_KEYS) delete o[k];
+    return o;
+  });
+  const liteDir = path.join(ROOT, "..", "public", "jupas");
+  fs.mkdirSync(liteDir, { recursive: true });
+  const litePath = path.join(liteDir, "programmes-lite.json");
+  fs.writeFileSync(litePath, JSON.stringify(lite));
+  console.log(`  programmes-lite.json → ${lite.length} programmes (${(fs.statSync(litePath).size / 1024).toFixed(0)} KB)`);
 
   // Write a summary report
   const unis = [...new Set(programmes.map(p => p.uni))].sort();

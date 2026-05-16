@@ -136,7 +136,7 @@ should be already handled
 | Stat | Count |
 |------|-------|
 | Total programmes | ~385 |
-| Universities covered | HKU, CUHK, HKUST, HKBU, CITYU, POLYU, EDUHK, LINGU, HKMU, HKSYU, CHC |
+| Universities covered | HKU, CUHK, HKUST, HKBU, CITYU, POLYU, EDUHK, LINGU, HKMU |
 | Years of score data | 2023–2025 |
 | Subjects (unique short codes) | ~50 |
 | Formula types | 5 (bestN, hkust, polyu, fixed, special) |

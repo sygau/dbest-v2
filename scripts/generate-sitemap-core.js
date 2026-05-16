@@ -9,18 +9,23 @@ async function generateCoreSitemap() {
   const corePages = [
     { path: '/', priority: '1.0', changefreq: 'daily' },
     { path: '/about', priority: '0.5', changefreq: 'monthly' },
-    { path: '/contact', priority: '0.4', changefreq: 'monthly' },
     { path: '/disclaimer', priority: '0.3', changefreq: 'yearly' },
     { path: '/privacy-policy', priority: '0.3', changefreq: 'yearly' },
     { path: '/countdown', priority: '0.8', changefreq: 'daily' },
+    { path: '/countdown/2027', priority: '0.7', changefreq: 'daily' },
     { path: '/pomodoro', priority: '0.7', changefreq: 'monthly' },
     { path: '/timer', priority: '0.6', changefreq: 'monthly' },
+    { path: '/translator', priority: '0.6', changefreq: 'monthly' },
+    { path: '/eng-writing', priority: '0.6', changefreq: 'monthly' },
     { path: '/individual-response', priority: '0.7', changefreq: 'monthly' },
     { path: '/cutoff', priority: '0.8', changefreq: 'weekly' },
     { path: '/chat', priority: '0.6', changefreq: 'daily' },
     { path: '/12p', priority: '0.8', changefreq: 'weekly' },
     { path: '/12p/study', priority: '0.7', changefreq: 'weekly' },
     { path: '/12p/quiz', priority: '0.7', changefreq: 'weekly' },
+    { path: '/jupas', priority: '0.9', changefreq: 'weekly' },
+    { path: '/jupas/calculator', priority: '1.0', changefreq: 'weekly' },
+    { path: '/jupas/bookmarks', priority: '0.6', changefreq: 'monthly' },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>

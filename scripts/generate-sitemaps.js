@@ -36,19 +36,6 @@ async function generateAllSitemaps() {
     await fs.writeFile(sitemapXmlPath, indexXml);
     console.log(`✅ Sitemap index restored at ${sitemapXmlPath}`);
 
-    // 3. Cleanup redundant files if they exist
-    const filesToRemove = [
-      path.join(__dirname, '..', 'public', 'sitemap-index.xml'),
-      path.join(__dirname, '..', 'public', 'sitemap-main.xml')
-    ];
-
-    for (const file of filesToRemove) {
-      if (await fs.pathExists(file)) {
-        await fs.remove(file);
-        console.log(`🗑️ Removed redundant file: ${path.basename(file)}`);
-      }
-    }
-
     console.log('✅ Sitemaps consolidated to: core, subjects, and blog.');
 
   } catch (error) {

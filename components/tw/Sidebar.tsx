@@ -154,6 +154,7 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
           <NavItem href="/ths" icon={<BiPlanet style={{ color: '#2196f3', fontSize: 23 }} />} label="旅遊與款待 Tourism & Hospitality" isCollapsed={collapsed} isMobileSheet={isMobileSheet} /> */}
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>工具</MenuLabel>
+          <NavItem href="/jupas/calculator" icon={<BiCalculator style={{ color: '#9E1B32', fontSize: 23 }} />} label="JUPAS 計算機" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/12p" icon={<BiBookReader style={{ color: '#ff6b9d', fontSize: 23 }} />} label="十二篇語譯練習" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/pomodoro" icon={<BiTimeFive style={{ color: '#667eea', fontSize: 23 }} />} label="番茄鐘 Pomodoro" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/timer" icon={<BiTestTube style={{ color: '#0891b2', fontSize: 23 }} />} label="操卷計時器 Paper Timer" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
