@@ -272,24 +272,28 @@ export default function JupasCalculator() {
         {/* Invisible Turnstile container */}
         <div ref={turnstileRef} style={{ display: 'none' }} />
 
-        <TierStatsGrid results={visibleResults} />
-
         <ResultsFilter filters={filters} fieldOptions={fieldOptions} onFiltersChange={setFilters} />
 
+        <TierStatsGrid results={visibleResults} />
+
         <div className="jpd-results-row">
-          <span className="jpd-result-label">
-            {isSample ? '預載示範' : '搜尋結果'} · {visibleResults.length} / {totalCount} 個課程
-            {!isSample && <span style={{ marginLeft: 6, color: 'var(--color-muted)', fontSize: 12 }}>（達標 {eligibleCount}）</span>}
-          </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div>
+            <div className="jpd-result-label" style={{ color: 'var(--color-emphasis)', fontWeight: 600 }}>
+              {isSample ? '預載示範' : '搜尋結果'} ({visibleResults.length}/{totalCount})
+            </div>
+            {!isSample && (
+              <div style={{ fontSize: 12, color: 'var(--color-muted)', marginTop: 2 }}>達標: {eligibleCount}</div>
+            )}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 6 }}>
+            <SortToggle mode={sortMode} onChange={setSortMode} />
             <a
               href="/jupas/bookmarks"
               style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 12, fontWeight: 600, color: 'var(--color-emphasis)', textDecoration: 'none', whiteSpace: 'nowrap' }}
             >
-              <LuBookmark size={13} fill={bookmarkCount > 0 ? 'currentColor' : 'none'} aria-hidden style={{transform: "translateY(1px)"}} />
+              <LuBookmark size={13} fill={bookmarkCount > 0 ? 'currentColor' : 'none'} aria-hidden style={{ transform: 'translateY(1px)' }} />
               我的收藏{bookmarkCount > 0 ? ` (${bookmarkCount})` : ''}
             </a>
-            <SortToggle mode={sortMode} onChange={setSortMode} />
           </div>
         </div>
 

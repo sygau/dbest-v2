@@ -83,7 +83,7 @@ export default function Layout({ children }: LayoutProps) {
   className={cn(
     /* 1. Changed min-h-screen to min-h-0 so it doesn't force extra height */
     /* 2. Added flex flex-col to allow the content to grow properly */
-    'min-h-0 flex flex-col transition-all duration-300 ease-out mt-[56px] xl:mt-[70px]',
+    'min-h-0 flex flex-col transition-all duration-300 ease-out mt-[65px] xl:mt-[70px]',
     sidebarCollapsed ? 'xl:ml-[70px]' : 'xl:ml-[260px]',
     'ml-0',
   )}

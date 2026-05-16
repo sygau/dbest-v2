@@ -30,6 +30,20 @@ export function TierStatsGrid({ results }: TierStatsGridProps) {
 
   return (
     <div className="jpd-tier-stats-container">
+      {/* Mobile: single compact card */}
+      <div className="jpd-tier-stats-mobile-card">
+        {tiers.map(tier => {
+          const config = PROB_CONFIG[tier];
+          const count = tierCounts[tier];
+          return (
+            <div key={tier} className="jpd-tier-stats-mobile-row">
+              <span className={`jpd-prob jpd-tier-stat-mobile-pill ${config.className}`}>{config.label}</span>
+              <span className="jpd-tier-stat-mobile-count">{count}</span>
+            </div>
+          );
+        })}
+      </div>
+      {/* Desktop: 5-column cards */}
       {tiers.map(tier => {
         const config = PROB_CONFIG[tier];
         const count = tierCounts[tier];

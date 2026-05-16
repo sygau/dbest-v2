@@ -262,7 +262,7 @@ export function JupasCard({
 
           {delta !== null && (
             <div className="jpd-stats-delta" style={{ color: delta > 0 ? '#00703c' : delta < 0 ? '#d5281b' : 'var(--color-muted)' }}>
-              {delta > 0 ? '▲' : delta < 0 ? '▼' : '–'} {delta !== 0 ? `${delta > 0 ? '+' : '−'}${Math.abs(delta).toFixed(1)} pts` : '持平'} vs {medianLabelCh}
+              {delta > 0 ? '▲' : delta < 0 ? '▼' : '–'} {delta !== 0 ? `${delta > 0 ? '+' : '−'}${Math.abs(delta).toFixed(1)} pts` : '持平'}{/* vs {medianLabelCh} */}
             </div>
           )}
 
@@ -475,14 +475,27 @@ export function NoResults() {
 
 // ── Legend / Palette ──
 
+const TIER_DESCRIPTIONS: Record<ProbLevel, string> = {
+  highchance: '分數 ≥ UQ（上四分位）',
+  comp:       '分數 ≥ Median，但 < UQ',
+  bord:       '分數 ≥ LQ，但 < Median',
+  low:        '分數低於 LQ，但在 3 分內',
+  unmet:      '不達入學要求，或分數差 LQ 逾 3 分',
+};
+
 export function ProbLegend() {
   return (
     <div className="jpd-legend">
       <p className="jpd-legend-title">評估等級</p>
-      <div className="jpd-legend-row">
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
         {ALL_PROB_LEVELS.map(k => {
           const v = PROB_CONFIG[k];
-          return <span key={k} className={`jpd-prob ${v.className}`}>{v.label}</span>;
+          return (
+            <div key={k} style={{ display: 'flex', alignItems: 'baseline', gap: 9 }}>
+              <span className={`jpd-prob ${v.className}`} style={{ flexShrink: 0, fontSize: 12 }}>{v.label}</span>
+              <span style={{ fontSize: 11.5, color: 'var(--color-muted)', lineHeight: 1.45 }}>{TIER_DESCRIPTIONS[k]}</span>
+            </div>
+          );
         })}
       </div>
     </div>

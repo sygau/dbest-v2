@@ -83,7 +83,7 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
     <>
       {/* Header */}
       <div className={cn(
-        'flex items-center h-[56px] xl:h-[70px] gap-2 border-b border-[var(--color-border)] flex-shrink-0',
+        'flex items-center h-[65px] xl:h-[70px] gap-2 border-b border-[var(--color-border)] flex-shrink-0',
         collapsed ? 'justify-center px-2' : 'px-4'
       )} style={{ padding: collapsed ? undefined : '0.75rem 1rem' }}>
         <div className="flex-shrink-0">

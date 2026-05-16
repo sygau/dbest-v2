@@ -47,7 +47,7 @@ export default function JupasStyles() {
       .jpd-bookmark-on, .jpd-bookmark-on:hover {  }
       .jpd-prob-na { background: var(--color-border); color: var(--color-muted); }
       .jpd-names { flex: 1; min-width: 0; }
-      .jpd-name-ch { font-size: 15.5px; font-weight: 700; color: var(--color-emphasis); line-height: 1; word-break: break-all; }
+      .jpd-name-ch { font-size: 16.5px; font-weight: 700; color: var(--color-emphasis); line-height: 1; word-break: break-all; }
       .jpd-name-en { font-size: 11px; color: var(--color-muted); margin-top: 3px; line-height: 1.4; }
 
       .jpd-stats { border-top: 1px solid var(--color-border); padding: 3px 13px 3px 5px; display: flex; align-items: center; }
@@ -92,7 +92,7 @@ export default function JupasStyles() {
       .jpd-yr-tbl tbody tr:last-child td { border-bottom: none; }
 
       .jpd-info-sec { border-top: 3px solid var(--color-emphasis); }
-      .jpd-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-border); border: 1px solid var(--color-border); border-top: none; }
+      .jpd-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--color-border); }
       .jpd-info-cell { padding: 9px 12px; background: var(--color-card-bg); }
       .jpd-full { grid-column: 1 / -1; }
       .jpd-i-lbl { font-size: 11px; letter-spacing: .7px; text-transform: uppercase; color: var(--color-emphasis); margin-bottom: 3px; }
@@ -118,7 +118,7 @@ export default function JupasStyles() {
       .jpd-page-title { font-size: 35px; font-weight: 800; color: #6932db; margin: 0 0 6px; letter-spacing: .3px; filter: drop-shadow(4px 4px 1px rgba(139,92,246,.3)); }
       [data-theme="dark"] .jpd-page-title,
       [data-theme="blue"] .jpd-page-title { color: #b090f0; }
-      .jpd-page-sub { font-size: 20px; color: var(--color-muted); line-height: 1.55; }
+      .jpd-page-sub { font-size: 16px; color: var(--color-muted); line-height: 1.55; }
 
       .jpd-stats-delta { padding: 3px 0 6px; text-align: center; font-size: 9.5px; font-weight: 700; letter-spacing: .2px; border-top: 1px solid var(--color-border); }
 
@@ -225,10 +225,17 @@ export default function JupasStyles() {
       [data-theme="blue"] .jpd-scale-note { background: #3a2e10; color: #f0c060; }
 
       /* Tier Stats Grid */
-      .jpd-tier-stats-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px; }
-      .jpd-tier-stat-card { background: var(--color-card-bg); border: 1px solid var(--color-border); box-shadow: 0 1px 4px rgba(0,0,0,0.09); border-radius: 2px; padding: 12px; display: flex; flex-direction: column; align-items: center; }
+      .jpd-tier-stats-container { margin-bottom: 16px; }
+      .jpd-tier-stat-card { display: none; }
       .jpd-tier-stat-box { padding: 8px 6px; border-radius: 3px; font-size: 14px; font-weight: 600; line-height: 1.2; width: 100%; display: flex; align-items: center; justify-content: center; min-height: 32px; }
       .jpd-tier-stat-count { margin-top: 8px; font-size: 15px; font-weight: 700; color: var(--color-emphasis); }
+
+      /* Mobile single-card tier stats */
+      .jpd-tier-stats-mobile-card { background: var(--color-card-bg); border: 1px solid var(--color-border); box-shadow: 0 1px 4px rgba(0,0,0,0.09); display: flex; flex-direction: column; }
+      .jpd-tier-stats-mobile-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 13px; border-bottom: 1px solid var(--color-border); }
+      .jpd-tier-stats-mobile-row:last-child { border-bottom: none; }
+      .jpd-tier-stat-mobile-pill { font-size: 15px; padding: 3px 8px; font-weight: 600; }
+      .jpd-tier-stat-mobile-count { font-size: 16px; font-weight: 700; color: var(--color-emphasis); }
 
       /* Results Filters */
       .jpd-results-filters { margin-bottom: 10px; }
@@ -244,6 +251,9 @@ export default function JupasStyles() {
 
       @media (min-width: 768px) {
         .jpd-wrap { max-width: 660px; padding: 18px; }
+        .jpd-tier-stats-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .jpd-tier-stat-card { display: flex; flex-direction: column; align-items: center; background: var(--color-card-bg); border: 1px solid var(--color-border); box-shadow: 0 1px 4px rgba(0,0,0,0.09); border-radius: 2px; padding: 12px; }
+        .jpd-tier-stats-mobile-card { display: none; }
         .jpd-result-card { display: flex; flex-direction: column; }
         .jpd-card-top { display: flex; flex-direction: row; align-items: stretch; }
         .jpd-card-main { flex: 1; min-width: 0; }

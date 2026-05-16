@@ -34,7 +34,7 @@ export default function HomePage() {
       <PageBreadcrumb section="首頁" text="Home" />
 
       {/* Main Content Card */}
-      <div className="bg-[var(--color-card-bg)] rounded-2xl px-7 sm:px-9 py-5 mb-6 shadow-sm border border-[var(--color-border)]" style={{ minHeight: 800 }}>
+      <div className="bg-[var(--color-card-bg)] rounded-2xl px-7 sm:px-9 py-5 mb-6 shadow-sm border border-[var(--color-border)]">
         <div className="text-center">
           {/* Hero Section */}
           <h1 className="font-bold mb-4" style={{ marginTop: '50px', fontSize: 'clamp(2.3rem, 8vw, 3rem)' }}>

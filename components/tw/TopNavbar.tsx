@@ -33,7 +33,7 @@ export default function TopNavbar({ onToggleSidebar, onOpenPreferences, sidebarC
   return (
     <header
       className={cn(
-        'fixed top-0 right-0 h-[56px] xl:h-[70px] flex items-center gap-4 transition-all duration-300 ease-out',
+        'fixed top-0 right-0 h-[65px] xl:h-[70px] flex items-center gap-4 transition-all duration-300 ease-out',
         sidebarCollapsed ? 'xl:left-[70px]' : 'xl:left-[260px]',
         'left-0',
       )}
