@@ -51,18 +51,18 @@ export function csvToCutoffData(csvData: string, subject: string): CutoffData[] 
         row[header.toLowerCase()] = values[index];
       });
       
-      // Handle empty values
-      const score = row.score && row.score !== '' ? parseInt(row.score) : null;
-      const percentage = row.percentage && row.percentage !== '' ? parseInt(row.percentage) : null;
+      // Handle empty values - treat 0 and empty strings as null
+      const scoreVal = row.score && row.score !== '' && row.score !== '0' ? parseInt(row.score) : null;
+      const percentageVal = row.percentage && row.percentage !== '' && row.percentage !== '0' ? parseInt(row.percentage) : null;
       
-      // Only add record if we have valid data
-      if (row.year && row.level && (score !== null || percentage !== null)) {
+      // Only add record if we have valid data (at least one non-zero/non-empty value)
+      if (row.year && row.level && (scoreVal !== null || percentageVal !== null)) {
         data.push({
           subject: subject,
           year: row.year,
           grade: row.level,
-          score: score || 0,
-          percentage: percentage || 0,
+          score: scoreVal || 0,
+          percentage: percentageVal || 0,
           paper: '' // This will be set by the table configuration
         });
       }

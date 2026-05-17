@@ -298,7 +298,7 @@ export default function PomodoroPage() {
             {/* --- 2. STATISTICS CARDS (Moved Below) --- */}
             <div className="stats-container">
               <div className="stat-card">
-                <div className="stat-icon" style={{ background: '#e0f2fe', color: '#0284c7' }}>
+                <div className="stat-icon">
                   <BiTime />
                 </div>
                 <div className="stat-info">
@@ -308,7 +308,7 @@ export default function PomodoroPage() {
               </div>
 
               <div className="stat-card">
-                <div className="stat-icon" style={{ background: '#fce7f3', color: '#db2777' }}>
+                <div className="stat-icon">
                   🍅
                 </div>
                 <div className="stat-info">
@@ -588,13 +588,41 @@ export default function PomodoroPage() {
         }
 
         .stat-icon {
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 24px;
+          position: relative;
+          width: 44px;
+          height: 44px;
+          display: grid;
+          place-items: center;
+          background: linear-gradient(135deg, #e55050, #d63838);
+          border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+          box-shadow:
+            0 4px 12px -2px rgba(229, 80, 80, 0.3),
+            inset -2px -3px 6px rgba(0, 0, 0, 0.1),
+            inset 2px 3px 6px rgba(255, 255, 255, 0.25);
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          font-size: 20px;
+          color: white;
+          flex-shrink: 0;
+        }
+
+        .stat-card:first-of-type .stat-icon {
+          transform: rotate(-12deg);
+        }
+
+        .stat-card:nth-of-type(2) .stat-icon {
+          transform: rotate(10deg);
+        }
+
+        .stat-icon:hover {
+          border-radius: 47% 53% 38% 62% / 49% 60% 40% 51%;
+        }
+
+        .stat-card:first-of-type .stat-icon:hover {
+          transform: rotate(-4deg);
+        }
+
+        .stat-card:nth-of-type(2) .stat-icon:hover {
+          transform: rotate(16deg);
         }
 
         .stat-info {
@@ -660,6 +688,11 @@ export default function PomodoroPage() {
           margin-bottom: 0.8rem;
           line-height: 1.6;
           font-size: 0.95rem;
+          color: var(--color-body, #4b5563);
+        }
+
+        .info-section li::marker {
+          color: var(--color-body, #4b5563);
         }
 
         .info-section li:last-child {

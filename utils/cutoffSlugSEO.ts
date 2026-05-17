@@ -115,6 +115,13 @@ const cutoffSubjectConfigs: Record<string, CutoffSEOConfig> = {
     pageTitle: 'DSE 旅遊與款待 Tourism & Hospitality Cut-off Scores',
     pageDescriptionEng: 'Explore comprehensive DSE Tourism and Hospitality Studies cut-off scores and grade boundaries from 2012 to 2025. This page provides detailed score requirements for all grade levels (5**, 5*, 5, 4, 3, 2, 1) to help you understand the grading standards and set realistic targets for your DSE THS examination.',
     pageDescriptionChi: '瀏覽全面的DSE旅遊與款待科Cut-off分數及等級界線（2012-2025年）。本頁面提供所有等級（5**、5*、5、4、3、2、1）的詳細分數要求，助您了解評分標準並為DSE旅遊與款待考試制定實際目標。'
+  },
+  'chinese-literature': {
+    seoTitle: 'DSE 中國文學 Chinese Literature Cut-off 分數 (2013-2025)',
+    seoDescription: '【DSE 中國文學 Chinese Literature Cut Off 分數】完整收錄2013–2025年全港等級分界線！想知Chinese Literature Level 5**、5*、5、4要幾多分？即睇歷年cut off數據，掌握高難度題目分界，穩奪選修科高分！',
+    pageTitle: 'DSE 中國文學 Chinese Literature Cut-off Scores',
+    pageDescriptionEng: 'Explore comprehensive DSE Chinese Literature cut-off scores and grade boundaries from 2013 to 2025. This page provides detailed score requirements for all grade levels (5**, 5*, 5, 4, 3, 2, 1) to help you understand the grading standards and set realistic targets for your DSE Chinese Literature examination.',
+    pageDescriptionChi: '瀏覽全面的DSE中國文學科Cut-off分數及等級界線（2013-2025年）。本頁面提供所有等級（5**、5*、5、4、3、2、1）的詳細分數要求，助您了解評分標準並為DSE中國文學考試制定實際目標。'
   }
 };
 
@@ -122,7 +129,7 @@ const cutoffSubjectConfigs: Record<string, CutoffSEOConfig> = {
 export const AVAILABLE_CUTOFF_SUBJECTS = [
   'english', 'chinese', 'math', 'physics', 'chemistry', 'biology', 
   'ict', 'm1', 'm2', 'geography', 'economics', 'bafs', 
-  'history', 'chinese-history'
+  'history', 'chinese-history', 'chinese-literature'
 ];
 
 // Subject display names for navigation
@@ -141,6 +148,7 @@ export const CUTOFF_SUBJECT_NAMES: Record<string, string> = {
   'bafs': '企業、會計與財務概論 BAFS',
   'history': '歷史 History',
   'chinese-history': '中國歷史 Chinese History',
+  'chinese-literature': '中國文學 Chinese Literature',
   'ths': '旅遊與款待 Tourism & Hospitality'
 };
 

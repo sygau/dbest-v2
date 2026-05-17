@@ -22,6 +22,33 @@ const GRADE_LINES: { key: keyof Omit<CutoffChartPoint, 'year'>; color: string; l
   { key: '2',   color: '#94a3b8', label: '2' },
 ]
 
+const CustomTooltip = (props: any) => {
+  const { active, payload, label } = props
+  if (active && payload) {
+    return (
+      <div style={{
+        background: 'var(--color-card-bg)',
+        border: '1px solid var(--color-border)',
+        borderRadius: 8,
+        padding: 8,
+        fontSize: 13,
+        color: 'var(--color-body)',
+      }}>
+        <p style={{ color: 'var(--color-heading)', fontWeight: 600, margin: '0 0 4px 0' }}>{label}</p>
+        {GRADE_LINES.map(({ key, label: gradeLabel }) => {
+          const item = payload.find((p: any) => p.dataKey === key)
+          return (
+            <div key={key} style={{ color: item?.color || '#6c757d' }}>
+              Level {gradeLabel}: {item ? `${item.value}%` : '—'}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
+  return null
+}
+
 export default function CutoffTrendChart({ data }: { data: CutoffChartPoint[] }) {
   return (
     <div style={{ width: '100%', height: 280 }}>
@@ -35,20 +62,12 @@ export default function CutoffTrendChart({ data }: { data: CutoffChartPoint[] })
             interval="preserveStartEnd"
           />
           <YAxis
+            domain={[0, 100]}
             tick={{ fontSize: 11, fill: 'var(--color-muted)' }}
+            tickFormatter={(v: number) => `${v}%`}
             width={44}
           />
-          <Tooltip
-            contentStyle={{
-              background: 'var(--color-card-bg)',
-              border: '1px solid var(--color-border)',
-              borderRadius: 8,
-              fontSize: 13,
-              color: 'var(--color-body)',
-            }}
-            labelStyle={{ color: 'var(--color-heading)', fontWeight: 600 }}
-            formatter={(v) => (typeof v === 'number' ? v : '—')}
-          />
+          <Tooltip content={<CustomTooltip />} />
           <Legend wrapperStyle={{ fontSize: 13, fontWeight: 700, paddingTop: 8 }} />
           {GRADE_LINES.map(({ key, color, label }) => (
             <Line

@@ -153,7 +153,7 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
           <NavItem href="/chinese-history" icon={<BiBook style={{ color: '#ff1744', fontSize: 23 }} />} label="中國歷史 Chinese History" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/ths" icon={<BiPlanet style={{ color: '#2196f3', fontSize: 23 }} />} label="旅遊與款待 Tourism & Hospitality" isCollapsed={collapsed} isMobileSheet={isMobileSheet} /> */}
 
-          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>工具</MenuLabel>
+          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>工具 tools</MenuLabel>
           <NavItem href="/jupas/calculator" icon={<BiCalculator style={{ color: '#9E1B32', fontSize: 23 }} />} label="JUPAS 計算機" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/12p" icon={<BiBookReader style={{ color: '#ff6b9d', fontSize: 23 }} />} label="十二篇語譯練習" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/pomodoro" icon={<BiTimeFive style={{ color: '#667eea', fontSize: 23 }} />} label="番茄鐘 Pomodoro" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
@@ -162,6 +162,8 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>資訊 Info</MenuLabel>
           <NavItem href="/eng-b1b2" icon={<BiBook style={{ color: '#40c4ff', fontSize: 23 }} />} label="英文 B1/B2 轉換表" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+
+          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>資源 Resources</MenuLabel>
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>其他</MenuLabel>
           <NavItem href="/about" icon={<BiInfoCircle style={{ color: '#7986cb', fontSize: 23 }} />} label="關於我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />

@@ -197,6 +197,7 @@ export default function JupasStyles() {
       .jpd-mech-p em, .jpd-mech-ul em { font-style: normal; font-weight: 700; color: var(--color-emphasis); }
       .jpd-mech-ul { margin: 0 0 8px; padding-left: 18px; font-size: 12.5px; line-height: 1.7; color: var(--color-body); }
       .jpd-mech-ul li { margin-bottom: 3px; }
+      .jpd-mech-ul li::marker { color: var(--color-body); }
       .jpd-mech-ul li b { color: var(--color-emphasis); font-weight: 700; }
       .jpd-mech-note { font-size: 11.5px; line-height: 1.55; color: var(--color-muted); margin: 6px 0 0; padding: 7px 10px; background: var(--color-secondary-bg); border-left: 2px solid var(--color-border); }
       .jpd-mech-note em { font-style: normal; font-weight: 700; color: var(--color-emphasis); }

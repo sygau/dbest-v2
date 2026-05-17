@@ -23,7 +23,7 @@
       },
       {
         "id": "paper4",
-        "title": "English Paper 4 - Speaking Cut Off Table",
+        "title": "Paper 4 Speaking & School-based assessment (SBA)",
         "file": "paper4.csv"
       }
     ]
@@ -31,9 +31,14 @@
   "chinese": {
     "tables": [
       {
-        "id": "overall",
-        "title": "Chinese Overall Score Cut Off Table",
-        "file": "overall.csv"
+        "id": "paper1",
+        "title": "中文卷一 Paper 1 — 閱讀理解 Reading",
+        "file": "paper1.csv"
+      },
+      {
+        "id": "paper2",
+        "title": "中文卷二 Paper 2 — 寫作 Writing",
+        "file": "paper2.csv"
       }
     ]
   },
@@ -141,6 +146,15 @@
       {
         "id": "overall",
         "title": "M2 Overall Score Cut Off Table",
+        "file": "overall.csv"
+      }
+    ]
+  },
+  "chinese-literature": {
+    "tables": [
+      {
+        "id": "overall",
+        "title": "Chinese Literature Overall Score Cut Off Table",
         "file": "overall.csv"
       }
     ]

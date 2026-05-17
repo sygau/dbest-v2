@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-18] — Cutoff chart fixes + Chinese paper split
+What: Fixed percentage Y-axis (was raw score, broke across pre/post 2021 scale change), moved charts to below each table, one chart per table. Split Chinese cutoff into Paper 1 閱讀 (existing data) and Paper 2 寫作 (empty CSV, ready to fill).
+Files: components/charts/CutoffTrendChart.tsx, components/CutoffTable.tsx, pages/cutoff/[subject].tsx, public/config/cutoff-config.json, public/data/cutoff/chinese/paper2.csv (new)
+Notes: Chinese paper2.csv is empty headers only — needs data. Chart skips rendering if table has ≤1 year of data. percentage field is consistent across DSE scoring eras; raw score is not.
+
 ## [2026-05-17] — Cutoff score trend chart
 What: Line chart showing all 6 grade boundary trends over years added to every /cutoff/[subject] page, above the existing tables.
 Files: components/charts/CutoffTrendChart.tsx (new), pages/cutoff/[subject].tsx

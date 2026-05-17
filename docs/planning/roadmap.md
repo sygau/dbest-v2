@@ -55,11 +55,11 @@
 - Migrated from CF Pages + next-on-pages (deprecated) → @opennextjs/cloudflare
 - All routes remain SSG/static, CSP cleaned, GitHub Actions auto-deploy wired
 
-### Blog Sanity Integration (May 2026)
+### ✅ Blog Sanity Integration (May 2026) — SHIPPED
 - Sanity CMS wired live, custom Portable Text blocks (code, tables, YouTube, alerts)
 - Smart blog sync (incremental diffs vs snapshot)
 - Auto-deploy via webhook
-- Prototype pages built but live templates still need Sanity query wiring
+- All pages live and working end-to-end
 
 ---
 
@@ -155,7 +155,7 @@ Features from feature list (not yet started):
 
     Music Player (color-noise/lofi?) integrated to site tools
 
-    Link Aggregation Page (unis, important dse info)
+    Link Aggregation Page (unis, important dse info) (Official name: external resource directory)
 
     Beta English/Chinese writing grading tool (builtin)
 
@@ -173,19 +173,17 @@ Features from feature list (not yet started):
 
     Study Location Map
 
-    Large, JUPAS Database (nightmare)
+    Large, JUPAS Database (DONE, CONNECTED TO CALCULATOR)
 
     Calculator Program Library
 
-    English Conversion data (b1<>b2)
+    English Conversion data (b1<>b2) (DONE)
 
-    Visualised Cut Off Database
+    Visualised Cut Off Database (DONE)
 
     User/Account Management
 
     DailyRP (reading passage every day requires a workflow)
-
-    Dumb Best 5 calculator
 
     Padlet/Trello like wishing wall/target wall
 
@@ -195,10 +193,8 @@ Features from feature list (not yet started):
 
     Study Rooms/Groups (similar to YPT)
 
-    JUPAS Calculator
+    JUPAS Calculator (DONE)
 
     Leaderboard System (supp. YPT)
 
-    Speaking IR Practice
-
-**Recommended next:** Past Paper Completion Tool (localStorage tracking, 2-3 hours, ships fast)
+    Speaking IR Practice (DONE)

@@ -1,5 +1,30 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { getGradeColor } from '../utils/clientCutoffData';
+import type { CutoffChartPoint } from './charts/CutoffTrendChart';
+
+const CutoffTrendChart = dynamic(() => import('./charts/CutoffTrendChart'), {
+  ssr: false,
+  loading: () => <div style={{ height: 280 }} />,
+});
+
+const CHART_GRADES = ['5**', '5*', '5', '4', '3', '2'] as const
+
+function buildChartPoints(
+  tableData: { [year: string]: { [grade: string]: { score: number; percentage: number } } }
+): CutoffChartPoint[] {
+  return Object.entries(tableData)
+    .map(([year, grades]) => ({
+      year,
+      '5**': grades['5**']?.percentage ?? null,
+      '5*':  grades['5*']?.percentage  ?? null,
+      '5':   grades['5']?.percentage   ?? null,
+      '4':   grades['4']?.percentage   ?? null,
+      '3':   grades['3']?.percentage   ?? null,
+      '2':   grades['2']?.percentage   ?? null,
+    }))
+    .sort((a, b) => Number(a.year) - Number(b.year))
+}
 
 interface TableConfig {
   id: string;
@@ -88,7 +113,6 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
         .cutoff-table-wrapper {
           overflow-x: auto;
           max-width: 100%;
-          border-radius: 0.5rem;
           border: 1px solid var(--color-border);
         }
         .cutoff-table-wrapper table {
@@ -170,7 +194,6 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
           padding: 0.75rem 1.25rem;
           background: var(--color-card-inner-bg);
           border-bottom: 1px solid var(--color-border);
-          border-radius: 0.5rem 0.5rem 0 0;
         }
         .cutoff-card-header h5 {
           margin: 0;
@@ -185,10 +208,11 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
         const years = Object.keys(tableData).sort((a, b) => parseInt(b) - parseInt(a));
         const tableConfig = getTableConfig(tableId);
         const grades = getAvailableGrades(tableData);
+        const chartPoints = buildChartPoints(tableData);
 
         return (
-          <div key={tableId} className="mb-4">
-            <div className="cutoff-card-header rounded-t-lg" style={{ border: '1px solid var(--color-border)', borderBottom: 'none' }}>
+          <div key={tableId} className="mb-6">
+            <div className="cutoff-card-header" style={{ border: '1px solid var(--color-border)', borderBottom: 'none' }}>
               <div>
                 <h5>{tableConfig?.title || tableId}</h5>
                 <span className="text-xs" style={{ color: 'var(--color-muted)' }}>
@@ -196,7 +220,7 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
                 </span>
               </div>
             </div>
-            <div className="cutoff-table-wrapper rounded-t-none">
+            <div className="cutoff-table-wrapper">
               <table>
                 <thead>
                   <tr>
@@ -237,6 +261,14 @@ const CutoffTable: React.FC<CutoffTableProps> = ({ data, config, subject, loadin
                 </tbody>
               </table>
             </div>
+            {chartPoints.length > 1 && (
+              <div className="mt-3">
+                <p className="text-xs text-[var(--color-muted)] mb-2">
+                  歷年等級百分比趨勢 Grade percentage trend by year
+                </p>
+                <CutoffTrendChart data={chartPoints} />
+              </div>
+            )}
           </div>
         );
       })}

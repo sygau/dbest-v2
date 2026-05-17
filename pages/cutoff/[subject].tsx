@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import dynamic from 'next/dynamic';
+import React from 'react';
 import Head from 'next/head';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
@@ -30,19 +29,6 @@ import CutoffTable from '../../components/CutoffTable';
 import { csvToCutoffData, dataToTableFormat, CutoffTableData, SubjectConfig, CutoffConfig } from '../../utils/clientCutoffData';
 import { getSubjectCutoffLastUpdated } from '../../utils/lastUpdated';
 import { Alert, AlertTitle, AlertDescription } from '../../components/ui/Alert';
-import type { CutoffChartPoint } from '../../components/charts/CutoffTrendChart';
-
-const CutoffTrendChart = dynamic(() => import('../../components/charts/CutoffTrendChart'), {
-  ssr: false,
-  loading: () => (
-    <div
-      style={{ width: '100%', height: 280 }}
-      className="flex items-center justify-center text-sm text-[var(--color-muted)]"
-    >
-      載入圖表中… Loading chart…
-    </div>
-  ),
-});
 
 const SUBJECT_ICONS: Record<string, { icon: any, color: string }> = {
   'chinese': { icon: BiBook, color: '#ff69b4' },
@@ -74,23 +60,6 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
   const seoConfig = getCutoffSEOConfig(subjectStr);
   const metadata = generateCutoffMetadata(subjectStr);
   const otherSubjects = AVAILABLE_CUTOFF_SUBJECTS.filter(s => s !== subjectStr);
-
-  const chartData = useMemo<CutoffChartPoint[]>(() => {
-    const firstTableId = Object.keys(cutoffData)[0]
-    if (!firstTableId) return []
-    const yearMap = cutoffData[firstTableId]
-    return Object.entries(yearMap)
-      .map(([year, grades]) => ({
-        year,
-        '5**': grades['5**']?.score ?? null,
-        '5*':  grades['5*']?.score  ?? null,
-        '5':   grades['5']?.score   ?? null,
-        '4':   grades['4']?.score   ?? null,
-        '3':   grades['3']?.score   ?? null,
-        '2':   grades['2']?.score   ?? null,
-      }))
-      .sort((a, b) => Number(a.year) - Number(b.year))
-  }, [cutoffData])
 
   return (
     <>
@@ -153,19 +122,6 @@ export default function CutoffSubjectPage({ subjectStr, cutoffData, cutoffConfig
               This cut-off score data is for reference only. It may contain errors and is subject to annual updates. Please refer to official announcements from the Hong Kong Examinations and Assessment Authority for actual score requirements.
             </AlertDescription>
           </Alert>
-
-          {/* Trend Chart */}
-          {chartData.length > 0 && (
-            <>
-              <h2 className="mb-1">歷年成績分界趨勢 Cut-off Score Trend</h2>
-              <p className="text-sm text-[var(--color-muted)] mb-3">
-                各等級分數線按年變化。分數上升代表要求提高；下降代表該年卷較易或評分較寬。
-                Score boundary changes by year — rising means tougher requirements, falling means the paper was easier or marked more leniently.
-              </p>
-              <CutoffTrendChart data={chartData} />
-              <hr />
-            </>
-          )}
 
           {/* Cut-off Table */}
           <CutoffTable
