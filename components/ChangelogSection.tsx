@@ -14,7 +14,7 @@ export default function ChangelogSection({ date, changes }: ChangelogSectionProp
                 Changelog / 更新日誌
               </h3>
               <div className="font-semibold mb-4 text-center text-sm" style={{ color: 'var(--color-muted)' }}>{date}</div>
-              <div className="text-center space-y-2" style={{ color: 'var(--color-body)' }}>
+              <div className="text-center space-y-0.5" style={{ color: 'var(--color-body)' }}>
                 {changes.map((change, index) => (
                   <p key={index}>{change}</p>
                 ))}

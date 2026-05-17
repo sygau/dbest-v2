@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { notoSansHK } from '../lib/fonts'
+import { notoSansHK, notoSerifHK } from '../lib/fonts'
 import '../styles/tailwind.css'
 import '../styles/blog-post.css'
 import { ThemeProvider } from '../components/tw/ThemeProvider'
@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <div
-      className={notoSansHK.variable}
+      className={`${notoSansHK.variable} ${notoSerifHK.variable}`}
       style={{ fontFamily: "var(--font-noto-sans-hk), 'Noto Sans HK Fallback', 'PingFang HK', 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}
     >
       <ThemeProvider>

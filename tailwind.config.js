@@ -24,6 +24,10 @@ module.exports = {
           'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode',
           'Lucida Sans', 'Tahoma', 'sans-serif',
         ],
+        serif: [
+          'var(--font-noto-serif-hk)', 'Noto Serif HK', 'Songti TC',
+          'SimSun', 'serif',
+        ],
       },
       width: {
         sidebar: '260px',

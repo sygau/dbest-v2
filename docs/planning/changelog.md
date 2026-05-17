@@ -271,3 +271,8 @@ Notes: All redirects/headers from CF Pages files folded into next.config.js. Mid
 What: New static info page displaying DSE English Paper 1B/3B B1→B2 conversion tables by year (2012–2025) with a B1 mark "purchasing power" trend chart.
 Files: pages/eng-b1b2.tsx, components/charts/B1WorthChart.tsx, data/eng-b1b2/conversions.json, data/eng-b1b2/types.ts, data/jsonld/pages.ts, components/tw/Sidebar.tsx, package.json (recharts), docs/v2/eng-b1b2.md
 Notes: Display-only hub — no calculator, no level estimation. Recharts loaded via next/dynamic ssr:false so page stays SSG. Two distinct chart lines (Paper 1 indigo / Paper 3 amber). Only 2012 holds real data; 2013–2025 are dummy rows pending transcription. Numbers are community estimates (10stardse), NOT official HKEAA — flagged with a warning Callout. New "資訊 Info" sidebar section added.
+
+## [2026-05-18] — Homepage Rebrand (resource-hub framing)
+What: Reframed homepage from past-paper archive to DSE resource hub: new hero (small dse.best wordmark + 你的 DSE 備戰拍檔 + resource-hub description), a DSE 2027 countdown banner, and a 4-tool grid.
+Files: pages/index.tsx, components/home/{toolsData.ts,DseCountdown.tsx,ToolGrid.tsx}, lib/fonts.ts, pages/_app.tsx, pages/_document.tsx, tailwind.config.js, docs/v2/homepage_rebrand.md
+Notes: DseCountdown is a flat solid-indigo banner (no gradient), one big day count to 2027-04-07, one-shot count-up on mount. ToolGrid = 4 Duolingo-style buttons (JUPAS/12P/Cut Off/Blog) with a colored bottom edge for depth. First attempt was scrapped (gradient/glass/clip-path slop). Noto Serif HK still wired in lib/fonts.ts but currently unused. 歷屆試題 / ChangelogSection / FAQSection untouched.

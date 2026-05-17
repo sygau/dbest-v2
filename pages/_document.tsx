@@ -1,10 +1,10 @@
 import { Html, Head, Main, NextScript } from 'next/document'
 import { consolidatedScripts, pwaStyles } from '../utils/documentScripts'
-import { notoSansHK } from '../lib/fonts'
+import { notoSansHK, notoSerifHK } from '../lib/fonts'
 
 export default function Document() {
   return (
-    <Html lang="zh-Hant" className={notoSansHK.variable}>
+    <Html lang="zh-Hant" className={`${notoSansHK.variable} ${notoSerifHK.variable}`}>
       <Head>
         {/* BLOCKING theme script - MUST execute before any rendering */}
         <script dangerouslySetInnerHTML={{

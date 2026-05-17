@@ -8,6 +8,9 @@ import ChangelogSection from '../components/ChangelogSection'
 import PageBreadcrumb from '../components/PageBreadcrumb'
 import { changelogData } from '../utils/changelogData'
 import PageSEO from '../components/PageSEO'
+import Hero from '../components/home/Hero'
+import DseCountdown from '../components/home/DseCountdown'
+import ToolGrid from '../components/home/ToolGrid'
 
 const homepageFAQs = [
   {
@@ -37,30 +40,30 @@ export default function HomePage() {
       <div className="bg-[var(--color-card-bg)] rounded-2xl px-7 sm:px-9 py-5 mb-6 shadow-sm border border-[var(--color-border)]">
         <div className="text-center">
           {/* Hero Section */}
-          <h1 className="font-bold mb-4" style={{ marginTop: '50px', fontSize: 'clamp(2.3rem, 8vw, 3rem)' }}>
-            <span style={{
-              background: '#8b5cf6',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(2px 2px 4px rgba(139, 92, 246, 0.3))'
-            }}>
-              歡迎來到 dse.best
-            </span>
-          </h1>
+          <Hero />
 
-          <p className="mb-4 mt-10 text-lg sm:text-xl md:text-[1.4rem] text-[var(--color-body)]">
-            本網站提供全面的香港中學文憑試 DSE 各科歷屆試題 (Past Papers) 及答案⸻涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等主要及選修科目。助您掌握考試趨勢，輕鬆備戰 DSE 考試。
-          </p>
+          <hr className="mt-7 mb-9" style={{ borderColor: 'var(--color-body)', opacity: 0.2 }} />
 
-          <br />
-          <hr className="my-4" style={{ borderColor: 'var(--color-body)', opacity: 0.25 }} />
-          <br /><br />
+          {/* DSE 2027 countdown */}
+          <DseCountdown />
+
+          {/* Learning tools */}
+          <div className="mt-12">
+            <ToolGrid />
+          </div>
+
+          <hr className="mt-16 mb-12" style={{ borderColor: 'var(--color-body)', opacity: 0.2 }} />
 
           {/* Past Papers Section */}
-          <h1 className="font-bold mb-4 text-[var(--color-heading)]">歷屆試題</h1>
-
-          <br /><br />
+          <h1
+            className="font-bold mb-2 text-[var(--color-heading)]"
+            style={{ fontSize: 'clamp(2.2rem, 6.5vw, 3.1rem)', marginTop: '5rem' }}
+          >
+            歷屆試題
+          </h1>
+          <p className="text-base sm:text-lg leading-relaxed mb-10 mx-auto" style={{ color: 'var(--color-secondary)', maxWidth: '68ch' }}>
+            全科 DSE 歷屆試題（Past Papers）連參考答案，由 2012 年起逐年收錄，按科目同年份即時查閱。
+          </p>
 
           {/* Core Subjects */}
           <h2 className="font-bold mb-4 text-[var(--color-heading)] text-2xl">核心科目 Core</h2>
@@ -73,7 +76,7 @@ export default function HomePage() {
           </div>
 
           {/* Electives */}
-          <h2 className="font-bold mb-4 mt-16 text-[var(--color-heading)] text-2xl">選修科目 Electives</h2>
+          <h2 className="font-bold mb-4 mt-24 text-[var(--color-heading)] text-2xl">選修科目 Electives</h2>
           <br />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <SubjectCard title="物理 Physics" href="/physics" icon={<BiBot style={{ color: '#6366f1', fontSize: 40 }} />} accent="#6366f1" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]} />
