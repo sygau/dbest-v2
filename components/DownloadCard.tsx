@@ -22,9 +22,10 @@ export default function DownloadCard({
         </div>
         <div className="px-4 py-3 border-t" style={{ borderColor: 'var(--color-border)' }}>
           <a
-            href="#"
+            href="https://www.threads.com/@gung1zi2/post/DR8wuUPEUiJ"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded transition-colors"
-            data-paper-id={paperId}
           >
             <BiDownload style={{ fontSize: 22 }} />
             {buttonText}

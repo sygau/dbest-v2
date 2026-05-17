@@ -160,6 +160,9 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
           <NavItem href="/timer" icon={<BiTestTube style={{ color: '#0891b2', fontSize: 23 }} />} label="操卷計時器 Paper Timer" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/individual-response" icon={<BiMicrophone style={{ color: '#25D366', fontSize: 23 }} />} label="Speaking IR 練習" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
+          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>資訊 Info</MenuLabel>
+          <NavItem href="/eng-b1b2" icon={<BiBook style={{ color: '#40c4ff', fontSize: 23 }} />} label="英文 B1/B2 轉換表" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>其他</MenuLabel>
           <NavItem href="/about" icon={<BiInfoCircle style={{ color: '#7986cb', fontSize: 23 }} />} label="關於我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/contact" icon={<BiSupport style={{ color: '#7986cb', fontSize: 23 }} />} label="聯絡我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />

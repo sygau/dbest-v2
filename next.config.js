@@ -65,7 +65,7 @@ const nextConfig = {
         destination: 'https://sls.hkpl.gov.hk/digital-collection/tc/collection_hkcee-and-hkale-papers-collection.html',
         permanent: true,
       },
-      { source: '/countdown2027', destination: '/countdown/2027', permanent: true },
+      { source: '/countdown2027', destination: '/countdown', permanent: true },
       { source: '/jable', destination: 'https://jable.tv/', permanent: false },
       { source: '/pornhub', destination: 'https://pornhub.com/', permanent: false },
     ];

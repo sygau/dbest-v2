@@ -542,14 +542,14 @@ export default function PaperTimerPage() {
 
           <div className="grid grid-cols-2 gap-2 mb-4 hide-on-fs">
             <div className="text-left">
-              <label className="text-xs font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-1 block ml-1">科目</label>
+              <label className="text-xs font-bold text-[color:var(--color-secondary)] mb-1 block ml-1">科目</label>
               <select className="modern-select w-full" value={selectedSubjectId} onChange={e => { setSelectedSubjectId(e.target.value); setSelectedPaperId(''); }}>
                 <option value="">Select Subject</option>
                 {SUBJECT_PRESETS.map(s => <option key={s.id} value={s.id}>{s.nameZh}</option>)}
               </select>
             </div>
             <div className="text-left">
-              <label className="text-xs font-bold text-[color:var(--bs-secondary-color,#6b7280)] mb-1 block ml-1">試卷</label>
+              <label className="text-xs font-bold text-[color:var(--color-secondary)] mb-1 block ml-1">試卷</label>
               <select className="modern-select w-full" value={selectedPaperId} disabled={!selectedSubject} onChange={e => setSelectedPaperId(e.target.value)}>
                 <option value="">Select Paper</option>
                 {selectedSubject?.papers.map(p => <option key={p.id} value={p.id}>{p.nameZh}</option>)}

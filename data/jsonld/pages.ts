@@ -8,7 +8,7 @@ export const pageJsonLd: Record<string, object> = {
       'https://dse.best/'
     ),
     breadcrumb: breadcrumbList([
-      { name: '2026 DSE Countdown Timer 倒數計時器', url: 'https://dse.best/countdown' },
+      { name: '2027 DSE Countdown Timer 倒數計時器', url: 'https://dse.best/countdown' },
       { name: '中文 歷屆試題 Chinese Past Papers', url: 'https://dse.best/chinese' },
       { name: '英文 歷屆試題 English Past Papers', url: 'https://dse.best/english' },
       { name: '數學 歷屆試題 Mathematics Past Papers', url: 'https://dse.best/math' },
@@ -30,16 +30,16 @@ export const pageJsonLd: Record<string, object> = {
 
   countdown: {
     ...webPageBase(
-      'DSE 2026 Countdown 考試日期倒數',
+      'DSE 2027 Countdown 考試日期倒數',
       'DSE倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。',
       'https://dse.best/countdown'
     ),
     mainEntity: {
       '@type': 'Event',
-      name: 'Hong Kong Diploma of Secondary Education Examination 2026',
-      description: 'The 2026 Hong Kong Diploma of Secondary Education (HKDSE) examination',
-      startDate: '2026-04-09',
-      endDate: '2026-05-16',
+      name: 'Hong Kong Diploma of Secondary Education Examination 2027',
+      description: 'The 2027 Hong Kong Diploma of Secondary Education (HKDSE) examination',
+      startDate: '2027-04-07',
+      endDate: '2027-05-14',
       eventStatus: 'https://schema.org/EventScheduled',
       location: {
         '@type': 'Place',
@@ -55,18 +55,45 @@ export const pageJsonLd: Record<string, object> = {
     },
   },
 
-  countdown2027: {
+  countdown2028: {
     ...webPageBase(
-      'DSE 2027 Countdown 考試日期倒數',
-      'DSE 2027倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。',
-      'https://dse.best/countdown/2027'
+      'DSE 2028 Countdown 考試日期倒數',
+      'DSE 2028倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。',
+      'https://dse.best/countdown/2028'
     ),
     mainEntity: {
       '@type': 'Event',
-      name: 'Hong Kong Diploma of Secondary Education Examination 2027',
-      description: 'The 2027 Hong Kong Diploma of Secondary Education (HKDSE) examination',
-      startDate: '2027-04-08',
-      endDate: '2027-05-16',
+      name: 'Hong Kong Diploma of Secondary Education Examination 2028',
+      description: 'The 2028 Hong Kong Diploma of Secondary Education (HKDSE) examination',
+      startDate: '2028-04-05',
+      endDate: '2028-05-12',
+      eventStatus: 'https://schema.org/EventScheduled',
+      location: {
+        '@type': 'Place',
+        name: 'Hong Kong',
+        address: { '@type': 'PostalAddress', addressCountry: 'HK' },
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: 'Hong Kong Examinations and Assessment Authority',
+        url: 'https://www.hkeaa.edu.hk',
+      },
+      audience: { '@type': 'Audience', audienceType: 'Secondary School Students' },
+    },
+  },
+
+  countdown2029: {
+    ...webPageBase(
+      'DSE 2029 Countdown 考試日期倒數',
+      'DSE 2029倒數計時器，幫助你準備文憑試。掌握DSE考試日期，合理安排溫習時間。',
+      'https://dse.best/countdown/2029'
+    ),
+    mainEntity: {
+      '@type': 'Event',
+      name: 'Hong Kong Diploma of Secondary Education Examination 2029',
+      description: 'The 2029 Hong Kong Diploma of Secondary Education (HKDSE) examination',
+      startDate: '2029-04-04',
+      endDate: '2029-05-11',
       eventStatus: 'https://schema.org/EventScheduled',
       location: {
         '@type': 'Place',
@@ -183,6 +210,18 @@ export const pageJsonLd: Record<string, object> = {
     breadcrumb: breadcrumbList([
       { name: 'dse.best 主頁', url: 'https://dse.best/' },
       { name: 'DSE English Oral Individual Response', url: 'https://dse.best/individual-response' },
+    ]),
+  },
+
+  'eng-b1b2': {
+    ...webPageBase(
+      'DSE 英文 B1 B2 轉換表 2012-2025 (Paper 1B/3B) 閱讀+聆聽 | English B1 B2 Conversion Table',
+      '歷年 DSE 英文 B1 轉 B2 分數對照表，涵蓋 Paper 1 閱讀 (1B) 及 Paper 3 聆聽 (3B)，2012 至 2025 年轉換系數一覽，附 B1 分數購買力趨勢圖表。數據由社群估算，非 HKEAA 官方資料。',
+      'https://dse.best/eng-b1b2'
+    ),
+    breadcrumb: breadcrumbList([
+      { name: 'dse.best 主頁', url: 'https://dse.best/' },
+      { name: '英文 B1 B2 轉換表', url: 'https://dse.best/eng-b1b2' },
     ]),
   },
 

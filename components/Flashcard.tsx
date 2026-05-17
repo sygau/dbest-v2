@@ -133,13 +133,13 @@ export default function Flashcard({ question, passageTitle, isFlipped: externalI
         }
 
         .fc-card {
-          background: var(--color-card-bg, var(--bs-card-bg));
-          border: 2px solid var(--color-border, var(--bs-border-color));
+          background: var(--color-card-bg);
+          border: 2px solid var(--color-border);
           border-radius: 0.5rem;
         }
 
         .fc-card-back {
-          background: var(--color-tertiary-bg, var(--bs-tertiary-bg));
+          background: var(--color-tertiary-bg);
         }
 
         .fc-shadow {

@@ -122,9 +122,10 @@ export default function M1YearPage({ subject, year, papers, availableFiles }: Ye
                       </div>
                       <div className="card-footer bg-transparent border-0">
                         <a
-                          href="#"
+                          href="https://www.threads.com/@gung1zi2/post/DR8wuUPEUiJ"
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="btn btn-primary px-4 inline-flex gap-2"
-                          data-paper-id={paper.paperId}
                         >
                           <BiDownload style={{ fontSize: 22 }} />
                           Download

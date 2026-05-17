@@ -45,7 +45,7 @@ export default function TopNavbar({ onToggleSidebar, onOpenPreferences, sidebarC
         boxShadow: isBlue ? 'none' : '0 2px 6px 0 rgba(0,0,0,0.044), 0 2px 6px 0 rgba(0,0,0,0.049)',
         backdropFilter: isBlue && scrolled ? 'blur(2.625rem)' : undefined,
         WebkitBackdropFilter: isBlue && scrolled ? 'blur(2.625rem)' : undefined,
-        borderBottom: scrolled ? '1px solid var(--bs-border-color)' : undefined,
+        borderBottom: scrolled ? '1px solid var(--color-border)' : undefined,
         paddingLeft: '0.75rem',
         paddingRight: '1.5rem',
       }}

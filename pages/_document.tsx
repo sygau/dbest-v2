@@ -75,7 +75,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <script src={`/assets/js/appendLinks.min.js`} async></script>
       </body>
     </Html>
   )

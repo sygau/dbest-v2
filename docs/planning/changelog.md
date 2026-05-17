@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-17] — Cutoff score trend chart
+What: Line chart showing all 6 grade boundary trends over years added to every /cutoff/[subject] page, above the existing tables.
+Files: components/charts/CutoffTrendChart.tsx (new), pages/cutoff/[subject].tsx
+Notes: Chart uses first table only (overall) — English has 5 tables so only overall is charted. Dynamic import (ssr: false) matches B1WorthChart pattern. Data pivoted from CutoffTableData nested structure via useMemo. Chart conditionally rendered — skipped if cutoffData is empty.
+
 ## [2026-05-17] — JUPAS bookmarks, homepage, sidebar link
 What: Star JUPAS programmes (localStorage watchlist), a dedicated /jupas/bookmarks tab (noindex), a calculator-centric /jupas homepage, and a sidebar link to the calculator.
 Files: lib/jupas/client/{bookmarks,lastResult,cardProps}.ts, pages/jupas/{index,bookmarks}.tsx, components/jupas/{parts,styles}.tsx, pages/jupas/calculator.tsx, components/tw/Sidebar.tsx, JUPASTool/scripts/process-data.js, public/jupas/programmes-lite.json, docs/v2/jupas-bookmarks.md
@@ -256,3 +261,8 @@ Notes: Cleaned up unused variables and elements related to the announcement UI s
 What: Full migration from CF Pages + next-on-pages (deprecated) to CF Workers via @opennextjs/cloudflare. All routes remain SSG/static; middleware preserved.
 Files: wrangler.toml→wrangler.jsonc, open-next.config.ts (new), next.config.js, middleware.ts, package.json, tsconfig.json, .gitignore, types/globals.d.ts, public/_redirects (deleted), public/_headers (deleted), .github/workflows/deploy.yml (new), docs/v2/workers_migration_report.md (new), docs/v2/workers_setup_guide.md (new), docs/site_info.md, docs/v2/ADSENSE_OPTIMIZATION.md
 Notes: All redirects/headers from CF Pages files folded into next.config.js. Middleware now also covers .workers.dev hosts and sets noindex on previews. Build pipeline broken into composable scripts (build:prep, build, build:worker, deploy, deploy:preview). GitHub Actions wires auto-deploy on push to main/devTW1. CI requires CF_API_TOKEN, CF_ACCOUNT_ID, plus Contentful secrets for build:prep. CSP cleaned of vercel.com/cdn.ably.com.
+
+## [2026-05-17] — English B1/B2 Conversion Table Hub (/eng-b1b2)
+What: New static info page displaying DSE English Paper 1B/3B B1→B2 conversion tables by year (2012–2025) with a B1 mark "purchasing power" trend chart.
+Files: pages/eng-b1b2.tsx, components/charts/B1WorthChart.tsx, data/eng-b1b2/conversions.json, data/eng-b1b2/types.ts, data/jsonld/pages.ts, components/tw/Sidebar.tsx, package.json (recharts), docs/v2/eng-b1b2.md
+Notes: Display-only hub — no calculator, no level estimation. Recharts loaded via next/dynamic ssr:false so page stays SSG. Two distinct chart lines (Paper 1 indigo / Paper 3 amber). Only 2012 holds real data; 2013–2025 are dummy rows pending transcription. Numbers are community estimates (10stardse), NOT official HKEAA — flagged with a warning Callout. New "資訊 Info" sidebar section added.

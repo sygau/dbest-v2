@@ -11,11 +11,11 @@ interface TimeLeft {
   seconds: number
 }
 
-export default function CountdownPage() {
+export default function Countdown2028Page() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
-    const targetDate = new Date('2027-04-07T09:00:00+08:00')
+    const targetDate = new Date('2028-04-05T09:00:00+08:00')
 
     const calculateTimeLeft = () => {
       const now = new Date().getTime()
@@ -41,23 +41,39 @@ export default function CountdownPage() {
   return (
     <>
       <PageSEO
-        title="DSE 2027 Countdown Timer 考試日期倒數"
-        description="DSE 2027 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2027 DSE Examination?"
-        ogTitle="DSE 2027 Countdown Timer 考試日期倒數"
-        ogDescription="DSE 2027 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。"
-        ogUrl="https://dse.best/countdown"
+        title="DSE 2028 Countdown Timer 考試日期倒數"
+        description="DSE 2028 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。How many days left till 2028 DSE Examination?"
+        ogTitle="DSE 2028 Countdown Timer 考試日期倒數"
+        ogDescription="DSE 2028 Countdown Timer 考試日期倒數計時器，幫助香港DSE考生準備文憑試。HKDSE Exam Date Countdown, Study Schedule Planner, Revision Timetable。掌握DSE考試日期，合理安排溫習時間，制定備考策略。"
+        ogUrl="https://dse.best/countdown/2028"
         robots={['index', 'follow']}
-        pageKey="countdown"
+        pageKey="countdown2028"
       />
-      <PageBreadcrumb section="其他" text="DSE 2027 Countdown" />
+
+      <PageBreadcrumb section="其他" text="DSE 2028 Countdown" />
 
       <div className={`card rounded-4 ${styles.countdownPage}`}>
         <div className="card-body">
+          <div className="bg-yellow-50 border border-yellow-400 text-yellow-800 px-4 py-3 rounded mb-4 flex items-center" role="alert">
+            <svg className="bi flex-shrink-0 mr-2" width="24" height="24" role="img" aria-label="Warning:">
+              <use xlinkHref="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+              <strong>注意：</strong> 2028年DSE考試日期為預計日期，基於過往考試日期推算。實際日期可能有所不同。請以香港考試及評核局(HKEAA)官方公佈為準。
+            </div>
+          </div>
+
+          <svg xmlns="http://www.w3.org/2000/svg" style={{ display: 'none' }}>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+          </svg>
+
           <div className={styles.header}>
             <div className={styles.titleWrapper}>
-              <h1 className={styles.mainTitle}>DSE 2027 倒數</h1>
+              <h1 className={styles.mainTitle}>DSE 2028 倒數</h1>
             </div>
-            <p className={styles.description}>距離香港中學文憑考試 2027 還有</p>
+            <p className={styles.description}>距離香港中學文憑考試 2028 還有</p>
           </div>
 
           <div className={styles.display}>
@@ -101,7 +117,7 @@ export default function CountdownPage() {
               <div className={styles.infoCardCompact}>
                 <div className={styles.infoIconCompact}>📅</div>
                 <div className={styles.infoContentCompact}>
-                  <p>2027年4月7日</p>
+                  <p>2028年4月5日</p>
                 </div>
               </div>
 
@@ -120,9 +136,9 @@ export default function CountdownPage() {
             <div className={styles.timetableCard}>
               <div className={styles.timetableContent}>
                 <h4>完整考試時間表</h4>
-                <p>查看 2027 年 DSE 各科目詳細考試時間安排（待公佈）</p>
+                <p>查看 2028 年 DSE 各科目詳細考試時間安排（待公佈）</p>
                 <NavigationLink
-                  href="https://www.hkeaa.edu.hk/doclibrary/hkdse/exam_timetable/2027_dse_timetable.pdf"
+                  href="https://www.hkeaa.edu.hk/doclibrary/hkdse/exam_timetable/2028_dse_timetable.pdf"
                   className={styles.timetableLink}
                   target="_blank"
                 >

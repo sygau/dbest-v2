@@ -322,7 +322,7 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
 
         .mode-desc {
           font-size: 0.855rem;
-          color: var(--bs-secondary-color, #64748b);
+          color: var(--color-secondary);
           line-height: 1.55;
           margin-bottom: 0.75rem;
           position: relative;
@@ -376,8 +376,8 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
           font-size: 0.72rem;
           font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
           color: var(--color-secondary-color);
-          background: var(--bs-tertiary-bg);
-          border: 1px solid var(--bs-border-color);
+          background: var(--color-tertiary-bg);
+          border: 1px solid var(--color-border);
           border-radius: 4px;
           padding: 3px 8px;
           margin-bottom: 0.6rem;
@@ -396,8 +396,8 @@ export default function TwelvePassagesHome({ config }: HomeProps) {
         .faq-card {
           padding: 1.25rem 1.5rem;
           border-radius: 8px;
-          background: var(--bs-secondary-bg);
-          border: 1px solid var(--bs-border-color);
+          background: var(--color-secondary-bg);
+          border: 1px solid var(--color-border);
           height: 100%;
         }
 
