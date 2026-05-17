@@ -4,6 +4,6 @@ export const notoSansHK = Noto_Sans_HK({
   subsets: ['latin'],
   weight: ['400', '700'],
   display: 'optional',
-  preload: true,
+  preload: false,
   variable: '--font-noto-sans-hk',
 })

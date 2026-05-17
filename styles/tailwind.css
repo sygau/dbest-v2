@@ -48,7 +48,7 @@
   --color-heading: #474747;
   --color-card-bg: #ffffff;
   --color-border: #dee2e6;
-  --color-muted: rgba(91, 97, 102, 0.75);
+  --color-muted: #5b6166;
   --color-emphasis: #212529;
   --color-secondary: #6c757d;
   --color-secondary-bg: #e9ecef;
@@ -72,7 +72,7 @@
   --bs-card-bg: #ffffff;
   --bs-border-color: #dee2e6;
   --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
-  --bs-secondary-color: rgba(91, 97, 102, 0.75);
+  --bs-secondary-color: #5b6166;
   --bs-emphasis-color: #212529;
   --bs-secondary-bg: #e9ecef;
   --bs-tertiary-bg: #f8f9fa;

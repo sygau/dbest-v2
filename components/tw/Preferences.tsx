@@ -45,13 +45,13 @@ export default function Preferences({ isOpen, onClose }: PreferencesProps) {
             <h5 className="m-0 text-base font-semibold text-[var(--color-heading)]">Preferences</h5>
             <p className="m-0 text-xs text-[var(--color-muted)]">Customize your experience</p>
           </div>
-          <a
-            href="#"
-            className="text-[var(--color-body)]"
-            onClick={(e) => { e.preventDefault(); onClose() }}
+          <button
+            aria-label="Close preferences"
+            className="text-[var(--color-body)] bg-transparent border-0 p-0 cursor-pointer"
+            onClick={onClose}
           >
             <BiX style={{ fontSize: 24 }} />
-          </a>
+          </button>
         </div>
 
         {/* Body */}
