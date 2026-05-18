@@ -731,10 +731,10 @@ export default function BlogIndex({ posts, categories }: BlogIndexProps) {
   return (
     <>
       <PageSEO
-        title="Blog | dse.best — DSE 學習資源、考試技巧、備考攻略"
-        description="dse.best Blog 提供 DSE 考試資訊、中文英文數學物理化學生物 ICT M1 M2 歷屆試題分析、溫習技巧、考生心得、JUPAS 選科攻略、放榜資訊。"
-        ogTitle="Blog | dse.best — DSE 學習資源"
-        ogDescription="DSE Blog 提供 2025、2026 DSE 考試資訊及備考策略。"
+        title="DSE Blog｜溫習技巧、考試攻略、選科放榜 — 文憑試考生必睇"
+        description="DSE 考生必睇 Blog：歷屆試題分析、各科溫習技巧、應試攻略、JUPAS 選科同放榜資訊。師兄師姐分享實戰心得，幫你由 5 升到 5**。"
+        ogTitle="DSE Blog｜溫習技巧、考試攻略、選科放榜"
+        ogDescription="DSE 考生必睇 Blog — 歷屆試題分析、溫習技巧、應試攻略、JUPAS 選科同放榜資訊。"
         ogUrl="https://dse.best/blog"
         robots={['index', 'follow']}
         pageKey="blog"

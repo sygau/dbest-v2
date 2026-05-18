@@ -752,3 +752,67 @@ html[data-theme="blue"] .blog-related-section button[style*="background"] {
     display: none;
   }
 }
+
+/* ===== BLOG POST — PRINT ===== */
+@media print {
+  /* Full bleed: no centered max-width, no side padding. */
+  .blog-post-wrap {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Drop interactive / navigational chrome from the printout. */
+  .blog-share-btn,
+  .blog-related-section,
+  .mobile-toc-toggle,
+  .toc-mobile-panel {
+    display: none !important;
+  }
+
+  /* Title + body forced to black ink, readable point sizes. */
+  .blog-post-title {
+    color: #000 !important;
+    font-size: 22pt !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .blog-prose {
+    color: #000 !important;
+    font-size: 11.5pt !important;
+    line-height: 1.55 !important;
+  }
+
+  .blog-prose :is(h1, h2, h3, h4, strong) {
+    color: #000 !important;
+  }
+
+  /* Links: underline + spell out external URLs after the text. */
+  .blog-prose a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  .blog-prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8.5pt;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* Hero image: keep it on one page, no oversized bleed. */
+  .blog-hero-wrap {
+    margin: 0 0 0.6rem !important;
+  }
+
+  .blog-hero-image {
+    max-height: 260px;
+    object-fit: contain;
+  }
+
+  /* Author strip stays but flattened. */
+  .blog-author-mini {
+    border: none !important;
+    background: transparent !important;
+  }
+}

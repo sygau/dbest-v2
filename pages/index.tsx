@@ -24,10 +24,10 @@ export default function HomePage() {
   return (
     <>
       <PageSEO
-        title="DSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio"
-        description="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、M1/M2、地理、歷史、中國歷史、經濟及視覺藝術全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。2025、2026 DSE放榜日期、DSE cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
-        ogTitle="DSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio等"
-        ogDescription="DSE Past Paper 歷屆試題資源，涵蓋中文、英文、數學、物理、化學、ICT、BAFS、生物、數學延伸部分 (M1 和 M2)、地理、歷史、中國歷史、經濟及視覺藝術等全科歷屆試題及答案，支援按科目及年份搜尋，助你掌握DSE考試趨勢。"
+        title="dse.best｜DSE 歷屆試題 Past Papers、JUPAS、Cut Off — 備戰唔求人"
+        description="專為 HKDSE 考生而建：DSE Past Papers、JUPAS 選科計算機、Cut Off 數據、學習工具及備戰攻略。全方位一站搞掂，助你掌握DSE考試趨勢。2027 DSE放榜日期、cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
+        ogTitle="dse.best｜DSE 歷屆試題 Past Papers、JUPAS、Cut Off — 備戰唔求人"
+        ogDescription="專為 HKDSE 考生而建：DSE Past Papers、JUPAS 選科計算機、Cut Off 數據、學習工具及備戰攻略。全方位一站搞掂，助你掌握DSE考試趨勢。2027 DSE放榜日期、cut off分數、成績查詢、JUPAS資訊等最新資訊一應俱全。"
         ogUrl="https://dse.best/"
         robots={['index', 'follow']}
         pageKey="homepage"

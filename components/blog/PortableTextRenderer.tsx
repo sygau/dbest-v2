@@ -30,7 +30,16 @@ const ALERT_META: Record<string, { icon: React.ReactNode; variant: any }> = {
   destructive: { icon: <LuCircleX size={15} className="text-red-500" />,         variant: 'destructive' },
 }
 
+function normalBlock({ value, children }: any) {
+  const text = value.children?.map((c: any) => c.text ?? '').join('').trim()
+  if (text === '---') return <hr />
+  return <p>{children}</p>
+}
+
 const components: PortableTextComponents = {
+  block: {
+    normal: normalBlock,
+  },
   types: {
     image: ({ value }: any) => {
       if (!value?.asset) return null
@@ -172,6 +181,7 @@ export default function PortableTextRenderer({
   const tocComponents: PortableTextComponents = {
     ...components,
     block: {
+      normal: normalBlock,
       h1: makeHeadingComp('h1', keyToId),
       h2: makeHeadingComp('h2', keyToId),
       h3: makeHeadingComp('h3', keyToId),

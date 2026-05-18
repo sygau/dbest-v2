@@ -273,7 +273,7 @@ export default function BlogPost({ post, related, tocItems }: BlogPostProps) {
 
         {/* Desktop Table of Contents — after hero, before body */}
         {tocItems.length > 0 && (
-          <div className="hidden lg:block">
+          <div className="hidden lg:block print:!hidden">
             <TableOfContents items={tocItems} />
           </div>
         )}
@@ -293,7 +293,7 @@ export default function BlogPost({ post, related, tocItems }: BlogPostProps) {
         {/* Mobile Share Button */}
         <button
           onClick={handleShare}
-          className="hidden max-sm:flex items-center justify-center gap-2 rounded-xl font-bold transition-none cursor-pointer w-full h-11 px-8 text-sm mt-4 bg-violet-500 text-white border-2 border-violet-600 shadow-[0_4px_0_0] shadow-violet-700 active:translate-y-[2px] active:shadow-[0_2px_0_0]"
+          className="hidden max-sm:flex print:!hidden items-center justify-center gap-2 rounded-xl font-bold transition-none cursor-pointer w-full h-11 px-8 text-sm mt-4 bg-violet-500 text-white border-2 border-violet-600 shadow-[0_4px_0_0] shadow-violet-700 active:translate-y-[2px] active:shadow-[0_2px_0_0]"
           aria-label="分享文章"
         >
           <LuShare2 size={16} />

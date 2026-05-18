@@ -63,20 +63,23 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <>
-      <ScrollProgress sidebarCollapsed={sidebarCollapsed} />
+      {/* Layout chrome — hidden when printing (see @media print in tailwind.css) */}
+      <div className="print:hidden">
+        <ScrollProgress sidebarCollapsed={sidebarCollapsed} />
 
-      <Sidebar
-        isOpen={sidebarOpen}
-        isCollapsed={sidebarCollapsed}
-        onClose={closeSidebar}
-      />
+        <Sidebar
+          isOpen={sidebarOpen}
+          isCollapsed={sidebarCollapsed}
+          onClose={closeSidebar}
+        />
 
-      <TopNavbar
-        onToggleSidebar={toggleSidebar}
-        onOpenPreferences={() => setPreferencesOpen(true)}
-        sidebarCollapsed={sidebarCollapsed}
-        sidebarOpen={sidebarOpen}
-      />
+        <TopNavbar
+          onToggleSidebar={toggleSidebar}
+          onOpenPreferences={() => setPreferencesOpen(true)}
+          sidebarCollapsed={sidebarCollapsed}
+          sidebarOpen={sidebarOpen}
+        />
+      </div>
 
       {/* Main content */}
      <main
@@ -86,27 +89,31 @@ export default function Layout({ children }: LayoutProps) {
     'min-h-0 flex flex-col transition-all duration-300 ease-out mt-[65px] xl:mt-[70px]',
     sidebarCollapsed ? 'xl:ml-[70px]' : 'xl:ml-[260px]',
     'ml-0',
+    /* print: drop the navbar/sidebar offsets so content fills the page */
+    'print:!mt-0 print:!ml-0',
   )}
   suppressHydrationWarning
 >
   {/* 3. Added flex-grow so this div takes up available space without forcing a gap at the bottom */}
-  <div className="p-4 xl:p-6 flex-grow">
+  <div className="p-4 xl:p-6 flex-grow print:!p-0">
     {children}
   </div>
 
   {/* Footer */}
-  <footer className="flex items-center justify-center px-4 pt-2 pb-2 border-t-2 border-[var(--color-border)] text-sm text-[var(--color-muted)]">
+  <footer className="flex items-center justify-center px-4 pt-2 pb-2 border-t-2 border-[var(--color-border)] text-sm text-[var(--color-muted)] print:hidden">
     <p className="leading-tight">
       © 2026 dse.best | not affiliated with hkeaa / hkdse exam thing
     </p>
   </footer>
 </main>
-      <Preferences
-        isOpen={preferencesOpen}
-        onClose={() => setPreferencesOpen(false)}
-      />
+      <div className="print:hidden">
+        <Preferences
+          isOpen={preferencesOpen}
+          onClose={() => setPreferencesOpen(false)}
+        />
 
-      <BackToTop />
+        <BackToTop />
+      </div>
     </>
   )
 }

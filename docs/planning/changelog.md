@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-19] — Blog separator: replace custom block with "---" text detection
+What: Removed the broken Sanity custom separator block (popped empty menu on insert); frontend now detects a paragraph containing only "---" and renders an `<hr>` instead. Old separator blocks in existing posts still render via backward-compat handler.
+Files: components/blog/PortableTextRenderer.tsx, blogRebuild/SanitySchema_ReadNReferenceOnly/post.ts, blogRebuild/SanitySchema_ReadNReferenceOnly/index.ts
+Notes: Sanity Studio schema must also be updated (remove separator type + body array entry) and redeployed separately — the blogRebuild files are reference copies only.
+
 ## [2026-05-18] — Chat counter removed, mod length bypass
 What: Removed the visible 0/150 counter under the chat input and let moderators bypass the client-side and worker-side message length limit.
 Files: components/chat/ChatInput.tsx, hooks/useChatRoom.ts, lib/chat/validation.ts, chatRebuild/worker/src/moderation.ts
@@ -286,3 +291,8 @@ Notes: DseCountdown is a flat solid-indigo banner (no gradient), one big day cou
 What: Replaced Ably + Redis + serverless chat-auth with one Cloudflare Worker + ChatRoom Durable Object (WebSocket hibernation); full React rewrite of the client (chat.js deleted); removed the AI bot; added reply, typing indicator, message action menu, mod live-sessions panel, mod image embeds, and per-message baked-in geo.
 Files: chatRebuild/worker/src/*, chatRebuild/*.md, lib/chat/*, hooks/useChatRoom.ts, components/chat/*, pages/chat.tsx; deleted public/assets/js/chat.js
 Notes: Chat Worker deploys separately (chatRebuild/worker, own wrangler.toml) — needs MOD_SECRET_KEY secret + NEXT_PUBLIC_CHAT_WS_URL on the app. Geo from request.cf (country+ASN only; city/region/timezone are paid). Moderation kept basic on purpose (10ms CPU budget, false positives). Not yet deployed/tested — see chatRebuild/SETUP-GUIDE.md verification steps.
+
+## [2026-05-18] — Print stylesheet (blog posts + site-wide)
+What: print/Save-as-PDF support — hides nav/sidebar/footer/ads/TOC, forces white bg + black ink. No UI button — Ctrl+P only.
+Files: components/tw/Layout.tsx, styles/tailwind.css, styles/blog-post.css, pages/blog/[slug].tsx, docs/v2/print-styles.md
+Notes: Hybrid approach — print:hidden on layout chrome (covers all pages), @media print blocks for bg/text/page-breaks. AdSense ins.adsbygoogle force-hidden in print. Blog posts get spelled-out external link URLs. .no-print / .print-only helper classes added.

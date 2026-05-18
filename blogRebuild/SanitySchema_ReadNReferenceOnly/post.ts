@@ -94,9 +94,6 @@ export default {
           },
         },
 
-        // ── Separator (requires separator schema type registered in Studio) ───
-        { type: 'separator' },
-
         // ── Table (requires @sanity/table plugin in Studio) ────────────────
         { type: 'table' },
 

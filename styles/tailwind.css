@@ -947,3 +947,48 @@ body.pwa-ios, body.pwa-ios * {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* ===== PRINT STYLES ===== */
+/* Site-wide rules. Layout chrome is hidden via `print:hidden` in Layout.tsx;
+   blog-post-specific rules live in blog-post.css. */
+@media print {
+  /* Force white paper + black ink regardless of light/dark/blue theme. */
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Kill AdSense Auto Ads — must never appear on a printout. */
+  ins.adsbygoogle,
+  .adsbygoogle,
+  iframe[id^="aswift"],
+  iframe[id^="google_ads"],
+  [data-ad-status],
+  [aria-label="Advertisement"] {
+    display: none !important;
+  }
+
+  /* No ink wasted on shadows, glows, or coloured page edges. */
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Sensible page breaks. */
+  h1, h2, h3, h4 { break-after: avoid; }
+  img, pre, blockquote, table, figure { break-inside: avoid; }
+  p, li { orphans: 3; widows: 3; }
+
+  /* The card shell most pages wrap content in — flatten it for print. */
+  .card {
+    border: none !important;
+    background: #fff !important;
+  }
+
+  /* Generic opt-out / opt-in helpers. */
+  .no-print { display: none !important; }
+  .print-only { display: revert !important; }
+}
+
+/* Hide print-only elements during normal on-screen viewing. */
+.print-only { display: none; }
+
