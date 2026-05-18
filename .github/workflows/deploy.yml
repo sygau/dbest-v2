@@ -24,6 +24,7 @@ jobs:
       NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
       NEXT_PUBLIC_SANITY_READ_TOKEN: ${{ secrets.NEXT_PUBLIC_SANITY_READ_TOKEN }}
       NEXT_PUBLIC_TURNSTILE_SITEKEY: ${{ secrets.NEXT_PUBLIC_TURNSTILE_SITEKEY }}
+      NEXT_PUBLIC_CHAT_WS_URL : ${{ secrets.NEXT_PUBLIC_CHAT_WS_URL }}
     permissions:
       contents: read
       deployments: write

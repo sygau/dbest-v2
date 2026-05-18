@@ -1,6 +1,6 @@
 # dse.best — Claude Working Guide
 
-Hong Kong DSE educational platform. Next.js 15 Pages Router on Cloudflare Pages. Solo 18yo dev. Primary revenue = AdSense.
+Hong Kong DSE educational platform. Next.js 15 Pages Router on Cloudflare Workers (via OpenNext). Solo 18yo dev. Primary revenue = AdSense.
 
 ---
 
@@ -10,11 +10,12 @@ Hong Kong DSE educational platform. Next.js 15 Pages Router on Cloudflare Pages.
 - No SPA behavior. Every route must be a full page load.
 - Minimize hydration errors and layout shift — they break Auto Ads placement.
 
-### Cloudflare Pages (NOT vercel!)
-- Built with `@cloudflare/next-on-pages`, not Vercel.
+### Cloudflare Workers via OpenNext (NOT vercel!)
+- Built with `@opennextjs/cloudflare`, not Vercel, not `next-on-pages`.
+- Build/deploy: `npm run build:worker` (opennextjs-cloudflare build) then `wrangler deploy`.
 - No Next.js Image Optimization API. Use `unoptimized` or plain `<img>` with explicit dimensions.
-- Not all Next.js features work on CF Pages — check before using edge middleware, ISR, revalidate, etc.
-- Public Domain (`dse.best`) 
+- Not all Next.js features work — check before using edge middleware, ISR, revalidate, etc.
+- Public Domain (`dse.best`)
 
 ### Do NOT write (new styles/edit changes)on globals.css (unless appropriate)
 Globals.css is for our legacy bootstrap theme system, the site has been heavily migrated to Tailwind (and eventually deleted) and we want to avoid adding more styles there.
@@ -26,9 +27,9 @@ I do NOT want to see a bunch of asterisks, dashes, or other formatting that make
 ## Project Stack
 
 - Framework: Next.js 15 Pages Router 
-- CSS: Bootstrap 5 (legacy) + Tailwind v4 + `styles/globals.css` (hybrid, migrating toward Tailwind)
+- CSS: Tailwind v4. Bootstrap 5 framework removed; a Bootstrap compatibility layer remains in `styles/tailwind.css` (replicates utilities still used by 50+ legacy pages). `styles/globals.css` is legacy — do not add to it.
 - Font: Noto Sans HK via `next/font/google` (`--font-noto-sans-hk`)
-- CMS: Contentful Blog(Planned migraiton to Sanity)
+- CMS: Sanity (blog migrated off Contentful). Sanity MCP available.
 - Themes: light, dark (sometimes known as grey), blue — For any UI changes, make sure they do not break.
 
 
