@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-18] — Chat counter removed, mod length bypass
+What: Removed the visible 0/150 counter under the chat input and let moderators bypass the client-side and worker-side message length limit.
+Files: components/chat/ChatInput.tsx, hooks/useChatRoom.ts, lib/chat/validation.ts, chatRebuild/worker/src/moderation.ts
+Notes: Moderator input now has no client maxLength cap, but XSS stripping still applies. Non-mod users keep the existing 150 character limit.
+
 ## [2026-05-18] — Cutoff chart fixes + Chinese paper split
 What: Fixed percentage Y-axis (was raw score, broke across pre/post 2021 scale change), moved charts to below each table, one chart per table. Split Chinese cutoff into Paper 1 閱讀 (existing data) and Paper 2 寫作 (empty CSV, ready to fill).
 Files: components/charts/CutoffTrendChart.tsx, components/CutoffTable.tsx, pages/cutoff/[subject].tsx, public/config/cutoff-config.json, public/data/cutoff/chinese/paper2.csv (new)
@@ -276,3 +281,8 @@ Notes: Display-only hub — no calculator, no level estimation. Recharts loaded 
 What: Reframed homepage from past-paper archive to DSE resource hub: new hero (small dse.best wordmark + 你的 DSE 備戰拍檔 + resource-hub description), a DSE 2027 countdown banner, and a 4-tool grid.
 Files: pages/index.tsx, components/home/{toolsData.ts,DseCountdown.tsx,ToolGrid.tsx}, lib/fonts.ts, pages/_app.tsx, pages/_document.tsx, tailwind.config.js, docs/v2/homepage_rebrand.md
 Notes: DseCountdown is a flat solid-indigo banner (no gradient), one big day count to 2027-04-07, one-shot count-up on mount. ToolGrid = 4 Duolingo-style buttons (JUPAS/12P/Cut Off/Blog) with a colored bottom edge for depth. First attempt was scrapped (gradient/glass/clip-path slop). Noto Serif HK still wired in lib/fonts.ts but currently unused. 歷屆試題 / ChangelogSection / FAQSection untouched.
+
+## [2026-05-18] — Chat migration to Cloudflare Durable Objects
+What: Replaced Ably + Redis + serverless chat-auth with one Cloudflare Worker + ChatRoom Durable Object (WebSocket hibernation); full React rewrite of the client (chat.js deleted); removed the AI bot; added reply, typing indicator, message action menu, mod live-sessions panel, mod image embeds, and per-message baked-in geo.
+Files: chatRebuild/worker/src/*, chatRebuild/*.md, lib/chat/*, hooks/useChatRoom.ts, components/chat/*, pages/chat.tsx; deleted public/assets/js/chat.js
+Notes: Chat Worker deploys separately (chatRebuild/worker, own wrangler.toml) — needs MOD_SECRET_KEY secret + NEXT_PUBLIC_CHAT_WS_URL on the app. Geo from request.cf (country+ASN only; city/region/timezone are paid). Moderation kept basic on purpose (10ms CPU budget, false positives). Not yet deployed/tested — see chatRebuild/SETUP-GUIDE.md verification steps.

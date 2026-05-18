@@ -1,0 +1,23 @@
+# dse.best chat — standalone Worker + Durable Object.
+# Deployed independently of the main site Worker. See SETUP-GUIDE.md.
+
+name = "dsebest-chat"
+main = "src/index.ts"
+compatibility_date = "2025-09-01"
+
+# Durable Object binding.
+[[durable_objects.bindings]]
+name = "CHAT_ROOM"
+class_name = "ChatRoom"
+
+# SQLite-backed DO storage (required for new DO classes).
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ChatRoom"]
+
+[observability]
+enabled = true
+
+# MOD_SECRET_KEY is a secret — set it with:
+#   wrangler secret put MOD_SECRET_KEY
+# Do NOT put it in [vars].
