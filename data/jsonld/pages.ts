@@ -252,6 +252,35 @@ export const pageJsonLd: Record<string, object> = {
   },
 }
 
+export function buildStudySpotsJsonLd(spots: any[] = []) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: '香港自修室、公共圖書館及溫習地點',
+    description: '香港公共圖書館、自修室、咖啡店及共享空間一覽，供 DSE 考生選擇溫習地方。',
+    url: 'https://dse.best/study-spots',
+    numberOfItems: spots.length,
+    itemListElement: spots.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': s.type === 'library' ? 'Library' : s.type === 'cafe' ? 'CafeOrCoffeeShop' : 'Place',
+        name: s.name,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: s.address,
+          addressRegion: 'Hong Kong',
+          addressCountry: 'HK',
+        },
+        geo: { '@type': 'GeoCoordinates', latitude: s.coords[0], longitude: s.coords[1] },
+        ...(s.photo ? { image: s.photo } : {}),
+        publicAccess: true,
+        isAccessibleForFree: !s.purchase_required,
+      },
+    })),
+  }
+}
+
 export function buildBlogJsonLd(posts: any[] = []) {
   return {
     '@context': 'https://schema.org',

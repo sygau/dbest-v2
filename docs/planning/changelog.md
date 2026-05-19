@@ -1,5 +1,19 @@
 # dse.best v2 Changelog
 
+## [2026-05-19] — Study Spots: FAQ, deep link, near-me, clustering
+What: Added FAQSection (6 canto Q&A, FAQPage JSON-LD for rich results) below the directory. Show-more now uses ui/Button (outline). `?spot=<id>` deep link opens overlay on load; overlay gained a Share Location button. New "near me" filter checkbox sorts by distance + shows `(~Nkm)` after card names. New `setting` field (indoor/outdoor/mixed). Map markers now clustered (leaflet.markercluster via CDN). Overlay panel radius restored to 16px.
+Files: pages/study-spots.tsx, components/study-spots/*, lib/studySpots.ts, data/study-spots.json, docs/v2/study-spots-data-guide.md
+Notes: Geolocation (near-me + map "my location") needs a secure context — works on localhost/https but NOT the `http://<LAN-IP>:3000` dev URL. Test via localhost or deployed https.
+
+## [2026-05-19] — Study Spots polish pass
+What: Fixed map showing 0 markers (marker effect ran before async Leaflet init — added `ready` gate). Switched to CARTO light basemap (removes ferry routes/borders clutter). Added "my location" button, `public-space` type, Show-more pagination, card image lazy fade-in. Overlay: type badge moved under title as pill row (type/open/region/district), 3px radii, region colours hard-coded in REGION_META, open/close animation, removed weekday clock icon. Added data-entry guide for AI.
+Files: components/study-spots/*, lib/studySpots.ts, pages/study-spots.tsx, docs/v2/study-spots-data-guide.md
+
+## [2026-05-19] — Study Spots / Library Map feature
+What: New `/study-spots` page — JSON-backed directory of HK study spots (libraries, cafes, study spaces) with card grid, Leaflet map view, expandable filters (type/region/amenities), and a full-screen detail overlay. Seeded with 20 HKPL libraries.
+Files: pages/study-spots.tsx, data/study-spots.json, lib/studySpots.ts, components/study-spots/*, data/jsonld/pages.ts, components/tw/Sidebar.tsx, docs/v2/study-spots.md
+Notes: Leaflet loads from unpkg CDN (no npm dep, no _app change), map not theme-adaptive by design. Sample data incomplete — photos/tags/notes empty, power_outlets is a placeholder guess. `status:false` hides a spot.
+
 ## [2026-05-19] — Blog separator: replace custom block with "---" text detection
 What: Removed the broken Sanity custom separator block (popped empty menu on insert); frontend now detects a paragraph containing only "---" and renders an `<hr>` instead. Old separator blocks in existing posts still render via backward-compat handler.
 Files: components/blog/PortableTextRenderer.tsx, blogRebuild/SanitySchema_ReadNReferenceOnly/post.ts, blogRebuild/SanitySchema_ReadNReferenceOnly/index.ts

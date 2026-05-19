@@ -5,7 +5,7 @@ import {
   BiBook, BiCalculator, BiBot, BiTestTube, BiLeaf, BiLaptop,
   BiGlobe, BiMoney, BiBriefcase, BiInfoCircle, BiSupport,
   BiError, BiShieldAlt, BiX, BiBookReader, BiMicrophone,
-  BiPlanet
+  BiPlanet, BiMapAlt
 } from 'react-icons/bi'
 import { getChatConfig } from '../../utils/chatToggle'
 import NavigationLink from '../NavigationLink'
@@ -164,6 +164,7 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
           <NavItem href="/eng-b1b2" icon={<BiBook style={{ color: '#40c4ff', fontSize: 23 }} />} label="英文 B1/B2 轉換表" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>資源 Resources</MenuLabel>
+          <NavItem href="/study-spots" icon={<BiMapAlt style={{ color: '#34c759', fontSize: 23 }} />} label="自修室地圖 Study Spots" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>其他</MenuLabel>
           <NavItem href="/about" icon={<BiInfoCircle style={{ color: '#7986cb', fontSize: 23 }} />} label="關於我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />

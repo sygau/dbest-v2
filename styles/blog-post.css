@@ -227,7 +227,8 @@
 }
 
 /* Links — highlight style matching r4-link */
-.blog-prose a {
+/* .no-underline = ButtonAnchor; exempt from link highlight */
+.blog-prose a:not(.no-underline) {
   color: inherit;
   text-decoration: none;
   background: linear-gradient(120deg, rgba(84, 158, 232, 0.20) 0%, rgba(84, 158, 232, 0.20) 100%);
@@ -239,31 +240,31 @@
   transition: background-size 0.3s ease, background-position 0.3s ease;
 }
 
-.blog-prose a:hover {
+.blog-prose a:not(.no-underline):hover {
   background-size: 100% 100%;
   background-position: 0 0;
 }
 
-[data-theme="dark"] .blog-prose a {
+[data-theme="dark"] .blog-prose a:not(.no-underline) {
   background: linear-gradient(120deg, rgba(147, 197, 253, 0.22) 0%, rgba(147, 197, 253, 0.22) 100%);
   background-repeat: no-repeat;
   background-size: 100% 40%;
   background-position: 0 100%;
 }
 
-[data-theme="dark"] .blog-prose a:hover {
+[data-theme="dark"] .blog-prose a:not(.no-underline):hover {
   background-size: 100% 100%;
   background-position: 0 0;
 }
 
-[data-theme="blue"] .blog-prose a {
+[data-theme="blue"] .blog-prose a:not(.no-underline) {
   background: linear-gradient(120deg, rgba(147, 197, 253, 0.24) 0%, rgba(147, 197, 253, 0.24) 100%);
   background-repeat: no-repeat;
   background-size: 100% 40%;
   background-position: 0 100%;
 }
 
-[data-theme="blue"] .blog-prose a:hover {
+[data-theme="blue"] .blog-prose a:not(.no-underline):hover {
   background-size: 100% 100%;
   background-position: 0 0;
 }
@@ -788,12 +789,12 @@ html[data-theme="blue"] .blog-related-section button[style*="background"] {
   }
 
   /* Links: underline + spell out external URLs after the text. */
-  .blog-prose a {
+  .blog-prose a:not(.no-underline) {
     color: #000 !important;
     text-decoration: underline;
   }
 
-  .blog-prose a[href^="http"]::after {
+  .blog-prose a:not(.no-underline)[href^="http"]::after {
     content: " (" attr(href) ")";
     font-size: 8.5pt;
     color: #555;
