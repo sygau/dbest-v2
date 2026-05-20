@@ -1,0 +1,262 @@
+{
+  "slug": "healthcare",
+  "nameZh": "醫療保健",
+  "nameEn": "Healthcare",
+  "description": "醫療系統、健康保障、醫療無障礙相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/5ae180633f41261771701c360fc26bc2b1e433d1-1920x1080.webp?fit=max&w=600&h=600&fm=webp&q=70",
+  "tags": ["health", "society"],
+  "entries": [
+    {
+      "id": "healthcare-001",
+      "kind": "vocab",
+      "term": "healthcare system",
+      "pos": "noun phrase",
+      "meaningZh": "醫療系統",
+      "difficulty": 1,
+      "example": "A robust healthcare system saves lives.",
+      "synonyms": ["medical system", "health services", "health infrastructure"]
+    },
+    {
+      "id": "healthcare-002",
+      "kind": "vocab",
+      "term": "accessibility",
+      "pos": "noun",
+      "meaningZh": "無障礙 / 可及性",
+      "difficulty": 1,
+      "example": "Healthcare accessibility should be universal.",
+      "synonyms": ["access", "availability", "availability to all"]
+    },
+    {
+      "id": "healthcare-003",
+      "kind": "vocab",
+      "term": "affordability",
+      "pos": "noun",
+      "meaningZh": "可負擔性",
+      "difficulty": 2,
+      "example": "Affordability is a barrier to healthcare.",
+      "synonyms": ["cost-effectiveness", "financial accessibility", "price fairness"]
+    },
+    {
+      "id": "healthcare-004",
+      "kind": "vocab",
+      "term": "prescription medication",
+      "pos": "noun phrase",
+      "meaningZh": "處方藥",
+      "difficulty": 1,
+      "example": "Prescription medications are expensive.",
+      "synonyms": ["pharmaceutical", "drug", "medicine"]
+    },
+    {
+      "id": "healthcare-005",
+      "kind": "vocab",
+      "term": "preventive care",
+      "pos": "noun phrase",
+      "meaningZh": "預防保健",
+      "difficulty": 2,
+      "example": "Preventive care reduces disease burden.",
+      "synonyms": ["health promotion", "disease prevention", "wellness"]
+    },
+    {
+      "id": "healthcare-006",
+      "kind": "vocab",
+      "term": "pandemic",
+      "pos": "noun",
+      "meaningZh": "疫病 / 大流行",
+      "difficulty": 1,
+      "example": "The pandemic revealed healthcare gaps.",
+      "synonyms": ["epidemic", "disease outbreak", "crisis"]
+    },
+    {
+      "id": "healthcare-007",
+      "kind": "vocab",
+      "term": "vaccination",
+      "pos": "noun",
+      "meaningZh": "疫苗接種",
+      "difficulty": 1,
+      "example": "Vaccination protects public health.",
+      "synonyms": ["immunization", "jab", "vaccine"]
+    },
+    {
+      "id": "healthcare-008",
+      "kind": "vocab",
+      "term": "treatment",
+      "pos": "noun",
+      "meaningZh": "治療",
+      "difficulty": 1,
+      "example": "Timely treatment improves outcomes.",
+      "synonyms": ["therapy", "medical care", "intervention"]
+    },
+    {
+      "id": "healthcare-009",
+      "kind": "vocab",
+      "term": "diagnosis",
+      "pos": "noun",
+      "meaningZh": "診斷",
+      "difficulty": 1,
+      "example": "Early diagnosis saves lives.",
+      "synonyms": ["identification", "assessment", "determination"]
+    },
+    {
+      "id": "healthcare-010",
+      "kind": "vocab",
+      "term": "patient care",
+      "pos": "noun phrase",
+      "meaningZh": "患者護理",
+      "difficulty": 1,
+      "example": "Quality patient care is essential.",
+      "synonyms": ["care delivery", "medical support", "treatment"]
+    },
+    {
+      "id": "healthcare-011",
+      "kind": "vocab",
+      "term": "insurance coverage",
+      "pos": "noun phrase",
+      "meaningZh": "保險保障",
+      "difficulty": 2,
+      "example": "Insurance coverage determines healthcare access.",
+      "synonyms": ["health insurance", "coverage plan", "financial protection"]
+    },
+    {
+      "id": "healthcare-012",
+      "kind": "vocab",
+      "term": "medical professional",
+      "pos": "noun phrase",
+      "meaningZh": "醫療專業人士",
+      "difficulty": 1,
+      "example": "Medical professionals deserve respect.",
+      "synonyms": ["doctor", "healthcare provider", "clinician"]
+    },
+    {
+      "id": "healthcare-013",
+      "kind": "vocab",
+      "term": "physician",
+      "pos": "noun",
+      "meaningZh": "醫生",
+      "difficulty": 1,
+      "example": "Physicians diagnose and treat illnesses.",
+      "synonyms": ["doctor", "medical doctor", "clinician"]
+    },
+    {
+      "id": "healthcare-014",
+      "kind": "vocab",
+      "term": "wait time",
+      "pos": "noun phrase",
+      "meaningZh": "等待時間",
+      "difficulty": 1,
+      "example": "Long wait times frustrate patients.",
+      "synonyms": ["waiting period", "queue time", "delay"]
+    },
+    {
+      "id": "healthcare-015",
+      "kind": "vocab",
+      "term": "affordability crisis",
+      "pos": "noun phrase",
+      "meaningZh": "可負擔危機",
+      "difficulty": 2,
+      "example": "An affordability crisis limits healthcare access.",
+      "synonyms": ["cost crisis", "financial barrier", "economic burden"]
+    },
+    {
+      "id": "healthcare-016",
+      "kind": "vocab",
+      "term": "medical technology",
+      "pos": "noun phrase",
+      "meaningZh": "醫療技術",
+      "difficulty": 1,
+      "example": "Advanced medical technology improves outcomes.",
+      "synonyms": ["healthcare innovation", "diagnostic tools", "treatment devices"]
+    },
+    {
+      "id": "healthcare-017",
+      "kind": "vocab",
+      "term": "chronic condition",
+      "pos": "noun phrase",
+      "meaningZh": "慢性病",
+      "difficulty": 2,
+      "example": "Chronic conditions require ongoing management.",
+      "synonyms": ["long-term illness", "persistent disease", "lifestyle disease"]
+    },
+    {
+      "id": "healthcare-018",
+      "kind": "vocab",
+      "term": "mental health services",
+      "pos": "noun phrase",
+      "meaningZh": "心理健康服務",
+      "difficulty": 1,
+      "example": "Mental health services deserve equal funding.",
+      "synonyms": ["psychological support", "counselling", "psychiatric care"]
+    },
+    {
+      "id": "healthcare-019",
+      "kind": "vocab",
+      "term": "health outcome",
+      "pos": "noun phrase",
+      "meaningZh": "健康結果 / 健康成效",
+      "difficulty": 2,
+      "example": "Health outcomes vary by socioeconomic status.",
+      "synonyms": ["medical result", "treatment success", "patient status"]
+    },
+    {
+      "id": "healthcare-020",
+      "kind": "vocab",
+      "term": "disease burden",
+      "pos": "noun phrase",
+      "meaningZh": "疾病負擔",
+      "difficulty": 2,
+      "example": "Disease burden is highest in developing nations.",
+      "synonyms": ["healthcare load", "illness prevalence", "medical demand"]
+    },
+    {
+      "id": "healthcare-021",
+      "kind": "vocab",
+      "term": "epidemiology",
+      "pos": "noun",
+      "meaningZh": "流行病學",
+      "difficulty": 3,
+      "example": "Epidemiology tracks disease spread.",
+      "synonyms": ["disease study", "population health", "outbreak analysis"]
+    },
+    {
+      "id": "healthcare-022",
+      "kind": "vocab",
+      "term": "healthcare reform",
+      "pos": "noun phrase",
+      "meaningZh": "醫療改革",
+      "difficulty": 2,
+      "example": "Healthcare reform is urgently needed.",
+      "synonyms": ["system improvement", "policy change", "modernization"]
+    },
+    {
+      "id": "healthcare-023",
+      "kind": "vocab",
+      "term": "health disparities",
+      "pos": "noun phrase",
+      "meaningZh": "健康不平等",
+      "difficulty": 2,
+      "example": "Health disparities affect marginalized populations.",
+      "synonyms": ["healthcare inequities", "access gaps", "outcome differences"]
+    },
+    {
+      "id": "healthcare-024",
+      "kind": "vocab",
+      "term": "public health",
+      "pos": "noun phrase",
+      "meaningZh": "公共衛生",
+      "difficulty": 1,
+      "example": "Public health protects entire communities.",
+      "synonyms": ["community health", "population health", "disease prevention"]
+    },
+    {
+      "id": "healthcare-025",
+      "kind": "vocab",
+      "term": "healthcare equity",
+      "pos": "noun phrase",
+      "meaningZh": "醫療公平",
+      "difficulty": 2,
+      "example": "Healthcare equity requires systemic change.",
+      "synonyms": ["equitable access", "fair treatment", "inclusive care"]
+    }
+  ]
+}

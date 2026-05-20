@@ -1,0 +1,262 @@
+{
+  "slug": "education",
+  "nameZh": "教育改革",
+  "nameEn": "Education Reform",
+  "description": "考試制度、教育平等、學習壓力相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/3950921c5887f3c087365e7815e0885e402d1d52-1920x1080.webp?fit=max&w=600&h=600&fm=webp&q=70",
+  "tags": ["education", "society"],
+  "entries": [
+    {
+      "id": "education-001",
+      "kind": "vocab",
+      "term": "education",
+      "pos": "noun",
+      "meaningZh": "教育",
+      "difficulty": 1,
+      "example": "Quality education is a fundamental right.",
+      "synonyms": ["schooling", "learning", "instruction"]
+    },
+    {
+      "id": "education-002",
+      "kind": "vocab",
+      "term": "examination system",
+      "pos": "noun phrase",
+      "meaningZh": "考試制度",
+      "difficulty": 1,
+      "example": "The examination system determines university access.",
+      "synonyms": ["assessment system", "grading system", "testing mechanism"]
+    },
+    {
+      "id": "education-003",
+      "kind": "vocab",
+      "term": "standardized testing",
+      "pos": "noun phrase",
+      "meaningZh": "標準化測試",
+      "difficulty": 2,
+      "example": "Standardized testing narrows educational focus.",
+      "synonyms": ["uniform assessment", "benchmark testing", "common exam"]
+    },
+    {
+      "id": "education-004",
+      "kind": "vocab",
+      "term": "academic pressure",
+      "pos": "noun phrase",
+      "meaningZh": "學業壓力",
+      "difficulty": 1,
+      "example": "DSE students face intense academic pressure.",
+      "synonyms": ["study stress", "exam anxiety", "academic stress"]
+    },
+    {
+      "id": "education-005",
+      "kind": "vocab",
+      "term": "tuition fee",
+      "pos": "noun phrase",
+      "meaningZh": "學費",
+      "difficulty": 1,
+      "example": "Rising tuition fees limit educational access.",
+      "synonyms": ["school fee", "education cost", "enrollment fee"]
+    },
+    {
+      "id": "education-006",
+      "kind": "vocab",
+      "term": "curriculum",
+      "pos": "noun",
+      "meaningZh": "課程",
+      "difficulty": 1,
+      "example": "The curriculum should balance academics and skills.",
+      "synonyms": ["course content", "subject matter", "educational program"]
+    },
+    {
+      "id": "education-007",
+      "kind": "vocab",
+      "term": "critical thinking",
+      "pos": "noun phrase",
+      "meaningZh": "批判性思維",
+      "difficulty": 2,
+      "example": "Critical thinking should be prioritized in schools.",
+      "synonyms": ["analytical thinking", "problem-solving", "reasoning"]
+    },
+    {
+      "id": "education-008",
+      "kind": "vocab",
+      "term": "rote learning",
+      "pos": "noun phrase",
+      "meaningZh": "死記硬背",
+      "difficulty": 2,
+      "example": "Rote learning produces students who cannot think creatively.",
+      "synonyms": ["memorization", "mechanical learning", "passive learning"]
+    },
+    {
+      "id": "education-009",
+      "kind": "vocab",
+      "term": "holistic development",
+      "pos": "noun phrase",
+      "meaningZh": "全人發展",
+      "difficulty": 2,
+      "example": "Schools must promote holistic development.",
+      "synonyms": ["well-rounded growth", "comprehensive development", "balanced learning"]
+    },
+    {
+      "id": "education-010",
+      "kind": "vocab",
+      "term": "equal opportunity",
+      "pos": "noun phrase",
+      "meaningZh": "平等機會",
+      "difficulty": 1,
+      "example": "All students deserve equal opportunity.",
+      "synonyms": ["fair access", "equity", "equitable treatment"]
+    },
+    {
+      "id": "education-011",
+      "kind": "vocab",
+      "term": "inequality",
+      "pos": "noun",
+      "meaningZh": "不平等",
+      "difficulty": 1,
+      "example": "Educational inequality perpetuates social problems.",
+      "synonyms": ["disparity", "unfairness", "imbalance"]
+    },
+    {
+      "id": "education-012",
+      "kind": "vocab",
+      "term": "funding",
+      "pos": "noun",
+      "meaningZh": "資金",
+      "difficulty": 1,
+      "example": "School funding should be equitable.",
+      "synonyms": ["financing", "budget", "financial support"]
+    },
+    {
+      "id": "education-013",
+      "kind": "vocab",
+      "term": "dropout rate",
+      "pos": "noun phrase",
+      "meaningZh": "輟學率",
+      "difficulty": 2,
+      "example": "High dropout rates indicate systemic problems.",
+      "synonyms": ["attrition rate", "school leaving rate", "early exit rate"]
+    },
+    {
+      "id": "education-014",
+      "kind": "vocab",
+      "term": "literacy",
+      "pos": "noun",
+      "meaningZh": "識字率 / 文化程度",
+      "difficulty": 1,
+      "example": "Universal literacy is crucial for development.",
+      "synonyms": ["reading ability", "education level", "competency"]
+    },
+    {
+      "id": "education-015",
+      "kind": "vocab",
+      "term": "mentor",
+      "pos": "noun",
+      "meaningZh": "導師",
+      "difficulty": 1,
+      "example": "A good mentor shapes a student's future.",
+      "synonyms": ["teacher", "guide", "advisor"]
+    },
+    {
+      "id": "education-016",
+      "kind": "vocab",
+      "term": "credential",
+      "pos": "noun",
+      "meaningZh": "學歷 / 資格",
+      "difficulty": 2,
+      "example": "Educational credentials determine job prospects.",
+      "synonyms": ["qualification", "certificate", "diploma"]
+    },
+    {
+      "id": "education-017",
+      "kind": "vocab",
+      "term": "vocational training",
+      "pos": "noun phrase",
+      "meaningZh": "職業培訓",
+      "difficulty": 2,
+      "example": "Vocational training offers practical alternatives.",
+      "synonyms": ["technical education", "skills training", "professional development"]
+    },
+    {
+      "id": "education-018",
+      "kind": "vocab",
+      "term": "student welfare",
+      "pos": "noun phrase",
+      "meaningZh": "學生福利",
+      "difficulty": 1,
+      "example": "Schools prioritize student welfare.",
+      "synonyms": ["student wellbeing", "support services", "care system"]
+    },
+    {
+      "id": "education-019",
+      "kind": "vocab",
+      "term": "teacher shortage",
+      "pos": "noun phrase",
+      "meaningZh": "教師短缺",
+      "difficulty": 2,
+      "example": "Teacher shortage affects education quality.",
+      "synonyms": ["staffing gap", "labor shortage", "educator deficit"]
+    },
+    {
+      "id": "education-020",
+      "kind": "vocab",
+      "term": "inclusive education",
+      "pos": "noun phrase",
+      "meaningZh": "融合教育",
+      "difficulty": 2,
+      "example": "Inclusive education supports diverse learners.",
+      "synonyms": ["special education integration", "equitable learning", "accessibility"]
+    },
+    {
+      "id": "education-021",
+      "kind": "vocab",
+      "term": "online learning",
+      "pos": "noun phrase",
+      "meaningZh": "網上學習 / 遠程教育",
+      "difficulty": 1,
+      "example": "Online learning expanded during the pandemic.",
+      "synonyms": ["distance learning", "digital education", "e-learning"]
+    },
+    {
+      "id": "education-022",
+      "kind": "vocab",
+      "term": "competence",
+      "pos": "noun",
+      "meaningZh": "能力 / 能力水平",
+      "difficulty": 2,
+      "example": "Students should develop workplace competence.",
+      "synonyms": ["skill", "ability", "proficiency"]
+    },
+    {
+      "id": "education-023",
+      "kind": "vocab",
+      "term": "disparity",
+      "pos": "noun",
+      "meaningZh": "差距 / 差異",
+      "difficulty": 2,
+      "example": "Disparities in education funding are unjust.",
+      "synonyms": ["inequality", "gap", "difference"]
+    },
+    {
+      "id": "education-024",
+      "kind": "vocab",
+      "term": "student motivation",
+      "pos": "noun phrase",
+      "meaningZh": "學生動力 / 積極性",
+      "difficulty": 2,
+      "example": "Student motivation decreases under excessive pressure.",
+      "synonyms": ["engagement", "drive", "enthusiasm"]
+    },
+    {
+      "id": "education-025",
+      "kind": "vocab",
+      "term": "educational equity",
+      "pos": "noun phrase",
+      "meaningZh": "教育公平",
+      "difficulty": 2,
+      "example": "Educational equity requires fair resource distribution.",
+      "synonyms": ["fairness in education", "equal access", "inclusive practice"]
+    }
+  ]
+}

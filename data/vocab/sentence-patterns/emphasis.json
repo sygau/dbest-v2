@@ -1,0 +1,235 @@
+{
+  "slug": "emphasis",
+  "nameZh": "強調句式",
+  "nameEn": "Emphasis Patterns",
+  "description": "It is ... that / Not only ... but also 等強調結構。",
+  "difficulty": "medium",
+  "contentKind": "sentence-pattern",
+  "entries": [
+    {
+      "id": "emphasis-001",
+      "kind": "sentence-pattern",
+      "term": "It is ... that ...",
+      "meaningZh": "正是...使得...",
+      "difficulty": 2,
+      "example": "It is technology that has transformed society.",
+      "synonyms": ["What ... is ...", "The thing that...", "The fact that"]
+    },
+    {
+      "id": "emphasis-002",
+      "kind": "sentence-pattern",
+      "term": "Not only ... but also ...",
+      "meaningZh": "不僅...而且...",
+      "difficulty": 2,
+      "example": "Not only is education important, but also it shapes character.",
+      "synonyms": ["Both ... and ...", "... as well as ...", "Furthermore, ..."]
+    },
+    {
+      "id": "emphasis-003",
+      "kind": "sentence-pattern",
+      "term": "Such is the ... that ...",
+      "meaningZh": "如此...以至於...",
+      "difficulty": 3,
+      "example": "Such is the impact of climate change that nations must act.",
+      "synonyms": ["So ... that ...", "To such an extent that", "The ... is so ..."]
+    },
+    {
+      "id": "emphasis-004",
+      "kind": "sentence-pattern",
+      "term": "Rarely ... as ...",
+      "meaningZh": "很少有...像...",
+      "difficulty": 2,
+      "example": "Rarely do we see such commitment to justice.",
+      "synonyms": ["Never before", "Seldom", "Barely"]
+    },
+    {
+      "id": "emphasis-005",
+      "kind": "sentence-pattern",
+      "term": "What is more, ...",
+      "meaningZh": "更重要的是...",
+      "difficulty": 1,
+      "example": "What is more, the solution is within reach.",
+      "synonyms": ["Furthermore,", "Moreover,", "Additionally,"]
+    },
+    {
+      "id": "emphasis-006",
+      "kind": "sentence-pattern",
+      "term": "So ... that ...",
+      "meaningZh": "如此...以至於...",
+      "difficulty": 1,
+      "example": "The impact is so profound that we must respond.",
+      "synonyms": ["Such ... that ...", "To the extent that", "So much that"]
+    },
+    {
+      "id": "emphasis-007",
+      "kind": "sentence-pattern",
+      "term": "Emphasis through repetition: ... is ... is ...",
+      "meaningZh": "透過重複強調",
+      "difficulty": 2,
+      "example": "This is crucial, this is urgent, this is now.",
+      "synonyms": ["Anaphora", "Parallel structure", "Rhetorical device"]
+    },
+    {
+      "id": "emphasis-008",
+      "kind": "sentence-pattern",
+      "term": "Undoubtedly, ...",
+      "meaningZh": "毫無疑問...",
+      "difficulty": 1,
+      "example": "Undoubtedly, this requires immediate action.",
+      "synonyms": ["Without doubt,", "Certainly,", "Definitely,"]
+    },
+    {
+      "id": "emphasis-009",
+      "kind": "sentence-pattern",
+      "term": "The fact that ... is significant.",
+      "meaningZh": "...這一事實是重要的",
+      "difficulty": 1,
+      "example": "The fact that youth unemployment is rising is significant.",
+      "synonyms": ["What is notable is that", "The reality is that", "It is significant that"]
+    },
+    {
+      "id": "emphasis-010",
+      "kind": "sentence-pattern",
+      "term": "To emphasize: ...",
+      "meaningZh": "為了強調...",
+      "difficulty": 1,
+      "example": "To emphasize: we are running out of time.",
+      "synonyms": ["Specifically,", "Crucially,", "Notably,"]
+    },
+    {
+      "id": "emphasis-011",
+      "kind": "sentence-pattern",
+      "term": "What stands out is ...",
+      "meaningZh": "值得突出的是...",
+      "difficulty": 1,
+      "example": "What stands out is the government's commitment.",
+      "synonyms": ["What is striking is", "Notably,", "Importantly,"]
+    },
+    {
+      "id": "emphasis-012",
+      "kind": "sentence-pattern",
+      "term": "Far from ..., it is ...",
+      "meaningZh": "遠非...，反而...",
+      "difficulty": 2,
+      "example": "Far from solving the problem, it worsened the situation.",
+      "synonyms": ["On the contrary,", "Rather than", "Instead of"]
+    },
+    {
+      "id": "emphasis-013",
+      "kind": "sentence-pattern",
+      "term": "One cannot overstate the importance of ...",
+      "meaningZh": "一個人無法過分強調...的重要性",
+      "difficulty": 2,
+      "example": "One cannot overstate the importance of education.",
+      "synonyms": ["Highly significant", "Crucial", "Cannot be overstated"]
+    },
+    {
+      "id": "emphasis-014",
+      "kind": "sentence-pattern",
+      "term": "It must be emphasized that ...",
+      "meaningZh": "必須強調的是...",
+      "difficulty": 1,
+      "example": "It must be emphasized that prevention is key.",
+      "synonyms": ["It should be noted that", "Significantly,", "Crucially,"]
+    },
+    {
+      "id": "emphasis-015",
+      "kind": "sentence-pattern",
+      "term": "What is clear beyond doubt is ...",
+      "meaningZh": "毫無疑問是...",
+      "difficulty": 2,
+      "example": "What is clear beyond doubt is the need for reform.",
+      "synonyms": ["Without question,", "Undeniably,", "Certainly,"]
+    },
+    {
+      "id": "emphasis-016",
+      "kind": "sentence-pattern",
+      "term": "Precisely because ..., ...",
+      "meaningZh": "恰恰因為...，...",
+      "difficulty": 2,
+      "example": "Precisely because we understand the problem, we can solve it.",
+      "synonyms": ["Because of this", "This is why", "Therefore"]
+    },
+    {
+      "id": "emphasis-017",
+      "kind": "sentence-pattern",
+      "term": "The very fact that ... is remarkable.",
+      "meaningZh": "...這個事實本身是了不起的",
+      "difficulty": 2,
+      "example": "The very fact that change is occurring is remarkable.",
+      "synonyms": ["Notably,", "Significantly,", "Importantly,"]
+    },
+    {
+      "id": "emphasis-018",
+      "kind": "sentence-pattern",
+      "term": "Nowhere is this more evident than ...",
+      "meaningZh": "這一點在...最為明顯",
+      "difficulty": 2,
+      "example": "Nowhere is this more evident than in education policy.",
+      "synonyms": ["This is most obvious in", "Particularly in", "Especially in"]
+    },
+    {
+      "id": "emphasis-019",
+      "kind": "sentence-pattern",
+      "term": "How important is ...? Extremely important.",
+      "meaningZh": "...有多重要？極其重要",
+      "difficulty": 2,
+      "example": "How important is climate action? Extremely important.",
+      "synonyms": ["Rhetorical question", "Direct emphasis", "Strong assertion"]
+    },
+    {
+      "id": "emphasis-020",
+      "kind": "sentence-pattern",
+      "term": "Indeed, ...",
+      "meaningZh": "事實上...",
+      "difficulty": 1,
+      "example": "Indeed, this represents a turning point.",
+      "synonyms": ["In fact,", "Actually,", "Certainly,"]
+    },
+    {
+      "id": "emphasis-021",
+      "kind": "sentence-pattern",
+      "term": "In every sense, ...",
+      "meaningZh": "在各個方面...",
+      "difficulty": 2,
+      "example": "In every sense, this is a watershed moment.",
+      "synonyms": ["In all respects,", "From every angle,", "Undeniably,"]
+    },
+    {
+      "id": "emphasis-022",
+      "kind": "sentence-pattern",
+      "term": "To put it bluntly, ...",
+      "meaningZh": "坦白說...",
+      "difficulty": 1,
+      "example": "To put it bluntly, we are failing.",
+      "synonyms": ["To be frank,", "Simply put,", "Plainly,"]
+    },
+    {
+      "id": "emphasis-023",
+      "kind": "sentence-pattern",
+      "term": "The crucial point is that ...",
+      "meaningZh": "關鍵點是...",
+      "difficulty": 1,
+      "example": "The crucial point is that action is overdue.",
+      "synonyms": ["The key issue is", "Most importantly,", "Crucially,"]
+    },
+    {
+      "id": "emphasis-024",
+      "kind": "sentence-pattern",
+      "term": "Needless to say, ...",
+      "meaningZh": "不用說...",
+      "difficulty": 1,
+      "example": "Needless to say, this requires careful planning.",
+      "synonyms": ["Obviously,", "Clearly,", "Evidently,"]
+    },
+    {
+      "id": "emphasis-025",
+      "kind": "sentence-pattern",
+      "term": "The bottom line is simple: ...",
+      "meaningZh": "底線很簡單：...",
+      "difficulty": 1,
+      "example": "The bottom line is simple: we must act now.",
+      "synonyms": ["In essence,", "Fundamentally,", "Simply put,"]
+    }
+  ]
+}

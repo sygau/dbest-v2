@@ -1,0 +1,262 @@
+{
+  "slug": "ai",
+  "nameZh": "人工智能",
+  "nameEn": "Artificial Intelligence",
+  "description": "AI、自動化、倫理相關詞彙。",
+  "difficulty": "hard",
+  "contentKind": "vocab",
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/c1874c791d4e06662d4d42af0448e56a57f61b67-1600x888.jpg?fit=max&w=600&h=600&fm=webp&q=70",
+  "tags": ["technology", "ethics"],
+  "entries": [
+    {
+      "id": "ai-001",
+      "kind": "vocab",
+      "term": "artificial intelligence",
+      "pos": "noun phrase",
+      "meaningZh": "人工智能",
+      "difficulty": 1,
+      "example": "Artificial intelligence is revolutionizing various industries.",
+      "synonyms": ["AI", "machine intelligence", "computational intelligence"]
+    },
+    {
+      "id": "ai-002",
+      "kind": "vocab",
+      "term": "machine learning",
+      "pos": "noun phrase",
+      "meaningZh": "機器學習",
+      "difficulty": 2,
+      "example": "Machine learning enables computers to improve through experience.",
+      "synonyms": ["automated learning", "data-driven learning", "algorithmic learning"]
+    },
+    {
+      "id": "ai-003",
+      "kind": "vocab",
+      "term": "automation",
+      "pos": "noun",
+      "meaningZh": "自動化",
+      "difficulty": 1,
+      "example": "Automation replaces human workers in manufacturing industries.",
+      "synonyms": ["mechanization", "computerization", "automated process"]
+    },
+    {
+      "id": "ai-004",
+      "kind": "vocab",
+      "term": "algorithmic bias",
+      "pos": "noun phrase",
+      "meaningZh": "演算法偏差 / 算法歧視",
+      "difficulty": 3,
+      "example": "Algorithmic bias in AI systems can perpetuate discrimination.",
+      "synonyms": ["AI bias", "computational bias", "discrimination in algorithms"]
+    },
+    {
+      "id": "ai-005",
+      "kind": "vocab",
+      "term": "data privacy",
+      "pos": "noun phrase",
+      "meaningZh": "數據私隱 / 隱私保護",
+      "difficulty": 2,
+      "example": "Data privacy concerns arise as AI processes personal information.",
+      "synonyms": ["privacy protection", "personal data security", "information privacy"]
+    },
+    {
+      "id": "ai-006",
+      "kind": "vocab",
+      "term": "ethical framework",
+      "pos": "noun phrase",
+      "meaningZh": "倫理框架",
+      "difficulty": 3,
+      "example": "An ethical framework is needed to guide AI development.",
+      "synonyms": ["moral guidelines", "ethical standards", "ethical guidelines"]
+    },
+    {
+      "id": "ai-007",
+      "kind": "vocab",
+      "term": "job displacement",
+      "pos": "noun phrase",
+      "meaningZh": "就業流失 / 失業",
+      "difficulty": 2,
+      "example": "Job displacement due to automation affects millions of workers.",
+      "synonyms": ["unemployment", "job loss", "labor displacement"]
+    },
+    {
+      "id": "ai-008",
+      "kind": "vocab",
+      "term": "transparency",
+      "pos": "noun",
+      "meaningZh": "透明度 / 透明性",
+      "difficulty": 2,
+      "example": "Transparency in AI decision-making is crucial for accountability.",
+      "synonyms": ["openness", "clarity", "explainability", "disclosure"]
+    },
+    {
+      "id": "ai-009",
+      "kind": "vocab",
+      "term": "accountability",
+      "pos": "noun",
+      "meaningZh": "問責 / 責任制",
+      "difficulty": 2,
+      "example": "Accountability mechanisms should be established for AI systems.",
+      "synonyms": ["responsibility", "liability", "answerability"]
+    },
+    {
+      "id": "ai-010",
+      "kind": "vocab",
+      "term": "surveillance",
+      "pos": "noun",
+      "meaningZh": "監控 / 監視",
+      "difficulty": 2,
+      "example": "AI-powered surveillance raises concerns about civil liberties.",
+      "synonyms": ["monitoring", "observation", "tracking", "oversight"]
+    },
+    {
+      "id": "ai-011",
+      "kind": "vocab",
+      "term": "regulation",
+      "pos": "noun",
+      "meaningZh": "法規 / 監管",
+      "difficulty": 1,
+      "example": "AI regulation is essential to prevent misuse.",
+      "synonyms": ["rules", "governance", "policy", "control"]
+    },
+    {
+      "id": "ai-012",
+      "kind": "vocab",
+      "term": "augment",
+      "pos": "verb",
+      "meaningZh": "增強 / 補充",
+      "difficulty": 2,
+      "example": "AI should augment human capabilities rather than replace them.",
+      "synonyms": ["enhance", "improve", "strengthen", "supplement"]
+    },
+    {
+      "id": "ai-013",
+      "kind": "vocab",
+      "term": "chatbot",
+      "pos": "noun",
+      "meaningZh": "聊天機器人",
+      "difficulty": 1,
+      "example": "Chatbots provide customer service without human intervention.",
+      "synonyms": ["virtual assistant", "conversational AI", "bot"]
+    },
+    {
+      "id": "ai-014",
+      "kind": "vocab",
+      "term": "neural network",
+      "pos": "noun phrase",
+      "meaningZh": "神經網絡",
+      "difficulty": 3,
+      "example": "Neural networks mimic the human brain's structure.",
+      "synonyms": ["deep learning", "artificial neural system", "computational model"]
+    },
+    {
+      "id": "ai-015",
+      "kind": "vocab",
+      "term": "data training",
+      "pos": "noun phrase",
+      "meaningZh": "數據訓練",
+      "difficulty": 2,
+      "example": "AI systems require massive data training to improve accuracy.",
+      "synonyms": ["machine learning", "model training", "algorithmic learning"]
+    },
+    {
+      "id": "ai-016",
+      "kind": "vocab",
+      "term": "job market",
+      "pos": "noun phrase",
+      "meaningZh": "就業市場",
+      "difficulty": 1,
+      "example": "AI is reshaping the job market in unpredictable ways.",
+      "synonyms": ["employment landscape", "labor market", "career opportunities"]
+    },
+    {
+      "id": "ai-017",
+      "kind": "vocab",
+      "term": "skill displacement",
+      "pos": "noun phrase",
+      "meaningZh": "技能流失",
+      "difficulty": 2,
+      "example": "Skill displacement occurs when AI makes certain professions obsolete.",
+      "synonyms": ["job obsolescence", "skill redundancy", "professional disruption"]
+    },
+    {
+      "id": "ai-018",
+      "kind": "vocab",
+      "term": "bias mitigation",
+      "pos": "noun phrase",
+      "meaningZh": "偏見緩解",
+      "difficulty": 3,
+      "example": "Bias mitigation is essential in developing fair AI systems.",
+      "synonyms": ["fairness in AI", "reducing algorithmic bias", "equitable systems"]
+    },
+    {
+      "id": "ai-019",
+      "kind": "vocab",
+      "term": "explainability",
+      "pos": "noun",
+      "meaningZh": "可解釋性 / 透明度",
+      "difficulty": 3,
+      "example": "Explainability helps users understand AI decision-making.",
+      "synonyms": ["transparency", "interpretability", "clarity"]
+    },
+    {
+      "id": "ai-020",
+      "kind": "vocab",
+      "term": "human-AI collaboration",
+      "pos": "noun phrase",
+      "meaningZh": "人工智能與人類合作",
+      "difficulty": 2,
+      "example": "Human-AI collaboration produces better outcomes than either alone.",
+      "synonyms": ["AI assistance", "partnership with AI", "collaborative AI"]
+    },
+    {
+      "id": "ai-021",
+      "kind": "vocab",
+      "term": "predictive analytics",
+      "pos": "noun phrase",
+      "meaningZh": "預測分析",
+      "difficulty": 2,
+      "example": "Predictive analytics helps businesses forecast trends.",
+      "synonyms": ["forecasting", "data prediction", "statistical prediction"]
+    },
+    {
+      "id": "ai-022",
+      "kind": "vocab",
+      "term": "digital ethics",
+      "pos": "noun phrase",
+      "meaningZh": "數碼倫理",
+      "difficulty": 2,
+      "example": "Digital ethics must guide AI development.",
+      "synonyms": ["technological ethics", "responsible AI", "moral considerations"]
+    },
+    {
+      "id": "ai-023",
+      "kind": "vocab",
+      "term": "autonomous system",
+      "pos": "noun phrase",
+      "meaningZh": "自主系統",
+      "difficulty": 2,
+      "example": "Autonomous systems require careful oversight and testing.",
+      "synonyms": ["self-driving system", "independent AI", "automated system"]
+    },
+    {
+      "id": "ai-024",
+      "kind": "vocab",
+      "term": "data security",
+      "pos": "noun phrase",
+      "meaningZh": "數據安全",
+      "difficulty": 1,
+      "example": "Data security is critical when AI processes sensitive information.",
+      "synonyms": ["information protection", "cyber defense", "data protection"]
+    },
+    {
+      "id": "ai-025",
+      "kind": "vocab",
+      "term": "responsible AI",
+      "pos": "noun phrase",
+      "meaningZh": "負責任的人工智能",
+      "difficulty": 2,
+      "example": "Responsible AI development benefits society as a whole.",
+      "synonyms": ["ethical AI", "trustworthy AI", "accountable AI"]
+    }
+  ]
+}

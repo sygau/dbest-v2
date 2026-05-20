@@ -1,0 +1,235 @@
+{
+  "slug": "transitions",
+  "nameZh": "過渡詞",
+  "nameEn": "Transitions",
+  "description": "段落之間嘅連接詞、過渡短語。",
+  "difficulty": "easy",
+  "contentKind": "opening",
+  "entries": [
+    {
+      "id": "transition-001",
+      "kind": "transition",
+      "term": "Furthermore, ...",
+      "meaningZh": "而且...",
+      "difficulty": 1,
+      "example": "Furthermore, this approach has proven effective.",
+      "synonyms": ["Moreover,", "In addition,", "Also,"]
+    },
+    {
+      "id": "transition-002",
+      "kind": "transition",
+      "term": "Nevertheless, ...",
+      "meaningZh": "儘管如此...",
+      "difficulty": 1,
+      "example": "Nevertheless, challenges remain.",
+      "synonyms": ["However,", "Despite this,", "Yet,"]
+    },
+    {
+      "id": "transition-003",
+      "kind": "transition",
+      "term": "On the other hand, ...",
+      "meaningZh": "另一方面...",
+      "difficulty": 1,
+      "example": "On the other hand, some argue otherwise.",
+      "synonyms": ["Conversely,", "In contrast,", "Alternatively,"]
+    },
+    {
+      "id": "transition-004",
+      "kind": "transition",
+      "term": "To elaborate, ...",
+      "meaningZh": "覩說來...",
+      "difficulty": 1,
+      "example": "To elaborate, this mechanism works as follows.",
+      "synonyms": ["To explain further,", "In more detail,", "To expand on this,"]
+    },
+    {
+      "id": "transition-005",
+      "kind": "transition",
+      "term": "Consequently, ...",
+      "meaningZh": "因此...",
+      "difficulty": 1,
+      "example": "Consequently, the policy shifted.",
+      "synonyms": ["As a result,", "Therefore,", "Thus,"]
+    },
+    {
+      "id": "transition-006",
+      "kind": "transition",
+      "term": "For instance, ...",
+      "meaningZh": "例如...",
+      "difficulty": 1,
+      "example": "For instance, Hong Kong faced economic challenges.",
+      "synonyms": ["For example,", "Take for example,", "To illustrate,"]
+    },
+    {
+      "id": "transition-007",
+      "kind": "transition",
+      "term": "Admittedly, ...",
+      "meaningZh": "誠然...",
+      "difficulty": 2,
+      "example": "Admittedly, this perspective has merit.",
+      "synonyms": ["I acknowledge that", "It is true that", "Granted,"]
+    },
+    {
+      "id": "transition-008",
+      "kind": "transition",
+      "term": "Meanwhile, ...",
+      "meaningZh": "與此同時...",
+      "difficulty": 1,
+      "example": "Meanwhile, other nations took action.",
+      "synonyms": ["At the same time,", "Concurrently,", "In parallel,"]
+    },
+    {
+      "id": "transition-009",
+      "kind": "transition",
+      "term": "Significantly, ...",
+      "meaningZh": "重要的是...",
+      "difficulty": 1,
+      "example": "Significantly, this marked a turning point.",
+      "synonyms": ["Importantly,", "Notably,", "Crucially,"]
+    },
+    {
+      "id": "transition-010",
+      "kind": "transition",
+      "term": "In fact, ...",
+      "meaningZh": "事實上...",
+      "difficulty": 1,
+      "example": "In fact, research shows otherwise.",
+      "synonyms": ["Actually,", "Indeed,", "In reality,"]
+    },
+    {
+      "id": "transition-011",
+      "kind": "transition",
+      "term": "On the contrary, ...",
+      "meaningZh": "相反...",
+      "difficulty": 1,
+      "example": "On the contrary, the opposite is true.",
+      "synonyms": ["In contrast,", "Conversely,", "Rather,"]
+    },
+    {
+      "id": "transition-012",
+      "kind": "transition",
+      "term": "To sum up this section, ...",
+      "meaningZh": "總結這部分...",
+      "difficulty": 1,
+      "example": "To sum up this section, evidence is compelling.",
+      "synonyms": ["To summarize,", "In summary,", "To recap,"]
+    },
+    {
+      "id": "transition-013",
+      "kind": "transition",
+      "term": "It is worth noting that ...",
+      "meaningZh": "值得注意的是...",
+      "difficulty": 1,
+      "example": "It is worth noting that this trend is accelerating.",
+      "synonyms": ["Notably,", "Significantly,", "Importantly,"]
+    },
+    {
+      "id": "transition-014",
+      "kind": "transition",
+      "term": "Another crucial point is ...",
+      "meaningZh": "另一個關鍵點是...",
+      "difficulty": 1,
+      "example": "Another crucial point is the issue of accessibility.",
+      "synonyms": ["Another key aspect is", "Equally important is", "Also significant is"]
+    },
+    {
+      "id": "transition-015",
+      "kind": "transition",
+      "term": "This brings us to the question of ...",
+      "meaningZh": "這引發了...的問題",
+      "difficulty": 2,
+      "example": "This brings us to the question of sustainability.",
+      "synonyms": ["This raises the issue of", "This leads to", "This prompts consideration of"]
+    },
+    {
+      "id": "transition-016",
+      "kind": "transition",
+      "term": "Turning now to ...",
+      "meaningZh": "現在轉羅...",
+      "difficulty": 1,
+      "example": "Turning now to the implementation phase.",
+      "synonyms": ["Moving on to", "Now considering", "Shifting focus to"]
+    },
+    {
+      "id": "transition-017",
+      "kind": "transition",
+      "term": "Similarly, ...",
+      "meaningZh": "同樣地...",
+      "difficulty": 1,
+      "example": "Similarly, other countries faced obstacles.",
+      "synonyms": ["Likewise,", "In the same way,", "Comparably,"]
+    },
+    {
+      "id": "transition-018",
+      "kind": "transition",
+      "term": "Before proceeding, it is vital to mention that ...",
+      "meaningZh": "在繼續之前，重要的是要提到...",
+      "difficulty": 2,
+      "example": "Before proceeding, it is vital to mention that context matters.",
+      "synonyms": ["Before moving on,", "It should be noted that", "It is important to recall that"]
+    },
+    {
+      "id": "transition-019",
+      "kind": "transition",
+      "term": "Understandably, ...",
+      "meaningZh": "可以理解的是...",
+      "difficulty": 1,
+      "example": "Understandably, stakeholders have concerns.",
+      "synonyms": ["Not surprisingly,", "Reasonably,", "Predictably,"]
+    },
+    {
+      "id": "transition-020",
+      "kind": "transition",
+      "term": "What must be recognized is that ...",
+      "meaningZh": "必須認識到的是...",
+      "difficulty": 2,
+      "example": "What must be recognized is the complexity involved.",
+      "synonyms": ["We must acknowledge that", "It is clear that", "One must understand that"]
+    },
+    {
+      "id": "transition-021",
+      "kind": "transition",
+      "term": "Beyond this, ...",
+      "meaningZh": "除此之外...",
+      "difficulty": 1,
+      "example": "Beyond this, we must address systemic factors.",
+      "synonyms": ["Furthermore,", "Moreover,", "Additionally,"]
+    },
+    {
+      "id": "transition-022",
+      "kind": "transition",
+      "term": "Plainly, ...",
+      "meaningZh": "顯然...",
+      "difficulty": 1,
+      "example": "Plainly, the situation requires urgent attention.",
+      "synonyms": ["Clearly,", "Obviously,", "Evidently,"]
+    },
+    {
+      "id": "transition-023",
+      "kind": "transition",
+      "term": "By contrast, ...",
+      "meaningZh": "相比之下...",
+      "difficulty": 1,
+      "example": "By contrast, the second approach offers benefits.",
+      "synonyms": ["In contrast,", "On the other hand,", "Conversely,"]
+    },
+    {
+      "id": "transition-024",
+      "kind": "transition",
+      "term": "This perspective overlooks the fact that ...",
+      "meaningZh": "這個觀點忽視了...這一事實",
+      "difficulty": 2,
+      "example": "This perspective overlooks the fact that implementation is challenging.",
+      "synonyms": ["This ignores that", "This fails to account for", "This overlooks"]
+    },
+    {
+      "id": "transition-025",
+      "kind": "transition",
+      "term": "Let us now examine ...",
+      "meaningZh": "現在讓我們検視...",
+      "difficulty": 1,
+      "example": "Let us now examine the evidence in detail.",
+      "synonyms": ["We should now consider", "Let us look at", "Consider now"]
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "slug": "lying-flat",
+  "nameZh": "躺平文化",
+  "nameEn": "Lying Flat Culture",
+  "description": "青年「躺平」、低慾望、反內卷相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/062166e53da5d133aa41fa302579e49b6058c52d-226x115.png?fit=max&w=600&h=600&fm=webp",
+  "tags": ["youth", "society"],
+  "entries": [
+    {
+      "id": "lying-flat-001",
+      "kind": "vocab",
+      "term": "lying flat",
+      "pos": "verb phrase",
+      "meaningZh": "躺平",
+      "difficulty": 2,
+      "example": "The lying flat movement reflects youth's rejection of constant competition.",
+      "synonyms": ["giving up", "minimalism", "withdrawal", "opt-out"]
+    },
+    {
+      "id": "lying-flat-002",
+      "kind": "vocab",
+      "term": "aspiration",
+      "pos": "noun",
+      "meaningZh": "抱負 / 志向",
+      "difficulty": 1,
+      "example": "Young people today have lower career aspirations than previous generations.",
+      "synonyms": ["ambition", "goal", "desire", "dream"]
+    },
+    {
+      "id": "lying-flat-003",
+      "kind": "vocab",
+      "term": "rat race",
+      "pos": "noun phrase",
+      "meaningZh": "竞争激烈的環境 / 內卷",
+      "difficulty": 2,
+      "example": "Many youth reject the rat race in pursuit of work-life balance.",
+      "synonyms": ["competition", "hustle culture", "competitive struggle"]
+    },
+    {
+      "id": "lying-flat-004",
+      "kind": "vocab",
+      "term": "hustle culture",
+      "pos": "noun phrase",
+      "meaningZh": "拼搏文化 / 奮鬥文化",
+      "difficulty": 2,
+      "example": "Hustle culture glorifies overwork and constant productivity.",
+      "synonyms": ["workaholism", "grind mentality", "relentless ambition"]
+    },
+    {
+      "id": "lying-flat-005",
+      "kind": "vocab",
+      "term": "work-life balance",
+      "pos": "noun phrase",
+      "meaningZh": "工作與生活平衡",
+      "difficulty": 1,
+      "example": "Young workers prioritize work-life balance over salary increases.",
+      "synonyms": ["balanced lifestyle", "equilibrium", "wellness"]
+    },
+    {
+      "id": "lying-flat-006",
+      "kind": "vocab",
+      "term": "materialism",
+      "pos": "noun",
+      "meaningZh": "物質主義 / 拜金主義",
+      "difficulty": 2,
+      "example": "The lying flat movement rejects consumerism and materialism.",
+      "synonyms": ["consumerism", "materialism", "greed", "acquisitiveness"]
+    },
+    {
+      "id": "lying-flat-007",
+      "kind": "vocab",
+      "term": "minimalism",
+      "pos": "noun",
+      "meaningZh": "極簡主義 / 簡樸生活",
+      "difficulty": 2,
+      "example": "Minimalism appeals to young people seeking simpler lives.",
+      "synonyms": ["simplicity", "austerity", "frugality"]
+    },
+    {
+      "id": "lying-flat-008",
+      "kind": "vocab",
+      "term": "burnout",
+      "pos": "noun",
+      "meaningZh": "過度疲勞 / 精疲力竭",
+      "difficulty": 2,
+      "example": "Burnout from competitive pressure drives the lying flat movement.",
+      "synonyms": ["exhaustion", "fatigue", "mental exhaustion", "stress"]
+    },
+    {
+      "id": "lying-flat-009",
+      "kind": "vocab",
+      "term": "social pressure",
+      "pos": "noun phrase",
+      "meaningZh": "社會壓力",
+      "difficulty": 1,
+      "example": "Social pressure to succeed creates unrealistic expectations.",
+      "synonyms": ["peer pressure", "external pressure", "expectations"]
+    },
+    {
+      "id": "lying-flat-010",
+      "kind": "vocab",
+      "term": "economic mobility",
+      "pos": "noun phrase",
+      "meaningZh": "經濟流動性 / 向上流動",
+      "difficulty": 2,
+      "example": "Limited economic mobility discourages ambitious youth.",
+      "synonyms": ["social advancement", "upward mobility", "economic opportunity"]
+    },
+    {
+      "id": "lying-flat-011",
+      "kind": "vocab",
+      "term": "disillusionment",
+      "pos": "noun",
+      "meaningZh": "幻滅 / 失望",
+      "difficulty": 2,
+      "example": "Widespread disillusionment fuels the lying flat movement.",
+      "synonyms": ["disappointment", "loss of faith", "skepticism"]
+    },
+    {
+      "id": "lying-flat-012",
+      "kind": "vocab",
+      "term": "contentment",
+      "pos": "noun",
+      "meaningZh": "滿足 / 知足",
+      "difficulty": 1,
+      "example": "The lying flat movement seeks contentment over constant striving.",
+      "synonyms": ["satisfaction", "fulfillment", "peace of mind"]
+    },
+    {
+      "id": "lying-flat-013",
+      "kind": "vocab",
+      "term": "career pressure",
+      "pos": "noun phrase",
+      "meaningZh": "職業壓力",
+      "difficulty": 1,
+      "example": "Career pressure drives many young people to burnout.",
+      "synonyms": ["work stress", "job pressure", "professional demands"]
+    },
+    {
+      "id": "lying-flat-014",
+      "kind": "vocab",
+      "term": "upward mobility",
+      "pos": "noun phrase",
+      "meaningZh": "向上流動",
+      "difficulty": 2,
+      "example": "Limited upward mobility discourages ambitious youth.",
+      "synonyms": ["social advancement", "career progression", "economic advancement"]
+    },
+    {
+      "id": "lying-flat-015",
+      "kind": "vocab",
+      "term": "overachievement",
+      "pos": "noun",
+      "meaningZh": "過度成就 / 過度努力",
+      "difficulty": 2,
+      "example": "Overachievement culture exhausts young people.",
+      "synonyms": ["perfectionism", "excessive striving", "high achievement pressure"]
+    },
+    {
+      "id": "lying-flat-016",
+      "kind": "vocab",
+      "term": "work-life balance",
+      "pos": "noun phrase",
+      "meaningZh": "工作與生活平衡",
+      "difficulty": 1,
+      "example": "Young workers increasingly demand work-life balance.",
+      "synonyms": ["life balance", "wellness", "equilibrium"]
+    },
+    {
+      "id": "lying-flat-017",
+      "kind": "vocab",
+      "term": "lifestyle choice",
+      "pos": "noun phrase",
+      "meaningZh": "生活方式選擇",
+      "difficulty": 1,
+      "example": "Lying flat is increasingly a conscious lifestyle choice.",
+      "synonyms": ["lifestyle decision", "living choice", "personal preference"]
+    },
+    {
+      "id": "lying-flat-018",
+      "kind": "vocab",
+      "term": "conformity",
+      "pos": "noun",
+      "meaningZh": "從眾 / 一致性",
+      "difficulty": 2,
+      "example": "The movement rejects social conformity.",
+      "synonyms": ["compliance", "adherence to norms", "social pressure"]
+    },
+    {
+      "id": "lying-flat-019",
+      "kind": "vocab",
+      "term": "independence",
+      "pos": "noun",
+      "meaningZh": "獨立 / 自主",
+      "difficulty": 1,
+      "example": "Young people seek independence from societal expectations.",
+      "synonyms": ["autonomy", "self-reliance", "freedom"]
+    },
+    {
+      "id": "lying-flat-020",
+      "kind": "vocab",
+      "term": "counter-culture",
+      "pos": "noun phrase",
+      "meaningZh": "反文化",
+      "difficulty": 2,
+      "example": "Lying flat is a counter-culture movement challenging mainstream values.",
+      "synonyms": ["rebellious movement", "cultural resistance", "alternative culture"]
+    },
+    {
+      "id": "lying-flat-021",
+      "kind": "vocab",
+      "term": "systemic inequality",
+      "pos": "noun phrase",
+      "meaningZh": "系統性不平等",
+      "difficulty": 3,
+      "example": "Systemic inequality drives the lying flat movement.",
+      "synonyms": ["structural inequality", "institutional bias", "deep-rooted inequality"]
+    },
+    {
+      "id": "lying-flat-022",
+      "kind": "vocab",
+      "term": "consumption",
+      "pos": "noun",
+      "meaningZh": "消費",
+      "difficulty": 1,
+      "example": "The movement criticizes excessive consumption.",
+      "synonyms": ["spending", "shopping", "material goods purchase"]
+    },
+    {
+      "id": "lying-flat-023",
+      "kind": "vocab",
+      "term": "simplicity",
+      "pos": "noun",
+      "meaningZh": "簡樸 / 簡單",
+      "difficulty": 1,
+      "example": "Embracing simplicity reduces life stress.",
+      "synonyms": ["plainness", "straightforwardness", "minimalism"]
+    },
+    {
+      "id": "lying-flat-024",
+      "kind": "vocab",
+      "term": "economic hardship",
+      "pos": "noun phrase",
+      "meaningZh": "經濟困難",
+      "difficulty": 2,
+      "example": "Economic hardship makes lying flat more appealing.",
+      "synonyms": ["financial difficulty", "economic struggle", "financial burden"]
+    },
+    {
+      "id": "lying-flat-025",
+      "kind": "vocab",
+      "term": "generational shift",
+      "pos": "noun phrase",
+      "meaningZh": "世代轉變",
+      "difficulty": 2,
+      "example": "Lying flat represents a generational shift in values.",
+      "synonyms": ["cultural change", "value transformation", "generational change"]
+    }
+  ]
+}

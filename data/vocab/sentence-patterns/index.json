@@ -1,0 +1,11 @@
+{
+  "slug": "sentence-patterns",
+  "nameZh": "句式升級坊",
+  "nameEn": "Sentence Patterns",
+  "tagline": "進階句式同變化",
+  "description": "強調、假設、讓步等進階句式模板。識用即拎 advanced level。",
+  "icon": "LuType",
+  "accent": "#dc2626",
+  "defaultContentKind": "sentence-pattern",
+  "sets": ["emphasis", "hypothetical", "concession"]
+}

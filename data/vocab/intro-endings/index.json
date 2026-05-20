@@ -1,0 +1,11 @@
+{
+  "slug": "intro-endings",
+  "nameZh": "開頭結尾過渡",
+  "nameEn": "Flow & Structure",
+  "tagline": "段落起承轉合句式",
+  "description": "Writing 開場白、結尾金句、段落過渡詞。讓文章流暢有層次。",
+  "icon": "LuMoveHorizontal",
+  "accent": "#16a34a",
+  "defaultContentKind": "opening",
+  "sets": ["openings", "closings", "transitions"]
+}

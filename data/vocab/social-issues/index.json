@@ -1,0 +1,21 @@
+{
+  "slug": "social-issues",
+  "nameZh": "時事議題包",
+  "nameEn": "Social Issues",
+  "tagline": "DSE Writing 常見社會議題詞彙",
+  "description": "整理 DSE English Writing 常出題嘅社會議題：科技、環境、青年、老齡化等。每個 set 包含相關詞彙、例句同搭配。",
+  "icon": "LuNewspaper",
+  "accent": "#549ee8",
+  "defaultContentKind": "vocab",
+  "sets": [
+    "cashless",
+    "lying-flat",
+    "youth-mental-health",
+    "social-media-addiction",
+    "environmental-conservation",
+    "ai",
+    "ageing",
+    "education",
+    "healthcare"
+  ]
+}

@@ -185,6 +185,13 @@
   box-sizing: border-box;
 }
 
+/* Restore list markers — Tailwind v4 preflight zeroes list-style globally.
+   Components that intentionally hide markers use list-none. */
+@layer base {
+  ol { list-style: decimal; padding-left: 1.5em; }
+  ul { list-style: disc; padding-left: 1.5em; }
+}
+
 html {
   scroll-behavior: smooth;
 }

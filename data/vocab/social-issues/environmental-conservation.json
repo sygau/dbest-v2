@@ -1,0 +1,262 @@
+{
+  "slug": "environmental-conservation",
+  "nameZh": "環境保育",
+  "nameEn": "Environmental Conservation",
+  "description": "氣候變化、可持續發展、回收減廢相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/ffa74bc1302585858f15154dc17481caf14f96f8-3648x2736.jpg?fit=max&w=600&h=600&fm=webp&q=70",
+  "tags": ["environment"],
+  "entries": [
+    {
+      "id": "env-001",
+      "kind": "vocab",
+      "term": "environmental conservation",
+      "pos": "noun phrase",
+      "meaningZh": "環境保育 / 環保",
+      "difficulty": 1,
+      "example": "Environmental conservation requires global cooperation and commitment.",
+      "synonyms": ["environmental protection", "nature conservation", "preservation"]
+    },
+    {
+      "id": "env-002",
+      "kind": "vocab",
+      "term": "climate change",
+      "pos": "noun phrase",
+      "meaningZh": "氣候變化 / 氣候變遷",
+      "difficulty": 1,
+      "example": "Climate change threatens biodiversity and human survival.",
+      "synonyms": ["global warming", "climate crisis", "climate emergency"]
+    },
+    {
+      "id": "env-003",
+      "kind": "vocab",
+      "term": "carbon footprint",
+      "pos": "noun phrase",
+      "meaningZh": "碳足跡",
+      "difficulty": 2,
+      "example": "We must reduce our carbon footprint to combat climate change.",
+      "synonyms": ["carbon emissions", "greenhouse gas emissions", "environmental impact"]
+    },
+    {
+      "id": "env-004",
+      "kind": "vocab",
+      "term": "sustainability",
+      "pos": "noun",
+      "meaningZh": "可持續性 / 永續",
+      "difficulty": 2,
+      "example": "Sustainability means meeting present needs without harming future generations.",
+      "synonyms": ["sustainable development", "eco-friendliness", "environmental responsibility"]
+    },
+    {
+      "id": "env-005",
+      "kind": "vocab",
+      "term": "renewable energy",
+      "pos": "noun phrase",
+      "meaningZh": "可再生能源",
+      "difficulty": 1,
+      "example": "Renewable energy sources like solar and wind power reduce emissions.",
+      "synonyms": ["clean energy", "green energy", "sustainable energy"]
+    },
+    {
+      "id": "env-006",
+      "kind": "vocab",
+      "term": "pollution",
+      "pos": "noun",
+      "meaningZh": "污染",
+      "difficulty": 1,
+      "example": "Air pollution in cities harms public health.",
+      "synonyms": ["environmental contamination", "hazardous waste", "toxic emissions"]
+    },
+    {
+      "id": "env-007",
+      "kind": "vocab",
+      "term": "biodiversity",
+      "pos": "noun",
+      "meaningZh": "生物多樣性",
+      "difficulty": 2,
+      "example": "Biodiversity loss threatens ecosystems worldwide.",
+      "synonyms": ["species diversity", "ecological diversity", "biological diversity"]
+    },
+    {
+      "id": "env-008",
+      "kind": "vocab",
+      "term": "recycling",
+      "pos": "noun",
+      "meaningZh": "回收 / 循環利用",
+      "difficulty": 1,
+      "example": "Recycling reduces waste and conserves natural resources.",
+      "synonyms": ["waste management", "material recovery", "reuse"]
+    },
+    {
+      "id": "env-009",
+      "kind": "vocab",
+      "term": "deforestation",
+      "pos": "noun",
+      "meaningZh": "森林砍伐 / 毀林",
+      "difficulty": 2,
+      "example": "Deforestation contributes significantly to climate change.",
+      "synonyms": ["forest destruction", "tree clearance", "land clearing"]
+    },
+    {
+      "id": "env-010",
+      "kind": "vocab",
+      "term": "ecosystem",
+      "pos": "noun",
+      "meaningZh": "生態系統",
+      "difficulty": 1,
+      "example": "Healthy ecosystems provide essential services to humanity.",
+      "synonyms": ["natural system", "environmental system", "habitat"]
+    },
+    {
+      "id": "env-011",
+      "kind": "vocab",
+      "term": "greenhouse gas",
+      "pos": "noun phrase",
+      "meaningZh": "溫室氣體",
+      "difficulty": 2,
+      "example": "Greenhouse gases trap heat and cause global warming.",
+      "synonyms": ["CO2", "carbon dioxide", "emissions"]
+    },
+    {
+      "id": "env-012",
+      "kind": "vocab",
+      "term": "ecological footprint",
+      "pos": "noun phrase",
+      "meaningZh": "生態足跡",
+      "difficulty": 3,
+      "example": "Our ecological footprint exceeds the Earth's regenerative capacity.",
+      "synonyms": ["environmental impact", "resource consumption", "sustainability measure"]
+    },
+    {
+      "id": "env-013",
+      "kind": "vocab",
+      "term": "fossil fuels",
+      "pos": "noun phrase",
+      "meaningZh": "化石燃料",
+      "difficulty": 1,
+      "example": "Replacing fossil fuels with renewable energy is essential.",
+      "synonyms": ["coal", "oil", "natural gas", "non-renewable energy"]
+    },
+    {
+      "id": "env-014",
+      "kind": "vocab",
+      "term": "carbon neutral",
+      "pos": "adjective",
+      "meaningZh": "碳中和",
+      "difficulty": 2,
+      "example": "Many companies aim to become carbon neutral by 2050.",
+      "synonyms": ["zero emissions", "climate neutral", "net zero"]
+    },
+    {
+      "id": "env-015",
+      "kind": "vocab",
+      "term": "zero waste",
+      "pos": "noun phrase",
+      "meaningZh": "零廢物",
+      "difficulty": 2,
+      "example": "Zero waste lifestyle reduces environmental impact.",
+      "synonyms": ["waste reduction", "minimal waste", "circular economy"]
+    },
+    {
+      "id": "env-016",
+      "kind": "vocab",
+      "term": "plastic pollution",
+      "pos": "noun phrase",
+      "meaningZh": "塑膠污染",
+      "difficulty": 1,
+      "example": "Plastic pollution threatens marine ecosystems.",
+      "synonyms": ["microplastics", "plastic waste", "ocean pollution"]
+    },
+    {
+      "id": "env-017",
+      "kind": "vocab",
+      "term": "emissions reduction",
+      "pos": "noun phrase",
+      "meaningZh": "減少排放",
+      "difficulty": 2,
+      "example": "Emissions reduction is crucial for meeting climate targets.",
+      "synonyms": ["carbon cuts", "pollution reduction", "lowering emissions"]
+    },
+    {
+      "id": "env-018",
+      "kind": "vocab",
+      "term": "sustainable",
+      "pos": "adjective",
+      "meaningZh": "可持續的",
+      "difficulty": 1,
+      "example": "Sustainable practices benefit both people and the planet.",
+      "synonyms": ["eco-friendly", "environmentally responsible", "long-term viable"]
+    },
+    {
+      "id": "env-019",
+      "kind": "vocab",
+      "term": "reforestation",
+      "pos": "noun",
+      "meaningZh": "重新造林",
+      "difficulty": 2,
+      "example": "Reforestation projects help restore damaged ecosystems.",
+      "synonyms": ["tree planting", "forest restoration", "afforestation"]
+    },
+    {
+      "id": "env-020",
+      "kind": "vocab",
+      "term": "ocean acidification",
+      "pos": "noun phrase",
+      "meaningZh": "海洋酸化",
+      "difficulty": 3,
+      "example": "Ocean acidification threatens coral reefs worldwide.",
+      "synonyms": ["pH change", "seawater acidification", "chemical change"]
+    },
+    {
+      "id": "env-021",
+      "kind": "vocab",
+      "term": "natural resources",
+      "pos": "noun phrase",
+      "meaningZh": "自然資源",
+      "difficulty": 1,
+      "example": "We must preserve natural resources for future generations.",
+      "synonyms": ["raw materials", "environmental assets", "renewable/non-renewable resources"]
+    },
+    {
+      "id": "env-022",
+      "kind": "vocab",
+      "term": "habitat destruction",
+      "pos": "noun phrase",
+      "meaningZh": "棲息地破壞",
+      "difficulty": 2,
+      "example": "Habitat destruction is the leading cause of species extinction.",
+      "synonyms": ["environmental degradation", "ecosystem damage", "land clearing"]
+    },
+    {
+      "id": "env-023",
+      "kind": "vocab",
+      "term": "conservation effort",
+      "pos": "noun phrase",
+      "meaningZh": "保育努力",
+      "difficulty": 1,
+      "example": "Conservation efforts protect endangered species.",
+      "synonyms": ["environmental protection", "preservation initiative", "protection program"]
+    },
+    {
+      "id": "env-024",
+      "kind": "vocab",
+      "term": "sustainable development",
+      "pos": "noun phrase",
+      "meaningZh": "可持續發展",
+      "difficulty": 2,
+      "example": "Sustainable development balances economic and environmental needs.",
+      "synonyms": ["green growth", "environmental responsibility", "responsible development"]
+    },
+    {
+      "id": "env-025",
+      "kind": "vocab",
+      "term": "environmental awareness",
+      "pos": "noun phrase",
+      "meaningZh": "環保意識",
+      "difficulty": 1,
+      "example": "Environmental awareness is growing among young people.",
+      "synonyms": ["ecological consciousness", "environmental education", "green awareness"]
+    }
+  ]
+}

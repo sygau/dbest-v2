@@ -1,0 +1,262 @@
+{
+  "slug": "youth-mental-health",
+  "nameZh": "青少年精神健康",
+  "nameEn": "Youth Mental Health",
+  "description": "青少年情緒、壓力、求助資源相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "thumbnail" : "https://img.freepik.com/premium-photo/human-head-profile-jigsaw-puzzle-3d-render_252600-928.jpg",
+  "tags": ["youth", "health"],
+  "entries": [
+    {
+      "id": "youth-mental-001",
+      "kind": "vocab",
+      "term": "mental health",
+      "pos": "noun phrase",
+      "meaningZh": "精神健康 / 心理健康",
+      "difficulty": 1,
+      "example": "Schools should prioritize mental health support for adolescents under exam stress.",
+      "synonyms": ["psychological wellbeing", "emotional health", "mental wellbeing"]
+    },
+    {
+      "id": "youth-mental-002",
+      "kind": "vocab",
+      "term": "depression",
+      "pos": "noun",
+      "meaningZh": "抑鬱症 / 抑鬱",
+      "difficulty": 1,
+      "example": "Depression among teenagers has increased due to social media pressure.",
+      "synonyms": ["clinical depression", "major depressive disorder", "low mood"]
+    },
+    {
+      "id": "youth-mental-003",
+      "kind": "vocab",
+      "term": "anxiety",
+      "pos": "noun",
+      "meaningZh": "焦慮 / 焦慮症",
+      "difficulty": 1,
+      "example": "Exam anxiety is common among DSE students preparing for university.",
+      "synonyms": ["stress", "worry", "nervousness", "apprehension"]
+    },
+    {
+      "id": "youth-mental-004",
+      "kind": "vocab",
+      "term": "psychological distress",
+      "pos": "noun phrase",
+      "meaningZh": "心理困擾 / 精神痛苦",
+      "difficulty": 2,
+      "example": "The survey revealed widespread psychological distress among young people.",
+      "synonyms": ["emotional distress", "mental suffering", "psychological strain"]
+    },
+    {
+      "id": "youth-mental-005",
+      "kind": "vocab",
+      "term": "burnout",
+      "pos": "noun",
+      "meaningZh": "過度疲勞 / 精疲力竭",
+      "difficulty": 2,
+      "example": "Academic burnout occurs when students are overwhelmed by constant pressure.",
+      "synonyms": ["exhaustion", "fatigue", "exhaustion syndrome", "mental fatigue"]
+    },
+    {
+      "id": "youth-mental-006",
+      "kind": "vocab",
+      "term": "stigma",
+      "pos": "noun",
+      "meaningZh": "污名 / 歧視",
+      "difficulty": 2,
+      "example": "Reducing stigma around mental illness encourages people to seek help.",
+      "synonyms": ["social stigma", "shame", "prejudice", "discrimination"]
+    },
+    {
+      "id": "youth-mental-007",
+      "kind": "vocab",
+      "term": "mental illness",
+      "pos": "noun phrase",
+      "meaningZh": "精神病 / 精神疾病",
+      "difficulty": 1,
+      "example": "Mental illness is a serious health issue affecting many teenagers.",
+      "synonyms": ["mental disorder", "psychiatric condition", "psychological disorder"]
+    },
+    {
+      "id": "youth-mental-008",
+      "kind": "vocab",
+      "term": "peer pressure",
+      "pos": "noun phrase",
+      "meaningZh": "同齡人壓力 / 同輩壓力",
+      "difficulty": 1,
+      "example": "Peer pressure can negatively affect a teenager's mental wellbeing.",
+      "synonyms": ["social pressure", "group pressure", "influence from peers"]
+    },
+    {
+      "id": "youth-mental-009",
+      "kind": "vocab",
+      "term": "resilience",
+      "pos": "noun",
+      "meaningZh": "復原力 / 韌性",
+      "difficulty": 2,
+      "example": "Building resilience helps young people cope with life challenges.",
+      "synonyms": ["adaptability", "toughness", "mental toughness", "robustness"]
+    },
+    {
+      "id": "youth-mental-010",
+      "kind": "vocab",
+      "term": "emotional regulation",
+      "pos": "noun phrase",
+      "meaningZh": "情緒調節 / 情緒管理",
+      "difficulty": 2,
+      "example": "Emotional regulation skills help students manage exam-related stress.",
+      "synonyms": ["emotional control", "mood management", "self-regulation"]
+    },
+    {
+      "id": "youth-mental-011",
+      "kind": "vocab",
+      "term": "counselling",
+      "pos": "noun",
+      "meaningZh": "諮詢 / 輔導",
+      "difficulty": 1,
+      "example": "School counselling services provide support for struggling students.",
+      "synonyms": ["therapy", "psychological counselling", "guidance", "therapeutic support"]
+    },
+    {
+      "id": "youth-mental-012",
+      "kind": "vocab",
+      "term": "coping mechanism",
+      "pos": "noun phrase",
+      "meaningZh": "應對機制 / 應對策略",
+      "difficulty": 2,
+      "example": "Healthy coping mechanisms include exercise and meditation.",
+      "synonyms": ["coping strategy", "coping skill", "stress management technique"]
+    },
+    {
+      "id": "youth-mental-013",
+      "kind": "vocab",
+      "term": "stress",
+      "pos": "noun",
+      "meaningZh": "壓力 / 緊張",
+      "difficulty": 1,
+      "example": "Academic stress can lead to serious mental health issues.",
+      "synonyms": ["tension", "strain", "pressure", "anxiety"]
+    },
+    {
+      "id": "youth-mental-014",
+      "kind": "vocab",
+      "term": "pressure",
+      "pos": "noun",
+      "meaningZh": "壓力 / 困擾",
+      "difficulty": 1,
+      "example": "Pressure from parents and society affects young people's mental health.",
+      "synonyms": ["stress", "expectation", "demand", "burden"]
+    },
+    {
+      "id": "youth-mental-015",
+      "kind": "vocab",
+      "term": "therapy",
+      "pos": "noun",
+      "meaningZh": "治療 / 療法",
+      "difficulty": 1,
+      "example": "Therapy can help teenagers process difficult emotions.",
+      "synonyms": ["treatment", "counselling", "psychological support", "intervention"]
+    },
+    {
+      "id": "youth-mental-016",
+      "kind": "vocab",
+      "term": "wellbeing",
+      "pos": "noun",
+      "meaningZh": "福祉 / 幸福感",
+      "difficulty": 2,
+      "example": "Schools should focus on students' overall wellbeing, not just grades.",
+      "synonyms": ["welfare", "health", "happiness", "quality of life"]
+    },
+    {
+      "id": "youth-mental-017",
+      "kind": "vocab",
+      "term": "intervention",
+      "pos": "noun",
+      "meaningZh": "介入 / 干預",
+      "difficulty": 2,
+      "example": "Early intervention can prevent mental health crises.",
+      "synonyms": ["treatment", "action", "involvement", "support"]
+    },
+    {
+      "id": "youth-mental-018",
+      "kind": "vocab",
+      "term": "overwhelm",
+      "pos": "verb",
+      "meaningZh": "淹沒 / 使不知所措",
+      "difficulty": 2,
+      "example": "Exam schedules can overwhelm vulnerable students.",
+      "synonyms": ["overpower", "flood", "inundate", "swamp"]
+    },
+    {
+      "id": "youth-mental-019",
+      "kind": "vocab",
+      "term": "crisis",
+      "pos": "noun",
+      "meaningZh": "危機 / 困境",
+      "difficulty": 1,
+      "example": "Mental health crisis hotlines provide immediate support.",
+      "synonyms": ["emergency", "critical situation", "turning point"]
+    },
+    {
+      "id": "youth-mental-020",
+      "kind": "vocab",
+      "term": "struggle",
+      "pos": "noun",
+      "meaningZh": "困擾 / 掙扎",
+      "difficulty": 1,
+      "example": "Many teenagers struggle with body image and self-doubt.",
+      "synonyms": ["difficulty", "hardship", "challenge", "battle"]
+    },
+    {
+      "id": "youth-mental-021",
+      "kind": "vocab",
+      "term": "support network",
+      "pos": "noun phrase",
+      "meaningZh": "支持網絡",
+      "difficulty": 2,
+      "example": "A strong support network of friends and family is crucial.",
+      "synonyms": ["social support", "assistance network", "community"]
+    },
+    {
+      "id": "youth-mental-022",
+      "kind": "vocab",
+      "term": "self-harm",
+      "pos": "noun",
+      "meaningZh": "自傷行為",
+      "difficulty": 2,
+      "example": "Self-harm is often a sign of serious psychological distress.",
+      "synonyms": ["self-injury", "self-damage", "harmful behavior"]
+    },
+    {
+      "id": "youth-mental-023",
+      "kind": "vocab",
+      "term": "suicide",
+      "pos": "noun",
+      "meaningZh": "自殺",
+      "difficulty": 2,
+      "example": "Suicide prevention requires accessible mental health services.",
+      "synonyms": ["self-harm", "suicidal behavior", "death by suicide"]
+    },
+    {
+      "id": "youth-mental-024",
+      "kind": "vocab",
+      "term": "adolescent",
+      "pos": "adjective",
+      "meaningZh": "青少年的",
+      "difficulty": 1,
+      "example": "Adolescent brains are still developing, making them vulnerable to mental illness.",
+      "synonyms": ["teenage", "young", "juvenile"]
+    },
+    {
+      "id": "youth-mental-025",
+      "kind": "vocab",
+      "term": "vulnerability",
+      "pos": "noun",
+      "meaningZh": "脆弱 / 易受傷害",
+      "difficulty": 2,
+      "example": "Recognizing vulnerability is the first step to seeking help.",
+      "synonyms": ["susceptibility", "weakness", "exposure to harm"]
+    }
+  ]
+}

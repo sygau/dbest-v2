@@ -1,0 +1,435 @@
+{
+  "slug": "verbs",
+  "nameZh": "動詞升級",
+  "nameEn": "Verb Upgrades",
+  "description": "say / show / make 等 basic verb 嘅升級替換。",
+  "difficulty": "easy",
+  "contentKind": "vocab",
+  "entries": [
+    {
+      "id": "verb-upgrade-001",
+      "kind": "upgrade",
+      "basicTerm": "said",
+      "advancedTerm": "remarked",
+      "pos": "verb",
+      "meaningZh": "說 → 評論/提出看法",
+      "example": "He remarked that the government's policy was ineffective.",
+      "basicExample": "'He said that...' (too basic and repetitive)",
+      "synonyms": [
+        "said",
+        "tell",
+        "stated",
+        "noted",
+        "commented"
+      ]
+    },
+    {
+      "id": "verb-upgrade-002",
+      "kind": "upgrade",
+      "basicTerm": "said",
+      "advancedTerm": "asserted",
+      "pos": "verb",
+      "meaningZh": "說 → 堅定地表示",
+      "example": "She asserted that climate action was urgent.",
+      "basicExample": "'She said that...' (lacks conviction)",
+      "synonyms": [
+        "say",
+        "state",
+        "declared",
+        "stated firmly",
+        "insisted"
+      ]
+    },
+    {
+      "id": "verb-upgrade-003",
+      "kind": "upgrade",
+      "basicTerm": "showed",
+      "advancedTerm": "demonstrated",
+      "pos": "verb",
+      "meaningZh": "展示 → 論證/證明",
+      "example": "The data demonstrated a clear trend.",
+      "basicExample": "'The data showed...' (less formal)",
+      "synonyms": [
+        "show",
+        "display",
+        "proved",
+        "illustrated",
+        "exhibited"
+      ]
+    },
+    {
+      "id": "verb-upgrade-004",
+      "kind": "upgrade",
+      "basicTerm": "made",
+      "advancedTerm": "facilitated",
+      "pos": "verb",
+      "meaningZh": "使...發生 → 促成/便利",
+      "example": "Technology facilitated communication across borders.",
+      "basicExample": "'Made it easier...' (vague)",
+      "synonyms": [
+        "make",
+        "help",
+        "enabled",
+        "aided",
+        "fostered"
+      ]
+    },
+    {
+      "id": "verb-upgrade-005",
+      "kind": "upgrade",
+      "basicTerm": "helped",
+      "advancedTerm": "alleviated",
+      "pos": "verb",
+      "meaningZh": "幫助 → 緩解/減輕",
+      "example": "The policy alleviated poverty in rural areas.",
+      "basicExample": "'Helped reduce...' (too informal)",
+      "synonyms": [
+        "help",
+        "ease",
+        "mitigated",
+        "eased",
+        "relieved"
+      ]
+    },
+    {
+      "id": "verb-upgrade-006",
+      "kind": "upgrade",
+      "basicTerm": "got",
+      "advancedTerm": "acquired",
+      "pos": "verb",
+      "meaningZh": "得到 → 獲得/取得",
+      "example": "He acquired extensive knowledge through research.",
+      "basicExample": "'He got...' (too colloquial)",
+      "synonyms": [
+        "get",
+        "obtain",
+        "obtained",
+        "secured",
+        "gained"
+      ]
+    },
+    {
+      "id": "verb-upgrade-007",
+      "kind": "upgrade",
+      "basicTerm": "went up",
+      "advancedTerm": "escalated",
+      "pos": "verb",
+      "meaningZh": "上升 → 升級/加劇",
+      "example": "Tensions escalated between the two nations.",
+      "basicExample": "'Went up...' (vague)",
+      "synonyms": [
+        "increase",
+        "go up",
+        "increased",
+        "intensified",
+        "surged"
+      ]
+    },
+    {
+      "id": "verb-upgrade-008",
+      "kind": "upgrade",
+      "basicTerm": "looked at",
+      "advancedTerm": "examined",
+      "pos": "verb",
+      "meaningZh": "看 → 研究/檢視",
+      "example": "Researchers examined the causes of depression.",
+      "basicExample": "'Looked at...' (too casual)",
+      "synonyms": [
+        "look",
+        "watch",
+        "investigated",
+        "analyzed",
+        "scrutinized"
+      ]
+    },
+    {
+      "id": "verb-upgrade-009",
+      "kind": "upgrade",
+      "basicTerm": "changed",
+      "advancedTerm": "transformed",
+      "pos": "verb",
+      "meaningZh": "改變 → 改造/轉變",
+      "example": "Social media transformed communication forever.",
+      "basicExample": "'Changed...' (weaker impact)",
+      "synonyms": [
+        "change",
+        "alter",
+        "revolutionized",
+        "altered fundamentally",
+        "reshaped"
+      ]
+    },
+    {
+      "id": "verb-upgrade-010",
+      "kind": "upgrade",
+      "basicTerm": "caused",
+      "advancedTerm": "precipitated",
+      "pos": "verb",
+      "meaningZh": "造成 → 引發/促成",
+      "example": "Economic inequality precipitated social unrest.",
+      "basicExample": "'Caused...' (simplistic)",
+      "synonyms": [
+        "cause",
+        "make",
+        "triggered",
+        "induced",
+        "provoked"
+      ]
+    },
+    {
+      "id": "verb-upgrade-011",
+      "kind": "upgrade",
+      "basicTerm": "thought",
+      "advancedTerm": "postulated",
+      "pos": "verb",
+      "meaningZh": "認為 → 假設/提出",
+      "example": "Scientists postulated that AI would transform industries.",
+      "basicExample": "'Thought that...' (informal)",
+      "synonyms": [
+        "think",
+        "believe",
+        "hypothesized",
+        "proposed",
+        "suggested"
+      ]
+    },
+    {
+      "id": "verb-upgrade-012",
+      "kind": "upgrade",
+      "basicTerm": "stopped",
+      "advancedTerm": "curtailed",
+      "pos": "verb",
+      "meaningZh": "停止 → 遏制/限制",
+      "example": "The government curtailed spending.",
+      "basicExample": "'Stopped all...' (incomplete)",
+      "synonyms": [
+        "stop",
+        "reduce",
+        "reduced",
+        "limited",
+        "halted"
+      ]
+    },
+    {
+      "id": "verb-upgrade-013",
+      "kind": "upgrade",
+      "basicTerm": "was",
+      "advancedTerm": "constituted",
+      "pos": "verb",
+      "meaningZh": "是 → 構成",
+      "example": "Youth unemployment constituted a major challenge.",
+      "basicExample": "'Was a major...' (overused)",
+      "synonyms": [
+        "be",
+        "form",
+        "comprised",
+        "formed",
+        "represented"
+      ]
+    },
+    {
+      "id": "verb-upgrade-014",
+      "kind": "upgrade",
+      "basicTerm": "talked about",
+      "advancedTerm": "addressed",
+      "pos": "verb",
+      "meaningZh": "談論 → 著手處理",
+      "example": "The report addressed mental health concerns.",
+      "basicExample": "'Talked about...' (vague)",
+      "synonyms": [
+        "talk about",
+        "discuss",
+        "tackled",
+        "discussed",
+        "dealt with"
+      ]
+    },
+    {
+      "id": "verb-upgrade-015",
+      "kind": "upgrade",
+      "basicTerm": "affects",
+      "advancedTerm": "impacts",
+      "pos": "verb",
+      "meaningZh": "影響 → 衝擊/造成影響",
+      "example": "Climate change impacts food security.",
+      "basicExample": "'Affects...' (overused in essays)",
+      "synonyms": [
+        "affect",
+        "influence",
+        "influences",
+        "affects significantly",
+        "shapes"
+      ]
+    },
+    {
+      "id": "verb-upgrade-016",
+      "kind": "upgrade",
+      "basicTerm": "gives",
+      "advancedTerm": "facilitates",
+      "pos": "verb",
+      "meaningZh": "給予 → 便利/促成",
+      "example": "Education facilitates upward mobility.",
+      "basicExample": "'Gives...' (too simple)",
+      "synonyms": [
+        "give",
+        "provide",
+        "enables",
+        "provides",
+        "affords"
+      ]
+    },
+    {
+      "id": "verb-upgrade-017",
+      "kind": "upgrade",
+      "basicTerm": "fights",
+      "advancedTerm": "combats",
+      "pos": "verb",
+      "meaningZh": "對抗 → 對抗/戰鬥",
+      "example": "Society must combat cyberbullying.",
+      "basicExample": "'Fights...' (too informal)",
+      "synonyms": [
+        "fight",
+        "oppose",
+        "battles",
+        "opposes",
+        "resists"
+      ]
+    },
+    {
+      "id": "verb-upgrade-018",
+      "kind": "upgrade",
+      "basicTerm": "uses",
+      "advancedTerm": "leverages",
+      "pos": "verb",
+      "meaningZh": "使用 → 利用/善用",
+      "example": "Businesses leverage data for profit.",
+      "basicExample": "'Uses...' (overused)",
+      "synonyms": [
+        "use",
+        "apply",
+        "utilizes",
+        "employs",
+        "harnesses"
+      ]
+    },
+    {
+      "id": "verb-upgrade-019",
+      "kind": "upgrade",
+      "basicTerm": "takes in",
+      "advancedTerm": "absorbs",
+      "pos": "verb",
+      "meaningZh": "吸收 → 吸收/消化",
+      "example": "Society must absorb these changes gradually.",
+      "basicExample": "'Takes in...' (awkward)",
+      "synonyms": [
+        "take in",
+        "absorb",
+        "accommodates",
+        "integrates",
+        "assimilates"
+      ]
+    },
+    {
+      "id": "verb-upgrade-020",
+      "kind": "upgrade",
+      "basicTerm": "needed",
+      "advancedTerm": "necessitated",
+      "pos": "verb",
+      "meaningZh": "需要 → 使...成為必要",
+      "example": "The crisis necessitated immediate action.",
+      "basicExample": "'Needed...' (informal)",
+      "synonyms": [
+        "need",
+        "require",
+        "required",
+        "demanded",
+        "called for"
+      ]
+    },
+    {
+      "id": "verb-upgrade-021",
+      "kind": "upgrade",
+      "basicTerm": "shows",
+      "advancedTerm": "underscores",
+      "pos": "verb",
+      "meaningZh": "顯示 → 強調/突顯",
+      "example": "Recent events underscore the importance of mental health.",
+      "basicExample": "'Shows...' (passive)",
+      "synonyms": [
+        "show",
+        "display",
+        "highlights",
+        "emphasizes",
+        "stresses"
+      ]
+    },
+    {
+      "id": "verb-upgrade-022",
+      "kind": "upgrade",
+      "basicTerm": "happens",
+      "advancedTerm": "unfolds",
+      "pos": "verb",
+      "meaningZh": "發生 → 展開/逐漸發生",
+      "example": "Social change unfolds over decades.",
+      "basicExample": "'Happens...' (passive)",
+      "synonyms": [
+        "happen",
+        "occur",
+        "develops",
+        "occurs",
+        "emerges"
+      ]
+    },
+    {
+      "id": "verb-upgrade-023",
+      "kind": "upgrade",
+      "basicTerm": "went down",
+      "advancedTerm": "declined",
+      "pos": "verb",
+      "meaningZh": "下降 → 下降/衰退",
+      "example": "Birth rates declined sharply.",
+      "basicExample": "'Went down...' (too casual)",
+      "synonyms": [
+        "go down",
+        "drop",
+        "decreased",
+        "fell",
+        "diminished"
+      ]
+    },
+    {
+      "id": "verb-upgrade-024",
+      "kind": "upgrade",
+      "basicTerm": "keep",
+      "advancedTerm": "sustain",
+      "pos": "verb",
+      "meaningZh": "保持 → 維持/可持續",
+      "example": "We must sustain environmental protection.",
+      "basicExample": "'Keep...' (informal)",
+      "synonyms": [
+        "keep",
+        "hold",
+        "maintain",
+        "preserve",
+        "uphold"
+      ]
+    },
+    {
+      "id": "verb-upgrade-025",
+      "kind": "upgrade",
+      "basicTerm": "bring about",
+      "advancedTerm": "engendered",
+      "pos": "verb",
+      "meaningZh": "造成 → 引起/產生",
+      "example": "Technology has engendered new social challenges.",
+      "basicExample": "'Brought about...' (awkward)",
+      "synonyms": [
+        "bring about",
+        "make",
+        "sparked",
+        "generated",
+        "created"
+      ]
+    }
+  ]
+}

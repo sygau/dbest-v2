@@ -1,0 +1,235 @@
+{
+  "slug": "openings",
+  "nameZh": "開場白",
+  "nameEn": "Openings",
+  "description": "吸引讀者注意嘅開首句式。",
+  "difficulty": "easy",
+  "contentKind": "opening",
+  "entries": [
+    {
+      "id": "opening-001",
+      "kind": "sentence-pattern",
+      "term": "In recent years, ...",
+      "meaningZh": "近年來...",
+      "difficulty": 1,
+      "example": "In recent years, social media has transformed human communication.",
+      "synonyms": ["Recently,", "Over the past years,", "In modern times,"]
+    },
+    {
+      "id": "opening-002",
+      "kind": "sentence-pattern",
+      "term": "It is undeniable that ...",
+      "meaningZh": "不可否認的是...",
+      "difficulty": 2,
+      "example": "It is undeniable that education plays a crucial role.",
+      "synonyms": ["Without doubt,", "Clearly,", "Undoubtedly,"]
+    },
+    {
+      "id": "opening-003",
+      "kind": "sentence-pattern",
+      "term": "The question of whether ... has long been debated.",
+      "meaningZh": "關於...是否...的問題長期被討論",
+      "difficulty": 2,
+      "example": "The question of whether technology improves lives has long been debated.",
+      "synonyms": ["The issue of ...", "The debate about ...", "The question of ..."]
+    },
+    {
+      "id": "opening-004",
+      "kind": "sentence-pattern",
+      "term": "There is a growing concern about ...",
+      "meaningZh": "越來越多人關注...",
+      "difficulty": 1,
+      "example": "There is a growing concern about mental health in schools.",
+      "synonyms": ["Many worry about", "Increasingly,", "A concern arises about"]
+    },
+    {
+      "id": "opening-005",
+      "kind": "sentence-pattern",
+      "term": "From different perspectives, ...",
+      "meaningZh": "從不同角度來看...",
+      "difficulty": 1,
+      "example": "From different perspectives, immigration impacts society.",
+      "synonyms": ["From various viewpoints,", "Looking at different angles,", "Considering various aspects,"]
+    },
+    {
+      "id": "opening-006",
+      "kind": "sentence-pattern",
+      "term": "It could be argued that ...",
+      "meaningZh": "可以爭論說...",
+      "difficulty": 1,
+      "example": "It could be argued that climate change demands urgent action.",
+      "synonyms": ["One could say that", "Some might argue that", "It is arguable that"]
+    },
+    {
+      "id": "opening-007",
+      "kind": "sentence-pattern",
+      "term": "Current trends suggest that ...",
+      "meaningZh": "目前趨勢顯示...",
+      "difficulty": 1,
+      "example": "Current trends suggest that artificial intelligence will reshape industries.",
+      "synonyms": ["Evidence indicates that", "Data shows that", "Studies reveal that"]
+    },
+    {
+      "id": "opening-008",
+      "kind": "sentence-pattern",
+      "term": "A striking feature of modern society is ...",
+      "meaningZh": "現代社會的一個顯著特徵是...",
+      "difficulty": 2,
+      "example": "A striking feature of modern society is increasing social media dependence.",
+      "synonyms": ["A notable aspect of", "A key characteristic of", "An important element of"]
+    },
+    {
+      "id": "opening-009",
+      "kind": "sentence-pattern",
+      "term": "The advent of ... has fundamentally changed ...",
+      "meaningZh": "...的出現從根本上改變了...",
+      "difficulty": 2,
+      "example": "The advent of the internet has fundamentally changed communication.",
+      "synonyms": ["The emergence of", "The rise of", "The introduction of"]
+    },
+    {
+      "id": "opening-010",
+      "kind": "sentence-pattern",
+      "term": "Statistics reveal that ...",
+      "meaningZh": "統計顯示...",
+      "difficulty": 1,
+      "example": "Statistics reveal that youth unemployment is rising.",
+      "synonyms": ["Research shows that", "Data indicates that", "Evidence proves that"]
+    },
+    {
+      "id": "opening-011",
+      "kind": "sentence-pattern",
+      "term": "Hardly anyone would deny that ...",
+      "meaningZh": "很少人會否認...",
+      "difficulty": 2,
+      "example": "Hardly anyone would deny that education is essential.",
+      "synonyms": ["It is widely accepted that", "Few would dispute that", "Commonly,"]
+    },
+    {
+      "id": "opening-012",
+      "kind": "sentence-pattern",
+      "term": "While it is true that ..., it must be acknowledged that ...",
+      "meaningZh": "雖然...是真的，但必須承認...",
+      "difficulty": 2,
+      "example": "While it is true that technology aids learning, it must be acknowledged that screen time is harmful.",
+      "synonyms": ["Granted that..., however...", "Although..., yet...", "It is true that..., but..."]
+    },
+    {
+      "id": "opening-013",
+      "kind": "sentence-pattern",
+      "term": "Most people would agree that ...",
+      "meaningZh": "大多數人都會同意...",
+      "difficulty": 1,
+      "example": "Most people would agree that honesty is important.",
+      "synonyms": ["Commonly,", "It is widely believed that", "Generally speaking,"]
+    },
+    {
+      "id": "opening-014",
+      "kind": "sentence-pattern",
+      "term": "Arguably, the most significant issue is ...",
+      "meaningZh": "可以說，最重要的問題是...",
+      "difficulty": 2,
+      "example": "Arguably, the most significant issue is environmental degradation.",
+      "synonyms": ["Arguably,", "One could say that", "Perhaps the most crucial..."]
+    },
+    {
+      "id": "opening-015",
+      "kind": "sentence-pattern",
+      "term": "The relationship between ... and ... is complex.",
+      "meaningZh": "...\u548c...\u4e4b\u9593\u7684\u95dc\u4fc2\u5f88\u8907\u96dc",
+      "difficulty": 1,
+      "example": "The relationship between wealth and happiness is complex.",
+      "synonyms": ["The link between", "The connection between", "The correlation between"]
+    },
+    {
+      "id": "opening-016",
+      "kind": "sentence-pattern",
+      "term": "It goes without saying that ...",
+      "meaningZh": "不言而喚...",
+      "difficulty": 1,
+      "example": "It goes without saying that health is precious.",
+      "synonyms": ["Obviously,", "Clearly,", "Of course,"]
+    },
+    {
+      "id": "opening-017",
+      "kind": "sentence-pattern",
+      "term": "Consider the fact that ...",
+      "meaningZh": "考\u91cf\u5230...\u9019\u4e00\u4e8b\u5be6",
+      "difficulty": 1,
+      "example": "Consider the fact that many students lack basic resources.",
+      "synonyms": ["Bear in mind that", "Note that", "Take into account that"]
+    },
+    {
+      "id": "opening-018",
+      "kind": "sentence-pattern",
+      "term": "Proponents of ... argue that ...",
+      "meaningZh": "...的擁護者主張...",
+      "difficulty": 2,
+      "example": "Proponents of artificial intelligence argue that it will create new opportunities.",
+      "synonyms": ["Supporters of", "Advocates of", "Those in favor of"]
+    },
+    {
+      "id": "opening-019",
+      "kind": "sentence-pattern",
+      "term": "The central question here is whether ...",
+      "meaningZh": "這\u88e1\u7684\u6838\u5fc3\u554f\u984c\u662f\u662f\u5426...",
+      "difficulty": 1,
+      "example": "The central question here is whether technology improves wellbeing.",
+      "synonyms": ["The key question is", "The fundamental issue is", "The crux of the matter is"]
+    },
+    {
+      "id": "opening-020",
+      "kind": "sentence-pattern",
+      "term": "One cannot help but observe that ...",
+      "meaningZh": "人們不禁注意到...",
+      "difficulty": 2,
+      "example": "One cannot help but observe that inequality is increasing.",
+      "synonyms": ["It is clear that", "One notices that", "It is evident that"]
+    },
+    {
+      "id": "opening-021",
+      "kind": "sentence-pattern",
+      "term": "To illustrate this point, ...",
+      "meaningZh": "為了說明這一點...",
+      "difficulty": 1,
+      "example": "To illustrate this point, consider recent economic trends.",
+      "synonyms": ["For example,", "In illustration,", "To demonstrate,"]
+    },
+    {
+      "id": "opening-022",
+      "kind": "sentence-pattern",
+      "term": "What merits our attention is ...",
+      "meaningZh": "值得我們注意的是...",
+      "difficulty": 2,
+      "example": "What merits our attention is the rising dropout rate.",
+      "synonyms": ["What deserves consideration is", "What requires attention is", "Worthy of note is"]
+    },
+    {
+      "id": "opening-023",
+      "kind": "sentence-pattern",
+      "term": "It is often claimed that ...",
+      "meaningZh": "人們經常聲稱...",
+      "difficulty": 1,
+      "example": "It is often claimed that social media connects people.",
+      "synonyms": ["People often say that", "It is frequently stated that", "Commonly,"]
+    },
+    {
+      "id": "opening-024",
+      "kind": "sentence-pattern",
+      "term": "The prevailing view is that ...",
+      "meaningZh": "普遍觀點是...",
+      "difficulty": 2,
+      "example": "The prevailing view is that climate change requires immediate action.",
+      "synonyms": ["The common opinion is", "Most believe that", "The consensus is"]
+    },
+    {
+      "id": "opening-025",
+      "kind": "sentence-pattern",
+      "term": "At present, many are questioning whether ...",
+      "meaningZh": "目前，許多人質疑是否...",
+      "difficulty": 1,
+      "example": "At present, many are questioning whether social media is beneficial.",
+      "synonyms": ["Currently,", "Nowadays,", "These days,"]
+    }
+  ]
+}

@@ -26,7 +26,7 @@ import {
   CUTOFF_SUBJECT_NAMES
 } from '../../utils/cutoffSlugSEO';
 import CutoffTable from '../../components/CutoffTable';
-import { csvToCutoffData, dataToTableFormat, CutoffTableData, SubjectConfig, CutoffConfig } from '../../utils/clientCutoffData';
+import { CutoffTableData, SubjectConfig, CutoffConfig } from '../../utils/clientCutoffData';
 import { getSubjectCutoffLastUpdated } from '../../utils/lastUpdated';
 import { Alert, AlertTitle, AlertDescription } from '../../components/ui/Alert';
 
@@ -188,26 +188,10 @@ export const getStaticProps: GetStaticProps<CutoffSubjectPageProps> = async ({ p
   let cutoffData: CutoffTableData = {};
   if (subjectConfig) {
     try {
-      const { readFileSync } = await import('fs');
-      const { join } = await import('path');
-      const allData: any[] = [];
-      for (const tableConfig of subjectConfig.tables) {
-        const csvPath = join(process.cwd(), 'public', 'data', 'cutoff', subjectStr, tableConfig.file);
-        try {
-          const csvContent = readFileSync(csvPath, 'utf8');
-          const tableData = csvToCutoffData(csvContent, subjectStr);
-          tableData.forEach(item => {
-            item.tableId = tableConfig.id;
-            item.tableTitle = tableConfig.title;
-          });
-          allData.push(...tableData);
-        } catch (e) {
-          console.warn(`Failed to read CSV ${csvPath}:`, e);
-        }
-      }
-      cutoffData = dataToTableFormat(allData);
+      const mod = await import(`../../data/cutoff/${subjectStr}.json`);
+      cutoffData = (mod.default || mod) as CutoffTableData;
     } catch (e) {
-      console.warn(`fs not available, skipping CSV load:`, e);
+      console.warn(`No prebuilt cutoff JSON for ${subjectStr}:`, e);
     }
   }
 

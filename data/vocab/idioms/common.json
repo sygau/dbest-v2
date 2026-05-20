@@ -1,0 +1,235 @@
+{
+  "slug": "common",
+  "nameZh": "常用成語",
+  "nameEn": "Common Idioms",
+  "description": "DSE 常見 English idioms。",
+  "difficulty": "medium",
+  "contentKind": "idiom",
+  "entries": [
+    {
+      "id": "idiom-001",
+      "kind": "idiom",
+      "term": "break the ice",
+      "meaningZh": "打破僵局",
+      "difficulty": 1,
+      "example": "A good joke can break the ice at the beginning of the presentation.",
+      "synonyms": ["open up", "get started", "initiate"]
+    },
+    {
+      "id": "idiom-002",
+      "kind": "idiom",
+      "term": "think outside the box",
+      "meaningZh": "跳出框架思考",
+      "difficulty": 2,
+      "example": "Innovation requires students to think outside the box.",
+      "synonyms": ["be creative", "challenge assumptions", "be unconventional"]
+    },
+    {
+      "id": "idiom-003",
+      "kind": "idiom",
+      "term": "hit the nail on the head",
+      "meaningZh": "一針見血",
+      "difficulty": 2,
+      "example": "The critic hit the nail on the head with their analysis.",
+      "synonyms": ["be accurate", "be correct", "nail it"]
+    },
+    {
+      "id": "idiom-004",
+      "kind": "idiom",
+      "term": "a double-edged sword",
+      "meaningZh": "雙刃劍",
+      "difficulty": 2,
+      "example": "Technology is a double-edged sword with both benefits and risks.",
+      "synonyms": ["tradeoff", "mixed blessing", "two-sided problem"]
+    },
+    {
+      "id": "idiom-005",
+      "kind": "idiom",
+      "term": "the tip of the iceberg",
+      "meaningZh": "冰山一角",
+      "difficulty": 1,
+      "example": "These statistics are just the tip of the iceberg.",
+      "synonyms": ["small part", "visible portion", "beginning"]
+    },
+    {
+      "id": "idiom-006",
+      "kind": "idiom",
+      "term": "a level playing field",
+      "meaningZh": "平等競爭的環境",
+      "difficulty": 2,
+      "example": "Everyone deserves a level playing field in education.",
+      "synonyms": ["equal opportunity", "fairness", "equal footing"]
+    },
+    {
+      "id": "idiom-007",
+      "kind": "idiom",
+      "term": "get a foot in the door",
+      "meaningZh": "取得機會",
+      "difficulty": 2,
+      "example": "Internships help graduates get a foot in the door.",
+      "synonyms": ["get an opportunity", "make progress", "gain entry"]
+    },
+    {
+      "id": "idiom-008",
+      "kind": "idiom",
+      "term": "go the extra mile",
+      "meaningZh": "付出更多努力",
+      "difficulty": 1,
+      "example": "Teachers who go the extra mile inspire students.",
+      "synonyms": ["make extra effort", "do more", "exceed expectations"]
+    },
+    {
+      "id": "idiom-009",
+      "kind": "idiom",
+      "term": "sink or swim",
+      "meaningZh": "成敗在此一舉",
+      "difficulty": 2,
+      "example": "New employees must sink or swim in the first month.",
+      "synonyms": ["succeed or fail", "no middle ground", "critical test"]
+    },
+    {
+      "id": "idiom-010",
+      "kind": "idiom",
+      "term": "a wake-up call",
+      "meaningZh": "警鐘",
+      "difficulty": 1,
+      "example": "The pandemic was a wake-up call for healthcare systems.",
+      "synonyms": ["warning", "reality check", "stimulus"]
+    },
+    {
+      "id": "idiom-011",
+      "kind": "idiom",
+      "term": "cut corners",
+      "meaningZh": "偷工減料",
+      "difficulty": 1,
+      "example": "Cutting corners in construction compromises safety.",
+      "synonyms": ["be inefficient", "rush", "skip steps"]
+    },
+    {
+      "id": "idiom-012",
+      "kind": "idiom",
+      "term": "the ball is in your court",
+      "meaningZh": "該你採取行動了",
+      "difficulty": 2,
+      "example": "I've given my proposal; now the ball is in your court.",
+      "synonyms": ["your turn", "your responsibility", "your decision"]
+    },
+    {
+      "id": "idiom-013",
+      "kind": "idiom",
+      "term": "bridge the gap",
+      "meaningZh": "縮小差距",
+      "difficulty": 2,
+      "example": "Education can bridge the gap between rich and poor.",
+      "synonyms": ["connect", "narrow differences", "reduce distance"]
+    },
+    {
+      "id": "idiom-014",
+      "kind": "idiom",
+      "term": "rain on someone's parade",
+      "meaningZh": "掃興 / 破壞計劃",
+      "difficulty": 2,
+      "example": "I don't want to rain on your parade, but I must point out this flaw.",
+      "synonyms": ["disappoint", "spoil plans", "dampen spirits"]
+    },
+    {
+      "id": "idiom-015",
+      "kind": "idiom",
+      "term": "crystal clear",
+      "meaningZh": "非常清楚",
+      "difficulty": 1,
+      "example": "The government's policy is crystal clear.",
+      "synonyms": ["very clear", "obvious", "transparent"]
+    },
+    {
+      "id": "idiom-016",
+      "kind": "idiom",
+      "term": "a catch-22",
+      "meaningZh": "進退兩難的局面",
+      "difficulty": 2,
+      "example": "It's a catch-22: you need experience to get a job, but jobs give experience.",
+      "synonyms": ["impossible situation", "paradox", "dilemma"]
+    },
+    {
+      "id": "idiom-017",
+      "kind": "idiom",
+      "term": "at the end of the day",
+      "meaningZh": "歸根結底 / 最後",
+      "difficulty": 1,
+      "example": "At the end of the day, family matters most.",
+      "synonyms": ["ultimately", "in conclusion", "fundamentally"]
+    },
+    {
+      "id": "idiom-018",
+      "kind": "idiom",
+      "term": "bite off more than you can chew",
+      "meaningZh": "貪心 / 力不勝任",
+      "difficulty": 2,
+      "example": "Don't bite off more than you can chew with your workload.",
+      "synonyms": ["overcommit", "take on too much", "exceed capacity"]
+    },
+    {
+      "id": "idiom-019",
+      "kind": "idiom",
+      "term": "a missed opportunity",
+      "meaningZh": "錯失的機會",
+      "difficulty": 1,
+      "example": "Not investing in education is a missed opportunity.",
+      "synonyms": ["lost chance", "wasted potential", "failed moment"]
+    },
+    {
+      "id": "idiom-020",
+      "kind": "idiom",
+      "term": "against all odds",
+      "meaningZh": "克服重重困難",
+      "difficulty": 2,
+      "example": "She succeeded against all odds.",
+      "synonyms": ["despite difficulties", "unlikely", "improbably"]
+    },
+    {
+      "id": "idiom-021",
+      "kind": "idiom",
+      "term": "in a nutshell",
+      "meaningZh": "簡而言之",
+      "difficulty": 1,
+      "example": "In a nutshell, we need systemic change.",
+      "synonyms": ["briefly", "in summary", "to summarize"]
+    },
+    {
+      "id": "idiom-022",
+      "kind": "idiom",
+      "term": "strike a balance",
+      "meaningZh": "取得平衡",
+      "difficulty": 1,
+      "example": "Students must strike a balance between studies and leisure.",
+      "synonyms": ["find equilibrium", "compromise", "harmonize"]
+    },
+    {
+      "id": "idiom-023",
+      "kind": "idiom",
+      "term": "a hard pill to swallow",
+      "meaningZh": "難以接受的事實",
+      "difficulty": 2,
+      "example": "The failure was a hard pill to swallow.",
+      "synonyms": ["difficult truth", "hard reality", "tough acceptance"]
+    },
+    {
+      "id": "idiom-024",
+      "kind": "idiom",
+      "term": "when push comes to shove",
+      "meaningZh": "關鍵時刻",
+      "difficulty": 2,
+      "example": "When push comes to shove, people show their true values.",
+      "synonyms": ["ultimately", "when critical", "in the end"]
+    },
+    {
+      "id": "idiom-025",
+      "kind": "idiom",
+      "term": "the writing is on the wall",
+      "meaningZh": "寫在牆上的字 / 前景已明",
+      "difficulty": 2,
+      "example": "The writing is on the wall: change is inevitable.",
+      "synonyms": ["obvious outcome", "inevitable result", "clear fate"]
+    }
+  ]
+}

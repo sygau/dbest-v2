@@ -1,0 +1,235 @@
+{
+  "slug": "fixed-expressions",
+  "nameZh": "固定表達",
+  "nameEn": "Fixed Expressions",
+  "description": "Collocations 同 fixed phrases。",
+  "difficulty": "medium",
+  "contentKind": "idiom",
+  "entries": [
+    {
+      "id": "fixed-001",
+      "kind": "idiom",
+      "term": "make a difference",
+      "meaningZh": "產生影響",
+      "difficulty": 1,
+      "example": "One person can make a difference.",
+      "synonyms": ["have impact", "matter", "be significant"]
+    },
+    {
+      "id": "fixed-002",
+      "kind": "idiom",
+      "term": "take action",
+      "meaningZh": "採取行動",
+      "difficulty": 1,
+      "example": "We must take action on climate change.",
+      "synonyms": ["act", "do something", "intervene"]
+    },
+    {
+      "id": "fixed-003",
+      "kind": "idiom",
+      "term": "raise awareness",
+      "meaningZh": "提高意識",
+      "difficulty": 1,
+      "example": "Campaigns raise awareness about health issues.",
+      "synonyms": ["educate", "inform", "highlight"]
+    },
+    {
+      "id": "fixed-004",
+      "kind": "idiom",
+      "term": "foster cooperation",
+      "meaningZh": "促進合作",
+      "difficulty": 2,
+      "example": "International agreements foster cooperation.",
+      "synonyms": ["encourage teamwork", "promote unity", "build partnership"]
+    },
+    {
+      "id": "fixed-005",
+      "kind": "idiom",
+      "term": "undermine confidence",
+      "meaningZh": "削弱信心",
+      "difficulty": 2,
+      "example": "Misinformation undermines confidence in institutions.",
+      "synonyms": ["weaken", "reduce faith", "erode trust"]
+    },
+    {
+      "id": "fixed-006",
+      "kind": "idiom",
+      "term": "shed light on",
+      "meaningZh": "闡明 / 揭示",
+      "difficulty": 1,
+      "example": "Research sheds light on the problem.",
+      "synonyms": ["clarify", "explain", "illuminate"]
+    },
+    {
+      "id": "fixed-007",
+      "kind": "idiom",
+      "term": "draw attention to",
+      "meaningZh": "吸引注意",
+      "difficulty": 1,
+      "example": "This article draws attention to inequality.",
+      "synonyms": ["highlight", "focus on", "point out"]
+    },
+    {
+      "id": "fixed-008",
+      "kind": "idiom",
+      "term": "bring about change",
+      "meaningZh": "帶來改變",
+      "difficulty": 2,
+      "example": "Education can bring about change.",
+      "synonyms": ["cause transformation", "create reform", "initiate change"]
+    },
+    {
+      "id": "fixed-009",
+      "kind": "idiom",
+      "term": "stand by someone",
+      "meaningZh": "支持某人",
+      "difficulty": 1,
+      "example": "Friends stand by you in difficult times.",
+      "synonyms": ["support", "help", "be loyal"]
+    },
+    {
+      "id": "fixed-010",
+      "kind": "idiom",
+      "term": "speak out",
+      "meaningZh": "大聲疾呼",
+      "difficulty": 1,
+      "example": "People should speak out against injustice.",
+      "synonyms": ["voice opinion", "protest", "express opinion"]
+    },
+    {
+      "id": "fixed-011",
+      "kind": "idiom",
+      "term": "come to terms with",
+      "meaningZh": "接受 / 認可",
+      "difficulty": 2,
+      "example": "Society must come to terms with climate reality.",
+      "synonyms": ["accept", "adjust to", "reconcile"]
+    },
+    {
+      "id": "fixed-012",
+      "kind": "idiom",
+      "term": "turn a blind eye",
+      "meaningZh": "視而不見",
+      "difficulty": 1,
+      "example": "We cannot turn a blind eye to suffering.",
+      "synonyms": ["ignore", "neglect", "overlook"]
+    },
+    {
+      "id": "fixed-013",
+      "kind": "idiom",
+      "term": "put forward",
+      "meaningZh": "提出",
+      "difficulty": 1,
+      "example": "The committee put forward new proposals.",
+      "synonyms": ["propose", "suggest", "present"]
+    },
+    {
+      "id": "fixed-014",
+      "kind": "idiom",
+      "term": "rule out",
+      "meaningZh": "排除",
+      "difficulty": 1,
+      "example": "We cannot rule out the possibility.",
+      "synonyms": ["exclude", "eliminate", "reject"]
+    },
+    {
+      "id": "fixed-015",
+      "kind": "idiom",
+      "term": "point out",
+      "meaningZh": "指出",
+      "difficulty": 1,
+      "example": "Critics point out the flaws in the plan.",
+      "synonyms": ["mention", "indicate", "show"]
+    },
+    {
+      "id": "fixed-016",
+      "kind": "idiom",
+      "term": "set an example",
+      "meaningZh": "樹立榜樣",
+      "difficulty": 1,
+      "example": "Leaders should set an example for others.",
+      "synonyms": ["model behavior", "demonstrate", "show the way"]
+    },
+    {
+      "id": "fixed-017",
+      "kind": "idiom",
+      "term": "take into account",
+      "meaningZh": "考慮到",
+      "difficulty": 1,
+      "example": "We must take into account all perspectives.",
+      "synonyms": ["consider", "factor in", "acknowledge"]
+    },
+    {
+      "id": "fixed-018",
+      "kind": "idiom",
+      "term": "reach a compromise",
+      "meaningZh": "達成妥協",
+      "difficulty": 1,
+      "example": "Both sides reached a compromise.",
+      "synonyms": ["agree", "settle", "find middle ground"]
+    },
+    {
+      "id": "fixed-019",
+      "kind": "idiom",
+      "term": "gain insight",
+      "meaningZh": "獲得洞察",
+      "difficulty": 2,
+      "example": "The study provides insight into the issue.",
+      "synonyms": ["understand", "comprehend", "learn"]
+    },
+    {
+      "id": "fixed-020",
+      "kind": "idiom",
+      "term": "foster creativity",
+      "meaningZh": "培養創意",
+      "difficulty": 1,
+      "example": "Good education fosters creativity.",
+      "synonyms": ["encourage innovation", "promote originality", "inspire"]
+    },
+    {
+      "id": "fixed-021",
+      "kind": "idiom",
+      "term": "fuel debate",
+      "meaningZh": "引發辯論",
+      "difficulty": 2,
+      "example": "This topic fuels debate among experts.",
+      "synonyms": ["provoke discussion", "spark argument", "stimulate disagreement"]
+    },
+    {
+      "id": "fixed-022",
+      "kind": "idiom",
+      "term": "bear witness to",
+      "meaningZh": "見證",
+      "difficulty": 2,
+      "example": "We bear witness to significant change.",
+      "synonyms": ["observe", "experience", "testify to"]
+    },
+    {
+      "id": "fixed-023",
+      "kind": "idiom",
+      "term": "cast doubt on",
+      "meaningZh": "拋出疑問",
+      "difficulty": 1,
+      "example": "Evidence casts doubt on the theory.",
+      "synonyms": ["question", "challenge", "express skepticism"]
+    },
+    {
+      "id": "fixed-024",
+      "kind": "idiom",
+      "term": "hold sway",
+      "meaningZh": "有影響力",
+      "difficulty": 2,
+      "example": "Technology holds sway over modern life.",
+      "synonyms": ["influence", "have power", "dominate"]
+    },
+    {
+      "id": "fixed-025",
+      "kind": "idiom",
+      "term": "pave the way",
+      "meaningZh": "鋪平道路",
+      "difficulty": 1,
+      "example": "Innovation paves the way for progress.",
+      "synonyms": ["facilitate", "enable", "prepare"]
+    }
+  ]
+}

@@ -1,5 +1,40 @@
 # dse.best v2 Changelog
 
+## [2026-05-21] — Calculator Programmes: entry guide section
+What: Added Cantonese入機指引 section below programme cards on /calculator-programmes. Covers enter/run/edit/delete steps for fx-50FH II & fx-3650P II, plus DSE exam tips. Uses native kbd/details styling, no JS.
+Files: pages/calculator-programmes/index.tsx
+Notes: kbd styling scoped via styled-jsx; guide-grid goes 1→2 col at 600px breakpoint.
+
+## [2026-05-21] — Cutoff pages: fix prod "No data available"
+What: Replaced runtime `fs.readFileSync` of CSVs in `pages/cutoff/[subject].tsx` getStaticProps with a static JSON import. New build script `scripts/build-cutoff-json.js` pre-bakes `public/data/cutoff/<subject>/*.csv` into `data/cutoff/<subject>.json` (CutoffTableData shape) and is wired into `build:prep`, `deploy`, `deploy:preview`, `preview`.
+Files: scripts/build-cutoff-json.js, pages/cutoff/[subject].tsx, package.json, data/cutoff/*.json
+Notes: Root cause — opennext-cloudflare bundles getStaticProps into the worker where Node `fs` is unavailable; the prior `await import('fs')` workaround crashed silently and dropped data. JSON import is bundled as webpack chunks at build, removing fs entirely. Re-run `npm run cutoff:json` whenever CSVs change.
+
+## [2024-12-20] — Vocab Bank: All Sets Complete (300+ Entries)
+What: Completed all remaining DSE English Writing vocabulary sets. Filled 5 empty categories with 300+ entries total: sentence-patterns/concession (25 concession structures), text-types/argumentative (25 thesis/evidence/rebuttal templates), text-types/complaint-letter (25 complaint letter structures), text-types/report (25 report writing templates), text-types/speech (25 speech/oral patterns). All entries follow established schema: meaningZh (Traditional Chinese HK), difficulty 1-3, DSE-appropriate examples, 3-4 synonyms per entry. Total vocab bank now: 6 categories × 22 sets = 300+ entries, all properly indexed and formatted.
+Files: data/vocab/sentence-patterns/concession.json, data/vocab/text-types/argumentative.json, data/vocab/text-types/complaint-letter.json, data/vocab/text-types/report.json, data/vocab/text-types/speech.json, docs/v2/vocab-bank-completion.md
+Notes: No schema changes. Index files already reference new sets (concession added to sentence-patterns/index.json, text-types all four files already in text-types/index.json). All entries verified for non-niche vocabulary, HK context where appropriate, proper difficulty distribution.
+
+## [2026-05-21] — Calculator Programmes: Chinese-first internationalization
+What: Updated all 8 calculator programme entries (simultaneous equations 2/3-var, quadratic, cubic, circle, variance, polar-rect, log-linear) to Chinese-first content format. Each input now has `labelZh` (Chinese label) + description with English in brackets. All displays have `labelZh` + meanings. dseRelevance sections now feature Chinese paperHints/topics/notes with English translations in brackets. Errors sections updated with `meaningZh` fields. Aligned with HKDSE student expectations (tutors teaching in Cantonese prefer Chinese-native UI with English reference).
+Files: data/programmes.json
+Notes: Breaking schema change for frontend — ensure ProgrammeCard, programme detail pages handle labelZh fallback gracefully (if missing, default to label). No changes to tokens array. Backwards-compatible: English `label` and `meaning` fields still present.
+
+## [2026-05-21] — Vocab Bank `/vocab`
+What: New 3-level DSE English Writing resource bank. Home `/vocab` Steam-library shelves of 6 sections + per-section preview shelves + recent. Section page `/vocab/[section]` hero + set grid. Set page `/vocab/[section]/[set]` flip cards (Quizizz-style reveal) or styled table (`#table` hash), per-entry TTS (Web Speech API), Cambridge dictionary auto-link, per-set + per-entry localStorage bookmarks, `/vocab/bookmarks` noindex page. Flexible schema (vocab / idiom / sentence-pattern / opening / template). 6 sections, 22 sets scaffolded; `social-issues/cashless` seeded with 6 real cards.
+Files: lib/vocab.ts, data/vocab/**, components/vocab/**, pages/vocab/**, docs/v2/vocab-bank.md, public/vocab/.gitkeep
+Notes: Sidebar entry intentionally NOT added (content scaffolded, real entries pending). Sharp corners on capsules + backdrop blur on heros per Steam aesthetic. iPad-first responsive (2-col tablet, 3-col desktop, 1-col phone). Bookmark IDs are stable — renaming entry `id` breaks user bookmarks. Empty `entries: []` sets render with a "add entries" placeholder pointing to the JSON path.
+
+## [2026-05-20] — Calculator Programme Library polish
+What: Renamed route `/programmes` → `/calculator-programmes`. Card redesign: subject badges moved above title; description clamp 3→2 lines, smaller. Filter card: advanced toggle now full-width header row (JUPAS calculator style) instead of inline button. Results count moved out of filter card to row above card grid. Slug page: source out-links now `rel="nofollow noopener noreferrer"`; added full-width default Button after related cards linking back to library.
+Files: pages/calculator-programmes/ (renamed from pages/programmes/), components/programmes/ProgrammeCard.tsx, components/programmes/ProgrammeFilters.tsx, components/tw/Sidebar.tsx
+Notes: Library files (lib/programmes.ts, components/programmes/*) kept under "programmes" name — only URL path changed. Button placed inside `<div>` with `router.push` onClick (avoids invalid <button> inside <a>).
+
+## [2026-05-20] — Calculator Programme Library
+What: New `/programmes` hub + `/programmes/[slug]` detail pages. Public-domain Casio fx-50FH / fx-3650P programme directory for HKDSE Maths Core/M1/M2. 8 seed programmes (simultaneous eq, quadratic, cubic, circle, variance, polar/rect, log linear, sim 3-var). Token-per-cell TokenGrid with key-sequence reveal, inline code view, setup block (MODE/SD/REG/CMPLX), display order list, EXE-by-EXE example walkthrough.
+Files: pages/programmes/index.tsx, pages/programmes/[slug].tsx, lib/programmes.ts, data/programmes.json, data/programme-tokens.json, components/programmes/*, docs/v2/programmes-library.md
+Notes: Local JSON only — no Sanity, no live JS formula eval. Step-by-step display verification per competitor convention (gjmaths.hk, hoksiresources.com, ccckws.edu.hk PDF). Tokens are reference data — formulas public-domain, not copyrightable.
+
 ## [2026-05-19] — Study Spots: FAQ, deep link, near-me, clustering
 What: Added FAQSection (6 canto Q&A, FAQPage JSON-LD for rich results) below the directory. Show-more now uses ui/Button (outline). `?spot=<id>` deep link opens overlay on load; overlay gained a Share Location button. New "near me" filter checkbox sorts by distance + shows `(~Nkm)` after card names. New `setting` field (indoor/outdoor/mixed). Map markers now clustered (leaflet.markercluster via CDN). Overlay panel radius restored to 16px.
 Files: pages/study-spots.tsx, components/study-spots/*, lib/studySpots.ts, data/study-spots.json, docs/v2/study-spots-data-guide.md

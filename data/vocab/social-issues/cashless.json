@@ -1,0 +1,262 @@
+{
+  "slug": "cashless",
+  "nameZh": "無現金社會",
+  "nameEn": "Cashless Society",
+  "description": "電子支付普及之後嘅社會議題、利弊同相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "tags": ["technology", "economy", "society"],
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/b6641e5b879a6bf243bb5c0abb78bfa5a216e9f2-1672x941.png?fit=max&w=600&h=600&fm=webp&q=70",
+  "entries": [
+    {
+      "id": "cashless-001",
+      "kind": "vocab",
+      "term": "financial inclusion",
+      "pos": "noun phrase",
+      "meaningZh": "金融普及 / 普惠金融",
+      "difficulty": 2,
+      "example": "Cashless apps can advance financial inclusion for the unbanked.",
+      "synonyms": ["economic inclusion", "banking access", "financial access"]
+    },
+    {
+      "id": "cashless-002",
+      "kind": "vocab",
+      "term": "digital divide",
+      "pos": "noun phrase",
+      "meaningZh": "數碼鴻溝",
+      "difficulty": 2,
+      "example": "The shift to e-payments may widen the digital divide between generations.",
+      "synonyms": ["technology gap", "connectivity gap", "tech disparity"]
+    },
+    {
+      "id": "cashless-003",
+      "kind": "vocab",
+      "term": "contactless payment",
+      "pos": "noun phrase",
+      "meaningZh": "非接觸式付款",
+      "difficulty": 1,
+      "example": "Contactless payment has become the norm in convenience stores.",
+      "synonyms": ["tap-to-pay", "NFC payment", "wireless payment"]
+    },
+    {
+      "id": "cashless-004",
+      "kind": "vocab",
+      "term": "monetary sovereignty",
+      "pos": "noun phrase",
+      "meaningZh": "貨幣主權",
+      "difficulty": 3,
+      "example": "Central banks fear that cryptocurrencies threaten monetary sovereignty.",
+      "synonyms": ["currency control", "fiscal autonomy", "monetary independence"]
+    },
+    {
+      "id": "cashless-005",
+      "kind": "vocab",
+      "term": "to marginalise",
+      "pos": "verb",
+      "meaningZh": "邊緣化",
+      "difficulty": 2,
+      "example": "Going cashless may marginalise elderly citizens who rely on physical money.",
+      "synonyms": ["exclude", "isolate", "alienate", "sideline"]
+    },
+    {
+      "id": "cashless-006",
+      "kind": "vocab",
+      "term": "surveillance capitalism",
+      "pos": "noun phrase",
+      "meaningZh": "監控資本主義",
+      "difficulty": 3,
+      "example": "Digital payments feed the engine of surveillance capitalism.",
+      "synonyms": ["data capitalism", "surveillance economy", "behavioural data extraction"]
+    },
+    {
+      "id": "cashless-007",
+      "kind": "vocab",
+      "term": "cybersecurity",
+      "pos": "noun",
+      "meaningZh": "網絡安全 / 資安",
+      "difficulty": 2,
+      "example": "Cybersecurity threats increase as more transactions move online.",
+      "synonyms": ["digital security", "information security", "cyber protection"]
+    },
+    {
+      "id": "cashless-008",
+      "kind": "vocab",
+      "term": "e-payment",
+      "pos": "noun",
+      "meaningZh": "電子支付",
+      "difficulty": 1,
+      "example": "E-payments offer convenience but raise privacy concerns.",
+      "synonyms": ["electronic payment", "digital payment", "online payment"]
+    },
+    {
+      "id": "cashless-009",
+      "kind": "vocab",
+      "term": "cryptocurrency",
+      "pos": "noun",
+      "meaningZh": "加密貨幣 / 虛擬貨幣",
+      "difficulty": 2,
+      "example": "Cryptocurrency challenges traditional banking systems.",
+      "synonyms": ["digital currency", "virtual currency", "crypto"]
+    },
+    {
+      "id": "cashless-010",
+      "kind": "vocab",
+      "term": "data breach",
+      "pos": "noun phrase",
+      "meaningZh": "數據洩露 / 資料外洩",
+      "difficulty": 2,
+      "example": "A data breach exposed millions of payment card details.",
+      "synonyms": ["security breach", "information leak", "data leak"]
+    },
+    {
+      "id": "cashless-011",
+      "kind": "vocab",
+      "term": "financial accessibility",
+      "pos": "noun phrase",
+      "meaningZh": "金融可及性",
+      "difficulty": 2,
+      "example": "Financial accessibility for elderly persons is crucial in a cashless society.",
+      "synonyms": ["access to banking", "financial equity", "inclusive finance"]
+    },
+    {
+      "id": "cashless-012",
+      "kind": "vocab",
+      "term": "transaction transparency",
+      "pos": "noun phrase",
+      "meaningZh": "交易透明度",
+      "difficulty": 2,
+      "example": "Transaction transparency can help combat money laundering.",
+      "synonyms": ["financial clarity", "record keeping", "traceability"]
+    },
+    {
+      "id": "cashless-013",
+      "kind": "vocab",
+      "term": "fintech",
+      "pos": "noun",
+      "meaningZh": "金融科技",
+      "difficulty": 2,
+      "example": "Fintech companies are revolutionizing payment systems.",
+      "synonyms": ["financial technology", "digital finance", "tech innovation"]
+    },
+    {
+      "id": "cashless-014",
+      "kind": "vocab",
+      "term": "mobile wallet",
+      "pos": "noun phrase",
+      "meaningZh": "行動錢包 / 手機錢包",
+      "difficulty": 1,
+      "example": "Mobile wallets make transactions quick and convenient.",
+      "synonyms": ["digital wallet", "e-wallet", "contactless payment"]
+    },
+    {
+      "id": "cashless-015",
+      "kind": "vocab",
+      "term": "unbanked population",
+      "pos": "noun phrase",
+      "meaningZh": "無銀行戶口人口",
+      "difficulty": 2,
+      "example": "The unbanked population benefits from cashless technology.",
+      "synonyms": ["underbanked", "financially excluded", "marginalized"]
+    },
+    {
+      "id": "cashless-016",
+      "kind": "vocab",
+      "term": "convenience",
+      "pos": "noun",
+      "meaningZh": "便利",
+      "difficulty": 1,
+      "example": "Cashless payments offer unprecedented convenience.",
+      "synonyms": ["ease", "accessibility", "efficiency"]
+    },
+    {
+      "id": "cashless-017",
+      "kind": "vocab",
+      "term": "fraud",
+      "pos": "noun",
+      "meaningZh": "詐騙 / 欺詐",
+      "difficulty": 1,
+      "example": "Cashless systems are vulnerable to fraud and hacking.",
+      "synonyms": ["scam", "deception", "illegal activity"]
+    },
+    {
+      "id": "cashless-018",
+      "kind": "vocab",
+      "term": "security risk",
+      "pos": "noun phrase",
+      "meaningZh": "安全風險",
+      "difficulty": 2,
+      "example": "Digital payments carry security risks for consumers.",
+      "synonyms": ["vulnerability", "threat", "danger"]
+    },
+    {
+      "id": "cashless-019",
+      "kind": "vocab",
+      "term": "transaction fee",
+      "pos": "noun phrase",
+      "meaningZh": "交易費用",
+      "difficulty": 1,
+      "example": "Some cashless platforms charge high transaction fees.",
+      "synonyms": ["service charge", "payment fee", "commission"]
+    },
+    {
+      "id": "cashless-020",
+      "kind": "vocab",
+      "term": "digital payment",
+      "pos": "noun phrase",
+      "meaningZh": "數字支付",
+      "difficulty": 1,
+      "example": "Digital payments are rapidly replacing cash worldwide.",
+      "synonyms": ["electronic payment", "online payment", "cashless transaction"]
+    },
+    {
+      "id": "cashless-021",
+      "kind": "vocab",
+      "term": "consumer protection",
+      "pos": "noun phrase",
+      "meaningZh": "消費者保護",
+      "difficulty": 2,
+      "example": "Consumer protection is essential in cashless economies.",
+      "synonyms": ["buyer protection", "customer rights", "legal safeguards"]
+    },
+    {
+      "id": "cashless-022",
+      "kind": "vocab",
+      "term": "anonymity",
+      "pos": "noun",
+      "meaningZh": "匿名 / 隱名",
+      "difficulty": 2,
+      "example": "Cash provides anonymity that digital payments lack.",
+      "synonyms": ["privacy", "anonymousness", "lack of identification"]
+    },
+    {
+      "id": "cashless-023",
+      "kind": "vocab",
+      "term": "government control",
+      "pos": "noun phrase",
+      "meaningZh": "政府控制",
+      "difficulty": 2,
+      "example": "Some worry cashless systems give governments too much control.",
+      "synonyms": ["state oversight", "regulatory control", "central authority"]
+    },
+    {
+      "id": "cashless-024",
+      "kind": "vocab",
+      "term": "blockchain",
+      "pos": "noun",
+      "meaningZh": "區塊鏈",
+      "difficulty": 3,
+      "example": "Blockchain technology offers transparent payment systems.",
+      "synonyms": ["distributed ledger", "cryptocurrency technology", "digital ledger"]
+    },
+    {
+      "id": "cashless-025",
+      "kind": "vocab",
+      "term": "economic inclusion",
+      "pos": "noun phrase",
+      "meaningZh": "經濟包容",
+      "difficulty": 2,
+      "example": "Cashless systems can promote economic inclusion if designed fairly.",
+      "synonyms": ["financial equity", "inclusive growth", "economic access"]
+    }
+  ]
+}

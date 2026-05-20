@@ -1,0 +1,262 @@
+{
+  "slug": "social-media-addiction",
+  "nameZh": "社交媒體成癮",
+  "nameEn": "Social Media Addiction",
+  "description": "社交媒體、屏幕時間、數碼健康相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/31fb83bbb81bececd9cc0bf095af422cbb2b2917-300x168.jpg?fit=max&w=600&h=600&fm=webp&q=70",
+  "tags": ["technology", "health"],
+  "entries": [
+    {
+      "id": "social-media-001",
+      "kind": "vocab",
+      "term": "social media addiction",
+      "pos": "noun phrase",
+      "meaningZh": "社交媒體成癮",
+      "difficulty": 1,
+      "example": "Social media addiction affects teenagers' sleep patterns and academic performance.",
+      "synonyms": ["internet addiction", "phone addiction", "digital addiction"]
+    },
+    {
+      "id": "social-media-002",
+      "kind": "vocab",
+      "term": "screen time",
+      "pos": "noun phrase",
+      "meaningZh": "屏幕時間",
+      "difficulty": 1,
+      "example": "Excessive screen time can cause eye strain and poor posture.",
+      "synonyms": ["device usage", "digital usage", "online time"]
+    },
+    {
+      "id": "social-media-003",
+      "kind": "vocab",
+      "term": "dopamine",
+      "pos": "noun",
+      "meaningZh": "多巴胺",
+      "difficulty": 2,
+      "example": "Social media platforms are designed to trigger dopamine releases.",
+      "synonyms": ["feel-good chemical", "reward hormone", "neurotransmitter"]
+    },
+    {
+      "id": "social-media-004",
+      "kind": "vocab",
+      "term": "algorithm",
+      "pos": "noun",
+      "meaningZh": "演算法",
+      "difficulty": 2,
+      "example": "Algorithms personalize content to keep users engaged longer.",
+      "synonyms": ["computational formula", "system logic", "recommendation system"]
+    },
+    {
+      "id": "social-media-005",
+      "kind": "vocab",
+      "term": "engagement",
+      "pos": "noun",
+      "meaningZh": "用戶參與度 / 互動率",
+      "difficulty": 1,
+      "example": "Social platforms maximize engagement through likes and comments.",
+      "synonyms": ["interaction", "involvement", "participation", "user activity"]
+    },
+    {
+      "id": "social-media-006",
+      "kind": "vocab",
+      "term": "digital wellbeing",
+      "pos": "noun phrase",
+      "meaningZh": "數碼健康",
+      "difficulty": 2,
+      "example": "Digital wellbeing initiatives encourage balanced technology use.",
+      "synonyms": ["online health", "cyber wellness", "digital health"]
+    },
+    {
+      "id": "social-media-007",
+      "kind": "vocab",
+      "term": "cyberbullying",
+      "pos": "noun",
+      "meaningZh": "網絡欺凌",
+      "difficulty": 1,
+      "example": "Cyberbullying on social media platforms harms young people's mental health.",
+      "synonyms": ["online harassment", "digital bullying", "internet bullying"]
+    },
+    {
+      "id": "social-media-008",
+      "kind": "vocab",
+      "term": "FOMO",
+      "pos": "noun",
+      "meaningZh": "失落恐懼症 / 害怕被遺漏",
+      "difficulty": 2,
+      "example": "FOMO drives users to constantly check their feeds.",
+      "synonyms": ["fear of missing out", "social anxiety"]
+    },
+    {
+      "id": "social-media-009",
+      "kind": "vocab",
+      "term": "validation",
+      "pos": "noun",
+      "meaningZh": "認可 / 認同",
+      "difficulty": 2,
+      "example": "Young people seek online validation through likes and comments.",
+      "synonyms": ["approval", "confirmation", "affirmation", "recognition"]
+    },
+    {
+      "id": "social-media-010",
+      "kind": "vocab",
+      "term": "self-esteem",
+      "pos": "noun phrase",
+      "meaningZh": "自尊心 / 自我評價",
+      "difficulty": 1,
+      "example": "Social media can negatively impact teenagers' self-esteem.",
+      "synonyms": ["self-worth", "confidence", "self-image", "self-confidence"]
+    },
+    {
+      "id": "social-media-011",
+      "kind": "vocab",
+      "term": "detox",
+      "pos": "noun",
+      "meaningZh": "戒毒 / 解毒",
+      "difficulty": 1,
+      "example": "A digital detox involves stepping away from devices for a period.",
+      "synonyms": ["digital break", "internet break", "cleanse"]
+    },
+    {
+      "id": "social-media-012",
+      "kind": "vocab",
+      "term": "mindfulness",
+      "pos": "noun",
+      "meaningZh": "正念 / 覺察力",
+      "difficulty": 2,
+      "example": "Mindfulness practices can reduce social media addiction.",
+      "synonyms": ["awareness", "meditation", "consciousness", "present-moment awareness"]
+    },
+    {
+      "id": "social-media-013",
+      "kind": "vocab",
+      "term": "notification",
+      "pos": "noun",
+      "meaningZh": "通知 / 提醒",
+      "difficulty": 1,
+      "example": "Push notifications trigger constant checking of social media.",
+      "synonyms": ["alert", "reminder", "message", "update"]
+    },
+    {
+      "id": "social-media-014",
+      "kind": "vocab",
+      "term": "content creator",
+      "pos": "noun phrase",
+      "meaningZh": "內容創作者",
+      "difficulty": 1,
+      "example": "Content creators rely on engagement metrics to measure success.",
+      "synonyms": ["influencer", "creator", "media producer", "online personality"]
+    },
+    {
+      "id": "social-media-015",
+      "kind": "vocab",
+      "term": "influencer",
+      "pos": "noun",
+      "meaningZh": "網紅 / 影響力人物",
+      "difficulty": 1,
+      "example": "Social media influencers shape consumer behavior.",
+      "synonyms": ["celebrity", "public figure", "opinion leader", "social media star"]
+    },
+    {
+      "id": "social-media-016",
+      "kind": "vocab",
+      "term": "social comparison",
+      "pos": "noun phrase",
+      "meaningZh": "社交比較",
+      "difficulty": 2,
+      "example": "Social comparison on platforms damages self-esteem.",
+      "synonyms": ["comparison", "competitive evaluation", "peer comparison"]
+    },
+    {
+      "id": "social-media-017",
+      "kind": "vocab",
+      "term": "engagement metrics",
+      "pos": "noun phrase",
+      "meaningZh": "參與度指標",
+      "difficulty": 2,
+      "example": "Engagement metrics drive platform design decisions.",
+      "synonyms": ["performance data", "interaction rates", "activity levels"]
+    },
+    {
+      "id": "social-media-018",
+      "kind": "vocab",
+      "term": "curated image",
+      "pos": "noun phrase",
+      "meaningZh": "經精心編排的形象",
+      "difficulty": 2,
+      "example": "Social media promotes curated images of perfect lives.",
+      "synonyms": ["filtered reality", "polished persona", "staged image"]
+    },
+    {
+      "id": "social-media-019",
+      "kind": "vocab",
+      "term": "comparison trap",
+      "pos": "noun phrase",
+      "meaningZh": "比較陷阱",
+      "difficulty": 2,
+      "example": "The comparison trap makes users feel inadequate.",
+      "synonyms": ["social comparison", "negative comparison", "mental trap"]
+    },
+    {
+      "id": "social-media-020",
+      "kind": "vocab",
+      "term": "authentic connection",
+      "pos": "noun phrase",
+      "meaningZh": "真實連結",
+      "difficulty": 2,
+      "example": "Social media often lacks authentic connection.",
+      "synonyms": ["genuine relationship", "real interaction", "meaningful contact"]
+    },
+    {
+      "id": "social-media-021",
+      "kind": "vocab",
+      "term": "viral content",
+      "pos": "noun phrase",
+      "meaningZh": "病毒式內容",
+      "difficulty": 1,
+      "example": "Viral content spreads rapidly but may be misleading.",
+      "synonyms": ["trending content", "popular posts", "widespread sharing"]
+    },
+    {
+      "id": "social-media-022",
+      "kind": "vocab",
+      "term": "digital footprint",
+      "pos": "noun phrase",
+      "meaningZh": "數碼足跡",
+      "difficulty": 2,
+      "example": "Your digital footprint remains online permanently.",
+      "synonyms": ["online presence", "data trail", "internet history"]
+    },
+    {
+      "id": "social-media-023",
+      "kind": "vocab",
+      "term": "mental health crisis",
+      "pos": "noun phrase",
+      "meaningZh": "心理健康危機",
+      "difficulty": 2,
+      "example": "Social media addiction is linked to mental health crises in teens.",
+      "synonyms": ["psychological emergency", "emotional crisis", "mental distress"]
+    },
+    {
+      "id": "social-media-024",
+      "kind": "vocab",
+      "term": "doomscrolling",
+      "pos": "noun",
+      "meaningZh": "末世式滑屏 / 負面信息成癮",
+      "difficulty": 2,
+      "example": "Doomscrolling through negative news worsens anxiety.",
+      "synonyms": ["news scrolling", "compulsive scrolling", "anxiety browsing"]
+    },
+    {
+      "id": "social-media-025",
+      "kind": "vocab",
+      "term": "information overload",
+      "pos": "noun phrase",
+      "meaningZh": "信息超載",
+      "difficulty": 2,
+      "example": "Information overload on social media confuses users.",
+      "synonyms": ["excessive information", "data saturation", "cognitive overload"]
+    }
+  ]
+}

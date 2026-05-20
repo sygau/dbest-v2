@@ -1,0 +1,235 @@
+{
+  "slug": "concession",
+  "nameZh": "讓步句式",
+  "nameEn": "Concession Patterns",
+  "description": "Although / Despite / However 等讓步句結構。",
+  "difficulty": "medium",
+  "contentKind": "sentence-pattern",
+  "entries": [
+    {
+      "id": "concession-001",
+      "kind": "sentence-pattern",
+      "term": "Although ... , ...",
+      "meaningZh": "雖然...,",
+      "difficulty": 1,
+      "example": "Although the plan is expensive, it will benefit society.",
+      "synonyms": ["Though ...", "While ...", "Even if ..."]
+    },
+    {
+      "id": "concession-002",
+      "kind": "sentence-pattern",
+      "term": "It is true that ... , yet / but ...",
+      "meaningZh": "雖然...是真的,但...",
+      "difficulty": 1,
+      "example": "It is true that technology brings benefits, yet it also creates problems.",
+      "synonyms": ["While it is true that ..., however ...", "Granted that ..., nevertheless ..."]
+    },
+    {
+      "id": "concession-003",
+      "kind": "sentence-pattern",
+      "term": "Admittedly, ... ; however, ...",
+      "meaningZh": "誠然...。然而...",
+      "difficulty": 1,
+      "example": "Admittedly, the system has flaws; however, it can be reformed.",
+      "synonyms": ["I grant that ...; yet ...", "No doubt ...; still ...", "Certainly ...; nonetheless ..."]
+    },
+    {
+      "id": "concession-004",
+      "kind": "sentence-pattern",
+      "term": "While it may be true that ... , the fact remains that ...",
+      "meaningZh": "雖然...可能是真的,但事實是...",
+      "difficulty": 2,
+      "example": "While it may be true that change is difficult, the fact remains that it is necessary.",
+      "synonyms": ["Even if ..., still ...", "Granted ..., yet ...", "Though ..., the reality is ..."]
+    },
+    {
+      "id": "concession-005",
+      "kind": "sentence-pattern",
+      "term": "No doubt ... ; nevertheless, ...",
+      "meaningZh": "不容疑...,但...",
+      "difficulty": 1,
+      "example": "No doubt the task is difficult; nevertheless, we must try.",
+      "synonyms": ["Certainly ..., yet ...", "Undoubtedly ..., but ...", "It is true that ..., still ..."]
+    },
+    {
+      "id": "concession-006",
+      "kind": "sentence-pattern",
+      "term": "Granted that ... , it could be argued that ...",
+      "meaningZh": "承認...。可以辯稱...",
+      "difficulty": 2,
+      "example": "Granted that costs are high, it could be argued that benefits justify it.",
+      "synonyms": ["Accepting that ..., one might argue that ...", "If we concede that ..., then ..."]
+    },
+    {
+      "id": "concession-007",
+      "kind": "sentence-pattern",
+      "term": "Despite ... , ...",
+      "meaningZh": "儘管...,",
+      "difficulty": 1,
+      "example": "Despite government efforts, inequality persists.",
+      "synonyms": ["In spite of ...", "Notwithstanding ...", "Regardless of ..."]
+    },
+    {
+      "id": "concession-008",
+      "kind": "sentence-pattern",
+      "term": "In spite of ... , ...",
+      "meaningZh": "不管...,",
+      "difficulty": 1,
+      "example": "In spite of obstacles, progress has been made.",
+      "synonyms": ["Despite ...", "Notwithstanding ...", "Albeit ..."]
+    },
+    {
+      "id": "concession-009",
+      "kind": "sentence-pattern",
+      "term": "Even if ... , ...",
+      "meaningZh": "即使...,",
+      "difficulty": 1,
+      "example": "Even if the plan fails, we will have learned valuable lessons.",
+      "synonyms": ["Should ...", "If ...", "Though ..."]
+    },
+    {
+      "id": "concession-010",
+      "kind": "sentence-pattern",
+      "term": "Conceding that ... , we must recognize ...",
+      "meaningZh": "承認...,,我們必須認識...",
+      "difficulty": 2,
+      "example": "Conceding that resources are limited, we must recognize the need for prioritization.",
+      "synonyms": ["Accepting that ..., we should ...", "Admitting ..., we can still ..."]
+    },
+    {
+      "id": "concession-011",
+      "kind": "sentence-pattern",
+      "term": "That said, ...",
+      "meaningZh": "說是這不...",
+      "difficulty": 1,
+      "example": "That said, the alternative is unacceptable.",
+      "synonyms": ["Nevertheless,", "Nonetheless,", "Having said that,"]
+    },
+    {
+      "id": "concession-012",
+      "kind": "sentence-pattern",
+      "term": "Nonetheless, ...",
+      "meaningZh": "但...",
+      "difficulty": 1,
+      "example": "The plan is risky; nonetheless, we should pursue it.",
+      "synonyms": ["Nevertheless,", "Yet,", "Still,"]
+    },
+    {
+      "id": "concession-013",
+      "kind": "sentence-pattern",
+      "term": "While ... is important, ... is equally important.",
+      "meaningZh": "雖然...是重要的,...同樣重要。",
+      "difficulty": 1,
+      "example": "While economic growth is important, environmental protection is equally important.",
+      "synonyms": ["Both ... and ...", "... and ... are equally crucial", "One cannot ignore ..."]
+    },
+    {
+      "id": "concession-014",
+      "kind": "sentence-pattern",
+      "term": "Be that as it may, ...",
+      "meaningZh": "不管怎樣...",
+      "difficulty": 2,
+      "example": "Be that as it may, reform is overdue.",
+      "synonyms": ["Nevertheless,", "Notwithstanding this,", "That said,"]
+    },
+    {
+      "id": "concession-015",
+      "kind": "sentence-pattern",
+      "term": "Qualified acknowledgment: ... has its merits, but ...",
+      "meaningZh": "有限的承認:...有其優點,但...",
+      "difficulty": 1,
+      "example": "Technology has its merits, but it poses risks too.",
+      "synonyms": ["... is valuable; however ...", "... offers benefits, yet ..."]
+    },
+    {
+      "id": "concession-016",
+      "kind": "sentence-pattern",
+      "term": "Notwithstanding ... , ...",
+      "meaningZh": "不管...,",
+      "difficulty": 2,
+      "example": "Notwithstanding previous failures, optimism remains.",
+      "synonyms": ["Despite ...", "In spite of ...", "For all ..."]
+    },
+    {
+      "id": "concession-017",
+      "kind": "sentence-pattern",
+      "term": "The problem with ... is that ... However, ...",
+      "meaningZh": "...的問題是...。然而...",
+      "difficulty": 1,
+      "example": "The problem with the system is its rigidity. However, it can be reformed.",
+      "synonyms": ["...'s weakness is ... Yet ...", "Disadvantage: ... Advantage: ..."]
+    },
+    {
+      "id": "concession-018",
+      "kind": "sentence-pattern",
+      "term": "For all its flaws, ... possesses ...",
+      "meaningZh": "儘管...有缺點,...依然有...",
+      "difficulty": 2,
+      "example": "For all its flaws, the system possesses resilience.",
+      "synonyms": ["Despite its limitations, ...", "Though imperfect, ...", "With all its problems, ..."]
+    },
+    {
+      "id": "concession-019",
+      "kind": "sentence-pattern",
+      "term": "It cannot be denied that ... Yet, ...",
+      "meaningZh": "不可否認...,但...",
+      "difficulty": 2,
+      "example": "It cannot be denied that progress has occurred. Yet, challenges remain.",
+      "synonyms": ["Undoubtedly...; however ...", "Certainly...; nevertheless ..."]
+    },
+    {
+      "id": "concession-020",
+      "kind": "sentence-pattern",
+      "term": "Arguably, ... Although ...",
+      "meaningZh": "可以說...,不過...",
+      "difficulty": 2,
+      "example": "Arguably, education is the key. Although resources are limited, investment remains essential.",
+      "synonyms": ["One might say...; however ...", "Perhaps...; still ..."]
+    },
+    {
+      "id": "concession-021",
+      "kind": "sentence-pattern",
+      "term": "However, on second thought, ...",
+      "meaningZh": "然而,再想想...",
+      "difficulty": 1,
+      "example": "This seems simple; however, on second thought, complications arise.",
+      "synonyms": ["Upon reflection, ...", "On further consideration, ...", "Reconsidering, ..."]
+    },
+    {
+      "id": "concession-022",
+      "kind": "sentence-pattern",
+      "term": "Much as ... , ...",
+      "meaningZh": "雖然...更是希望...",
+      "difficulty": 2,
+      "example": "Much as we might wish otherwise, resources are finite.",
+      "synonyms": ["Though we might ...", "As much as ...", "Tempting as it is ..."]
+    },
+    {
+      "id": "concession-023",
+      "kind": "sentence-pattern",
+      "term": "True enough, ... But ...",
+      "meaningZh": "確實...,但...",
+      "difficulty": 1,
+      "example": "True enough, it will be difficult. But we have no choice.",
+      "synonyms": ["Fair point, ... Still ...", "Agreed, ... However ..."]
+    },
+    {
+      "id": "concession-024",
+      "kind": "sentence-pattern",
+      "term": "Permitting the assumption that ... , we still must consider ...",
+      "meaningZh": "允許...的假設,我們仍然必須考慮...",
+      "difficulty": 3,
+      "example": "Permitting the assumption that change is difficult, we still must consider the alternative.",
+      "synonyms": ["Even allowing that ..., we must ...", "Granting that ..., the fact remains ..."]
+    },
+    {
+      "id": "concession-025",
+      "kind": "sentence-pattern",
+      "term": "Without disputing ... , we should recognize ...",
+      "meaningZh": "不爭議...,我們應需承認...",
+      "difficulty": 2,
+      "example": "Without disputing the benefits, we should recognize the risks.",
+      "synonyms": ["Not denying..., we must ...", "Accepting..., we should still ...", "Conceding..., we cannot ignore ..."]
+    }
+  ]
+}

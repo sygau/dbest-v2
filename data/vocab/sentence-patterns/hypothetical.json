@@ -1,0 +1,235 @@
+{
+  "slug": "hypothetical",
+  "nameZh": "假設句式",
+  "nameEn": "Hypothetical Patterns",
+  "description": "If / Were ... to / Had ... 條件句變化。",
+  "difficulty": "medium",
+  "contentKind": "sentence-pattern",
+  "entries": [
+    {
+      "id": "hypothetical-001",
+      "kind": "sentence-pattern",
+      "term": "If ..., then ...",
+      "meaningZh": "如果...，那麼...",
+      "difficulty": 1,
+      "example": "If we invest in education, then society will benefit.",
+      "synonyms": ["Should ..., ...", "In case ...", "Provided that ..."]
+    },
+    {
+      "id": "hypothetical-002",
+      "kind": "sentence-pattern",
+      "term": "Should ... happen, ...",
+      "meaningZh": "應該...發生，...",
+      "difficulty": 2,
+      "example": "Should climate change accelerate, society faces collapse.",
+      "synonyms": ["If ... were to ...", "In the event that ...", "Supposing that ..."]
+    },
+    {
+      "id": "hypothetical-003",
+      "kind": "sentence-pattern",
+      "term": "Suppose that ..., what would ...",
+      "meaningZh": "假設...，...會怎樣",
+      "difficulty": 2,
+      "example": "Suppose that all jobs were automated, what would happen to workers?",
+      "synonyms": ["If we imagine ...", "Consider if ...", "Picture a scenario where ..."]
+    },
+    {
+      "id": "hypothetical-004",
+      "kind": "sentence-pattern",
+      "term": "In the event that ..., ...",
+      "meaningZh": "如果...發生，...",
+      "difficulty": 2,
+      "example": "In the event that funding is cut, programs will suffer.",
+      "synonyms": ["Should ...", "If ... were to ...", "Were ... to ..."]
+    },
+    {
+      "id": "hypothetical-005",
+      "kind": "sentence-pattern",
+      "term": "It would be the case that ... if ...",
+      "meaningZh": "如果...，...將是這樣的情況",
+      "difficulty": 3,
+      "example": "It would be the case that inequality would persist if we did nothing.",
+      "synonyms": ["... would occur should ...", "Assuming ...", "Given that ..."]
+    },
+    {
+      "id": "hypothetical-006",
+      "kind": "sentence-pattern",
+      "term": "Had ... , ...",
+      "meaningZh": "如果當初...，...",
+      "difficulty": 3,
+      "example": "Had governments acted sooner, the crisis could have been prevented.",
+      "synonyms": ["Had it not been for ...", "If only ...", "Were it not for ..."]
+    },
+    {
+      "id": "hypothetical-007",
+      "kind": "sentence-pattern",
+      "term": "Let us assume that ...",
+      "meaningZh": "讓我們假設...",
+      "difficulty": 1,
+      "example": "Let us assume that technology will continue advancing.",
+      "synonyms": ["Suppose ...", "Let's say ...", "Imagine that ..."]
+    },
+    {
+      "id": "hypothetical-008",
+      "kind": "sentence-pattern",
+      "term": "It is plausible to argue that if ..., ...",
+      "meaningZh": "可以合理地辯稱如果...，...",
+      "difficulty": 2,
+      "example": "It is plausible to argue that if migration increases, social tension may rise.",
+      "synonyms": ["One might argue that ...", "It is reasonable to suggest that ...", "It could be argued ..."]
+    },
+    {
+      "id": "hypothetical-009",
+      "kind": "sentence-pattern",
+      "term": "Assuming that ..., it follows that ...",
+      "meaningZh": "假設...，那麼隨之而來...",
+      "difficulty": 2,
+      "example": "Assuming that education improves, it follows that economic productivity increases.",
+      "synonyms": ["Given that ...", "Provided that ...", "If we accept that ..."]
+    },
+    {
+      "id": "hypothetical-010",
+      "kind": "sentence-pattern",
+      "term": "What if ...",
+      "meaningZh": "如果...會怎樣",
+      "difficulty": 1,
+      "example": "What if artificial intelligence becomes more powerful than humans?",
+      "synonyms": ["Suppose ...", "Imagine ...", "Consider ..."]
+    },
+    {
+      "id": "hypothetical-011",
+      "kind": "sentence-pattern",
+      "term": "Were it not for ..., ...",
+      "meaningZh": "如果不是...，...",
+      "difficulty": 2,
+      "example": "Were it not for international cooperation, the pandemic would be far worse.",
+      "synonyms": ["But for ...", "Without ...", "If it were not for ..."]
+    },
+    {
+      "id": "hypothetical-012",
+      "kind": "sentence-pattern",
+      "term": "Under the condition that ..., ...",
+      "meaningZh": "在...的條件下，...",
+      "difficulty": 2,
+      "example": "Under the condition that resources are available, the project can proceed.",
+      "synonyms": ["Given that ...", "Provided that ...", "As long as ..."]
+    },
+    {
+      "id": "hypothetical-013",
+      "kind": "sentence-pattern",
+      "term": "Barring ... , ...",
+      "meaningZh": "除非...，否則...",
+      "difficulty": 2,
+      "example": "Barring unforeseen circumstances, the plan will succeed.",
+      "synonyms": ["Unless ...", "Provided that ...", "Short of ..."]
+    },
+    {
+      "id": "hypothetical-014",
+      "kind": "sentence-pattern",
+      "term": "Granted that ..., it would mean that ...",
+      "meaningZh": "承認...，這意味著...",
+      "difficulty": 2,
+      "example": "Granted that climate change is real, it would mean we must reduce emissions.",
+      "synonyms": ["If we accept that ...", "Conceding that ...", "Admitting that ..."]
+    },
+    {
+      "id": "hypothetical-015",
+      "kind": "sentence-pattern",
+      "term": "Conceivably, if ..., ...",
+      "meaningZh": "可以想像，如果...，...",
+      "difficulty": 2,
+      "example": "Conceivably, if we invest heavily, we could solve poverty.",
+      "synonyms": ["It is conceivable that ...", "Arguably ...", "Potentially ..."]
+    },
+    {
+      "id": "hypothetical-016",
+      "kind": "sentence-pattern",
+      "term": "Were ... to happen, it would ...",
+      "meaningZh": "如果...發生，將...",
+      "difficulty": 2,
+      "example": "Were a major earthquake to hit, the city would face devastation.",
+      "synonyms": ["Should ... happen ...", "If ... were to ...", "In the event that ..."]
+    },
+    {
+      "id": "hypothetical-017",
+      "kind": "sentence-pattern",
+      "term": "On the assumption that ..., ...",
+      "meaningZh": "基於...的假設，...",
+      "difficulty": 2,
+      "example": "On the assumption that growth continues, employment will improve.",
+      "synonyms": ["Assuming ...", "Given that ...", "Provided that ..."]
+    },
+    {
+      "id": "hypothetical-018",
+      "kind": "sentence-pattern",
+      "term": "If only ..., ...",
+      "meaningZh": "要是...就好了，...",
+      "difficulty": 2,
+      "example": "If only we had acted sooner, this could have been avoided.",
+      "synonyms": ["Had ...", "If we had ...", "Had it not been for ..."]
+    },
+    {
+      "id": "hypothetical-019",
+      "kind": "sentence-pattern",
+      "term": "One can imagine that if ..., ...",
+      "meaningZh": "可以想像如果...，...",
+      "difficulty": 1,
+      "example": "One can imagine that if social media disappeared, behavior would change.",
+      "synonyms": ["It is easy to imagine that ...", "Conceivably ...", "Hypothetically ..."]
+    },
+    {
+      "id": "hypothetical-020",
+      "kind": "sentence-pattern",
+      "term": "In the unlikely event that ..., ...",
+      "meaningZh": "如果不太可能發生的...，...",
+      "difficulty": 2,
+      "example": "In the unlikely event that funding runs out, we will adapt.",
+      "synonyms": ["Should ... happen ...", "Should ... occur ...", "If by chance ..."]
+    },
+    {
+      "id": "hypothetical-021",
+      "kind": "sentence-pattern",
+      "term": "Practically speaking, if ..., ...",
+      "meaningZh": "實際上，如果...，...",
+      "difficulty": 1,
+      "example": "Practically speaking, if corruption increases, trust erodes.",
+      "synonyms": ["In practice, if ...", "Realistically, if ...", "In effect, if ..."]
+    },
+    {
+      "id": "hypothetical-022",
+      "kind": "sentence-pattern",
+      "term": "Logically, if ..., then ...",
+      "meaningZh": "在邏輯上，如果...，那麼...",
+      "difficulty": 2,
+      "example": "Logically, if fewer people are educated, society will regress.",
+      "synonyms": ["Following this logic ...", "By this reasoning ...", "It stands to reason ..."]
+    },
+    {
+      "id": "hypothetical-023",
+      "kind": "sentence-pattern",
+      "term": "In a scenario where ..., it is likely that ...",
+      "meaningZh": "在...的場景中，...很可能...",
+      "difficulty": 2,
+      "example": "In a scenario where AI dominates, human skills become precious.",
+      "synonyms": ["If we imagine ...", "Consider if ...", "Suppose that ..."]
+    },
+    {
+      "id": "hypothetical-024",
+      "kind": "sentence-pattern",
+      "term": "Were we to ..., ...",
+      "meaningZh": "要是我們...，...",
+      "difficulty": 2,
+      "example": "Were we to eliminate all borders, what would happen?",
+      "synonyms": ["If we were to ...", "Should we ...", "Were we ..."]
+    },
+    {
+      "id": "hypothetical-025",
+      "kind": "sentence-pattern",
+      "term": "Imagine a world where ..., then ...",
+      "meaningZh": "想像一個...的世界，那麼...",
+      "difficulty": 1,
+      "example": "Imagine a world where poverty is eliminated, then society flourishes.",
+      "synonyms": ["If we could ...", "Suppose ...", "Picture ..."]
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "slug": "closings",
+  "nameZh": "收尾金句",
+  "nameEn": "Closings",
+  "description": "有力結尾、呼籲行動嘅結尾句式。",
+  "difficulty": "easy",
+  "contentKind": "opening",
+  "entries": [
+    {
+      "id": "closing-001",
+      "kind": "sentence-pattern",
+      "term": "In conclusion, ...",
+      "meaningZh": "總而言之...",
+      "difficulty": 1,
+      "example": "In conclusion, education is the foundation of progress.",
+      "synonyms": ["To sum up,", "In summary,", "Ultimately,"]
+    },
+    {
+      "id": "closing-002",
+      "kind": "sentence-pattern",
+      "term": "It is thus clear that ...",
+      "meaningZh": "因此...是很明顯的",
+      "difficulty": 1,
+      "example": "It is thus clear that systemic change is necessary.",
+      "synonyms": ["It is evident that", "Therefore,", "Clearly,"]
+    },
+    {
+      "id": "closing-003",
+      "kind": "sentence-pattern",
+      "term": "We must therefore acknowledge that ...",
+      "meaningZh": "因此，我們必須承認...",
+      "difficulty": 1,
+      "example": "We must therefore acknowledge that individual action matters.",
+      "synonyms": ["We must thus recognize that", "Therefore, we should", "We cannot ignore that"]
+    },
+    {
+      "id": "closing-004",
+      "kind": "sentence-pattern",
+      "term": "The evidence overwhelmingly suggests that ...",
+      "meaningZh": "證據充分表明...",
+      "difficulty": 2,
+      "example": "The evidence overwhelmingly suggests that prevention is better than cure.",
+      "synonyms": ["Evidence clearly shows that", "Data proves that", "Research indicates that"]
+    },
+    {
+      "id": "closing-005",
+      "kind": "sentence-pattern",
+      "term": "Without doubt, ... is essential for ...",
+      "meaningZh": "毫無疑問，...對...至關重要",
+      "difficulty": 1,
+      "example": "Without doubt, cooperation is essential for progress.",
+      "synonyms": ["Undoubtedly,", "Clearly,", "Unquestionably,"]
+    },
+    {
+      "id": "closing-006",
+      "kind": "sentence-pattern",
+      "term": "Looking to the future, we must ...",
+      "meaningZh": "展望未來，我們必須...",
+      "difficulty": 1,
+      "example": "Looking to the future, we must invest in sustainable solutions.",
+      "synonyms": ["Moving forward,", "In the years ahead,", "For the future,"]
+    },
+    {
+      "id": "closing-007",
+      "kind": "sentence-pattern",
+      "term": "Having examined these points, we can conclude that ...",
+      "meaningZh": "考慮到這些要點，我們可以得出結論...",
+      "difficulty": 2,
+      "example": "Having examined these points, we can conclude that reform is urgent.",
+      "synonyms": ["After considering these arguments,", "In light of this evidence,", "Based on the above,"]
+    },
+    {
+      "id": "closing-008",
+      "kind": "sentence-pattern",
+      "term": "All things considered, ...",
+      "meaningZh": "綜合考慮，...",
+      "difficulty": 1,
+      "example": "All things considered, the benefits outweigh the drawbacks.",
+      "synonyms": ["On balance,", "Overall,", "In the end,"]
+    },
+    {
+      "id": "closing-009",
+      "kind": "sentence-pattern",
+      "term": "It cannot be denied that the way forward is ...",
+      "meaningZh": "不可否認，前進的方向是...",
+      "difficulty": 2,
+      "example": "It cannot be denied that the way forward is through cooperation.",
+      "synonyms": ["The path forward clearly is", "We must move toward", "The solution is"]
+    },
+    {
+      "id": "closing-010",
+      "kind": "sentence-pattern",
+      "term": "To put it simply, ...",
+      "meaningZh": "簡單地說...",
+      "difficulty": 1,
+      "example": "To put it simply, we all have a role to play.",
+      "synonyms": ["In short,", "Briefly,", "Simply put,"]
+    },
+    {
+      "id": "closing-011",
+      "kind": "sentence-pattern",
+      "term": "Therefore, it is imperative that we ...",
+      "meaningZh": "因此，我們當務之急是...",
+      "difficulty": 2,
+      "example": "Therefore, it is imperative that we take immediate action.",
+      "synonyms": ["Thus, we must", "We therefore need to", "Consequently, we should"]
+    },
+    {
+      "id": "closing-012",
+      "kind": "sentence-pattern",
+      "term": "The bottom line is that ...",
+      "meaningZh": "要點是...",
+      "difficulty": 1,
+      "example": "The bottom line is that education transforms lives.",
+      "synonyms": ["The main point is", "Fundamentally,", "Ultimately,"]
+    },
+    {
+      "id": "closing-013",
+      "kind": "sentence-pattern",
+      "term": "Significantly, this demonstrates that ...",
+      "meaningZh": "重要的是，這表明...",
+      "difficulty": 2,
+      "example": "Significantly, this demonstrates the power of innovation.",
+      "synonyms": ["Importantly,", "Notably,", "Crucially,"]
+    },
+    {
+      "id": "closing-014",
+      "kind": "sentence-pattern",
+      "term": "Only by ... can we achieve ...",
+      "meaningZh": "只有通過...我們才能實現...",
+      "difficulty": 2,
+      "example": "Only by working together can we achieve sustainable development.",
+      "synonyms": ["We can only...", "Through... we can...", "It is only through..."]
+    },
+    {
+      "id": "closing-015",
+      "kind": "sentence-pattern",
+      "term": "As a result, we must reconsider ...",
+      "meaningZh": "因此，我們必須重新考慮...",
+      "difficulty": 1,
+      "example": "As a result, we must reconsider our approach.",
+      "synonyms": ["Consequently,", "Therefore,", "Thus,"]
+    },
+    {
+      "id": "closing-016",
+      "kind": "sentence-pattern",
+      "term": "The implications are clear: ...",
+      "meaningZh": "含義很清楚：...",
+      "difficulty": 1,
+      "example": "The implications are clear: change is necessary.",
+      "synonyms": ["It is evident that", "This shows that", "This means that"]
+    },
+    {
+      "id": "closing-017",
+      "kind": "sentence-pattern",
+      "term": "In light of this, society must ...",
+      "meaningZh": "鑑於此，社會必須...",
+      "difficulty": 1,
+      "example": "In light of this, society must prioritize sustainability.",
+      "synonyms": ["Given this,", "Considering this,", "For this reason,"]
+    },
+    {
+      "id": "closing-018",
+      "kind": "sentence-pattern",
+      "term": "To sum up concisely, ...",
+      "meaningZh": "簡要總結，...",
+      "difficulty": 1,
+      "example": "To sum up concisely, this issue requires immediate attention.",
+      "synonyms": ["Briefly summarizing,", "In essence,", "Concisely stated,"]
+    },
+    {
+      "id": "closing-019",
+      "kind": "sentence-pattern",
+      "term": "Ultimately, what matters most is ...",
+      "meaningZh": "最終，最重要的是...",
+      "difficulty": 1,
+      "example": "Ultimately, what matters most is our commitment to change.",
+      "synonyms": ["In the end,", "Most importantly,", "Fundamentally,"]
+    },
+    {
+      "id": "closing-020",
+      "kind": "sentence-pattern",
+      "term": "It bears emphasizing that ...",
+      "meaningZh": "值得強調的是...",
+      "difficulty": 2,
+      "example": "It bears emphasizing that individual choices affect communities.",
+      "synonyms": ["It must be stressed that", "It is worth noting that", "One must highlight that"]
+    },
+    {
+      "id": "closing-021",
+      "kind": "sentence-pattern",
+      "term": "In final analysis, we recognize that ...",
+      "meaningZh": "最後分析，我們認識到...",
+      "difficulty": 2,
+      "example": "In final analysis, we recognize that adaptation is survival.",
+      "synonyms": ["Finally,", "To conclude,", "In summary,"]
+    },
+    {
+      "id": "closing-022",
+      "kind": "sentence-pattern",
+      "term": "The reality is that ...",
+      "meaningZh": "現實是...",
+      "difficulty": 1,
+      "example": "The reality is that progress requires sacrifice.",
+      "synonyms": ["The truth is that", "In fact,", "The fact remains that"]
+    },
+    {
+      "id": "closing-023",
+      "kind": "sentence-pattern",
+      "term": "For these reasons, it stands to reason that ...",
+      "meaningZh": "由於這些原因，理所當然...",
+      "difficulty": 2,
+      "example": "For these reasons, it stands to reason that reform is overdue.",
+      "synonyms": ["Therefore,", "Thus,", "It follows that"]
+    },
+    {
+      "id": "closing-024",
+      "kind": "sentence-pattern",
+      "term": "What can be drawn from this analysis is ...",
+      "meaningZh": "從這個分析中可以得出...",
+      "difficulty": 2,
+      "example": "What can be drawn from this analysis is the interconnected nature of challenges.",
+      "synonyms": ["The conclusion is", "We can infer that", "This suggests that"]
+    },
+    {
+      "id": "closing-025",
+      "kind": "sentence-pattern",
+      "term": "In essence, the path forward requires ...",
+      "meaningZh": "本質上，前進的道路需要...",
+      "difficulty": 1,
+      "example": "In essence, the path forward requires unity and vision.",
+      "synonyms": ["Fundamentally,", "At its core,", "Ultimately,"]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "slug": "word-upgrades",
+  "nameZh": "用字升呢",
+  "nameEn": "Word Upgrades",
+  "tagline": "升級 basic 詞彙嘅 advanced 替換",
+  "description": "common word → advanced synonym 對照。寫作時即查即用，避免重覆嘅 basic 詞。",
+  "icon": "LuTrendingUp",
+  "accent": "#d98e3f",
+  "defaultContentKind": "vocab",
+  "sets": ["verbs", "adjectives", "nouns"]
+}

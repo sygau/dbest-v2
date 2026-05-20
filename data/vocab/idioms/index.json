@@ -1,0 +1,11 @@
+{
+  "slug": "idioms",
+  "nameZh": "成語及固定表達",
+  "nameEn": "Idioms & Fixed Expressions",
+  "tagline": "英語成語同地道表達",
+  "description": "常用 English idioms 同 fixed expressions，附中文解釋同用法例句。",
+  "icon": "LuQuote",
+  "accent": "#7c5ce7",
+  "defaultContentKind": "idiom",
+  "sets": ["common", "fixed-expressions"]
+}

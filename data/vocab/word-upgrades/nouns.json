@@ -1,0 +1,435 @@
+{
+  "slug": "nouns",
+  "nameZh": "名詞升級",
+  "nameEn": "Noun Upgrades",
+  "description": "problem / thing / people 等 basic noun 嘅升級替換。",
+  "difficulty": "easy",
+  "contentKind": "vocab",
+  "entries": [
+    {
+      "id": "noun-upgrade-001",
+      "kind": "upgrade",
+      "basicTerm": "problem",
+      "advancedTerm": "dilemma",
+      "pos": "noun",
+      "meaningZh": "問題 → 進退兩難的困境",
+      "example": "The government faced a moral dilemma.",
+      "basicExample": "'The problem is...' (overused)",
+      "synonyms": [
+        "problem",
+        "issue",
+        "issue",
+        "predicament",
+        "quandary"
+      ]
+    },
+    {
+      "id": "noun-upgrade-002",
+      "kind": "upgrade",
+      "basicTerm": "problem",
+      "advancedTerm": "conundrum",
+      "pos": "noun",
+      "meaningZh": "問題 → 難題",
+      "example": "Wealth inequality remains a persistent conundrum.",
+      "basicExample": "'Problem remains...' (weak)",
+      "synonyms": [
+        "puzzle",
+        "problem",
+        "puzzle",
+        "challenge",
+        "enigma"
+      ]
+    },
+    {
+      "id": "noun-upgrade-003",
+      "kind": "upgrade",
+      "basicTerm": "thing",
+      "advancedTerm": "phenomenon",
+      "pos": "noun",
+      "meaningZh": "事物 → 現象",
+      "example": "The lying flat phenomenon reflects generational change.",
+      "basicExample": "'This thing reflects...' (vague)",
+      "synonyms": [
+        "thing",
+        "event",
+        "occurrence",
+        "event",
+        "development"
+      ]
+    },
+    {
+      "id": "noun-upgrade-004",
+      "kind": "upgrade",
+      "basicTerm": "people",
+      "advancedTerm": "demographic",
+      "pos": "noun",
+      "meaningZh": "人 → 人口統計/人口群體",
+      "example": "Younger demographics are more engaged.",
+      "basicExample": "'Young people are...' (casual)",
+      "synonyms": [
+        "people",
+        "folks",
+        "group",
+        "population",
+        "sector"
+      ]
+    },
+    {
+      "id": "noun-upgrade-005",
+      "kind": "upgrade",
+      "basicTerm": "reason",
+      "advancedTerm": "catalyst",
+      "pos": "noun",
+      "meaningZh": "原因 → 催化劑/引發因素",
+      "example": "Social media was a catalyst for change.",
+      "basicExample": "'The reason for...' (weak)",
+      "synonyms": [
+        "reason",
+        "cause",
+        "trigger",
+        "impetus",
+        "spark"
+      ]
+    },
+    {
+      "id": "noun-upgrade-006",
+      "kind": "upgrade",
+      "basicTerm": "change",
+      "advancedTerm": "transformation",
+      "pos": "noun",
+      "meaningZh": "改變 → 轉變/改造",
+      "example": "The digital transformation is ongoing.",
+      "basicExample": "'Change happens...' (vague)",
+      "synonyms": [
+        "change",
+        "shift",
+        "shift",
+        "revolution",
+        "metamorphosis"
+      ]
+    },
+    {
+      "id": "noun-upgrade-007",
+      "kind": "upgrade",
+      "basicTerm": "way",
+      "advancedTerm": "mechanism",
+      "pos": "noun",
+      "meaningZh": "方式 → 機制",
+      "example": "The mechanism for change is unclear.",
+      "basicExample": "'The way to...' (informal)",
+      "synonyms": [
+        "way",
+        "how",
+        "method",
+        "process",
+        "system"
+      ]
+    },
+    {
+      "id": "noun-upgrade-008",
+      "kind": "upgrade",
+      "basicTerm": "effect",
+      "advancedTerm": "ramification",
+      "pos": "noun",
+      "meaningZh": "效果 → 後果/影響",
+      "example": "The policy had unforeseen ramifications.",
+      "basicExample": "'Effects were...' (weak)",
+      "synonyms": [
+        "result",
+        "outcome",
+        "consequence",
+        "implication",
+        "result"
+      ]
+    },
+    {
+      "id": "noun-upgrade-009",
+      "kind": "upgrade",
+      "basicTerm": "idea",
+      "advancedTerm": "concept",
+      "pos": "noun",
+      "meaningZh": "想法 → 概念",
+      "example": "The concept of sustainability is crucial.",
+      "basicExample": "'The idea of...' (vague)",
+      "synonyms": [
+        "idea",
+        "thought",
+        "notion",
+        "principle",
+        "theory"
+      ]
+    },
+    {
+      "id": "noun-upgrade-010",
+      "kind": "upgrade",
+      "basicTerm": "result",
+      "advancedTerm": "outcome",
+      "pos": "noun",
+      "meaningZh": "結果 → 結果/成果",
+      "example": "The outcome exceeded expectations.",
+      "basicExample": "'The result was...' (passive)",
+      "synonyms": [
+        "result",
+        "outcome",
+        "consequence",
+        "upshot",
+        "output"
+      ]
+    },
+    {
+      "id": "noun-upgrade-011",
+      "kind": "upgrade",
+      "basicTerm": "start",
+      "advancedTerm": "genesis",
+      "pos": "noun",
+      "meaningZh": "開始 → 起源/發端",
+      "example": "The genesis of the movement was unclear.",
+      "basicExample": "'The beginning was...' (weak)",
+      "synonyms": [
+        "start",
+        "beginning",
+        "origin",
+        "inception",
+        "commencement"
+      ]
+    },
+    {
+      "id": "noun-upgrade-012",
+      "kind": "upgrade",
+      "basicTerm": "end",
+      "advancedTerm": "denouement",
+      "pos": "noun",
+      "meaningZh": "結束 → 結局/圓滿結束",
+      "example": "The denouement revealed surprising truths.",
+      "basicExample": "'The ending was...' (informal)",
+      "synonyms": [
+        "end",
+        "finish",
+        "conclusion",
+        "climax",
+        "resolution"
+      ]
+    },
+    {
+      "id": "noun-upgrade-013",
+      "kind": "upgrade",
+      "basicTerm": "increase",
+      "advancedTerm": "surge",
+      "pos": "noun",
+      "meaningZh": "增加 → 急劇增加",
+      "example": "There was a surge in unemployment.",
+      "basicExample": "'An increase in...' (weak)",
+      "synonyms": [
+        "increase",
+        "rise",
+        "spike",
+        "rise",
+        "upsurge"
+      ]
+    },
+    {
+      "id": "noun-upgrade-014",
+      "kind": "upgrade",
+      "basicTerm": "decrease",
+      "advancedTerm": "precipice",
+      "pos": "noun",
+      "meaningZh": "下降 → 懸崖/急劇下降",
+      "example": "The industry faced a precipice.",
+      "basicExample": "'A decrease in...' (weak)",
+      "synonyms": [
+        "decrease",
+        "drop",
+        "plunge",
+        "drop",
+        "decline"
+      ]
+    },
+    {
+      "id": "noun-upgrade-015",
+      "kind": "upgrade",
+      "basicTerm": "point",
+      "advancedTerm": "nexus",
+      "pos": "noun",
+      "meaningZh": "點 → 中心點/交點",
+      "example": "This is the nexus of the debate.",
+      "basicExample": "'The point is...' (overused)",
+      "synonyms": [
+        "point",
+        "spot",
+        "crux",
+        "intersection",
+        "focal point"
+      ]
+    },
+    {
+      "id": "noun-upgrade-016",
+      "kind": "upgrade",
+      "basicTerm": "gap",
+      "advancedTerm": "chasm",
+      "pos": "noun",
+      "meaningZh": "差距 → 鴻溝/深淵",
+      "example": "A chasm exists between rich and poor.",
+      "basicExample": "'A big gap...' (weak)",
+      "synonyms": [
+        "gap",
+        "space",
+        "divide",
+        "gulf",
+        "rift"
+      ]
+    },
+    {
+      "id": "noun-upgrade-017",
+      "kind": "upgrade",
+      "basicTerm": "danger",
+      "advancedTerm": "peril",
+      "pos": "noun",
+      "meaningZh": "危險 → 危險/危難",
+      "example": "The species faces existential peril.",
+      "basicExample": "'In danger...' (informal)",
+      "synonyms": [
+        "danger",
+        "risk",
+        "threat",
+        "jeopardy",
+        "risk"
+      ]
+    },
+    {
+      "id": "noun-upgrade-018",
+      "kind": "upgrade",
+      "basicTerm": "help",
+      "advancedTerm": "intervention",
+      "pos": "noun",
+      "meaningZh": "幫助 → 介入/干預",
+      "example": "Government intervention is necessary.",
+      "basicExample": "'Help is needed...' (weak)",
+      "synonyms": [
+        "help",
+        "aid",
+        "assistance",
+        "aid",
+        "support"
+      ]
+    },
+    {
+      "id": "noun-upgrade-019",
+      "kind": "upgrade",
+      "basicTerm": "group",
+      "advancedTerm": "cohort",
+      "pos": "noun",
+      "meaningZh": "組 → 同代人/群體",
+      "example": "This cohort faces unique challenges.",
+      "basicExample": "'This group...' (vague)",
+      "synonyms": [
+        "group",
+        "collection",
+        "generation",
+        "set",
+        "faction"
+      ]
+    },
+    {
+      "id": "noun-upgrade-020",
+      "kind": "upgrade",
+      "basicTerm": "time",
+      "advancedTerm": "epoch",
+      "pos": "noun",
+      "meaningZh": "時間 → 時代/年代",
+      "example": "We live in an epoch of rapid change.",
+      "basicExample": "'In this time...' (weak)",
+      "synonyms": [
+        "time",
+        "period",
+        "era",
+        "period",
+        "age"
+      ]
+    },
+    {
+      "id": "noun-upgrade-021",
+      "kind": "upgrade",
+      "basicTerm": "argument",
+      "advancedTerm": "thesis",
+      "pos": "noun",
+      "meaningZh": "論點 → 論文/主論點",
+      "example": "The thesis is well-supported.",
+      "basicExample": "'The argument is...' (weak)",
+      "synonyms": [
+        "argument",
+        "claim",
+        "proposition",
+        "hypothesis",
+        "claim"
+      ]
+    },
+    {
+      "id": "noun-upgrade-022",
+      "kind": "upgrade",
+      "basicTerm": "difference",
+      "advancedTerm": "nuance",
+      "pos": "noun",
+      "meaningZh": "差別 → 細微差別",
+      "example": "The nuance is important.",
+      "basicExample": "'The difference is...' (vague)",
+      "synonyms": [
+        "difference",
+        "distinction",
+        "subtlety",
+        "distinction",
+        "shade"
+      ]
+    },
+    {
+      "id": "noun-upgrade-023",
+      "kind": "upgrade",
+      "basicTerm": "system",
+      "advancedTerm": "infrastructure",
+      "pos": "noun",
+      "meaningZh": "系統 → 基礎設施",
+      "example": "Digital infrastructure is essential.",
+      "basicExample": "'The system needs...' (weak)",
+      "synonyms": [
+        "system",
+        "structure",
+        "framework",
+        "structure",
+        "apparatus"
+      ]
+    },
+    {
+      "id": "noun-upgrade-024",
+      "kind": "upgrade",
+      "basicTerm": "situation",
+      "advancedTerm": "predicament",
+      "pos": "noun",
+      "meaningZh": "情況 → 困境",
+      "example": "We face an unprecedented predicament.",
+      "basicExample": "'The situation is...' (vague)",
+      "synonyms": [
+        "situation",
+        "condition",
+        "circumstance",
+        "plight",
+        "condition"
+      ]
+    },
+    {
+      "id": "noun-upgrade-025",
+      "kind": "upgrade",
+      "basicTerm": "sign",
+      "advancedTerm": "harbinger",
+      "pos": "noun",
+      "meaningZh": "跡象 → 前兆/先驅",
+      "example": "This is a harbinger of change.",
+      "basicExample": "'A sign of...' (weak)",
+      "synonyms": [
+        "sign",
+        "mark",
+        "omen",
+        "indication",
+        "portent"
+      ]
+    }
+  ]
+}

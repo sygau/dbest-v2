@@ -1,0 +1,262 @@
+{
+  "slug": "ageing",
+  "nameZh": "長者與老齡化",
+  "nameEn": "Ageing Society",
+  "description": "人口老化、長者照顧、退休保障相關詞彙。",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "thumbnail": "https://cdn.sanity.io/images/8fbafbyw/production/ce61765b2a853ae00ac3af7c8fb88994265ea371-498x498.png?fit=max&w=600&h=600&fm=webp&q=70",
+  "tags": ["society", "demographics"],
+  "entries": [
+    {
+      "id": "ageing-001",
+      "kind": "vocab",
+      "term": "ageing population",
+      "pos": "noun phrase",
+      "meaningZh": "人口老化 / 老齡人口",
+      "difficulty": 1,
+      "example": "Hong Kong faces challenges from a rapidly ageing population.",
+      "synonyms": ["aging society", "elderly population", "senior citizens"]
+    },
+    {
+      "id": "ageing-002",
+      "kind": "vocab",
+      "term": "demographics",
+      "pos": "noun",
+      "meaningZh": "人口統計 / 人口結構",
+      "difficulty": 2,
+      "example": "Demographics show that life expectancy is increasing.",
+      "synonyms": ["population statistics", "vital statistics", "population data"]
+    },
+    {
+      "id": "ageing-003",
+      "kind": "vocab",
+      "term": "elderly care",
+      "pos": "noun phrase",
+      "meaningZh": "長者照顧 / 老年護理",
+      "difficulty": 1,
+      "example": "Elderly care facilities require trained professionals.",
+      "synonyms": ["senior care", "geriatric care", "aged care"]
+    },
+    {
+      "id": "ageing-004",
+      "kind": "vocab",
+      "term": "pension",
+      "pos": "noun",
+      "meaningZh": "養老金 / 退休金",
+      "difficulty": 1,
+      "example": "Government pension schemes support elderly citizens.",
+      "synonyms": ["retirement benefit", "superannuation", "retirement income"]
+    },
+    {
+      "id": "ageing-005",
+      "kind": "vocab",
+      "term": "retirement",
+      "pos": "noun",
+      "meaningZh": "退休",
+      "difficulty": 1,
+      "example": "Retirement planning is important for financial security.",
+      "synonyms": ["withdrawal from work", "end of career", "retirement age"]
+    },
+    {
+      "id": "ageing-006",
+      "kind": "vocab",
+      "term": "life expectancy",
+      "pos": "noun phrase",
+      "meaningZh": "預期壽命 / 平均壽命",
+      "difficulty": 1,
+      "example": "Life expectancy has increased significantly in developed countries.",
+      "synonyms": ["average lifespan", "longevity", "expected years"]
+    },
+    {
+      "id": "ageing-007",
+      "kind": "vocab",
+      "term": "social support",
+      "pos": "noun phrase",
+      "meaningZh": "社會支援 / 福利支持",
+      "difficulty": 1,
+      "example": "Social support systems are vital for elderly wellbeing.",
+      "synonyms": ["welfare support", "community support", "assistance network"]
+    },
+    {
+      "id": "ageing-008",
+      "kind": "vocab",
+      "term": "dependency ratio",
+      "pos": "noun phrase",
+      "meaningZh": "撫養比率 / 贍養比",
+      "difficulty": 3,
+      "example": "The dependency ratio affects government spending on social services.",
+      "synonyms": ["support ratio", "burden of dependency", "demographic ratio"]
+    },
+    {
+      "id": "ageing-009",
+      "kind": "vocab",
+      "term": "isolated",
+      "pos": "adjective",
+      "meaningZh": "孤立的 / 隔絕的",
+      "difficulty": 2,
+      "example": "Many elderly people suffer from isolation and loneliness.",
+      "synonyms": ["lonely", "solitary", "alone", "segregated"]
+    },
+    {
+      "id": "ageing-010",
+      "kind": "vocab",
+      "term": "frailty",
+      "pos": "noun",
+      "meaningZh": "虛弱 / 脆弱",
+      "difficulty": 2,
+      "example": "Frailty in elderly persons increases the risk of falls.",
+      "synonyms": ["weakness", "fragility", "physical decline"]
+    },
+    {
+      "id": "ageing-011",
+      "kind": "vocab",
+      "term": "intergenerational",
+      "pos": "adjective",
+      "meaningZh": "代際之間的 / 跨代的",
+      "difficulty": 2,
+      "example": "Intergenerational programs help young and elderly people connect.",
+      "synonyms": ["cross-generational", "multigenerational", "age-diverse"]
+    },
+    {
+      "id": "ageing-012",
+      "kind": "vocab",
+      "term": "healthcare burden",
+      "pos": "noun phrase",
+      "meaningZh": "醫療負擔",
+      "difficulty": 2,
+      "example": "An ageing population increases the healthcare burden on systems.",
+      "synonyms": ["medical costs", "healthcare expenses", "treatment expenses"]
+    },
+    {
+      "id": "ageing-013",
+      "kind": "vocab",
+      "term": "demographic shift",
+      "pos": "noun phrase",
+      "meaningZh": "人口結構變化",
+      "difficulty": 2,
+      "example": "Hong Kong faces a dramatic demographic shift.",
+      "synonyms": ["population change", "age structure change", "demographic transition"]
+    },
+    {
+      "id": "ageing-014",
+      "kind": "vocab",
+      "term": "nursing home",
+      "pos": "noun phrase",
+      "meaningZh": "療養院 / 護理院",
+      "difficulty": 1,
+      "example": "Nursing homes provide round-the-clock care for elderly residents.",
+      "synonyms": ["care facility", "aged care home", "elderly care center"]
+    },
+    {
+      "id": "ageing-015",
+      "kind": "vocab",
+      "term": "dementia",
+      "pos": "noun",
+      "meaningZh": "老年癡呆 / 認知障礙",
+      "difficulty": 1,
+      "example": "Dementia is a major challenge in elderly care.",
+      "synonyms": ["cognitive decline", "memory loss", "neurodegenerative disease"]
+    },
+    {
+      "id": "ageing-016",
+      "kind": "vocab",
+      "term": "dignity",
+      "pos": "noun",
+      "meaningZh": "尊嚴",
+      "difficulty": 1,
+      "example": "Elderly persons deserve to live with dignity and respect.",
+      "synonyms": ["respect", "honor", "self-respect", "human worth"]
+    },
+    {
+      "id": "ageing-017",
+      "kind": "vocab",
+      "term": "caregiver",
+      "pos": "noun",
+      "meaningZh": "照顧者",
+      "difficulty": 1,
+      "example": "Caregivers face physical and emotional challenges.",
+      "synonyms": ["care provider", "carer", "healthcare worker"]
+    },
+    {
+      "id": "ageing-018",
+      "kind": "vocab",
+      "term": "long-term care",
+      "pos": "noun phrase",
+      "meaningZh": "長期護理",
+      "difficulty": 1,
+      "example": "Long-term care policies must be sustainable.",
+      "synonyms": ["continuous care", "ongoing support", "chronic care"]
+    },
+    {
+      "id": "ageing-019",
+      "kind": "vocab",
+      "term": "quality of life",
+      "pos": "noun phrase",
+      "meaningZh": "生活質量",
+      "difficulty": 1,
+      "example": "Maintaining quality of life is important for elderly wellbeing.",
+      "synonyms": ["wellbeing", "life satisfaction", "standard of living"]
+    },
+    {
+      "id": "ageing-020",
+      "kind": "vocab",
+      "term": "active ageing",
+      "pos": "noun phrase",
+      "meaningZh": "活躍老齡化",
+      "difficulty": 2,
+      "example": "Active ageing encourages elderly persons to stay engaged.",
+      "synonyms": ["healthy aging", "productive aging", "engagement in later life"]
+    },
+    {
+      "id": "ageing-021",
+      "kind": "vocab",
+      "term": "social isolation",
+      "pos": "noun phrase",
+      "meaningZh": "社會隔離",
+      "difficulty": 1,
+      "example": "Social isolation among elderly increases health risks.",
+      "synonyms": ["loneliness", "social exclusion", "lack of contact"]
+    },
+    {
+      "id": "ageing-022",
+      "kind": "vocab",
+      "term": "chronic disease",
+      "pos": "noun phrase",
+      "meaningZh": "慢性病",
+      "difficulty": 1,
+      "example": "Chronic diseases are common among elderly populations.",
+      "synonyms": ["long-term illness", "persistent disease", "ongoing health condition"]
+    },
+    {
+      "id": "ageing-023",
+      "kind": "vocab",
+      "term": "intergenerational support",
+      "pos": "noun phrase",
+      "meaningZh": "代際支持",
+      "difficulty": 2,
+      "example": "Intergenerational support strengthens family bonds.",
+      "synonyms": ["family care", "mutual support", "cross-generational help"]
+    },
+    {
+      "id": "ageing-024",
+      "kind": "vocab",
+      "term": "financial security",
+      "pos": "noun phrase",
+      "meaningZh": "財務安全",
+      "difficulty": 1,
+      "example": "Financial security in retirement is essential for wellbeing.",
+      "synonyms": ["economic stability", "income stability", "financial stability"]
+    },
+    {
+      "id": "ageing-025",
+      "kind": "vocab",
+      "term": "aging-friendly city",
+      "pos": "noun phrase",
+      "meaningZh": "長者友善城市",
+      "difficulty": 2,
+      "example": "Aging-friendly cities provide accessible facilities for elderly residents.",
+      "synonyms": ["age-friendly community", "elderly-friendly environment", "accessible city"]
+    }
+  ]
+}

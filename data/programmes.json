@@ -1,0 +1,862 @@
+[
+  {
+    "slug": "simultaneous-equation-2var",
+    "title": "Simultaneous Linear Equations (2 unknowns)",
+    "titleZh": "二元一次聯立方程",
+    "subjects": ["core", "m1", "m2"],
+    "models": ["fx-50FH", "fx-50FH II", "fx-3650P", "fx-3650P II"],
+    "difficulty": "essential",
+    "bytes": 55,
+    "description": "Solves Ax + By = C and Dx + Ey = F. The undisputed must-have programme for HKDSE Maths — solves any two-variable linear system in seconds.",
+    "descriptionZh": "解 Ax+By=C, Dx+Ey=F。HKDSE 數學必入第一名。",
+    "formula": "x = (CE − BF) / (AE − BD),  y = (AF − CD) / (AE − BD)",
+    "glyph": "{x,y}",
+    "setup": {
+      "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+      "slotInstruction": "Press 1, 2, 3, or 4 to choose an empty P1–P4 slot.",
+      "notes": "Runs in default COMP mode — no MODE setup needed after entering the programme."
+    },
+    "tokens": [
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "D", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "E", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "F", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "(", "kind": "paren" }, { "text": "C", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "E", "kind": "var" },
+      { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "F", "kind": "var" },
+      { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" },
+      { "text": "(", "kind": "paren" }, { "text": "A", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "E", "kind": "var" },
+      { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "D", "kind": "var" },
+      { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "(", "kind": "paren" }, { "text": "A", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "F", "kind": "var" },
+      { "text": "−", "kind": "op" }, { "text": "C", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "D", "kind": "var" },
+      { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" },
+      { "text": "(", "kind": "paren" }, { "text": "A", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "E", "kind": "var" },
+      { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "×", "kind": "op" }, { "text": "D", "kind": "var" },
+      { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }
+    ],
+    "inputs": [
+      { "label": "A", "labelZh": "方程 1: x 係數", "description": "Coefficient of x in equation 1 [方程 1 的 x 係數]", "example": "2" },
+      { "label": "B", "labelZh": "方程 1: y 係數", "description": "Coefficient of y in equation 1 [方程 1 的 y 係數]", "example": "3" },
+      { "label": "C", "labelZh": "方程 1: 常數", "description": "Constant on RHS of equation 1 [方程 1 右側常數]", "example": "12" },
+      { "label": "D", "labelZh": "方程 2: x 係數", "description": "Coefficient of x in equation 2 [方程 2 的 x 係數]", "example": "1" },
+      { "label": "E", "labelZh": "方程 2: y 係數", "description": "Coefficient of y in equation 2 [方程 2 的 y 係數]", "example": "-1" },
+      { "label": "F", "labelZh": "方程 2: 常數", "description": "Constant on RHS of equation 2 [方程 2 右側常數]", "example": "1" }
+    ],
+    "displays": [
+      { "order": 1, "label": "x", "labelZh": "x 解", "meaning": "First press of ◢ shows the value of x [◢ 第一次按顯示 x 的值]" },
+      { "order": 2, "label": "y", "labelZh": "y 解", "meaning": "Press EXE then ◢ again to display y [按 EXE 再按 ◢ 顯示 y]" }
+    ],
+    "examples": [
+      {
+        "question": "Solve 2x + 3y = 12 and x − y = 1.",
+        "questionZh": "解 2x + 3y = 12, x − y = 1。",
+        "steps": [
+          { "press": "Prog 1 EXE", "display": "A?", "note": "Programme starts, asks for A" },
+          { "press": "2 EXE", "display": "B?" },
+          { "press": "3 EXE", "display": "C?" },
+          { "press": "12 EXE", "display": "D?" },
+          { "press": "1 EXE", "display": "E?" },
+          { "press": "(−) 1 EXE", "display": "F?" },
+          { "press": "1 EXE", "display": "3", "note": "this is x" },
+          { "press": "EXE", "display": "2", "note": "this is y" }
+        ],
+        "finalNote": "Answer: x = 3, y = 2."
+      },
+      {
+        "question": "Solve 5x − 2y = 4 and 3x + y = 9.",
+        "steps": [
+          { "press": "5 EXE", "display": "B?" },
+          { "press": "(−) 2 EXE", "display": "C?" },
+          { "press": "4 EXE", "display": "D?" },
+          { "press": "3 EXE", "display": "E?" },
+          { "press": "1 EXE", "display": "F?" },
+          { "press": "9 EXE", "display": "2", "note": "x" },
+          { "press": "EXE", "display": "3", "note": "y" }
+        ]
+      }
+    ],
+    "errors": [
+      { "trigger": "Math ERROR", "meaning": "方程平行 (AE − BD = 0) 無唯一解，或方程重合有無數解。[Equations are parallel (no unique solution) or identical (infinite solutions).]", "meaningZh": "方程平行或重合：AE − BD = 0" }
+    ],
+    "sources": [
+      { "label": "GJ Mathematics Program 09", "url": "https://gjmaths.hk/calculator-program/program-09-simultaneous-equation-%E8%81%AF%E5%90%88%E6%96%B9%E7%A8%8B/" },
+      { "label": "Hoksi Resources — fx-50FH", "url": "https://hoksiresources.com/en/category/hkdse_maths_calculator_programs" }
+    ],
+    "tags": ["linear algebra", "must-have", "core"],
+    "dseRelevance": {
+      "paperHints": [
+        "紙 1 第 A 題常設二元題目（價格×數量、年齡/速度、混合物），用此程式驗證手寫的消元/代入答案。[Paper 1 Section A often features 2-variable problems (price×qty, age/speed, mixture) — verify manual elimination/substitution]",
+        "紙 2 MC：快速檢驗四個選項中哪個滿足方程組，毋須逐一代入。[Paper 2 MC: quickly check which option satisfies the system without expanding all four]",
+        "M1 / M2：常作大題中的子步驟（如求積分常數、多項式係數對比）。[M1/M2: sub-step in larger problems like solving for integration constants or equating polynomial coefficients]"
+      ],
+      "topics": [
+        "二元一次方程組 [Linear equations]",
+        "直線求交點 [Coordinate geometry: intersections]",
+        "多項式恆等式 [Polynomial identities]",
+        "參數題 [Parametric problems]"
+      ],
+      "notes": "常見錯誤：常數項輸入時符號錯誤，或輸入到等式錯一邊。若手寫答案與程式不符，先檢查 A,B,C,D,E,F 的符號。[Most common mistake: keying the constant on wrong side of equals sign or getting signs wrong — recheck A,B,C,D,E,F]"
+    }
+  },
+  
+  {
+    "slug": "enhanced-quadratic-equation",
+    "title": "Enhanced Quadratic Equation",
+    "titleZh": "進階二次方程",
+    "subjects": ["core"],
+    "models": ["fx-50FH", "fx-50FH II"],
+    "difficulty": "essential",
+    "bytes": 107,
+    "description": "Solves Ax² + Bx + C = 0 and additionally outputs the vertex coordinates, discriminant Δ, decimal roots, and the surd form p ± q√r when roots are irrational.",
+    "descriptionZh": "解二次方程 Ax²+Bx+C=0，同時輸出頂點、判別式、根（小數及根式）。",
+    "formula": "x = (−B ± √(B² − 4AC)) / 2A,  vertex = (−B/2A, C − A·Ans²)",
+    "glyph": "x²",
+    "setup": {
+      "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+      "slotInstruction": "Pick an empty P1–P4 slot.",
+      "notes": "Uses Fix 0 mid-programme; the final Norm 1 restores the default display."
+    },
+    "tokens": [
+      { "text": "ClrMemory", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "÷", "kind": "op" },
+      { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" },
+      { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "C", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "A", "kind": "var" }, { "text": "Ans", "kind": "fn" }, { "text": "²", "kind": "op" }, { "text": "◢", "kind": "disp" },
+      { "text": "B", "kind": "var" }, { "text": "²", "kind": "op" }, { "text": "−", "kind": "op" }, { "text": "4", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": "C", "kind": "var" },
+      { "text": "→", "kind": "arrow" }, { "text": "D", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "(", "kind": "paren" }, { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": ")", "kind": "paren" },
+      { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" },
+      { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "2", "kind": "num" }, { "text": "Y", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "Ans", "kind": "fn" },
+      { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "Fix", "kind": "cmd" }, { "text": "0", "kind": "num" }, { "text": ":", "kind": "sep" },
+      { "text": "If", "kind": "cmd" }, { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "≠", "kind": "op" }, { "text": "Rnd(", "kind": "fn" }, { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": ":", "kind": "sep" },
+      { "text": "Then", "kind": "cmd" }, { "text": "Y", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "Lbl", "kind": "cmd" }, { "text": "1", "kind": "num" }, { "text": ":", "kind": "sep" },
+      { "text": "1", "kind": "num" }, { "text": "M+", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "M", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "X", "kind": "var" }, { "text": "≠", "kind": "op" }, { "text": "Rnd(", "kind": "fn" }, { "text": "X", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "⇒", "kind": "cmd" }, { "text": "Goto", "kind": "cmd" }, { "text": "1", "kind": "num" }, { "text": ":", "kind": "sep" },
+      { "text": "X", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "◢", "kind": "disp" },
+      { "text": "M", "kind": "var" }, { "text": ":", "kind": "sep" }, { "text": "IfEnd", "kind": "cmd" }, { "text": ":", "kind": "sep" }, { "text": "Norm", "kind": "cmd" }, { "text": "1", "kind": "num" }
+    ],
+    "inputs": [
+      { "label": "A", "labelZh": "x² 係數", "description": "Coefficient of x² [x² 的係數]", "example": "1" },
+      { "label": "B", "labelZh": "x 係數", "description": "Coefficient of x [x 的係數]", "example": "6" },
+      { "label": "C", "labelZh": "常數項", "description": "Constant term [常數項]", "example": "3" }
+    ],
+    "displays": [
+      { "order": 1, "label": "Vertex x-coordinate (−B/2A)", "labelZh": "頂點 x 座標", "meaning": "First ◢ shows the x-coord of the parabola's vertex [首個 ◢ 顯示拋物線頂點的 x 座標]" },
+      { "order": 2, "label": "Vertex y-coordinate", "labelZh": "頂點 y 座標", "meaning": "Second ◢ shows y = C − A·(vertex_x)² [第二個 ◢ 顯示 y = C − A·(頂點 x)²]" },
+      { "order": 3, "label": "Discriminant Δ = B² − 4AC", "labelZh": "判別式 Δ", "meaning": "If negative: no real roots. If 0: one repeated root. If positive: two real roots. [負數：無實根；零：一個重根；正數：兩個實根]" },
+      { "order": 4, "label": "Root 1 (decimal)", "labelZh": "第一根（小數）", "meaning": "(√Δ − B) / 2A [(√Δ − B) / 2A]" },
+      { "order": 5, "label": "Root 2 (decimal)", "labelZh": "第二根（小數）", "meaning": "(−√Δ − B) / 2A [(−√Δ − B) / 2A]" },
+      { "order": 6, "label": "Root in surd form p ± q√r", "labelZh": "根式形式 p ± q√r", "meaning": "Only displayed when roots are irrational. Shows p, then q√r factor. [只在根為無理數時顯示，先顯示 p，再顯示 q√r 因子]" }
+    ],
+    "examples": [
+      {
+        "question": "Find the vertex and solve x² + 6x + 3 = 0.",
+        "questionZh": "求方程 x²+6x+3=0 的頂點座標及解方程。",
+        "steps": [
+          { "press": "Prog n EXE", "display": "A?" },
+          { "press": "1 EXE", "display": "B?" },
+          { "press": "6 EXE", "display": "C?" },
+          { "press": "3 EXE", "display": "−3", "note": "vertex x" },
+          { "press": "EXE", "display": "−6", "note": "vertex y" },
+          { "press": "EXE", "display": "24", "note": "Δ = 36 − 12" },
+          { "press": "EXE", "display": "−0.5505…", "note": "root 1 decimal" },
+          { "press": "EXE", "display": "−5.4494…", "note": "root 2 decimal" },
+          { "press": "EXE", "display": "−3", "note": "surd: p = −3" },
+          { "press": "EXE", "display": "1", "note": "surd: q = 1; with r = 6 ⇒ roots are −3 ± √6" }
+        ],
+        "finalNote": "Vertex (−3, −6). Roots: −3 ± √6."
+      },
+      {
+        "question": "Find the number of roots for 3x² − 4x + 9 = 0.",
+        "steps": [
+          { "press": "3 EXE", "display": "B?" },
+          { "press": "(−) 4 EXE", "display": "C?" },
+          { "press": "9 EXE", "display": "0.666…", "note": "vertex x" },
+          { "press": "EXE EXE", "display": "−92", "note": "Δ < 0 → no real roots" }
+        ],
+        "finalNote": "Δ negative ⇒ no real roots."
+      }
+    ],
+    "errors": [
+      { "trigger": "Math ERROR", "meaning": "A = 0（非二次方程）或計算根號時 Δ < 0。[A = 0 (not a quadratic) or √ step reached Δ < 0]", "meaningZh": "A = 0 或 Δ < 0" }
+    ],
+    "sources": [
+      { "label": "GJ Mathematics Program 06", "url": "https://gjmaths.hk/calculator-program/program-06-enhanced-quadratic-equation-%E9%80%B2%E9%9A%8E%E4%BA%8C%E6%AC%A1%E6%96%B9%E7%A8%8B/" }
+    ],
+    "tags": ["quadratic", "vertex", "discriminant", "must-have"],
+    "dseRelevance": {
+      "paperHints": [
+        "紙 1 第 A 題：「求拋物線頂點座標及對稱軸」——直接套用本程式第 1、2 個 ◢ 輸出。[Paper 1 Section A: \"find vertex coordinates and axis of symmetry\" — output from display steps 1 & 2]",
+        "紙 1 第 B 題：「證明方程無實根 / 有兩個相異實根 / 有相等實根」——讀取判別式 Δ（第 3 個 ◢）。[Paper 1 Section B: \"show equation has no real / two distinct / equal roots\" — read Δ from display step 3]",
+        "紙 2 MC：「根為 p ± q√r，求 p+q+r」——根式形式輸出（第 6 步）直接給出 p 和 q。[Paper 2 MC: \"roots are p±q√r, find p+q+r\" — surd display gives p and q]",
+        "直角座標幾何：直線與拋物線求交點 → 一元二次方程——本程式完成求解。[Coordinate geometry: line-parabola intersections collapse to quadratic — this finishes the job]"
+      ],
+      "topics": [
+        "二次函數 [Quadratic functions]",
+        "判別式 [Discriminant]",
+        "無理數 / 根式 [Surds]",
+        "直角座標幾何 [Coordinate geometry]",
+        "配方法 [Completing the square]"
+      ],
+      "notes": "若 Δ < 0，計算機在根號步驟可能出現 Math ERROR——這本身就是答案：無實根。[If Δ < 0, Math ERROR at √ step is the answer itself: no real roots]"
+    }
+  },
+  {
+    "slug": "cubic-equation",
+    "title": "Cubic Equation Solver",
+    "titleZh": "三次方程",
+    "subjects": ["core", "m2"],
+    "models": ["fx-50FH", "fx-50FH II"],
+    "difficulty": "advanced",
+    "bytes": 126,
+    "description": "Solves Ax³ + Bx² + Cx + D = 0 numerically using Cardano's method. Returns up to three roots (real or complex). Requires CMPLX mode.",
+    "descriptionZh": "解三次方程 Ax³+Bx²+Cx+D=0，使用 Cardano 法數值求解。可輸出實根或複數根。需於 CMPLX 模式執行。",
+    "formula": "Cardano's method: depressed cubic substitution + trigonometric/complex root extraction",
+    "glyph": "x³",
+    "setup": {
+      "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+      "slotInstruction": "Pick an empty slot. Requires CMPLX mode — press 2 after selecting slot.",
+      "requiredMode": "CMPLX",
+      "modeSetupKeys": ["MODE", "2"],
+      "notes": "Does not fit on fx-3650P. Input integer/fraction coefficients for best accuracy [[11]]."
+    },
+    "tokens": [
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" },
+      { "text": "3", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" },
+      { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "C", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "A", "kind": "var" }, { "text": "→", "kind": "arrow" },
+      { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "M", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "B", "kind": "var" }, { "text": "³", "kind": "op" }, { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" },
+      { "text": "Ans", "kind": "fn" }, { "text": "÷", "kind": "op" }, { "text": "2", "kind": "num" }, { "text": "−", "kind": "op" },
+      { "text": "M", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" },
+      { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "M", "kind": "var" },
+      { "text": ":", "kind": "sep" },
+      { "text": "√(", "kind": "fn" }, { "text": "(", "kind": "paren" }, { "text": "C", "kind": "var" }, { "text": "÷", "kind": "op" },
+      { "text": "3", "kind": "num" }, { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "²", "kind": "op" },
+      { "text": ")", "kind": "paren" }, { "text": "³", "kind": "op" }, { "text": "+", "kind": "op" }, { "text": "Ans", "kind": "fn" },
+      { "text": "²", "kind": "op" }, { "text": "M+", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "If", "kind": "cmd" }, { "text": "Ans", "kind": "fn" }, { "text": "=", "kind": "op" },
+      { "text": "Conjg(", "kind": "fn" }, { "text": "Ans", "kind": "fn" }, { "text": ")", "kind": "paren" }, { "text": ":", "kind": "sep" },
+      { "text": "Then", "kind": "cmd" }, { "text": "³√(", "kind": "fn" }, { "text": "M", "kind": "var" }, { "text": ")", "kind": "paren" },
+      { "text": "+", "kind": "op" }, { "text": "³√(", "kind": "fn" }, { "text": "M", "kind": "var" }, { "text": "−", "kind": "op" },
+      { "text": "2", "kind": "num" }, { "text": "Ans", "kind": "fn" }, { "text": ")", "kind": "paren" }, { "text": ":", "kind": "sep" },
+      { "text": "Else", "kind": "cmd" }, { "text": "2", "kind": "num" }, { "text": "³√(", "kind": "fn" },
+      { "text": "Abs(", "kind": "fn" }, { "text": "M", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": ")", "kind": "paren" },
+      { "text": "cos(", "kind": "fn" }, { "text": "cos⁻¹(", "kind": "fn" }, { "text": "M", "kind": "var" }, { "text": "÷", "kind": "op" },
+      { "text": "√(", "kind": "fn" }, { "text": "M", "kind": "var" }, { "text": "³", "kind": "op" }, { "text": ")", "kind": "paren" },
+      { "text": ")", "kind": "paren" }, { "text": ":", "kind": "sep" },
+      { "text": "IfEnd", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "Ans", "kind": "fn" }, { "text": "+", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "→", "kind": "arrow" },
+      { "text": "A", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "3", "kind": "num" }, { "text": "B", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "Ans", "kind": "fn" },
+      { "text": "→", "kind": "arrow" }, { "text": "M", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "M", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "2", "kind": "num" }, { "text": "+", "kind": "op" },
+      { "text": "√(", "kind": "fn" }, { "text": "A", "kind": "var" }, { "text": "M", "kind": "var" }, { "text": "−", "kind": "op" },
+      { "text": "C", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "M", "kind": "var" }, { "text": "²", "kind": "op" },
+      { "text": "÷", "kind": "op" }, { "text": "4", "kind": "num" }, { "text": "M", "kind": "var" }, { "text": "−", "kind": "op" },
+      { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "M", "kind": "var" }
+    ],
+    "inputs": [
+      { "label": "A", "labelZh": "x³ 係數", "description": "Coefficient of x³", "example": "2" },
+      { "label": "B", "labelZh": "x² 係數", "description": "Coefficient of x²", "example": "1" },
+      { "label": "C", "labelZh": "x 係數", "description": "Coefficient of x", "example": "-8" },
+      { "label": "D", "labelZh": "常數項", "description": "Constant term", "example": "-4" }
+    ],
+    "displays": [
+      { "order": 1, "label": "Root 1 (real)", "labelZh": "第一根 (實數)", "meaning": "First ◢ shows the real root (always real) [[11]]" },
+      { "order": 2, "label": "Root 2 (real/complex)", "labelZh": "第二根", "meaning": "Second ◢ shows second root; if complex, use SHIFT Re⇔Im to view imaginary part" },
+      { "order": 3, "label": "Root 3 (real/complex)", "labelZh": "第三根", "meaning": "Final display shows third root; conjugate of root 2 if complex" }
+    ],
+    "examples": [
+      {
+        "question": "Solve 2x³ + x² − 8x − 4 = 0.",
+        "questionZh": "解 2x³ + x² − 8x − 4 = 0。",
+        "steps": [
+          { "press": "Prog n EXE", "display": "A?", "note": "Enter coefficients" },
+          { "press": "2 EXE 1 EXE (−) 8 EXE (−) 4 EXE", "display": "2", "note": "Root 1 = 2" },
+          { "press": "EXE", "display": "−1┘2", "note": "Root 2 = −½" },
+          { "press": "EXE", "display": "−2", "note": "Root 3 = −2" }
+        ],
+        "finalNote": "Solutions: x = 2, −½, −2 [[11]]."
+      },
+      {
+        "question": "Solve x³ − 3x² + 4x + 8 = 0.",
+        "steps": [
+          { "press": "1 EXE (−) 3 EXE 4 EXE 8 EXE", "display": "−1", "note": "Root 1 = −1 (real)" },
+          { "press": "EXE", "display": "2", "note": "Root 2 real part = 2" },
+          { "press": "SHIFT Re⇔Im", "display": "2i", "note": "Root 2 imaginary part = 2i" },
+          { "press": "EXE", "display": "2", "note": "Root 3 real part = 2" },
+          { "press": "SHIFT Re⇔Im", "display": "−2i", "note": "Root 3 imaginary part = −2i" }
+        ],
+        "finalNote": "Solutions: x = −1, 2 ± 2i [[11]]."
+      }
+    ],
+    "errors": [
+      { "trigger": "Math ERROR", "meaning": "A = 0 (not cubic) or numerical instability with decimal coefficients.", "meaningZh": "A = 0 (非三次方程) 或小數係數導致數值誤差。" }
+    ],
+    "sources": [
+      { "label": "GJ Maths — Program 05: Cubic Equation", "url": "https://gjmaths.hk/calculator-program/program-05-cubic-equation-%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B/" },
+      { "label": "WebCal — 一元三次方程 (I)", "url": "https://webcal.freetzi.com/casio.fx-50FH/cubic1.htm" }
+    ],
+    "tags": ["polynomials", "m2", "advanced", "cardano"],
+    "dseRelevance": {
+      "paperHints": [
+        "M2 紙 1：因式定理給出一個有理根後，用本程式驗證剩餘二次因子的根 [[26]]。[M2 Paper 1: After factor theorem gives one rational root, use to verify remaining quadratic roots]",
+        "核心課程：罕見直接題；更常用於驗證曲線描繪中的臨界點。[Core: Rare direct questions; more for verifying curve-sketching critical points]",
+        "提醒：必須展示手寫的求解過程以得分；程式只用於驗證 [[11]]。[Always show written method for marks; programme for verification only]"
+      ],
+      "topics": [
+        "多項式 [Polynomials]",
+        "因式定理 [Factor theorem]",
+        "曲線描繪 [Curve sketching]",
+        "複數 [Complex numbers]"
+      ],
+      "notes": "第一個根永遠是實數。若為二次方程，輸入 D=0 並忽略 x=0 的根 [[11]]。[First root always real. For quadratic equations, input D=0 and ignore the x=0 root]"
+    }
+  },
+  {
+    "slug": "circle-from-three-points",
+    "title": "Circle from 3 Points",
+    "titleZh": "三點求圓",
+    "subjects": ["core", "m2"],
+    "models": ["fx-50FH", "fx-50FH II", "fx-3650P", "fx-3650P II"],
+    "difficulty": "common",
+    "bytes": 123,
+    "description": "Given three points on a circle, outputs the equation x² + y² + Dx + Ey + F = 0, the centre (−D/2, −E/2), and radius.",
+    "descriptionZh": "輸入三點座標，輸出圓方程、圓心座標及半徑。",
+    "formula": "Solve linear system from substituting points into x² + y² + Dx + Ey + F = 0",
+    "glyph": "○",
+    "setup": {
+      "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+      "slotInstruction": "Press 1, 2, 3, or 4 to choose an empty P1–P4 slot.",
+      "notes": "If two points share the same y-coordinate, reorder input points to avoid Math ERROR [[16]]."
+    },
+    "tokens": [
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "D", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "E", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "F", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "A", "kind": "var" }, { "text": "²", "kind": "op" }, { "text": "+", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "²", "kind": "op" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "◢", "kind": "disp" }
+    ],
+    "inputs": [
+      { "label": "x₁", "labelZh": "第一點 x", "description": "x-coordinate of point 1", "example": "2" },
+      { "label": "y₁", "labelZh": "第一點 y", "description": "y-coordinate of point 1", "example": "0" },
+      { "label": "x₂", "labelZh": "第二點 x", "description": "x-coordinate of point 2", "example": "0" },
+      { "label": "y₂", "labelZh": "第二點 y", "description": "y-coordinate of point 2", "example": "1" },
+      { "label": "x₃", "labelZh": "第三點 x", "description": "x-coordinate of point 3", "example": "0" },
+      { "label": "y₃", "labelZh": "第三點 y", "description": "y-coordinate of point 3", "example": "4" }
+    ],
+    "displays": [
+      { "order": 1, "label": "Centre x (h)", "labelZh": "圓心 x", "meaning": "First ◢ shows h = −D/2" },
+      { "order": 2, "label": "Centre y (k)", "labelZh": "圓心 y", "meaning": "Second ◢ shows k = −E/2" },
+      { "order": 3, "label": "Radius r", "labelZh": "半徑", "meaning": "Third ◢ shows r = √[(h−x₃)² + (k−y₃)²]" },
+      { "order": 4, "label": "D coefficient", "labelZh": "D 係數", "meaning": "Fourth ◢ shows D in x²+y²+Dx+Ey+F=0" },
+      { "order": 5, "label": "E coefficient", "labelZh": "E 係數", "meaning": "Fifth ◢ shows E" },
+      { "order": 6, "label": "F constant", "labelZh": "F 常數", "meaning": "Final display shows F" }
+    ],
+    "examples": [
+      {
+        "question": "Circle through (2,0), (0,1), (0,4).",
+        "questionZh": "圓經過 (2,0), (0,1), (0,4)，求圓方程。",
+        "steps": [
+          { "press": "Prog n EXE", "display": "A?", "note": "Enter x₁" },
+          { "press": "2 EXE", "display": "B?", "note": "Enter y₁" },
+          { "press": "0 EXE 0 EXE 1 EXE 0 EXE 4 EXE", "display": "2", "note": "Centre x = 2" },
+          { "press": "EXE", "display": "5┘2", "note": "Centre y = 5/2" },
+          { "press": "EXE", "display": "5┘2", "note": "Radius = 5/2" },
+          { "press": "EXE", "display": "−4", "note": "D = −4" },
+          { "press": "EXE", "display": "−5", "note": "E = −5" },
+          { "press": "EXE", "display": "4", "note": "F = 4" }
+        ],
+        "finalNote": "Equation: x² + y² − 4x − 5y + 4 = 0 [[19]]."
+      }
+    ],
+    "errors": [
+      { "trigger": "Math ERROR", "meaning": "Two points share same y-coordinate; reorder input points [[16]].", "meaningZh": "有兩點 y 坐標相同，請更換輸入順序。" }
+    ],
+    "sources": [
+      { "label": "Hoksi Resources — 三點求圓方程", "url": "https://hoksiresources.com/zh-HK/articles/fx-50fh-equation-of-circle-given-three-points" },
+      { "label": "WebCal — 三點求圓 (I)", "url": "https://webcal.freetzi.com/casio.fx-50FH/3pt_cirlce.htm" }
+    ],
+    "tags": ["geometry", "circle", "core", "coordinate-geometry"],
+    "dseRelevance": {
+      "paperHints": [
+        "核心紙 1 第 B 題：「已知三點求圓方程」直接套用此程式 [[26]]。[Core Paper 1 Section B: \"Find circle equation given 3 points\" — direct application]",
+        "紙 2 MC：用程式輸出驗證選項中的圓心/半徑是否吻合。[Paper 2 MC: use output to verify if option's centre/radius matches]",
+        "結合二元聯立程式求圓與直線的交點。[Combine with 2-var programme to find circle-line intersections]"
+      ],
+      "topics": [
+        "圓的方程 [Equation of a circle]",
+        "直角座標幾何 [Coordinate geometry]",
+        "軌跡 [Locus]"
+      ],
+      "notes": "若輸入整數/分數，圓心及係數會以分數顯示；建議預先設定 SHIFT SETUP → 2（假分數模式） [[16]]。[If inputting integers/fractions, centre and coefficients display as fractions; recommend presetting SHIFT SETUP → 2 (improper fraction mode)]"
+    }
+  },
+  {
+  "slug": "four-centres",
+  "title": "Four Centres of Triangle",
+  "titleZh": "三角形四心",
+  "subjects": ["core"],
+  "models": ["fx-50FH", "fx-50FH II"],
+  "difficulty": "common",
+  "bytes": 227,
+  "description": "Given three vertices of a triangle, outputs Incenter, Centroid, Orthocenter, Circumcenter coordinates, circumradius, and the circumcircle equation (D, E, F). Requires REG-LIN mode.",
+  "descriptionZh": "輸入三角形三頂點座標，輸出內心、形心、垂心、外心、外接圓半徑及外接圓方程。",
+  "formula": "Coordinate geometry formulas for all four centres + circumcircle",
+  "glyph": "四心",
+  "setup": {
+    "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+    "slotInstruction": "Pick an empty P1–P4 slot.",
+    "requiredMode": "REG-LIN",
+    "modeSetupKeys": ["MODE", "5", "1"],
+    "notes": "Must run in REG-LIN mode. Reorder points if two have the same y-coordinate to avoid Math ERROR."
+  },
+  "tokens": [
+    { "text": "FreqOn", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "D", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "X", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "Y", "kind": "var" }, { "text": ";", "kind": "sep" },
+    { "text": "Pol(", "kind": "fn" }, { "text": "A", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "C", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "B", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "DT", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+    { "text": "Pol(", "kind": "fn" }, { "text": "C", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "maxX", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "D", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "maxY", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": ":", "kind": "sep" },
+    { "text": "√(", "kind": "fn" }, { "text": "(", "kind": "paren" }, { "text": "A", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "maxX", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "²", "kind": "op" }, { "text": "+", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "B", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "maxY", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "²", "kind": "op" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "(", "kind": "paren" }, { "text": "A", "kind": "var" }, { "text": "X", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "C", "kind": "var" }, { "text": "Y", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "∑x", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "X", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "Y", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "n", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "◢", "kind": "disp" },
+    { "text": "(", "kind": "paren" }, { "text": "B", "kind": "var" }, { "text": "X", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "D", "kind": "var" }, { "text": "Y", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "∑y", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "X", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "Y", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "n", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "◢", "kind": "disp" },
+    { "text": "(", "kind": "paren" }, { "text": "A", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "C", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "maxX", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "3", "kind": "num" }, { "text": "◢", "kind": "disp" },
+    { "text": "(", "kind": "paren" }, { "text": "B", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "D", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "maxY", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "3", "kind": "num" }, { "text": "◢", "kind": "disp" },
+    { "text": "(", "kind": "paren" }, { "text": "maxX", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "B", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "maxY", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "M", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "D", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "M", "kind": "var" }, { "text": "C", "kind": "var" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "(", "kind": "paren" }, { "text": "C", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "B", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": ":", "kind": "sep" },
+    { "text": "(", "kind": "paren" }, { "text": "maxY", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "Ans", "kind": "fn" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "maxX", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "X", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "Y", "kind": "var" }, { "text": "M", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "X", "kind": "var" }, { "text": "→", "kind": "arrow" }, { "text": "M", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "(", "kind": "paren" }, { "text": "A", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "C", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "maxX", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "Y", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "2", "kind": "num" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "(", "kind": "paren" }, { "text": "B", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "D", "kind": "var" }, { "text": "+", "kind": "op" }, { "text": "maxY", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "M", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "2", "kind": "num" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "Pol(", "kind": "fn" }, { "text": "A", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "C", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "B", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "◢", "kind": "disp" },
+    { "text": "−", "kind": "op" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "−", "kind": "op" }, { "text": "2", "kind": "num" }, { "text": "B", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "A", "kind": "var" }, { "text": "²", "kind": "op" }, { "text": "+", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "²", "kind": "op" }, { "text": "−", "kind": "op" }, { "text": "X", "kind": "var" }, { "text": "²", "kind": "op" }
+  ],
+  "inputs": [
+    { "label": "x₁", "labelZh": "第一點 x", "description": "x-coordinate of vertex A", "example": "4" },
+    { "label": "y₁", "labelZh": "第一點 y", "description": "y-coordinate of vertex A", "example": "3" },
+    { "label": "x₂", "labelZh": "第二點 x", "description": "x-coordinate of vertex B", "example": "0" },
+    { "label": "y₂", "labelZh": "第二點 y", "description": "y-coordinate of vertex B", "example": "0" },
+    { "label": "x₃", "labelZh": "第三點 x", "description": "x-coordinate of vertex C", "example": "4" },
+    { "label": "y₃", "labelZh": "第三點 y", "description": "y-coordinate of vertex C", "example": "0" }
+  ],
+  "displays": [
+    { "order": 1, "label": "Incenter x", "labelZh": "內心 x", "meaning": "Incenter x-coordinate" },
+    { "order": 2, "label": "Incenter y", "labelZh": "內心 y", "meaning": "Incenter y-coordinate" },
+    { "order": 3, "label": "Centroid x", "labelZh": "形心 x", "meaning": "Centroid x" },
+    { "order": 4, "label": "Centroid y", "labelZh": "形心 y", "meaning": "Centroid y" },
+    { "order": 5, "label": "Orthocenter x", "labelZh": "垂心 x", "meaning": "Orthocenter x" },
+    { "order": 6, "label": "Orthocenter y", "labelZh": "垂心 y", "meaning": "Orthocenter y" },
+    { "order": 7, "label": "Circumcenter x", "labelZh": "外心 x", "meaning": "Circumcenter x" },
+    { "order": 8, "label": "Circumcenter y", "labelZh": "外心 y", "meaning": "Circumcenter y" },
+    { "order": 9, "label": "Circumradius R", "labelZh": "外接圓半徑", "meaning": "Radius of circumcircle" },
+    { "order": 10, "label": "D", "labelZh": "D 係數", "meaning": "D in x² + y² + Dx + Ey + F = 0" },
+    { "order": 11, "label": "E", "labelZh": "E 係數", "meaning": "E coefficient" },
+    { "order": 12, "label": "F", "labelZh": "F 常數", "meaning": "F constant" }
+  ],
+  "examples": [
+    {
+      "question": "Vertices (4,3), (0,0), (4,0)",
+      "questionZh": "三角形頂點 (4,3), (0,0), (4,0)",
+      "steps": [
+        { "press": "Prog n EXE", "display": "A?" },
+        { "press": "4 EXE 3 EXE 0 EXE 0 EXE 4 EXE 0 EXE", "display": "3", "note": "Incenter x" }
+      ],
+      "finalNote": "Incenter (3,1), Centroid (8/3,1), Orthocenter (4,0), Circumcenter (2, 3/2), R=2.5, D=-4, E=-3, F=0"
+    }
+  ],
+  "errors": [
+    { "trigger": "Math ERROR", "meaning": "Two points have the same y-coordinate. Reorder the input points.", "meaningZh": "兩點 y 座標相同，請重新排序輸入點" }
+  ],
+  "sources": [
+    { "label": "GJ Mathematics Program 04", "url": "https://gjmaths.hk/calculator-program/program-04-%E5%9B%9B%E5%BF%83-program/" }
+  ],
+  "tags": ["geometry", "triangle", "four-centres", "circumcircle"],
+  "dseRelevance": {
+    "paperHints": ["Paper 1: Triangle centres and circumcircle questions — very common in coordinate geometry."],
+    "topics": ["三角形四心", "外接圓"],
+    "notes": "One of the most powerful geometry programmes for DSE Core Maths."
+  }
+},
+{
+  "slug": "circle-equation-properties",
+  "title": "Circle Equation Properties",
+  "titleZh": "圓形方程",
+  "subjects": ["core"],
+  "models": ["fx-50FH", "fx-50FH II", "fx-3650P", "fx-3650P II"],
+  "difficulty": "essential",
+  "bytes": 42,
+  "description": "Given the general circle equation Ax² + Ay² + Bx + Cy + D = 0, outputs the centre coordinates (h, k) and radius r.",
+  "descriptionZh": "輸入圓的一般方程 Ax² + Ay² + Bx + Cy + D = 0，輸出圓心座標及半徑。",
+  "formula": "Centre (−B/(2A), −C/(2A)), Radius √( (B/(2A))² + (C/(2A))² − D/A )",
+  "glyph": "○",
+  "setup": {
+    "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+    "slotInstruction": "Pick an empty P1–P4 slot.",
+    "notes": "Usually A = 1. Works best in COMP mode with improper fraction setting (SHIFT SETUP → 2)."
+  },
+  "tokens": [
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "D", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "−", "kind": "op" }, { "text": "C", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "◢", "kind": "disp" },
+    { "text": "√(", "kind": "fn" }, { "text": "B", "kind": "var" }, { "text": "²", "kind": "op" }, { "text": "+", "kind": "op" }, { "text": "Ans", "kind": "fn" }, { "text": "²", "kind": "op" }, { "text": "−", "kind": "op" }, { "text": "D", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }
+  ],
+  "inputs": [
+    { "label": "A", "labelZh": "x² & y² 係數", "description": "Coefficient of x² and y² (usually 1)", "example": "1" },
+    { "label": "B", "labelZh": "x 係數", "description": "Coefficient of x (D in standard notation)", "example": "4" },
+    { "label": "C", "labelZh": "y 係數", "description": "Coefficient of y (E in standard notation)", "example": "8" },
+    { "label": "D", "labelZh": "常數項", "description": "Constant term (F in standard notation)", "example": "-44" }
+  ],
+  "displays": [
+    { "order": 1, "label": "Centre x (h)", "labelZh": "圓心 x", "meaning": "First ◢ shows h = −B/(2A)" },
+    { "order": 2, "label": "Centre y (k)", "labelZh": "圓心 y", "meaning": "Second ◢ shows k = −C/(2A)" },
+    { "order": 3, "label": "Radius r", "labelZh": "半徑", "meaning": "Final display shows radius √(h² + k² − D/A)" }
+  ],
+  "examples": [
+    {
+      "question": "Find centre and radius of x² + y² + 4x + 8y − 44 = 0.",
+      "questionZh": "求 x² + y² + 4x + 8y − 44 = 0 的圓心及半徑。",
+      "steps": [
+        { "press": "Prog n EXE", "display": "A?" },
+        { "press": "1 EXE", "display": "B?" },
+        { "press": "4 EXE", "display": "C?" },
+        { "press": "8 EXE", "display": "D?" },
+        { "press": "(-) 44 EXE", "display": "-2", "note": "Centre x" },
+        { "press": "EXE", "display": "-4", "note": "Centre y" },
+        { "press": "EXE", "display": "8", "note": "Radius = 8" }
+      ],
+      "finalNote": "Centre (−2, −4), Radius 8."
+    }
+  ],
+  "errors": [
+    { "trigger": "Math ERROR", "meaning": "A = 0 or negative value inside square root (not a circle).", "meaningZh": "A = 0 或半徑不存在" }
+  ],
+  "sources": [
+    { "label": "Mathit.hk — Equation of Circle 圓形方程 Program", "url": "https://www.mathit.hk/pages/equation-of-circle-program" }
+  ],
+  "tags": ["geometry", "circle", "essential", "coordinate-geometry"],
+  "dseRelevance": {
+    "paperHints": [
+      "Paper 1: Given general circle equation, quickly find centre and radius.",
+      "Paper 2 MC: Verify circle properties without manual calculation."
+    ],
+    "topics": ["圓的方程", "圓心及半徑"],
+    "notes": "This is an essential lightweight programme for all circle-related questions."
+  }
+},
+{
+  "slug": "enhanced-quadratic-equation",
+  "title": "Enhanced Quadratic Equation",
+  "titleZh": "進階二次方程",
+  "subjects": ["core"],
+  "models": ["fx-50FH", "fx-50FH II"],
+  "difficulty": "essential",
+  "bytes": 107,
+  "description": "Solves Ax² + Bx + C = 0 and additionally outputs the vertex coordinates, discriminant Δ, decimal roots, and the surd form p ± q√r when roots are irrational.",
+  "descriptionZh": "解二次方程 Ax²+Bx+C=0，同時輸出頂點、判別式、根（小數及根式）。",
+  "formula": "x = (−B ± √(B² − 4AC)) / 2A,  vertex = (−B/2A, C − A·Ans²)",
+  "glyph": "x²",
+  "setup": {
+    "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+    "slotInstruction": "Pick an empty P1–P4 slot.",
+    "notes": "Uses Fix 0 mid-programme; the final Norm 1 restores the default display."
+  },
+  "tokens": [
+    { "text": "ClrMemory", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "C", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "A", "kind": "var" }, { "text": "Ans", "kind": "fn" }, { "text": "²", "kind": "op" }, { "text": "◢", "kind": "disp" },
+    { "text": "B", "kind": "var" }, { "text": "²", "kind": "op" }, { "text": "−", "kind": "op" }, { "text": "4", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": "C", "kind": "var" }, { "text": "→", "kind": "arrow" }, { "text": "D", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "(", "kind": "paren" }, { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "−", "kind": "op" }, { "text": "B", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "2", "kind": "num" }, { "text": "Y", "kind": "var" }, { "text": "−", "kind": "op" }, { "text": "Ans", "kind": "fn" }, { "text": "→", "kind": "arrow" }, { "text": "C", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "Fix", "kind": "cmd" }, { "text": "0", "kind": "num" }, { "text": ":", "kind": "sep" },
+    { "text": "If", "kind": "cmd" }, { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "≠", "kind": "op" }, { "text": "Rnd(", "kind": "fn" }, { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": ":", "kind": "sep" },
+    { "text": "Then", "kind": "cmd" }, { "text": "Y", "kind": "var" }, { "text": "◢", "kind": "disp" },
+    { "text": "Lbl", "kind": "cmd" }, { "text": "1", "kind": "num" }, { "text": ":", "kind": "sep" },
+    { "text": "1", "kind": "num" }, { "text": "M+", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+    { "text": "√(", "kind": "fn" }, { "text": "D", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "M", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": ":", "kind": "sep" },
+    { "text": "X", "kind": "var" }, { "text": "≠", "kind": "op" }, { "text": "Rnd(", "kind": "fn" }, { "text": "X", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "⇒", "kind": "cmd" }, { "text": "Goto", "kind": "cmd" }, { "text": "1", "kind": "num" }, { "text": ":", "kind": "sep" },
+    { "text": "X", "kind": "var" }, { "text": "÷", "kind": "op" }, { "text": "(", "kind": "paren" }, { "text": "2", "kind": "num" }, { "text": "A", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "◢", "kind": "disp" },
+    { "text": "M", "kind": "var" }, { "text": ":", "kind": "sep" }, { "text": "IfEnd", "kind": "cmd" }, { "text": ":", "kind": "sep" }, { "text": "Norm", "kind": "cmd" }, { "text": "1", "kind": "num" }
+  ],
+  "inputs": [
+    { "label": "A", "labelZh": "x² 係數", "description": "Coefficient of x²", "example": "1" },
+    { "label": "B", "labelZh": "x 係數", "description": "Coefficient of x", "example": "4" },
+    { "label": "C", "labelZh": "常數項", "description": "Constant term", "example": "1" }
+  ],
+  "displays": [
+    { "order": 1, "label": "Vertex x (−B/2A)", "labelZh": "頂點 x 座標", "meaning": "First ◢ shows vertex x-coordinate" },
+    { "order": 2, "label": "Vertex y", "labelZh": "頂點 y 座標", "meaning": "Second ◢ shows vertex y-coordinate" },
+    { "order": 3, "label": "Discriminant Δ", "labelZh": "判別式 Δ", "meaning": "Third ◢ shows Δ = B² − 4AC" },
+    { "order": 4, "label": "Root 1 (decimal)", "labelZh": "第一根（小數）", "meaning": "Fourth ◢ shows first decimal root" },
+    { "order": 5, "label": "Root 2 (decimal)", "labelZh": "第二根（小數）", "meaning": "Fifth ◢ shows second decimal root" },
+    { "order": 6, "label": "Surd form p", "labelZh": "根式 p", "meaning": "Then p for p ± q√r (when irrational)" },
+    { "order": 7, "label": "Surd q√r factor", "labelZh": "根式 q√r", "meaning": "Final surd component" }
+  ],
+  "examples": [
+    {
+      "question": "Solve x² + 4x + 1 = 0.",
+      "questionZh": "解 x² + 4x + 1 = 0。",
+      "steps": [
+        { "press": "Prog n EXE", "display": "A?" },
+        { "press": "1 EXE 4 EXE 1 EXE", "display": "−2", "note": "vertex x" },
+        { "press": "EXE", "display": "−3", "note": "vertex y" },
+        { "press": "EXE", "display": "12", "note": "Δ" },
+        { "press": "EXE", "display": "−0.2679…", "note": "root 1" },
+        { "press": "EXE", "display": "−3.732…", "note": "root 2" },
+        { "press": "EXE", "display": "−2", "note": "p = −2" },
+        { "press": "EXE", "display": "1", "note": "q = 1 (√3)" }
+      ],
+      "finalNote": "Vertex (−2, −3). Roots: −2 ± √3."
+    }
+  ],
+  "errors": [
+    { "trigger": "Math ERROR", "meaning": "A = 0 (not quadratic) or Δ < 0 at square root step.", "meaningZh": "A = 0 或 Δ < 0" }
+  ],
+  "sources": [
+    { "label": "GJ Mathematics Program 06", "url": "https://gjmaths.hk/calculator-program/program-06-enhanced-quadratic-equation-%E9%80%B2%E9%9A%8E%E4%BA%8C%E6%AC%A1%E6%96%B9%E7%A8%8B/" }
+  ],
+  "tags": ["quadratic", "vertex", "discriminant", "must-have"],
+  "dseRelevance": {
+    "paperHints": [
+      "Paper 1: Vertex coordinates, axis of symmetry, discriminant questions, surd form in MC."
+    ],
+    "topics": ["二次函數", "判別式", "無理數"],
+    "notes": "Set to improper fraction mode for best results."
+  }
+},
+  {
+    "slug": "variance-standard-deviation",
+    "title": "Variance & Standard Deviation",
+    "titleZh": "方差與標準差",
+    "subjects": ["m1"],
+    "models": ["fx-50FH", "fx-50FH II", "fx-3650P", "fx-3650P II"],
+    "difficulty": "common",
+    "bytes": 85,
+    "description": "Computes mean, σ (population SD), s (sample SD), and variance from a list of data entered with frequencies. Wraps the SD-mode workflow into a single programme.",
+    "descriptionZh": "計算平均數、母體標準差 σ、樣本標準差 s、方差。",
+    "formula": "σ² = Σ(xᵢ − x̄)² / n",
+    "glyph": "σ",
+    "setup": {
+      "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+      "slotInstruction": "Pick an empty slot.",
+      "requiredMode": "SD",
+      "modeSetupKeys": ["MODE", "4", "1"],
+      "notes": "Before running, the calculator must be in SD mode (MODE 4 1). The programme handles ClrStat + FreqOn automatically."
+    },
+    "tokens": [
+      { "text": "ClrStat", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "FreqOn", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "A", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "B", "kind": "var" }, { "text": "DT", "kind": "cmd" }, { "text": "◢", "kind": "disp" }
+    ],
+    "inputs": [
+      { "label": "Data value xᵢ", "labelZh": "數據值 xᵢ", "description": "The data point you want to add [要輸入的數據點]", "example": "5" },
+      { "label": "Frequency fᵢ", "labelZh": "頻率 fᵢ", "description": "How many times xᵢ occurs (use 1 for ungrouped data) [數據點出現次數；無分組時用 1]", "example": "3" }
+    ],
+    "displays": [
+      { "order": 1, "label": "Pause after each entry", "labelZh": "每次輸入後暫停", "meaning": "After each x, freq pair, the ◢ pauses so you can press EXE to re-enter the loop and add more data. [每個 x、頻率對後暫停，按 EXE 可回到循環輸入更多數據]" },
+      { "order": 2, "label": "After all data: SHIFT 2 →", "labelZh": "所有數據輸入後", "meaning": "Use SHIFT 2 menu to read x̄ (mean), σn (pop SD), σn-1 (sample SD). [按 SHIFT 2 查看平均數 x̄、母體 SD σn、樣本 SD σn-1]" }
+    ],
+    "examples": [
+      {
+        "question": "Find the mean and SD of {2, 4, 4, 4, 5, 5, 7, 9}.",
+        "steps": [
+          { "press": "MODE 4 1", "display": "SD", "note": "enter SD mode" },
+          { "press": "Prog n EXE", "display": "A?" },
+          { "press": "2 EXE 1 EXE", "display": "—", "note": "x=2, f=1 stored" },
+          { "press": "EXE", "display": "A?", "note": "loop back; continue: (4,3), (5,2), (7,1), (9,1)" },
+          { "press": "After all data: SHIFT 2 1 EXE", "display": "5", "note": "mean x̄" },
+          { "press": "SHIFT 2 2 EXE", "display": "2", "note": "σn (population SD)" },
+          { "press": "SHIFT 2 3 EXE", "display": "2.138…", "note": "σn-1 (sample SD)" }
+        ],
+        "finalNote": "Square σn to get population variance = 4."
+      }
+    ],
+    "errors": [
+      { "trigger": "Syntax ERROR", "meaning": "計算機未進入 SD 模式。先按 MODE 4 1。[Calculator is not in SD mode. Press MODE 4 1 first.]", "meaningZh": "未在 SD 模式中執行程式" }
+    ],
+    "sources": [
+      { "label": "Casio fx-50FH user guide", "url": "https://www.casio.com/intl/scientific-calculators/product.FX-50FHII/" }
+    ],
+    "tags": ["statistics", "m1", "must-have"],
+    "dseRelevance": {
+      "paperHints": [
+        "M1 紙 2 統計題：分組數據的平均數、方差、標準差每年必出——本程式可直接處理頻率列。[M1 Paper 2 Stats: grouped data mean, variance, SD every year — programme handles frequency column directly]",
+        "核心紙 1 第 A 題：「求下列數據集的標準差...」——立即驗證。[Core Paper 1 Section A: \"find standard deviation of data set...\" — instant verification]",
+        "用途：計算變異係數 (CV = σ/x̄) 時，同時讀取兩個值，毋須重新輸入數據。[Handy for coefficient of variation (CV = σ/x̄) — read both values without re-entering data]"
+      ],
+      "topics": [
+        "分散度測量 [Measures of dispersion]",
+        "分組分佈 [Frequency distributions]",
+        "標準分 (z-分) [Standard score / z-score]",
+        "變異係數 [Coefficient of variation]"
+      ]
+    }
+  },
+  {
+    "slug": "polar-rectangular-converter",
+    "title": "Polar ↔ Rectangular Converter",
+    "titleZh": "極座標 / 直角座標互換",
+    "subjects": ["m1", "m2"],
+    "models": ["fx-50FH", "fx-50FH II", "fx-3650P", "fx-3650P II"],
+    "difficulty": "common",
+    "bytes": 65,
+    "description": "Convert between (x, y) and (r, θ) representations. Useful for M1 polar curves and M2 complex-number arithmetic.",
+    "descriptionZh": "(x,y) 與 (r,θ) 互換。",
+    "formula": "Pol(x, y) → (r, θ);  Rec(r, θ) → (x, y)",
+    "glyph": "(r,θ)",
+    "setup": {
+      "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+      "slotInstruction": "Pick an empty slot.",
+      "notes": "Make sure angle mode (DEG or RAD) matches the question before running. Toggle with MODE MODE 4 1 (DEG) or 4 2 (RAD)."
+    },
+    "tokens": [
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "Pol(", "kind": "fn" }, { "text": "A", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "B", "kind": "var" }, { "text": ")", "kind": "paren" }, { "text": "◢", "kind": "disp" },
+      { "text": "X", "kind": "var" }, { "text": "◢", "kind": "disp" },
+      { "text": "Y", "kind": "var" }
+    ],
+    "inputs": [
+      { "label": "A (x)", "labelZh": "x 座標", "description": "x-coordinate [x 坐標值]", "example": "3" },
+      { "label": "B (y)", "labelZh": "y 座標", "description": "y-coordinate [y 坐標值]", "example": "4" }
+    ],
+    "displays": [
+      { "order": 1, "label": "r", "labelZh": "r 值", "meaning": "Radius = √(x² + y²). Stored automatically into X. [半徑 = √(x² + y²)，自動存入 X]" },
+      { "order": 2, "label": "θ", "labelZh": "θ 值", "meaning": "Angle. Stored automatically into Y. Unit depends on current angle mode. [角度，自動存入 Y。單位依目前模式（DEG/RAD）]" }
+    ],
+    "examples": [
+      {
+        "question": "Convert (3, 4) to polar form.",
+        "steps": [
+          { "press": "3 EXE", "display": "B?" },
+          { "press": "4 EXE", "display": "5", "note": "r" },
+          { "press": "EXE", "display": "53.13°", "note": "θ in degrees" }
+        ],
+        "finalNote": "(3, 4) = (5, 53.13°)."
+      }
+    ],
+    "sources": [
+      { "label": "Casio basic input docs", "url": "https://support.casio.com/global/en/calc/manual/fx-100AUPLUS_en/inputting_expressions_values/basic_input_rules.html" }
+    ],
+    "tags": ["coordinates", "m1", "m2"],
+    "dseRelevance": {
+      "paperHints": [
+        "M2 紙 1 複數：將 a + bi 轉換成模-幅角形式 r(cosθ + i sinθ) 時用 Pol(a, b)。[M2 Paper 1 complex numbers: convert a+bi to modulus-argument form r(cosθ + i sinθ) via Pol(a,b)]",
+        "M1 / M2：極座標曲線 r = f(θ)——描繪前先驗證關鍵點座標。[M1/M2: polar curves r = f(θ) — sanity-check key points before sketching]",
+        "核心課程：向量大小/方向題通常歸納為 (x, y) → (r, θ) 轉換。[Core: vector magnitude/direction problems reduce to (x, y) → (r, θ)]"
+      ],
+      "topics": [
+        "複數 [Complex numbers]",
+        "向量 [Vectors]",
+        "極座標 [Polar coordinates]",
+        "三角恆等式 [Trigonometric identities]"
+      ]
+    }
+  },
+  {
+    "slug": "log-linear-transformation",
+    "title": "Log Linear Transformation",
+    "titleZh": "對數線性變換",
+    "subjects": ["m1"],
+    "models": ["fx-50FH", "fx-50FH II"],
+    "difficulty": "common",
+    "bytes": 180,
+    "description": "Fits y = a·bˣ or y = a·xᵇ to two data points via REG-LIN. Outputs a and b for the curve. Common M1 exponential/log model question.",
+    "descriptionZh": "對數線性回歸：擬合 y=a·bˣ 或 y=a·xᵇ。",
+    "formula": "Take logs to linearise, fit straight line through 2 points.",
+    "glyph": "log",
+    "setup": {
+      "enterPrgm": ["MODE", "MODE", "MODE", "2"],
+      "slotInstruction": "Pick an empty slot.",
+      "requiredMode": "REG-LIN",
+      "modeSetupKeys": ["MODE", "5", "1"],
+      "notes": "Must run in REG (Linear) mode. Press MODE 5 1 before invoking Prog."
+    },
+    "tokens": [
+      { "text": "ClrStat", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "FreqOn", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "A", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "B", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "X", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "Y", "kind": "var" }, { "text": "DT", "kind": "cmd" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "X", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "?", "kind": "prompt" }, { "text": "→", "kind": "arrow" }, { "text": "Y", "kind": "var" }, { "text": ":", "kind": "sep" },
+      { "text": "X", "kind": "var" }, { "text": ",", "kind": "sep" }, { "text": "Y", "kind": "var" }, { "text": "DT", "kind": "cmd" }
+    ],
+    "inputs": [
+      { "label": "A", "labelZh": "x 軸對數底", "description": "Base of log on x-axis; enter 0 if x-axis is plain x [x 軸對數底；若 x 軸為純 x 則輸入 0]", "example": "0" },
+      { "label": "B", "labelZh": "y 軸對數底", "description": "Base of log on y-axis (e.g. 10 for log₁₀, e for ln) [y 軸對數底，如 10 代表 log₁₀、e 代表 ln]", "example": "10" },
+      { "label": "(x₁, y₁)", "labelZh": "第一點", "description": "First data point [第一點座標]", "example": "3, 0" },
+      { "label": "(x₂, y₂)", "labelZh": "第二點", "description": "Second data point [第二點座標]", "example": "0, 1" }
+    ],
+    "displays": [
+      { "order": 1, "label": "Case A: y = a·bˣ", "labelZh": "情況 A: y = a·bˣ", "meaning": "When A = 0 (x-axis is plain x): outputs a then b. [A = 0 時（x 軸為純 x），先輸出 a 再輸出 b]" },
+      { "order": 2, "label": "Case B: y = a·xᵇ", "labelZh": "情況 B: y = a·xᵇ", "meaning": "When A ≠ 0 (x-axis is logₐx): outputs a then b. [A ≠ 0 時（x 軸為 logₐx），先輸出 a 再輸出 b]" }
+    ],
+    "examples": [
+      {
+        "question": "log₁₀y against x passes through (3, 0) and (0, 1). Find y = a·bˣ.",
+        "steps": [
+          { "press": "0 EXE", "display": "B?", "note": "x-axis is plain x → A = 0" },
+          { "press": "10 EXE", "display": "X?", "note": "y-axis is log₁₀y → B = 10" },
+          { "press": "3 EXE 0 EXE", "display": "X?", "note": "point 1" },
+          { "press": "0 EXE 1 EXE", "display": "8", "note": "a = 8" },
+          { "press": "EXE", "display": "0.5", "note": "b = 1/2" }
+        ],
+        "finalNote": "y = 8·(1/2)ˣ."
+      }
+    ],
+    "sources": [
+      { "label": "Course Hero — HKDSE Calculator Programs", "url": "https://www.coursehero.com/file/70632232/Calculator-Program-for-HKDSE-2pdf/" }
+    ],
+    "tags": ["regression", "m1", "exponential"],
+    "dseRelevance": {
+      "paperHints": [
+        "M1 紙 2：指數/冪律模型題。「log y 對 x 的圖像為直線，經過 (0, 1) 及 (3, 0)——求 y 與 x 的關係。」——本程式正是為此設計。[M1 Paper 2: exponential/power-law models. \"Graph of log y vs x is a straight line through (0,1) and (3,0) — find y in terms of x.\" This is exactly this programme's purpose]",
+        "情況 1 (log y vs x → y = a·bˣ) 和情況 2 (log y vs log x → y = a·xᵇ) 都是 DSE 常見模式。[Both Case 1 (log y vs x → y=a·bˣ) and Case 2 (log y vs log x → y=a·xᵇ) are DSE standard patterns]",
+        "適用於生物/流行病學類型的增長衰減題，改編成 M1 題。[Useful for biology-inspired growth/decay problems adapted into M1 questions]"
+      ],
+      "topics": [
+        "指數與對數函數 [Exponential & logarithmic functions]",
+        "線性化 [Linearisation]",
+        "建模 [Modelling]",
+        "迴歸線 [Regression line]"
+      ],
+      "notes": "執行程式前必須進入 REG-LIN 模式；程式自動執行 ClrStat 清除舊數據。[Must be in REG-LIN mode before invoking; programme calls ClrStat so prior data is wiped]"
+    }
+  }
+]
