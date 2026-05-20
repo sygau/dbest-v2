@@ -267,7 +267,7 @@ export default function TimetablePage() {
   return (
     <>
       <PageSEO
-        title="2027 DSE Examination Timetable 香港中學文憑試時間表 | dse.best"
+        title="2027 DSE 時間表 Timetable | 香港中學文憑試時間表"
         description="2027 HKDSE 考試時間表，列出各科筆試日期、時間及聆聽考試安排。提供 List 及 Calendar 兩種檢視模式，方便考生規劃溫習進度。"
         canonical="https://dse.best/timetable"
         pageKey="timetable"
