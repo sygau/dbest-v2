@@ -225,6 +225,37 @@ export const pageJsonLd: Record<string, object> = {
     ]),
   },
 
+  timetable: {
+    ...webPageBase(
+      '2027 DSE Examination Timetable 香港中學文憑試時間表',
+      '2027 HKDSE 考試時間表，列出各科筆試日期、時間及聆聽考試安排。提供 List 及 Calendar 兩種檢視模式，方便考生規劃溫習進度。',
+      'https://dse.best/timetable'
+    ),
+    mainEntity: {
+      '@type': 'Event',
+      name: 'Hong Kong Diploma of Secondary Education Examination 2027',
+      description: 'The 2027 Hong Kong Diploma of Secondary Education (HKDSE) written examinations',
+      startDate: '2027-04-06',
+      endDate: '2027-05-05',
+      eventStatus: 'https://schema.org/EventScheduled',
+      location: {
+        '@type': 'Place',
+        name: 'Hong Kong',
+        address: { '@type': 'PostalAddress', addressCountry: 'HK' },
+      },
+      organizer: {
+        '@type': 'Organization',
+        name: 'Hong Kong Examinations and Assessment Authority',
+        url: 'https://www.hkeaa.edu.hk',
+      },
+      audience: { '@type': 'Audience', audienceType: 'Secondary School Students' },
+    },
+    breadcrumb: breadcrumbList([
+      { name: 'dse.best 主頁', url: 'https://dse.best/' },
+      { name: '2027 DSE Examination Timetable', url: 'https://dse.best/timetable' },
+    ]),
+  },
+
   translator: {
     '@context': 'https://schema.org',
     '@type': 'WebPage',

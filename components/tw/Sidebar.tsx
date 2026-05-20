@@ -5,7 +5,7 @@ import {
   BiBook, BiCalculator, BiBot, BiTestTube, BiLeaf, BiLaptop,
   BiGlobe, BiMoney, BiBriefcase, BiInfoCircle, BiSupport,
   BiError, BiShieldAlt, BiX, BiBookReader, BiMicrophone,
-  BiPlanet, BiMapAlt
+  BiPlanet, BiMapAlt, BiCalendar
 } from 'react-icons/bi'
 import { getChatConfig } from '../../utils/chatToggle'
 import NavigationLink from '../NavigationLink'
@@ -123,7 +123,9 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
       <nav className="flex-1 overflow-y-auto py-2" suppressHydrationWarning>
         <ul className="list-none p-0 px-2 m-0 flex flex-col gap-[3px]" suppressHydrationWarning>
           <NavItem href="/" icon={<BiHomeAlt style={{ color: '#a78bfa', fontSize: 23 }} />} label="主頁" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-          <NavItem href="/countdown" icon={<BiTimeFive style={{ color: '#f9a8d4', fontSize: 23 }} />} label="DSE 倒數 Countdown" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/countdown" icon={<BiTimeFive style={{ color: '#ee178d', fontSize: 23 }} />} label="DSE 倒數 Countdown" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/timetable" icon={<BiCalendar style={{ color: '#0050f0', fontSize: 23 }} />} label="DSE 時間表 Timetable" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+
           <NavItem href="/cutoff" icon={<BiBarChartAlt2 style={{ color: '#f77', fontSize: 23 }} />} label="DSE Cut Off 分數" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           {chatConfig.enabled && (
             <NavItem href="/chat" icon={<BiChat style={{ color: '#fdba74', fontSize: 23 }} />} label="聊天室 Chatroom" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />

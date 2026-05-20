@@ -345,3 +345,9 @@ Notes: Chat Worker deploys separately (chatRebuild/worker, own wrangler.toml) �
 What: print/Save-as-PDF support — hides nav/sidebar/footer/ads/TOC, forces white bg + black ink. No UI button — Ctrl+P only.
 Files: components/tw/Layout.tsx, styles/tailwind.css, styles/blog-post.css, pages/blog/[slug].tsx, docs/v2/print-styles.md
 Notes: Hybrid approach — print:hidden on layout chrome (covers all pages), @media print blocks for bg/text/page-breaks. AdSense ins.adsbygoogle force-hidden in print. Blog posts get spelled-out external link URLs. .no-print / .print-only helper classes added.
+
+
+## [2026-05-21] — 2027 DSE Examination Timetable Page
+What: New /timetable page with List + Calendar views, estimated-notice banner, disabled .ics + PDF buttons, countdown link, practical/oral alert.
+Files: pages/timetable.tsx, data/jsonld/pages.ts, data/faqs/pages.ts
+Notes: Chinese-first labels per design. Dates estimated (HKEAA hasn't published 2027). M1/M2 split into separate rows. Weekday labels verified vs 2027 calendar. ICS button disabled, no generator logic yet. JSON-LD + FAQ wired via pageKey="timetable".
