@@ -52,7 +52,7 @@ export default function ProgrammeDetailPage({ programme: p, related }: Props) {
   return (
     <>
       <PageSEO
-        title={`${p.titleZh}（${p.title}）Casio 程式 | DSE 數學 | dse.best`}
+        title={`${p.titleZh} ${p.title} DSE 數學 Calculator Programme`}
         description={`${p.descriptionZh} ${p.description.slice(0, 120)}`}
         ogTitle={`${p.titleZh} — HKDSE Casio Calculator Programme`}
         ogDescription={`${p.descriptionZh} ${p.description.slice(0, 160)}`}

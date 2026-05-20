@@ -57,7 +57,7 @@ export default function CountdownPage() {
             <div className={styles.titleWrapper}>
               <h1 className={styles.mainTitle}>DSE 2027 倒數</h1>
             </div>
-            <p className={styles.description}>距離香港中學文憑考試 2027 還有</p>
+            <p className={styles.description}>預計距離香港中學文憑考試 2027 還有</p>
           </div>
 
           <div className={styles.display}>

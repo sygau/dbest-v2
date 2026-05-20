@@ -86,7 +86,7 @@ export default function DseCountdown() {
             className="inline-block rounded-sm px-4 py-1.5 text-xs sm:text-sm font-bold"
             style={{ background: PURPLE, color: 'var(--color-body-bg)', letterSpacing: '-0.01em' }}
           >
-            開考日 → 2027 年 4 月 7 日
+            預計開考日 → 2027 年 4 月 7 日
           </span>
         </div>
       </div>
