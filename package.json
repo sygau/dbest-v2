@@ -11,7 +11,7 @@
     "build:prep": "npm run cutoff:json && npm run blog:sync && npm run og:generate && npm run sitemap",
     "build:prep:force": "npm run cutoff:json && npm run blog:sync:force && npm run og:generate && npm run sitemap",
     "build:full": "npm run build:prep && npm run build",
-    "build:worker": "opennextjs-cloudflare build",
+    "build:worker": "opennextjs-cloudflare build && node -e \"require('node:fs').cpSync('.open-next/cache','.open-next/assets/cdn-cgi/_next_cache',{recursive:true,force:true})\"",
     "preview": "npm run cutoff:json && npm run build:worker && wrangler dev",
     "deploy": "npm run cutoff:json && npm run build:worker && wrangler deploy",
     "deploy:preview": "npm run cutoff:json && npm run build:worker && wrangler deploy --env preview",

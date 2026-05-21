@@ -171,8 +171,8 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>其他</MenuLabel>
           <NavItem href="/about" icon={<BiInfoCircle style={{ color: '#7986cb', fontSize: 23 }} />} label="關於我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-          <NavItem href="/contact" icon={<BiSupport style={{ color: '#7986cb', fontSize: 23 }} />} label="聯絡我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-          <NavItem href="/disclaimer" icon={<BiError style={{ color: '#7986cb', fontSize: 23 }} />} label="免責聲明" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+{/*           <NavItem href="/contact" icon={<BiSupport style={{ color: '#7986cb', fontSize: 23 }} />} label="聯絡我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+ */}          <NavItem href="/disclaimer" icon={<BiError style={{ color: '#7986cb', fontSize: 23 }} />} label="免責聲明" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/privacy-policy" icon={<BiShieldAlt style={{ color: '#7986cb', fontSize: 23 }} />} label="私隱政策" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
         </ul>
       </nav>

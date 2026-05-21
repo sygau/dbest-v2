@@ -436,7 +436,7 @@
       "sun": "09:00-17:00"
     },
     "nearby_mtr": "油麻地站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEwQcmPyomOzjl38Kqv3M3cpD4K_nruXvkc02Wy7LApZGJXgsT4LB97Be6vphQZGluzyQKw7Pcqg_BzLOpjcEc25jtRdO8p25HTm6U53Oa_brH0ffWW5xkb7fgBqdsOVP4cMAReEjLifs4R=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -480,12 +480,12 @@
     "status": true
   },
   {
-    "id": "hkpl-kwun-tong",
-    "name": "觀塘公共圖書館",
+    "id": "hkpl-shui-wo-street",
+    "name": "瑞和街公共圖書館",
     "type": "library",
     "region": "kowloon",
     "district": "觀塘區",
-    "address": "九龍觀塘觀塘道398號",
+    "address": "九龍觀塘瑞和街9號瑞和街市政大廈",
     "coords": [
       22.3128,
       114.2239
@@ -500,7 +500,7 @@
       "sun": "09:00-17:00"
     },
     "nearby_mtr": "觀塘站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFp4uA_AN0YCeOVcCqSdlsJ0v7LNuUI2ePcPdpkIxk0rg_a5pIURqjIXOCbjB350iAVNZ_4ACW60XukUO9Ko9MhcwvZFevZeEmgm1EkhF4r4KXxOR-DgkVZJO4HSD53dcpnwLdu=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -508,7 +508,7 @@
     "tags": [],
     "setting": "indoor",
     "notes": "",
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=觀塘公共圖書館",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=瑞和街公共圖書館",
     "status": true
   },
   {
@@ -532,7 +532,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "炮台山站 / 北角站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEC6y4KpimYTmTDy1PsoTziTwOXs9GEpUCBK-ovMGVVGW6jjYI_FZ_WcJJTpJAhDfpU64mF9osG7DpOk8n8EX6oECJsI69m7xC9Z0B-96R5l58HJRMOVmpSRcGu5u40MhfDLaY=s593-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -596,7 +596,7 @@
       "sun": "09:00-17:00"
     },
     "nearby_mtr": "大埔墟站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH4Agzf_wrfr-hkwNqPgQAXr5h3EOPfJEzsCxd2USzG8HBwomd1HRQIb11xBqmfGP7Nj8W_GahRa_SWdEYG36P416QvClyp18-IbyKavLirDXRBu8ZozN-xE8YCznNOeioD2Lif=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -692,7 +692,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "堅尼地城站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHfddj8OtzFsQw17mCus0QvgyCfm2nXAAMtd5T93Ijz526WpEH1wS415h-33zT3KTFt9FTyoy-E2_TWqxXYApJHnjuYxNW7VX0L0f-Ei5TNrLWFTbR6H9XeY9Q49GyMsa6Ux-aSLA=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -724,7 +724,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "炮台山站 (Exit A)",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH0wtcnmoyPY34ImdpaPD-JKNOTHBMjCT6C3ingERV9ZnCkWIP_zmoRg5aAznGML5cgmB4pEDb0rA00qx0WFi5EgG_ejHOB-kfXcwSt8f4I0SAmPnF7k5TeV8-nS6OsOuBIAbfrvQ=s702-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -756,7 +756,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "柴灣站 (需轉乘巴士 / 小巴)",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHlgD1lBoAKyFkHecVISY6ebMFvwJHUmsxily_LzFVqymzPX0PPe77eENvA72OFTLtGrffINZbBQI73qx-zK2cYBHtrKbH8NDO7Ckf90vey-2Ujz-NsGTne2IaanOODcXN77E7cvI0xNVhL=s612-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -916,7 +916,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "紅磡站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEdykoG7u8AeeM1f0UmNU_wscI3_kyzug-Dqw3ZU9fI76le69QOdEf-93XZUrUbR-NBPz2jcxmwjg34dA7uOvzyg0BPBkoAjZqrzPG7XmT9N-ytJvUCwd-S7eIPjxQ-z3kBngU4Mg=s615-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1044,7 +1044,7 @@
       "sun": "09:00-17:00"
     },
     "nearby_mtr": "深水埗站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFm7UUeZmUuVk6wpIIjGeQEA8ne0Wdb6jg37j5DKfLHHGuSiOpdmhyflA-u5tsyXJStpynIjauBzMUI7xPTmsaWHn6M6GQaU60Or0R_r5nhOk7W9OC-Z_4E-WJ8nzvzRTgiCM3K=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1076,7 +1076,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "石硤尾站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH9JW1jwYmIeyJsBT1o-sdOq9__Tpnqz_kH4Cau_n710El-r-AQPmIAT7BKh8YVRmWbe84hCKYF62JBnYPrdtaiP5jT3Shx-tTuRTpD0TM2_5Y3pbYJiJrdlUQNM-GbcnfyCM8Dfw=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1108,7 +1108,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "長沙灣站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFVr_aXOowdml_BF7KcVN4GKqJsdOswiNVVVxu0fUzq1kyilu9zmnvz6a569JlvfqEPVFSg0K0ACyjLoQXhVuS54Ob1AQP1TtoIuwgUucLJ42_ovvloiKyBkPT_qOKQRjN7GoIP=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1172,7 +1172,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "奧運站 / 旺角站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHZSx8an9VTZKxWMooh2kT9s73jGOcKs5ohbu2KgZg0JvKCwy54r8vL_6-aZh_lTVL3Kqbtm4AlvkSVO1C23m9wBMTRGVlJpNoMk3L2V-h3BQxVwMFNM0i0gkjMYaG-cCA4Iolw=s615-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1204,7 +1204,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "尖沙咀站 / 尖東站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFOiwKzGTg1mSuoe_XlPe-O382Vmu2sZwbD0CDFcNKj6F_WDkjb74dJL910BXsRp3pyYePq6YyB3qv6oW3T9X56af2BkwTQwMF7ZHCLtfzDjV5SZXIWDTBcRfUlKUpWznr3t012dg=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1236,7 +1236,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "鑽石山站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHo4oVXDZcDH1xVXbTEreLaKJjRxDqHLdSuZc92YRDHDnqusHCTE-VzT1kC9psL3ck_SNJ2otdFWKnYq7V85znqp1wVXT639rwoeIPCCSPRq7ZwTHMig028yv4HLxoz-4Z58v4y=s527-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1268,7 +1268,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "樂富站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEXQPGDxV4kcyh3D1-TWwB8ie5i545oYfv8XDN5TCKZpHVV10F6iBVwji4nU3oehZBFiopU1D5aPc4kmr2uIiAmOO1hyyLNyt9p0Y50O9jZ5h7ZQKgbxX0-eDWRTntqm45SHPqcFA=s615-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
@@ -1332,7 +1332,7 @@
       "sun": "10:00-17:00"
     },
     "nearby_mtr": "鑽石山站",
-    "photo": "",
+    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHF0i6vkI2Ur6md65D_i7c6C9WeIED3d355Frd4Vo8g1ZqCYhICqSXpXHobABtCuWr8Jrl2qHe-3YVxp3-4OZIx5PeWpT4MggJF6pE1FlfeOEEJE6itI8XKI8wLzsKcyFiLMvmu=w408-h306-k-no",
     "wifi": true,
     "power_outlets": true,
     "purchase_required": false,
