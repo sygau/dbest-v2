@@ -48,6 +48,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-
 
+      - name: Restore git-tracked source files overwritten by cache
+        run: git checkout -- data/
+
       - run: npm ci
 
       - name: Prep build artifacts (blog data, OG images, sitemap)
