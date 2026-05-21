@@ -60,7 +60,7 @@ export const CATEGORIES_QUERY = groq`
 `
 
 export const POST_SLUGS_QUERY = groq`
-*[_type == "post" && showInDirectory == true && ${AUTHOR_FILTER}].slug.current
+*[_type == "post" && ${AUTHOR_FILTER}].slug.current
 `
 
 export const POST_BY_SLUG_QUERY = groq`
