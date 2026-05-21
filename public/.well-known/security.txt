@@ -1,10 +1,7 @@
 Contact: mailto:info@dse.best
-Expires: 2025-12-31T23:59:59.000Z
+Expires: 3060-12-31T23:59:59.000Z
 Preferred-Languages: zh, en
 Canonical: https://dse.best/.well-known/security.txt
 Policy: https://dse.best/privacy-policy
-Hiring: https://dse.best/contact
 
 # dse.best Security Policy
-
-# EFN

@@ -206,7 +206,7 @@ export default function PomodoroPage() {
         <PageBreadcrumb section="工具" text="番茄鐘 Pomodoro" />
 
         <div className="layout-center">
-          <audio ref={audioRef} src="/sounds/alarm.mp3" preload="auto" />
+          <audio ref={audioRef} src="/assets/alarm.mp3" preload="auto" />
 
           <div className="content-stack">
 

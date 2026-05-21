@@ -480,38 +480,6 @@
     "status": true
   },
   {
-    "id": "hkpl-shui-wo-street",
-    "name": "瑞和街公共圖書館",
-    "type": "library",
-    "region": "kowloon",
-    "district": "觀塘區",
-    "address": "九龍觀塘瑞和街9號瑞和街市政大廈",
-    "coords": [
-      22.3128,
-      114.2239
-    ],
-    "hours": {
-      "mon": "09:00-20:00",
-      "tue": "09:00-20:00",
-      "wed": "09:00-20:00",
-      "thu": "12:00-20:00",
-      "fri": "09:00-20:00",
-      "sat": "09:00-20:00",
-      "sun": "09:00-17:00"
-    },
-    "nearby_mtr": "觀塘站",
-    "photo": "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFp4uA_AN0YCeOVcCqSdlsJ0v7LNuUI2ePcPdpkIxk0rg_a5pIURqjIXOCbjB350iAVNZ_4ACW60XukUO9Ko9MhcwvZFevZeEmgm1EkhF4r4KXxOR-DgkVZJO4HSD53dcpnwLdu=s527-k-no",
-    "wifi": true,
-    "power_outlets": true,
-    "purchase_required": false,
-    "study_rooms": false,
-    "tags": [],
-    "setting": "indoor",
-    "notes": "",
-    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=瑞和街公共圖書館",
-    "status": true
-  },
-  {
     "id": "hkpl-north-point",
     "name": "北角公共圖書館",
     "type": "library",
