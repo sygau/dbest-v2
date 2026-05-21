@@ -21,6 +21,7 @@ export default function DisclaimerPage() {
 
                     {/* 中文版 */}
                     <h3>中文</h3>
+                    <hr />
                     <h5>1. 網站目的與工具性質</h5>
                     <ul>
                         <li>本網站（下稱「本站」）旨在為學生提供學習輔助工具（如操卷計時器）及參考資料。本站並非香港考試及評核局（考評局）之官方網站，與考評局無任何隸屬或關聯關係。本站純屬教育輔助性質，旨在協助學生進行模擬練習。</li>
@@ -55,6 +56,7 @@ export default function DisclaimerPage() {
                     <ul>
                         <li>如對本免責聲明有任何疑問，請通過網站聯絡頁面與我們聯繫。</li>
                     </ul>
+                    <hr />
                     <h5>7. 適用法律</h5>
                     <ul>
                         <li>本免責聲明應受吐瓦魯法律管轄並依其解釋，不考慮其法律衝突原則。</li>
@@ -65,6 +67,7 @@ export default function DisclaimerPage() {
 
                     {/* 英文版 */}
                     <h3>English</h3>
+                    <hr />
                     <h5>1. Purpose and Nature of the Website</h5>
                     <ul>
                         <li>This website (hereinafter referred to as &quot;this Site&quot;) aims to provide educational auxiliary tools (such as exam timers) and reference materials for students. This Site is NOT an official website of the Hong Kong Examinations and Assessment Authority (HKEAA) and has no affiliation or association with the HKEAA. This Site is purely educational in nature, intended to assist students in mock practice.</li>
@@ -99,6 +102,7 @@ export default function DisclaimerPage() {
                     <ul>
                         <li>If you have any questions about this disclaimer, please contact us through the website&apos;s contact page.</li>
                     </ul>
+                    <hr />
                     <h5>7. Governing Law</h5>
                     <ul>
                         <li>This disclaimer shall be governed by and construed in accordance with the laws of Tuvalu, without regard to its conflict of law principles.</li>

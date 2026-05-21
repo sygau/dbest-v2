@@ -95,14 +95,15 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {papers.map((paper) => (
               <div key={paper.paperId} className="col">
-                <div className="card h-full flex flex-col">
-                  <div className="card-body">
-                    <h5 className="card-title">{paper.title}</h5>
-                    <p className="card-text">{paper.description}</p>
+                <div className="flex flex-col h-full rounded-lg border border-[var(--color-border)] shadow-sm overflow-hidden" style={{ backgroundColor: 'var(--color-card-inner-bg)' }}>
+                  <div className="p-4 flex-1">
+                    <h5 className="font-bold text-lg mb-2" style={{ color: 'var(--color-heading)' }}>{paper.title}</h5>
+                    <p className="text-sm" style={{ color: 'var(--color-body)', opacity: 0.8 }}>{paper.description}</p>
                   </div>
-                  <div className="card-footer bg-transparent border-0">
-                    <a href="https://www.threads.com/@gung1zi2/post/DR8wuUPEUiJ" target="_blank" rel="noopener noreferrer" className="btn btn-info px-4 inline-flex gap-2">
-                      <BiDownload style={{ fontSize: 22 }} />下載
+                  <div className="px-4 py-3 border-t" style={{ borderColor: 'var(--color-border)' }}>
+                    <a href="https://www.threads.com/@gung1zi2/post/DR8wuUPEUiJ" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded">
+                      <BiDownload style={{ fontSize: 22 }} />
+                      下載
                     </a>
                   </div>
                 </div>
@@ -130,8 +131,8 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
                   fontSize: '0.875rem',
                   fontWeight: '500',
                   border: 'none',
-                  backgroundColor: isCurrentYear ? 'linear-gradient(135deg, rgb(38, 111, 201), rgb(26, 79, 138))' : '#1e293b',
-                  color: isCurrentYear ? '#ffffff' : '#d1d5db',
+                  background: isCurrentYear ? '#0d6efd' : 'var(--color-card-inner-bg)',
+                  color: isCurrentYear ? '#ffffff' : 'var(--color-body)',
                   textDecoration: 'none',
                   transition: 'all 0.2s ease',
                   minWidth: '60px',
@@ -148,8 +149,8 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
                 }}
                 onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => {
                   if (!isCurrentYear) {
-                    e.currentTarget.style.backgroundColor = '#1e293b';
-                    e.currentTarget.style.color = '#d1d5db';
+                    e.currentTarget.style.backgroundColor = 'var(--color-card-inner-bg)';
+                    e.currentTarget.style.color = 'var(--color-body)';
                   }
                 }}
                 onFocus={(e: React.FocusEvent<HTMLAnchorElement>) => {
@@ -178,20 +179,10 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
             padding: '1rem 2rem',
             fontSize: '1.1rem',
             fontWeight: '600',
-            boxShadow: '0 8px 25px rgba(13, 110, 253, 0.3)',
-            transition: 'all 0.3s ease',
             border: 'none',
             background: 'linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%)',
             minWidth: '300px',
             justifyContent: 'center'
-          }}
-          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            e.currentTarget.style.transform = 'translateY(-3px)';
-            e.currentTarget.style.boxShadow = '0 12px 35px rgba(13, 110, 253, 0.4)';
-          }}
-          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 8px 25px rgba(13, 110, 253, 0.3)';
           }}
         >
           <span>瀏覽所有旅遊與款待試題 (2012-2023)</span>

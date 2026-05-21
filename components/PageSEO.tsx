@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { subjectJsonLd } from '../data/jsonld/subjects'
 import { pageJsonLd } from '../data/jsonld/pages'
 import { subjectFaqs } from '../data/faqs/subjects'
@@ -40,6 +41,8 @@ export default function PageSEO({
   pageKey,
   jsonLd = [],
 }: PageSEOProps) {
+  const router = useRouter()
+  const resolvedCanonical = canonical ?? `https://dse.best${router.asPath.split('?')[0]}`
   const robotsContent = Array.isArray(robots) ? robots.join(', ') : robots
 
   const schemas: object[] = []
@@ -63,7 +66,7 @@ export default function PageSEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="robots" content={robotsContent} />
-      {canonical && <link rel="canonical" href={canonical} />}
+      <link rel="canonical" href={resolvedCanonical} />
 
       <meta property="og:title" content={ogTitle ?? title} />
       <meta property="og:description" content={ogDescription ?? description} />

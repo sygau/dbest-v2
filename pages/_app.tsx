@@ -6,14 +6,8 @@ import '../styles/blog-post.css'
 import '../styles/vocab.css'
 import { ThemeProvider } from '../components/tw/ThemeProvider'
 import Layout from '../components/tw/Layout'
-import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
-
-  // Sanitize canonical URL by removing query params
-  const canonicalUrl = `https://dse.best${router.asPath.split('?')[0]}`
-
   return (
     <div
       className={`${notoSansHK.variable} ${notoSerifHK.variable}`}
@@ -22,7 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <ThemeProvider>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="canonical" href={canonicalUrl} />
         </Head>
 
         <Layout>
