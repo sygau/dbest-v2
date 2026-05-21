@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/types'
+import katex from 'katex'
 import { createHeadingIdGenerator } from '../../lib/tocUtils'
 import { LuExternalLink, LuInfo, LuCircleCheck, LuTriangleAlert, LuCircleX } from 'react-icons/lu'
 import { urlFor } from '../../lib/sanity'
@@ -30,6 +31,32 @@ const ALERT_META: Record<string, { icon: React.ReactNode; variant: any }> = {
   destructive: { icon: <LuCircleX size={15} className="text-red-500" />,         variant: 'destructive' },
 }
 
+function renderLatex(body: string, displayMode: boolean) {
+  return katex.renderToString(body || '', {
+    displayMode,
+    throwOnError: false,
+    output: 'html',
+    strict: 'ignore',
+  })
+}
+
+function Latex({ value, isInline }: any) {
+  if (isInline) {
+    return (
+      <span
+        className="blog-math-inline"
+        dangerouslySetInnerHTML={{ __html: renderLatex(value?.body ?? '', false) }}
+      />
+    )
+  }
+  return (
+    <div
+      className="blog-math-block"
+      dangerouslySetInnerHTML={{ __html: renderLatex(value?.body ?? '', true) }}
+    />
+  )
+}
+
 function normalBlock({ value, children }: any) {
   const text = value.children?.map((c: any) => c.text ?? '').join('').trim()
   if (text === '---') return <hr />
@@ -41,6 +68,8 @@ const components: PortableTextComponents = {
     normal: normalBlock,
   },
   types: {
+    latex: Latex,
+
     image: ({ value }: any) => {
       if (!value?.asset) return null
       const src = urlFor(value).width(1000).format('webp').auto('format').url()
@@ -128,6 +157,7 @@ const components: PortableTextComponents = {
   },
 
   marks: {
+    'strike-through': ({ children }: any) => <s>{children}</s>,
     link: ({ value, children }: any) => {
       const href = value?.href || '#'
       const external = /^https?:\/\//.test(href) && !href.includes('dse.best')

@@ -156,6 +156,16 @@ export default function BlogPost({ post, related, tocItems }: BlogPostProps) {
         </Head>
       )}
 
+      {post.hasMath && (
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+            crossOrigin="anonymous"
+          />
+        </Head>
+      )}
+
       <div className="blog-post-wrap">
         {/* Category + Tags + Share (desktop only) */}
         <div className="flex items-center gap-2 flex-wrap mb-4">

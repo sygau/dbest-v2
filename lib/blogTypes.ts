@@ -78,6 +78,7 @@ export interface PostFull {
   slug: { current: string }
   excerpt?: string
   body?: PortableTextBlock[]
+  hasMath?: boolean
   coverImage?: SanityImage
   coverImageAlt?: string
   heroImage?: SanityImage

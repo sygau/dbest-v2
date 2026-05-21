@@ -1,5 +1,15 @@
 # dse.best v2 Changelog
 
+## [2026-05-21] — LaTeX/KaTeX support in blog
+What: Sanity `sanity-plugin-latex-input` registered in studio; `latex` type added to post body (inline child + standalone block). DualBodyInput MD parser now extracts `$$...$$` to standalone latex blocks and `$...$` to inline latex children. Frontend renders via SSR `katex.renderToString` in PortableTextRenderer; KaTeX CSS loaded conditionally via jsDelivr CDN only when post has math (`hasMath` GROQ flag).
+Files: dsebest/sanity.config.ts, dsebest/schemaTypes/post.ts, dsebest/components/DualBodyInput.tsx, dsebest/package.json, lib/sanityQueries.ts, lib/blogTypes.ts, components/blog/PortableTextRenderer.tsx, pages/blog/[slug].tsx, styles/blog-post.css, docs/v2/blog-ai-guide.md, package.json
+Notes: SSR avoids hydration shift / CLS. KaTeX CSS skipped on non-math posts. mhchem NOT enabled (add later if needed). `throwOnError: false` so broken LaTeX shows red `.katex-error` span instead of crashing render. Theme parity: glyph color follows `var(--color-body)` across light/dark/blue.
+
+## [2026-05-21] — Blog MD shortcodes + AI writing guide
+What: Added `::shortcode | pipe | separated` syntax to DualBodyInput MD converter. Supports `::alert`, `::button`, `::youtube`, `::separator`. Created AI blog guide at docs/v2/blog-ai-guide.md.
+Files: dsebest/components/DualBodyInput.tsx, docs/v2/blog-ai-guide.md
+Notes: Shortcodes must be their own paragraph (blank lines above/below). Alert title is optional via empty pipe `| |`. Guide doubles as prompt context for AI-written posts.
+
 ## [2026-05-21] — Calculator Programmes: entry guide section
 What: Added Cantonese入機指引 section below programme cards on /calculator-programmes. Covers enter/run/edit/delete steps for fx-50FH II & fx-3650P II, plus DSE exam tips. Uses native kbd/details styling, no JS.
 Files: pages/calculator-programmes/index.tsx

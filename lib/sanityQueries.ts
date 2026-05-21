@@ -66,6 +66,8 @@ export const POST_SLUGS_QUERY = groq`
 export const POST_BY_SLUG_QUERY = groq`
 *[_type == "post" && slug.current == $slug && ${AUTHOR_FILTER}][0] {
   _id, title, slug, excerpt, body,
+  "hasMath": count(body[_type == "latex"]) > 0
+    || count(body[_type == "block"].children[_type == "latex"]) > 0,
   coverImage, "coverImageAlt": coverImage.alt,
   heroImage,  "heroImageAlt":  heroImage.alt,
   category->{ _id, title, slug, color, emoji, lucideIcon },
