@@ -5,26 +5,28 @@ import dynamic from 'next/dynamic'
 
 const BlogInArticleAd = dynamic(() => import('./BlogInArticleAd'), { ssr: false })
 
-// Place ads BEFORE H2 headings. Rules:
-// - Skip first 20% of blocks (warm-up)
-// - Min 6 blocks between ads
-// - Max 3 ads per post
-// - Don't inject within last 3 blocks
-// - Post must have at least 8 blocks total
+// Place ads BEFORE H2 or H3 headings. Rules:
+// - Skip first 12% of blocks (warm-up)
+// - Min 4 blocks between ads
+// - Max 5 ads per post
+// - Don't inject within last 2 blocks
+// - Post must have at least 6 blocks total
+// - Prefer H2 over H3 (H3 only used if no H2 available in range)
 function computeAdBreaks(blocks: PortableTextBlock[]): number[] {
   const total = blocks.length
-  if (total < 8) return []
-  const warmupEnd = Math.ceil(total * 0.2)
-  const MIN_GAP = 6
-  const MAX_ADS = 3
+  if (total < 6) return []
+  const warmupEnd = Math.ceil(total * 0.12)
+  const MIN_GAP = 4
+  const MAX_ADS = 5
   const breaks: number[] = []
   let lastIdx = -MIN_GAP
-  for (let i = warmupEnd; i <= total - 4; i++) {
+  for (let i = warmupEnd; i <= total - 3; i++) {
     if (breaks.length >= MAX_ADS) break
     const b = blocks[i] as any
-    if (b._type !== 'block' || b.style !== 'h2') continue
+    if (b._type !== 'block') continue
+    if (b.style !== 'h2' && b.style !== 'h3') continue
     if (i - lastIdx < MIN_GAP) continue
-    breaks.push(i)
+    breaks.push(i + 1)  // split AFTER heading so heading stays visible above the ad
     lastIdx = i
   }
   return breaks
