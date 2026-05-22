@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function M1Page() {
     const lastUpdated = getSubjectIndexLastUpdated('m1');
@@ -74,6 +75,7 @@ export default function M1Page() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="Paper" description="2024 Paper" paperId="2024_pp" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>
@@ -81,6 +83,7 @@ export default function M1Page() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="Paper" description="2023 Paper" paperId="2023_pp" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>

@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function EconomicsPage() {
     const lastUpdated = getSubjectIndexLastUpdated('economics');
@@ -105,6 +106,7 @@ export default function EconomicsPage() {
                         {/* English */}
                         <DownloadCard title="Paper 2" description="2024 Paper 2 (English)" paperId="2024_p2_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>
@@ -117,6 +119,7 @@ export default function EconomicsPage() {
                         <DownloadCard title="Paper 1" description="2023 Paper 1 (English)" paperId="2023_p1_eng" />
                         <DownloadCard title="Paper 2" description="2023 Paper 2 (English)" paperId="2023_p2_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>

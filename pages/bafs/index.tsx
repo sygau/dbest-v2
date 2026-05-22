@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function BafsPage() {
     const lastUpdated = getSubjectIndexLastUpdated('bafs');
@@ -66,6 +67,7 @@ export default function BafsPage() {
                         <DownloadCard title="Paper 2A" description="2025 Paper 2A counting (English)" paperId="2025_p2a_eng" />
                         <DownloadCard title="Paper 2B" description="2025 Paper 2B Business Management (English)" paperId="2025_p2b_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>
@@ -86,6 +88,7 @@ export default function BafsPage() {
                         <DownloadCard title="Answers" description="2023 Answer Booklet (English)" paperId="2023_ans_eng" />
                         <DownloadCard title="Performance" description="2023 Performance Descriptors (English)" paperId="2023_per_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>

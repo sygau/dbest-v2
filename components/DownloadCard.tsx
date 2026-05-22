@@ -1,4 +1,6 @@
 import { BiDownload } from 'react-icons/bi';
+import dynamic from 'next/dynamic';
+const SubjectSectionAd = dynamic(() => import('./SubjectSectionAd'), { ssr: false });
 
 export interface DownloadCardProps {
   title: string;
@@ -41,6 +43,7 @@ export interface PaperSectionProps {
   title: string;
   children: React.ReactNode;
   showDivider?: boolean;
+  showAd?: boolean;
 }
 
 export function PaperSection({
@@ -48,6 +51,7 @@ export function PaperSection({
   title,
   children,
   showDivider = true,
+  showAd = false,
 }: PaperSectionProps) {
   return (
     <>
@@ -56,6 +60,7 @@ export function PaperSection({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {children}
       </div>
+      {showAd && <SubjectSectionAd />}
       {showDivider && <hr className="my-6" />}
     </>
   );

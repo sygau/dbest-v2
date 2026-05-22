@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function IctPage() {
     const lastUpdated = getSubjectIndexLastUpdated('ict');
@@ -68,6 +69,7 @@ export default function IctPage() {
                         <DownloadCard title="Answers" description="2023 Answer Booklet (English)" paperId="2023_ans_eng" />
                         <DownloadCard title="Performance" description="2023 Performance Descriptors (English)" paperId="2023_per_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>
@@ -90,6 +92,7 @@ export default function IctPage() {
                         <DownloadCard title="Answers" description="2022 Answer Booklet (English)" paperId="2022_ans_eng" />
                         <DownloadCard title="Performance" description="2022 Performance Descriptors (English)" paperId="2022_per_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2021 */}
                     <h2 className="text-center">2021</h2>

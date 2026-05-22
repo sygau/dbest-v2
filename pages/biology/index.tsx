@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function BiologyPage() {
     const lastUpdated = getSubjectIndexLastUpdated('biology');
@@ -54,6 +55,7 @@ export default function BiologyPage() {
                         <DownloadCard title="Paper 1" description="2024 Paper 1 (English)" paperId="2024_p1_eng" />
                         <DownloadCard title="Paper 2" description="2024 Paper 2 (English)" paperId="2024_p2_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     
                     {/* 2023 */}
@@ -71,6 +73,7 @@ export default function BiologyPage() {
                         <DownloadCard title="Performance" description="2023 Performance (English)" paperId="2023_per_eng" />
                         <DownloadCard title="Answers" description="2023 Answer Booklet (English)" paperId="2023_ans_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     
                     {/* 2022 */}

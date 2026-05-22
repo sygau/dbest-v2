@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-23] — Subject Pages: Between-Section Display Ads
+What: Added responsive display ad slot after first two year sections on all 16 subject pages. Raw HTML pages (biology, chemistry, physics, bafs, chinese-history, citizen, economics, geography, history, ict, m1, m2, ths) get SubjectSectionAd injected directly; PaperSection component (math, english, chinese) gets showAd prop.
+Files: components/SubjectSectionAd.tsx (new), components/DownloadCard.tsx, pages/math/index.tsx, pages/english/index.tsx, pages/chinese/index.tsx, pages/biology/index.tsx, pages/chemistry/index.tsx, pages/physics/index.tsx, pages/bafs/index.tsx, pages/chinese-history/index.tsx, pages/citizen/index.tsx, pages/economics/index.tsx, pages/geography/index.tsx, pages/history/index.tsx, pages/ict/index.tsx, pages/m1/index.tsx, pages/m2/index.tsx, pages/ths/index.tsx
+Notes: Ad slot placeholder REPLACE_WITH_DISPLAY_SLOT_ID in SubjectSectionAd.tsx — needs Display ads unit created in AdSense. Uses data-ad-format="auto" + data-full-width-responsive="true" (responsive horizontal banner, works mobile+desktop). Separate unit from blog in-article for independent tracking.
+
 ## [2026-05-23] — Blog SEO + Smart In-Article Ads
 What: Added breadcrumb JSON-LD and articleSection to blog post structured data; fixed dateModified to use _updatedAt; smart in-article ad injection in PortableTextRenderer — inserts fluid in-article AdSense units before H2 headings (20% warmup, min 6 blocks gap, max 3 ads, skip last 3 blocks).
 Files: lib/sanityQueries.ts, lib/blogTypes.ts, pages/blog/[slug].tsx, components/blog/PortableTextRenderer.tsx, components/blog/BlogInArticleAd.tsx

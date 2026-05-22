@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function CitizenPage() {
     const lastUpdated = getSubjectIndexLastUpdated('citizen');
@@ -52,6 +53,7 @@ export default function CitizenPage() {
                         <DownloadCard title="問題簿" description="2024 問題簿" paperId="2024_question" buttonText="下載" />
                         <DownloadCard title="答題簿" description="2024 答題簿" paperId="2024_answer" buttonText="下載" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     
                 </div>

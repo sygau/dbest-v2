@@ -76,13 +76,13 @@ export default function EnglishPage() {
                     <hr className="my-4" />
                     
                     {/* Year-wise Past Paper Listing */}
-                    <PaperSection id="year-2024" title="2024">
+                    <PaperSection id="year-2024" title="2024" showAd>
                         <DownloadCard title="Paper 1 Reading" description="2024 Paper 1: Reading" paperId="2024_P1" />
                         <DownloadCard title="Paper 2 Writing" description="2024 Paper 2: Writing" paperId="2024_P2" />
                         <DownloadCard title="Paper 3 Listening & Integrated Skills" description="2024 Paper 3: Listening & Integrated Skills" paperId="2024_P3" />
                         <DownloadCard title="Answers" description="2024 Answer Booklet" paperId="2024_ans" />
                     </PaperSection>
-                    <PaperSection id="year-2023" title="2023">
+                    <PaperSection id="year-2023" title="2023" showAd>
                         <DownloadCard title="Paper 1 Reading" description="2023 Paper 1: Reading" paperId="2023_P1" />
                         <DownloadCard title="Paper 2 Writing" description="2023 Paper 2: Writing" paperId="2023_P2" />
                         <DownloadCard title="Paper 3 Listening & Integrated Skills" description="2023 Paper 3: Listening & Integrated Skills" paperId="2023_P3" />

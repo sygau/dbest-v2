@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function ChemistryPage() {
     const lastUpdated = getSubjectIndexLastUpdated('chemistry');
@@ -52,6 +53,7 @@ export default function ChemistryPage() {
                         <DownloadCard title="Paper 1" description="2024 Paper 1 (English)" paperId="2024_p1_eng" />
                         <DownloadCard title="Answers" description="2024 Answer Booklet (English)" paperId="2024_ans_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>
@@ -66,6 +68,7 @@ export default function ChemistryPage() {
                         <DownloadCard title="Answers" description="2023 Answer Booklet (English)" paperId="2023_ans_eng" />
                         <DownloadCard title="Performance" description="2023 Performance Descriptors (English)" paperId="2023_per_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>

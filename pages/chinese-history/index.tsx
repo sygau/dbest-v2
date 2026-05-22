@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function ChineseHistoryPage() {
     const lastUpdated = getSubjectIndexLastUpdated('chinese-history');
@@ -55,6 +56,7 @@ export default function ChineseHistoryPage() {
                         <DownloadCard title="參考答案" description="2023 參考答案 (中文)" paperId="2023_ans_chi" buttonText="下載" />
                         <DownloadCard title="評核報告" description="2023 評核報告 (中文)" paperId="2023_per_chi" buttonText="下載" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>
@@ -65,6 +67,7 @@ export default function ChineseHistoryPage() {
                         <DownloadCard title="參考答案" description="2022 參考答案 (中文)" paperId="2022_ans_chi" buttonText="下載" />
                         <DownloadCard title="評核報告" description="2022 評核報告 (中文)" paperId="2022_per_chi" buttonText="下載" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2021 */}
                     <h2 className="text-center">2021</h2>

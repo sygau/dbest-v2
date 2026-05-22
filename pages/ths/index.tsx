@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function THSPage() {
     const lastUpdated = getSubjectIndexLastUpdated('ths');
@@ -52,6 +53,7 @@ export default function THSPage() {
                         <DownloadCard title="參考答案" description="2023 參考答案 (中文)" paperId="2023_ans_chi" buttonText="下載" />
                         <DownloadCard title="考生表現" description="2023 考生表現 (中文)" paperId="2023_per_chi" buttonText="下載" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>
@@ -61,6 +63,7 @@ export default function THSPage() {
                         <DownloadCard title="卷二" description="2022 Paper 2 (中文)" paperId="2022_p2_chi" buttonText="下載" />
                         <DownloadCard title="參考答案" description="2022 參考答案 (中文)" paperId="2022_ans_chi" buttonText="下載" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2021 */}
                     <h2 className="text-center">2021</h2>

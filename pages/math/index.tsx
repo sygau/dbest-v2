@@ -82,11 +82,11 @@ export default function MathPage() {
                     <hr className="my-4" />
                     {/* By Year Section */}
                     <div id="by-year"></div>
-                    <PaperSection id="year-2025" title="2025">
+                    <PaperSection id="year-2025" title="2025" showAd>
                         <DownloadCard title="Paper 1" description="2025 Paper 1" paperId="2025_P1" />
                         <DownloadCard title="Paper 2" description="2025 Paper 2" paperId="2025_P2" />
                     </PaperSection>
-                    <PaperSection id="year-2024" title="2024">
+                    <PaperSection id="year-2024" title="2024" showAd>
                         <DownloadCard title="Paper 1" description="2024 Paper 1" paperId="2024_P1" />
                         <DownloadCard title="Paper 2" description="2024 Paper 2" paperId="2024_P2" />
                         <DownloadCard title="Answers" description="2024 Answer Booklet (English)" paperId="2024_ans" />

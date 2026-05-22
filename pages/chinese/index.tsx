@@ -94,11 +94,11 @@ export default function ChinesePage() {
                         <DownloadCard title="卷五" description="Practice Paper 5" paperId="pp_P5" buttonText="下載" />
                         <DownloadCard title="答案" description="Practice Paper Answers" paperId="pp_ans" buttonText="下載" />
                     </PaperSection>
-                    <PaperSection id="year-2025" title="2025">
+                    <PaperSection id="year-2025" title="2025" showAd>
                         <DownloadCard title="卷一 閱讀" description="2025 試卷一" paperId="2025_P1" buttonText="下載" />
                         <DownloadCard title="卷二 寫作" description="2025 試卷二" paperId="2025_P2" buttonText="下載" />
                     </PaperSection>
-                    <PaperSection id="year-2024" title="2024">
+                    <PaperSection id="year-2024" title="2024" showAd>
                         <DownloadCard title="卷一 閱讀" description="2024 Paper 1" paperId="2024_P1" buttonText="下載" />
                         <DownloadCard title="卷二 寫作" description="2024 Paper 2" paperId="2024_P2" buttonText="下載" />
                     </PaperSection>

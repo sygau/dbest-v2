@@ -1,8 +1,9 @@
-import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
+import SubjectSectionAd from '../../components/SubjectSectionAd';
 
 export default function GeographyPage() {
     const lastUpdated = getSubjectIndexLastUpdated('geography');
@@ -72,6 +73,7 @@ export default function GeographyPage() {
                         <DownloadCard title="Marking Scheme" description="2023 Marking Scheme (English)" paperId="2023_ans_eng" />
                         <DownloadCard title="Performance" description="2023 Performance (English)" paperId="2023_per_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2022 */}
                     <h2 className="text-center">2022</h2>
@@ -87,6 +89,7 @@ export default function GeographyPage() {
                         <DownloadCard title="Map Book" description="2022 Map Book (English)" paperId="2022_map_eng" />
                         <DownloadCard title="Marking Scheme" description="2022 Marking Scheme (English)" paperId="2022_ans_eng" />
                     </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2021 */}
                     <h2 className="text-center">2021</h2>
