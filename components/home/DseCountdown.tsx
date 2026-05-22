@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { BiCalendarEvent } from 'react-icons/bi'
 
-const DSE_2027 = new Date('2027-04-07T09:00:00+08:00').getTime()
+const DSE_2027 = new Date('2027-04-06T09:00:00+08:00').getTime()
 const DAY_MS = 86_400_000
 const NAVY = 'rgba(181, 70, 255, 0.26)'
 const PURPLE = '#8b5cf6'
@@ -86,7 +86,7 @@ export default function DseCountdown() {
             className="inline-block rounded-sm px-4 py-1.5 text-xs sm:text-sm font-bold"
             style={{ background: PURPLE, color: 'var(--color-body-bg)', letterSpacing: '-0.01em' }}
           >
-            預計開考日 → 2027 年 4 月 7 日
+            開考日 → 2027 年 4 月 6 日
           </span>
         </div>
       </div>

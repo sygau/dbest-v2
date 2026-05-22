@@ -15,7 +15,7 @@ export default function CountdownPage() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
-    const targetDate = new Date('2027-04-07T09:00:00+08:00')
+    const targetDate = new Date('2027-04-06T09:00:00+08:00')
 
     const calculateTimeLeft = () => {
       const now = new Date().getTime()
@@ -101,7 +101,7 @@ export default function CountdownPage() {
               <div className={styles.infoCardCompact}>
                 <div className={styles.infoIconCompact}>📅</div>
                 <div className={styles.infoContentCompact}>
-                  <p>2027年4月7日</p>
+                  <p>2027年4月6日</p>
                 </div>
               </div>
 

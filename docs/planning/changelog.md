@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-22] — Timetable official 2027 data update
+What: Replaced estimated schedule with official HKEAA 2027 DSE timetable data; removed unofficial warning banner; added "官方時間表 PDF" button linking to HKEAA PDF; fixed all subject names, dates, and ordering; sessions now show "AM / PM" instead of estimated times.
+Files: pages/timetable.tsx
+Notes: Official PDF URL: https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Timetable/2027_DSE_Timetable.pdf. May 3 is both exam day (Note 2 subjects) and reserve — merged into single exam entry.
+
 ## [2026-05-21] — LaTeX/KaTeX support in blog
 What: Sanity `sanity-plugin-latex-input` registered in studio; `latex` type added to post body (inline child + standalone block). DualBodyInput MD parser now extracts `$$...$$` to standalone latex blocks and `$...$` to inline latex children. Frontend renders via SSR `katex.renderToString` in PortableTextRenderer; KaTeX CSS loaded conditionally via jsDelivr CDN only when post has math (`hasMath` GROQ flag).
 Files: dsebest/sanity.config.ts, dsebest/schemaTypes/post.ts, dsebest/components/DualBodyInput.tsx, dsebest/package.json, lib/sanityQueries.ts, lib/blogTypes.ts, components/blog/PortableTextRenderer.tsx, pages/blog/[slug].tsx, styles/blog-post.css, docs/v2/blog-ai-guide.md, package.json

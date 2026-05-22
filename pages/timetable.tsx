@@ -9,6 +9,7 @@ import {
   LuX,
   LuRefreshCw,
   LuTimer,
+  LuMegaphone,
 } from 'react-icons/lu'
 import PageSEO from '../components/PageSEO'
 import PageBreadcrumb from '../components/PageBreadcrumb'
@@ -43,189 +44,162 @@ const SCHEDULE: ExamDay[] = [
     kind: 'exam',
     date: '2027-04-06',
     weekday: 'TUE',
-    sessions: [{ start: '08:30', end: '12:30', zh: '視覺藝術（一）及（二）', en: 'Visual Arts 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '視覺藝術（一）及（二）', en: 'Visual Arts 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-07',
     weekday: 'WED',
     sessions: [
-      { start: '08:30', end: '10:00', zh: '中國語文（一）', en: 'Chinese Language 1' },
-      { start: '10:45', end: '13:00', zh: '中國語文（二）', en: 'Chinese Language 2' },
+      { start: 'AM', end: 'PM', zh: '中國文學（一）及（二）', en: 'Chinese Literature 1, 2' },
+      { start: 'AM', end: 'PM', zh: '科技與生活（一）及（二）', en: 'Technology & Living 1, 2', note: 'Note 2' },
     ],
   },
   {
     kind: 'exam',
     date: '2027-04-08',
     weekday: 'THU',
-    sessions: [
-      { start: '08:30', end: '10:00', zh: '英國語文（一）', en: 'English Language 1' },
-      { start: '11:00', end: '13:00', zh: '英國語文（二）', en: 'English Language 2' },
-    ],
+    sessions: [{ start: 'AM', end: 'PM', zh: '中國語文（一）及（二）', en: 'Chinese Language 1, 2' }],
+  },
+  {
+    kind: 'exam',
+    date: '2027-04-09',
+    weekday: 'FRI',
+    sessions: [{ start: 'AM', end: 'PM', zh: '英國語文（一）及（二）', en: 'English Language 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-10',
     weekday: 'SAT',
-    sessions: [
-      {
-        start: '09:15',
-        end: '12:10',
-        zh: '英國語文（三）聆聽',
-        en: 'English Language 3 (Listening)',
-        note: '到場時間：電台/IR 試場 8:30am，PA 系統試場 8:45am',
-      },
-    ],
+    sessions: [{ start: 'AM', end: 'PM', zh: '英國語文（三）（聆聽及綜合能力考核）', en: 'English Language 3 (Listening and Integrated Skills)' }],
   },
   {
     kind: 'exam',
     date: '2027-04-12',
     weekday: 'MON',
-    sessions: [
-      { start: '08:30', end: '10:45', zh: '數學（必修部分）卷一', en: 'Mathematics Compulsory Part 1' },
-      { start: '11:30', end: '12:45', zh: '數學（必修部分）卷二', en: 'Mathematics Compulsory Part 2' },
-    ],
+    sessions: [{ start: 'AM', end: 'PM', zh: '數學必修部分（一）及（二）', en: 'Mathematics Compulsory Part 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-13',
     weekday: 'TUE',
-    sessions: [{ start: '08:30', end: '10:30', zh: '公民與社會發展', en: 'Citizenship & Social Development' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '公民與社會發展', en: 'Citizenship and Social Development' }],
   },
   {
     kind: 'exam',
     date: '2027-04-14',
     weekday: 'WED',
-    sessions: [{ start: '08:30', end: '10:15', zh: '倫理與宗教（一）及（二）', en: 'Ethics & Religious Studies 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '健康管理與社會關懷（一）及（二）', en: 'Health Management & Social Care 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-15',
     weekday: 'THU',
-    sessions: [{ start: '08:30', end: '11:00', zh: '化學（一）及（二）', en: 'Chemistry 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '化學（一）及（二）', en: 'Chemistry 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-16',
     weekday: 'FRI',
-    sessions: [
-      { start: '08:30', end: '10:30', zh: '健康管理與社會關懷（一）及（二）', en: 'Health Management & Social Care 1 & 2' },
-      { start: '08:30', end: '11:30', zh: '英語文學（一）及（二）', en: 'Literature in English 1 & 2' },
-    ],
+    sessions: [{ start: 'AM', end: 'PM', zh: '地理（一）及（二）', en: 'Geography 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-17',
     weekday: 'SAT',
-    sessions: [{ start: '08:30', end: '10:30', zh: '資訊及通訊科技（一）及（二）', en: 'Information & Communication Technology 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '資訊及通訊科技（一）及（二）', en: 'Information & Communication Technology 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-19',
     weekday: 'MON',
-    sessions: [{ start: '08:30', end: '11:00', zh: '生物（一）及（二）', en: 'Biology 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '生物（一）及（二）', en: 'Biology 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-20',
     weekday: 'TUE',
     sessions: [
-      { start: '08:30', end: '10:30', zh: '中國文學（一）及（二）', en: 'Chinese Literature 1 & 2' },
-      { start: '08:30', end: '12:45', zh: '科技與生活（一）及（二）', en: 'Technology & Living 1 & 2' },
+      { start: 'AM', end: 'PM', zh: '設計與應用科技（一）及（二）', en: 'Design & Applied Technology 1, 2', note: 'Note 2' },
+      { start: 'AM', end: 'PM', zh: '英語文學（一）及（二）', en: 'Literature in English 1, 2', note: 'Note 2' },
     ],
   },
   {
     kind: 'exam',
     date: '2027-04-21',
     weekday: 'WED',
-    sessions: [{ start: '08:30', end: '11:00', zh: '物理(一)及(二)', en: 'Physics 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '物理（一）及（二）', en: 'Physics 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-22',
     weekday: 'THU',
-    sessions: [{ start: '08:30', end: '11:15', zh: '地理(一)及(二)', en: 'Geography 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '經濟（一）及（二）', en: 'Economics 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-23',
     weekday: 'FRI',
-    sessions: [{ start: '08:30', end: '10:30', zh: '歷史(一)及(二)', en: 'History 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '數學延伸部分單元（一）及（二）', en: 'Mathematics Extended Part Modules 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-24',
     weekday: 'SAT',
-    sessions: [{ start: '08:30', end: '10:30', zh: '設計與應用科技(一)及(二)', en: 'Design & Applied Technology 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '中國歷史（一）及（二）', en: 'Chinese History 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-26',
     weekday: 'MON',
-    sessions: [
-      { start: '08:30', end: '11:00', zh: '數學延伸部分 M1', en: 'Mathematics Extended Part M1' },
-      { start: '08:30', end: '11:00', zh: '數學延伸部分 M2', en: 'Mathematics Extended Part M2' },
-    ],
+    sessions: [{ start: 'AM', end: 'PM', zh: '企業、會計與財務概論（一）及（二）', en: 'Business, Accounting & Financial Studies 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-27',
     weekday: 'TUE',
-    sessions: [{ start: '08:30', end: '10:45', zh: '中國歷史(一)及(二)', en: 'Chinese History 1 & 2' }],
+    sessions: [{ start: 'AM', end: 'PM', zh: '歷史（一）及（二）', en: 'History 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-28',
     weekday: 'WED',
-    sessions: [
-      { start: '08:30', end: '10:45', zh: '體育(一)及(二)', en: 'Physical Education 1 & 2' },
-      { start: '08:30', end: '12:15', zh: '音樂 1A 及 1B', en: 'Music 1A & 1B' },
-    ],
+    sessions: [{ start: 'AM', end: 'PM', zh: '旅遊與款待（一）及（二）', en: 'Tourism & Hospitality Studies 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-04-29',
     weekday: 'THU',
     sessions: [
-      { start: '08:30', end: '09:30', zh: '企業、會計與財務概論(一)', en: 'Business, Accounting & Financial Studies 1' },
-      { start: '10:15', end: '12:45', zh: '企業、會計與財務概論(二)', en: 'Business, Accounting & Financial Studies 2' },
+      { start: 'AM', end: 'PM', zh: '英語文學（一）及（二）', en: 'Literature in English 1, 2', note: 'Note 2' },
+      { start: 'AM', end: 'PM', zh: '科技與生活（一）及（二）', en: 'Technology & Living 1, 2', note: 'Note 2' },
+      { start: 'AM', end: 'PM', zh: '體育（一）及（二）', en: 'Physical Education 1, 2', note: 'Note 2' },
+      { start: 'AM', end: 'PM', zh: '音樂 1A 及 1B', en: 'Music 1A & 1B', note: 'Note 2' },
     ],
   },
   {
     kind: 'exam',
     date: '2027-04-30',
     weekday: 'FRI',
-    sessions: [
-      { start: '08:30', end: '09:30', zh: '經濟(一)', en: 'Economics 1' },
-      { start: '10:15', end: '12:45', zh: '經濟(二)', en: 'Economics 2' },
-    ],
-  },
-  {
-    kind: 'holiday',
-    date: '2027-05-01',
-    weekday: 'SAT',
-    label: 'Labour Day — No exams',
-    zh: '勞動節 — 無考試',
+    sessions: [{ start: 'AM', end: 'PM', zh: '倫理與宗教（一）及（二）', en: 'Ethics & Religious Studies 1, 2' }],
   },
   {
     kind: 'exam',
     date: '2027-05-03',
     weekday: 'MON',
-    sessions: [{ start: '08:30', end: '10:00', zh: '旅遊與款待(一)及(二)', en: 'Tourism & Hospitality Studies 1 & 2' }],
+    sessions: [
+      { start: 'AM', end: 'PM', zh: '英語文學（一）及（二）', en: 'Literature in English 1, 2', note: 'Note 2' },
+      { start: 'AM', end: 'PM', zh: '科技與生活（一）及（二）', en: 'Technology & Living 1, 2', note: 'Note 2' },
+      { start: 'AM', end: 'PM', zh: '體育（一）及（二）', en: 'Physical Education 1, 2', note: 'Note 2' },
+      { start: 'AM', end: 'PM', zh: '音樂 1A 及 1B / 後備', en: 'Music 1A & 1B / Reserve', note: 'Note 2' },
+    ],
   },
   {
     kind: 'reserve',
     date: '2027-05-04',
     weekday: 'TUE',
-    label: 'Reserve Date (if needed)',
-    zh: '後備考試日（如有需要）',
-  },
-  {
-    kind: 'reserve',
-    date: '2027-05-05',
-    weekday: 'WED',
-    label: 'Reserve Date (if needed)',
-    zh: '後備考試日（如有需要）',
+    label: 'Reserve / 後備',
+    zh: '後備',
   },
 ]
 
@@ -282,50 +256,51 @@ export default function TimetablePage() {
             2027 香港中學文憑考試時間表
           </h1>
           <p className="mt-3 text-sm sm:text-base text-[var(--color-body)] opacity-90 leading-relaxed">
-            2027 年 HKDSE 筆試完整時間表，按日列出科目、時段及聆聽考試安排。官方時間表 PDF 將於 HKEAA 公佈後提供。
+            2027 年 HKDSE 筆試完整時間表，按日列出科目及時段安排。
           </p>
 
-          <div className="mt-3">
+          <div className="mt-3 flex items-center gap-2 flex-wrap">
             <Link href="/countdown">
               <Button variant="default" size="md">
                 <LuTimer size={16} strokeWidth={3} />
                 2027 DSE 倒數
               </Button>
             </Link>
+            <a href="https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Timetable/2027_DSE_Timetable.pdf" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="md">
+                <LuDownload size={16} />
+                官方時間表 PDF
+              </Button>
+            </a>
           </div>
         </header>
 
-        {/* Estimated notice */}
-        <div
-          className="mb-4 rounded-lg border-2 px-3 py-2.5 text-sm flex gap-2"
-          style={{
-            background: '#fef3c7',
-            borderColor: '#fcd34d',
-            color: '#78350f',
-          }}
-        >
-          <LuInfo size={16} className="flex-shrink-0 translate-y-1" />
-          <span className="leading-relaxed">
-            <strong>注意：</strong>2027 DSE 時間表尚未由 HKEAA 正式公佈，以下日期及科目順序屬估算性質，僅供參考。
-            <span className="block opacity-80 mt-0.5">Dates and order are estimated — 2027 timetable not yet officially announced.</span>
-          </span>
-        </div>
-
-        {/* Practical/Oral alert */}
+        {/* Practical/Speaking alert */}
         <Alert variant="default" className="mb-3">
-          <AlertTitle icon={<LuInfo size={16} />}>實習試 / 口試 Practical & Oral Exams</AlertTitle>
+          <AlertTitle icon={<LuMegaphone size={16} />}>實習試／口試日期 Practical & Speaking Exam Period</AlertTitle>
           <AlertDescription>
-            體育、音樂及英文口試等實習/口試將於 2027 年 2 月至 3 月舉行 — 請查閱個人准考證（Admission Form）以獲取確實日期。
-            <span className="block opacity-80">Practical/Oral exams (PE, Music, English Speaking) are held February–March 2027 — check your Admission Form for exact dates.</span>
+            <div className="space-y-1 mt-0.5">
+              <div><strong>體育（實習考試）</strong> Physical Education – Practical：2027 年 2 月下旬至 3 月下旬 / Late Feb – Late Mar 2027</div>
+              <div><strong>音樂（實習考試）</strong> Music – Practical：2027 年 3 月上旬至 3 月中旬 / Early Mar – Mid-Mar 2027</div>
+              <div><strong>英國語文（口試）</strong> English Language – Speaking：（一般試場）2027 年 3 月中旬至 3 月下旬（星期一至五）/ (Normal) Mid-Mar – Late Mar 2027, Mon–Fri；（特別試場）2027 年 3 月下旬 / (SEN) Late Mar 2027</div>
+            </div>
+          </AlertDescription>
+        </Alert>
+
+        {/* Results release alert */}
+        <Alert variant="default" className="mb-3">
+          <AlertTitle icon={<LuInfo size={16} />}>放榜日期（暫定）Date of Release of Results (Tentative)</AlertTitle>
+          <AlertDescription>
+            約於 2027 年 7 月 14 日 / Around 14 July 2027
           </AlertDescription>
         </Alert>
 
         {/* Toolbar */}
-        <div className="mb-4 flex items-center justify-end gap-2 flex-wrap">
+        <div className="flex items-center justify-end gap-2 flex-wrap">
 
 
           <div
-            className="flex w-full md:w-auto md:inline-flex rounded-lg p-1 border"
+            className="mb-2 flex w-full md:w-auto md:inline-flex rounded-lg p-1 border"
             style={{ background: 'var(--color-card-bg)', borderColor: 'var(--color-border)' }}
           >
             <button
@@ -438,9 +413,9 @@ function DayRow({ day }: { day: ExamDay }) {
             className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-6 px-4 sm:px-5 py-3.5 sm:py-4 border-t first:border-t-0"
             style={{ borderColor: 'var(--color-border)' }}
           >
-            <div className="flex items-center gap-1.5 text-[13px] sm:text-sm font-mono text-[var(--color-body)] opacity-80 flex-shrink-0 sm:w-[118px] sm:whitespace-nowrap">
+            <div className="flex items-center gap-1.5 text-[13px] sm:text-sm font-mono text-[var(--color-body)] opacity-80 flex-shrink-0 sm:w-[100px] sm:whitespace-nowrap">
               <LuClock size={12} />
-              <span>{s.start}<span className=""> – </span>{s.end}</span>
+              <span>{s.start === 'AM' ? 'AM / PM' : `${s.start} – ${s.end}`}</span>
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-base sm:text-lg font-semibold text-[var(--color-heading)] leading-snug">{s.zh}</div>
@@ -667,7 +642,7 @@ function DayDetailModal({ day, onClose }: { day: ExamDay; onClose: () => void })
                 >
                   <div className="flex items-center gap-1.5 text-xs font-mono text-[var(--color-body)] opacity-80">
                     <LuClock size={13} />
-                    {s.start} – {s.end}
+                    {s.start === 'AM' ? 'AM / PM' : `${s.start} – ${s.end}`}
                   </div>
                   <div className="mt-1.5 text-base font-semibold text-[var(--color-heading)] leading-snug">{s.zh}</div>
                   <div className="text-sm text-[var(--color-body)] opacity-70 leading-snug">{s.en}</div>
