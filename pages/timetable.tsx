@@ -279,11 +279,9 @@ export default function TimetablePage() {
         <Alert variant="default" className="mb-3">
           <AlertTitle icon={<LuMegaphone size={16} />}>實習試／口試日期 Practical & Speaking Exam Period</AlertTitle>
           <AlertDescription>
-            <div className="space-y-1 mt-0.5">
-              <div><strong>體育（實習考試）</strong> Physical Education – Practical：2027 年 2 月下旬至 3 月下旬 / Late Feb – Late Mar 2027</div>
-              <div><strong>音樂（實習考試）</strong> Music – Practical：2027 年 3 月上旬至 3 月中旬 / Early Mar – Mid-Mar 2027</div>
-              <div><strong>英國語文（口試）</strong> English Language – Speaking：（一般試場）2027 年 3 月中旬至 3 月下旬（星期一至五）/ (Normal) Mid-Mar – Late Mar 2027, Mon–Fri；（特別試場）2027 年 3 月下旬 / (SEN) Late Mar 2027</div>
-            </div>
+            <strong>體育（實習考試）</strong> Physical Education – Practical：2027 年 2 月下旬至 3 月下旬 / Late Feb – Late Mar 2027<br />
+            <strong>音樂（實習考試）</strong> Music – Practical：2027 年 3 月上旬至 3 月中旬 / Early Mar – Mid-Mar 2027<br />
+            <strong>英國語文（口試）</strong> English Language – Speaking：（一般試場）2027 年 3 月中旬至 3 月下旬（星期一至五）/ (Normal) Mid-Mar – Late Mar 2027, Mon–Fri；（特別試場）2027 年 3 月下旬 / (SEN) Late Mar 2027
           </AlertDescription>
         </Alert>
 
