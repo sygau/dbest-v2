@@ -35,6 +35,7 @@ async function generateCoreSitemap() {
     { path: '/vocab', priority: '0.8', changefreq: 'weekly' },
     { path: '/vocab/bookmarks', priority: '0.6', changefreq: 'monthly' },
     { path: '/calculator-programmes', priority: '0.8', changefreq: 'weekly' },
+    { path: '/ucas', priority: '0.7', changefreq: 'monthly' },
   ];
 
   // vocab section + set pages

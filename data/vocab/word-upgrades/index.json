@@ -7,5 +7,5 @@
   "icon": "LuTrendingUp",
   "accent": "#d98e3f",
   "defaultContentKind": "vocab",
-  "sets": ["verbs", "adjectives", "nouns"]
+  "sets": ["verbs", "adjectives", "nouns", "adverbs", "phrasal-verbs", "linking-words"]
 }

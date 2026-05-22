@@ -1,0 +1,261 @@
+{
+  "slug": "gender-equality",
+  "nameZh": "性別平等與女性權益",
+  "nameEn": "Gender Equality & Women's Rights",
+  "description": "性別平等、女性權益、工作場所歧視相關詞彙",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "tags": ["society", "rights", "gender"],
+  "entries": [
+    {
+      "id": "gender-001",
+      "kind": "vocab",
+      "term": "gender equality",
+      "pos": "noun phrase",
+      "meaningZh": "性別平等",
+      "difficulty": 1,
+      "example": "Achieving gender equality in the workplace requires systemic change.",
+      "synonyms": ["equal rights", "gender parity", "sexual equality"]
+    },
+    {
+      "id": "gender-002",
+      "kind": "vocab",
+      "term": "gender disparity",
+      "pos": "noun phrase",
+      "meaningZh": "性別差異/差距",
+      "difficulty": 2,
+      "example": "The gender disparity in leadership positions remains significant.",
+      "synonyms": ["gender gap", "gender imbalance", "sexual inequality"]
+    },
+    {
+      "id": "gender-003",
+      "kind": "vocab",
+      "term": "wage gap",
+      "pos": "noun phrase",
+      "meaningZh": "薪酬差距",
+      "difficulty": 2,
+      "example": "The persistent wage gap disadvantages women across industries.",
+      "synonyms": ["pay inequality", "salary disparity", "earning gap"]
+    },
+    {
+      "id": "gender-004",
+      "kind": "vocab",
+      "term": "discrimination",
+      "pos": "noun",
+      "meaningZh": "歧視",
+      "difficulty": 1,
+      "example": "Gender discrimination in hiring practices remains illegal yet prevalent.",
+      "synonyms": ["prejudice", "bias", "unfair treatment"]
+    },
+    {
+      "id": "gender-005",
+      "kind": "vocab",
+      "term": "sexism",
+      "pos": "noun",
+      "meaningZh": "性別歧視",
+      "difficulty": 2,
+      "example": "Sexism in corporate culture undermines women's advancement.",
+      "synonyms": ["gender bias", "sexual discrimination", "chauvinism"]
+    },
+    {
+      "id": "gender-006",
+      "kind": "vocab",
+      "term": "representation",
+      "pos": "noun",
+      "meaningZh": "代表性/代表度",
+      "difficulty": 2,
+      "example": "Women's representation in boardrooms has improved marginally.",
+      "synonyms": ["presence", "participation", "inclusion"]
+    },
+    {
+      "id": "gender-007",
+      "kind": "vocab",
+      "term": "empowerment",
+      "pos": "noun",
+      "meaningZh": "賦權/增強權力",
+      "difficulty": 2,
+      "example": "Economic empowerment is crucial for women's independence.",
+      "synonyms": ["autonomy", "agency", "self-determination"]
+    },
+    {
+      "id": "gender-008",
+      "kind": "vocab",
+      "term": "stereotype",
+      "pos": "noun",
+      "meaningZh": "刻板印象",
+      "difficulty": 2,
+      "example": "Gender stereotypes limit career opportunities for both men and women.",
+      "synonyms": ["cliché", "generalisation", "prejudgement"]
+    },
+    {
+      "id": "gender-009",
+      "kind": "vocab",
+      "term": "glass ceiling",
+      "pos": "noun phrase",
+      "meaningZh": "玻璃天花板（無形障礙）",
+      "difficulty": 3,
+      "example": "The glass ceiling prevents women from reaching senior positions.",
+      "synonyms": ["invisible barrier", "implicit limitation", "covert obstacle"]
+    },
+    {
+      "id": "gender-010",
+      "kind": "vocab",
+      "term": "harassment",
+      "pos": "noun",
+      "meaningZh": "騷擾/骚扰",
+      "difficulty": 2,
+      "example": "Sexual harassment in the workplace creates a hostile environment.",
+      "synonyms": ["abuse", "intimidation", "mistreatment"]
+    },
+    {
+      "id": "gender-011",
+      "kind": "vocab",
+      "term": "maternity leave",
+      "pos": "noun phrase",
+      "meaningZh": "產假",
+      "difficulty": 1,
+      "example": "Adequate maternity leave supports women's workforce participation.",
+      "synonyms": ["parental leave", "pregnancy protection", "family leave"]
+    },
+    {
+      "id": "gender-012",
+      "kind": "vocab",
+      "term": "work-life balance",
+      "pos": "noun phrase",
+      "meaningZh": "工作與生活平衡",
+      "difficulty": 2,
+      "example": "Women often struggle to achieve work-life balance.",
+      "synonyms": ["work-family equilibrium", "time management", "lifestyle balance"]
+    },
+    {
+      "id": "gender-013",
+      "kind": "vocab",
+      "term": "feminism",
+      "pos": "noun",
+      "meaningZh": "女性主義",
+      "difficulty": 2,
+      "example": "Modern feminism advocates for intersectional equality.",
+      "synonyms": ["women's rights movement", "gender activism", "egalitarianism"]
+    },
+    {
+      "id": "gender-014",
+      "kind": "vocab",
+      "term": "systemic inequality",
+      "pos": "noun phrase",
+      "meaningZh": "系統性不平等",
+      "difficulty": 3,
+      "example": "Systemic inequality requires institutional reform, not individual effort.",
+      "synonyms": ["structural disadvantage", "institutional bias", "endemic unfairness"]
+    },
+    {
+      "id": "gender-015",
+      "kind": "vocab",
+      "term": "advocacy",
+      "pos": "noun",
+      "meaningZh": "倡導/提倡",
+      "difficulty": 2,
+      "example": "Advocacy for women's rights has accelerated social progress.",
+      "synonyms": ["promotion", "support", "championing"]
+    },
+    {
+      "id": "gender-016",
+      "kind": "vocab",
+      "term": "equity",
+      "pos": "noun",
+      "meaningZh": "公平/衡平（相比平等更著重公平分配）",
+      "difficulty": 2,
+      "example": "Equity requires giving resources based on individual needs.",
+      "synonyms": ["fairness", "justice", "impartiality"]
+    },
+    {
+      "id": "gender-017",
+      "kind": "vocab",
+      "term": "marginalisation",
+      "pos": "noun",
+      "meaningZh": "邊緣化",
+      "difficulty": 2,
+      "example": "Women from minorities face double marginalisation.",
+      "synonyms": ["exclusion", "sidelining", "social isolation"]
+    },
+    {
+      "id": "gender-018",
+      "kind": "vocab",
+      "term": "unequal pay",
+      "pos": "noun phrase",
+      "meaningZh": "不等薪酬",
+      "difficulty": 1,
+      "example": "Unequal pay for equal work violates basic fairness principles.",
+      "synonyms": ["wage inequality", "salary disparity", "unfair compensation"]
+    },
+    {
+      "id": "gender-019",
+      "kind": "vocab",
+      "term": "leadership pipeline",
+      "pos": "noun phrase",
+      "meaningZh": "領導層管道（人才培育渠道）",
+      "difficulty": 3,
+      "example": "Building a diverse leadership pipeline requires mentorship programmes.",
+      "synonyms": ["talent development", "succession planning", "career progression"]
+    },
+    {
+      "id": "gender-020",
+      "kind": "vocab",
+      "term": "quota",
+      "pos": "noun",
+      "meaningZh": "配額/名額",
+      "difficulty": 2,
+      "example": "Some countries implement gender quotas for board representation.",
+      "synonyms": ["allocation", "share", "allocation limit"]
+    },
+    {
+      "id": "gender-021",
+      "kind": "vocab",
+      "term": "bias",
+      "pos": "noun",
+      "meaningZh": "偏見",
+      "difficulty": 2,
+      "example": "Unconscious bias affects hiring decisions.",
+      "synonyms": ["prejudice", "discrimination", "inclination"]
+    },
+    {
+      "id": "gender-022",
+      "kind": "vocab",
+      "term": "intersectionality",
+      "pos": "noun",
+      "meaningZh": "交叉性（指多重社會身份交集產生的複雜不平等）",
+      "difficulty": 3,
+      "example": "Intersectionality examines how gender, race, and class overlap.",
+      "synonyms": ["interconnection", "overlapping identities", "multiple discrimination"]
+    },
+    {
+      "id": "gender-023",
+      "kind": "vocab",
+      "term": "institutional change",
+      "pos": "noun phrase",
+      "meaningZh": "制度改革",
+      "difficulty": 2,
+      "example": "Institutional change is necessary to address gender disparities.",
+      "synonyms": ["policy reform", "structural reform", "systemic overhaul"]
+    },
+    {
+      "id": "gender-024",
+      "kind": "vocab",
+      "term": "progress",
+      "pos": "noun",
+      "meaningZh": "進展",
+      "difficulty": 1,
+      "example": "While progress has been made, gender equality remains incomplete.",
+      "synonyms": ["advancement", "improvement", "development"]
+    },
+    {
+      "id": "gender-025",
+      "kind": "vocab",
+      "term": "sustainable equality",
+      "pos": "noun phrase",
+      "meaningZh": "可持續的平等",
+      "difficulty": 3,
+      "example": "Sustainable equality requires ongoing commitment and resources.",
+      "synonyms": ["long-term equity", "lasting equality", "enduring fairness"]
+    }
+  ]
+}

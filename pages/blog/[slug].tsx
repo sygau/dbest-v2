@@ -122,7 +122,9 @@ export default function BlogPost({ post, related, tocItems }: BlogPostProps) {
     description: seoDesc,
     image: coverOgSrc,
     datePublished: effectiveDate,
-    dateModified: effectiveDate,
+    dateModified: post._updatedAt || effectiveDate,
+    ...(post.category?.title ? { articleSection: post.category.title } : {}),
+    ...(post.tags?.length ? { keywords: post.tags.join(', ') } : {}),
     author: hasAuthor
       ? { '@type': 'Person', name: author!.displayName }
       : { '@type': 'Organization', name: 'dse.best' },
@@ -137,6 +139,16 @@ export default function BlogPost({ post, related, tocItems }: BlogPostProps) {
     },
   }
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'dse.best', item: 'https://dse.best' },
+      { '@type': 'ListItem', position: 2, name: '文章', item: 'https://dse.best/blog' },
+      { '@type': 'ListItem', position: 3, name: seoTitle, item: `https://dse.best/blog/${slug}` },
+    ],
+  }
+
   return (
     <>
       <PageSEO
@@ -147,7 +159,7 @@ export default function BlogPost({ post, related, tocItems }: BlogPostProps) {
         ogImage={coverOgSrc}
         ogUrl={`https://dse.best/blog/${slug}`}
         robots={post.noIndex ? ['noindex', 'nofollow'] : ['index', 'follow']}
-        jsonLd={[blogPostingJsonLd]}
+        jsonLd={[blogPostingJsonLd, breadcrumbJsonLd]}
       />
 
       {post.noIndex && (
@@ -291,7 +303,7 @@ export default function BlogPost({ post, related, tocItems }: BlogPostProps) {
         {/* Body */}
         <div className="blog-prose">
           {post.body ? (
-            <PortableTextRenderer value={post.body} showToc={!!post.showToc} />
+            <PortableTextRenderer value={post.body} showToc={!!post.showToc} loadAds={post.loadAds !== false} />
           ) : (
             <p>{post.excerpt}</p>
           )}

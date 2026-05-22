@@ -73,7 +73,7 @@ export const POST_BY_SLUG_QUERY = groq`
   category->{ _id, title, slug, color, emoji, lucideIcon },
   tags,
   ${AUTHOR_FULL_PROJECTION},
-  publishedAt, _createdAt, readingTime,
+  publishedAt, _createdAt, _updatedAt, readingTime,
   showViews, showToc, noIndex, loadAds, seoTitle, seoDescription,
   "relatedPosts": relatedPosts[]->{
     _id, title, slug, excerpt, readingTime,

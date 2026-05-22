@@ -1,5 +1,15 @@
 # dse.best v2 Changelog
 
+## [2026-05-23] — Blog SEO + Smart In-Article Ads
+What: Added breadcrumb JSON-LD and articleSection to blog post structured data; fixed dateModified to use _updatedAt; smart in-article ad injection in PortableTextRenderer — inserts fluid in-article AdSense units before H2 headings (20% warmup, min 6 blocks gap, max 3 ads, skip last 3 blocks).
+Files: lib/sanityQueries.ts, lib/blogTypes.ts, pages/blog/[slug].tsx, components/blog/PortableTextRenderer.tsx, components/blog/BlogInArticleAd.tsx
+Notes: Ad slot ID placeholder in BlogInArticleAd.tsx — must create In-article ad unit in AdSense dashboard and replace REPLACE_WITH_SLOT_ID. loadAds field defaults to true; set false on posts where ads are unwanted. Sidebar ads ruled out — iPad (primary target) has insufficient margin space.
+
+## [2026-05-22] — DSE UCAS Tariff Points Calculator
+What: New tool at /ucas — purely client-side calculator converting HKDSE Category A grades to UCAS Tariff Points, with math compulsory/M1/M2 half-weight logic, dynamic elective rows, live breakdown, official reference tables, FAQ schema, and full SEO (SoftwareApplication JSON-LD, FAQPage).
+Files: pages/ucas/index.tsx, lib/ucas/tariff.ts, data/jsonld/pages.ts, data/faqs/pages.ts, components/home/toolsData.ts, components/tw/Sidebar.tsx
+Notes: No API call or Turnstile needed — static calc only. Math extended M1/M2 are opt-in checkboxes since most students don't take them. UCAS Tariff counts all submitted subjects; added disclaimer note since universities vary on which subjects they accept.
+
 ## [2026-05-22] — Timetable official 2027 data update
 What: Replaced estimated schedule with official HKEAA 2027 DSE timetable data; removed unofficial warning banner; added "官方時間表 PDF" button linking to HKEAA PDF; fixed all subject names, dates, and ordering; sessions now show "AM / PM" instead of estimated times.
 Files: pages/timetable.tsx

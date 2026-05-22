@@ -1,0 +1,261 @@
+{
+  "slug": "housing-urban",
+  "nameZh": "房屋與城市規劃",
+  "nameEn": "Housing & Urban Planning",
+  "description": "房屋問題、房價、城市發展、可持續城市相關詞彙",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "tags": ["urban", "housing", "development"],
+  "entries": [
+    {
+      "id": "housing-001",
+      "kind": "vocab",
+      "term": "housing affordability",
+      "pos": "noun phrase",
+      "meaningZh": "房屋負擔能力",
+      "difficulty": 2,
+      "example": "Housing affordability is a crisis in many cities.",
+      "synonyms": ["affordable housing", "price accessibility", "cost-effectiveness"]
+    },
+    {
+      "id": "housing-002",
+      "kind": "vocab",
+      "term": "property prices",
+      "pos": "noun phrase",
+      "meaningZh": "房產價格",
+      "difficulty": 1,
+      "example": "Property prices have soared beyond wage growth.",
+      "synonyms": ["real estate values", "housing costs", "land values"]
+    },
+    {
+      "id": "housing-003",
+      "kind": "vocab",
+      "term": "urban sprawl",
+      "pos": "noun phrase",
+      "meaningZh": "城市蔓延",
+      "difficulty": 2,
+      "example": "Urban sprawl consumes farmland and natural habitats.",
+      "synonyms": ["uncontrolled expansion", "suburban expansion", "unchecked growth"]
+    },
+    {
+      "id": "housing-004",
+      "kind": "vocab",
+      "term": "gentrification",
+      "pos": "noun",
+      "meaningZh": "中產階級化",
+      "difficulty": 2,
+      "example": "Gentrification displaces long-time residents.",
+      "synonyms": ["neighborhood upgrading", "social displacement", "class transformation"]
+    },
+    {
+      "id": "housing-005",
+      "kind": "vocab",
+      "term": "sustainable city",
+      "pos": "noun phrase",
+      "meaningZh": "可持續城市",
+      "difficulty": 2,
+      "example": "Sustainable cities prioritize environmental and social wellbeing.",
+      "synonyms": ["eco-friendly city", "green urban area", "livable community"]
+    },
+    {
+      "id": "housing-006",
+      "kind": "vocab",
+      "term": "public transport",
+      "pos": "noun phrase",
+      "meaningZh": "公共交通",
+      "difficulty": 1,
+      "example": "Accessible public transport reduces car dependency.",
+      "synonyms": ["mass transit", "public transit", "transportation network"]
+    },
+    {
+      "id": "housing-007",
+      "kind": "vocab",
+      "term": "infrastructure",
+      "pos": "noun",
+      "meaningZh": "基礎設施",
+      "difficulty": 2,
+      "example": "Adequate infrastructure is essential for city development.",
+      "synonyms": ["systems", "facilities", "framework"]
+    },
+    {
+      "id": "housing-008",
+      "kind": "vocab",
+      "term": "zoning",
+      "pos": "noun",
+      "meaningZh": "土地分區",
+      "difficulty": 2,
+      "example": "Zoning regulations control land use and development.",
+      "synonyms": ["land use policy", "urban classification", "development control"]
+    },
+    {
+      "id": "housing-009",
+      "kind": "vocab",
+      "term": "community",
+      "pos": "noun",
+      "meaningZh": "社區",
+      "difficulty": 1,
+      "example": "Strong communities are built through sustained presence.",
+      "synonyms": ["neighborhood", "locality", "residents group"]
+    },
+    {
+      "id": "housing-010",
+      "kind": "vocab",
+      "term": "affordable housing",
+      "pos": "noun phrase",
+      "meaningZh": "可負擔房屋",
+      "difficulty": 1,
+      "example": "Affordable housing programmes serve low-income families.",
+      "synonyms": ["low-cost housing", "subsidized housing", "public housing"]
+    },
+    {
+      "id": "housing-011",
+      "kind": "vocab",
+      "term": "homelessness",
+      "pos": "noun",
+      "meaningZh": "無家可歸",
+      "difficulty": 2,
+      "example": "Homelessness requires multifaceted solutions.",
+      "synonyms": ["housing insecurity", "vagrancy", "displaced persons"]
+    },
+    {
+      "id": "housing-012",
+      "kind": "vocab",
+      "term": "rent",
+      "pos": "noun",
+      "meaningZh": "租金",
+      "difficulty": 1,
+      "example": "Rising rent prices force people out of neighborhoods.",
+      "synonyms": ["lease payment", "monthly housing cost", "tenancy fee"]
+    },
+    {
+      "id": "housing-013",
+      "kind": "vocab",
+      "term": "development",
+      "pos": "noun",
+      "meaningZh": "發展/開發",
+      "difficulty": 1,
+      "example": "Urban development requires careful planning.",
+      "synonyms": ["expansion", "growth", "construction"]
+    },
+    {
+      "id": "housing-014",
+      "kind": "vocab",
+      "term": "green space",
+      "pos": "noun phrase",
+      "meaningZh": "綠地",
+      "difficulty": 1,
+      "example": "Cities need more green space for recreation and wellbeing.",
+      "synonyms": ["park", "garden", "natural area"]
+    },
+    {
+      "id": "housing-015",
+      "kind": "vocab",
+      "term": "mixed-use development",
+      "pos": "noun phrase",
+      "meaningZh": "混合用途發展",
+      "difficulty": 2,
+      "example": "Mixed-use development combines residential, commercial, and leisure spaces.",
+      "synonyms": ["integrated development", "multi-functional space", "diverse use area"]
+    },
+    {
+      "id": "housing-016",
+      "kind": "vocab",
+      "term": "pedestrian-friendly",
+      "pos": "adjective",
+      "meaningZh": "適合行人的",
+      "difficulty": 2,
+      "example": "Pedestrian-friendly streets encourage walking and community interaction.",
+      "synonyms": ["walkable", "pedestrian-oriented", "human-scale design"]
+    },
+    {
+      "id": "housing-017",
+      "kind": "vocab",
+      "term": "congestion",
+      "pos": "noun",
+      "meaningZh": "擁擠/交通擁塞",
+      "difficulty": 1,
+      "example": "Traffic congestion reduces urban livability.",
+      "synonyms": ["overcrowding", "gridlock", "traffic jam"]
+    },
+    {
+      "id": "housing-018",
+      "kind": "vocab",
+      "term": "renovation",
+      "pos": "noun",
+      "meaningZh": "翻新/改造",
+      "difficulty": 2,
+      "example": "Building renovation improves urban aesthetics and efficiency.",
+      "synonyms": ["restoration", "modernization", "refurbishment"]
+    },
+    {
+      "id": "housing-019",
+      "kind": "vocab",
+      "term": "livability",
+      "pos": "noun",
+      "meaningZh": "宜居性",
+      "difficulty": 2,
+      "example": "Urban livability depends on accessible services and amenities.",
+      "synonyms": ["quality of life", "habitability", "desirability"]
+    },
+    {
+      "id": "housing-020",
+      "kind": "vocab",
+      "term": "transit-oriented development",
+      "pos": "noun phrase",
+      "meaningZh": "交通導向發展",
+      "difficulty": 2,
+      "example": "Transit-oriented development reduces car dependency.",
+      "synonyms": ["TOD", "public transport focused", "mobility-based planning"]
+    },
+    {
+      "id": "housing-021",
+      "kind": "vocab",
+      "term": "density",
+      "pos": "noun",
+      "meaningZh": "密度",
+      "difficulty": 2,
+      "example": "Appropriate density balances urbanization with livability.",
+      "synonyms": ["population concentration", "building intensity", "crowding"]
+    },
+    {
+      "id": "housing-022",
+      "kind": "vocab",
+      "term": "co-housing",
+      "pos": "noun",
+      "meaningZh": "合居/共享住房",
+      "difficulty": 2,
+      "example": "Co-housing provides community and affordability.",
+      "synonyms": ["communal living", "shared housing", "collaborative housing"]
+    },
+    {
+      "id": "housing-023",
+      "kind": "vocab",
+      "term": "smart city",
+      "pos": "noun phrase",
+      "meaningZh": "智慧城市",
+      "difficulty": 2,
+      "example": "Smart cities use technology to improve services.",
+      "synonyms": ["connected city", "digital city", "tech-enabled urban area"]
+    },
+    {
+      "id": "housing-024",
+      "kind": "vocab",
+      "term": "resilience",
+      "pos": "noun",
+      "meaningZh": "韌性",
+      "difficulty": 2,
+      "example": "Urban resilience helps cities adapt to climate challenges.",
+      "synonyms": ["adaptability", "robustness", "bounce-back capability"]
+    },
+    {
+      "id": "housing-025",
+      "kind": "vocab",
+      "term": "equity",
+      "pos": "noun",
+      "meaningZh": "公平/衡平",
+      "difficulty": 2,
+      "example": "Urban planning must consider equity for all residents.",
+      "synonyms": ["fairness", "justice", "impartiality"]
+    }
+  ]
+}

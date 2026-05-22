@@ -88,6 +88,7 @@ export interface PostFull {
   author?: PostAuthorFull
   publishedAt?: string
   _createdAt: string
+  _updatedAt?: string
   readingTime?: number
   showViews: boolean
   showToc?: boolean

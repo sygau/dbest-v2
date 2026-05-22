@@ -1,0 +1,261 @@
+{
+  "slug": "immigration-integration",
+  "nameZh": "移民與文化融合",
+  "nameEn": "Immigration & Integration",
+  "description": "移民政策、文化融合、多元文化、社會融合相關詞彙",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "tags": ["society", "culture", "immigration"],
+  "entries": [
+    {
+      "id": "immig-001",
+      "kind": "vocab",
+      "term": "immigration",
+      "pos": "noun",
+      "meaningZh": "移民",
+      "difficulty": 1,
+      "example": "Immigration policies vary significantly across nations.",
+      "synonyms": ["migration", "relocation", "settlement"]
+    },
+    {
+      "id": "immig-002",
+      "kind": "vocab",
+      "term": "integration",
+      "pos": "noun",
+      "meaningZh": "融合/整合",
+      "difficulty": 2,
+      "example": "Successful integration requires mutual effort and acceptance.",
+      "synonyms": ["assimilation", "incorporation", "amalgamation"]
+    },
+    {
+      "id": "immig-003",
+      "kind": "vocab",
+      "term": "multicultural",
+      "pos": "adjective",
+      "meaningZh": "多元文化的",
+      "difficulty": 2,
+      "example": "Multicultural societies benefit from diversity.",
+      "synonyms": ["diverse", "pluralistic", "multi-ethnic"]
+    },
+    {
+      "id": "immig-004",
+      "kind": "vocab",
+      "term": "cultural diversity",
+      "pos": "noun phrase",
+      "meaningZh": "文化多樣性",
+      "difficulty": 2,
+      "example": "Cultural diversity enriches communities.",
+      "synonyms": ["ethnic variety", "cultural plurality", "multicultural mix"]
+    },
+    {
+      "id": "immig-005",
+      "kind": "vocab",
+      "term": "discrimination",
+      "pos": "noun",
+      "meaningZh": "歧視",
+      "difficulty": 1,
+      "example": "Discrimination against immigrants remains systemic.",
+      "synonyms": ["prejudice", "bias", "unfair treatment"]
+    },
+    {
+      "id": "immig-006",
+      "kind": "vocab",
+      "term": "xenophobia",
+      "pos": "noun",
+      "meaningZh": "仇外心理",
+      "difficulty": 2,
+      "example": "Xenophobia leads to social divisions.",
+      "synonyms": ["foreign hostility", "anti-immigrant sentiment", "prejudice"]
+    },
+    {
+      "id": "immig-007",
+      "kind": "vocab",
+      "term": "prejudice",
+      "pos": "noun",
+      "meaningZh": "偏見",
+      "difficulty": 2,
+      "example": "Prejudice against migrants affects their opportunities.",
+      "synonyms": ["bias", "discrimination", "intolerance"]
+    },
+    {
+      "id": "immig-008",
+      "kind": "vocab",
+      "term": "stereotype",
+      "pos": "noun",
+      "meaningZh": "刻板印象",
+      "difficulty": 2,
+      "example": "Harmful stereotypes misrepresent entire communities.",
+      "synonyms": ["cliché", "generalisation", "prejudgement"]
+    },
+    {
+      "id": "immig-009",
+      "kind": "vocab",
+      "term": "assimilation",
+      "pos": "noun",
+      "meaningZh": "同化",
+      "difficulty": 2,
+      "example": "Complete assimilation erases cultural identity.",
+      "synonyms": ["cultural absorption", "integration", "blending"]
+    },
+    {
+      "id": "immig-010",
+      "kind": "vocab",
+      "term": "community",
+      "pos": "noun",
+      "meaningZh": "社區",
+      "difficulty": 1,
+      "example": "Immigrant communities contribute significantly to society.",
+      "synonyms": ["neighborhood", "locality", "group"]
+    },
+    {
+      "id": "immig-011",
+      "kind": "vocab",
+      "term": "inclusion",
+      "pos": "noun",
+      "meaningZh": "包容/納入",
+      "difficulty": 1,
+      "example": "Inclusion policies promote equal participation.",
+      "synonyms": ["acceptance", "incorporation", "belonging"]
+    },
+    {
+      "id": "immig-012",
+      "kind": "vocab",
+      "term": "language barrier",
+      "pos": "noun phrase",
+      "meaningZh": "語言障礙",
+      "difficulty": 1,
+      "example": "Language barriers challenge immigrant integration.",
+      "synonyms": ["communication obstacle", "linguistic difficulty", "language gap"]
+    },
+    {
+      "id": "immig-013",
+      "kind": "vocab",
+      "term": "employment discrimination",
+      "pos": "noun phrase",
+      "meaningZh": "就業歧視",
+      "difficulty": 2,
+      "example": "Employment discrimination disadvantages migrant workers.",
+      "synonyms": ["workplace bias", "hiring discrimination", "career prejudice"]
+    },
+    {
+      "id": "immig-014",
+      "kind": "vocab",
+      "term": "cultural identity",
+      "pos": "noun phrase",
+      "meaningZh": "文化身份",
+      "difficulty": 2,
+      "example": "Preserving cultural identity is important for immigrants.",
+      "synonyms": ["ethnic heritage", "cultural roots", "national identity"]
+    },
+    {
+      "id": "immig-015",
+      "kind": "vocab",
+      "term": "social cohesion",
+      "pos": "noun phrase",
+      "meaningZh": "社會凝聚力",
+      "difficulty": 2,
+      "example": "Social cohesion requires mutual respect and understanding.",
+      "synonyms": ["community unity", "social solidarity", "collective bonds"]
+    },
+    {
+      "id": "immig-016",
+      "kind": "vocab",
+      "term": "refugee",
+      "pos": "noun",
+      "meaningZh": "難民",
+      "difficulty": 1,
+      "example": "Refugees face unique integration challenges.",
+      "synonyms": ["asylum seeker", "displaced person", "displaced refugee"]
+    },
+    {
+      "id": "immig-017",
+      "kind": "vocab",
+      "term": "remittance",
+      "pos": "noun",
+      "meaningZh": "匯款",
+      "difficulty": 2,
+      "example": "Remittances support families in home countries.",
+      "synonyms": ["money transfer", "financial support", "overseas payment"]
+    },
+    {
+      "id": "immig-018",
+      "kind": "vocab",
+      "term": "access to services",
+      "pos": "noun phrase",
+      "meaningZh": "服務接觸/獲得",
+      "difficulty": 2,
+      "example": "Access to services is crucial for immigrant wellbeing.",
+      "synonyms": ["service availability", "resource access", "opportunity"]
+    },
+    {
+      "id": "immig-019",
+      "kind": "vocab",
+      "term": "diaspora",
+      "pos": "noun",
+      "meaningZh": "流散社群",
+      "difficulty": 2,
+      "example": "Diasporas maintain cultural connections across borders.",
+      "synonyms": ["scattered community", "emigrant population", "overseas community"]
+    },
+    {
+      "id": "immig-020",
+      "kind": "vocab",
+      "term": "intercultural dialogue",
+      "pos": "noun phrase",
+      "meaningZh": "跨文化對話",
+      "difficulty": 2,
+      "example": "Intercultural dialogue bridges community divides.",
+      "synonyms": ["cross-cultural communication", "cultural exchange", "mutual understanding"]
+    },
+    {
+      "id": "immig-021",
+      "kind": "vocab",
+      "term": "marginalization",
+      "pos": "noun",
+      "meaningZh": "邊緣化",
+      "difficulty": 2,
+      "example": "Marginalization prevents successful integration.",
+      "synonyms": ["sidelining", "exclusion", "social isolation"]
+    },
+    {
+      "id": "immig-022",
+      "kind": "vocab",
+      "term": "economic contribution",
+      "pos": "noun phrase",
+      "meaningZh": "經濟貢獻",
+      "difficulty": 2,
+      "example": "Immigrants make substantial economic contributions.",
+      "synonyms": ["economic impact", "financial contribution", "productive value"]
+    },
+    {
+      "id": "immig-023",
+      "kind": "vocab",
+      "term": "settlement policy",
+      "pos": "noun phrase",
+      "meaningZh": "定居政策",
+      "difficulty": 2,
+      "example": "Settlement policies affect long-term integration outcomes.",
+      "synonyms": ["immigration policy", "resettlement programme", "integration framework"]
+    },
+    {
+      "id": "immig-024",
+      "kind": "vocab",
+      "term": "belonging",
+      "pos": "noun",
+      "meaningZh": "歸屬感",
+      "difficulty": 2,
+      "example": "A sense of belonging encourages civic participation.",
+      "synonyms": ["acceptance", "inclusion", "sense of community"]
+    },
+    {
+      "id": "immig-025",
+      "kind": "vocab",
+      "term": "pluralism",
+      "pos": "noun",
+      "meaningZh": "多元主義",
+      "difficulty": 2,
+      "example": "Pluralism celebrates cultural and ideological diversity.",
+      "synonyms": ["multiculturalism", "diversity", "coexistence"]
+    }
+  ]
+}

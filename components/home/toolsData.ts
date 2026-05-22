@@ -1,5 +1,5 @@
 import { IconType } from 'react-icons'
-import { BiCalculator, BiBookContent, BiTrendingUp, BiNews } from 'react-icons/bi'
+import { BiCalculator, BiBookContent, BiTrendingUp, BiNews, BiWorld } from 'react-icons/bi'
 
 export interface ToolItem {
   title: string
@@ -34,6 +34,14 @@ export const tools: ToolItem[] = [
     accent: '#f59e0b',
     blurb: '2012–2025 歷年各科 5** / 5* / 5 等級分界線。',
     Icon: BiTrendingUp,
+  },
+  {
+    title: 'UCAS 分換算器',
+    zh: 'DSE → UCAS 換算',
+    href: '/ucas',
+    accent: '#0ea5e9',
+    blurb: '輸入 DSE 成績，即時計算 UCAS Tariff Points，附官方 A-Level 對照表，申請英國大學必備。',
+    Icon: BiWorld,
   },
   {
     title: '教育博客',

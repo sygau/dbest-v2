@@ -1,0 +1,261 @@
+{
+  "slug": "wealth-inequality",
+  "nameZh": "貧富不均與社會流動",
+  "nameEn": "Wealth Inequality & Social Mobility",
+  "description": "經濟不平等、貧困、社會流動性相關詞彙",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "tags": ["economy", "society", "inequality"],
+  "entries": [
+    {
+      "id": "wealth-001",
+      "kind": "vocab",
+      "term": "wealth inequality",
+      "pos": "noun phrase",
+      "meaningZh": "貧富不均",
+      "difficulty": 2,
+      "example": "Wealth inequality has reached unprecedented levels.",
+      "synonyms": ["income gap", "economic disparity", "wealth disparity"]
+    },
+    {
+      "id": "wealth-002",
+      "kind": "vocab",
+      "term": "poverty",
+      "pos": "noun",
+      "meaningZh": "貧困",
+      "difficulty": 1,
+      "example": "Poverty remains a challenge despite economic growth.",
+      "synonyms": ["destitution", "hardship", "deprivation"]
+    },
+    {
+      "id": "wealth-003",
+      "kind": "vocab",
+      "term": "social mobility",
+      "pos": "noun phrase",
+      "meaningZh": "社會流動性",
+      "difficulty": 2,
+      "example": "Social mobility is limited in highly unequal societies.",
+      "synonyms": ["upward mobility", "class progression", "opportunity"]
+    },
+    {
+      "id": "wealth-004",
+      "kind": "vocab",
+      "term": "disparity",
+      "pos": "noun",
+      "meaningZh": "差距/不平等",
+      "difficulty": 2,
+      "example": "Economic disparities exist between urban and rural areas.",
+      "synonyms": ["inequality", "gap", "difference"]
+    },
+    {
+      "id": "wealth-005",
+      "kind": "vocab",
+      "term": "marginalised communities",
+      "pos": "noun phrase",
+      "meaningZh": "邊緣化社群",
+      "difficulty": 2,
+      "example": "Marginalised communities face systemic barriers to prosperity.",
+      "synonyms": ["excluded groups", "disadvantaged populations", "vulnerable sectors"]
+    },
+    {
+      "id": "wealth-006",
+      "kind": "vocab",
+      "term": "opportunity gap",
+      "pos": "noun phrase",
+      "meaningZh": "機會差距",
+      "difficulty": 2,
+      "example": "The opportunity gap affects access to quality education.",
+      "synonyms": ["unequal access", "educational disparity", "structural disadvantage"]
+    },
+    {
+      "id": "wealth-007",
+      "kind": "vocab",
+      "term": "disadvantage",
+      "pos": "noun",
+      "meaningZh": "劣勢/不利",
+      "difficulty": 2,
+      "example": "Systemic disadvantage perpetuates poverty cycles.",
+      "synonyms": ["hardship", "setback", "unfavorable condition"]
+    },
+    {
+      "id": "wealth-008",
+      "kind": "vocab",
+      "term": "privilege",
+      "pos": "noun",
+      "meaningZh": "特權",
+      "difficulty": 2,
+      "example": "Economic privilege enables easier access to opportunities.",
+      "synonyms": ["advantage", "entitlement", "social advantage"]
+    },
+    {
+      "id": "wealth-009",
+      "kind": "vocab",
+      "term": "inheritance",
+      "pos": "noun",
+      "meaningZh": "繼承/遺產",
+      "difficulty": 2,
+      "example": "Inheritance perpetuates wealth across generations.",
+      "synonyms": ["legacy", "bequest", "estate"]
+    },
+    {
+      "id": "wealth-010",
+      "kind": "vocab",
+      "term": "meritocracy",
+      "pos": "noun",
+      "meaningZh": "精英統治制/才德制",
+      "difficulty": 3,
+      "example": "True meritocracy requires equal access to education.",
+      "synonyms": ["merit-based system", "capability-based advancement", "talent recognition"]
+    },
+    {
+      "id": "wealth-011",
+      "kind": "vocab",
+      "term": "welfare",
+      "pos": "noun",
+      "meaningZh": "福利/社會福利",
+      "difficulty": 1,
+      "example": "Social welfare programmes help vulnerable populations.",
+      "synonyms": ["social security", "assistance", "support system"]
+    },
+    {
+      "id": "wealth-012",
+      "kind": "vocab",
+      "term": "redistribution",
+      "pos": "noun",
+      "meaningZh": "重新分配",
+      "difficulty": 2,
+      "example": "Wealth redistribution through taxation aims to reduce inequality.",
+      "synonyms": ["reallocation", "sharing", "wealth transfer"]
+    },
+    {
+      "id": "wealth-013",
+      "kind": "vocab",
+      "term": "tax system",
+      "pos": "noun phrase",
+      "meaningZh": "稅制",
+      "difficulty": 2,
+      "example": "Progressive tax systems aim to reduce inequality.",
+      "synonyms": ["taxation", "fiscal policy", "revenue system"]
+    },
+    {
+      "id": "wealth-014",
+      "kind": "vocab",
+      "term": "intergenerational poverty",
+      "pos": "noun phrase",
+      "meaningZh": "代際貧困",
+      "difficulty": 3,
+      "example": "Intergenerational poverty traps families in cycles of deprivation.",
+      "synonyms": ["cyclical poverty", "generational hardship", "inherited disadvantage"]
+    },
+    {
+      "id": "wealth-015",
+      "kind": "vocab",
+      "term": "wage stagnation",
+      "pos": "noun phrase",
+      "meaningZh": "薪資停滯",
+      "difficulty": 2,
+      "example": "Wage stagnation affects lower-income workers disproportionately.",
+      "synonyms": ["income plateau", "frozen wages", "salary stagnation"]
+    },
+    {
+      "id": "wealth-016",
+      "kind": "vocab",
+      "term": "social safety net",
+      "pos": "noun phrase",
+      "meaningZh": "社會保障網",
+      "difficulty": 2,
+      "example": "A robust social safety net protects vulnerable citizens.",
+      "synonyms": ["welfare system", "protection programme", "support network"]
+    },
+    {
+      "id": "wealth-017",
+      "kind": "vocab",
+      "term": "economic mobility",
+      "pos": "noun phrase",
+      "meaningZh": "經濟流動性",
+      "difficulty": 2,
+      "example": "Economic mobility is restricted in highly unequal societies.",
+      "synonyms": ["income progression", "financial advancement", "class movement"]
+    },
+    {
+      "id": "wealth-018",
+      "kind": "vocab",
+      "term": "equity of opportunity",
+      "pos": "noun phrase",
+      "meaningZh": "機會衡平",
+      "difficulty": 2,
+      "example": "Equity of opportunity requires level playing fields.",
+      "synonyms": ["equal access", "fair chance", "impartial advancement"]
+    },
+    {
+      "id": "wealth-019",
+      "kind": "vocab",
+      "term": "systemic poverty",
+      "pos": "noun phrase",
+      "meaningZh": "系統性貧困",
+      "difficulty": 3,
+      "example": "Systemic poverty requires institutional solutions.",
+      "synonyms": ["structural deprivation", "endemic poverty", "institutional disadvantage"]
+    },
+    {
+      "id": "wealth-020",
+      "kind": "vocab",
+      "term": "upward mobility",
+      "pos": "noun phrase",
+      "meaningZh": "向上流動",
+      "difficulty": 2,
+      "example": "Upward mobility is a cornerstone of democratic societies.",
+      "synonyms": ["class progression", "social advancement", "economic improvement"]
+    },
+    {
+      "id": "wealth-021",
+      "kind": "vocab",
+      "term": "gentrification",
+      "pos": "noun",
+      "meaningZh": "中產階級化（社區因發展而高級化導致原居民遷出）",
+      "difficulty": 2,
+      "example": "Gentrification displaces long-time residents.",
+      "synonyms": ["urban renewal", "neighborhood transformation", "property upgrading"]
+    },
+    {
+      "id": "wealth-022",
+      "kind": "vocab",
+      "term": "financial inclusion",
+      "pos": "noun phrase",
+      "meaningZh": "金融普及",
+      "difficulty": 2,
+      "example": "Financial inclusion enables access to banking services.",
+      "synonyms": ["banking access", "economic participation", "financial access"]
+    },
+    {
+      "id": "wealth-023",
+      "kind": "vocab",
+      "term": "minimum wage",
+      "pos": "noun phrase",
+      "meaningZh": "最低工資",
+      "difficulty": 1,
+      "example": "Setting minimum wage above poverty line protects workers.",
+      "synonyms": ["base wage", "wage floor", "lowest compensation"]
+    },
+    {
+      "id": "wealth-024",
+      "kind": "vocab",
+      "term": "sustainable development",
+      "pos": "noun phrase",
+      "meaningZh": "可持續發展",
+      "difficulty": 2,
+      "example": "Sustainable development addresses inequality holistically.",
+      "synonyms": ["balanced growth", "inclusive progress", "equitable advancement"]
+    },
+    {
+      "id": "wealth-025",
+      "kind": "vocab",
+      "term": "accountability",
+      "pos": "noun",
+      "meaningZh": "問責/透明度",
+      "difficulty": 2,
+      "example": "Accountability mechanisms ensure fair economic policies.",
+      "synonyms": ["responsibility", "transparency", "oversight"]
+    }
+  ]
+}

@@ -7,5 +7,5 @@
   "icon": "LuQuote",
   "accent": "#7c5ce7",
   "defaultContentKind": "idiom",
-  "sets": ["common", "fixed-expressions"]
+  "sets": ["common", "fixed-expressions", "academic-business", "policy-debate"]
 }

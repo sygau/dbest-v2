@@ -256,6 +256,30 @@ export const pageJsonLd: Record<string, object> = {
     ]),
   },
 
+  'ucas-calculator': {
+    ...webPageBase(
+      'DSE UCAS 分換算器 | DSE Tariff Points 計算 2025',
+      '免費 DSE UCAS 分換算器。輸入 DSE 成績，即時計算 UCAS Tariff Points，對照 A-Level 等級，助你申請英國大學。附官方 HKEAA 對照表。',
+      'https://dse.best/ucas'
+    ),
+    mainEntity: softwareApp(
+      'DSE UCAS Tariff Points 分換算器',
+      '即時將 HKDSE 甲類科目成績換算成 UCAS Tariff Points，附官方 A-Level 對照表，申請英國大學必備工具。',
+      'https://dse.best/ucas',
+      [
+        'DSE 甲類科目 UCAS 分數換算',
+        '數學必修及延伸 M1/M2 半科計算',
+        '即時運算總 Tariff Points',
+        '官方 HKEAA A-Level 對照表',
+        '各科逐一顯示分數明細',
+      ]
+    ),
+    breadcrumb: breadcrumbList([
+      { name: 'dse.best 主頁', url: 'https://dse.best/' },
+      { name: 'DSE UCAS 分換算器', url: 'https://dse.best/ucas' },
+    ]),
+  },
+
   translator: {
     '@context': 'https://schema.org',
     '@type': 'WebPage',

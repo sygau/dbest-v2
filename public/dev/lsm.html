@@ -396,7 +396,7 @@
         function setModSecret() {
             const secret = prompt('Enter moderator secret key:');
             if (secret && secret.trim()) {
-                localStorage.setItem('dsechat_mod_secret', secret.trim());
+                localStorage.setItem('dsechat_mod_key', secret.trim());
                 refreshList();
                 showToast('Moderator secret key set!', 'success');
             }

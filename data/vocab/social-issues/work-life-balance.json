@@ -1,0 +1,261 @@
+{
+  "slug": "work-life-balance",
+  "nameZh": "工作與生活平衡",
+  "nameEn": "Work-Life Balance & Mental Wellbeing",
+  "description": "工作壓力、生活平衡、心理健康、職業倦怠相關詞彙",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "tags": ["wellbeing", "work", "health"],
+  "entries": [
+    {
+      "id": "worklife-001",
+      "kind": "vocab",
+      "term": "work-life balance",
+      "pos": "noun phrase",
+      "meaningZh": "工作與生活平衡",
+      "difficulty": 1,
+      "example": "Achieving work-life balance improves overall wellbeing.",
+      "synonyms": ["work-family balance", "lifestyle equilibrium", "time management"]
+    },
+    {
+      "id": "worklife-002",
+      "kind": "vocab",
+      "term": "burnout",
+      "pos": "noun",
+      "meaningZh": "職業倦怠/過勞",
+      "difficulty": 2,
+      "example": "Burnout leads to reduced productivity and health problems.",
+      "synonyms": ["exhaustion", "fatigue", "mental exhaustion"]
+    },
+    {
+      "id": "worklife-003",
+      "kind": "vocab",
+      "term": "stress",
+      "pos": "noun",
+      "meaningZh": "壓力",
+      "difficulty": 1,
+      "example": "Workplace stress affects both mental and physical health.",
+      "synonyms": ["tension", "strain", "pressure"]
+    },
+    {
+      "id": "worklife-004",
+      "kind": "vocab",
+      "term": "anxiety",
+      "pos": "noun",
+      "meaningZh": "焦慮",
+      "difficulty": 2,
+      "example": "Work-related anxiety impacts sleep and relationships.",
+      "synonyms": ["worry", "nervousness", "apprehension"]
+    },
+    {
+      "id": "worklife-005",
+      "kind": "vocab",
+      "term": "overtime",
+      "pos": "noun",
+      "meaningZh": "超時工作",
+      "difficulty": 1,
+      "example": "Excessive overtime undermines work-life balance.",
+      "synonyms": ["extra hours", "beyond regular hours", "additional work"]
+    },
+    {
+      "id": "worklife-006",
+      "kind": "vocab",
+      "term": "remote work",
+      "pos": "noun phrase",
+      "meaningZh": "遠距工作",
+      "difficulty": 1,
+      "example": "Remote work offers flexibility but blurs work-home boundaries.",
+      "synonyms": ["telecommuting", "work from home", "distance work"]
+    },
+    {
+      "id": "worklife-007",
+      "kind": "vocab",
+      "term": "flexibility",
+      "pos": "noun",
+      "meaningZh": "彈性",
+      "difficulty": 1,
+      "example": "Workplace flexibility enables better life balance.",
+      "synonyms": ["adaptability", "elasticity", "adjustability"]
+    },
+    {
+      "id": "worklife-008",
+      "kind": "vocab",
+      "term": "productivity",
+      "pos": "noun",
+      "meaningZh": "生產力",
+      "difficulty": 1,
+      "example": "Rest and balance actually increase productivity.",
+      "synonyms": ["efficiency", "output", "performance"]
+    },
+    {
+      "id": "worklife-009",
+      "kind": "vocab",
+      "term": "wellbeing",
+      "pos": "noun",
+      "meaningZh": "福祉/幸福",
+      "difficulty": 1,
+      "example": "Employee wellbeing should be a corporate priority.",
+      "synonyms": ["welfare", "health", "quality of life"]
+    },
+    {
+      "id": "worklife-010",
+      "kind": "vocab",
+      "term": "mental health",
+      "pos": "noun phrase",
+      "meaningZh": "心理健康",
+      "difficulty": 1,
+      "example": "Mental health support programmes benefit employees.",
+      "synonyms": ["psychological wellbeing", "emotional health", "mental fitness"]
+    },
+    {
+      "id": "worklife-011",
+      "kind": "vocab",
+      "term": "exhaustion",
+      "pos": "noun",
+      "meaningZh": "疲勞/筋疲力盡",
+      "difficulty": 2,
+      "example": "Constant exhaustion signals need for lifestyle change.",
+      "synonyms": ["fatigue", "depletion", "tiredness"]
+    },
+    {
+      "id": "worklife-012",
+      "kind": "vocab",
+      "term": "leisure time",
+      "pos": "noun phrase",
+      "meaningZh": "休閒時間",
+      "difficulty": 1,
+      "example": "Adequate leisure time is essential for recovery.",
+      "synonyms": ["free time", "recreation time", "downtime"]
+    },
+    {
+      "id": "worklife-013",
+      "kind": "vocab",
+      "term": "deadline",
+      "pos": "noun",
+      "meaningZh": "截止日期/期限",
+      "difficulty": 1,
+      "example": "Multiple tight deadlines create work pressure.",
+      "synonyms": ["due date", "time limit", "completion date"]
+    },
+    {
+      "id": "worklife-014",
+      "kind": "vocab",
+      "term": "work-related illness",
+      "pos": "noun phrase",
+      "meaningZh": "工作相關疾病",
+      "difficulty": 2,
+      "example": "Work-related illness is often preventable.",
+      "synonyms": ["occupational disease", "job-induced illness", "workplace syndrome"]
+    },
+    {
+      "id": "worklife-015",
+      "kind": "vocab",
+      "term": "break",
+      "pos": "noun",
+      "meaningZh": "休息/休假",
+      "difficulty": 1,
+      "example": "Regular breaks improve focus and mental health.",
+      "synonyms": ["rest period", "pause", "respite"]
+    },
+    {
+      "id": "worklife-016",
+      "kind": "vocab",
+      "term": "vacation",
+      "pos": "noun",
+      "meaningZh": "假期",
+      "difficulty": 1,
+      "example": "Taking vacation helps prevent burnout.",
+      "synonyms": ["holiday", "leave", "time off"]
+    },
+    {
+      "id": "worklife-017",
+      "kind": "vocab",
+      "term": "boundary",
+      "pos": "noun",
+      "meaningZh": "界線/邊界",
+      "difficulty": 2,
+      "example": "Clear work-life boundaries are essential.",
+      "synonyms": ["limit", "line", "demarcation"]
+    },
+    {
+      "id": "worklife-018",
+      "kind": "vocab",
+      "term": "commute",
+      "pos": "noun",
+      "meaningZh": "通勤",
+      "difficulty": 1,
+      "example": "Long commutes reduce time for family and rest.",
+      "synonyms": ["travel to work", "daily journey", "transportation"]
+    },
+    {
+      "id": "worklife-019",
+      "kind": "vocab",
+      "term": "motivation",
+      "pos": "noun",
+      "meaningZh": "動力/幹勁",
+      "difficulty": 1,
+      "example": "Poor work-life balance decreases motivation.",
+      "synonyms": ["drive", "incentive", "inspiration"]
+    },
+    {
+      "id": "worklife-020",
+      "kind": "vocab",
+      "term": "depression",
+      "pos": "noun",
+      "meaningZh": "抑鬱/沮喪",
+      "difficulty": 2,
+      "example": "Workplace stress can contribute to depression.",
+      "synonyms": ["sadness", "despondency", "low mood"]
+    },
+    {
+      "id": "worklife-021",
+      "kind": "vocab",
+      "term": "work culture",
+      "pos": "noun phrase",
+      "meaningZh": "工作文化",
+      "difficulty": 2,
+      "example": "Toxic work culture damages employee wellbeing.",
+      "synonyms": ["workplace environment", "corporate culture", "organizational climate"]
+    },
+    {
+      "id": "worklife-022",
+      "kind": "vocab",
+      "term": "sustainable pace",
+      "pos": "noun phrase",
+      "meaningZh": "可持續的步伐",
+      "difficulty": 2,
+      "example": "Working at a sustainable pace prevents burnout.",
+      "synonyms": ["manageable rhythm", "healthy tempo", "balanced speed"]
+    },
+    {
+      "id": "worklife-023",
+      "kind": "vocab",
+      "term": "coping mechanism",
+      "pos": "noun phrase",
+      "meaningZh": "應對機制",
+      "difficulty": 2,
+      "example": "Healthy coping mechanisms help manage workplace stress.",
+      "synonyms": ["stress relief", "management strategy", "adaptation technique"]
+    },
+    {
+      "id": "worklife-024",
+      "kind": "vocab",
+      "term": "resilience",
+      "pos": "noun",
+      "meaningZh": "復原力/韌性",
+      "difficulty": 2,
+      "example": "Building resilience helps combat work-related stress.",
+      "synonyms": ["adaptability", "toughness", "bounce-back ability"]
+    },
+    {
+      "id": "worklife-025",
+      "kind": "vocab",
+      "term": "holistic approach",
+      "pos": "noun phrase",
+      "meaningZh": "整體方法",
+      "difficulty": 2,
+      "example": "A holistic approach to wellbeing addresses work and personal life.",
+      "synonyms": ["comprehensive method", "integrated strategy", "whole-system approach"]
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "slug": "phrasal-verbs",
+  "nameZh": "片語動詞升級",
+  "nameEn": "Phrasal Verbs",
+  "description": "DSE 寫作常用 phrasal verbs：break down, carry out, bring about, give rise to 等。",
+  "difficulty": "medium",
+    "thumbnail" : "https://cdn.sanity.io/images/8fbafbyw/production/b3820630f3ef4d555339eac49793d304aac3f1a1-612x407.jpg?fit=max&w=600&h=600&fm=webp&q=70",
+  "contentKind": "vocab",
+  "entries": [
+    {
+      "id": "phv-001",
+      "kind": "vocab",
+      "term": "break down",
+      "pos": "verb",
+      "meaningZh": "分解；崩潰；發生故障",
+      "difficulty": 2,
+      "example": "The system **broke down** due to overload.",
+      "synonyms": ["collapse", "fail", "deteriorate", "decompose"]
+    },
+    {
+      "id": "phv-002",
+      "kind": "vocab",
+      "term": "carry out",
+      "pos": "verb",
+      "meaningZh": "執行；進行",
+      "difficulty": 1,
+      "example": "The government **carried out** extensive reforms.",
+      "synonyms": ["conduct", "perform", "execute", "implement"]
+    },
+    {
+      "id": "phv-003",
+      "kind": "vocab",
+      "term": "bring about",
+      "pos": "verb",
+      "meaningZh": "引起；造成",
+      "difficulty": 2,
+      "example": "Technology has **brought about** significant social change.",
+      "synonyms": ["cause", "create", "produce", "result in"]
+    },
+    {
+      "id": "phv-004",
+      "kind": "vocab",
+      "term": "give rise to",
+      "pos": "verb",
+      "meaningZh": "導致；引起",
+      "difficulty": 2,
+      "example": "Inequality **gives rise to** social tensions.",
+      "synonyms": ["cause", "lead to", "result in", "trigger"]
+    },
+    {
+      "id": "phv-005",
+      "kind": "vocab",
+      "term": "point out",
+      "pos": "verb",
+      "meaningZh": "指出",
+      "difficulty": 1,
+      "example": "Critics have **pointed out** significant flaws.",
+      "synonyms": ["indicate", "highlight", "note", "mention"]
+    },
+    {
+      "id": "phv-006",
+      "kind": "vocab",
+      "term": "set up",
+      "pos": "verb",
+      "meaningZh": "建立；設置",
+      "difficulty": 1,
+      "example": "A new committee was **set up** to address the issue.",
+      "synonyms": ["establish", "create", "institute", "organize"]
+    },
+    {
+      "id": "phv-007",
+      "kind": "vocab",
+      "term": "take up",
+      "pos": "verb",
+      "meaningZh": "開始從事；著手",
+      "difficulty": 2,
+      "example": "The government **took up** the challenge.",
+      "synonyms": ["undertake", "begin", "start", "pursue"]
+    },
+    {
+      "id": "phv-008",
+      "kind": "vocab",
+      "term": "turn to",
+      "pos": "verb",
+      "meaningZh": "轉向；求助於",
+      "difficulty": 2,
+      "example": "Many **turned to** technology for solutions.",
+      "synonyms": ["resort to", "appeal to", "seek help from", "rely on"]
+    },
+    {
+      "id": "phv-009",
+      "kind": "vocab",
+      "term": "come down to",
+      "pos": "verb",
+      "meaningZh": "歸結為",
+      "difficulty": 2,
+      "example": "The problem **comes down to** budget allocation.",
+      "synonyms": ["amount to", "result in", "boil down to", "simplify to"]
+    },
+    {
+      "id": "phv-010",
+      "kind": "vocab",
+      "term": "deal with",
+      "pos": "verb",
+      "meaningZh": "處理；應對",
+      "difficulty": 1,
+      "example": "Schools must **deal with** bullying issues.",
+      "synonyms": ["handle", "address", "tackle", "manage"]
+    },
+    {
+      "id": "phv-011",
+      "kind": "vocab",
+      "term": "take on",
+      "pos": "verb",
+      "meaningZh": "承擔；採納",
+      "difficulty": 1,
+      "example": "The organization **took on** new responsibilities.",
+      "synonyms": ["assume", "undertake", "embrace", "adopt"]
+    },
+    {
+      "id": "phv-012",
+      "kind": "vocab",
+      "term": "bring in",
+      "pos": "verb",
+      "meaningZh": "引進；帶來",
+      "difficulty": 2,
+      "example": "New legislation **brought in** stricter regulations.",
+      "synonyms": ["introduce", "implement", "initiate", "establish"]
+    },
+    {
+      "id": "phv-013",
+      "kind": "vocab",
+      "term": "go through",
+      "pos": "verb",
+      "meaningZh": "經歷；審視",
+      "difficulty": 1,
+      "example": "The project **went through** multiple stages.",
+      "synonyms": ["experience", "undergo", "examine", "review"]
+    },
+    {
+      "id": "phv-014",
+      "kind": "vocab",
+      "term": "look at",
+      "pos": "verb",
+      "meaningZh": "審視；考慮",
+      "difficulty": 1,
+      "example": "We must **look at** this from multiple perspectives.",
+      "synonyms": ["consider", "examine", "analyze", "evaluate"]
+    },
+    {
+      "id": "phv-015",
+      "kind": "vocab",
+      "term": "make up",
+      "pos": "verb",
+      "meaningZh": "組成；彌補",
+      "difficulty": 1,
+      "example": "Young people **make up** a large portion.",
+      "synonyms": ["compose", "constitute", "form", "comprise"]
+    },
+    {
+      "id": "phv-016",
+      "kind": "vocab",
+      "term": "lead to",
+      "pos": "verb",
+      "meaningZh": "導致",
+      "difficulty": 1,
+      "example": "Poor planning **led to** failure.",
+      "synonyms": ["result in", "cause", "bring about", "culminate in"]
+    },
+    {
+      "id": "phv-017",
+      "kind": "vocab",
+      "term": "result in",
+      "pos": "verb",
+      "meaningZh": "導致；結果為",
+      "difficulty": 1,
+      "example": "The reforms **resulted in** positive outcomes.",
+      "synonyms": ["lead to", "cause", "produce", "culminate in"]
+    },
+    {
+      "id": "phv-018",
+      "kind": "vocab",
+      "term": "build up",
+      "pos": "verb",
+      "meaningZh": "逐步建立；增強",
+      "difficulty": 2,
+      "example": "Trust is **built up** over time.",
+      "synonyms": ["accumulate", "increase", "develop", "construct"]
+    },
+    {
+      "id": "phv-019",
+      "kind": "vocab",
+      "term": "put forward",
+      "pos": "verb",
+      "meaningZh": "提出；推舉",
+      "difficulty": 2,
+      "example": "The committee **put forward** several proposals.",
+      "synonyms": ["propose", "suggest", "present", "recommend"]
+    },
+    {
+      "id": "phv-020",
+      "kind": "vocab",
+      "term": "cut down",
+      "pos": "verb",
+      "meaningZh": "減少；削減",
+      "difficulty": 1,
+      "example": "The government **cut down** spending.",
+      "synonyms": ["reduce", "decrease", "diminish", "curtail"]
+    },
+    {
+      "id": "phv-021",
+      "kind": "vocab",
+      "term": "think through",
+      "pos": "verb",
+      "meaningZh": "深思熟慮；仔細考慮",
+      "difficulty": 2,
+      "example": "Policymakers must **think through** consequences.",
+      "synonyms": ["consider", "deliberate", "analyze", "contemplate"]
+    },
+    {
+      "id": "phv-022",
+      "kind": "vocab",
+      "term": "call for",
+      "pos": "verb",
+      "meaningZh": "呼籲；需要",
+      "difficulty": 2,
+      "example": "The crisis **calls for** immediate action.",
+      "synonyms": ["demand", "require", "advocate", "urge"]
+    },
+    {
+      "id": "phv-023",
+      "kind": "vocab",
+      "term": "focus on",
+      "pos": "verb",
+      "meaningZh": "專注於；集中在",
+      "difficulty": 1,
+      "example": "We must **focus on** long-term solutions.",
+      "synonyms": ["concentrate", "emphasize", "prioritize", "center on"]
+    },
+    {
+      "id": "phv-024",
+      "kind": "vocab",
+      "term": "work out",
+      "pos": "verb",
+      "meaningZh": "解決；計算出",
+      "difficulty": 1,
+      "example": "We need to **work out** a compromise.",
+      "synonyms": ["resolve", "calculate", "determine", "figure out"]
+    },
+    {
+      "id": "phv-025",
+      "kind": "vocab",
+      "term": "come across",
+      "pos": "verb",
+      "meaningZh": "發現；遇到",
+      "difficulty": 1,
+      "example": "I **came across** interesting research.",
+      "synonyms": ["encounter", "discover", "find", "come upon"]
+    }
+  ]
+}

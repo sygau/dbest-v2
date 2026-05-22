@@ -91,7 +91,7 @@
       "id": "concession-010",
       "kind": "sentence-pattern",
       "term": "Conceding that ... , we must recognize ...",
-      "meaningZh": "承認...,,我們必須認識...",
+      "meaningZh": "承認...,我們必須認識...",
       "difficulty": 2,
       "example": "Conceding that resources are limited, we must recognize the need for prioritization.",
       "synonyms": ["Accepting that ..., we should ...", "Admitting ..., we can still ..."]

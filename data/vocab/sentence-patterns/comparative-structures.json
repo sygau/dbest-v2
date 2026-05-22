@@ -1,0 +1,235 @@
+{
+  "slug": "comparative-structures",
+  "nameZh": "比較句式",
+  "nameEn": "Comparative Structures",
+  "description": "比較句式、對比結構：more...than, the..., the..., increasingly...while 等。",
+  "difficulty": "hard",
+  "contentKind": "sentence-pattern",
+  "entries": [
+    {
+      "id": "comp-001",
+      "kind": "sentence-pattern",
+      "term": "More ... than ...",
+      "meaningZh": "與其說...不如說...",
+      "difficulty": 2,
+      "example": "**More** than a problem, this is an opportunity.",
+      "synonyms": ["Rather ... than ...", "... rather than ...", "Instead of ..."]
+    },
+    {
+      "id": "comp-002",
+      "kind": "sentence-pattern",
+      "term": "The more..., the more...",
+      "meaningZh": "越...越...",
+      "difficulty": 2,
+      "example": "**The more** investment we make, **the more** returns follow.",
+      "synonyms": ["... increases proportionally with ...", "... correlates with ..."]
+    },
+    {
+      "id": "comp-003",
+      "kind": "sentence-pattern",
+      "term": "Not only ... but also ...",
+      "meaningZh": "不僅...而且...",
+      "difficulty": 2,
+      "example": "**Not only** is education beneficial, **but also** cost-effective.",
+      "synonyms": ["Both ... and ...", "... and furthermore ...", "... as well as ..."]
+    },
+    {
+      "id": "comp-004",
+      "kind": "sentence-pattern",
+      "term": "X is to Y as A is to B",
+      "meaningZh": "X之於Y如同A之於B",
+      "difficulty": 3,
+      "example": "**Education is to society as infrastructure is to development**.",
+      "synonyms": ["Just as ... so too ...", "... similarly ...", "In the same way ..."]
+    },
+    {
+      "id": "comp-005",
+      "kind": "sentence-pattern",
+      "term": "While X..., Y...",
+      "meaningZh": "儘管X...但Y...",
+      "difficulty": 2,
+      "example": "**While** poverty remains, wealth continues to concentrate.",
+      "synonyms": ["Whereas ...", "Although ...", "Even as ..."]
+    },
+    {
+      "id": "comp-006",
+      "kind": "sentence-pattern",
+      "term": "On one hand..., on the other hand...",
+      "meaningZh": "一方面...另一方面...",
+      "difficulty": 1,
+      "example": "**On one hand**, technology offers solutions; **on the other**, it creates new problems.",
+      "synonyms": ["In some ways..., yet...", "Conversely...", "By contrast..."]
+    },
+    {
+      "id": "comp-007",
+      "kind": "sentence-pattern",
+      "term": "Unlike X, Y...",
+      "meaningZh": "不像X，Y...",
+      "difficulty": 2,
+      "example": "**Unlike** developed nations, emerging economies face unique challenges.",
+      "synonyms": ["In contrast to ...", "Whereas ...", "By contrast ..."]
+    },
+    {
+      "id": "comp-008",
+      "kind": "sentence-pattern",
+      "term": "Similarly, ...",
+      "meaningZh": "同樣地...",
+      "difficulty": 1,
+      "example": "**Similarly**, younger workers face different pressures.",
+      "synonyms": ["Likewise ...", "In the same way ...", "Equally ..."]
+    },
+    {
+      "id": "comp-009",
+      "kind": "sentence-pattern",
+      "term": "Parallel to ...",
+      "meaningZh": "與...相似/平行的...",
+      "difficulty": 2,
+      "example": "**Parallel to** rising incomes, consumption increased.",
+      "synonyms": ["Alongside ...", "Concurrent with ...", "Contemporaneous with ..."]
+    },
+    {
+      "id": "comp-010",
+      "kind": "sentence-pattern",
+      "term": "To what extent ... compared to ...?",
+      "meaningZh": "相比於...，...的程度如何？",
+      "difficulty": 2,
+      "example": "**To what extent** has digital adoption advanced compared to older generations?",
+      "synonyms": ["How much more...", "Is X more/less than Y?", "In what ways does X differ from Y?"]
+    },
+    {
+      "id": "comp-011",
+      "kind": "sentence-pattern",
+      "term": "Increasingly..., while...",
+      "meaningZh": "越來越...，而...",
+      "difficulty": 2,
+      "example": "**Increasingly**, people work remotely, **while** others face job insecurity.",
+      "synonyms": ["... and yet ...", "... but ...", "... nonetheless ..."]
+    },
+    {
+      "id": "comp-012",
+      "kind": "sentence-pattern",
+      "term": "If anything, X is more ... than Y",
+      "meaningZh": "如果說有什麼的話，X反而比Y更...",
+      "difficulty": 3,
+      "example": "**If anything**, the problem is more urgent than anticipated.",
+      "synonyms": ["In fact ...", "Rather ...", "Arguably ..."]
+    },
+    {
+      "id": "comp-013",
+      "kind": "sentence-pattern",
+      "term": "X and Y are not dissimilar in that...",
+      "meaningZh": "X和Y在...方面並無不同",
+      "difficulty": 3,
+      "example": "Online learning and classroom instruction **are not dissimilar** in effectiveness.",
+      "synonyms": ["X and Y are equally...", "Both X and Y...", "Like X, Y also..."]
+    },
+    {
+      "id": "comp-014",
+      "kind": "sentence-pattern",
+      "term": "The question is not whether..., but how...",
+      "meaningZh": "問題不在於是否...，而在於如何...",
+      "difficulty": 2,
+      "example": "**The question is not whether** reform is necessary, **but how** to implement it.",
+      "synonyms": ["Rather than asking whether..., we should ask...", "It's not ... but ..."]
+    },
+    {
+      "id": "comp-015",
+      "kind": "sentence-pattern",
+      "term": "A exceeds B by/in...",
+      "meaningZh": "A超過B...或在...方面超過B",
+      "difficulty": 2,
+      "example": "Urban unemployment **exceeds** rural rates by 5 percentage points.",
+      "synonyms": ["A surpasses B in...", "A is higher/greater than B by...", "A outpaces B"]
+    },
+    {
+      "id": "comp-016",
+      "kind": "sentence-pattern",
+      "term": "Whereas ... previously ..., now ...",
+      "meaningZh": "之前...的東西，現在...",
+      "difficulty": 2,
+      "example": "**Whereas** smartphones were luxuries previously, they are now essential.",
+      "synonyms": ["Once ... is now ...", "In the past..., today...", "Then...now..."]
+    },
+    {
+      "id": "comp-017",
+      "kind": "sentence-pattern",
+      "term": "The two approaches differ mainly in...",
+      "meaningZh": "這兩種方法主要在...方面有所不同",
+      "difficulty": 2,
+      "example": "**The two approaches differ mainly in** their resource requirements.",
+      "synonyms": ["... are distinguished by...", "The key difference is...", "They diverge in..."]
+    },
+    {
+      "id": "comp-018",
+      "kind": "sentence-pattern",
+      "term": "X has an advantage over Y in that...",
+      "meaningZh": "X相比於Y的優勢在於...",
+      "difficulty": 2,
+      "example": "Remote work **has an advantage over** office work in flexibility.",
+      "synonyms": ["X outperforms Y in...", "X beats Y in...", "X surpasses Y regarding..."]
+    },
+    {
+      "id": "comp-019",
+      "kind": "sentence-pattern",
+      "term": "Conversely, ...",
+      "meaningZh": "反過來說...",
+      "difficulty": 1,
+      "example": "**Conversely**, this approach has significant drawbacks.",
+      "synonyms": ["By contrast...", "The opposite is true for...", "In reverse..."]
+    },
+    {
+      "id": "comp-020",
+      "kind": "sentence-pattern",
+      "term": "A is no more..., than B is...",
+      "meaningZh": "A不比B更...",
+      "difficulty": 3,
+      "example": "Automation **is no more** a threat than farming machinery was.",
+      "synonyms": ["A is as ... as B", "Neither A nor B is..."]
+    },
+    {
+      "id": "comp-021",
+      "kind": "sentence-pattern",
+      "term": "Far from being..., X is...",
+      "meaningZh": "X遠非...，反而...",
+      "difficulty": 2,
+      "example": "**Far from being** harmful, competition drives innovation.",
+      "synonyms": ["Rather than..., X is...", "Instead of being..., X..."]
+    },
+    {
+      "id": "comp-022",
+      "kind": "sentence-pattern",
+      "term": "Proportionally, ...",
+      "meaningZh": "相對來說...",
+      "difficulty": 2,
+      "example": "**Proportionally**, developing nations invest more in education.",
+      "synonyms": ["Relatively...", "In proportion...", "Compared to..."]
+    },
+    {
+      "id": "comp-023",
+      "kind": "sentence-pattern",
+      "term": "To put it in perspective, ...",
+      "meaningZh": "換個角度看...",
+      "difficulty": 2,
+      "example": "**To put it in perspective**, the growth rate exceeds historical averages.",
+      "synonyms": ["In context...", "From this viewpoint...", "To contextualize..."]
+    },
+    {
+      "id": "comp-024",
+      "kind": "sentence-pattern",
+      "term": "X and Y present starkly different outcomes",
+      "meaningZh": "X和Y呈現截然不同的結果",
+      "difficulty": 2,
+      "example": "The two strategies **present starkly different outcomes**.",
+      "synonyms": ["... yield contrasting results", "... diverge significantly", "... stand in contrast"]
+    },
+    {
+      "id": "comp-025",
+      "kind": "sentence-pattern",
+      "term": "Both...and..., yet...",
+      "meaningZh": "既...也...，但...",
+      "difficulty": 2,
+      "example": "**Both** effective and affordable, the solution **nonetheless** has limitations.",
+      "synonyms": ["... and yet...", "... however...", "..., still..."]
+    }
+  ]
+}

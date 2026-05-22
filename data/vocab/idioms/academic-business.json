@@ -1,0 +1,235 @@
+{
+  "slug": "academic-business",
+  "nameZh": "學術與商業成語",
+  "nameEn": "Academic & Business Idioms",
+  "description": "學術、商業、專業領域成語：state-of-the-art, cut corners, take a toll 等。",
+  "difficulty": "medium",
+  "contentKind": "idiom",
+  "entries": [
+    {
+      "id": "acbiz-001",
+      "kind": "idiom",
+      "term": "state-of-the-art",
+      "meaningZh": "最先進的/最新技術",
+      "difficulty": 2,
+      "example": "The lab uses **state-of-the-art** equipment.",
+      "synonyms": ["cutting-edge", "latest technology", "most advanced"]
+    },
+    {
+      "id": "acbiz-002",
+      "kind": "idiom",
+      "term": "cut corners",
+      "meaningZh": "偷工減料/走捷徑",
+      "difficulty": 2,
+      "example": "We cannot **cut corners** on safety standards.",
+      "synonyms": ["compromise quality", "take shortcuts", "skip steps"]
+    },
+    {
+      "id": "acbiz-003",
+      "kind": "idiom",
+      "term": "take a toll",
+      "meaningZh": "造成傷害/付出代價",
+      "difficulty": 2,
+      "example": "Stress **takes a toll** on mental health.",
+      "synonyms": ["cause damage", "have negative effects", "exact a price"]
+    },
+    {
+      "id": "acbiz-004",
+      "kind": "idiom",
+      "term": "grasp the nettle",
+      "meaningZh": "勇敢面對困難",
+      "difficulty": 2,
+      "example": "We must **grasp the nettle** and address inequality.",
+      "synonyms": ["face up to", "tackle directly", "confront boldly"]
+    },
+    {
+      "id": "acbiz-005",
+      "kind": "idiom",
+      "term": "bottom line",
+      "meaningZh": "底線/最關鍵的事",
+      "difficulty": 1,
+      "example": "The **bottom line** is that reform is necessary.",
+      "synonyms": ["key point", "final result", "essential fact"]
+    },
+    {
+      "id": "acbiz-006",
+      "kind": "idiom",
+      "term": "level playing field",
+      "meaningZh": "公平的競爭環境",
+      "difficulty": 2,
+      "example": "Fair policies create a **level playing field** for all.",
+      "synonyms": ["equal opportunity", "fair competition", "equitable conditions"]
+    },
+    {
+      "id": "acbiz-007",
+      "kind": "idiom",
+      "term": "move the goalposts",
+      "meaningZh": "改變規則/標準",
+      "difficulty": 2,
+      "example": "The policy constantly **moves the goalposts**.",
+      "synonyms": ["change the rules", "shift expectations", "alter criteria"]
+    },
+    {
+      "id": "acbiz-008",
+      "kind": "idiom",
+      "term": "on thin ice",
+      "meaningZh": "在危險之中",
+      "difficulty": 2,
+      "example": "The economy is **on thin ice**.",
+      "synonyms": ["in a precarious situation", "at risk", "in danger"]
+    },
+    {
+      "id": "acbiz-009",
+      "kind": "idiom",
+      "term": "room for improvement",
+      "meaningZh": "有改進的空間",
+      "difficulty": 1,
+      "example": "There is still **room for improvement**.",
+      "synonyms": ["areas to develop", "potential for enhancement", "scope for better"]
+    },
+    {
+      "id": "acbiz-010",
+      "kind": "idiom",
+      "term": "a win-win situation",
+      "meaningZh": "雙贏局面",
+      "difficulty": 1,
+      "example": "This partnership is a **win-win situation**.",
+      "synonyms": ["mutual benefit", "beneficial for all", "good for both sides"]
+    },
+    {
+      "id": "acbiz-011",
+      "kind": "idiom",
+      "term": "read between the lines",
+      "meaningZh": "理解言外之意",
+      "difficulty": 2,
+      "example": "You must **read between the lines** of the report.",
+      "synonyms": ["infer meaning", "understand subtext", "discern intent"]
+    },
+    {
+      "id": "acbiz-012",
+      "kind": "idiom",
+      "term": "food for thought",
+      "meaningZh": "值得思考的東西",
+      "difficulty": 1,
+      "example": "The research provides **food for thought**.",
+      "synonyms": ["something to consider", "material for reflection", "interesting idea"]
+    },
+    {
+      "id": "acbiz-013",
+      "kind": "idiom",
+      "term": "push the envelope",
+      "meaningZh": "開拓新領域/突破界限",
+      "difficulty": 2,
+      "example": "Innovation **pushes the envelope** of what's possible.",
+      "synonyms": ["explore limits", "advance boundaries", "go further"]
+    },
+    {
+      "id": "acbiz-014",
+      "kind": "idiom",
+      "term": "miss the mark",
+      "meaningZh": "未達到目標/失誤",
+      "difficulty": 2,
+      "example": "The policy **misses the mark**.",
+      "synonyms": ["fail to achieve", "fall short", "go wide"]
+    },
+    {
+      "id": "acbiz-015",
+      "kind": "idiom",
+      "term": "hit the mark",
+      "meaningZh": "達到目標/準確",
+      "difficulty": 1,
+      "example": "The new strategy **hits the mark**.",
+      "synonyms": ["succeed", "achieve goal", "be accurate"]
+    },
+    {
+      "id": "acbiz-016",
+      "kind": "idiom",
+      "term": "the tip of the iceberg",
+      "meaningZh": "冰山一角",
+      "difficulty": 2,
+      "example": "These problems are just **the tip of the iceberg**.",
+      "synonyms": ["small part of larger issue", "visible portion", "mere beginning"]
+    },
+    {
+      "id": "acbiz-017",
+      "kind": "idiom",
+      "term": "put all eggs in one basket",
+      "meaningZh": "把所有希望寄託在一件事上",
+      "difficulty": 2,
+      "example": "Don't **put all eggs in one basket**—diversify.",
+      "synonyms": ["over-concentrate", "lack diversity", "take excessive risk"]
+    },
+    {
+      "id": "acbiz-018",
+      "kind": "idiom",
+      "term": "back to the drawing board",
+      "meaningZh": "從頭開始",
+      "difficulty": 1,
+      "example": "The first attempt failed; it's **back to the drawing board**.",
+      "synonyms": ["start over", "reconsider", "begin again"]
+    },
+    {
+      "id": "acbiz-019",
+      "kind": "idiom",
+      "term": "swing the pendulum",
+      "meaningZh": "改變方向/搖擺",
+      "difficulty": 2,
+      "example": "Policy seems to **swing the pendulum** too far.",
+      "synonyms": ["shift direction", "change drastically", "oscillate"]
+    },
+    {
+      "id": "acbiz-020",
+      "kind": "idiom",
+      "term": "a double-edged sword",
+      "meaningZh": "雙刃劍（有利有害）",
+      "difficulty": 2,
+      "example": "Technology is **a double-edged sword**.",
+      "synonyms": ["has pros and cons", "mixed blessing", "two-sided issue"]
+    },
+    {
+      "id": "acbiz-021",
+      "kind": "idiom",
+      "term": "strike a balance",
+      "meaningZh": "取得平衡",
+      "difficulty": 1,
+      "example": "We must **strike a balance** between growth and sustainability.",
+      "synonyms": ["find equilibrium", "compromise", "maintain harmony"]
+    },
+    {
+      "id": "acbiz-022",
+      "kind": "idiom",
+      "term": "stand the test of time",
+      "meaningZh": "經久耐用/經得起時間考驗",
+      "difficulty": 2,
+      "example": "Good principles **stand the test of time**.",
+      "synonyms": ["prove durable", "remain relevant", "endure"]
+    },
+    {
+      "id": "acbiz-023",
+      "kind": "idiom",
+      "term": "the ball is in your court",
+      "meaningZh": "輪到你行動了",
+      "difficulty": 1,
+      "example": "The decision is made; **the ball is in your court**.",
+      "synonyms": ["your turn", "your responsibility", "up to you"]
+    },
+    {
+      "id": "acbiz-024",
+      "kind": "idiom",
+      "term": "break new ground",
+      "meaningZh": "開創新局面",
+      "difficulty": 2,
+      "example": "Research is **breaking new ground**.",
+      "synonyms": ["pioneer", "innovate", "establish precedent"]
+    },
+    {
+      "id": "acbiz-025",
+      "kind": "idiom",
+      "term": "a game-changer",
+      "meaningZh": "遊戲規則改變者/革命性創新",
+      "difficulty": 2,
+      "example": "This discovery is **a game-changer**.",
+      "synonyms": ["revolutionary", "transformative", "paradigm shift"]
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "slug": "cybercrime-safety",
+  "nameZh": "網絡安全與網絡犯罪",
+  "nameEn": "Cybercrime & Online Safety",
+  "description": "網絡安全、數據私隱、網絡犯罪、數碼威脅相關詞彙",
+  "difficulty": "medium",
+  "contentKind": "vocab",
+  "tags": ["technology", "security", "crime"],
+  "entries": [
+    {
+      "id": "cyber-001",
+      "kind": "vocab",
+      "term": "cybercrime",
+      "pos": "noun",
+      "meaningZh": "網絡犯罪",
+      "difficulty": 2,
+      "example": "Cybercrime costs the global economy billions annually.",
+      "synonyms": ["digital crime", "computer crime", "cyber attack"]
+    },
+    {
+      "id": "cyber-002",
+      "kind": "vocab",
+      "term": "hacking",
+      "pos": "noun",
+      "meaningZh": "黑客入侵/駭客",
+      "difficulty": 1,
+      "example": "Hacking into financial systems poses severe security risks.",
+      "synonyms": ["unauthorized access", "system breach", "intrusion"]
+    },
+    {
+      "id": "cyber-003",
+      "kind": "vocab",
+      "term": "data breach",
+      "pos": "noun phrase",
+      "meaningZh": "數據洩露",
+      "difficulty": 2,
+      "example": "A major data breach exposed millions of customer records.",
+      "synonyms": ["security breach", "data leak", "information theft"]
+    },
+    {
+      "id": "cyber-004",
+      "kind": "vocab",
+      "term": "privacy",
+      "pos": "noun",
+      "meaningZh": "私隱/隱私",
+      "difficulty": 1,
+      "example": "Online privacy is increasingly difficult to maintain.",
+      "synonyms": ["confidentiality", "personal security", "data protection"]
+    },
+    {
+      "id": "cyber-005",
+      "kind": "vocab",
+      "term": "phishing",
+      "pos": "noun",
+      "meaningZh": "網絡釣魚（假冒可信來源騙取信息）",
+      "difficulty": 2,
+      "example": "Phishing emails trick users into revealing sensitive information.",
+      "synonyms": ["social engineering", "scamming", "credential theft"]
+    },
+    {
+      "id": "cyber-006",
+      "kind": "vocab",
+      "term": "malware",
+      "pos": "noun",
+      "meaningZh": "惡意軟件",
+      "difficulty": 2,
+      "example": "Malware can corrupt data and compromise system integrity.",
+      "synonyms": ["virus", "spyware", "ransomware"]
+    },
+    {
+      "id": "cyber-007",
+      "kind": "vocab",
+      "term": "ransomware",
+      "pos": "noun",
+      "meaningZh": "勒索軟件",
+      "difficulty": 2,
+      "example": "Ransomware attacks have targeted hospitals and government agencies.",
+      "synonyms": ["extortion software", "encryption threat", "hostage ware"]
+    },
+    {
+      "id": "cyber-008",
+      "kind": "vocab",
+      "term": "vulnerability",
+      "pos": "noun",
+      "meaningZh": "漏洞/弱點",
+      "difficulty": 2,
+      "example": "Software vulnerabilities must be patched immediately.",
+      "synonyms": ["weakness", "flaw", "security gap"]
+    },
+    {
+      "id": "cyber-009",
+      "kind": "vocab",
+      "term": "encryption",
+      "pos": "noun",
+      "meaningZh": "加密",
+      "difficulty": 2,
+      "example": "End-to-end encryption protects message privacy.",
+      "synonyms": ["data encoding", "security protocol", "cipher"]
+    },
+    {
+      "id": "cyber-010",
+      "kind": "vocab",
+      "term": "authentication",
+      "pos": "noun",
+      "meaningZh": "身份驗證",
+      "difficulty": 2,
+      "example": "Two-factor authentication adds an extra security layer.",
+      "synonyms": ["verification", "identification", "access control"]
+    },
+    {
+      "id": "cyber-011",
+      "kind": "vocab",
+      "term": "password",
+      "pos": "noun",
+      "meaningZh": "密碼",
+      "difficulty": 1,
+      "example": "Strong passwords are essential for account security.",
+      "synonyms": ["PIN", "credential", "access code"]
+    },
+    {
+      "id": "cyber-012",
+      "kind": "vocab",
+      "term": "surveillance",
+      "pos": "noun",
+      "meaningZh": "監視",
+      "difficulty": 2,
+      "example": "Mass surveillance raises concerns about personal freedom.",
+      "synonyms": ["monitoring", "tracking", "observation"]
+    },
+    {
+      "id": "cyber-013",
+      "kind": "vocab",
+      "term": "identity theft",
+      "pos": "noun phrase",
+      "meaningZh": "身份盜竊",
+      "difficulty": 2,
+      "example": "Identity theft can destroy someone's financial reputation.",
+      "synonyms": ["impersonation", "credential theft", "personal data theft"]
+    },
+    {
+      "id": "cyber-014",
+      "kind": "vocab",
+      "term": "cybersecurity",
+      "pos": "noun",
+      "meaningZh": "網絡安全",
+      "difficulty": 2,
+      "example": "Investing in cybersecurity is crucial for businesses.",
+      "synonyms": ["information security", "data protection", "digital security"]
+    },
+    {
+      "id": "cyber-015",
+      "kind": "vocab",
+      "term": "firewall",
+      "pos": "noun",
+      "meaningZh": "防火牆",
+      "difficulty": 2,
+      "example": "A robust firewall prevents unauthorized network access.",
+      "synonyms": ["security barrier", "protection system", "access filter"]
+    },
+    {
+      "id": "cyber-016",
+      "kind": "vocab",
+      "term": "scam",
+      "pos": "noun",
+      "meaningZh": "詐騙/騙局",
+      "difficulty": 1,
+      "example": "Online scams target vulnerable elderly users.",
+      "synonyms": ["fraud", "deception", "swindle"]
+    },
+    {
+      "id": "cyber-017",
+      "kind": "vocab",
+      "term": "cyber threat",
+      "pos": "noun phrase",
+      "meaningZh": "網絡威脅",
+      "difficulty": 2,
+      "example": "Cyber threats evolve constantly, requiring constant vigilance.",
+      "synonyms": ["digital threat", "security risk", "online danger"]
+    },
+    {
+      "id": "cyber-018",
+      "kind": "vocab",
+      "term": "digital footprint",
+      "pos": "noun phrase",
+      "meaningZh": "數位足跡",
+      "difficulty": 2,
+      "example": "Our digital footprint is increasingly difficult to erase.",
+      "synonyms": ["online presence", "data trail", "internet history"]
+    },
+    {
+      "id": "cyber-019",
+      "kind": "vocab",
+      "term": "biometric security",
+      "pos": "noun phrase",
+      "meaningZh": "生物特徵辨識安全",
+      "difficulty": 3,
+      "example": "Biometric security uses fingerprints and facial recognition.",
+      "synonyms": ["biometric authentication", "biological identification", "fingerprint verification"]
+    },
+    {
+      "id": "cyber-020",
+      "kind": "vocab",
+      "term": "network security",
+      "pos": "noun phrase",
+      "meaningZh": "網絡安全",
+      "difficulty": 2,
+      "example": "Network security requires multiple layers of protection.",
+      "synonyms": ["system protection", "data integrity", "infrastructure security"]
+    },
+    {
+      "id": "cyber-021",
+      "kind": "vocab",
+      "term": "compliance",
+      "pos": "noun",
+      "meaningZh": "合規/遵守",
+      "difficulty": 2,
+      "example": "GDPR compliance is mandatory for European operations.",
+      "synonyms": ["adherence", "regulation", "legal requirement"]
+    },
+    {
+      "id": "cyber-022",
+      "kind": "vocab",
+      "term": "threat assessment",
+      "pos": "noun phrase",
+      "meaningZh": "威脅評估",
+      "difficulty": 2,
+      "example": "Regular threat assessments identify security weaknesses.",
+      "synonyms": ["risk evaluation", "security audit", "vulnerability scan"]
+    },
+    {
+      "id": "cyber-023",
+      "kind": "vocab",
+      "term": "incident response",
+      "pos": "noun phrase",
+      "meaningZh": "事件應對",
+      "difficulty": 2,
+      "example": "Quick incident response minimizes security breach damage.",
+      "synonyms": ["crisis management", "security response", "breach protocol"]
+    },
+    {
+      "id": "cyber-024",
+      "kind": "vocab",
+      "term": "digital literacy",
+      "pos": "noun phrase",
+      "meaningZh": "數碼素養",
+      "difficulty": 2,
+      "example": "Improving digital literacy helps prevent cyber attacks.",
+      "synonyms": ["internet awareness", "technical knowledge", "cyber awareness"]
+    },
+    {
+      "id": "cyber-025",
+      "kind": "vocab",
+      "term": "zero-trust security",
+      "pos": "noun phrase",
+      "meaningZh": "零信任安全（不信任任何用戶的安全模式）",
+      "difficulty": 3,
+      "example": "Zero-trust security verifies every access request.",
+      "synonyms": ["strict verification", "continuous authentication", "default deny"]
+    }
+  ]
+}

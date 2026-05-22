@@ -1,6 +1,34 @@
-import { useMemo } from 'react'
+import { useMemo, Fragment } from 'react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
 import type { PortableTextBlock } from '@portabletext/types'
+import dynamic from 'next/dynamic'
+
+const BlogInArticleAd = dynamic(() => import('./BlogInArticleAd'), { ssr: false })
+
+// Place ads BEFORE H2 headings. Rules:
+// - Skip first 20% of blocks (warm-up)
+// - Min 6 blocks between ads
+// - Max 3 ads per post
+// - Don't inject within last 3 blocks
+// - Post must have at least 8 blocks total
+function computeAdBreaks(blocks: PortableTextBlock[]): number[] {
+  const total = blocks.length
+  if (total < 8) return []
+  const warmupEnd = Math.ceil(total * 0.2)
+  const MIN_GAP = 6
+  const MAX_ADS = 3
+  const breaks: number[] = []
+  let lastIdx = -MIN_GAP
+  for (let i = warmupEnd; i <= total - 4; i++) {
+    if (breaks.length >= MAX_ADS) break
+    const b = blocks[i] as any
+    if (b._type !== 'block' || b.style !== 'h2') continue
+    if (i - lastIdx < MIN_GAP) continue
+    breaks.push(i)
+    lastIdx = i
+  }
+  return breaks
+}
 import katex from 'katex'
 import { createHeadingIdGenerator } from '../../lib/tocUtils'
 import { LuExternalLink, LuInfo, LuCircleCheck, LuTriangleAlert, LuCircleX } from 'react-icons/lu'
@@ -187,9 +215,11 @@ function makeHeadingComp(Tag: 'h1' | 'h2' | 'h3' | 'h4', keyToId: Map<string, st
 export default function PortableTextRenderer({
   value,
   showToc = false,
+  loadAds = false,
 }: {
   value: PortableTextBlock[]
   showToc?: boolean
+  loadAds?: boolean
 }) {
   const keyToId = useMemo(() => {
     const gen = createHeadingIdGenerator()
@@ -206,17 +236,43 @@ export default function PortableTextRenderer({
   }, [value])
 
   if (!value?.length) return null
-  if (!showToc) return <PortableText value={value} components={components} />
 
-  const tocComponents: PortableTextComponents = {
-    ...components,
-    block: {
-      normal: normalBlock,
-      h1: makeHeadingComp('h1', keyToId),
-      h2: makeHeadingComp('h2', keyToId),
-      h3: makeHeadingComp('h3', keyToId),
-      h4: makeHeadingComp('h4', keyToId),
-    },
+  const activeComponents: PortableTextComponents = showToc
+    ? {
+        ...components,
+        block: {
+          normal: normalBlock,
+          h1: makeHeadingComp('h1', keyToId),
+          h2: makeHeadingComp('h2', keyToId),
+          h3: makeHeadingComp('h3', keyToId),
+          h4: makeHeadingComp('h4', keyToId),
+        },
+      }
+    : components
+
+  const adBreaks = loadAds ? computeAdBreaks(value) : []
+
+  if (adBreaks.length === 0) {
+    return <PortableText value={value} components={activeComponents} />
   }
-  return <PortableText value={value} components={tocComponents} />
+
+  // Split blocks into segments around break points, inject ads between
+  const segments: PortableTextBlock[][] = []
+  let prev = 0
+  for (const breakIdx of adBreaks) {
+    segments.push(value.slice(prev, breakIdx))
+    prev = breakIdx
+  }
+  segments.push(value.slice(prev))
+
+  return (
+    <>
+      {segments.map((seg, i) => (
+        <Fragment key={i}>
+          {seg.length > 0 && <PortableText value={seg} components={activeComponents} />}
+          {i < segments.length - 1 && <BlogInArticleAd />}
+        </Fragment>
+      ))}
+    </>
+  )
 }

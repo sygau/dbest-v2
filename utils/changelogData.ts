@@ -6,7 +6,6 @@ export interface ChangelogEntry {
 export const changelogData: ChangelogEntry = {
   date: "28/4/2026",
   changes: [
-    "New jupas calculator tool",
-    "Microslop"
+    "m"
   ]
 };

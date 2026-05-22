@@ -36,7 +36,7 @@ export default function VocabHome({ sections, setsBySection, setLookup }: Props)
             <div className="vocab-home__hero-top">
               <div>
                 <h1>DSE 英文詞彙庫 Vocab Bank</h1>
-                <div className="vocab-home__sub">DSE English Writing & Speaking (Paper1&4) 寫作詞彙資源庫</div>
+                <div className="vocab-home__sub">DSE English Writing & Speaking (Paper2&4) 寫作詞彙資源庫</div>
                 <p className="vocab-home__desc">
                   專為 DSE 英文 Paper 2, 4 而設嘅寫作資源庫。涵蓋常考時事議題詞彙、文體模板、用字升級、句式同成語。
                   支援翻卡學習、發音、字典外連、書籤同搜尋。喺呢度執靚你嘅 Vocab, Phrases, Sentence Structure，寫作直接拎 Level 5+.

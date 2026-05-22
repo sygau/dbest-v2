@@ -1,0 +1,235 @@
+{
+  "slug": "policy-debate",
+  "nameZh": "政策與辯論成語",
+  "nameEn": "Policy & Debate Idioms",
+  "description": "政策、辯論、議論相關成語：swing the vote, sway opinion, win hearts and minds 等。",
+  "difficulty": "medium",
+  "contentKind": "idiom",
+  "entries": [
+    {
+      "id": "poldeb-001",
+      "kind": "idiom",
+      "term": "swing the vote",
+      "meaningZh": "改變投票結果",
+      "difficulty": 2,
+      "example": "A major scandal could **swing the vote**.",
+      "synonyms": ["change the outcome", "influence election", "alter decision"]
+    },
+    {
+      "id": "poldeb-002",
+      "kind": "idiom",
+      "term": "sway opinion",
+      "meaningZh": "改變意見",
+      "difficulty": 2,
+      "example": "Evidence can **sway opinion**.",
+      "synonyms": ["influence thinking", "change minds", "persuade"]
+    },
+    {
+      "id": "poldeb-003",
+      "kind": "idiom",
+      "term": "win hearts and minds",
+      "meaningZh": "贏得民眾支持",
+      "difficulty": 2,
+      "example": "Policies must **win hearts and minds**.",
+      "synonyms": ["gain support", "win people over", "persuade population"]
+    },
+    {
+      "id": "poldeb-004",
+      "kind": "idiom",
+      "term": "raise the stakes",
+      "meaningZh": "提高賭注/增加重要性",
+      "difficulty": 2,
+      "example": "The debate **raised the stakes** significantly.",
+      "synonyms": ["increase significance", "intensify", "escalate"]
+    },
+    {
+      "id": "poldeb-005",
+      "kind": "idiom",
+      "term": "make a case for",
+      "meaningZh": "為...辯護/論證",
+      "difficulty": 1,
+      "example": "The report **makes a strong case for** reform.",
+      "synonyms": ["argue for", "advocate", "justify"]
+    },
+    {
+      "id": "poldeb-006",
+      "kind": "idiom",
+      "term": "a slippery slope",
+      "meaningZh": "滑坡論證/危險趨勢",
+      "difficulty": 2,
+      "example": "Critics argue it's **a slippery slope**.",
+      "synonyms": ["dangerous precedent", "risky path", "cascading effect"]
+    },
+    {
+      "id": "poldeb-007",
+      "kind": "idiom",
+      "term": "bridge the divide",
+      "meaningZh": "消除分歧",
+      "difficulty": 2,
+      "example": "Dialogue can **bridge the divide**.",
+      "synonyms": ["close gap", "unite", "find common ground"]
+    },
+    {
+      "id": "poldeb-008",
+      "kind": "idiom",
+      "term": "the elephant in the room",
+      "meaningZh": "眼前的問題（被迴避）",
+      "difficulty": 2,
+      "example": "Corruption is **the elephant in the room**.",
+      "synonyms": ["obvious issue ignored", "taboo subject", "uncomfortable truth"]
+    },
+    {
+      "id": "poldeb-009",
+      "kind": "idiom",
+      "term": "common ground",
+      "meaningZh": "共同點",
+      "difficulty": 1,
+      "example": "Both sides must find **common ground**.",
+      "synonyms": ["agreement point", "shared interest", "consensus area"]
+    },
+    {
+      "id": "poldeb-010",
+      "kind": "idiom",
+      "term": "put the cart before the horse",
+      "meaningZh": "本末倒置",
+      "difficulty": 2,
+      "example": "The approach **puts the cart before the horse**.",
+      "synonyms": ["reverse order", "get priorities wrong", "missequence"]
+    },
+    {
+      "id": "poldeb-011",
+      "kind": "idiom",
+      "term": "play both sides",
+      "meaningZh": "腳踏兩隻船/兩邊吃",
+      "difficulty": 2,
+      "example": "Politicians often **play both sides**.",
+      "synonyms": ["sit on fence", "be non-committal", "avoid choosing"]
+    },
+    {
+      "id": "poldeb-012",
+      "kind": "idiom",
+      "term": "throw under the bus",
+      "meaningZh": "背後捅刀子/犧牲他人",
+      "difficulty": 2,
+      "example": "Allies were **thrown under the bus**.",
+      "synonyms": ["betray", "sacrifice", "blame unfairly"]
+    },
+    {
+      "id": "poldeb-013",
+      "kind": "idiom",
+      "term": "lock horns",
+      "meaningZh": "交鋒/衝突",
+      "difficulty": 2,
+      "example": "The sides **lock horns** over budget.",
+      "synonyms": ["clash", "conflict", "disagree intensely"]
+    },
+    {
+      "id": "poldeb-014",
+      "kind": "idiom",
+      "term": "beat around the bush",
+      "meaningZh": "轉彎抹角/迂迴其詞",
+      "difficulty": 1,
+      "example": "The statement **beats around the bush**.",
+      "synonyms": ["avoid directness", "be evasive", "hedge"]
+    },
+    {
+      "id": "poldeb-015",
+      "kind": "idiom",
+      "term": "cut through the noise",
+      "meaningZh": "突破噪音/看穿本質",
+      "difficulty": 2,
+      "example": "We must **cut through the noise** to facts.",
+      "synonyms": ["focus on essentials", "ignore distractions", "get to truth"]
+    },
+    {
+      "id": "poldeb-016",
+      "kind": "idiom",
+      "term": "take a stand",
+      "meaningZh": "表達立場",
+      "difficulty": 1,
+      "example": "One must **take a stand** on principles.",
+      "synonyms": ["declare position", "advocate", "support cause"]
+    },
+    {
+      "id": "poldeb-017",
+      "kind": "idiom",
+      "term": "shift the goalposts",
+      "meaningZh": "改變標準/移動界線",
+      "difficulty": 2,
+      "example": "Critics claim they **shift the goalposts**.",
+      "synonyms": ["change rules", "move standards", "alter criteria"]
+    },
+    {
+      "id": "poldeb-018",
+      "kind": "idiom",
+      "term": "call for action",
+      "meaningZh": "呼籲行動",
+      "difficulty": 1,
+      "example": "Reports **call for action**.",
+      "synonyms": ["demand response", "urge intervention", "advocate change"]
+    },
+    {
+      "id": "poldeb-019",
+      "kind": "idiom",
+      "term": "divide and conquer",
+      "meaningZh": "分而治之",
+      "difficulty": 2,
+      "example": "The strategy employs **divide and conquer**.",
+      "synonyms": ["split opposition", "weaken together", "rule via separation"]
+    },
+    {
+      "id": "poldeb-020",
+      "kind": "idiom",
+      "term": "level the playing field",
+      "meaningZh": "創造公平環境",
+      "difficulty": 2,
+      "example": "Policies aim to **level the playing field**.",
+      "synonyms": ["equalize", "make fair", "balance advantages"]
+    },
+    {
+      "id": "poldeb-021",
+      "kind": "idiom",
+      "term": "sing from the same hymn sheet",
+      "meaningZh": "保持一致（立場/說法）",
+      "difficulty": 2,
+      "example": "The party **sings from the same hymn sheet**.",
+      "synonyms": ["be consistent", "unified message", "sing same tune"]
+    },
+    {
+      "id": "poldeb-022",
+      "kind": "idiom",
+      "term": "face the music",
+      "meaningZh": "面對後果",
+      "difficulty": 1,
+      "example": "Politicians must **face the music**.",
+      "synonyms": ["accept consequences", "take responsibility", "face criticism"]
+    },
+    {
+      "id": "poldeb-023",
+      "kind": "idiom",
+      "term": "a watershed moment",
+      "meaningZh": "分水嶺時刻/重要轉折點",
+      "difficulty": 2,
+      "example": "This is **a watershed moment**.",
+      "synonyms": ["turning point", "critical juncture", "pivotal moment"]
+    },
+    {
+      "id": "poldeb-024",
+      "kind": "idiom",
+      "term": "grasp the opportunity",
+      "meaningZh": "把握機會",
+      "difficulty": 1,
+      "example": "We must **grasp this opportunity**.",
+      "synonyms": ["seize chance", "take advantage", "act on opening"]
+    },
+    {
+      "id": "poldeb-025",
+      "kind": "idiom",
+      "term": "close ranks",
+      "meaningZh": "團結一致",
+      "difficulty": 2,
+      "example": "Allies **close ranks** against opposition.",
+      "synonyms": ["unite", "stand together", "show solidarity"]
+    }
+  ]
+}

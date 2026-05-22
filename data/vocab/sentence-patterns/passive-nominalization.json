@@ -1,0 +1,235 @@
+{
+  "slug": "passive-nominalization",
+  "nameZh": "被動語態與名詞化",
+  "nameEn": "Passive Voice & Nominalization",
+  "description": "被動語態、名詞化結構：transform action verbs 轉為 abstract noun phrases。",
+  "difficulty": "hard",
+  "contentKind": "sentence-pattern",
+  "entries": [
+    {
+      "id": "pasn-001",
+      "kind": "sentence-pattern",
+      "term": "It is argued that...",
+      "meaningZh": "有人辯稱...",
+      "difficulty": 2,
+      "example": "**It is argued that** technology improves productivity.",
+      "synonyms": ["... is contended to...", "... is claimed to...", "Some argue that..."]
+    },
+    {
+      "id": "pasn-002",
+      "kind": "sentence-pattern",
+      "term": "X is believed to...",
+      "meaningZh": "X據信...",
+      "difficulty": 2,
+      "example": "Education **is believed to be** the foundation of progress.",
+      "synonyms": ["It is believed that X...", "X is thought to...", "X is widely held to..."]
+    },
+    {
+      "id": "pasn-003",
+      "kind": "sentence-pattern",
+      "term": "It is evident that...",
+      "meaningZh": "很明顯...",
+      "difficulty": 1,
+      "example": "**It is evident that** change is necessary.",
+      "synonyms": ["It is clear that...", "It is obvious that...", "It is apparent that..."]
+    },
+    {
+      "id": "pasn-004",
+      "kind": "sentence-pattern",
+      "term": "The implementation of X was met with...",
+      "meaningZh": "X的實施遭到/得到了...",
+      "difficulty": 2,
+      "example": "**The implementation of** new policies was met with resistance.",
+      "synonyms": ["The adoption of X faced...", "X's introduction sparked...", "The launch of X provoked..."]
+    },
+    {
+      "id": "pasn-005",
+      "kind": "sentence-pattern",
+      "term": "The rise of X has been attributed to...",
+      "meaningZh": "X的上升被歸因於...",
+      "difficulty": 2,
+      "example": "**The rise of** social media **has been attributed to** technological advancement.",
+      "synonyms": ["X is blamed on...", "X is ascribed to...", "X stems from..."]
+    },
+    {
+      "id": "pasn-006",
+      "kind": "sentence-pattern",
+      "term": "X's contribution to Y is significant",
+      "meaningZh": "X對Y的貢獻很大",
+      "difficulty": 2,
+      "example": "Education's **contribution to** economic growth is undeniable.",
+      "synonyms": ["X contributes significantly to Y", "X plays a vital role in Y"]
+    },
+    {
+      "id": "pasn-007",
+      "kind": "sentence-pattern",
+      "term": "The emergence of X was facilitated by...",
+      "meaningZh": "X的出現由...推動",
+      "difficulty": 2,
+      "example": "**The emergence of** remote work **was facilitated by** technology.",
+      "synonyms": ["X's development was aided by...", "X's rise was enabled by...", "X's growth stemmed from..."]
+    },
+    {
+      "id": "pasn-008",
+      "kind": "sentence-pattern",
+      "term": "X is considered to be...",
+      "meaningZh": "X被認為是...",
+      "difficulty": 1,
+      "example": "Sustainability **is considered to be** crucial.",
+      "synonyms": ["X is regarded as...", "X is viewed as...", "X is deemed..."]
+    },
+    {
+      "id": "pasn-009",
+      "kind": "sentence-pattern",
+      "term": "The acceleration of X has resulted in...",
+      "meaningZh": "X的加速導致了...",
+      "difficulty": 2,
+      "example": "**The acceleration of** digitalization **has resulted in** greater inequality.",
+      "synonyms": ["The increase in X led to...", "The growth of X caused...", "X's expansion resulted in..."]
+    },
+    {
+      "id": "pasn-010",
+      "kind": "sentence-pattern",
+      "term": "X is widely acknowledged to...",
+      "meaningZh": "X被普遍承認為...",
+      "difficulty": 2,
+      "example": "Inequality **is widely acknowledged to** undermine social stability.",
+      "synonyms": ["X is widely accepted as...", "X is universally recognized to...", "It is widely known that X..."]
+    },
+    {
+      "id": "pasn-011",
+      "kind": "sentence-pattern",
+      "term": "The resolution of X requires...",
+      "meaningZh": "X的解決需要...",
+      "difficulty": 2,
+      "example": "**The resolution of** climate change requires global cooperation.",
+      "synonyms": ["Solving X demands...", "Addressing X necessitates...", "X cannot be solved without..."]
+    },
+    {
+      "id": "pasn-012",
+      "kind": "sentence-pattern",
+      "term": "X's manifestation in Y is evident",
+      "meaningZh": "X在Y中的表現很明顯",
+      "difficulty": 3,
+      "example": "Inequality's **manifestation in** education systems is evident.",
+      "synonyms": ["X appears in Y as...", "X is observable in Y through...", "Evidence of X appears in Y..."]
+    },
+    {
+      "id": "pasn-013",
+      "kind": "sentence-pattern",
+      "term": "The adoption of X has been accelerated by...",
+      "meaningZh": "X的採用已被...加速",
+      "difficulty": 2,
+      "example": "**The adoption of** renewable energy **has been accelerated by** policy incentives.",
+      "synonyms": ["X's uptake was boosted by...", "X spread faster due to...", "The rate of X was hastened by..."]
+    },
+    {
+      "id": "pasn-014",
+      "kind": "sentence-pattern",
+      "term": "X is fundamental to the understanding of Y",
+      "meaningZh": "X是理解Y的基礎",
+      "difficulty": 2,
+      "example": "Context **is fundamental to the understanding of** social behavior.",
+      "synonyms": ["Understanding Y requires knowledge of X", "X is essential to comprehending Y"]
+    },
+    {
+      "id": "pasn-015",
+      "kind": "sentence-pattern",
+      "term": "The recognition of X has transformed...",
+      "meaningZh": "對X的認可改變了...",
+      "difficulty": 2,
+      "example": "**The recognition of** mental health **has transformed** workplace culture.",
+      "synonyms": ["Acknowledging X changed...", "The acceptance of X led to...", "X's validation resulted in..."]
+    },
+    {
+      "id": "pasn-016",
+      "kind": "sentence-pattern",
+      "term": "X's proliferation has been accompanied by...",
+      "meaningZh": "X的擴散伴隨著...",
+      "difficulty": 2,
+      "example": "Technology's **proliferation has been accompanied by** growing privacy concerns.",
+      "synonyms": ["As X spread, Y also...", "X's expansion coincided with...", "Alongside X's growth came..."]
+    },
+    {
+      "id": "pasn-017",
+      "kind": "sentence-pattern",
+      "term": "The deterioration of X has been halted by...",
+      "meaningZh": "X的惡化已被...阻止",
+      "difficulty": 2,
+      "example": "**The deterioration of** urban air quality **has been halted by** stricter regulations.",
+      "synonyms": ["X's decline was reversed by...", "X's worsening stopped due to...", "The fall of X was arrested by..."]
+    },
+    {
+      "id": "pasn-018",
+      "kind": "sentence-pattern",
+      "term": "X's prevalence is indicative of...",
+      "meaningZh": "X的普遍性表明...",
+      "difficulty": 2,
+      "example": "Stress's **prevalence is indicative of** systemic workplace issues.",
+      "synonyms": ["X's commonness suggests...", "The fact that X is widespread indicates...", "X's frequency reveals..."]
+    },
+    {
+      "id": "pasn-019",
+      "kind": "sentence-pattern",
+      "term": "The transformation of X into Y demonstrates...",
+      "meaningZh": "X轉變為Y說明了...",
+      "difficulty": 2,
+      "example": "**The transformation of** raw materials **into** finished products demonstrates industrial capacity.",
+      "synonyms": ["How X becomes Y shows...", "The conversion of X to Y illustrates...", "X's evolution into Y reveals..."]
+    },
+    {
+      "id": "pasn-020",
+      "kind": "sentence-pattern",
+      "term": "X's persistence despite Y challenges...",
+      "meaningZh": "X儘管Y仍然存在，令人困惑...",
+      "difficulty": 2,
+      "example": "Inequality's **persistence despite** economic growth is concerning.",
+      "synonyms": ["X continues despite Y...", "X remains despite Y...", "The fact that X continues despite Y suggests..."]
+    },
+    {
+      "id": "pasn-021",
+      "kind": "sentence-pattern",
+      "term": "The implementation phase of X involved...",
+      "meaningZh": "X的實施階段涉及...",
+      "difficulty": 2,
+      "example": "**The implementation phase** involved extensive stakeholder consultation.",
+      "synonyms": ["Implementing X required...", "The process of X included...", "X's rollout necessitated..."]
+    },
+    {
+      "id": "pasn-022",
+      "kind": "sentence-pattern",
+      "term": "X is rendered impossible without Y",
+      "meaningZh": "沒有Y，X是不可能的",
+      "difficulty": 2,
+      "example": "Progress **is rendered impossible without** systemic reform.",
+      "synonyms": ["X cannot happen without Y", "X is dependent on Y", "Y is prerequisite to X"]
+    },
+    {
+      "id": "pasn-023",
+      "kind": "sentence-pattern",
+      "term": "The concealment of X by Y was revealed...",
+      "meaningZh": "X被Y隱藏，但後來被揭露...",
+      "difficulty": 3,
+      "example": "**The concealment of** data by corporate interests **was revealed** by investigators.",
+      "synonyms": ["It was hidden that X..., but it emerged...", "X was obscured by Y until...", "The truth about X was hidden by Y..."]
+    },
+    {
+      "id": "pasn-024",
+      "kind": "sentence-pattern",
+      "term": "X's normalization in society reflects...",
+      "meaningZh": "X在社會中的常態化反映了...",
+      "difficulty": 2,
+      "example": "Social media's **normalization** in society reflects changing communication patterns.",
+      "synonyms": ["The acceptance of X shows...", "How X became normal indicates...", "X being commonplace suggests..."]
+    },
+    {
+      "id": "pasn-025",
+      "kind": "sentence-pattern",
+      "term": "The elevation of X as a priority demonstrates...",
+      "meaningZh": "將X提升為優先事項說明...",
+      "difficulty": 2,
+      "example": "**The elevation of** climate action **as a priority** demonstrates political will.",
+      "synonyms": ["Making X a priority reveals...", "Prioritizing X shows...", "The focus on X reflects..."]
+    }
+  ]
+}

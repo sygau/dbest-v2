@@ -1,0 +1,261 @@
+{
+  "slug": "linking-words",
+  "nameZh": "連接詞與邏輯詞",
+  "nameEn": "Linking Words & Logical Connectors",
+  "description": "進階連接詞、邏輯詞彙、段落銜接詞。Furthermore, However, Nevertheless 等。",
+  "difficulty": "medium",
+   "thumbnail" : "https://cdn.sanity.io/images/8fbafbyw/production/47727ae6803352a69f8142863c40ea4f08ae45db-525x350.jpg?fit=max&w=600&h=600&fm=webp&q=70",
+  "contentKind": "vocab",
+  "entries": [
+    {
+      "id": "link-001",
+      "kind": "vocab",
+      "term": "Furthermore",
+      "pos": "adverb",
+      "meaningZh": "而且；此外",
+      "difficulty": 1,
+      "example": "**Furthermore**, the data suggests a clear trend.",
+      "synonyms": ["Moreover", "Additionally", "What's more", "In addition"]
+    },
+    {
+      "id": "link-002",
+      "kind": "vocab",
+      "term": "However",
+      "pos": "adverb",
+      "meaningZh": "然而；但是",
+      "difficulty": 1,
+      "example": "**However**, this approach has significant limitations.",
+      "synonyms": ["Nevertheless", "Yet", "Still", "On the other hand"]
+    },
+    {
+      "id": "link-003",
+      "kind": "vocab",
+      "term": "Nevertheless",
+      "pos": "adverb",
+      "meaningZh": "儘管如此；然而",
+      "difficulty": 2,
+      "example": "**Nevertheless**, progress remains possible.",
+      "synonyms": ["However", "Yet", "Still", "In any case"]
+    },
+    {
+      "id": "link-004",
+      "kind": "vocab",
+      "term": "Moreover",
+      "pos": "adverb",
+      "meaningZh": "而且；更重要的是",
+      "difficulty": 2,
+      "example": "**Moreover**, recent studies confirm this theory.",
+      "synonyms": ["Furthermore", "Additionally", "Besides", "In addition"]
+    },
+    {
+      "id": "link-005",
+      "kind": "vocab",
+      "term": "In contrast",
+      "pos": "phrase",
+      "meaningZh": "相反地",
+      "difficulty": 2,
+      "example": "**In contrast**, the second approach is more effective.",
+      "synonyms": ["By contrast", "On the other hand", "Conversely", "Whereas"]
+    },
+    {
+      "id": "link-006",
+      "kind": "vocab",
+      "term": "Conversely",
+      "pos": "adverb",
+      "meaningZh": "反之；相反地",
+      "difficulty": 2,
+      "example": "**Conversely**, increased investment doesn't guarantee success.",
+      "synonyms": ["By contrast", "On the flip side", "In contrast", "Oppositely"]
+    },
+    {
+      "id": "link-007",
+      "kind": "vocab",
+      "term": "Consequently",
+      "pos": "adverb",
+      "meaningZh": "因此；結果是",
+      "difficulty": 2,
+      "example": "**Consequently**, reform became inevitable.",
+      "synonyms": ["Therefore", "As a result", "Hence", "So"]
+    },
+    {
+      "id": "link-008",
+      "kind": "vocab",
+      "term": "Therefore",
+      "pos": "adverb",
+      "meaningZh": "因此",
+      "difficulty": 1,
+      "example": "**Therefore**, we must reconsider our approach.",
+      "synonyms": ["Thus", "Hence", "Consequently", "For this reason"]
+    },
+    {
+      "id": "link-009",
+      "kind": "vocab",
+      "term": "Admittedly",
+      "pos": "adverb",
+      "meaningZh": "不可否認地；誠然",
+      "difficulty": 2,
+      "example": "**Admittedly**, the plan has some merit.",
+      "synonyms": ["Certainly", "True", "It's true that", "I grant that"]
+    },
+    {
+      "id": "link-010",
+      "kind": "vocab",
+      "term": "Granted",
+      "pos": "adverb",
+      "meaningZh": "誠然；雖然",
+      "difficulty": 2,
+      "example": "**Granted** that costs are high, benefits remain significant.",
+      "synonyms": ["Admittedly", "It's true", "Certainly", "I concede that"]
+    },
+    {
+      "id": "link-011",
+      "kind": "vocab",
+      "term": "Meanwhile",
+      "pos": "adverb",
+      "meaningZh": "同時；然而",
+      "difficulty": 1,
+      "example": "**Meanwhile**, other sectors struggled.",
+      "synonyms": ["At the same time", "In the meantime", "Simultaneously", "Concurrently"]
+    },
+    {
+      "id": "link-012",
+      "kind": "vocab",
+      "term": "That said",
+      "pos": "phrase",
+      "meaningZh": "話說回來；儘管如此",
+      "difficulty": 2,
+      "example": "**That said**, we should remain cautious.",
+      "synonyms": ["Nevertheless", "However", "Still", "Yet"]
+    },
+    {
+      "id": "link-013",
+      "kind": "vocab",
+      "term": "To this end",
+      "pos": "phrase",
+      "meaningZh": "為此；出於這個目的",
+      "difficulty": 2,
+      "example": "**To this end**, the government introduced new policies.",
+      "synonyms": ["For this purpose", "Accordingly", "To achieve this", "With this goal"]
+    },
+    {
+      "id": "link-014",
+      "kind": "vocab",
+      "term": "By contrast",
+      "pos": "phrase",
+      "meaningZh": "相反地；對比之下",
+      "difficulty": 1,
+      "example": "**By contrast**, the older approach proved ineffective.",
+      "synonyms": ["In contrast", "Conversely", "On the other hand", "Whereas"]
+    },
+    {
+      "id": "link-015",
+      "kind": "vocab",
+      "term": "In other words",
+      "pos": "phrase",
+      "meaningZh": "換句話說",
+      "difficulty": 1,
+      "example": "**In other words**, we need systemic change.",
+      "synonyms": ["That is to say", "Namely", "To put it differently", "In essence"]
+    },
+    {
+      "id": "link-016",
+      "kind": "vocab",
+      "term": "For instance",
+      "pos": "phrase",
+      "meaningZh": "例如",
+      "difficulty": 1,
+      "example": "**For instance**, Singapore adopted strict policies.",
+      "synonyms": ["For example", "Such as", "Like", "For example"]
+    },
+    {
+      "id": "link-017",
+      "kind": "vocab",
+      "term": "In particular",
+      "pos": "phrase",
+      "meaningZh": "特別是",
+      "difficulty": 1,
+      "example": "**In particular**, youth employment rates concern us.",
+      "synonyms": ["Specifically", "Especially", "Notably", "Chiefly"]
+    },
+    {
+      "id": "link-018",
+      "kind": "vocab",
+      "term": "Nonetheless",
+      "pos": "adverb",
+      "meaningZh": "儘管如此",
+      "difficulty": 2,
+      "example": "**Nonetheless**, alternatives exist.",
+      "synonyms": ["Nevertheless", "However", "Still", "Yet"]
+    },
+    {
+      "id": "link-019",
+      "kind": "vocab",
+      "term": "Ultimately",
+      "pos": "adverb",
+      "meaningZh": "最終地；歸根結蒂",
+      "difficulty": 2,
+      "example": "**Ultimately**, success depends on commitment.",
+      "synonyms": ["Finally", "In the end", "Eventually", "In conclusion"]
+    },
+    {
+      "id": "link-020",
+      "kind": "vocab",
+      "term": "Hence",
+      "pos": "adverb",
+      "meaningZh": "因此；由此",
+      "difficulty": 2,
+      "example": "**Hence**, immediate action is necessary.",
+      "synonyms": ["Therefore", "Thus", "Consequently", "For this reason"]
+    },
+    {
+      "id": "link-021",
+      "kind": "vocab",
+      "term": "Still",
+      "pos": "adverb",
+      "meaningZh": "仍然；儘管如此",
+      "difficulty": 1,
+      "example": "**Still**, improvements are possible.",
+      "synonyms": ["Yet", "However", "Nevertheless", "Even so"]
+    },
+    {
+      "id": "link-022",
+      "kind": "vocab",
+      "term": "Indeed",
+      "pos": "adverb",
+      "meaningZh": "確實；誠然",
+      "difficulty": 2,
+      "example": "**Indeed**, this confirms our hypothesis.",
+      "synonyms": ["Certainly", "In fact", "In truth", "Admittedly"]
+    },
+    {
+      "id": "link-023",
+      "kind": "vocab",
+      "term": "As a result",
+      "pos": "phrase",
+      "meaningZh": "結果是；因此",
+      "difficulty": 1,
+      "example": "**As a result**, unemployment decreased.",
+      "synonyms": ["Consequently", "Therefore", "Thus", "Hence"]
+    },
+    {
+      "id": "link-024",
+      "kind": "vocab",
+      "term": "On the other hand",
+      "pos": "phrase",
+      "meaningZh": "另一方面",
+      "difficulty": 1,
+      "example": "**On the other hand**, risks cannot be ignored.",
+      "synonyms": ["By contrast", "In contrast", "Conversely", "Alternatively"]
+    },
+    {
+      "id": "link-025",
+      "kind": "vocab",
+      "term": "In conclusion",
+      "pos": "phrase",
+      "meaningZh": "總之；結論是",
+      "difficulty": 1,
+      "example": "**In conclusion**, the evidence supports our thesis.",
+      "synonyms": ["Finally", "To conclude", "In summary", "To sum up"]
+    }
+  ]
+}

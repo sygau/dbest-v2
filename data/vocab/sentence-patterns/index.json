@@ -7,5 +7,5 @@
   "icon": "LuType",
   "accent": "#dc2626",
   "defaultContentKind": "sentence-pattern",
-  "sets": ["emphasis", "hypothetical", "concession"]
+  "sets": ["emphasis", "hypothetical", "concession", "comparative-structures", "passive-nominalization", "relative-clauses"]
 }

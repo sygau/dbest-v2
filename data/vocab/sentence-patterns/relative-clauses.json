@@ -1,0 +1,235 @@
+{
+  "slug": "relative-clauses",
+  "nameZh": "定語從句與相對定義",
+  "nameEn": "Relative Clauses & Definitions",
+  "description": "關係子句、定義句式：which + definition, that serves as, functioning as 等。",
+  "difficulty": "hard",
+  "contentKind": "sentence-pattern",
+  "entries": [
+    {
+      "id": "relc-001",
+      "kind": "sentence-pattern",
+      "term": "X, which is..., ...",
+      "meaningZh": "X，即...，...",
+      "difficulty": 1,
+      "example": "**Climate change**, which threatens ecosystems, demands urgent action.",
+      "synonyms": ["X, defined as...", "X, or more precisely...", "X, that is..."]
+    },
+    {
+      "id": "relc-002",
+      "kind": "sentence-pattern",
+      "term": "Those who X are likely to...",
+      "meaningZh": "那些X的人傾向於...",
+      "difficulty": 1,
+      "example": "**Those who prioritize education** are likely to earn more.",
+      "synonyms": ["People who X tend to...", "Individuals who X often...", "Anyone who X is..."]
+    },
+    {
+      "id": "relc-003",
+      "kind": "sentence-pattern",
+      "term": "The phenomenon whereby X leads to Y",
+      "meaningZh": "X導致Y的現象",
+      "difficulty": 2,
+      "example": "**The phenomenon whereby wealth concentrates** is well-documented.",
+      "synonyms": ["The process by which X produces Y", "How X brings about Y", "The mechanism through which X causes Y"]
+    },
+    {
+      "id": "relc-004",
+      "kind": "sentence-pattern",
+      "term": "X, which can be defined as..., ...",
+      "meaningZh": "X，可定義為...，...",
+      "difficulty": 2,
+      "example": "**Resilience**, which can be defined as adaptive capacity, matters.",
+      "synonyms": ["X, or...", "X, in other words...", "X, that is to say..."]
+    },
+    {
+      "id": "relc-005",
+      "kind": "sentence-pattern",
+      "term": "The extent to which X serves as Y indicates...",
+      "meaningZh": "X充當Y的程度表明...",
+      "difficulty": 3,
+      "example": "**The extent to which social media serves as a tool for activism** indicates changing power dynamics.",
+      "synonyms": ["How effectively X functions as Y reveals...", "The degree to which X acts as Y demonstrates..."]
+    },
+    {
+      "id": "relc-006",
+      "kind": "sentence-pattern",
+      "term": "X, functioning as Y, therefore...",
+      "meaningZh": "X起Y的作用，因此...",
+      "difficulty": 2,
+      "example": "**Education**, functioning as a social equalizer, therefore merits investment.",
+      "synonyms": ["X, acting as Y, thus...", "X, serving as Y, consequently...", "X, in its role as Y, thus..."]
+    },
+    {
+      "id": "relc-007",
+      "kind": "sentence-pattern",
+      "term": "What constitutes X is ultimately...",
+      "meaningZh": "構成X的本質最終是...",
+      "difficulty": 2,
+      "example": "**What constitutes success** is ultimately subjective.",
+      "synonyms": ["The essence of X is...", "X fundamentally consists of...", "X can be understood as..."]
+    },
+    {
+      "id": "relc-008",
+      "kind": "sentence-pattern",
+      "term": "Entities which exhibit X tend to...",
+      "meaningZh": "表現出X特徵的實體傾向於...",
+      "difficulty": 2,
+      "example": "**Organizations which exhibit adaptive behaviors** tend to survive.",
+      "synonyms": ["Things that show X often...", "Those demonstrating X are likely to...", "Systems featuring X tend to..."]
+    },
+    {
+      "id": "relc-009",
+      "kind": "sentence-pattern",
+      "term": "That which is X may also be Y",
+      "meaningZh": "是X的東西也可能是Y",
+      "difficulty": 2,
+      "example": "**That which is necessary** may also be difficult.",
+      "synonyms": ["What is X can also be Y", "X often coexists with Y", "Something can be both X and Y"]
+    },
+    {
+      "id": "relc-010",
+      "kind": "sentence-pattern",
+      "term": "The degree to which X influences Y determines...",
+      "meaningZh": "X對Y的影響程度決定了...",
+      "difficulty": 2,
+      "example": "**The degree to which wealth influences opportunity** determines outcomes.",
+      "synonyms": ["How much X affects Y shapes...", "The extent of X's impact on Y dictates..."]
+    },
+    {
+      "id": "relc-011",
+      "kind": "sentence-pattern",
+      "term": "Something which can be characterized as X...",
+      "meaningZh": "可被特徵化為X的東西...",
+      "difficulty": 2,
+      "example": "**Something which can be characterized as systemic injustice** requires structural solutions.",
+      "synonyms": ["What might be called X...", "Phenomena that are X...", "Cases where X applies..."]
+    },
+    {
+      "id": "relc-012",
+      "kind": "sentence-pattern",
+      "term": "X, a phenomenon that is often overlooked, ...",
+      "meaningZh": "X，一個經常被忽視的現象，...",
+      "difficulty": 2,
+      "example": "**Informal employment**, a phenomenon that is often overlooked, affects millions.",
+      "synonyms": ["X, which is frequently ignored,...", "X, though often unnoticed,...", "X, which many fail to recognize,..."]
+    },
+    {
+      "id": "relc-013",
+      "kind": "sentence-pattern",
+      "term": "Individuals for whom X is true often exhibit Y",
+      "meaningZh": "對其來說X是真實的個人經常表現出Y",
+      "difficulty": 2,
+      "example": "**Individuals for whom education was unavailable** often exhibit resilience.",
+      "synonyms": ["People to whom X applies tend to...", "Those experiencing X typically...", "Persons subject to X often..."]
+    },
+    {
+      "id": "relc-014",
+      "kind": "sentence-pattern",
+      "term": "The manner in which X contributes to Y is X-specific",
+      "meaningZh": "X對Y的貢獻方式是特定於X的",
+      "difficulty": 3,
+      "example": "**The manner in which technology disrupts industries** is sector-specific.",
+      "synonyms": ["How X affects Y depends on...", "The way X influences Y varies...", "X's impact on Y is context-dependent..."]
+    },
+    {
+      "id": "relc-015",
+      "kind": "sentence-pattern",
+      "term": "What scholars have termed X is now widely recognized",
+      "meaningZh": "學者們所謂的X現在被廣泛認可",
+      "difficulty": 2,
+      "example": "**What scholars have termed intersectionality** is now widely discussed.",
+      "synonyms": ["The concept known as X is now...", "What academics call X has become...", "The phenomenon labeled X is now..."]
+    },
+    {
+      "id": "relc-016",
+      "kind": "sentence-pattern",
+      "term": "Systems that exemplify X demonstrate...",
+      "meaningZh": "體現X的系統表明...",
+      "difficulty": 2,
+      "example": "**Systems that exemplify efficiency** demonstrate significant cost savings.",
+      "synonyms": ["Models showing X reveal...", "Examples of X show...", "Cases illustrating X demonstrate..."]
+    },
+    {
+      "id": "relc-017",
+      "kind": "sentence-pattern",
+      "term": "Situations where X occurs typically involve Y",
+      "meaningZh": "X發生的情況通常涉及Y",
+      "difficulty": 1,
+      "example": "**Situations where conflict emerges** typically involve resource scarcity.",
+      "synonyms": ["When X happens, Y is usually involved...", "X tends to arise when Y...", "Instances of X generally feature Y..."]
+    },
+    {
+      "id": "relc-018",
+      "kind": "sentence-pattern",
+      "term": "The X which influences Y most significantly is...",
+      "meaningZh": "最顯著影響Y的X是...",
+      "difficulty": 2,
+      "example": "**The factor which influences educational outcomes most significantly** is teacher quality.",
+      "synonyms": ["The primary X affecting Y is...", "Of all X, the one most impacting Y is...", "The key X for Y is..."]
+    },
+    {
+      "id": "relc-019",
+      "kind": "sentence-pattern",
+      "term": "X, to the extent that it is Y, proves Z",
+      "meaningZh": "X，在它是Y的範圍內，證明了Z",
+      "difficulty": 3,
+      "example": "**Education**, to the extent that it is equitable, proves transformative.",
+      "synonyms": ["If X is Y, then X demonstrates Z", "When X achieves Y status, X becomes Z", "In so far as X is Y, X establishes Z"]
+    },
+    {
+      "id": "relc-020",
+      "kind": "sentence-pattern",
+      "term": "The way in which X reflects Y is instructive",
+      "meaningZh": "X反映Y的方式很有啟發性",
+      "difficulty": 2,
+      "example": "**The way in which policy reflects political priorities** is instructive.",
+      "synonyms": ["How X mirrors Y is revealing...", "What X shows about Y is illuminating...", "The manner of X's reflection of Y indicates..."]
+    },
+    {
+      "id": "relc-021",
+      "kind": "sentence-pattern",
+      "term": "Those aspects which constitute X are critical",
+      "meaningZh": "構成X的那些方面是關鍵",
+      "difficulty": 2,
+      "example": "**Those aspects which constitute justice** are debated.",
+      "synonyms": ["The elements that define X matter...", "What constitutes X is vital...", "The components of X are fundamental..."]
+    },
+    {
+      "id": "relc-022",
+      "kind": "sentence-pattern",
+      "term": "The extent to which X permeates Y reveals...",
+      "meaningZh": "X滲透Y的程度揭示...",
+      "difficulty": 2,
+      "example": "**The extent to which inequality permeates society** reveals structural issues.",
+      "synonyms": ["How deeply X penetrates Y shows...", "The prevalence of X in Y indicates...", "How widespread X is in Y demonstrates..."]
+    },
+    {
+      "id": "relc-023",
+      "kind": "sentence-pattern",
+      "term": "X, which evolves over time, consequently...",
+      "meaningZh": "X隨時間演變，因此...",
+      "difficulty": 2,
+      "example": "**Social norms**, which evolve over time, consequently shape behavior.",
+      "synonyms": ["X, transforming gradually, thus...", "X, changing over time, therefore...", "X, which shifts, consequently..."]
+    },
+    {
+      "id": "relc-024",
+      "kind": "sentence-pattern",
+      "term": "The properties which define X are essential to understanding Y",
+      "meaningZh": "定義X的特性對理解Y至關重要",
+      "difficulty": 2,
+      "example": "**The properties which define a market** are essential to understanding capitalism.",
+      "synonyms": ["Understanding X's characteristics is key to grasping Y...", "X's defining traits illuminate Y...", "The nature of X is fundamental to Y..."]
+    },
+    {
+      "id": "relc-025",
+      "kind": "sentence-pattern",
+      "term": "The rationale behind X, which is to achieve Y, explains...",
+      "meaningZh": "X背後的理由，即達成Y，解釋了...",
+      "difficulty": 2,
+      "example": "**The rationale behind the policy**, which is to reduce inequality, explains its adoption.",
+      "synonyms": ["The purpose of X, namely Y, justifies...", "X's aim, which is Y, accounts for...", "The objective behind X, that is Y, shows..."]
+    }
+  ]
+}
