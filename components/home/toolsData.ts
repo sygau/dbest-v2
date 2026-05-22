@@ -36,14 +36,6 @@ export const tools: ToolItem[] = [
     Icon: BiTrendingUp,
   },
   {
-    title: 'UCAS 分換算器',
-    zh: 'DSE → UCAS 換算',
-    href: '/ucas',
-    accent: '#0ea5e9',
-    blurb: '輸入 DSE 成績，即時計算 UCAS Tariff Points，附官方 A-Level 對照表，申請英國大學必備。',
-    Icon: BiWorld,
-  },
-  {
     title: '教育博客',
     zh: '教育博客',
     href: '/blog',
