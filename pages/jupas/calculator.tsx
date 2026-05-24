@@ -209,6 +209,7 @@ export default function JupasCalculator() {
         title="JUPAS 計算機 Calculator | DSE 成績即時計算全港大學入學機會"
         description="輸入2026 DSE 成績，即睇 380+ JUPAS 課程嘅收生分數同入學機會。自動套用港大、中大、科大、理大、城大各院校加權公式，對比歷年 LQ / Median / UQ，即時知自己係咪穩入、有得搏定危險? 唔使逐個課程逐間大學查!"
         canonical="https://dse.best/jupas/calculator"
+        pageKey="jupas-calculator"
       />
 
       {isTurnstileEnabled() && (

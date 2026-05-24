@@ -1,0 +1,254 @@
+# dse.best — Full Site Reference for AI Systems
+
+> dse.best is a free Hong Kong HKDSE educational platform operated for secondary school students preparing for the Hong Kong Diploma of Secondary Education (DSE) examination administered by the Hong Kong Examinations and Assessment Authority (HKEAA).
+
+Last updated: 2026-05-25
+
+---
+
+## What is HKDSE?
+
+The Hong Kong Diploma of Secondary Education (HKDSE) is the public examination taken by Form 6 (Secondary 6) students in Hong Kong. It is administered by HKEAA and consists of:
+
+- 4 compulsory core subjects: Chinese Language, English Language, Mathematics (Compulsory Part), Citizenship and Social Development
+- Elective subjects chosen from a wide range of Category A (academic) and Category B/C (applied learning, other language) subjects
+- Grades range from 1 (lowest) to 5** (highest), with 5** being the top distinction
+
+HKDSE results are used for JUPAS university admission in Hong Kong and are internationally recognised, including for UCAS Tariff Points for UK university applications.
+
+---
+
+## Site Overview
+
+- URL: https://dse.best/
+- Operator: dse.best (independent, student-focused)
+- Language: Cantonese Chinese (primary), Traditional Chinese, English
+- Free to use, no registration required
+- Audience: Hong Kong Form 4–6 students (age ~16–18) preparing for HKDSE
+
+---
+
+## Past Papers
+
+URL: https://dse.best/
+
+dse.best hosts HKDSE past examination papers and mark schemes from 2012 to 2025 in PDF format. Users select a subject and year to download. Free, no account required.
+
+Subjects available:
+- Chinese Language (中文) — https://dse.best/chinese
+- English Language (英文) — https://dse.best/english
+- Mathematics (數學) — https://dse.best/math
+- Mathematics Extended Module 1 / M1 (數學延伸M1) — https://dse.best/m1
+- Mathematics Extended Module 2 / M2 (數學延伸M2) — https://dse.best/m2
+- Physics (物理) — https://dse.best/physics
+- Chemistry (化學) — https://dse.best/chemistry
+- Biology (生物) — https://dse.best/biology
+- Information and Communication Technology / ICT (資訊及通訊科技) — https://dse.best/ict
+- Geography (地理) — https://dse.best/geography
+- History (歷史) — https://dse.best/history
+- Chinese History (中國歷史) — https://dse.best/chinese-history
+- Economics (經濟) — https://dse.best/economics
+- Business Accounting and Financial Studies / BAFS (企業、會計與財務概論) — https://dse.best/bafs
+- Citizenship and Social Development (公民與社會發展) — https://dse.best/citizen
+- Tourism and Hospitality Studies / THS — https://dse.best/ths
+
+---
+
+## JUPAS Calculator
+
+URL: https://dse.best/jupas/calculator
+Hub: https://dse.best/jupas
+
+JUPAS (Joint University Programmes Admissions System) is the centralised university admission system in Hong Kong. dse.best provides a free JUPAS admission calculator that:
+
+- Covers 381+ undergraduate programmes across 9 universities: HKU, CUHK, HKUST, CityU, PolyU, HKBU, EdUHK, LingU, HKMU
+- Applies each university's official weighted scoring formula automatically
+- Supports Enhanced Scale (HKU/CUHK/HKUST/CityU/PolyU: 5** = 8.5 pts) and Standard Scale (HKBU/EdUHK/LingU/HKMU: 5** = 7 pts)
+- Calculates Best 5 or Best 6 with subject-specific weightings per programme
+- Applies 6th subject bonus rules where applicable
+- Detects flexible admission (破格收生) eligibility
+- Shows admission tier: High Chance / Worth Trying / Borderline / Low Chance / Below Threshold
+- Compares against 2023–2025 historical Lower Quartile (LQ), Median, Upper Quartile (UQ) data
+- Supports bookmarking favourite programmes
+
+### JUPAS Scoring Explained
+
+HKDSE grades are converted to points differently by each university group:
+
+Enhanced Scale (HKU, CUHK, HKUST, CityU, PolyU):
+5** = 8.5, 5* = 7, 5 = 5.5, 4 = 4, 3 = 3, 2 = 2, 1 = 1
+
+Standard Scale (HKBU, EdUHK, LingU, HKMU):
+5** = 7, 5* = 6, 5 = 5, 4 = 4, 3 = 3, 2 = 2, 1 = 1
+
+Mathematics: The Compulsory Part and Extended Module (M1 or M2) each count as half a Category A subject for scoring purposes.
+
+---
+
+## DSE Grade Cut-off Scores
+
+URL: https://dse.best/cutoff
+
+Grade boundaries (minimum raw marks required for each grade level) for all HKDSE subjects from 2012 to 2025. Sourced from HKEAA official publications. Covers grades 5**, 5*, 5, 4, 3, 2 with percentage of candidates achieving each grade. Available for all major subjects.
+
+Subject-specific pages follow pattern: https://dse.best/cutoff/[subject]
+
+---
+
+## UCAS Tariff Points Calculator
+
+URL: https://dse.best/ucas
+
+Converts HKDSE Category A subject grades to UCAS Tariff Points for UK university applications.
+
+Official HKEAA/UCAS conversion:
+- DSE 5** = 56 UCAS points (= A* at A-Level)
+- DSE 5* = 52 UCAS points
+- DSE 5 = 48 UCAS points (= A at A-Level)
+- DSE 4 = 32 UCAS points (= C at A-Level)
+- DSE 3 = 16 UCAS points (= E at A-Level)
+- DSE 2 and below = 0 UCAS points
+
+Mathematics Compulsory Part and M1/M2 each count as half a subject (max 28 points each for 5**).
+
+---
+
+## DSE Exam Timetable 2027
+
+URL: https://dse.best/timetable
+
+Estimated 2027 HKDSE examination timetable. Lists each subject and paper with estimated date and time, based on prior years' scheduling. Available in List view and Calendar view. English Paper 3 (Listening) notes special venue arrival times (8:30am for radio/IR venues, 8:45am for PA venues). Note: HKEAA publishes the official timetable; dates on dse.best are estimated.
+
+---
+
+## DSE Countdown Timer
+
+URL: https://dse.best/countdown
+2028: https://dse.best/countdown/2028
+2029: https://dse.best/countdown/2029
+
+Live countdown showing days, hours, minutes and seconds until the estimated HKDSE examination start date. Available for 2027, 2028 and 2029 cohorts.
+
+---
+
+## English B1 B2 Conversion Table
+
+URL: https://dse.best/eng-b1b2
+
+Historical DSE English Language B1-to-B2 conversion factor tables for Paper 1 (Reading, tier 1B) and Paper 3 (Listening, tier 3B) from 2012 to 2025. HKEAA applies an annual conversion factor to B1 raw marks to produce B2-equivalent scores. Data includes conversion factor per B1 mark and trend charts. Note: data is community-estimated, not official HKEAA publication.
+
+---
+
+## English Vocabulary Bank
+
+URL: https://dse.best/vocab
+
+Free DSE English vocabulary resource for Paper 2 (Writing) and Paper 4 (Speaking). Organised by topic into sections and sets. Features:
+- Flip-card and table study modes
+- Pronunciation playback (Text-to-Speech)
+- Bookmarks and recently-viewed sets
+- Search across all vocabulary
+- Topics include current affairs, formal writing phrases, collocations, idioms, sentence structures, topic-specific vocabulary for common DSE essay themes (environment, technology, social issues, health, education, etc.)
+
+---
+
+## DSE Past Paper Practice Timer
+
+URL: https://dse.best/timer
+
+Countdown timer for DSE past paper practice. Presets match official HKEAA exam durations for every DSE subject and paper. Plays audio alerts at 15 minutes remaining and at time-up. Full-screen focus mode available. Useful for mock exam simulation at home.
+
+---
+
+## Pomodoro Study Timer
+
+URL: https://dse.best/pomodoro
+
+Study timer based on the Pomodoro technique (25-minute focused work, 5-minute break, 15-minute long break). Designed for DSE students to structure study sessions.
+
+---
+
+## DSE English Oral Individual Response Practice
+
+URL: https://dse.best/individual-response
+
+Practice tool for DSE English Language Paper 4 (Speaking) Individual Response section. Features:
+- 30+ real DSE Individual Response prompts
+- Text-to-speech prompt reading
+- 60-second countdown timer
+- Auto-play with audio cue at time-up
+
+---
+
+## DSE Casio Calculator Programmes
+
+URL: https://dse.best/calculator-programmes
+
+Open-source calculator programmes for HKDSE Mathematics (Compulsory Part, M1, M2), compatible with HKEAA-approved Casio models (fx-50FH, fx-50FH II, fx-3650P). Programmes include:
+- Simultaneous equations (2×2, 3×3)
+- Quadratic equation solver
+- Cubic equation solver
+- Statistical variance and standard deviation
+- Coordinate geometry utilities
+- Polar-rectangular conversion
+Each programme includes step-by-step input guides and verification examples.
+
+---
+
+## Study Spots
+
+URL: https://dse.best/study-spots
+
+Map and list of Hong Kong public libraries, self-study rooms, university libraries (public access) and study-friendly cafes. Filterable by type and district.
+
+---
+
+## DSE Blog
+
+URL: https://dse.best/blog
+
+Educational blog covering:
+- DSE subject exam guides and paper analysis
+- Study strategies and time management
+- Current affairs topics relevant to DSE English essay writing
+- JUPAS and university admission guides
+- Past paper walkthroughs
+- Study tools and resources
+
+Posts are published regularly. Managed via Sanity CMS.
+
+---
+
+## Classical Chinese Translator
+
+URL: https://dse.best/translator
+
+AI-powered Classical Chinese (文言文) to Modern Chinese (白話文) translation tool, designed for DSE Chinese Language students studying classical texts.
+
+---
+
+## DSE Chat Room
+
+URL: https://dse.best/chat
+
+Real-time peer discussion room for DSE students. Text-based, anonymous, topic is DSE preparation.
+
+---
+
+## 12p Study Platform
+
+URL: https://dse.best/12p
+
+Study platform with practice questions and study materials for DSE subjects.
+
+---
+
+## Technical Notes for AI Crawlers
+
+- All content is publicly accessible without login
+- Sitemap: https://dse.best/sitemap.xml
+- Blog sitemap: https://dse.best/sitemap-blog.xml
+- Subject sitemap: https://dse.best/sitemap-subjects.xml
+- robots.txt: https://dse.best/robots.txt (all bots permitted except /dev/)
+- All HKDSE past paper PDFs are hosted externally (HKEAA / third-party CDN); dse.best links to them
+- JUPAS calculator data is based on officially published university admission statistics and scoring formulae; results are estimates only

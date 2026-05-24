@@ -26,16 +26,6 @@ const jupasFAQs = [
   },
 ];
 
-const faqJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: jupasFAQs.map(f => ({
-    '@type': 'Question',
-    name: f.question,
-    acceptedAnswer: { '@type': 'Answer', text: f.answer },
-  })),
-};
-
 const officialCalculators = [
   ['HKU', 'https://admissions.hku.hk/apply/jupas/score-calculator'],
   ['CUHK', 'https://admission.cuhk.edu.hk/application/jupas/programme-specific-requirements-and-score-calculator/'],
@@ -59,7 +49,7 @@ export default function JupasIndex() {
         ogUrl="https://dse.best/jupas"
         canonical="https://dse.best/jupas"
         robots={['index', 'follow']}
-        jsonLd={[faqJsonLd]}
+        pageKey="jupas"
       />
 
       <PageBreadcrumb section="升學" text="JUPAS" />

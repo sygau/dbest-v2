@@ -11,6 +11,7 @@ import PageSEO from '../components/PageSEO'
 import Hero from '../components/home/Hero'
 import DseCountdown from '../components/home/DseCountdown'
 import ToolGrid from '../components/home/ToolGrid'
+import { ORGANIZATION_SCHEMA } from '../data/jsonld/helpers'
 
 const homepageFAQs = [
   {
@@ -31,6 +32,7 @@ export default function HomePage() {
         ogUrl="https://dse.best/"
         robots={['index', 'follow']}
         pageKey="homepage"
+        jsonLd={[ORGANIZATION_SCHEMA]}
       />
 
       {/* Breadcrumb */}

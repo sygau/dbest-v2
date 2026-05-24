@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-25] — GEO/AEO Schema Expansion + llms.txt
+What: Added FAQPage JSON-LD to JUPAS calculator, JUPAS hub, vocab index, and calculator-programmes pages via pageKey system. Added Organization JSON-LD to homepage. Added bilingual (English+Cantonese) FAQ content optimised for AI search citation across all major tool pages. Created public/llms.txt and public/llms-full.txt for Perplexity/Claude/ChatGPT crawlers. Added sameAs Instagram to Organization schema.
+Files: data/faqs/pages.ts, data/jsonld/pages.ts, data/jsonld/helpers.ts, pages/index.tsx, pages/jupas/index.tsx, pages/jupas/calculator.tsx, pages/vocab/index.tsx, pages/calculator-programmes/index.tsx, public/llms.txt (overwrite), public/llms-full.txt (new)
+Notes: jupas/index.tsx inline faqJsonLd removed — FAQPage now served via pageKey="jupas" from pageFaqs. Blog posts already had complete Article schema (datePublished/author/publisher). robots.txt already allows all AI bots. Bing Webmaster Tools and Reddit citations remain manual tasks.
+
 ## [2026-05-23] — Subject Pages: Between-Section Display Ads
 What: Added responsive display ad slot after first two year sections on all 16 subject pages. Raw HTML pages (biology, chemistry, physics, bafs, chinese-history, citizen, economics, geography, history, ict, m1, m2, ths) get SubjectSectionAd injected directly; PaperSection component (math, english, chinese) gets showAd prop.
 Files: components/SubjectSectionAd.tsx (new), components/DownloadCard.tsx, pages/math/index.tsx, pages/english/index.tsx, pages/chinese/index.tsx, pages/biology/index.tsx, pages/chemistry/index.tsx, pages/physics/index.tsx, pages/bafs/index.tsx, pages/chinese-history/index.tsx, pages/citizen/index.tsx, pages/economics/index.tsx, pages/geography/index.tsx, pages/history/index.tsx, pages/ict/index.tsx, pages/m1/index.tsx, pages/m2/index.tsx, pages/ths/index.tsx

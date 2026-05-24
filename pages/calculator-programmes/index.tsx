@@ -57,6 +57,7 @@ export default function ProgrammesHubPage({ programmes }: Props) {
         ogDescription="聯立方程、二次方程、方差、極座標等 HKDSE 必入計算機程式。fx-50FH / fx-3650P 適用。"
         ogUrl="https://dse.best/calculator-programmes"
         canonical="https://dse.best/calculator-programmes"
+        pageKey="calculator-programmes"
         jsonLd={[jsonLd]}
       />
 

@@ -1,1 +1,34 @@
-Fuck off clanker
+# dse.best
+
+> Free Hong Kong DSE (HKDSE) educational platform for secondary school students preparing for the Hong Kong Diploma of Secondary Education examination.
+
+dse.best provides DSE past papers (2012–2025), a JUPAS admission calculator, grade cut-off scores, exam timetable, countdown timer, English vocabulary bank, UCAS Tariff Points converter, and study tools. Everything is free with no account required.
+
+## Key Tools & Resources
+
+- [DSE Past Papers](https://dse.best/) — 2012–2025 past papers for all HKDSE subjects (PDF download, free)
+- [JUPAS Calculator](https://dse.best/jupas/calculator) — Calculates admission chances for 381+ programmes across HKU, CUHK, HKUST, CityU, PolyU, HKBU, EdUHK, LingU, HKMU using each university's official weighted scoring formula
+- [JUPAS Hub](https://dse.best/jupas) — JUPAS scoring explainer, university links, calculator entry point
+- [DSE Cut-off Scores](https://dse.best/cutoff) — Grade boundaries (2012–2025) for all subjects
+- [DSE Exam Timetable 2027](https://dse.best/timetable) — Estimated 2027 HKDSE examination schedule, list and calendar views
+- [DSE Countdown Timer](https://dse.best/countdown) — Live countdown to next HKDSE examination
+- [UCAS Calculator](https://dse.best/ucas) — Convert HKDSE grades to UCAS Tariff Points for UK university applications
+- [English Vocab Bank](https://dse.best/vocab) — DSE English Paper 2 & 4 vocabulary sets with flashcards and pronunciation
+- [DSE Timer](https://dse.best/timer) — Past paper practice timer with official DSE exam durations preset
+- [Pomodoro Timer](https://dse.best/pomodoro) — Study timer using the Pomodoro technique
+- [English B1 B2 Table](https://dse.best/eng-b1b2) — DSE English Paper 1 & 3 B1-to-B2 conversion tables 2012–2025
+- [Individual Response Practice](https://dse.best/individual-response) — DSE English oral Individual Response timer with 30+ real prompts
+- [Calculator Programmes](https://dse.best/calculator-programmes) — Casio fx-50FH / fx-3650P programmes for DSE Maths
+- [Study Spots](https://dse.best/study-spots) — Hong Kong public libraries and study-friendly venues map
+- [DSE Blog](https://dse.best/blog) — Exam guides, subject analysis, study tips, current affairs for English essays
+
+## Subjects Covered (Past Papers & Cut-offs)
+
+Chinese Language, English Language, Mathematics (Compulsory Part), Mathematics Extended Module 1 (M1), Mathematics Extended Module 2 (M2), Physics, Chemistry, Biology, Information and Communication Technology (ICT), Geography, History, Chinese History, Economics, Business Accounting and Financial Studies (BAFS), Citizenship and Social Development, Tourism and Hospitality Studies (THS), Visual Arts
+
+## About
+
+- Audience: Hong Kong Form 4–6 students (Secondary 4–6) preparing for HKDSE
+- Language: Cantonese Chinese (primary), Traditional Chinese, English
+- Free to use, no account required
+- Instagram: https://www.instagram.com/dse_best

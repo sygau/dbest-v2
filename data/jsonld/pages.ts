@@ -280,6 +280,96 @@ export const pageJsonLd: Record<string, object> = {
     ]),
   },
 
+  jupas: {
+    ...webPageBase(
+      'JUPAS 入學計算機 — DSE 成績即時配對 381 課程 | dse.best',
+      'DSE 成績即時計算 381 個 JUPAS 課程嘅入學機會。自動套用各院校計分公式、增強/標準換算尺、Best N、第六科加分及彈性收生規則，附 2023–2025 歷年收生分數。',
+      'https://dse.best/jupas'
+    ),
+    mainEntity: softwareApp(
+      'JUPAS DSE Admission Calculator',
+      'Calculates JUPAS university admission chances for 381+ programmes across all Hong Kong universities using each institution\'s official weighted scoring formula and 2023–2025 historical admission data.',
+      'https://dse.best/jupas/calculator',
+      [
+        '381+ JUPAS programmes across HKU, CUHK, HKUST, CityU, PolyU, HKBU, EdUHK, LingU, HKMU',
+        'Enhanced Scale and Standard Scale scoring',
+        'Best 5 / Best 6 with subject weightings',
+        '6th subject bonus calculation',
+        'Flexible admission (破格收生) detection',
+        '2023–2025 LQ / Median / UQ historical data',
+      ]
+    ),
+    breadcrumb: breadcrumbList([
+      { name: 'dse.best 主頁', url: 'https://dse.best/' },
+      { name: 'JUPAS 入學計算機', url: 'https://dse.best/jupas' },
+    ]),
+  },
+
+  'jupas-calculator': {
+    ...webPageBase(
+      'JUPAS Calculator — DSE Admission Chance Calculator for 381 Programmes | dse.best',
+      'Enter DSE results to instantly calculate admission chances for 381+ JUPAS programmes at HKU, CUHK, HKUST, CityU, PolyU, HKBU, EdUHK, LingU and HKMU. Applies each university\'s official weighted scoring formula with 2023–2025 historical LQ/Median/UQ data.',
+      'https://dse.best/jupas/calculator'
+    ),
+    mainEntity: softwareApp(
+      'JUPAS DSE Admission Chance Calculator',
+      'Instantly calculates JUPAS admission chances for 381+ Hong Kong university programmes by applying each institution\'s official weighted scoring formula against 2023–2025 historical admission data.',
+      'https://dse.best/jupas/calculator',
+      [
+        '381+ JUPAS programmes across 9 universities',
+        'Enhanced Scale (港大/中大/科大/城大/理大) and Standard Scale (浸大/教大/嶺大/都大)',
+        'Best 5 / Best 6 with subject-specific weightings',
+        'Automatic 6th subject bonus calculation',
+        'Flexible admission eligibility detection',
+        '2023–2025 LQ / Median / UQ benchmarks',
+        'Bookmark favourite programmes',
+        'Filter by field of study, university, difficulty tier',
+      ]
+    ),
+    breadcrumb: breadcrumbList([
+      { name: 'dse.best 主頁', url: 'https://dse.best/' },
+      { name: 'JUPAS 入學計算機', url: 'https://dse.best/jupas' },
+      { name: 'JUPAS Calculator', url: 'https://dse.best/jupas/calculator' },
+    ]),
+  },
+
+  vocab: {
+    ...webPageBase(
+      'DSE English Vocabulary Bank 詞彙庫 | Paper 2 & 4 Writing Vocab | dse.best',
+      'Free DSE English vocabulary bank for Paper 2 (Writing) and Paper 4 (Speaking). Covers current affairs topics, writing templates, collocations, idioms and sentence structures. Flashcard and table study modes, bookmarks and pronunciation support.',
+      'https://dse.best/vocab'
+    ),
+    mainEntity: softwareApp(
+      'DSE English Vocabulary Bank',
+      'Free DSE English vocabulary learning tool for Paper 2 (Writing) and Paper 4 (Speaking), organised by topic with flashcard mode, pronunciation playback, bookmarks and search.',
+      'https://dse.best/vocab',
+      [
+        'Topic-grouped vocab sets for DSE English Paper 2 & 4',
+        'Flip-card and table study modes',
+        'Pronunciation playback (Text-to-Speech)',
+        'Bookmark and revisit feature',
+        'Search across all vocabulary sets',
+        'Current affairs, writing templates, collocations, idioms, sentence structures',
+      ]
+    ),
+    breadcrumb: breadcrumbList([
+      { name: 'dse.best 主頁', url: 'https://dse.best/' },
+      { name: 'DSE 英文詞彙庫 Vocab Bank', url: 'https://dse.best/vocab' },
+    ]),
+  },
+
+  'calculator-programmes': {
+    ...webPageBase(
+      'DSE 計數機程式庫 Casio Calculator Programmes | fx-50FH fx-3650P | dse.best',
+      'Open-source Casio calculator programmes for HKDSE Mathematics (Core, M1, M2). Includes simultaneous equations, quadratic/cubic equations, variance, polar coordinates and more. Compatible with Casio fx-50FH II and fx-3650P. Step-by-step input guides and verification examples included.',
+      'https://dse.best/calculator-programmes'
+    ),
+    breadcrumb: breadcrumbList([
+      { name: 'dse.best 主頁', url: 'https://dse.best/' },
+      { name: 'DSE 計數機程式庫', url: 'https://dse.best/calculator-programmes' },
+    ]),
+  },
+
   translator: {
     '@context': 'https://schema.org',
     '@type': 'WebPage',

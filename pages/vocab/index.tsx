@@ -26,6 +26,7 @@ export default function VocabHome({ sections, setsBySection, setLookup }: Props)
         title="詞彙庫 DSE English Writing Vocabulary Bank | dse.best"
         description="DSE English Writing 詞彙庫：時事議題、文體模板、用字升級、句式、成語。Steam Library 風格瀏覽，翻轉卡同表格雙模式，書籤同發音支援。"
         canonical="https://dse.best/vocab"
+        pageKey="vocab"
       />
 
       <PageBreadcrumb section="資源" text="詞彙庫 Vocab Bank" />
