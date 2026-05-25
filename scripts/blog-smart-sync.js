@@ -3,6 +3,29 @@
 // Falls back to full sync when snapshot is missing (first run).
 require('dotenv').config({ path: '.env' })
 
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || 'c4f2a8b1e36d9075'
+const SITE_HOST = 'dse.best'
+
+async function pingIndexNow(slugs) {
+  if (!slugs || slugs.length === 0) return
+  const urlList = slugs.map(s => `https://${SITE_HOST}/blog/${s}`)
+  try {
+    const res = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({
+        host: SITE_HOST,
+        key: INDEXNOW_KEY,
+        keyLocation: `https://${SITE_HOST}/${INDEXNOW_KEY}.txt`,
+        urlList,
+      }),
+    })
+    console.log(`🔔 IndexNow: ${res.status} — ${urlList.length} URL(s) pinged`)
+  } catch (e) {
+    console.warn('⚠️  IndexNow ping failed:', e.message)
+  }
+}
+
 const fs = require('fs-extra')
 const path = require('path')
 const { createClient } = require('@sanity/client')
@@ -93,6 +116,7 @@ async function fullSync(client) {
   await fs.writeJSON(OUT_SNAPSHOT, snapshotData, { spaces: 2 })
 
   console.log(`✅ Full sync: ${posts.length} posts written`)
+  await pingIndexNow(posts.map(p => p.slug))
   return posts.length
 }
 
@@ -209,6 +233,7 @@ async function smartSync(client) {
   }
 
   console.log(`\n✅ Sync complete: ${toFetch.length} updated  ${toDelete.length} deleted  ${unchanged} unchanged`)
+  if (toFetch.length > 0) await pingIndexNow(toFetch)
   return { synced: toFetch.length, deleted: toDelete.length }
 }
 

@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-25] — IndexNow (Bing) Integration
+What: Auto-ping Bing IndexNow on new/changed blog posts via smart sync and Sanity webhook trigger.
+Files: scripts/blog-smart-sync.js, pages/api/trigger-deploy.ts, public/c4f2a8b1e36d9075.txt
+Notes: Key hardcoded as c4f2a8b1e36d9075 (override with INDEXNOW_KEY env). Full sync pings all slugs; smart sync pings only changed/new. trigger-deploy.ts extracts slug from Sanity webhook body, falls back to homepage ping.
+
 ## [2026-05-25] — GEO/AEO Schema Expansion + llms.txt
 What: Added FAQPage JSON-LD to JUPAS calculator, JUPAS hub, vocab index, and calculator-programmes pages via pageKey system. Added Organization JSON-LD to homepage. Added bilingual (English+Cantonese) FAQ content optimised for AI search citation across all major tool pages. Created public/llms.txt and public/llms-full.txt for Perplexity/Claude/ChatGPT crawlers. Added sameAs Instagram to Organization schema.
 Files: data/faqs/pages.ts, data/jsonld/pages.ts, data/jsonld/helpers.ts, pages/index.tsx, pages/jupas/index.tsx, pages/jupas/calculator.tsx, pages/vocab/index.tsx, pages/calculator-programmes/index.tsx, public/llms.txt (overwrite), public/llms-full.txt (new)
