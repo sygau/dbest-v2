@@ -1,665 +1,982 @@
 [
   {
-    "id": "shidexishan-001",
+    "id": "SaiShan-001",
     "sentence": "自余為{{僇}}人。",
     "target": "僇",
     "meaning": "罪、受辱",
     "acptAns": [
       "罪",
       "受辱",
-      "羞辱"
+      "羞辱",
+      "獲罪",
+      "刑戮",
+      "被貶",
+      "得罪"
     ],
-    "notes": "通「戮」"
+    "notes": "通「戮」，刑戮之意；指作者被貶為罪人"
   },
   {
-    "id": "shidexishan-002",
+    "id": "SaiShan-002",
     "sentence": "居{{是}}州，恒惴慄。",
     "target": "是",
     "meaning": "這",
     "acptAns": [
-      "這"
+      "這",
+      "此",
+      "這個",
+      "此地",
+      "此處",
+      "該",
+      "那一"
     ]
   },
   {
-    "id": "shidexishan-003",
+    "id": "SaiShan-003",
     "sentence": "居是州，{{恒}}惴慄。",
     "target": "恒",
     "meaning": "常常、經常",
     "acptAns": [
       "常常",
-      "經常"
+      "經常",
+      "時常",
+      "每每",
+      "一向",
+      "總是",
+      "恆常"
     ]
   },
   {
-    "id": "shidexishan-004",
+    "id": "SaiShan-004",
     "sentence": "居是州，恒{{惴慄}}。",
     "target": "惴慄",
     "meaning": "憂懼、恐懼",
     "acptAns": [
       "憂懼",
       "恐懼",
-      "害怕"
+      "害怕",
+      "驚恐",
+      "戰慄",
+      "惶恐不安",
+      "心驚膽顫"
     ]
   },
   {
-    "id": "shidexishan-005",
+    "id": "SaiShan-005",
     "sentence": "其{{隙}}也，則施施而行。",
     "target": "隙",
     "meaning": "空閒、閒暇",
     "acptAns": [
       "空閒",
       "閒暇",
-      "空隙"
+      "空隙",
+      "餘暇",
+      "得閒",
+      "有空之時",
+      "閒時"
     ]
   },
   {
-    "id": "shidexishan-006",
+    "id": "SaiShan-006",
     "sentence": "其隙也，則{{施施}}而行。",
     "target": "施施",
     "meaning": "緩慢行走的樣子",
     "acptAns": [
       "緩慢行走的樣子",
-      "徐行"
+      "徐行",
+      "慢慢走",
+      "從容而行",
+      "悠閒漫步",
+      "緩步徐行",
+      "緩緩而行"
     ]
   },
   {
-    "id": "shidexishan-007",
+    "id": "SaiShan-007",
     "sentence": "{{漫漫}}而遊。",
     "target": "漫漫",
     "meaning": "漫無目的、不受拘束",
     "acptAns": [
       "漫無目的",
       "不受拘束",
-      "隨意"
+      "隨意",
+      "自由自在地",
+      "無拘無束",
+      "隨興",
+      "任意遊逛"
     ]
   },
   {
-    "id": "shidexishan-008",
+    "id": "SaiShan-008",
     "sentence": "日與其{{徒}}上高山。",
     "target": "徒",
     "meaning": "同伴、隨從",
     "acptAns": [
       "同伴",
       "隨從",
-      "朋友"
+      "朋友",
+      "同遊者",
+      "夥伴",
+      "同道",
+      "同行之人"
     ]
   },
   {
-    "id": "shidexishan-009",
+    "id": "SaiShan-009",
     "sentence": "{{窮}}迴溪。",
     "target": "窮",
     "meaning": "走到盡頭",
     "acptAns": [
       "走到盡頭",
-      "窮盡"
+      "窮盡",
+      "走遍",
+      "探盡",
+      "尋遍",
+      "到達終點",
+      "窮究"
     ]
   },
   {
-    "id": "shidexishan-010",
+    "id": "SaiShan-010",
     "sentence": "窮{{迴}}溪。",
     "target": "迴",
     "meaning": "迂迴、曲折",
     "acptAns": [
       "迂迴",
-      "曲折"
+      "曲折",
+      "彎曲",
+      "盤旋",
+      "蜿蜒",
+      "迴轉",
+      "彎彎曲曲"
     ]
   },
   {
-    "id": "shidexishan-011",
+    "id": "SaiShan-011",
     "sentence": "{{幽}}泉怪石。",
     "target": "幽",
     "meaning": "偏遠、幽深",
     "acptAns": [
       "偏遠",
-      "幽深"
+      "幽深",
+      "僻靜",
+      "清幽",
+      "隱僻",
+      "深遠",
+      "幽僻"
     ]
   },
   {
-    "id": "shidexishan-012",
+    "id": "SaiShan-012",
     "sentence": "無遠不{{致}}。",
     "target": "致",
     "meaning": "到達",
     "acptAns": [
       "到達",
-      "到"
+      "到",
+      "抵達",
+      "至",
+      "去到",
+      "涉足",
+      "親臨"
     ]
   },
   {
-    "id": "shidexishan-013",
+    "id": "SaiShan-013",
     "sentence": "到則{{披}}草而坐。",
     "target": "披",
     "meaning": "撥開",
     "acptAns": [
       "撥開",
-      "分開"
+      "分開",
+      "撥散",
+      "推開",
+      "撥除",
+      "分開草叢",
+      "撥開雜草"
     ]
   },
   {
-    "id": "shidexishan-014",
+    "id": "SaiShan-014",
     "sentence": "{{傾}}壺而醉。",
     "target": "傾",
     "meaning": "傾倒、倒盡",
     "acptAns": [
       "傾倒",
       "倒盡",
-      "倒出"
+      "倒出",
+      "傾盡",
+      "斟倒",
+      "倒空",
+      "傾瀉"
     ]
   },
   {
-    "id": "shidexishan-015",
+    "id": "SaiShan-015",
     "sentence": "醉則{{更}}相枕以臥。",
     "target": "更",
     "meaning": "輪流、互相",
     "acptAns": [
       "輪流",
-      "互相"
+      "互相",
+      "交替",
+      "相繼",
+      "彼此",
+      "互相輪流",
+      "輪番"
     ]
   },
   {
-    "id": "shidexishan-016",
+    "id": "SaiShan-016",
     "sentence": "醉則更{{相枕}}以臥。",
     "target": "相枕",
     "meaning": "互相枕靠",
     "acptAns": [
       "互相枕靠",
-      "互相倚靠"
+      "互相倚靠",
+      "彼此枕著",
+      "靠著對方",
+      "互相依靠",
+      "枕著彼此",
+      "相互倚偎"
     ]
   },
   {
-    "id": "shidexishan-017",
+    "id": "SaiShan-017",
     "sentence": "醉則更相枕以{{臥}}。",
     "target": "臥",
     "meaning": "睡覺、躺臥",
     "acptAns": [
       "睡覺",
-      "躺臥"
+      "躺臥",
+      "睡下",
+      "休息",
+      "安睡",
+      "躺下休息",
+      "臥倒"
     ]
   },
   {
-    "id": "shidexishan-018",
+    "id": "SaiShan-018",
     "sentence": "意有所{{極}}。",
     "target": "極",
     "meaning": "至、到",
     "acptAns": [
       "至",
-      "到"
+      "到",
+      "到達",
+      "抵達",
+      "窮盡",
+      "達到極點",
+      "心之所向"
     ]
   },
   {
-    "id": "shidexishan-019",
+    "id": "SaiShan-019",
     "sentence": "夢亦同{{趣}}。",
     "target": "趣",
     "meaning": "往、趨向",
     "acptAns": [
       "往",
       "趨向",
-      "去"
+      "去",
+      "前往",
+      "趨赴",
+      "朝向",
+      "心之所往"
     ],
-    "notes": "通「趨」"
+    "notes": "通「趨」，趨向、前往之意"
   },
   {
-    "id": "shidexishan-020",
+    "id": "SaiShan-020",
     "sentence": "{{覺}}而起，起而歸。",
     "target": "覺",
     "meaning": "睡醒",
     "acptAns": [
       "睡醒",
-      "醒來"
+      "醒來",
+      "甦醒",
+      "醒覺",
+      "清醒",
+      "夢醒",
+      "覺醒"
     ]
   },
   {
-    "id": "shidexishan-021",
+    "id": "SaiShan-021",
     "sentence": "以為凡是州之山水有{{異態}}者。",
     "target": "異態",
     "meaning": "獨特形態、奇特形態",
     "acptAns": [
       "獨特形態",
-      "奇特形態"
+      "奇特形態",
+      "奇異形狀",
+      "特別樣子",
+      "與眾不同的姿態",
+      "怪異之狀",
+      "非凡樣貌"
     ]
   },
   {
-    "id": "shidexishan-022",
+    "id": "SaiShan-022",
     "sentence": "皆我有也，而{{未始}}知西山之怪特。",
     "target": "未始",
     "meaning": "未曾、不曾",
     "acptAns": [
       "未曾",
-      "不曾"
+      "不曾",
+      "從未",
+      "沒有",
+      "尚未",
+      "從來沒有",
+      "一向沒有"
     ]
   },
   {
-    "id": "shidexishan-023",
+    "id": "SaiShan-023",
     "sentence": "皆我有也，而未始知西山之{{怪特}}。",
     "target": "怪特",
     "meaning": "奇異獨特",
     "acptAns": [
       "奇異獨特",
-      "奇特"
+      "奇特",
+      "怪異特別",
+      "與眾不同",
+      "非凡特出",
+      "奇詭特異",
+      "卓爾不群"
     ]
   },
   {
-    "id": "shidexishan-024",
+    "id": "SaiShan-024",
     "sentence": "因坐法華西亭，望西山，始{{指}}異之。",
     "target": "指",
     "meaning": "指點",
     "acptAns": [
       "指點",
-      "指出"
+      "指出",
+      "手指指向",
+      "遙指",
+      "指明",
+      "指著",
+      "指示"
     ]
   },
   {
-    "id": "shidexishan-025",
+    "id": "SaiShan-025",
     "sentence": "因坐法華西亭，望西山，始指{{異}}之。",
     "target": "異",
     "meaning": "感到驚異、覺得奇異",
     "acptAns": [
       "感到驚異",
       "覺得奇異",
-      "認為奇異"
+      "認為奇異",
+      "驚訝",
+      "詫異",
+      "驚嘆",
+      "視為奇特"
     ],
-    "notes": "意動用法"
+    "notes": "意動用法，以……為異"
   },
   {
-    "id": "shidexishan-026",
+    "id": "SaiShan-026",
     "sentence": "遂命僕人過湘江，{{緣}}染溪。",
     "target": "緣",
     "meaning": "沿著",
     "acptAns": [
       "沿著",
-      "順著"
+      "順著",
+      "循著",
+      "傍著",
+      "依著",
+      "跟隨",
+      "沿路而行"
     ]
   },
   {
-    "id": "shidexishan-027",
+    "id": "SaiShan-027",
     "sentence": "{{斫}}榛莽。",
     "target": "斫",
     "meaning": "砍伐",
     "acptAns": [
       "砍伐",
-      "砍"
+      "砍",
+      "斬伐",
+      "劈砍",
+      "削除",
+      "砍除",
+      "斬除"
     ]
   },
   {
-    "id": "shidexishan-028",
+    "id": "SaiShan-028",
     "sentence": "斫{{榛}}莽。",
     "target": "榛",
     "meaning": "叢生雜木",
     "acptAns": [
       "叢生雜木",
-      "灌木"
+      "灌木",
+      "雜樹",
+      "荊棘",
+      "叢木",
+      "雜亂的樹木",
+      "叢生的小樹"
     ]
   },
   {
-    "id": "shidexishan-029",
+    "id": "SaiShan-029",
     "sentence": "斫榛{{莽}}。",
     "target": "莽",
     "meaning": "野草",
     "acptAns": [
       "野草",
-      "草叢"
+      "草叢",
+      "雜草",
+      "荒草",
+      "茂草",
+      "叢生的野草",
+      "荒蕪的草木"
     ]
   },
   {
-    "id": "shidexishan-030",
+    "id": "SaiShan-030",
     "sentence": "焚{{茅}}茷。",
     "target": "茅",
     "meaning": "茅草",
     "acptAns": [
-      "茅草"
+      "茅草",
+      "白茅",
+      "野草",
+      "菅茅",
+      "茅菅",
+      "草茅",
+      "雜茅"
     ]
   },
   {
-    "id": "shidexishan-031",
+    "id": "SaiShan-031",
     "sentence": "焚茅{{茷}}。",
     "target": "茷",
     "meaning": "茂密的草葉",
     "acptAns": [
       "茂密的草葉",
-      "草葉"
+      "草葉",
+      "茂草",
+      "繁茂的草",
+      "叢生的草葉",
+      "茂盛的草木",
+      "草葉茂盛"
     ]
   },
   {
-    "id": "shidexishan-032",
+    "id": "SaiShan-032",
     "sentence": "{{窮}}山之高而止。",
     "target": "窮",
     "meaning": "登上盡頭、走到盡頭",
     "acptAns": [
       "登上盡頭",
       "走到盡頭",
-      "極盡"
+      "極盡",
+      "窮盡",
+      "登至最高處",
+      "到達頂點",
+      "窮究其高"
     ]
   },
   {
-    "id": "shidexishan-033",
+    "id": "SaiShan-033",
     "sentence": "{{攀援}}而登。",
     "target": "攀援",
     "meaning": "攀爬",
     "acptAns": [
-      "攀爬"
+      "攀爬",
+      "攀登",
+      "攀附而上",
+      "抓著東西向上爬",
+      "手腳並用向上",
+      "攀躋",
+      "攀援而上"
     ]
   },
   {
-    "id": "shidexishan-034",
+    "id": "SaiShan-034",
     "sentence": "{{箕踞}}而遨。",
     "target": "箕踞",
     "meaning": "隨意伸開兩腿坐",
     "acptAns": [
       "隨意伸開兩腿坐",
-      "像簸箕一樣坐著"
+      "像簸箕一樣坐著",
+      "張開雙腿而坐",
+      "不拘禮節地坐",
+      "席地而坐",
+      "隨意而坐",
+      "伸腿而坐"
     ]
   },
   {
-    "id": "shidexishan-035",
+    "id": "SaiShan-035",
     "sentence": "箕踞而{{遨}}。",
     "target": "遨",
     "meaning": "遊賞、眺望",
     "acptAns": [
       "遊賞",
-      "眺望"
+      "眺望",
+      "遊覽",
+      "觀賞",
+      "遊目四顧",
+      "縱目遠眺",
+      "悠遊觀賞"
     ]
   },
   {
-    "id": "shidexishan-036",
+    "id": "SaiShan-036",
     "sentence": "則凡數州之土壤，皆在{{衽席}}之下。",
     "target": "衽席",
     "meaning": "坐席、席子",
     "acptAns": [
       "坐席",
-      "席子"
+      "席子",
+      "座位",
+      "坐墊",
+      "席墊",
+      "坐臥之席"
     ]
   },
   {
-    "id": "shidexishan-037",
+    "id": "SaiShan-037",
     "sentence": "其高下之勢，{{岈}}然窪然。",
     "target": "岈",
     "meaning": "山勢隆起、高峻",
     "acptAns": [
       "山勢隆起",
-      "高峻"
+      "高峻",
+      "山高貌",
+      "山勢高聳",
+      "突起之狀",
+      "山巒聳立",
+      "高聳的樣子"
     ]
   },
   {
-    "id": "shidexishan-038",
+    "id": "SaiShan-038",
     "sentence": "其高下之勢，岈然{{窪}}然。",
     "target": "窪",
     "meaning": "深陷、低陷",
     "acptAns": [
       "深陷",
-      "低陷"
+      "低陷",
+      "凹陷",
+      "低窪",
+      "下陷",
+      "低陷之處",
+      "窪陷之狀"
     ]
   },
   {
-    "id": "shidexishan-039",
+    "id": "SaiShan-039",
     "sentence": "若{{垤}}若穴。",
     "target": "垤",
     "meaning": "蟻穴外隆起的小土堆",
     "acptAns": [
       "蟻穴外隆起的小土堆",
-      "小土堆"
+      "小土堆",
+      "蟻塚",
+      "小丘",
+      "螞蟻窩旁的小土堆",
+      "蟻封",
+      "小土丘"
     ]
   },
   {
-    "id": "shidexishan-040",
+    "id": "SaiShan-040",
     "sentence": "尺寸千里，{{攢}}蹙累積。",
     "target": "攢",
     "meaning": "聚集、聚攏",
     "acptAns": [
       "聚集",
-      "聚攏"
+      "聚攏",
+      "彙集",
+      "湊集",
+      "收攏",
+      "叢聚",
+      "聚集在一起"
     ]
   },
   {
-    "id": "shidexishan-041",
+    "id": "SaiShan-041",
     "sentence": "尺寸千里，攢{{蹙}}累積。",
     "target": "蹙",
     "meaning": "緊縮、收縮",
     "acptAns": [
       "緊縮",
-      "收縮"
+      "收縮",
+      "緊迫",
+      "緊湊",
+      "擠壓",
+      "緊密聚集",
+      "緊蹙"
     ]
   },
   {
-    "id": "shidexishan-042",
+    "id": "SaiShan-042",
     "sentence": "莫得{{遯}}隱。",
     "target": "遯",
     "meaning": "隱藏",
     "acptAns": [
-      "隱藏"
+      "隱藏",
+      "遁逃",
+      "躲藏",
+      "隱匿",
+      "逃隱",
+      "藏匿",
+      "隱沒"
     ],
-    "notes": "通「遁」"
+    "notes": "通「遁」，逃遁、隱藏之意"
   },
   {
-    "id": "shidexishan-043",
+    "id": "SaiShan-043",
     "sentence": "{{縈}}青繚白。",
     "target": "縈",
     "meaning": "縈迴、纏繞",
     "acptAns": [
       "縈迴",
-      "纏繞"
+      "纏繞",
+      "環繞",
+      "盤繞",
+      "迴旋",
+      "纏繞縈迴",
+      "縈繞"
     ]
   },
   {
-    "id": "shidexishan-044",
+    "id": "SaiShan-044",
     "sentence": "縈青{{繚}}白。",
     "target": "繚",
     "meaning": "繚繞",
     "acptAns": [
-      "繚繞"
+      "繚繞",
+      "纏繞",
+      "盤繞",
+      "環繞",
+      "縈繞",
+      "纏繞縈迴",
+      "曲折環繞"
     ]
   },
   {
-    "id": "shidexishan-045",
+    "id": "SaiShan-045",
     "sentence": "外與天{{際}}，四望如一。",
     "target": "際",
     "meaning": "交接、會合",
     "acptAns": [
       "交接",
       "會合",
-      "連接"
+      "連接",
+      "相連",
+      "接合",
+      "交會",
+      "連成一線"
     ]
   },
   {
-    "id": "shidexishan-046",
+    "id": "SaiShan-046",
     "sentence": "然後知是山之{{特立}}。",
     "target": "特立",
     "meaning": "卓絕獨立、超群獨立",
     "acptAns": [
       "卓絕獨立",
-      "超群獨立"
+      "超群獨立",
+      "卓然特出",
+      "與眾不同",
+      "卓爾不群",
+      "特出超群",
+      "獨樹一幟"
     ]
   },
   {
-    "id": "shidexishan-047",
+    "id": "SaiShan-047",
     "sentence": "不與{{培塿}}為類。",
     "target": "培塿",
     "meaning": "小土丘",
     "acptAns": [
       "小土丘",
-      "小土堆"
+      "小土堆",
+      "小丘",
+      "矮小的山丘",
+      "小山坡",
+      "低矮的土丘",
+      "平凡的小山"
     ]
   },
   {
-    "id": "shidexishan-048",
+    "id": "SaiShan-048",
     "sentence": "悠悠乎與{{顥氣}}俱。",
     "target": "顥氣",
     "meaning": "天地間之正氣、大氣",
     "acptAns": [
       "天地間之正氣",
       "大氣",
-      "自然之氣"
+      "自然之氣",
+      "天地元氣",
+      "浩然之氣",
+      "宇宙之氣",
+      "天地浩氣"
     ]
   },
   {
-    "id": "shidexishan-049",
+    "id": "SaiShan-049",
     "sentence": "悠悠乎與顥氣{{俱}}。",
     "target": "俱",
     "meaning": "在一起、同在",
     "acptAns": [
       "在一起",
-      "同在"
+      "同在",
+      "共存",
+      "相伴",
+      "一同",
+      "並存",
+      "與之同在"
     ]
   },
   {
-    "id": "shidexishan-050",
+    "id": "SaiShan-050",
     "sentence": "而莫得其{{涯}}。",
     "target": "涯",
     "meaning": "邊際、盡頭",
     "acptAns": [
       "邊際",
-      "盡頭"
+      "盡頭",
+      "極限",
+      "邊界",
+      "終點",
+      "無邊無際的邊",
+      "邊岸"
     ]
   },
   {
-    "id": "shidexishan-051",
+    "id": "SaiShan-051",
     "sentence": "洋洋乎與{{造物者}}遊。",
     "target": "造物者",
     "meaning": "大自然、天地",
     "acptAns": [
       "大自然",
-      "天地"
+      "天地",
+      "造物主",
+      "天地萬物之主",
+      "造化",
+      "宇宙主宰",
+      "天地自然"
     ]
   },
   {
-    "id": "shidexishan-052",
+    "id": "SaiShan-052",
     "sentence": "而不知其所{{窮}}。",
     "target": "窮",
     "meaning": "盡頭、終極",
     "acptAns": [
       "盡頭",
-      "終極"
+      "終極",
+      "極限",
+      "終點",
+      "邊際",
+      "窮盡之處",
+      "止境"
     ]
   },
   {
-    "id": "shidexishan-053",
+    "id": "SaiShan-053",
     "sentence": "{{引}}觴滿酌。",
     "target": "引",
     "meaning": "拿、舉",
     "acptAns": [
       "拿",
       "舉",
-      "取"
+      "取",
+      "持",
+      "端起",
+      "拿起",
+      "舉起"
     ]
   },
   {
-    "id": "shidexishan-054",
+    "id": "SaiShan-054",
     "sentence": "引{{觴}}滿酌。",
     "target": "觴",
     "meaning": "酒杯",
     "acptAns": [
-      "酒杯"
+      "酒杯",
+      "酒器",
+      "酒盃",
+      "酒樽",
+      "飲酒之器",
+      "盛酒之杯",
+      "觴杯"
     ]
   },
   {
-    "id": "shidexishan-055",
+    "id": "SaiShan-055",
     "sentence": "{{頹然}}就醉。",
     "target": "頹然",
     "meaning": "倒下的樣子",
     "acptAns": [
       "倒下的樣子",
-      "倒塌"
+      "倒塌",
+      "醉倒的樣子",
+      "萎靡不振",
+      "醉態可掬",
+      "軟弱無力",
+      "醉後傾倒"
     ]
   },
   {
-    "id": "shidexishan-056",
+    "id": "SaiShan-056",
     "sentence": "心{{凝}}形釋。",
     "target": "凝",
     "meaning": "凝聚、專注",
     "acptAns": [
       "凝聚",
-      "專注"
+      "專注",
+      "集中",
+      "凝定",
+      "心神凝聚",
+      "專一",
+      "凝結"
     ]
   },
   {
-    "id": "shidexishan-057",
+    "id": "SaiShan-057",
     "sentence": "心凝{{形}}釋。",
     "target": "形",
     "meaning": "形體、軀體",
     "acptAns": [
       "形體",
-      "軀體"
+      "軀體",
+      "身體",
+      "肉身",
+      "形骸",
+      "肉體",
+      "身軀"
     ]
   },
   {
-    "id": "shidexishan-058",
+    "id": "SaiShan-058",
     "sentence": "心凝形{{釋}}。",
     "target": "釋",
     "meaning": "釋放、解脫",
     "acptAns": [
       "釋放",
       "解脫",
-      "解除束縛"
+      "解除束縛",
+      "放鬆",
+      "豁達",
+      "擺脫拘束",
+      "舒展"
     ]
   },
   {
-    "id": "shidexishan-059",
+    "id": "SaiShan-059",
     "sentence": "與{{萬化}}冥合。",
     "target": "萬化",
     "meaning": "萬物、大自然",
     "acptAns": [
       "萬物",
-      "大自然"
+      "大自然",
+      "天地萬物",
+      "宇宙萬象",
+      "世間萬物",
+      "一切事物",
+      "自然造化"
     ]
   },
   {
-    "id": "shidexishan-060",
+    "id": "SaiShan-060",
     "sentence": "與萬化{{冥合}}。",
     "target": "冥合",
     "meaning": "暗合、融合",
     "acptAns": [
       "暗合",
       "融合",
-      "默契"
+      "默契",
+      "契合",
+      "渾然一體",
+      "無形中融合",
+      "心靈相通"
     ]
   },
   {
-    "id": "shidexishan-061",
+    "id": "SaiShan-061",
     "sentence": "然後知吾{{嚮}}之未始遊。",
     "target": "嚮",
     "meaning": "從前、昔日",
     "acptAns": [
       "從前",
       "昔日",
-      "以往"
+      "以往",
+      "先前",
+      "過去",
+      "從前之時",
+      "往日"
     ],
-    "notes": "通「向」"
+    "notes": "通「向」，從前、以往之意"
   },
   {
-    "id": "shidexishan-062",
+    "id": "SaiShan-062",
     "sentence": "然後知吾嚮之{{未始}}遊。",
     "target": "未始",
     "meaning": "未曾、不曾",
     "acptAns": [
       "未曾",
-      "不曾"
+      "不曾",
+      "從未",
+      "沒有",
+      "尚未",
+      "從來沒有",
+      "一向沒有"
     ]
   },
   {
-    "id": "shidexishan-063",
+    "id": "SaiShan-063",
     "sentence": "遊{{於是}}乎始。",
     "target": "於是",
     "meaning": "從這裡、從此時",
     "acptAns": [
       "從這裡",
-      "從此時"
+      "從此時",
+      "從此",
+      "由此",
+      "自此刻起",
+      "自此",
+      "從這次開始"
     ]
   },
   {
-    "id": "shidexishan-064",
+    "id": "SaiShan-064",
     "sentence": "故為之文以{{志}}。",
     "target": "志",
     "meaning": "記錄、記載",
     "acptAns": [
       "記錄",
-      "記載"
-    ]
+      "記載",
+      "記述",
+      "記下",
+      "誌記",
+      "寫下",
+      "記敘"
+    ],
+    "notes": "通「誌」，記載之意"
   },
   {
-    "id": "shidexishan-065",
+    "id": "SaiShan-065",
     "sentence": "{{是}}歲元和四年也。",
     "target": "是",
     "meaning": "這",
     "acptAns": [
-      "這"
+      "這",
+      "此",
+      "這個",
+      "該",
+      "那一年",
+      "此年",
+      "當年"
     ]
   }
 ]

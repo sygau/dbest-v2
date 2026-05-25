@@ -1,904 +1,1300 @@
 [
   {
-    "id": "yueyanglouj-001",
+    "id": "NgokYeungLauGei-001",
     "sentence": "滕子京{{謫}}守巴陵郡。",
     "target": "謫",
     "meaning": "貶官、降職",
     "acptAns": [
       "貶官",
       "降職",
-      "貶謫"
+      "貶謫",
+      "被貶",
+      "貶斥",
+      "謫降",
+      "外放貶官"
     ]
   },
   {
-    "id": "yueyanglouj-002",
+    "id": "NgokYeungLauGei-002",
     "sentence": "滕子京謫{{守}}巴陵郡。",
     "target": "守",
     "meaning": "出任太守",
     "acptAns": [
       "出任太守",
       "做太守",
-      "治理"
+      "治理",
+      "擔任太守",
+      "掌管",
+      "鎮守",
+      "主政"
     ]
   },
   {
-    "id": "yueyanglouj-003",
+    "id": "NgokYeungLauGei-003",
     "sentence": "{{越}}明年，政通人和。",
     "target": "越",
     "meaning": "及、到了",
     "acptAns": [
       "及",
       "到了",
-      "及至"
+      "及至",
+      "等到",
+      "過",
+      "經過",
+      "至"
     ]
   },
   {
-    "id": "yueyanglouj-004",
+    "id": "NgokYeungLauGei-004",
     "sentence": "越明年，{{政通}}人和。",
     "target": "政通",
     "meaning": "政事順遂、政令暢通",
     "acptAns": [
       "政事順遂",
       "政令暢通",
-      "政績顯著"
+      "政績顯著",
+      "政務通達",
+      "施政順利",
+      "政事亨通",
+      "治理得當"
     ]
   },
   {
-    "id": "yueyanglouj-005",
+    "id": "NgokYeungLauGei-005",
     "sentence": "百廢{{具}}興。",
     "target": "具",
     "meaning": "全、皆",
     "acptAns": [
       "全",
       "皆",
-      "都"
+      "都",
+      "俱",
+      "悉",
+      "盡",
+      "全部"
     ],
     "notes": "通「俱」"
   },
   {
-    "id": "yueyanglouj-006",
+    "id": "NgokYeungLauGei-006",
     "sentence": "百廢具{{興}}。",
     "target": "興",
     "meaning": "興辦、復興",
     "acptAns": [
       "興辦",
       "復興",
-      "振興"
+      "振興",
+      "重建",
+      "恢復",
+      "重辦",
+      "再度興起"
     ]
   },
   {
-    "id": "yueyanglouj-007",
+    "id": "NgokYeungLauGei-007",
     "sentence": "乃{{重}}修岳陽樓。",
     "target": "重",
     "meaning": "重新、再次",
     "acptAns": [
       "重新",
-      "再次"
+      "再次",
+      "再度",
+      "復",
+      "再",
+      "重新加以",
+      "又一次"
     ]
   },
   {
-    "id": "yueyanglouj-008",
+    "id": "NgokYeungLauGei-008",
     "sentence": "{{增}}其舊制。",
     "target": "增",
     "meaning": "擴大、擴建",
     "acptAns": [
       "擴大",
       "擴建",
-      "增加"
+      "增加",
+      "增添",
+      "增益",
+      "擴展",
+      "加大規模"
     ]
   },
   {
-    "id": "yueyanglouj-009",
+    "id": "NgokYeungLauGei-009",
     "sentence": "增其{{舊制}}。",
     "target": "舊制",
     "meaning": "舊有的規模",
     "acptAns": [
       "舊有的規模",
-      "舊規模"
+      "舊規模",
+      "原有建制",
+      "從前格局",
+      "昔日規模",
+      "原來的建制",
+      "舊有格局"
     ]
   },
   {
-    "id": "yueyanglouj-010",
+    "id": "NgokYeungLauGei-010",
     "sentence": "刻唐賢今人詩賦於{{其}}上。",
     "target": "其",
     "meaning": "那、它（指岳陽樓）",
     "acptAns": [
       "那",
       "它",
-      "岳陽樓"
+      "岳陽樓",
+      "樓上",
+      "其上",
+      "該樓",
+      "指岳陽樓"
     ]
   },
   {
-    "id": "yueyanglouj-011",
+    "id": "NgokYeungLauGei-011",
     "sentence": "{{屬}}予作文以記之。",
     "target": "屬",
     "meaning": "囑託、託付",
     "acptAns": [
       "囑託",
       "託付",
-      "委託"
+      "委託",
+      "囑咐",
+      "請託",
+      "叮囑",
+      "吩咐"
     ],
     "notes": "通「囑」"
   },
   {
-    "id": "yueyanglouj-012",
+    "id": "NgokYeungLauGei-012",
     "sentence": "屬予{{作文}}以記之。",
     "target": "作文",
     "meaning": "寫文章",
     "acptAns": [
       "寫文章",
-      "撰文"
+      "撰文",
+      "作文章",
+      "撰寫文章",
+      "執筆為文",
+      "著文",
+      "寫作"
     ]
   },
   {
-    "id": "yueyanglouj-013",
+    "id": "NgokYeungLauGei-013",
     "sentence": "予{{觀}}夫巴陵勝狀。",
     "target": "觀",
     "meaning": "觀看、看",
     "acptAns": [
       "觀看",
-      "看"
+      "看",
+      "觀賞",
+      "眺望",
+      "遠眺",
+      "注視",
+      "細看"
     ]
   },
   {
-    "id": "yueyanglouj-014",
+    "id": "NgokYeungLauGei-014",
     "sentence": "予觀{{夫}}巴陵勝狀。",
     "target": "夫",
     "meaning": "那",
     "acptAns": [
-      "那"
+      "那",
+      "那個",
+      "那些",
+      "指示代詞",
+      "發語詞",
+      "語助詞",
+      "無實義"
     ],
-    "notes": "指示代詞"
+    "notes": "指示代詞，無實義"
   },
   {
-    "id": "yueyanglouj-015",
+    "id": "NgokYeungLauGei-015",
     "sentence": "予觀夫巴陵{{勝狀}}。",
     "target": "勝狀",
     "meaning": "美好景色、勝景",
     "acptAns": [
       "美好景色",
       "勝景",
-      "美景"
+      "美景",
+      "壯麗景色",
+      "優美景致",
+      "佳景",
+      "秀麗風光"
     ]
   },
   {
-    "id": "yueyanglouj-016",
+    "id": "NgokYeungLauGei-016",
     "sentence": "在{{洞庭}}一湖。",
     "target": "洞庭",
     "meaning": "洞庭湖",
     "acptAns": [
-      "洞庭湖"
+      "洞庭湖",
+      "洞庭水域",
+      "洞庭大湖",
+      "指洞庭湖",
+      "湖名",
+      "湖南洞庭湖",
+      "巴陵洞庭"
     ]
   },
   {
-    "id": "yueyanglouj-017",
+    "id": "NgokYeungLauGei-017",
     "sentence": "{{銜}}遠山，吞長江。",
     "target": "銜",
     "meaning": "含著、連接",
     "acptAns": [
       "含著",
       "連接",
-      "包含"
+      "包含",
+      "銜接",
+      "環抱",
+      "擁抱",
+      "承接"
     ],
-    "notes": "擬人法"
+    "notes": "擬人法，形容洞庭湖氣勢"
   },
   {
-    "id": "yueyanglouj-018",
+    "id": "NgokYeungLauGei-018",
     "sentence": "銜遠山，{{吞}}長江。",
     "target": "吞",
     "meaning": "吞吐、包容",
     "acptAns": [
       "吞吐",
       "包容",
-      "納"
+      "納",
+      "容納",
+      "吸納",
+      "匯入",
+      "接納"
     ],
     "notes": "擬人法，形容氣勢宏大"
   },
   {
-    "id": "yueyanglouj-019",
+    "id": "NgokYeungLauGei-019",
     "sentence": "{{浩浩湯湯}}，橫無際涯。",
     "target": "浩浩湯湯",
     "meaning": "水勢浩大壯闊的樣子",
     "acptAns": [
       "水勢浩大壯闊的樣子",
       "浩大壯闊",
-      "水勢洶湧"
+      "水勢洶湧",
+      "波濤洶湧",
+      "水勢盛大",
+      "洶湧澎湃",
+      "波瀾壯闊"
     ]
   },
   {
-    "id": "yueyanglouj-020",
+    "id": "NgokYeungLauGei-020",
     "sentence": "浩浩湯湯，{{橫}}無際涯。",
     "target": "橫",
     "meaning": "廣遠、寬闊",
     "acptAns": [
       "廣遠",
-      "寬闊"
+      "寬闊",
+      "遼闊",
+      "橫亙",
+      "廣袤",
+      "遼遠",
+      "無邊"
     ]
   },
   {
-    "id": "yueyanglouj-021",
+    "id": "NgokYeungLauGei-021",
     "sentence": "橫無{{際涯}}。",
     "target": "際涯",
     "meaning": "邊際、邊緣",
     "acptAns": [
       "邊際",
       "邊緣",
-      "盡頭"
+      "盡頭",
+      "界限",
+      "涯際",
+      "邊界",
+      "極限"
     ]
   },
   {
-    "id": "yueyanglouj-022",
+    "id": "NgokYeungLauGei-022",
     "sentence": "{{朝暉}}夕陰，氣象萬千。",
     "target": "朝暉",
     "meaning": "早晨的陽光",
     "acptAns": [
       "早晨的陽光",
-      "晨光"
+      "晨光",
+      "旭日",
+      "朝陽",
+      "清晨日光",
+      "晨曦",
+      "早陽"
     ]
   },
   {
-    "id": "yueyanglouj-023",
+    "id": "NgokYeungLauGei-023",
     "sentence": "朝暉夕{{陰}}。",
     "target": "陰",
     "meaning": "陰暗、昏暗",
     "acptAns": [
       "陰暗",
-      "昏暗"
+      "昏暗",
+      "暮色",
+      "陰沉",
+      "晦暗",
+      "陰翳",
+      "天色昏暗"
     ]
   },
   {
-    "id": "yueyanglouj-024",
+    "id": "NgokYeungLauGei-024",
     "sentence": "{{氣象}}萬千。",
     "target": "氣象",
     "meaning": "景象、景致",
     "acptAns": [
       "景象",
-      "景致"
+      "景致",
+      "景色",
+      "風光",
+      "景觀",
+      "景色變化",
+      "天象景色"
     ]
   },
   {
-    "id": "yueyanglouj-025",
+    "id": "NgokYeungLauGei-025",
     "sentence": "氣象{{萬千}}。",
     "target": "萬千",
     "meaning": "千變萬化、變化多端",
     "acptAns": [
       "千變萬化",
       "變化多端",
-      "極多"
+      "極多",
+      "繁多",
+      "無窮無盡",
+      "變化萬端",
+      "層出不窮"
     ]
   },
   {
-    "id": "yueyanglouj-026",
+    "id": "NgokYeungLauGei-026",
     "sentence": "此則岳陽樓之{{大觀}}也。",
     "target": "大觀",
     "meaning": "壯麗景象、雄偉景觀",
     "acptAns": [
       "壯麗景象",
       "雄偉景觀",
-      "大景象"
+      "大景象",
+      "宏偉景色",
+      "壯觀",
+      "宏偉景象",
+      "盛大景觀"
     ]
   },
   {
-    "id": "yueyanglouj-027",
+    "id": "NgokYeungLauGei-027",
     "sentence": "前人之述{{備}}矣。",
     "target": "備",
     "meaning": "詳盡、完備",
     "acptAns": [
       "詳盡",
       "完備",
-      "齊全"
+      "齊全",
+      "周全",
+      "充分",
+      "完備無遺",
+      "詳盡無遺"
     ]
   },
   {
-    "id": "yueyanglouj-028",
+    "id": "NgokYeungLauGei-028",
     "sentence": "{{然則}}北通巫峽，南極瀟湘。",
     "target": "然則",
     "meaning": "雖然如此，那麼……",
     "acptAns": [
       "雖然如此，那麼",
       "那麼",
-      "可是"
+      "可是",
+      "既然如此那麼",
+      "如是則",
+      "既如此則",
+      "由此可見"
     ]
   },
   {
-    "id": "yueyanglouj-029",
+    "id": "NgokYeungLauGei-029",
     "sentence": "北通巫峽，{{南}}極瀟湘。",
     "target": "南",
     "meaning": "向南",
     "acptAns": [
-      "向南"
+      "向南",
+      "往南",
+      "朝南",
+      "南方",
+      "南邊",
+      "向南延伸",
+      "名詞作狀語"
     ],
     "notes": "名詞作狀語"
   },
   {
-    "id": "yueyanglouj-030",
+    "id": "NgokYeungLauGei-030",
     "sentence": "南極{{瀟湘}}。",
     "target": "瀟湘",
     "meaning": "瀟水和湘水",
     "acptAns": [
-      "瀟水和湘水"
+      "瀟水和湘水",
+      "瀟湘二水",
+      "瀟湘流域",
+      "湖南河流",
+      "指瀟水與湘水",
+      "瀟湘地區",
+      "兩條河流"
     ]
   },
   {
-    "id": "yueyanglouj-031",
+    "id": "NgokYeungLauGei-031",
     "sentence": "{{遷客}}騷人，多會于此。",
     "target": "遷客",
     "meaning": "被貶官的人",
     "acptAns": [
       "被貶官的人",
-      "謫客"
+      "謫客",
+      "貶官",
+      "被貶謫者",
+      "外放官員",
+      "遭貶者",
+      "謫居之人"
     ]
   },
   {
-    "id": "yueyanglouj-032",
+    "id": "NgokYeungLauGei-032",
     "sentence": "遷客{{騷人}}，多會于此。",
     "target": "騷人",
     "meaning": "詩人、文人",
     "acptAns": [
       "詩人",
-      "文人"
+      "文人",
+      "文士",
+      "墨客",
+      "文人雅士",
+      "失意文人",
+      "讀書人"
     ]
   },
   {
-    "id": "yueyanglouj-033",
+    "id": "NgokYeungLauGei-033",
     "sentence": "遷客騷人，多{{會}}于此。",
     "target": "會",
     "meaning": "聚會、聚集",
     "acptAns": [
       "聚會",
-      "聚集"
+      "聚集",
+      "集會",
+      "會合",
+      "匯聚",
+      "齊聚",
+      "相會"
     ]
   },
   {
-    "id": "yueyanglouj-034",
+    "id": "NgokYeungLauGei-034",
     "sentence": "覽物之{{情}}，得無異乎？",
     "target": "情",
     "meaning": "感情、感觸",
     "acptAns": [
       "感情",
       "感觸",
-      "心情"
+      "心情",
+      "情緒",
+      "心境",
+      "感受",
+      "情懷"
     ]
   },
   {
-    "id": "yueyanglouj-035",
+    "id": "NgokYeungLauGei-035",
     "sentence": "覽物之情，{{得無}}異乎？",
     "target": "得無",
     "meaning": "能夠不、怎能不",
     "acptAns": [
       "能夠不",
       "怎能不",
-      "莫非"
+      "莫非",
+      "難道不",
+      "豈不",
+      "豈能無",
+      "豈會沒有"
     ]
   },
   {
-    "id": "yueyanglouj-036",
+    "id": "NgokYeungLauGei-036",
     "sentence": "若夫{{霪雨}}霏霏。",
     "target": "霪雨",
     "meaning": "連綿大雨",
     "acptAns": [
       "連綿大雨",
-      "久雨"
+      "久雨",
+      "淫雨",
+      "綿綿細雨",
+      "連日大雨",
+      "霪雨不斷",
+      "長久降雨"
     ]
   },
   {
-    "id": "yueyanglouj-037",
+    "id": "NgokYeungLauGei-037",
     "sentence": "若夫霪雨{{霏霏}}。",
     "target": "霏霏",
     "meaning": "雨絲密佈的樣子",
     "acptAns": [
       "雨絲密佈的樣子",
       "雨雪紛飛",
-      "密佈貌"
+      "密佈貌",
+      "紛紛揚揚",
+      "綿密飄灑",
+      "細雨綿綿",
+      "雨勢綿密"
     ]
   },
   {
-    "id": "yueyanglouj-038",
+    "id": "NgokYeungLauGei-038",
     "sentence": "連月不{{開}}。",
     "target": "開",
     "meaning": "放晴、散開",
     "acptAns": [
       "放晴",
-      "散開"
+      "散開",
+      "天晴",
+      "雲開",
+      "轉晴",
+      "雨止天晴",
+      "陰霾消散"
     ]
   },
   {
-    "id": "yueyanglouj-039",
+    "id": "NgokYeungLauGei-039",
     "sentence": "陰風{{怒號}}。",
     "target": "怒號",
     "meaning": "怒吼、發出巨響",
     "acptAns": [
       "怒吼",
-      "發出巨響"
+      "發出巨響",
+      "呼嘯",
+      "狂吼",
+      "咆哮",
+      "厲聲呼號",
+      "風聲淒厲"
     ]
   },
   {
-    "id": "yueyanglouj-040",
+    "id": "NgokYeungLauGei-040",
     "sentence": "濁浪{{排}}空。",
     "target": "排",
     "meaning": "沖擊、推擠",
     "acptAns": [
       "沖擊",
       "推擠",
-      "排擊"
+      "排擊",
+      "拍打",
+      "激盪",
+      "湧向",
+      "撲向天空"
     ]
   },
   {
-    "id": "yueyanglouj-041",
+    "id": "NgokYeungLauGei-041",
     "sentence": "日星{{隱耀}}。",
     "target": "隱耀",
     "meaning": "隱藏光輝",
     "acptAns": [
       "隱藏光輝",
-      "隱沒光芒"
+      "隱沒光芒",
+      "失去光彩",
+      "光芒隱沒",
+      "光輝暗淡",
+      "隱去光華",
+      "不見光彩"
     ]
   },
   {
-    "id": "yueyanglouj-042",
+    "id": "NgokYeungLauGei-042",
     "sentence": "山岳{{潛形}}。",
     "target": "潛形",
     "meaning": "隱藏形跡、潛藏",
     "acptAns": [
       "隱藏形跡",
       "潛藏",
-      "隱沒"
+      "隱沒",
+      "隱去身形",
+      "不見蹤影",
+      "隱匿形體",
+      "藏形匿影"
     ]
   },
   {
-    "id": "yueyanglouj-043",
+    "id": "NgokYeungLauGei-043",
     "sentence": "商旅不{{行}}。",
     "target": "行",
     "meaning": "通行、往來",
     "acptAns": [
       "通行",
       "往來",
-      "行走"
+      "行走",
+      "出行",
+      "交通",
+      "行旅",
+      "來往通行"
     ]
   },
   {
-    "id": "yueyanglouj-044",
+    "id": "NgokYeungLauGei-044",
     "sentence": "{{檣}}傾楫摧。",
     "target": "檣",
     "meaning": "船桅、桅杆",
     "acptAns": [
       "船桅",
-      "桅杆"
+      "桅杆",
+      "桅",
+      "船上的桅",
+      "船帆杆",
+      "帆檣",
+      "船桅杆"
     ]
   },
   {
-    "id": "yueyanglouj-045",
+    "id": "NgokYeungLauGei-045",
     "sentence": "檣{{傾}}楫摧。",
     "target": "傾",
     "meaning": "傾倒、歪倒",
     "acptAns": [
       "傾倒",
-      "歪倒"
+      "歪倒",
+      "傾斜",
+      "倒下",
+      "傾覆",
+      "傾側",
+      "傾頹"
     ]
   },
   {
-    "id": "yueyanglouj-046",
+    "id": "NgokYeungLauGei-046",
     "sentence": "檣傾{{楫}}摧。",
     "target": "楫",
     "meaning": "船槳",
     "acptAns": [
-      "船槳"
+      "船槳",
+      "槳",
+      "划船工具",
+      "船槳槳葉",
+      "划槳",
+      "櫓槳",
+      "行船之槳"
     ]
   },
   {
-    "id": "yueyanglouj-047",
+    "id": "NgokYeungLauGei-047",
     "sentence": "檣傾楫{{摧}}。",
     "target": "摧",
     "meaning": "折斷",
     "acptAns": [
       "折斷",
-      "摧折"
+      "摧折",
+      "斷裂",
+      "折毀",
+      "損毀",
+      "折損",
+      "折壞"
     ]
   },
   {
-    "id": "yueyanglouj-048",
+    "id": "NgokYeungLauGei-048",
     "sentence": "{{薄}}暮冥冥。",
     "target": "薄",
     "meaning": "迫近、接近",
     "acptAns": [
       "迫近",
-      "接近"
+      "接近",
+      "臨近",
+      "將近",
+      "逼近",
+      "靠近",
+      "將至"
     ]
   },
   {
-    "id": "yueyanglouj-049",
+    "id": "NgokYeungLauGei-049",
     "sentence": "薄暮{{冥冥}}。",
     "target": "冥冥",
     "meaning": "昏暗、晦暗",
     "acptAns": [
       "昏暗",
-      "晦暗"
+      "晦暗",
+      "幽暗",
+      "陰暗不明",
+      "暮色蒼茫",
+      "天色昏黑",
+      "昏暗不明"
     ]
   },
   {
-    "id": "yueyanglouj-050",
+    "id": "NgokYeungLauGei-050",
     "sentence": "{{去}}國懷鄉。",
     "target": "去",
     "meaning": "離開、遠離",
     "acptAns": [
       "離開",
-      "遠離"
+      "遠離",
+      "離去",
+      "別離",
+      "捨棄",
+      "離京",
+      "離別"
     ]
   },
   {
-    "id": "yueyanglouj-051",
+    "id": "NgokYeungLauGei-051",
     "sentence": "去{{國}}懷鄉。",
     "target": "國",
     "meaning": "國都、京城",
     "acptAns": [
       "國都",
-      "京城"
+      "京城",
+      "京師",
+      "首都",
+      "朝廷所在",
+      "都城",
+      "中央朝廷"
     ]
   },
   {
-    "id": "yueyanglouj-052",
+    "id": "NgokYeungLauGei-052",
     "sentence": "憂{{讒}}畏譏。",
     "target": "讒",
     "meaning": "讒言、壞話",
     "acptAns": [
       "讒言",
       "壞話",
-      "毀謗"
+      "毀謗",
+      "讒毀",
+      "讒謗",
+      "惡言中傷",
+      "誣陷之言"
     ]
   },
   {
-    "id": "yueyanglouj-053",
+    "id": "NgokYeungLauGei-053",
     "sentence": "憂讒畏{{譏}}。",
     "target": "譏",
     "meaning": "譏諷、譏笑",
     "acptAns": [
       "譏諷",
-      "譏笑"
+      "譏笑",
+      "譏評",
+      "譏刺",
+      "嘲諷",
+      "譏議",
+      "譏評非議"
     ]
   },
   {
-    "id": "yueyanglouj-054",
+    "id": "NgokYeungLauGei-054",
     "sentence": "滿目{{蕭然}}。",
     "target": "蕭然",
     "meaning": "蕭條冷落的樣子",
     "acptAns": [
       "蕭條冷落的樣子",
       "蕭條",
-      "淒涼"
+      "淒涼",
+      "冷落",
+      "淒清",
+      "荒涼",
+      "寂寥淒清"
     ]
   },
   {
-    "id": "yueyanglouj-055",
+    "id": "NgokYeungLauGei-055",
     "sentence": "感{{極}}而悲者矣。",
     "target": "極",
     "meaning": "極點、極致",
     "acptAns": [
       "極點",
-      "極致"
+      "極致",
+      "頂點",
+      "至極",
+      "盡頭",
+      "最深處",
+      "感觸至深"
     ]
   },
   {
-    "id": "yueyanglouj-056",
+    "id": "NgokYeungLauGei-056",
     "sentence": "{{至若}}春和景明。",
     "target": "至若",
     "meaning": "至於、又如",
     "acptAns": [
       "至於",
-      "又如"
+      "又如",
+      "至於說到",
+      "若夫",
+      "至於像",
+      "又如說到",
+      "轉折連接詞"
     ]
   },
   {
-    "id": "yueyanglouj-057",
+    "id": "NgokYeungLauGei-057",
     "sentence": "至若春和{{景}}明。",
     "target": "景",
     "meaning": "日光、陽光",
     "acptAns": [
       "日光",
-      "陽光"
+      "陽光",
+      "光明",
+      "日照",
+      "天光",
+      "陽光明媚",
+      "日光普照"
     ]
   },
   {
-    "id": "yueyanglouj-058",
+    "id": "NgokYeungLauGei-058",
     "sentence": "波瀾不{{驚}}。",
     "target": "驚",
     "meaning": "起、動（指起浪）",
     "acptAns": [
       "起",
       "動",
-      "驚動"
+      "驚動",
+      "波動",
+      "興起",
+      "掀起",
+      "蕩漾"
     ]
   },
   {
-    "id": "yueyanglouj-059",
+    "id": "NgokYeungLauGei-059",
     "sentence": "上下{{天光}}。",
     "target": "天光",
     "meaning": "天色、天光",
     "acptAns": [
       "天色",
-      "天光"
+      "天光",
+      "天空光色",
+      "天際光輝",
+      "天光水色",
+      "天色光輝",
+      "天空與湖光"
     ]
   },
   {
-    "id": "yueyanglouj-060",
+    "id": "NgokYeungLauGei-060",
     "sentence": "一碧{{萬頃}}。",
     "target": "萬頃",
     "meaning": "極廣闊的面積",
     "acptAns": [
       "極廣闊的面積",
       "廣闊",
-      "遼闊"
+      "遼闊",
+      "無邊無際",
+      "廣袤無垠",
+      "極目無邊",
+      "廣闊無邊"
     ]
   },
   {
-    "id": "yueyanglouj-061",
+    "id": "NgokYeungLauGei-061",
     "sentence": "沙鷗{{翔集}}。",
     "target": "翔集",
     "meaning": "飛翔和棲息",
     "acptAns": [
       "飛翔和棲息",
-      "飛翔聚集"
+      "飛翔聚集",
+      "盤旋棲息",
+      "飛翔停棲",
+      "翱翔聚集",
+      "飛翔與停歇",
+      "飛舞棲止"
     ]
   },
   {
-    "id": "yueyanglouj-062",
+    "id": "NgokYeungLauGei-062",
     "sentence": "{{錦鱗}}游泳。",
     "target": "錦鱗",
     "meaning": "美麗的魚",
     "acptAns": [
       "美麗的魚",
-      "魚"
+      "魚",
+      "錦鯉",
+      "彩鱗魚",
+      "華美之魚",
+      "鱗光閃閃的魚",
+      "美麗的魚兒"
     ],
-    "notes": "借代法"
+    "notes": "借代法，以鱗代魚"
   },
   {
-    "id": "yueyanglouj-063",
+    "id": "NgokYeungLauGei-063",
     "sentence": "岸{{芷}}汀蘭。",
     "target": "芷",
     "meaning": "白芷（香草）",
     "acptAns": [
       "白芷",
-      "香草"
+      "香草",
+      "芳香植物",
+      "藥用香草",
+      "芷草",
+      "岸邊香草",
+      "芳香草本"
     ]
   },
   {
-    "id": "yueyanglouj-064",
+    "id": "NgokYeungLauGei-064",
     "sentence": "岸芷{{汀}}蘭。",
     "target": "汀",
     "meaning": "水邊平地、沙洲",
     "acptAns": [
       "水邊平地",
       "沙洲",
-      "小洲"
+      "小洲",
+      "水中小島",
+      "水畔",
+      "水岸平地",
+      "水濱沙洲"
     ]
   },
   {
-    "id": "yueyanglouj-065",
+    "id": "NgokYeungLauGei-065",
     "sentence": "{{郁郁}}青青。",
     "target": "郁郁",
     "meaning": "香氣濃烈",
     "acptAns": [
       "香氣濃烈",
-      "濃郁"
+      "濃郁",
+      "芳香撲鼻",
+      "香味濃郁",
+      "芬芳馥郁",
+      "香氣四溢",
+      "濃郁芬芳"
     ]
   },
   {
-    "id": "yueyanglouj-066",
+    "id": "NgokYeungLauGei-066",
     "sentence": "而或{{長煙}}一空。",
     "target": "長煙",
     "meaning": "大片煙霧、霧氣",
     "acptAns": [
       "大片煙霧",
-      "霧氣"
+      "霧氣",
+      "雲霧",
+      "煙靄",
+      "空中煙霧",
+      "瀰漫霧氣",
+      "遼闊煙雲"
     ]
   },
   {
-    "id": "yueyanglouj-067",
+    "id": "NgokYeungLauGei-067",
     "sentence": "而或長煙{{一}}空。",
     "target": "一",
     "meaning": "全、完全",
     "acptAns": [
       "全",
-      "完全"
+      "完全",
+      "全部",
+      "盡",
+      "悉",
+      "完全消散",
+      "一概"
     ]
   },
   {
-    "id": "yueyanglouj-068",
+    "id": "NgokYeungLauGei-068",
     "sentence": "{{皓月}}千里。",
     "target": "皓月",
     "meaning": "明亮的月亮、皎月",
     "acptAns": [
       "明亮的月亮",
       "皎月",
-      "明月"
+      "明月",
+      "皎潔月光",
+      "皓潔明月",
+      "圓月",
+      "清輝明月"
     ]
   },
   {
-    "id": "yueyanglouj-069",
+    "id": "NgokYeungLauGei-069",
     "sentence": "浮光{{躍}}金。",
     "target": "躍",
     "meaning": "躍動、閃爍",
     "acptAns": [
       "躍動",
       "閃爍",
-      "跳動"
+      "跳動",
+      "閃耀",
+      "波光粼粼",
+      "閃爍跳動",
+      "金光閃爍"
     ]
   },
   {
-    "id": "yueyanglouj-070",
+    "id": "NgokYeungLauGei-070",
     "sentence": "靜影{{沉璧}}。",
     "target": "沉璧",
     "meaning": "沉在水底的璧玉",
     "acptAns": [
       "沉在水底的璧玉",
-      "璧玉"
+      "璧玉",
+      "美玉沉水",
+      "玉璧倒影",
+      "如璧玉沉靜",
+      "沉靜如玉",
+      "月影如玉璧"
     ],
-    "notes": "喻月影"
+    "notes": "比喻月影"
   },
   {
-    "id": "yueyanglouj-071",
+    "id": "NgokYeungLauGei-071",
     "sentence": "漁歌{{互答}}。",
     "target": "互答",
     "meaning": "互相唱和",
     "acptAns": [
       "互相唱和",
-      "唱和"
+      "唱和",
+      "應和",
+      "彼此對答",
+      "相互回應",
+      "此起彼落",
+      "互相呼應"
     ]
   },
   {
-    "id": "yueyanglouj-072",
+    "id": "NgokYeungLauGei-072",
     "sentence": "此樂{{何極}}！",
     "target": "何極",
     "meaning": "哪有窮盡、無窮無盡",
     "acptAns": [
       "哪有窮盡",
       "無窮無盡",
-      "沒有盡頭"
+      "沒有盡頭",
+      "豈有止境",
+      "無限",
+      "無邊無際",
+      "永無止境"
     ]
   },
   {
-    "id": "yueyanglouj-073",
+    "id": "NgokYeungLauGei-073",
     "sentence": "寵辱{{偕}}忘。",
     "target": "偕",
     "meaning": "一起、一同",
     "acptAns": [
       "一起",
       "一同",
-      "皆"
+      "皆",
+      "俱",
+      "同時",
+      "一併",
+      "共同"
     ]
   },
   {
-    "id": "yueyanglouj-074",
+    "id": "NgokYeungLauGei-074",
     "sentence": "把酒{{臨}}風。",
     "target": "臨",
     "meaning": "面對、迎著",
     "acptAns": [
       "面對",
-      "迎著"
+      "迎著",
+      "對著",
+      "當風",
+      "迎風",
+      "臨風而立",
+      "對風"
     ]
   },
   {
-    "id": "yueyanglouj-075",
+    "id": "NgokYeungLauGei-075",
     "sentence": "其喜{{洋洋}}者矣。",
     "target": "洋洋",
     "meaning": "得意的樣子、歡樂的樣子",
     "acptAns": [
       "得意的樣子",
       "歡樂的樣子",
-      "喜悅貌"
+      "喜悅貌",
+      "喜氣洋洋",
+      "歡欣愉悅",
+      "興高采烈",
+      "喜悅洋溢"
     ]
   },
   {
-    "id": "yueyanglouj-076",
+    "id": "NgokYeungLauGei-076",
     "sentence": "予嘗{{求}}古仁人之心。",
     "target": "求",
     "meaning": "探求、探究",
     "acptAns": [
       "探求",
       "探究",
-      "尋求"
+      "尋求",
+      "追尋",
+      "探索",
+      "研究",
+      "追尋探究"
     ]
   },
   {
-    "id": "yueyanglouj-077",
+    "id": "NgokYeungLauGei-077",
     "sentence": "予嘗求{{古仁人}}之心。",
     "target": "古仁人",
     "meaning": "古代品德高尚的人",
     "acptAns": [
       "古代品德高尚的人",
-      "古代賢人"
+      "古代賢人",
+      "古之仁者",
+      "古代君子",
+      "先賢",
+      "古代有德之士",
+      "仁德先哲"
     ]
   },
   {
-    "id": "yueyanglouj-078",
+    "id": "NgokYeungLauGei-078",
     "sentence": "不以{{物}}喜。",
     "target": "物",
     "meaning": "外物、環境",
     "acptAns": [
       "外物",
-      "環境"
+      "環境",
+      "外在事物",
+      "外界景物",
+      "身外之物",
+      "客觀環境",
+      "外在條件"
     ]
   },
   {
-    "id": "yueyanglouj-079",
+    "id": "NgokYeungLauGei-079",
     "sentence": "居{{廟堂}}之高。",
     "target": "廟堂",
     "meaning": "朝廷",
     "acptAns": [
-      "朝廷"
+      "朝廷",
+      "朝堂",
+      "中央政府",
+      "宮廷",
+      "朝廷高位",
+      "朝廷之上",
+      "朝中"
     ]
   },
   {
-    "id": "yueyanglouj-080",
+    "id": "NgokYeungLauGei-080",
     "sentence": "處{{江湖}}之遠。",
     "target": "江湖",
     "meaning": "民間、偏遠地區",
     "acptAns": [
       "民間",
       "偏遠地區",
-      "在野"
+      "在野",
+      "鄉野",
+      "遠離朝廷之地",
+      "草野",
+      "江湖之遠"
     ]
   },
   {
-    "id": "yueyanglouj-081",
+    "id": "NgokYeungLauGei-081",
     "sentence": "是{{進}}亦憂，退亦憂。",
     "target": "進",
     "meaning": "進身朝廷、做官",
     "acptAns": [
       "進身朝廷",
       "做官",
-      "居廟堂"
+      "居廟堂",
+      "在朝為官",
+      "出仕",
+      "居官",
+      "仕進"
     ]
   },
   {
-    "id": "yueyanglouj-082",
+    "id": "NgokYeungLauGei-082",
     "sentence": "是進亦憂，{{退}}亦憂。",
     "target": "退",
     "meaning": "退居江湖、辭官",
     "acptAns": [
       "退居江湖",
       "辭官",
-      "處江湖"
+      "處江湖",
+      "隱退",
+      "退隱",
+      "離官",
+      "退居在野"
     ]
   },
   {
-    "id": "yueyanglouj-083",
+    "id": "NgokYeungLauGei-083",
     "sentence": "先天下之憂而{{憂}}。",
     "target": "憂",
     "meaning": "擔憂",
     "acptAns": [
       "擔憂",
-      "憂慮"
+      "憂慮",
+      "憂心",
+      "掛慮",
+      "憂愁",
+      "為...而憂",
+      "心憂"
     ]
   },
   {
-    "id": "yueyanglouj-084",
+    "id": "NgokYeungLauGei-084",
     "sentence": "{{微}}斯人，吾誰與歸？",
     "target": "微",
     "meaning": "沒有、無",
     "acptAns": [
       "沒有",
       "無",
-      "非"
+      "非",
+      "若非",
+      "假如沒有",
+      "若無",
+      "倘若沒有"
     ]
   },
   {
-    "id": "yueyanglouj-085",
+    "id": "NgokYeungLauGei-085",
     "sentence": "微{{斯人}}，吾誰與歸？",
     "target": "斯人",
     "meaning": "這些人（指古仁人）",
     "acptAns": [
       "這些人",
-      "這種人"
+      "這種人",
+      "此人",
+      "這樣的人",
+      "此等人",
+      "古仁人",
+      "先憂後樂之人"
     ]
   },
   {
-    "id": "yueyanglouj-086",
+    "id": "NgokYeungLauGei-086",
     "sentence": "微斯人，吾誰與{{歸}}？",
     "target": "歸",
     "meaning": "歸附、一道、同道",
     "acptAns": [
       "歸附",
       "一道",
-      "同道"
+      "同道",
+      "追隨",
+      "依歸",
+      "效法",
+      "志同道合"
     ]
   }
 ]

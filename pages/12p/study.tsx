@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import PageSEO from '../../components/PageSEO';
 import PageBreadcrumb from '../../components/PageBreadcrumb';
 import { GetStaticProps } from 'next';
-import configData from '../../public/12p/config.json';
-import lunyuData from '../../public/12p/lunyu.json';
-import mengziData from '../../public/12p/mengzi.json';
-import zhuangziData from '../../public/12p/zhuangzi.json';
-import xunziData from '../../public/12p/xunzi.json';
-import lianpolinData from '../../public/12p/lianpolin.json';
-import chusibiaoData from '../../public/12p/chusibiao.json';
-import shishuoData from '../../public/12p/shishuo.json';
-import shidexishanData from '../../public/12p/shidexishan.json';
-import yueyangloujData from '../../public/12p/yueyanglouj.json';
-import liuguolunData from '../../public/12p/liuguolun.json';
-import shi3Data from '../../public/12p/shi3.json';
-import ci3Data from '../../public/12p/ci3.json';
+import configData from '../../public/12p_vocab/config.json';
+import lunyuData from '../../public/12p_vocab/01_LunYue.json';
+import mengziData from '../../public/12p_vocab/02_YueNgoSoYukYa.json';
+import zhuangziData from '../../public/12p_vocab/03_SiuYiuYau.json';
+import xunziData from '../../public/12p_vocab/04_HuenHok.json';
+import lianpolinData from '../../public/12p_vocab/05_LimPo.json';
+import chusibiaoData from '../../public/12p_vocab/06_ChutSiBiu.json';
+import shishuoData from '../../public/12p_vocab/07_SiShuet.json';
+import shidexishanData from '../../public/12p_vocab/08_SaiShan.json';
+import yueyangloujData from '../../public/12p_vocab/09_NgokYeungLauGei.json';
+import liuguolunData from '../../public/12p_vocab/10_LukKwokLun.json';
+import tangData from '../../public/12p_vocab/11_tang.json';
+import sungData from '../../public/12p_vocab/12_sung.json';
 import { BiCheck, BiExit } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
 import Flashcard from '../../components/Flashcard';
@@ -397,8 +397,8 @@ const passageFileMap: Record<string, Question[]> = {
   shidexishan: shidexishanData as Question[],
   yueyanglouj: yueyangloujData as Question[],
   liuguolun: liuguolunData as Question[],
-  shi3: shi3Data as Question[],
-  ci3: ci3Data as Question[],
+  tang: tangData as Question[],
+  sung: sungData as Question[],
 };
 
 export const getStaticProps: GetStaticProps = async () => {

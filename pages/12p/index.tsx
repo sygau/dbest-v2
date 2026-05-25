@@ -1,6 +1,6 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
-import configData from '../../public/12p/config.json';
+import configData from '../../public/12p_vocab/config.json';
 import PageSEO from '../../components/PageSEO';
 import { BiBookReader, BiPencil } from 'react-icons/bi';
 import NavigationLink from '../../components/NavigationLink';
@@ -85,12 +85,12 @@ const PASSAGE_INFO: Record<string, { meta: string; summary: string }> = {
     summary:
       '借戰國六國滅亡的歷史教訓，論證六國失敗的根本原因在於以土地賄賂秦國（賂秦），而非兵力或謀略不足。文章採用歸納論證，逐一分析「賂秦而力虧」與「不賂者以賂者喪」兩類情況，並以「抱薪救火」為喻批評妥協政策。末段借古諷今，暗指北宋以歲幣換和平的對外政策同樣危險。考試重點：論證結構（破題、立論、舉例、結論）、類比手法，及文章的「借古諷今」寫作意圖。',
   },
-  shi3: {
+  tang: {
     meta: '唐代詩三首｜五言律詩 / 七言古詩 / 七言律詩',
     summary:
       '《山居秋暝》（王維，699–759 CE）：五言律詩，寫秋日山中雨後清景，以動寫靜，融入禪宗「空寂」美學，表達歸隱之志。《月下獨酌》其一（李白，701–762 CE）：七言古詩，以月與影為伴飲酒，以浪漫誇張手法掩飾深層孤獨，風格飄逸奔放。《登樓》（杜甫，712–770 CE）：七言律詩，安史之亂期間登樓遠眺，春色繁華與國勢衰落形成對比，體現「憂國憂民」情懷。三詩常作比較題，考核意象運用、情景交融手法及詩人創作背景。',
   },
-  ci3: {
+  sung: {
     meta: '宋代詞三首｜豪放派 / 婉約派',
     summary:
       '《念奴嬌·赤壁懷古》（蘇軾，1037–1101 CE）：豪放派代表，借赤壁古戰場感慨英雄業績，以周瑜之壯年功業反襯自身仕途坎坷，末以「人生如夢」作佛家式的豁達收結。《聲聲慢·秋情》（李清照，1084–約1155 CE）：婉約派傑作，以疊字開篇（「尋尋覓覓」），累積秋日意象（淡酒、黃花、梧桐、細雨），渲染國破夫亡後的極度悲涼。《青玉案·元夕》（辛棄疾，1140–1207 CE）：元宵燈節人海中，以「燈火闌珊處」的孤獨女子自喻，寄托不與世俗同流的高潔志節。',

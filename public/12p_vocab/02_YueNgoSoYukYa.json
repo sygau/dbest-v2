@@ -1,641 +1,429 @@
 [
   {
-    "id": "mengzi-001",
+    "id": "YueNgoSoYukYa-001",
     "sentence": "魚，我所{{欲}}也。",
     "target": "欲",
     "meaning": "喜愛、想要",
-    "acptAns": [
-      "喜愛",
-      "想要",
-      "追求"
-    ]
+    "acptAns": ["喜愛", "想要", "追求", "渴望", "希求"]
   },
   {
-    "id": "mengzi-002",
+    "id": "YueNgoSoYukYa-002",
     "sentence": "熊掌，{{亦}}我所欲也。",
     "target": "亦",
     "meaning": "也、也是",
-    "acptAns": [
-      "也",
-      "也是"
-    ]
+    "acptAns": ["也", "也是", "同樣"]
   },
   {
-    "id": "mengzi-003",
+    "id": "YueNgoSoYukYa-003",
     "sentence": "二者不可{{得兼}}。",
     "target": "得兼",
     "meaning": "同時得到",
-    "acptAns": [
-      "同時得到",
-      "同時擁有",
-      "兼得"
-    ]
+    "acptAns": ["同時得到", "同時擁有", "兼得", "一併獲得"]
   },
   {
-    "id": "mengzi-004",
+    "id": "YueNgoSoYukYa-004",
     "sentence": "{{舍}}魚而取熊掌者也。",
     "target": "舍",
     "meaning": "捨棄、放棄",
-    "acptAns": [
-      "捨棄",
-      "放棄"
-    ],
-    "notes": "通「捨」"
+    "acptAns": ["捨棄", "放棄", "拋棄", "丟棄"]
   },
   {
-    "id": "mengzi-005",
+    "id": "YueNgoSoYukYa-005",
     "sentence": "舍魚而{{取}}熊掌者也。",
     "target": "取",
     "meaning": "選取、選擇",
-    "acptAns": [
-      "選取",
-      "選擇"
-    ]
+    "acptAns": ["選取", "選擇", "選定", "擇取"]
   },
   {
-    "id": "mengzi-006",
+    "id": "YueNgoSoYukYa-006",
     "sentence": "生，亦我所{{欲}}也。",
     "target": "欲",
     "meaning": "喜愛",
-    "acptAns": [
-      "喜愛",
-      "想要"
-    ]
+    "acptAns": ["喜愛", "想要", "渴望", "希求"]
   },
   {
-    "id": "mengzi-007",
+    "id": "YueNgoSoYukYa-007",
     "sentence": "義，亦我所{{欲}}也。",
     "target": "欲",
     "meaning": "喜愛",
-    "acptAns": [
-      "喜愛",
-      "想要"
-    ]
+    "acptAns": ["喜愛", "想要", "渴望", "希求"]
   },
   {
-    "id": "mengzi-008",
+    "id": "YueNgoSoYukYa-008",
     "sentence": "{{舍}}生而取義者也。",
     "target": "舍",
     "meaning": "捨棄、犧牲",
-    "acptAns": [
-      "捨棄",
-      "放棄",
-      "犧牲"
-    ],
-    "notes": "通「捨」"
+    "acptAns": ["捨棄", "放棄", "犧牲", "拋棄"]
   },
   {
-    "id": "mengzi-009",
+    "id": "YueNgoSoYukYa-009",
     "sentence": "所欲有{{甚}}於生者。",
     "target": "甚",
     "meaning": "超過、勝過",
-    "acptAns": [
-      "超過",
-      "勝過",
-      "更甚"
-    ]
+    "acptAns": ["超過", "勝過", "更甚", "更加"]
   },
   {
-    "id": "mengzi-010",
+    "id": "YueNgoSoYukYa-010",
     "sentence": "所欲有甚{{於}}生者。",
     "target": "於",
     "meaning": "比",
-    "acptAns": [
-      "比"
-    ],
-    "notes": "介詞，表示比較"
+    "acptAns": ["比", "較", "相比"]
   },
   {
-    "id": "mengzi-011",
+    "id": "YueNgoSoYukYa-011",
     "sentence": "故不為{{苟得}}也。",
     "target": "苟得",
     "meaning": "苟且取得（指苟且偷生）",
-    "acptAns": [
-      "苟且取得",
-      "苟且偷生",
-      "隨便取得"
-    ]
+    "acptAns": ["苟且取得", "苟且偷生", "隨便取得", "僥倖獲得"]
   },
   {
-    "id": "mengzi-012",
+    "id": "YueNgoSoYukYa-012",
     "sentence": "死亦我所{{惡}}。",
     "target": "惡",
     "meaning": "厭惡、討厭",
-    "acptAns": [
-      "厭惡",
-      "討厭"
-    ],
-    "notes": "讀「wù」"
+    "acptAns": ["厭惡", "討厭", "憎惡", "嫌棄"]
   },
   {
-    "id": "mengzi-013",
+    "id": "YueNgoSoYukYa-013",
     "sentence": "故{{患}}有所不辟也。",
     "target": "患",
     "meaning": "禍患、災禍",
-    "acptAns": [
-      "禍患",
-      "災禍",
-      "患難"
-    ]
+    "acptAns": ["禍患", "災禍", "患難", "災難"]
   },
   {
-    "id": "mengzi-014",
+    "id": "YueNgoSoYukYa-014",
     "sentence": "故患有所不{{辟}}也。",
     "target": "辟",
     "meaning": "躲避、逃避",
-    "acptAns": [
-      "躲避",
-      "逃避"
-    ],
-    "notes": "通「避」"
+    "acptAns": ["躲避", "逃避", "避開", "迴避"]
   },
   {
-    "id": "mengzi-015",
+    "id": "YueNgoSoYukYa-015",
     "sentence": "{{如使}}人之所欲莫甚於生。",
     "target": "如使",
     "meaning": "假使、如果",
-    "acptAns": [
-      "假使",
-      "如果",
-      "假如"
-    ]
+    "acptAns": ["假使", "如果", "假如", "倘若"]
   },
   {
-    "id": "mengzi-016",
+    "id": "YueNgoSoYukYa-016",
     "sentence": "如使人之所欲{{莫}}甚於生。",
     "target": "莫",
     "meaning": "沒有什麼",
-    "acptAns": [
-      "沒有什麼",
-      "無"
-    ]
+    "acptAns": ["沒有什麼", "無", "沒有任何"]
   },
   {
-    "id": "mengzi-017",
+    "id": "YueNgoSoYukYa-017",
     "sentence": "則{{凡}}可以得生者。",
     "target": "凡",
     "meaning": "凡是、所有",
-    "acptAns": [
-      "凡是",
-      "所有",
-      "一切"
-    ]
+    "acptAns": ["凡是", "所有", "一切", "大凡"]
   },
   {
-    "id": "mengzi-018",
+    "id": "YueNgoSoYukYa-018",
     "sentence": "則凡{{可以}}得生者。",
     "target": "可以",
     "meaning": "可以用來、能夠用來",
-    "acptAns": [
-      "可以用來",
-      "能夠用來"
-    ]
+    "acptAns": ["可以用來", "能夠用來", "足以", "能夠"]
   },
   {
-    "id": "mengzi-019",
+    "id": "YueNgoSoYukYa-019",
     "sentence": "何不用{{也}}？",
     "target": "也",
     "meaning": "呢",
-    "acptAns": [
-      "呢"
-    ],
-    "notes": "疑問語氣詞"
+    "acptAns": ["呢", "啊", "嗎"]
   },
   {
-    "id": "mengzi-020",
+    "id": "YueNgoSoYukYa-020",
     "sentence": "使人之所惡莫甚{{於}}死者。",
     "target": "於",
     "meaning": "比",
-    "acptAns": [
-      "比"
-    ]
+    "acptAns": ["比", "較", "相比"]
   },
   {
-    "id": "mengzi-021",
+    "id": "YueNgoSoYukYa-021",
     "sentence": "何不{{為}}也？",
     "target": "為",
     "meaning": "做、肯做",
-    "acptAns": [
-      "做",
-      "肯做",
-      "使用"
-    ]
+    "acptAns": ["做", "肯做", "使用", "採用", "施行"]
   },
   {
-    "id": "mengzi-022",
+    "id": "YueNgoSoYukYa-022",
     "sentence": "{{由是}}則生而有不用也。",
     "target": "由是",
     "meaning": "憑藉這種方法、因此",
-    "acptAns": [
-      "憑藉這種方法",
-      "用這種方法",
-      "因此"
-    ]
+    "acptAns": ["憑藉這種方法", "用這種方法", "因此", "由此"]
   },
   {
-    "id": "mengzi-023",
+    "id": "YueNgoSoYukYa-023",
     "sentence": "非{{獨}}賢者有是心也。",
     "target": "獨",
     "meaning": "獨自、只是",
-    "acptAns": [
-      "獨自",
-      "只是",
-      "唯獨"
-    ]
+    "acptAns": ["獨自", "只是", "唯獨", "僅"]
   },
   {
-    "id": "mengzi-024",
+    "id": "YueNgoSoYukYa-024",
     "sentence": "非獨賢者有{{是心}}也，人皆有之。",
     "target": "是心",
     "meaning": "這種心（指捨生取義的本心）",
-    "acptAns": [
-      "這種心",
-      "本心",
-      "羞惡之心"
-    ]
+    "acptAns": ["這種心", "本心", "羞惡之心", "此心"]
   },
   {
-    "id": "mengzi-025",
+    "id": "YueNgoSoYukYa-025",
     "sentence": "賢者能勿{{喪}}耳。",
     "target": "喪",
     "meaning": "喪失、失去",
-    "acptAns": [
-      "喪失",
-      "失去",
-      "丟失"
-    ]
+    "acptAns": ["喪失", "失去", "丟失", "遺失"]
   },
   {
-    "id": "mengzi-026",
+    "id": "YueNgoSoYukYa-026",
     "sentence": "賢者能勿喪{{耳}}。",
     "target": "耳",
     "meaning": "罷了",
-    "acptAns": [
-      "罷了"
-    ],
-    "notes": "句末語氣詞，表限止"
+    "acptAns": ["罷了", "而已", "只是"]
   },
   {
-    "id": "mengzi-027",
+    "id": "YueNgoSoYukYa-027",
     "sentence": "一{{簞}}食，一豆羹。",
     "target": "簞",
     "meaning": "古代盛飯的圓形竹器",
-    "acptAns": [
-      "古代盛飯的圓形竹器",
-      "竹器",
-      "簞"
-    ]
+    "acptAns": ["古代盛飯的圓形竹器", "竹器", "盛飯器具", "簞"]
   },
   {
-    "id": "mengzi-028",
+    "id": "YueNgoSoYukYa-028",
     "sentence": "一簞食，一{{豆}}羹。",
     "target": "豆",
     "meaning": "古代盛食物的器皿",
-    "acptAns": [
-      "古代盛食物的器皿",
-      "木製器皿",
-      "豆"
-    ]
+    "acptAns": ["古代盛食物的器皿", "木製器皿", "盛食器具", "豆"]
   },
   {
-    "id": "mengzi-029",
+    "id": "YueNgoSoYukYa-029",
     "sentence": "一簞食，一豆{{羹}}。",
     "target": "羹",
     "meaning": "湯",
-    "acptAns": [
-      "湯",
-      "肉湯"
-    ]
+    "acptAns": ["湯", "肉湯", "帶汁食物"]
   },
   {
-    "id": "mengzi-030",
+    "id": "YueNgoSoYukYa-030",
     "sentence": "{{得}}之則生，弗得則死。",
     "target": "得",
     "meaning": "得到",
-    "acptAns": [
-      "得到"
-    ]
+    "acptAns": ["得到", "獲得", "取得"]
   },
   {
-    "id": "mengzi-031",
+    "id": "YueNgoSoYukYa-031",
     "sentence": "得之則生，{{弗}}得則死。",
     "target": "弗",
     "meaning": "不",
-    "acptAns": [
-      "不"
-    ]
+    "acptAns": ["不", "非", "無"]
   },
   {
-    "id": "mengzi-032",
+    "id": "YueNgoSoYukYa-032",
     "sentence": "{{嘑}}爾而與之。",
     "target": "嘑",
     "meaning": "呼喝、吆喝",
-    "acptAns": [
-      "呼喝",
-      "吆喝",
-      "大聲叫喊"
-    ],
-    "notes": "通「呼」"
+    "acptAns": ["呼喝", "吆喝", "大聲叫喊", "叱喝"]
   },
   {
-    "id": "mengzi-033",
+    "id": "YueNgoSoYukYa-033",
     "sentence": "嘑{{爾}}而與之。",
     "target": "爾",
     "meaning": "你（輕蔑的稱呼）",
-    "acptAns": [
-      "你",
-      "喂"
-    ],
-    "notes": "語氣助詞或代詞"
+    "acptAns": ["你", "喂", "如此", "這樣"]
   },
   {
-    "id": "mengzi-034",
+    "id": "YueNgoSoYukYa-034",
     "sentence": "嘑爾而{{與}}之。",
     "target": "與",
     "meaning": "給、給予",
-    "acptAns": [
-      "給",
-      "給予"
-    ]
+    "acptAns": ["給", "給予", "贈與", "施與"]
   },
   {
-    "id": "mengzi-035",
+    "id": "YueNgoSoYukYa-035",
     "sentence": "行道之人{{弗}}受。",
     "target": "弗",
     "meaning": "不",
-    "acptAns": [
-      "不"
-    ]
+    "acptAns": ["不", "非", "無"]
   },
   {
-    "id": "mengzi-036",
+    "id": "YueNgoSoYukYa-036",
     "sentence": "{{蹴}}爾而與之，乞人不屑也。",
     "target": "蹴",
     "meaning": "踐踏、踩踏",
-    "acptAns": [
-      "踐踏",
-      "踩踏",
-      "踢"
-    ]
+    "acptAns": ["踐踏", "踩踏", "踢", "用腳踢"]
   },
   {
-    "id": "mengzi-037",
+    "id": "YueNgoSoYukYa-037",
     "sentence": "蹴爾而與之，乞人不{{屑}}也。",
     "target": "屑",
     "meaning": "認為值得（引申為願意接受）",
-    "acptAns": [
-      "認為值得",
-      "願意",
-      "接受"
-    ]
+    "acptAns": ["認為值得", "願意", "接受", "顧惜"]
   },
   {
-    "id": "mengzi-038",
+    "id": "YueNgoSoYukYa-038",
     "sentence": "{{萬鍾}}則不辯禮義而受之。",
     "target": "萬鍾",
     "meaning": "優厚的俸祿",
-    "acptAns": [
-      "優厚的俸祿",
-      "高官厚祿",
-      "極多的糧食"
-    ],
-    "notes": "鍾：古代量詞"
+    "acptAns": ["優厚的俸祿", "高官厚祿", "極多的糧食", "豐厚俸祿"]
   },
   {
-    "id": "mengzi-039",
+    "id": "YueNgoSoYukYa-039",
     "sentence": "萬鍾則不{{辯}}禮義而受之。",
     "target": "辯",
     "meaning": "辨別、分辨",
-    "acptAns": [
-      "辨別",
-      "分辨"
-    ],
-    "notes": "通「辨」"
+    "acptAns": ["辨別", "分辨", "區分"]
   },
   {
-    "id": "mengzi-040",
+    "id": "YueNgoSoYukYa-040",
     "sentence": "萬鍾於我何{{加}}焉！",
     "target": "加",
     "meaning": "益處、好處",
-    "acptAns": [
-      "益處",
-      "好處",
-      "增加"
-    ]
+    "acptAns": ["益處", "好處", "增益", "增加"]
   },
   {
-    "id": "mengzi-041",
+    "id": "YueNgoSoYukYa-041",
     "sentence": "萬鍾於我何加{{焉}}！",
     "target": "焉",
     "meaning": "呢",
-    "acptAns": [
-      "呢"
-    ],
-    "notes": "語氣詞"
+    "acptAns": ["呢", "啊", "嗎"]
   },
   {
-    "id": "mengzi-042",
+    "id": "YueNgoSoYukYa-042",
     "sentence": "為宮室之{{美}}。",
     "target": "美",
     "meaning": "華美、華麗",
-    "acptAns": [
-      "華美",
-      "華麗"
-    ]
+    "acptAns": ["華美", "華麗", "精美", "美好"]
   },
   {
-    "id": "mengzi-043",
+    "id": "YueNgoSoYukYa-043",
     "sentence": "妻妾之{{奉}}。",
     "target": "奉",
     "meaning": "侍奉、服侍",
-    "acptAns": [
-      "侍奉",
-      "服侍"
-    ]
+    "acptAns": ["侍奉", "服侍", "供奉", "供養"]
   },
   {
-    "id": "mengzi-044",
+    "id": "YueNgoSoYukYa-044",
     "sentence": "所識{{窮乏}}者得我與？",
     "target": "窮乏",
     "meaning": "貧窮匱乏、貧困",
-    "acptAns": [
-      "貧窮匱乏",
-      "貧困",
-      "窮苦"
-    ]
+    "acptAns": ["貧窮匱乏", "貧困", "窮苦", "貧乏"]
   },
   {
-    "id": "mengzi-045",
+    "id": "YueNgoSoYukYa-045",
     "sentence": "所識窮乏者{{得}}我與？",
     "target": "得",
     "meaning": "感激",
-    "acptAns": [
-      "感激"
-    ],
-    "notes": "通「德」，感激恩德"
+    "acptAns": ["感激", "感恩", "感德"]
   },
   {
-    "id": "mengzi-046",
+    "id": "YueNgoSoYukYa-046",
     "sentence": "所識窮乏者得我{{與}}？",
     "target": "與",
     "meaning": "嗎",
-    "acptAns": [
-      "嗎"
-    ],
-    "notes": "通「歟」，疑問語氣詞"
+    "acptAns": ["嗎", "呢", "啊"]
   },
   {
-    "id": "mengzi-047",
+    "id": "YueNgoSoYukYa-047",
     "sentence": "{{鄉}}為身死而不受。",
     "target": "鄉",
     "meaning": "從前、過去",
-    "acptAns": [
-      "從前",
-      "過去",
-      "以往"
-    ],
-    "notes": "通「向」"
+    "acptAns": ["從前", "過去", "以往", "往日"]
   },
   {
-    "id": "mengzi-048",
+    "id": "YueNgoSoYukYa-048",
     "sentence": "鄉{{為}}身死而不受。",
     "target": "為",
     "meaning": "為了、寧願",
-    "acptAns": [
-      "為了",
-      "寧願"
-    ],
-    "notes": "介詞"
+    "acptAns": ["為了", "寧願", "因為", "因著"]
   },
   {
-    "id": "mengzi-049",
+    "id": "YueNgoSoYukYa-049",
     "sentence": "鄉為{{身死}}而不受。",
     "target": "身死",
     "meaning": "犧牲生命、死",
-    "acptAns": [
-      "犧牲生命",
-      "死"
-    ]
+    "acptAns": ["犧牲生命", "死", "喪命", "身亡"]
   },
   {
-    "id": "mengzi-050",
+    "id": "YueNgoSoYukYa-050",
     "sentence": "今為宮室之美{{為}}之。",
     "target": "為",
     "meaning": "接受、做",
-    "acptAns": [
-      "接受",
-      "做"
-    ],
-    "notes": "第二個「為」字，動詞"
+    "acptAns": ["接受", "做", "幹", "施行"]
   },
   {
-    "id": "mengzi-051",
+    "id": "YueNgoSoYukYa-051",
     "sentence": "是亦不可以{{已}}乎？",
     "target": "已",
     "meaning": "停止、罷休",
-    "acptAns": [
-      "停止",
-      "罷休"
-    ]
+    "acptAns": ["停止", "罷休", "終止", "作罷"]
   },
   {
-    "id": "mengzi-052",
+    "id": "YueNgoSoYukYa-052",
     "sentence": "此之謂失其{{本心}}。",
     "target": "本心",
     "meaning": "本性（指羞惡之心）",
-    "acptAns": [
-      "本性",
-      "天性",
-      "羞惡之心"
-    ]
+    "acptAns": ["本性", "天性", "羞惡之心", "良心", "固有之心"]
   },
   {
-    "id": "mengzi-053",
+    "id": "YueNgoSoYukYa-053",
     "sentence": "此{{之謂}}失其本心。",
     "target": "之謂",
     "meaning": "這叫做、這就是",
-    "acptAns": [
-      "這叫做",
-      "這就是"
-    ]
+    "acptAns": ["這叫做", "這就是", "可說是", "稱為"]
   },
   {
-    "id": "mengzi-054",
+    "id": "YueNgoSoYukYa-054",
     "sentence": "非獨{{賢者}}有是心也。",
     "target": "賢者",
     "meaning": "聖賢、有道德的人",
-    "acptAns": [
-      "聖賢",
-      "有道德的人"
-    ]
+    "acptAns": ["聖賢", "有道德的人", "賢能之人", "有德者"]
   },
   {
-    "id": "mengzi-055",
+    "id": "YueNgoSoYukYa-055",
     "sentence": "今為{{所識}}窮乏者得我而為之。",
     "target": "所識",
     "meaning": "所認識的",
-    "acptAns": [
-      "所認識的",
-      "認識的"
-    ]
+    "acptAns": ["所認識的", "認識的", "熟知的"]
   },
   {
-    "id": "mengzi-056",
+    "id": "YueNgoSoYukYa-056",
     "sentence": "由是則生而有不{{用}}也。",
     "target": "用",
     "meaning": "採用、使用",
-    "acptAns": [
-      "採用",
-      "使用"
-    ]
+    "acptAns": ["採用", "使用", "運用", "施行"]
   },
   {
-    "id": "mengzi-057",
+    "id": "YueNgoSoYukYa-057",
     "sentence": "則凡可以{{辟}}患者，何不為也？",
     "target": "辟",
     "meaning": "躲避",
-    "acptAns": [
-      "躲避",
-      "避開"
-    ],
-    "notes": "通「避」"
+    "acptAns": ["躲避", "避開", "逃避", "迴避"]
   },
   {
-    "id": "mengzi-058",
+    "id": "YueNgoSoYukYa-058",
     "sentence": "為宮室之美、妻妾之奉、所識窮乏者得我{{與}}？",
     "target": "與",
     "meaning": "嗎",
-    "acptAns": [
-      "嗎"
-    ],
-    "notes": "通「歟」"
+    "acptAns": ["嗎", "呢", "啊"]
   },
   {
-    "id": "mengzi-059",
+    "id": "YueNgoSoYukYa-059",
     "sentence": "二者不可得{{兼}}。",
     "target": "兼",
     "meaning": "同時",
-    "acptAns": [
-      "同時"
-    ]
+    "acptAns": ["同時", "一併", "一齊"]
   },
   {
-    "id": "mengzi-060",
+    "id": "YueNgoSoYukYa-060",
     "sentence": "生{{亦}}我所欲也。",
     "target": "亦",
     "meaning": "也",
-    "acptAns": [
-      "也"
-    ]
+    "acptAns": ["也", "也是", "同樣"]
   },
   {
-    "id": "mengzi-061",
+    "id": "YueNgoSoYukYa-061",
     "sentence": "{{是故}}所欲有甚於生者。",
     "target": "是故",
     "meaning": "因此、所以",
-    "acptAns": [
-      "因此",
-      "所以"
-    ]
+    "acptAns": ["因此", "所以", "故此", "因而"]
   }
 ]
