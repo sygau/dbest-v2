@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-26] — AI Writing Grader (English + Chinese)
+What: Two free AI essay graders at /grader/english and /grader/chinese. Rubric-based scoring (HKDSE Paper 2), per-paragraph feedback, error correction, vocabulary upgrades, level-up tips. ChatAnywhere gpt-4o backend. CF KV per-IP daily quota (2/day/subject). Turnstile + rate-limit + prompt-injection guards.
+Files: pages/api/grader/{english,chinese}.ts, pages/grader/{english,chinese}.tsx, lib/grader/**, components/grader/**, data/faqs/pages.ts, data/jsonld/pages.ts, wrangler.jsonc (GRADER_KV binding), components/tw/Sidebar.tsx, docs/v2/ai-grader.md
+Notes: Server enforces totals/level (defends against model hallucination). Body cap 32 KB. beforeunload guard while loading. English UI has en/zh response language toggle. Replaced sidebar "Offer" section with new "AI 評分 Graders" group — old /eng-writing page untouched but de-linked from sidebar.
+
 ## [2026-05-25] — IndexNow (Bing) Integration
 What: Auto-ping Bing IndexNow on new/changed blog posts via smart sync and Sanity webhook trigger.
 Files: scripts/blog-smart-sync.js, pages/api/trigger-deploy.ts, public/c4f2a8b1e36d9075.txt

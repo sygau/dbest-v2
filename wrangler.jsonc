@@ -5,45 +5,53 @@
  * Docs: https://opennext.js.org/cloudflare
  */
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "dbest-v2",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2025-09-01",
-  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
-
-  "observability": {
-    "enabled": true
-  },
-
-  "vars": {
-    "IS_PROD": "true"
-  },
-
-  // Cloudflare Rate Limiting binding for /api/jupas/calculate.
-  // namespace_id = arbitrary integer-string unique per binding; bucket = limit per period (seconds).
-  // Free quota covers far more than dse.best needs. See docs/jupasTool/security-setup.md.
-  "unsafe": {
-    "bindings": [
-      {
-        "name": "RATE_LIMITER",
-        "type": "ratelimit",
-        "namespace_id": "1001",
-        "simple": { "limit": 30, "period": 60 }
-      }
-    ]
-  },
-
-  "env": {
-    "preview": {
-      "name": "dbest-v2-preview",
-      "vars": {
-        "IS_PROD": "false"
-      }
-    }
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "dbest-v2",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2025-09-01",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"vars": {
+		"IS_PROD": "true"
+	},
+	// Cloudflare Rate Limiting binding for /api/jupas/calculate.
+	// namespace_id = arbitrary integer-string unique per binding; bucket = limit per period (seconds).
+	// Free quota covers far more than dse.best needs. See docs/jupasTool/security-setup.md.
+	"unsafe": {
+		"bindings": [
+			{
+				"name": "RATE_LIMITER",
+				"type": "ratelimit",
+				"namespace_id": "1001",
+				"simple": {
+					"limit": 30,
+					"period": 60
+				}
+			}
+		]
+	},
+	"env": {
+		"preview": {
+			"name": "dbest-v2-preview",
+			"vars": {
+				"IS_PROD": "false"
+			}
+		}
+	},
+	"kv_namespaces": [
+		{
+			"binding": "GRADER_KV",
+			"id": "36267380ed8644198642326e9cd9345b",
+			"remote": true
+		}
+	]
 }

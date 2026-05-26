@@ -131,9 +131,9 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
             <NavItem href="/chat" icon={<BiChat style={{ color: '#fdba74', fontSize: 23 }} />} label="聊天室 Chatroom" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           )}
           <NavItem href="/blog" icon={<BiFile style={{ color: '#2fc4d4', fontSize: 23 }} />} label="Blog" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
-
-          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>Offer</MenuLabel>
+<MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>Offer</MenuLabel>
           <NavItem href="/eng-writing" icon={<BiBot style={{ color: '#d4a017', fontSize: 23 }} />} label="免費英文寫作批改" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+
 
          {/*  <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>核心科目</MenuLabel>
           <NavItem href="/chinese" icon={<BiBook style={{ color: '#ff69b4', fontSize: 23 }} />} label="中文 Chinese" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
@@ -162,6 +162,9 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
           <NavItem href="/timer" icon={<BiTestTube style={{ color: '#0891b2', fontSize: 23 }} />} label="操卷計時器 Paper Timer" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/individual-response" icon={<BiMicrophone style={{ color: '#25D366', fontSize: 23 }} />} label="Speaking IR 練習" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/ucas" icon={<BiCalculator style={{ color: '#0ea5e9', fontSize: 23 }} />} label="UCAS 分換算器" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>AI 改文工具</MenuLabel>
+          <NavItem href="/grader/english" icon={<BiBot style={{ color: '#d4a017', fontSize: 23 }} />} label="英文寫作 AI 評分" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/grader/chinese" icon={<BiBot style={{ color: 'var(--gd-accent)', fontSize: 23 }} />} label="中文寫作 AI 評分" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>資訊 Info</MenuLabel>
           <NavItem href="/eng-b1b2" icon={<BiBook style={{ color: '#40c4ff', fontSize: 23 }} />} label="英文 B1/B2 轉換表" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />

@@ -1,6 +1,35 @@
 import { webPageBase, softwareApp, breadcrumbList, WEBSITE_SCHEMA } from './helpers'
 
 export const pageJsonLd: Record<string, object> = {
+  'grader-english': {
+    ...webPageBase(
+      'DSE English Writing AI Grader | HKDSE Paper 2 Free Essay Marking',
+      'Free AI essay grader for HKDSE English Language Paper 2. Submit your Part A or Part B writing and get instant feedback on Content, Language, and Organisation scored 0–7 each, with per-paragraph notes, error fixes, vocabulary upgrades, and concrete level-up tips.',
+      'https://dse.best/grader/english'
+    ),
+    mainEntity: softwareApp(
+      'DSE English Writing AI Grader',
+      'AI essay marking for HKDSE English Paper 2 following official HKEAA Content / Language / Organisation rubric.',
+      'https://dse.best/grader/english',
+      ['HKEAA rubric-based scoring (Content/Language/Organisation 0–7)', 'Paragraph-by-paragraph feedback', 'Grammar + vocabulary error correction', 'Level-up action tips', 'Bilingual feedback (English / Chinese)']
+    ),
+  },
+
+  'grader-chinese': {
+    ...webPageBase(
+      'DSE 中文寫作 AI 評分 | HKDSE 卷二作文免費批改',
+      '免費 AI 中文作文批改工具，按照 HKDSE 中文卷二官方準則評分：內容 /40、表達 /30、結構 /20、標點 /10、錯別字 /3。提供段落點評、病句修正、用詞建議同升呢行動建議，即時知道你嘅作文水平。',
+      'https://dse.best/grader/chinese'
+    ),
+    mainEntity: softwareApp(
+      'DSE 中文寫作 AI 評分',
+      'AI 中文作文批改，按香港考評局 DSE 中文卷二官方評分準則（內容/表達/結構/標點/錯別字）。',
+      'https://dse.best/grader/chinese',
+      ['官方準則評分（內容/表達/結構/標點/錯別字）', '逐段點評', '病句 + 錯別字修正', '修辭運用分析', '用詞升級建議', '升呢行動建議']
+    ),
+  },
+
+
   homepage: {
     ...webPageBase(
       'HKDSE Past Papers 歷屆試題 | 中文、英文、數學、Phy、Chem、Bio、M1/M2',
