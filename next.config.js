@@ -1,8 +1,10 @@
 // @ts-check
 const { initOpenNextCloudflareForDev } = require('@opennextjs/cloudflare');
 
-// Make Cloudflare bindings available during `next dev`.
-initOpenNextCloudflareForDev();
+// Make Cloudflare bindings available during `next dev` (NOT during builds).
+if (process.env.NODE_ENV === 'development') {
+  initOpenNextCloudflareForDev();
+}
 
 const SECURITY_HEADERS = [
   { key: 'X-DNS-Prefetch-Control', value: 'on' },

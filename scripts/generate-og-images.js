@@ -6,6 +6,7 @@ const sharp = require('sharp');
 const PUBLIC_OG_DIR = path.join(__dirname, '../public/og');
 const BLOG_INDEX = path.join(__dirname, '../data/blog-index.json');
 const CACHE_FILE = path.join(__dirname, '../.og-cache.json');
+const ERROR_LOG = path.join(__dirname, '../.og-errors.json');
 
 // Category color mapping
 const CATEGORY_COLORS = {
@@ -146,6 +147,7 @@ async function generateOGImages() {
     let generated = 0;
     let skipped = 0;
     let errors = 0;
+    const errorLog = [];
 
     // Process each post
     for (const post of posts) {
@@ -178,12 +180,25 @@ async function generateOGImages() {
         process.stdout.write(`\r✓ Generated ${generated + skipped}/${posts.length}`);
       } catch (err) {
         errors++;
-        console.error(`\n✗ Error for "${post.slug}":`, err.message);
+        const errorEntry = {
+          slug: post.slug,
+          title: post.title,
+          category: post.category,
+          message: err.message,
+          stack: err.stack,
+        };
+        errorLog.push(errorEntry);
+        console.error(`\n✗ Error for "${post.slug}": ${err.message}`);
       }
     }
 
     // Save cache
     await fs.writeJSON(CACHE_FILE, cache, { spaces: 2 });
+
+    // Save error log if there are errors
+    if (errorLog.length > 0) {
+      await fs.writeJSON(ERROR_LOG, errorLog, { spaces: 2 });
+    }
 
     console.log(`\n\n✅ OG Image Generation Complete:`);
     console.log(`   Generated: ${generated} new images`);

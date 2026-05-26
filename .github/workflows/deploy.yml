@@ -31,6 +31,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install system dependencies for Sharp SVG support
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-dev
+
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -55,6 +58,13 @@ jobs:
 
       - name: Prep build artifacts (blog data, OG images, sitemap)
         run: npm run build:prep
+        continue-on-error: false
+
+      - name: Display OG generation errors (if any)
+        if: hashFiles('.og-errors.json') != ''
+        run: |
+          echo "::error::OG Image Generation Errors:"
+          cat .og-errors.json
 
       - name: Build worker bundle
         run: |
