@@ -5,7 +5,7 @@ import { verifyTurnstile } from '@/lib/grader/server/turnstile';
 import { checkAndIncrement } from '@/lib/grader/server/quota';
 import { sanitiseTask, validateChinese } from '@/lib/grader/server/sanitize';
 import { chinesePrompt } from '@/lib/grader/server/prompts';
-import { callGrader } from '@/lib/grader/server/chatanywhere';
+import { callGraderWithFallback } from '@/lib/grader/server/graderWithFallback';
 import { validateChResult } from '@/lib/grader/server/schema';
 import { chLevelFromTotal } from '@/lib/grader/constants';
 import { GRADER_CONFIG, limitsDisabled } from '@/lib/grader/config';
@@ -57,14 +57,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const apiKey = readSecret(env, 'CHATANYWHERE_API_KEY');
-  if (!apiKey) {
-    console.error('[grader/chinese] CHATANYWHERE_API_KEY missing — checked env binding + process.env. Add to .env.local for npm run dev, .dev.vars for wrangler dev, or wrangler secret put for prod.');
-    return err(res, 500, { error: 'AI 服務未設定 — 請喺 .env.local 加入 CHATANYWHERE_API_KEY 並重啟 npm run dev', code: 'upstream' });
+  const groqKey = readSecret(env, 'GROQ_API_KEY');
+
+  if (!apiKey && !groqKey) {
+    console.error('[grader/chinese] No AI keys configured. Checked: CHATANYWHERE_API_KEY, GROQ_API_KEY');
+    return err(res, 500, { error: 'AI 服務未設定 — 請喺 .env.local 加入 CHATANYWHERE_API_KEY 或 GROQ_API_KEY 並重啟 npm run dev', code: 'upstream' });
   }
 
-  const ai = await callGrader({
-    apiKey,
-    model: GRADER_CONFIG.MODEL.chinese,
+  const ai = await callGraderWithFallback({
+    chatanywhereKey: apiKey,
+    chatanywhereModel: GRADER_CONFIG.MODEL.chinese,
+    groqKey,
+    groqModel: GRADER_CONFIG.GROQ_MODEL.chinese,
     messages: [
       { role: 'system', content: chinesePrompt({ part, essayType, task }) },
       { role: 'user', content: `<essay>\n${v.clean}\n</essay>` },

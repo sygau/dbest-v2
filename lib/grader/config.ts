@@ -28,7 +28,7 @@ export const GRADER_CONFIG = {
 
   // Word / char limits per tool.
   EN_LIMITS: {
-    partA: { min: 50, max: 800 },
+    partA: { min: 50, max: 1000 },
     partB: { min: 150, max: 2000 },
     any:   { min: 50, max: 2000 },
   },
@@ -37,10 +37,18 @@ export const GRADER_CONFIG = {
   // Task prompt max chars (DSE prompts can be ~1.5k with sources).
   TASK_MAX_CHARS: 1500,
 
-  // gpt model used. Override per tool if needed.
+  // Primary AI provider (ChatAnywhere) models. Override per tool if needed.
   MODEL: {
     english: 'gpt-4o',
     chinese: 'gpt-4o',
+  },
+
+  // Fallback Groq models. Used when ChatAnywhere fails (429, 502, timeout).
+  // Options: 'openai/gpt-oss-120b' (200k/day, best quality), 'openai/gpt-oss-20b', 'qwen/qwen3-32b' (500k/day), 'llama-3.3-70b-versatile' (100k/day)
+  // Chosen: gpt-oss-120b — best quality for fallback, 120B params, ~25 emergency grades/day capacity
+  GROQ_MODEL: {
+    english: 'openai/gpt-oss-120b',
+    chinese: 'openai/gpt-oss-120b',
   },
 
   // Cooldown when a real rate-limit (429) is hit (seconds shown to user).

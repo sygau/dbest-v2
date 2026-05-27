@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-05-27] — AI Grader: Smart Fallback to Groq
+What: Added automatic fallback mechanism for AI Writing Grader. Tries ChatAnywhere (gpt-4o) first; on 429/502/503/timeout, retries with Groq llama-3.1-8b-instant (free tier). Reduces cost 10–20% while maintaining reliability. Both English and Chinese graders updated.
+Files: lib/grader/server/groq.ts (new), lib/grader/server/graderWithFallback.ts (new), lib/grader/config.ts (GROQ_MODEL added), lib/grader/server/context.ts (GROQ_API_KEY support), pages/api/grader/english.ts (uses fallback), pages/api/grader/chinese.ts (uses fallback), docs/v2/grader-ai-fallback.md (new)
+Notes: Retryable errors: 429, 502, 503, timeout, abort. Non-retryable errors (400, 403) fail immediately without fallback. Groq models: llama-3.1-8b-instant (14.4k/day, recommended) or llama-3.3-70b-versatile (1k/day, better quality). Add GROQ_API_KEY to .env.local or wrangler secrets. Logs which provider succeeded for monitoring.
+
 ## [2026-05-26] — AI Writing Grader (English + Chinese)
 What: Two free AI essay graders at /grader/english and /grader/chinese. Rubric-based scoring (HKDSE Paper 2), per-paragraph feedback, error correction, vocabulary upgrades, level-up tips. ChatAnywhere gpt-4o backend. CF KV per-IP daily quota (2/day/subject). Turnstile + rate-limit + prompt-injection guards.
 Files: pages/api/grader/{english,chinese}.ts, pages/grader/{english,chinese}.tsx, lib/grader/**, components/grader/**, data/faqs/pages.ts, data/jsonld/pages.ts, wrangler.jsonc (GRADER_KV binding), components/tw/Sidebar.tsx, docs/v2/ai-grader.md

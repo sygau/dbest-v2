@@ -9,6 +9,7 @@ export interface CfEnv {
   };
   RATE_LIMITER?: { limit(opts: { key: string }): Promise<{ success: boolean }> };
   CHATANYWHERE_API_KEY?: string;
+  GROQ_API_KEY?: string;
   TURNSTILE_SECRET?: string;
   IS_PROD?: string;
 }
@@ -37,6 +38,6 @@ export async function getCfEnv(): Promise<CfEnv> {
   }
 }
 
-export function readSecret(env: CfEnv, name: 'CHATANYWHERE_API_KEY' | 'TURNSTILE_SECRET'): string | undefined {
+export function readSecret(env: CfEnv, name: 'CHATANYWHERE_API_KEY' | 'GROQ_API_KEY' | 'TURNSTILE_SECRET'): string | undefined {
   return env[name] || process.env[name];
 }
