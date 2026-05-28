@@ -17,7 +17,7 @@ function computeAdBreaks(blocks: PortableTextBlock[]): number[] {
   if (total < 6) return []
   const warmupEnd = Math.ceil(total * 0.12)
   const MIN_GAP = 4
-  const MAX_ADS = 5
+  const MAX_ADS = 3
   const breaks: number[] = []
   let lastIdx = -MIN_GAP
   for (let i = warmupEnd; i <= total - 3; i++) {
