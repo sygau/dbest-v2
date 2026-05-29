@@ -266,7 +266,7 @@ export default function TimetablePage() {
                 2027 DSE 倒數
               </Button>
             </Link>
-            <a href="https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Timetable/2027_DSE_Timetable.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Timetable/2027_DSE_Timetable.pdf" target="_blank" rel="noopener noreferrer" aria-label="Official DSE 2027 Timetable PDF">
               <Button variant="outline" size="md">
                 <LuDownload size={16} />
                 官方時間表 PDF

@@ -53,7 +53,7 @@ export default function Document() {
 
         {/* Google Analytics */}
         <script src="https://www.googletagmanager.com/gtag/js?id=G-XB60B3MXHH" defer></script>
-        <script defer dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
+        <script dangerouslySetInnerHTML={{ __html: consolidatedScripts.analytics }} />
 
 
         {/* PWA */}

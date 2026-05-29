@@ -15,7 +15,7 @@ export default function PageBreadcrumb({ section, text, showHome }: Props) {
           <ol className="breadcrumb">
             {showHome && (
               <li className="breadcrumb-item">
-                <NavigationLink href="/"><i className="bx bx-home-alt" /></NavigationLink>
+                <NavigationLink href="/" aria-label="Home"><i className="bx bx-home-alt" /></NavigationLink>
               </li>
             )}
             <li className="breadcrumb-item active" aria-current="page">{text}</li>
