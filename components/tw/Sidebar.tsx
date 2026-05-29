@@ -172,6 +172,7 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>資源 Resources</MenuLabel>
           <NavItem href="/study-spots" icon={<BiMapAlt style={{ color: '#34c759', fontSize: 23 }} />} label="自修室地圖 Study Spots" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
           <NavItem href="/calculator-programmes" icon={<BiCalculator style={{ color: '#549ee8', fontSize: 23 }} />} label="計數機程式庫 Programmes" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
+          <NavItem href="/vocab" icon={<BiBook style={{ color: '#8b5cf6', fontSize: 23 }} />} label="詞彙庫 Vocab Bank" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />
 
           <MenuLabel isCollapsed={collapsed} isMobileSheet={isMobileSheet}>其他</MenuLabel>
           <NavItem href="/about" icon={<BiInfoCircle style={{ color: '#7986cb', fontSize: 23 }} />} label="關於我們" isCollapsed={collapsed} isMobileSheet={isMobileSheet} />

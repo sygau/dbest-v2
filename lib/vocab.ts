@@ -134,13 +134,13 @@ export function entryDisplayTerm(entry: Entry): string {
     case 'vocab':
       return entry.term
     case 'idiom':
-      return entry.idiom
+      return (entry as any).idiom || (entry as any).term || ''
     case 'sentence-pattern':
-      return entry.pattern
+      return (entry as any).pattern || (entry as any).term || ''
     case 'opening':
-      return entry.snippet
+      return (entry as any).snippet || (entry as any).term || ''
     case 'template':
-      return entry.title
+      return (entry as any).title || (entry as any).term || ''
     case 'upgrade':
       return entry.advancedTerm
   }

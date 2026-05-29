@@ -57,12 +57,12 @@ export default function HomePage() {
           <hr className="mt-16 mb-12" style={{ borderColor: 'var(--color-body)', opacity: 0.2 }} />
 
           {/* Past Papers Section */}
-          <h1
+          <h2
             className="font-bold mb-2 text-[var(--color-heading)]"
             style={{ fontSize: 'clamp(2.2rem, 6.5vw, 3.1rem)', marginTop: '5rem' }}
           >
             歷屆試題
-          </h1>
+          </h2>
           <p className="text-base sm:text-lg leading-relaxed mb-10 mx-auto" style={{ color: 'var(--color-secondary)', maxWidth: '68ch' }}>
             全科 DSE 歷屆試題（Past Papers）連參考答案，由 2012 年起逐年收錄，按科目同年份即時查閱。
           </p>
