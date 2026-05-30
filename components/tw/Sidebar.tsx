@@ -42,7 +42,7 @@ function NavItem({ href, icon, label, isCollapsed, isMobileSheet }: NavItemProps
         )}
       >
         <span className="flex-shrink-0 leading-none flex items-center justify-center w-6 h-6" style={{ filter: 'drop-shadow(0 0 0.3px currentColor)' }}>{icon}</span>
-        {(!isCollapsed || isMobileSheet) && <span className="truncate">{label}</span>}
+        {(!isCollapsed || isMobileSheet) && <span className="truncate select-none">{label}</span>}
       </NavigationLink>
     </li>
   )
@@ -53,7 +53,7 @@ function MenuLabel({ children, isCollapsed, isMobileSheet }: { children: ReactNo
     return <li className="my-1.5 mx-2 border-t border-[var(--color-border)]" />
   }
   return (
-    <li className="px-3 py-2 text-[var(--color-muted)] uppercase text-xs tracking-wide font-semibold">
+    <li className="px-3 py-2 text-[var(--color-muted)] uppercase text-xs tracking-wide font-semibold select-none">
       {children}
     </li>
   )
@@ -101,7 +101,8 @@ function SidebarContent({ isCollapsed, isMobileSheet, onClose }: { isCollapsed: 
                 display: 'flex',
                 alignItems: 'baseline',
                 marginTop: '3px',
-                marginBottom: 0
+                marginBottom: 0,
+                userSelect: 'none'
               }}>
                 dse<span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: dotColor }}>●</span><span style={{ fontWeight: 'bold' }}>best</span>
               </h5>
