@@ -143,6 +143,17 @@ export default function JupasCalculator() {
   const totalShown = Math.min(visibleCount, visibleResults.length);
   const hasMore = totalShown < visibleResults.length;
 
+  // ─ REVERSIBLE: Manual AdSense Refresh (Remove if rolling back to Auto Ads)
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
+      try {
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+      } catch (e) {
+        // Ad blocker or adsbygoogle not available
+      }
+    }
+  }, [visibleCount]);
+
   // ── Submit handler ──
 
   const handleSearch = async (profile: BuiltProfile, formHash: string) => {
@@ -277,6 +288,18 @@ export default function JupasCalculator() {
 
         <TierStatsGrid results={visibleResults} />
 
+        {/* ─ REVERSIBLE: Manual Ad #1 (Remove if rolling back to Auto Ads) */}
+        <div style={{ margin: '18px 0', textAlign: 'center' }}>
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block', textAlign: 'center' }}
+            data-ad-client="ca-pub-9807119599898921"
+            data-ad-slot="1839743580"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        </div>
+
         <div className="jpd-results-row">
           <div>
             <div className="jpd-result-label" style={{ color: 'var(--color-emphasis)', fontWeight: 600 }}>
@@ -309,9 +332,29 @@ export default function JupasCalculator() {
 
         {!loading && visibleResults.length === 0 && <NoResults />}
 
-        {!loading && visibleResults.slice(0, totalShown).map(r => (
-          <JupasCard key={r.programme.id} {...resultToCardProps(r)} />
-        ))}
+        {/* ─ REVERSIBLE: Manual Ads in Results Grid (Remove if rolling back to Auto Ads) */}
+        {!loading && visibleResults.slice(0, totalShown).map((r, idx) => {
+          const maxAdsInResults = 6;
+          const showAd = (idx + 1) % 4 === 0 && Math.floor(idx / 4) < maxAdsInResults;
+          
+          return (
+            <div key={`card-${r.programme.id}`}>
+              <JupasCard key={r.programme.id} {...resultToCardProps(r)} />
+              {showAd && (
+                <div style={{ margin: '16px 0', textAlign: 'center' }}>
+                  <ins
+                    className="adsbygoogle"
+                    style={{ display: 'block', textAlign: 'center' }}
+                    data-ad-client="ca-pub-9807119599898921"
+                    data-ad-slot="1839743580"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                  />
+                </div>
+              )},
+            </div>
+          );
+        })}
 
         {hasMore && (
           <div className="jpd-show-more-wrap">
@@ -326,7 +369,17 @@ export default function JupasCalculator() {
           </div>
         )}
 
-        
+        {/* ─ REVERSIBLE: Manual Ad #2 (Remove if rolling back to Auto Ads) */}
+        <div style={{ margin: '24px 0 18px', textAlign: 'center' }}>
+          <ins
+            className="adsbygoogle"
+            style={{ display: 'block', textAlign: 'center' }}
+            data-ad-client="ca-pub-9807119599898921"
+            data-ad-slot="1839743580"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
+        </div>
 
         <MechanismInfo />
 

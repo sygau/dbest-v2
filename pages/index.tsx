@@ -11,6 +11,7 @@ import PageSEO from '../components/PageSEO'
 import Hero from '../components/home/Hero'
 import DseCountdown from '../components/home/DseCountdown'
 import ToolGrid from '../components/home/ToolGrid'
+import AdUnit from '../components/home/AdUnit'
 import { ORGANIZATION_SCHEMA } from '../data/jsonld/helpers'
 
 const homepageFAQs = [
@@ -47,7 +48,9 @@ export default function HomePage() {
           <hr className="mt-7 mb-9" style={{ borderColor: 'var(--color-body)', opacity: 0.2 }} />
 
           {/* DSE 2027 countdown */}
-          <DseCountdown />
+          <section>
+            <DseCountdown />
+          </section>
 
           {/* Learning tools */}
           <div className="mt-12">
@@ -56,31 +59,38 @@ export default function HomePage() {
 
           <hr className="mt-16 mb-12" style={{ borderColor: 'var(--color-body)', opacity: 0.2 }} />
 
-          {/* Past Papers Section */}
-          <h2
-            className="font-bold mb-2 text-[var(--color-heading)]"
-            style={{ fontSize: 'clamp(2.2rem, 6.5vw, 3.1rem)', marginTop: '5rem' }}
-          >
-            歷屆試題
-          </h2>
-          <p className="text-base sm:text-lg leading-relaxed mb-10 mx-auto" style={{ color: 'var(--color-secondary)', maxWidth: '68ch' }}>
-            全科 DSE 歷屆試題（Past Papers）連參考答案，由 2012 年起逐年收錄，按科目同年份即時查閱。
-          </p>
+          {/* Manual Ad Unit - Before Past Papers */}
+          <AdUnit slotId="8979867000" format="auto" responsive={true} />
 
-          {/* Core Subjects */}
-          <h2 className="font-bold mb-4 text-[var(--color-heading)] text-2xl">核心科目 Core</h2>
-          <br />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Past Papers Section */}
+          <section>
+            <h2
+              className="font-bold mb-2 text-[var(--color-heading)]"
+              style={{ fontSize: 'clamp(2.2rem, 6.5vw, 3.1rem)', marginTop: '5rem' }}
+            >
+              歷屆試題
+            </h2>
+            <p className="text-base sm:text-lg leading-relaxed mb-10 mx-auto" style={{ color: 'var(--color-secondary)', maxWidth: '68ch' }}>
+              全科 DSE 歷屆試題（Past Papers）連參考答案，由 2012 年起逐年收錄，按科目同年份即時查閱。
+            </p>
+
+            {/* Core Subjects */}
+            <h3 className="font-bold mb-4 text-[var(--color-heading)] text-2xl">核心科目 Core</h3>
+            <br />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <SubjectCard title="中文 Chinese Language" href="/chinese" icon={<BiBook style={{ color: '#ff69b4', fontSize: 40 }} />} accent="#ff69b4" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中' }]} />
             <SubjectCard title="英文 English Language" href="/english" icon={<BiBook style={{ color: '#40c4ff', fontSize: 40 }} />} accent="#40c4ff" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '英' }]} />
             <SubjectCard title="數學 Mathematics" href="/math" icon={<BiCalculator style={{ color: '#eab308', fontSize: 40 }} />} accent="#eab308" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]} />
             <SubjectCard title="公民與社會發展 Citizenship" href="/citizen" icon={<BiGlobe style={{ color: '#28a745', fontSize: 40 }} />} accent="#28a745" details={[{ label: '年份', value: '2024' }, { label: '語言', value: '中' }]} />
-          </div>
+            </div>
 
-          {/* Electives */}
-          <h2 className="font-bold mb-4 mt-24 text-[var(--color-heading)] text-2xl">選修科目 Electives</h2>
-          <br />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Manual Ad Unit - Between Core & Electives */}
+            <AdUnit slotId="6124118891" format="auto" responsive={true} />
+
+            {/* Electives */}
+            <h3 className="font-bold mb-4 mt-32 text-[var(--color-heading)] text-2xl">選修科目 Electives</h3>
+            <br />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <SubjectCard title="物理 Physics" href="/physics" icon={<BiBot style={{ color: '#6366f1', fontSize: 40 }} />} accent="#6366f1" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]} />
             <SubjectCard title="化學 Chemistry" href="/chemistry" icon={<BiTestTube style={{ color: '#06b6d4', fontSize: 40 }} />} accent="#06b6d4" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]} />
             <SubjectCard title="生物 Biology" href="/biology" icon={<BiLeaf style={{ color: '#22c55e', fontSize: 40 }} />} accent="#22c55e" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]} />
@@ -93,7 +103,8 @@ export default function HomePage() {
             <SubjectCard title="歷史 History" href="/history" icon={<BiBook style={{ color: '#ffab91', fontSize: 40 }} />} accent="#ffab91" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中/英' }]} />
             <SubjectCard title="中國歷史 Chinese History" href="/chinese-history" icon={<BiBook style={{ color: '#ff1744', fontSize: 40 }} />} accent="#ff1744" details={[{ label: '年份', value: '2025' }, { label: '語言', value: '中' }]} />
             <SubjectCard title="旅遊與款待 Tourism & Hospitality" href="/ths" icon={<BiPlanet style={{ color: '#2196f3', fontSize: 40 }} />} accent="#2196f3" details={[{ label: '年份', value: '2023' }, { label: '語言', value: '中' }]} />
-          </div>
+            </div>
+          </section>
         </div>
 
         
