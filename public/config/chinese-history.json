@@ -50,5 +50,14 @@
   "pp_p1_chi": "pp_chihist_dse_pp_p1.pdf",
   "pp_p2_chi": "pp_chihist_dse_pp_p2.pdf",
   "sp_p1_chi": "pp_chihist_dse_sp_p1.pdf",
-  "sp_p2_chi": "pp_chihist_dse_sp_p2.pdf"
+  "sp_p2_chi": "pp_chihist_dse_sp_p2.pdf",
+  "2013_per_chi": "pp_chihist_dse_2013_per.pdf",
+  "2024_p1_chi": "pp_chihist_dse_2024_p1.pdf",
+  "2024_p2_chi": "pp_chihist_dse_2024_p2.pdf",
+  "2024_ans_chi": "pp_chihist_dse_2024_ans.pdf",
+  "2024_per_chi": "pp_chihist_dse_2024_per.pdf",
+  "2025_p1_chi": "pp_chihist_dse_2025_p1.pdf",
+  "2025_p2_chi": "pp_chihist_dse_2025_p2.pdf",
+  "2025_ans_chi": "pp_chihist_dse_2025_ans.pdf",
+  "2025_per_chi": "pp_chihist_dse_2025_per.pdf"
 }

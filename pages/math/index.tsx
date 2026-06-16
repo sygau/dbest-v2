@@ -85,6 +85,7 @@ export default function MathPage() {
                     <PaperSection id="year-2025" title="2025" showAd>
                         <DownloadCard title="Paper 1" description="2025 Paper 1" paperId="2025_P1" />
                         <DownloadCard title="Paper 2" description="2025 Paper 2" paperId="2025_P2" />
+                        <DownloadCard title="Answers" description="2025 Answer Booklet (English)" paperId="2025_ans" />
                     </PaperSection>
                     <PaperSection id="year-2024" title="2024" showAd>
                         <DownloadCard title="Paper 1" description="2024 Paper 1" paperId="2024_P1" />

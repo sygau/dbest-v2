@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -47,13 +47,41 @@ export default function PhysicsPage() {
                         <DownloadCard title="English Syllabus" description="DSE Physics Syllabus (English)" paperId="syllabus_eng" />
                     </div>
                     <hr className="my-4" />
-                    
+                    {/* 2025 */}
+                    <h2 className="text-center">2025</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {/* Chinese */}
+                        <DownloadCard title="卷一甲" description="2025 Paper 1A (中文)" paperId="2025_p1a_chi" buttonText="下載" />
+                        <DownloadCard title="卷一乙" description="2025 Paper 1B (中文)" paperId="2025_p1b_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2025 Paper 2 (中文)" paperId="2025_p2_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2025 參考答案 (中文)" paperId="2025_ans_chi" buttonText="下載" />
+                        <DownloadCard title="考生表現" description="2025 考生表現 (中文)" paperId="2025_per_chi" buttonText="下載" />
+                        {/* English */}
+                        <DownloadCard title="Paper 1A" description="2025 Paper 1A (English)" paperId="2025_p1a_eng" />
+                        <DownloadCard title="Paper 1B" description="2025 Paper 1B (English)" paperId="2025_p1b_eng" />
+                        <DownloadCard title="Paper 2" description="2025 Paper 2 (English)" paperId="2025_p2_eng" />
+                        <DownloadCard title="Answers" description="2025 Answer Booklet (English)" paperId="2025_ans_eng" />
+                        <DownloadCard title="Performance" description="2025 Performance Descriptors (English)" paperId="2025_per_eng" />
+                    </div>
+                    <SubjectSectionAd />
+                    <hr className="my-4" />
                     {/* 2024 */}
                     <h2 className="text-center">2024</h2>
                     <br />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {/* Chinese */}
+                        <DownloadCard title="卷一甲" description="2024 Paper 1A (中文)" paperId="2024_p1a_chi" buttonText="下載" />
+                        <DownloadCard title="卷一乙" description="2024 Paper 1B (中文)" paperId="2024_p1b_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2024 Paper 2 (中文)" paperId="2024_p2_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2024 參考答案 (中文)" paperId="2024_ans_chi" buttonText="下載" />
+                        <DownloadCard title="考生表現" description="2024 考生表現 (中文)" paperId="2024_per_chi" buttonText="下載" />
                         {/* English */}
                         <DownloadCard title="Paper 1A" description="2024 Paper 1A (English)" paperId="2024_p1a_eng" />
+                        <DownloadCard title="Paper 1B" description="2024 Paper 1B (English)" paperId="2024_p1b_eng" />
+                        <DownloadCard title="Paper 2" description="2024 Paper 2 (English)" paperId="2024_p2_eng" />
+                        <DownloadCard title="Answers" description="2024 Answer Booklet (English)" paperId="2024_ans_eng" />
+                        <DownloadCard title="Performance" description="2024 Performance Descriptors (English)" paperId="2024_per_eng" />
                     </div>
                     <SubjectSectionAd />
                     <hr className="my-4" />

@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -43,6 +43,28 @@ export default function THSPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <DownloadCard title="評核內容" description="DSE旅遊與款待 評核內容" paperId="syllabus_chi" buttonText="下載" />
                     </div>
+                    <hr className="my-4" />
+                    {/* 2025 */}
+                    <h2 className="text-center">2025</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <DownloadCard title="卷一" description="2025 Paper 1 (中文)" paperId="2025_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2025 Paper 2 (中文)" paperId="2025_p2_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2025 參考答案 (中文)" paperId="2025_ans_chi" buttonText="下載" />
+                        <DownloadCard title="考生表現" description="2025 考生表現 (中文)" paperId="2025_per_chi" buttonText="下載" />
+                    </div>
+                    <SubjectSectionAd />
+                    <hr className="my-4" />
+                    {/* 2024 */}
+                    <h2 className="text-center">2024</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <DownloadCard title="卷一" description="2024 Paper 1 (中文)" paperId="2024_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2024 Paper 2 (中文)" paperId="2024_p2_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2024 參考答案 (中文)" paperId="2024_ans_chi" buttonText="下載" />
+                        <DownloadCard title="考生表現" description="2024 考生表現 (中文)" paperId="2024_per_chi" buttonText="下載" />
+                    </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>

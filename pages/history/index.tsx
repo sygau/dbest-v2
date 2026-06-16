@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -47,6 +47,40 @@ export default function HistoryPage() {
                         <DownloadCard title="中文 評核內容" description="DSE歷史 評核內容 (中文)" paperId="syll_chi" buttonText="下載" />
                         <DownloadCard title="English Syllabus" description="DSE History Syllabus (English)" paperId="syll_eng" />
                     </div>
+                    <hr className="my-4" />
+                    {/* 2025 */}
+                    <h2 className="text-center">2025</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {/* Chinese */}
+                        <DownloadCard title="考試報告" description="2025 考試報告 (中文)" paperId="2025_exam_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2025 Paper 2 (中文)" paperId="2025_p2_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2025 參考答案 (中文)" paperId="2025_ans_chi" buttonText="下載" />
+                        {/* English */}
+                        <DownloadCard title="Exam Report" description="2025 Exam Report (English)" paperId="2025_exam_eng" />
+                        <DownloadCard title="Paper 1" description="2025 Paper 1 (English)" paperId="2025_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2025 Paper 2 (English)" paperId="2025_p2_eng" />
+                        <DownloadCard title="Answers" description="2025 Answer Booklet (English)" paperId="2025_ans_eng" />
+                        <DownloadCard title="Performance" description="2025 Performance Descriptors (English)" paperId="2025_per_eng" />
+                    </div>
+                    <SubjectSectionAd />
+                    <hr className="my-4" />
+                    {/* 2024 */}
+                    <h2 className="text-center">2024</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {/* Chinese */}
+                        <DownloadCard title="考試報告" description="2024 考試報告 (中文)" paperId="2024_exam_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2024 Paper 2 (中文)" paperId="2024_p2_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2024 參考答案 (中文)" paperId="2024_ans_chi" buttonText="下載" />
+                        {/* English */}
+                        <DownloadCard title="Exam Report" description="2024 Exam Report (English)" paperId="2024_exam_eng" />
+                        <DownloadCard title="Paper 1" description="2024 Paper 1 (English)" paperId="2024_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2024 Paper 2 (English)" paperId="2024_p2_eng" />
+                        <DownloadCard title="Answers" description="2024 Answer Booklet (English)" paperId="2024_ans_eng" />
+                        <DownloadCard title="Performance" description="2024 Performance Descriptors (English)" paperId="2024_per_eng" />
+                    </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>

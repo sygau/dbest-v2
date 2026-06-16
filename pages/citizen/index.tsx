@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -56,6 +56,13 @@ export default function CitizenPage() {
                     <SubjectSectionAd />
                     <hr className="my-4" />
                     
+                    {/* 2023 */}
+                    <h2 className="text-center">2023</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <DownloadCard title="問題簿" description="2023 問題簿" paperId="2023_question" buttonText="下載" />
+                        <DownloadCard title="答題簿" description="2023 答題簿" paperId="2023_answer" buttonText="下載" />
+                    </div>
                 </div>
             </div>
         </>

@@ -39,6 +39,8 @@ export default function EnglishPage() {
                     <div className="text-center mb-4">
                         {/* All Years Row */}
                         <div className="mb-2 flex flex-wrap justify-center items-center">
+                            <a href="#year-2025" className="no-underline text-info font-bold nav-link-year">2025</a>
+                            <span className="nav-separator">|</span>
                             <a href="#year-2024" className="no-underline text-info font-bold nav-link-year">2024</a>
                             <span className="nav-separator">|</span>
                             <a href="#year-2023" className="no-underline text-info font-bold nav-link-year">2023</a>
@@ -76,6 +78,12 @@ export default function EnglishPage() {
                     <hr className="my-4" />
                     
                     {/* Year-wise Past Paper Listing */}
+                    <PaperSection id="year-2025" title="2025" showAd>
+                        <DownloadCard title="Paper 1 Reading" description="2025 Paper 1: Reading" paperId="2025_P1" />
+                        <DownloadCard title="Paper 2 Writing" description="2025 Paper 2: Writing" paperId="2025_P2" />
+                        <DownloadCard title="Paper 3 Listening & Integrated Skills" description="2025 Paper 3: Listening & Integrated Skills" paperId="2025_P3" />
+                        <DownloadCard title="Answers" description="2025 Answer Booklet" paperId="2025_ans" />
+                    </PaperSection>
                     <PaperSection id="year-2024" title="2024" showAd>
                         <DownloadCard title="Paper 1 Reading" description="2024 Paper 1: Reading" paperId="2024_P1" />
                         <DownloadCard title="Paper 2 Writing" description="2024 Paper 2: Writing" paperId="2024_P2" />

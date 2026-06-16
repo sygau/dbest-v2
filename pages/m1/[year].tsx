@@ -10,7 +10,7 @@ import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 // Available years for this subject
-const AVAILABLE_YEARS = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+const AVAILABLE_YEARS = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'];
 
 // Define types
 interface YearPageProps {
@@ -198,7 +198,7 @@ export default function M1YearPage({ subject, year, papers, availableFiles }: Ye
           {/* CTA to Main Page */}
           <div className="text-center mt-5 mb-5">
             <h3>Need More M1 Papers?</h3>
-            <p className="mb-4">Access all years (2012-2024), topic-based practice, and comprehensive study materials.</p>
+            <p className="mb-4">Access all years (2012-2025), topic-based practice, and comprehensive study materials.</p>
             <NavigationLink 
               href="/m1" 
               className="btn btn-primary btn-lg inline-flex align-items-center gap-3"
@@ -213,7 +213,7 @@ export default function M1YearPage({ subject, year, papers, availableFiles }: Ye
                 justifyContent: 'center'
               }}
             >
-              <span>View All M1 Papers (2012-2024)</span>
+              <span>View All M1 Papers (2012-2025)</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />

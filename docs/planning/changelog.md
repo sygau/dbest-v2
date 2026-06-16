@@ -1,5 +1,14 @@
 # dse.best v2 Changelog
 
+## [2026-06-16] — Subject Paper Year Coverage
+What: Added missing 2012-2025 subject paper config keys and surfaced missing year papers on subject index/year pages.
+Notes: Index pages keep existing hardcoded sections and render only additional missing DSE year cards from a shared helper.
+
+## [2026-06-16] — Citizen Year Page Structured Data Fix
+What: Changed /citizen/[year] JSON-LD main entity from Dataset to EducationalResource and reused the full SEO description to avoid Google's invalid description length warning.
+Files: pages/citizen/[year].tsx
+Notes: The page is a past-paper resource, not a dataset rich-result candidate. Search Console will need recrawl/validation before the warning disappears.
+
 ## [2026-05-27] — AI Grader: Smart Fallback to Groq
 What: Added automatic fallback mechanism for AI Writing Grader. Tries ChatAnywhere (gpt-4o) first; on 429/502/503/timeout, retries with Groq llama-3.1-8b-instant (free tier). Reduces cost 10–20% while maintaining reliability. Both English and Chinese graders updated.
 Files: lib/grader/server/groq.ts (new), lib/grader/server/graderWithFallback.ts (new), lib/grader/config.ts (GROQ_MODEL added), lib/grader/server/context.ts (GROQ_API_KEY support), pages/api/grader/english.ts (uses fallback), pages/api/grader/chinese.ts (uses fallback), docs/v2/grader-ai-fallback.md (new)

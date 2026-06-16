@@ -10,7 +10,7 @@ import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 // Available years for this subject
-const AVAILABLE_YEARS = ['2024'];
+const AVAILABLE_YEARS = ['2023', '2024', '2025'];
 
 // Define types
 interface YearPageProps {
@@ -72,9 +72,12 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
           "description": meta.seoDescription,
           "url": `https://dse.best/citizen/${year}`,
           "mainEntity": {
-            "@type": "Dataset",
+            "@type": "EducationalResource",
             "name": `DSE 公民與社會發展科 ${year} 歷屆試題`,
-            "description": `${year}年香港中學文憑試公民與社會發展科試卷及答案`,
+            "description": meta.seoDescription,
+            "educationalLevel": "Secondary Education",
+            "learningResourceType": "Past Papers",
+            "inLanguage": "zh-HK",
             "keywords": [`DSE ${year}`, "公民與社會發展科", "Citizenship and Social Development", "Past Papers"],
             "creator": {
               "@type": "Organization",
@@ -180,7 +183,7 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
           {/* CTA to Main Page */}
           <div className="text-center mt-5 mb-5">
             <h3>Need More Citizen Papers?</h3>
-            <p className="mb-4">Access all years (2024+), sample papers, and comprehensive study materials.</p>
+            <p className="mb-4">Access all years (2023-2025), sample papers, and comprehensive study materials.</p>
             <NavigationLink 
               href="/citizen" 
               className="btn btn-primary btn-lg inline-flex align-items-center gap-3"
@@ -195,7 +198,7 @@ export default function CitizenYearPage({ subject, year, papers, availableFiles 
                 justifyContent: 'center'
               }}
             >
-              <span>View All Citizen Papers (2024+)</span>
+              <span>View All Citizen Papers (2023-2025)</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />

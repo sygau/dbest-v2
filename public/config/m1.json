@@ -14,6 +14,11 @@
   "bytopic_bk2": "pp_m1_bytopic_bk2.pdf",
   "2023_pp": "pp_m1_dse_2023_pp.pdf",
   "2024_pp": "pp_m1_dse_2024_pp.pdf",
+  "2024_ans": "pp_m1_dse_2024_ans.pdf",
+  "2024_per": "pp_m1_dse_2024_per.pdf",
+  "2025_pp": "pp_m1_dse_2025_pp.pdf",
+  "2025_ans": "pp_m1_dse_2025_ans.pdf",
+  "2025_per": "pp_m1_dse_2025_per.pdf",
   "2022_ans": "pp_m1_dse_2022_ans.pdf",
   "2022_pp": "pp_m1_dse_2022_pp.pdf",
   "2021_ans": "pp_m1_dse_2021_ans.pdf",
@@ -86,5 +91,8 @@
   "mands_2012_ms": "pp_m1_mands_2012ms.pdf",
   "mands_2013": "pp_m1_mands_2013.pdf",
   "mands_2013_ms": "pp_m1_mands_2013ms.pdf",
-  "syll": "pp_m1_syll.pdf"
+  "syll": "pp_m1_syll.pdf",
+  "2022_per": "pp_m1_dse_2022_per.pdf",
+  "2023_ans": "pp_m1_dse_2023_ans.pdf",
+  "2023_per": "pp_m1_dse_2023_per.pdf"
 }

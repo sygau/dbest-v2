@@ -10,7 +10,7 @@ import { getSubjectYearSlugLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 
 // Available years for this subject
-const AVAILABLE_YEARS = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023'];
+const AVAILABLE_YEARS = ['2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'];
 
 // Define types
 interface YearPageProps {
@@ -269,7 +269,7 @@ export default function BAFSYearPage({ subject, year, papers, availableFiles }: 
                 justifyContent: 'center'
               }}
             >
-              <span>View All BAFS Papers (2012-2023)</span>
+              <span>View All BAFS Papers (2012-2025)</span>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />

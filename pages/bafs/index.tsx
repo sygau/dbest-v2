@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';

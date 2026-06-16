@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -56,6 +56,7 @@ export default function M2Page() {
                     <br />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2025 Paper" description="2025 DSE Paper" paperId="2025_pp" />
+                        <DownloadCard title="2025 Marking Scheme" description="2025 Marking Scheme" paperId="2025_ans" />
                     </div>
                     <SubjectSectionAd />
                     <hr className="my-4" />
@@ -71,6 +72,7 @@ export default function M2Page() {
                     <br />
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <DownloadCard title="2023 Paper" description="2023 DSE Paper" paperId="2023_pp" />
+                        <DownloadCard title="2023 Marking Scheme" description="2023 Marking Scheme" paperId="2023_ans" />
                     </div>
                     <hr className="my-4" />
                     <h2 className="text-center">2022</h2>

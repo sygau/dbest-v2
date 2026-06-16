@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -47,6 +47,52 @@ export default function IctPage() {
                         <DownloadCard title="中文 評核內容" description="DSE資訊及通訊科技 評核內容 (中文)" paperId="syll_chi" buttonText="下載" />
                         <DownloadCard title="English Syllabus" description="DSE ICT Syllabus (English)" paperId="syll_eng" />
                     </div>
+                    <hr className="my-4" />
+                    {/* 2025 */}
+                    <h2 className="text-center">2025</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {/* Chinese */}
+                        <DownloadCard title="考試報告" description="2025 考試報告 (中文)" paperId="2025_exam_chi" buttonText="下載" />
+                        <DownloadCard title="卷一" description="2025 Paper 1 (中文)" paperId="2025_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二甲" description="2025 Paper 2A 數據庫 (中文)" paperId="2025_p2a_chi" buttonText="下載" />
+                        <DownloadCard title="卷二乙" description="2025 Paper 2B 數據通訊及建網 (中文)" paperId="2025_p2b_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2025 參考答案 (中文)" paperId="2025_ans_chi" buttonText="下載" />
+                        <DownloadCard title="考生表現" description="2025 考生表現 (中文)" paperId="2025_per_chi" buttonText="下載" />
+                        {/* English */}
+                        <DownloadCard title="Exam Report" description="2025 Exam Report (English)" paperId="2025_exam_eng" />
+                        <DownloadCard title="Paper 1" description="2025 Paper 1 (English)" paperId="2025_p1_eng" />
+                        <DownloadCard title="Paper 2A" description="2025 Paper 2A Database (English)" paperId="2025_p2a_eng" />
+                        <DownloadCard title="Paper 2B" description="2025 Paper 2B Data Communications &amp; Networking (English)" paperId="2025_p2b_eng" />
+                        <DownloadCard title="Paper 2C" description="2025 Paper 2C Web Authoring (English)" paperId="2025_p2c_eng" />
+                        <DownloadCard title="Paper 2D" description="2025 Paper 2D Software Development (English)" paperId="2025_p2d_eng" />
+                        <DownloadCard title="Answers" description="2025 Answer Booklet (English)" paperId="2025_ans_eng" />
+                        <DownloadCard title="Performance" description="2025 Performance Descriptors (English)" paperId="2025_per_eng" />
+                    </div>
+                    <SubjectSectionAd />
+                    <hr className="my-4" />
+                    {/* 2024 */}
+                    <h2 className="text-center">2024</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {/* Chinese */}
+                        <DownloadCard title="考試報告" description="2024 考試報告 (中文)" paperId="2024_exam_chi" buttonText="下載" />
+                        <DownloadCard title="卷一" description="2024 Paper 1 (中文)" paperId="2024_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二甲" description="2024 Paper 2A 數據庫 (中文)" paperId="2024_p2a_chi" buttonText="下載" />
+                        <DownloadCard title="卷二乙" description="2024 Paper 2B 數據通訊及建網 (中文)" paperId="2024_p2b_chi" buttonText="下載" />
+                        <DownloadCard title="參考答案" description="2024 參考答案 (中文)" paperId="2024_ans_chi" buttonText="下載" />
+                        <DownloadCard title="考生表現" description="2024 考生表現 (中文)" paperId="2024_per_chi" buttonText="下載" />
+                        {/* English */}
+                        <DownloadCard title="Exam Report" description="2024 Exam Report (English)" paperId="2024_exam_eng" />
+                        <DownloadCard title="Paper 1" description="2024 Paper 1 (English)" paperId="2024_p1_eng" />
+                        <DownloadCard title="Paper 2A" description="2024 Paper 2A Database (English)" paperId="2024_p2a_eng" />
+                        <DownloadCard title="Paper 2B" description="2024 Paper 2B Data Communications &amp; Networking (English)" paperId="2024_p2b_eng" />
+                        <DownloadCard title="Paper 2C" description="2024 Paper 2C Web Authoring (English)" paperId="2024_p2c_eng" />
+                        <DownloadCard title="Paper 2D" description="2024 Paper 2D Software Development (English)" paperId="2024_p2d_eng" />
+                        <DownloadCard title="Answers" description="2024 Answer Booklet (English)" paperId="2024_ans_eng" />
+                        <DownloadCard title="Performance" description="2024 Performance Descriptors (English)" paperId="2024_per_eng" />
+                    </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>

@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -46,15 +46,43 @@ export default function GeographyPage() {
                         <DownloadCard title="English Syllabus" description="DSE Geography Syllabus (English)" paperId="syllabus_eng" />
                     </div>
                     <hr className="my-4" />
-                    {/* Exam Info */}
-                    <h2 className="text-center">考試資訊 / Exam Info</h2>
+                    {/* 2025 */}
+                    <h2 className="text-center">2025</h2>
                     <br />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <DownloadCard title="2024 考試資訊" description="2024 DSE地理考試資訊 (中文)" paperId="2024_exam_chi" buttonText="下載" />
-                        <DownloadCard title="2024 Exam Info" description="2024 DSE Geography Exam Info (English)" paperId="2024_exam_eng" />
-                        <DownloadCard title="2023 考試資訊" description="2023 DSE地理考試資訊 (中文)" paperId="2023_exam_chi" buttonText="下載" />
-                        <DownloadCard title="2023 Exam Info" description="2023 DSE Geography Exam Info (English)" paperId="2023_exam_eng" />
+                        {/* Chinese Papers */}
+                        <DownloadCard title="卷一" description="2025 Paper 1 (中文)" paperId="2025_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2025 Paper 2 (中文)" paperId="2025_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2025 Map Book (中文)" paperId="2025_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2025 Marking Scheme (中文)" paperId="2025_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2025 Performance (中文)" paperId="2025_per_chi" buttonText="下載" />
+                        {/* English Papers */}
+                        <DownloadCard title="Paper 1" description="2025 Paper 1 (English)" paperId="2025_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2025 Paper 2 (English)" paperId="2025_p2_eng" />
+                        <DownloadCard title="Map Book" description="2025 Map Book (English)" paperId="2025_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2025 Marking Scheme (English)" paperId="2025_ans_eng" />
+                        <DownloadCard title="Performance" description="2025 Performance (English)" paperId="2025_per_eng" />
                     </div>
+                    <SubjectSectionAd />
+                    <hr className="my-4" />
+                    {/* 2024 */}
+                    <h2 className="text-center">2024</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {/* Chinese Papers */}
+                        <DownloadCard title="卷一" description="2024 Paper 1 (中文)" paperId="2024_p1_chi" buttonText="下載" />
+                        <DownloadCard title="卷二" description="2024 Paper 2 (中文)" paperId="2024_p2_chi" buttonText="下載" />
+                        <DownloadCard title="地圖冊" description="2024 Map Book (中文)" paperId="2024_map_chi" buttonText="下載" />
+                        <DownloadCard title="答案" description="2024 Marking Scheme (中文)" paperId="2024_ans_chi" buttonText="下載" />
+                        <DownloadCard title="表現評述" description="2024 Performance (中文)" paperId="2024_per_chi" buttonText="下載" />
+                        {/* English Papers */}
+                        <DownloadCard title="Paper 1" description="2024 Paper 1 (English)" paperId="2024_p1_eng" />
+                        <DownloadCard title="Paper 2" description="2024 Paper 2 (English)" paperId="2024_p2_eng" />
+                        <DownloadCard title="Map Book" description="2024 Map Book (English)" paperId="2024_map_eng" />
+                        <DownloadCard title="Marking Scheme" description="2024 Marking Scheme (English)" paperId="2024_ans_eng" />
+                        <DownloadCard title="Performance" description="2024 Performance (English)" paperId="2024_per_eng" />
+                    </div>
+                    <SubjectSectionAd />
                     <hr className="my-4" />
                     {/* 2023 */}
                     <h2 className="text-center">2023</h2>

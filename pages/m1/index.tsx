@@ -1,4 +1,4 @@
-﻿import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
+import { getSubjectIndexLastUpdated } from '../../utils/lastUpdated';
 import LastUpdatedAlert from '../../components/LastUpdatedAlert';
 import DownloadCard, { PaperSection } from '../../components/DownloadCard';
 import PageSEO from '../../components/PageSEO';
@@ -69,6 +69,14 @@ export default function M1Page() {
                     {/* DSE Papers by Year */}
                     <h2 className="text-center">DSE By Year</h2>
                     <br />
+                    {/* 2025 */}
+                    <h2 className="text-center">2025</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <DownloadCard title="Paper" description="2025 Paper" paperId="2025_pp" />
+                    </div>
+                    <SubjectSectionAd />
+                    <hr className="my-4" />
                     {/* 2024 */}
                     <h2 className="text-center">2024</h2>
                     <br />

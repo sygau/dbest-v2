@@ -209,7 +209,7 @@ export const pageJsonLd: Record<string, object> = {
       name: 'DSE Learning Resources',
       description: 'Comprehensive collection of DSE learning resources including past papers, study tools, and exam preparation guides',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: '歷屆試題 Past Papers', description: 'Complete collection of DSE past papers from 2012-2024' },
+        { '@type': 'ListItem', position: 1, name: '歷屆試題 Past Papers', description: 'Complete collection of DSE past papers from 2012-2025' },
         { '@type': 'ListItem', position: 2, name: 'Cut-off分數查詢', description: 'Grade boundary scores for all subjects' },
         { '@type': 'ListItem', position: 3, name: '學習工具 Study Tools', description: 'DSE countdown timer, chatroom, and learning blog' },
         { '@type': 'ListItem', position: 4, name: '考試技巧 Exam Tips', description: 'Study strategies and exam preparation guides' },
