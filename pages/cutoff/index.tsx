@@ -96,8 +96,17 @@ export default function CutoffIndexPage() {
               })}
             </div>
           </div>
-          
-          
+
+          {/* Ad Container — reserved space to prevent CLS from Auto Ads */}
+          <div className="print:hidden my-6" style={{ minHeight: '280px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: 'var(--color-card-inner-bg)', borderRadius: '8px', border: '1px solid var(--color-border)' }}>
+            <ins
+              className="adsbygoogle"
+              style={{ display: 'block', width: '100%', maxWidth: '100%' }}
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+              data-ad-client="ca-pub-9807119599898921"
+            />
+          </div>
 
           {/* ================================================================ */}
           {/* INFO + NOTICE SECTIONS */}
