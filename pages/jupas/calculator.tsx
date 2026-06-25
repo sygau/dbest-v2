@@ -145,14 +145,16 @@ export default function JupasCalculator() {
 
   // ─ REVERSIBLE: Manual AdSense Refresh (Remove if rolling back to Auto Ads)
   useEffect(() => {
-    if (typeof window !== 'undefined' && (window as any).adsbygoogle) {
-      try {
-        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
-      } catch (e) {
-        // Ad blocker or adsbygoogle not available
-      }
+  if (typeof window === 'undefined') return;
+  const ads = document.querySelectorAll('ins.adsbygoogle:not([data-ad-status])');
+  ads.forEach(() => {
+    try {
+      ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+    } catch (e) {
+      // already processed or no fill
     }
-  }, [visibleCount]);
+  });
+}, [visibleCount, totalShown]);
 
   // ── Submit handler ──
 
@@ -334,8 +336,8 @@ export default function JupasCalculator() {
 
         {/* ─ REVERSIBLE: Manual Ads in Results Grid (Remove if rolling back to Auto Ads) */}
         {!loading && visibleResults.slice(0, totalShown).map((r, idx) => {
-          const maxAdsInResults = 6;
-          const showAd = (idx + 1) % 4 === 0 && Math.floor(idx / 4) < maxAdsInResults;
+          const maxAdsInResults = 3;
+const showAd = (idx + 1) % 10 === 0 && Math.floor(idx / 10) < maxAdsInResults;
           
           return (
             <div key={`card-${r.programme.id}`}>
@@ -351,7 +353,7 @@ export default function JupasCalculator() {
                     data-full-width-responsive="true"
                   />
                 </div>
-              )},
+              )}
             </div>
           );
         })}
