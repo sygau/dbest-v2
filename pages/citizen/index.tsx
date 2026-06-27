@@ -45,7 +45,15 @@ export default function CitizenPage() {
                         <DownloadCard title="答題簿" description="Sample Answering Book" paperId="sp_answer" buttonText="下載" />
                     </div>
                     <hr className="my-4" />
-
+                    {/* 2025 */}
+                    <h2 className="text-center">2025</h2>
+                    <br />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <DownloadCard title="問題簿" description="2025 問題簿" paperId="2025_question" buttonText="下載" />
+                        <DownloadCard title="答題簿" description="2025 答題簿" paperId="2025_answer" buttonText="下載" />
+                    </div>
+                    <SubjectSectionAd />
+                    <hr className="my-4" />
                     {/* 2024 */}
                     <h2 className="text-center">2024</h2>
                     <br />
