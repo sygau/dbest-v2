@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NA Check</title>
+<style>
+  body {
+    font-family: -apple-system, system-ui, sans-serif;
+    background: #111;
+    color: #eee;
+    margin: 0;
+    padding: 24px;
+    font-size: 18px;
+    line-height: 1.6;
+    word-break: break-all;
+  }
+  .yes { color: #4ade80; font-weight: bold; }
+  .no { color: #f87171; font-weight: bold; }
+  .box {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  .label { color: #888; font-size: 14px; text-transform: uppercase; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <div class="label">has ?na</div>
+  <div id="hasNa">checking...</div>
+</div>
+
+<div class="box">
+  <div class="label">full url</div>
+  <div id="fullUrl">checking...</div>
+</div>
+
+<div class="box">
+  <div class="label">search string</div>
+  <div id="search">checking...</div>
+</div>
+
+<div class="box">
+  <div class="label">user agent</div>
+  <div id="ua">checking...</div>
+</div>
+
+<script>
+  var params = new URLSearchParams(window.location.search);
+  var hasNa = params.has('na');
+
+  document.getElementById('hasNa').innerHTML = hasNa
+    ? '<span class="yes">YES ✅</span>'
+    : '<span class="no">NO ❌</span>';
+
+  document.getElementById('fullUrl').textContent = window.location.href;
+  document.getElementById('search').textContent = window.location.search || '(empty)';
+  document.getElementById('ua').textContent = navigator.userAgent;
+</script>
+
+</body>
+</html>
