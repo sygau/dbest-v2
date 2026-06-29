@@ -1,6 +1,6 @@
 JUPAS Data Build Report
 ========================
-Built: 2026-05-16T20:45:12.867Z
+Built: 2026-06-29T20:56:00.579Z
 
 Programmes: 385
 Universities: CITYU, CUHK, EDUHK, HKBU, HKMU, HKU, HKUST, LINGU, POLYU
