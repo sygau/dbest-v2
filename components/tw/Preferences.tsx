@@ -88,7 +88,7 @@ export default function Preferences({ isOpen, onClose }: PreferencesProps) {
           <div className="border-t border-[var(--color-border)] pt-4">
             <h6 className="text-sm font-semibold text-[var(--color-heading)] mb-1">Disable Ads</h6>
             <p className="text-sm text-[var(--color-muted)] mb-3">
-              Stop paying my claude pro subscription<br></br>
+              Real<br></br>
             </p>
             <button
               className={cn(
