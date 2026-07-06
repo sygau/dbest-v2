@@ -149,6 +149,14 @@ async function smartSync(client) {
     if (!manifestMap.has(slug)) toDelete.push(slug)
   }
 
+  // Slugs in manifest but missing from currentIndex
+  // (happens when git checkout -- data/ resets blog-index.json to stale copy)
+  for (const slug of manifestMap.keys()) {
+    if (!indexMap.has(slug) && !toFetch.includes(slug)) {
+      toFetch.push(slug)
+    }
+  }
+
   const unchanged = manifest.length - toFetch.length
   console.log(`📊 ${toFetch.length} new/changed  ${toDelete.length} deleted  ${unchanged} unchanged`)
 

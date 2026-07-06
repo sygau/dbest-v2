@@ -1,5 +1,10 @@
 # dse.best v2 Changelog
 
+## [2026-07-07] — Blog sync & OG image generation fixes
+What: Fixed smart-sync bug where git checkout -- data/ reset blog-index.json to stale copy, causing unchanged Sanity posts to silently drop from the index (only 15 of 105 posts appeared). Only 13 of 105 OG PNGs had been generated as fallback. Also added XML escaping to SVG template in generate-og-images.js to prevent sharp crashes on titles with &/<. Ran CF_PAGES=true npm run og:generate to regenerate all 105 OG images with 0 errors.
+Files: scripts/blog-smart-sync.js, scripts/generate-og-images.js, public/og/* (regenerated), .og-cache.json (regenerated)
+Notes: Smart sync now detects slugs in manifest but missing from currentIndex and fetches them. OG script now runs on all posts regardless of coverImage status. XLMR escaping prevents future SVG parse failures.
+
 ## [2026-06-16] — Subject Paper Year Coverage
 What: Added missing 2012-2025 subject paper config keys and surfaced missing year papers on subject index/year pages.
 Notes: Index pages keep existing hardcoded sections and render only additional missing DSE year cards from a shared helper.

@@ -20,13 +20,22 @@ function computeAdBreaks(blocks: PortableTextBlock[]): number[] {
   const MAX_ADS = 3
   const breaks: number[] = []
   let lastIdx = -MIN_GAP
+  let skippedFirstHeading = false
+
   for (let i = warmupEnd; i <= total - 3; i++) {
     if (breaks.length >= MAX_ADS) break
     const b = blocks[i] as any
     if (b._type !== 'block') continue
     if (b.style !== 'h2' && b.style !== 'h3') continue
+
+    // never place an ad directly above the first heading in the post
+    if (!skippedFirstHeading) {
+      skippedFirstHeading = true
+      continue
+    }
+
     if (i - lastIdx < MIN_GAP) continue
-    breaks.push(i + 1)  // split AFTER heading so heading stays visible above the ad
+    breaks.push(i)   // split BEFORE the heading — ad shows, THEN heading + its content
     lastIdx = i
   }
   return breaks

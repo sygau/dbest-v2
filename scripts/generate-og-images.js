@@ -24,6 +24,10 @@ const CATEGORY_COLORS = {
 };
 
 // ── Utility: Generate SVG ─────────────────────────────────────────────────
+function escapeXml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+}
+
 function generateSVG(title, category = '', color = '#549ee8') {
   // Truncate logic (matches DefaultThumb.tsx)
   const truncate = (text, max) => {
@@ -55,15 +59,18 @@ function generateSVG(title, category = '', color = '#549ee8') {
     return lines;
   };
 
-  const titleLines = splitIntoLines(title, 16, 2);
-  const safeCategory = truncate(category, 18);
+  const truncatedTitle = truncate(title, 32);
+  const truncatedCategory = truncate(category, 18);
+  const titleLines = splitIntoLines(truncatedTitle, 16, 2).map(escapeXml);
+  const safeCategory = escapeXml(truncatedCategory);
+  const safeFullTitle = escapeXml(title);
   const displayColor = color || CATEGORY_COLORS[category] || '#549ee8';
 
   // SVG matching DefaultThumb.tsx (y="610" for bottom text)
   const svg = `<svg
     viewBox="0 0 1200 750"
     role="img"
-    aria-label="${title}"
+    aria-label="${safeFullTitle}"
     preserveAspectRatio="xMidYMid slice"
     xmlns="http://www.w3.org/2000/svg"
   >

@@ -1,5 +1,851 @@
 [
   {
+    "slug": "dse-school-principal-nominations-scheme-guide",
+    "title": "DSE 校長推薦計劃(SPN) 全攻略 | 申請條件、名額曝光，成功率原來係...",
+    "excerpt": "校長推薦係咪走後門入大學？其實名額每間學校得幾個位，仲要睇埋你OEA夠唔夠料。呢篇一次講清SPN條件、申請流程、同SNDAS嘅分別，仲有Threads真實討論話你知成功率原來係咩一回事。",
+    "tags": [
+      "校長推薦計劃"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "is-water-bubble-subjects-worth-it-jupas",
+    "title": "DSE水泡科全攻略2026｜邊啲科收分低？出路/轉系/Asso對比逐樣拆",
+    "excerpt": "放榜分數唔夠神科，揀水泡科頂住先定疊埋心水讀Asso/HD？本文逐項對比：水泡科即時有八大學位但出路唔專，Asso/HD多讀1-2年但博到心儀科嘅出路反而更清。另拆解水泡科四大常見類別、讀完嘅四條出路（轉Major/跨校轉學/Master補底/直接搵工）、轉系現實（GPA要班級前20%、熱門科轉系率約兩成），同埋揀之前一定要問自己嘅四條問題。分數唔夠，仲有得揀，但揀之前要諗清楚自己係搏定係擺。",
+    "tags": [
+      "水泡科",
+      "JUPAS揀科"
+    ],
+    "category": "JUPAS 選科指南"
+  },
+  {
+    "slug": "jupas-zero-offers-pathways-2026",
+    "title": "JUPAS放榜零Offer點算好？五條出路逐條行（附申請時間線）",
+    "excerpt": "放榜當日打開JUPAS個portal，見到成排「-」冇任何offer，嗰種感覺真係好難頂。但冷靜落嚟，零offer唔代表冇路行。本文整理五條出路：自資院校第二輪招生（恆大/樹仁等，放榜後一週內截止）、副學位/高級文憑銜接degree、重考DSE、英國Clearing/台灣升學、有計劃嘅Gap Year。附快速選擇表幫你對號入座，唔好自己嚇自己。",
+    "tags": [
+      "JUPAS放榜"
+    ],
+    "category": "JUPAS 選科指南"
+  },
+  {
+    "slug": "dse-private-candidate-application-guide-2027",
+    "title": "DSE自修生報名全攻略2027｜報考資格、程序步驟及與學校考生分別逐項拆解",
+    "excerpt": "決定咗做2027年DSE自修生，但唔知由邊度開始？本文一個page幫你搞掂：報考資格checklist（曾考DSE/19歲/特殊申請三種）、網上報名系統逐歩教學（開account>揀科>揀試場>交費）、自修生vs學校考生5大實際分別（冇SBA換算機制、乙類科報唔到、試場自己揀、冇老師跟、JUPAS分類唔同），再加報名後完整時間線（9月至7月）同過來人常見蝦碌案例（報錯科、漏交健康聲明、英文姓名唔一致）。自修生程序其實好數碼化，跟住做就得。",
+    "tags": [
+      "自修生"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "dse-electives-combined-science-guide-2026",
+    "title": "DSE Combined Science揀科指南2026 | 物理/化學/生物三合一: 捷徑定伏位？",
+    "excerpt": "Combined Science同分科Physics/Chem/Bio喺JUPAS計分完全一樣，一個grade唔會打折! 但部分大學programme寫明「須修讀獨立科」，Combined直接唔啱key。本文拆解Combined vs 分科嘅Topic深度分別（Physics冇electromagnetism、Chem冇organic、Bio冇genetics）、大學收生要求（邊啲prog加權獨立科、邊啲Combined都計），幫F3學生判斷自己適合揀邊條路。",
+    "tags": [
+      "中三選科"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "croatia-offside-sensor-dse-physics",
+    "title": "世界盃VAR越位爭議｜波入面粒Sensor點樣用Physics判入球有效定無效？",
+    "excerpt": "世界盃VAR越位判決背後，其實係一題DSE Physics活生生嘅應用題！本文拆解官方感應波點樣用動量突變（impulse）去判斷球員有冇掂到波，即使接觸時間短到幾毫秒、力度細到得幾個牛頓，sensor一樣偵測到velocity change。由葡萄牙對克羅地亞爭議入球講起，解釋點解一條sensor spike graph可以推翻肉眼慢鏡，仲討論「頭髮算唔算觸球」呢個規則與科學嘅交界問題。",
+    "tags": [],
+    "category": "DSE 物理"
+  },
+  {
+    "slug": "dse-sec-school-students-summer-jobs-list",
+    "title": "DSE畢業生/中學生暑期工&Part time攻略2026 | 無經驗都請嘅15份筍工全覽",
+    "excerpt": "考完DSE打開JobsDB, Moovup狂寄CV全部已讀不回？唔係你唔夠好，係你嘅CV喺大平台根本沉底。本文整理15份無經驗都請嘅筍工，由私人補習（$120-250/hr）到快餐店便利店，每份附評分同人工，仲話你知點解「行入舖頭問」先係香港學生搵到工嘅真正方法。暑假搵工必睇！",
+    "tags": [
+      "暑期工"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-sec-student-cover-letter-cv-writing-guide",
+    "title": "DSE畢業生/中學生CV寫法教學2026 | 零經驗都搞得掂嘅履歷表全攻略",
+    "excerpt": "DSE畢業生搵暑期工必睇！零經驗CV寫作全攻略：用Canva/Google Docs現成Template最快、4大部分逐項教點填、課外活動/義工經驗點樣寫到似「能力證明」而唔係普通參與記錄。仲有PDF export貼士、檔案命名常識、Send前checklist，同埋一份完整Sample CV俾你照抄個Format。",
+    "tags": [
+      "暑期工"
+    ],
+    "category": "其他"
+  },
+  {
+    "slug": "dse-chinese-classical-grammar-guide",
+    "title": "DSE 文言文文法大全｜7大類核心技巧一次睇晒（倒裝句／特殊句式／詞類活用）",
+    "excerpt": "十二篇範文背到滾瓜爛熟，乙部課外文言文照樣見字唔識字？問題唔係背得唔夠，係冇一套睇得明文言文點砌嘅框架。本文整理7大類核心規律（倒裝句/特殊句式/詞類活用/古今異義/固定結構/虛詞/修辭），教你還原語序、判斷詞性、識別被動句，仲有實戰例句拆解，幫你建立真正嘅文言文戰鬥力。",
+    "tags": [
+      "文言文",
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-ancient-text-hui-word-guide",
+    "title": "DSE 中文文言文虛詞全攻略｜18個指定虛詞用法表＋例句",
+    "excerpt": "文言文虛詞係DSE 卷一隱形失分位—!「之」可以係代詞/助詞/動詞/取消獨立性，「而」可以係順承/轉折/並列/修飾，同一個字四種用法全靠語境判斷。本文整理18個指定虛詞詳細用法表，每個附例句及出處，另加判斷三步驟同四大常犯錯誤（將所以當現代連詞、將其一律解代詞等）。溫十二篇範文必備工具文。",
+    "tags": [
+      "文言文",
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-electives-is-english-literature-worth-it-guide",
+    "title": "DSE 英文文學 English Literature 選科攻略：全港200人考嘅隱藏選擇，英文底強必睇！",
+    "excerpt": "英文長期Level 4-5、鍾意睇英文書同電影、唔想讀理科又嫌其他文科悶？英文文學可能係你漏咗嘅選擇。本文幫你評估適唔適合讀English Literature! 由課程內容（小說/詩歌/劇本/電影分析）、考試結構到SBA要求逐樣拆解，仲話你知點解海外大學（英國澳洲）加分、學校冇開班可以點自修。",
+    "tags": [
+      "中三選科"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-chinese-ancient-text-era-contrary-words-list",
+    "title": "DSE 中文文言文古今異義詞大全｜30個常考字表＋實戰題型拆解",
+    "excerpt": "文言文閱讀最陰公嘅陷阱，唔係唔識字，而係你用現代意思去解，以為睇得明其實由頭錯到落尾。本文整理30個DSE常考古今異義詞（妻子、卑鄙、感激、所以、犧牲等），附例句出處對應十二篇範文，再加三種實戰題型拆解（字詞解釋、語譯、分析推斷），幫你建立識別敏感度，避開連鎖扣分陷阱。",
+    "tags": [
+      "文言文",
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-drop-subject-guide-2026",
+    "title": "中四發現讀錯科，Drop唔Drop好？定係有第三條路？",
+    "excerpt": "中四上學期完咗，發現自己揀錯科？成績差唔一定等於要drop ! 可能只係未適應高中節奏。本文按中四、中五、中六三個階段，教你判斷咩情況下drop係合理策略、咩情況下應該死撐，仲有唔drop嘅補救方法（換補習、重新分配時間）。讀錯科唔係世界末日，亂做決定先係。",
+    "tags": [
+      "Drop科"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "csd-mainland-trip-report-guide",
+    "title": "公民科內地考察報告點寫？四部分結構＋選題技巧",
+    "excerpt": "公民科內地考察報告係教育局規定必交課業，計入SLP！本文按官方指引拆解報告四部分結構（課題背景、考察前準備、所見所聞分析、個人反思），教你由「遊記」升級做「有深度嘅探究」，仲有選題技巧同字數參考。公民科考察唔係去玩，報告寫得好先叫完成任務。",
+    "tags": [
+      "DSE 公民"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "dse-history-2030-new-curriculum",
+    "title": "DSE 歷史科 2030 新課程：第一批考生要知道嘅4個改變",
+    "excerpt": "2027/28年升C4嘅同學係第一批讀新歷史科課程嘅考生。中國近代史大增、香港史大減、評核更多元，呢篇幫你理清新課程改了咩、對選科有咩影響。",
+    "tags": [
+      "DSE History"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "dse-citizenship-attained-question-types-guide",
+    "title": "公民科達標完全攻略：幾多分先夠？6大題型逐個拆解（附答題框架）",
+    "excerpt": "公民科達標要幾多分？2024/2025估算約17-18分（約40%）。但達標線每年浮動，靠死數唔穩陣! 關鍵係掌握6大題型答法。本文逐個拆解概念詞題、數據題、漫畫題、長答題、立場題、比較題，附答題框架示範，幫你用最少時間穩陣達標。",
+    "tags": [
+      "DSE公民科"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "asso-hd-senior-year-english-requirements",
+    "title": " Asso / HD 升Year 3英文要求｜八大Senior Entry英文要求逐間睇+IELTS補救策略",
+    "excerpt": "讀完Asso以為GPA高就穩入大學？原來英文要求先係最大關卡！一文拆解八大Senior Entry英文門檻：HKU、PolyU、HKBU無硬性要求，但CUHK、科大、城大就要DSE L3或IELTS 6.0。嶺大更要求入學前考到IELTS。話你知邊間可以避、邊間要考，仲有考IELTS最遲時間線，Asso升U前必睇！",
+    "tags": [
+      "Non-JUPAS",
+      "Asso"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-citizenship-and-social-development-study-guide-and-attained-rate",
+    "title": "DSE公民科係咪真係唔洗溫？94%達標率背後你要知嘅事",
+    "excerpt": "「公民科用常識就答到」呢句說話每年害咗幾千人。2025年達標率跌咗0.9%，考卷出現軍事援助、對外影響力呢類非日常概念。本文話你知點解「識睇資料」同「識答題」係兩回事、三大主題嘅核心概念詞有咩必背，同埋點樣用答題框架穩攞40%分數達標。",
+    "tags": [
+      "DSE 公民"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "dse-electives-is-history-worth-it-guide",
+    "title": "【中三選科】History 歷史選科指南 | 讀歷史真係無出路？難唔難攞高分?",
+    "excerpt": "中史背到嘔想轉 History？以為唔使死背就等於易攞高分？一文拆解 DSE 歷史科 60% 卷一資料分析陷阱，同卷二 Essay 嘅極限字速壓力。深度剖析點解法律同新聞系反而最鍾意收 History 學生，中三揀科前必睇，幫你計清自己嘅邏輯思維啱唔啱行純文科路線！",
+    "tags": [
+      "中三選科"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-electives-is-chinese-literature-worth-it-guide",
+    "title": "【中三選科指南】DSE中國文學值唔值得揀？中文好就等於文學好？",
+    "excerpt": "以為中文科拎 5** 就穩讀中國文學？錯！一文拆解語文應用與文學批評嘅思維鴻溝。剖析 28 篇指定篇章嘅開放題陷阱、Curve 攞 4 易但攞 5 難嘅殘酷真相，同埋坊間零補習資源下嘅自學生存法則。中三揀科前必睇，幫你計清自己到底係咪真係啱讀！",
+    "tags": [
+      "中三選科"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-electives-is-hsmc-worth-it-guide",
+    "title": "【中三選科】HMSC 健社選科指南 | 邊種人先啱讀呢科？難唔難合格？",
+    "excerpt": "以為 HMSC 係避開 Bio 嘅高分捷徑？仲以為讀完穩入 Nursing？一文拆解全港得 0.7% 人攞 5 嘅殘酷真相，同 30% SBA 隱形地獄。中三揀科前必睇，幫你避開護理系收生巨坑，睇清自己到底啱唔啱讀！",
+    "tags": [
+      "中三選科"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-electives-is-technology-living-worth-it-guide",
+    "title": "【中三選科】科技與生活選科指南 | 揀呢科即係讀家政？邊種人先啱讀呢科？",
+    "excerpt": "以為科技與生活就係煮飯縫衫？你連呢科有食品科學同時裝紡織兩條完全唔同嘅路都唔知！一文拆解兩大選修範疇實際讀咩、30% SBA工作量同埋升學出路，中三揀科前唔睇清楚，小心選錯範疇讀足兩年先發現根本唔啱自己！",
+    "tags": [
+      "中三選科"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-application-form",
+    "title": "【DSE 英文 Listening】Application Form 申請表 格式攻略 | 填表原則、5** 範文拆解",
+    "excerpt": "DSE 英文 Listening 突襲 Application Form 唔知點落筆？一文拆解申請表與特別安排表格的填寫核心原則。傳授誤填個人資料、長篇大論等致命傷，以及 5 短段落原因欄位的精簡改寫技巧。附最新評分準則與範文，冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-meeting-summary",
+    "title": "【DSE 英文 Listening】Meeting Summary 會議摘要 格式攻略 (5** 範文拆解)",
+    "excerpt": "DSE 英文 Listening 突襲 Meeting Summary 唔知點落筆？一文拆解會議摘要與分析 Report 的核心功能與 Header 結構分別。傳授誤加個人建議陷阱、直接引述（Direct Speech）盲區與 5 必拿分 Decisions 結尾編排。附最新評分準則與範文，冷門題照樣變送分題！",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-faq",
+    "title": "【DSE 英文 Listening】FAQ 格式攻略 | 問答對應、簡潔答題邏輯、5** 範文拆解",
+    "excerpt": "DSE 英文 Listening 突襲 FAQ 唔知點落筆？一文拆解常見問題集與傳統文章的結構分別。教你點將 Data File 事實轉化成讀者視角問題，傳授答案太空洞、Echo 問題等致命傷，以及 5 必加聯絡資訊結尾技巧。附最新評分準則與範文，冷門題照樣變送分題！",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-appeal-full-guide-2026",
+    "title": "2026 DSE 成績覆核 Appeal 全攻略｜申請流程+邊科最值得覆核? JUPAS補選一文睇清",
+    "excerpt": "一文看清 2026 DSE 成績覆核（Rechecking / Remarking）最速申請全攻略。獨家拆解文理科「性價比最高」的搏 Grade 優先順序、官方重要日程與手續。教你如何用一卷 Remarking 撬動 JUPAS 隱藏補選，驚人逆襲 A1 !",
+    "tags": [
+      "DSE 成績 Appeal",
+      "DSE放榜",
+      "DSE成績覆核"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-announcement",
+    "title": "【DSE 英文 Listening】Announcement 官方公告 格式攻略 | 分段/語氣 + 5** 範文拆解",
+    "excerpt": "DSE 英文 Listening 突襲 Announcement 唔知點落筆？一文拆解官方公告與傳統書信的 Header 結構與下款分別。傳授過份口語化陷阱、Data File 零散更改事項重整與 5 正式客觀道歉與要求行動句式。附最新評分準則與範文，拒絕加錯 Dear，遇冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "is-appealing-dse-results-worth-it-2026",
+    "title": "【DSE 放榜 Appeal】DSE 成績值唔值得覆核？一文睇清Appeal成功率與 JUPAS 補選策略",
+    "excerpt": "DSE 放榜成績未如理想，應唔應該去 Appeal？一文看清 Rechecking 與 Remarking 的底層邏輯與費用分別。拆解 2% 成功率背後的 Borderline 條件、主觀科目改卷流動性，以及升 Grade 後如何利用 JUPAS 補選窗口期重新入場的隱藏機制。",
+    "tags": [
+      "DSE 成績 Appeal",
+      "DSE放榜",
+      "DSE成績覆核"
+    ],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-video-script",
+    "title": "【DSE 英文 Listening】Video Script 格式攻略 | 旁白口語、修辭問句/分段 (+5** 範文拆解)",
+    "excerpt": "DSE 英文 Listening 突襲 Video Script 唔知點落筆？一文拆解影片腳本與書面文章的口語化語氣分別。傳授長篇書面語陷阱、觀眾直接稱呼邏輯與 5 互動型修辭問句式。附最新評分準則與範文，拒絕硬塞書信上下款，遇冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-schedule",
+    "title": "【DSE 英文 Listening】Schedule 格式攻略 | 表格排版、時間時序 + 5** 範文拆解",
+    "excerpt": "DSE 英文 Listening 撞正 Schedule 唔知點落筆？一文拆解時間-活動對照表與列點格式的結構編排。傳授時間格式不一陷阱、Data File 混亂時序重整與 5 原型動詞精簡短語句式。附最新評分準則與範文，拒絕長篇大論，遇冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-biography",
+    "title": "【DSE 英文 Listening】Biography 傳記 格式攻略 | 時態運用/敘事邏輯 + 5** 範文拆解",
+    "excerpt": "DSE 英文 Listening 遇上人物 Biography 唔知點落筆？一文拆解個人 Profile 與傳記的敘事結構。傳授時態切換陷阱、Data File 清單時序整合與 5 進階連接詞句式。附最新評分準則與範文，拒絕全篇寫成過去式，遇冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "hk-chatgpt-register-subscribe-guide-2026-july",
+    "title": "【AI 教學】2026 最新 ChatGPT 香港註冊、VPN 跨區與 Plus/Pro 訂閱全攻略",
+    "excerpt": "香港用 ChatGPT 成日彈 Access Denied？本文由淺入深拆解 2026 最新跨區註冊與訂閱方法。全方位涵蓋電腦網頁版與手機 App Store 地區切換設定、虛擬號碼電話驗證流程，並教授如何用海外 Apple ID 搭配 Gift Card 繞過香港信用卡限制，無痛開通 ChatGPT Plus 或 Go 方案。",
+    "tags": [
+      "AI"
+    ],
+    "category": "其他"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-flyer",
+    "title": "【DSE 英文 Listening】Flyer 格式攻略 | 標題/分段/語氣 (5**範文拆解)",
+    "excerpt": "DSE 英文 Listening 撞正 Flyer 唔知點落筆？一文拆解活動傳單與 Leaflet 的精簡結構。傳授吸睛主標題、Bullet Points 資訊篩選邏輯與滿分 Call to Action 句式。附最新評分準則與範文，拒絕加錯書信上下款，遇冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-brochure",
+    "title": "【DSE 英文 Listening】Brochure 格式攻略 | 標題/分段/推廣語氣 + 5** 範文拆解",
+    "excerpt": "DSE 英文 Listening 撞正 Brochure 唔知點落筆？一文拆解長篇宣傳冊與 Leaflet 的複雜度分別。傳授四大主題 Section 分類邏輯、精緻形容詞包裝與滿分 Call to Action 結尾技巧。附最新評分準則與範文，拒絕寫成書信格式，遇冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-leaflet",
+    "title": "【DSE 英文 Listening】Leaflet 格式攻略 | 標題/分段/語氣 + 5** 範文拆解",
+    "excerpt": "拆解 DSE 英文 Listening Part B 實用文體 Leaflet（宣傳單張）的結構與考評局評分標準。全方位涵蓋吸引型主標題設計、小標題分段資訊區塊編排、Call to Action（行動呼籲）寫法，並教授如何將 Data File 中性事實改寫為 5 必備的正面推廣語氣。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "2026-secondary-students-have-fun-locations-list",
+    "title": "中學生考完試/DSE 可以去邊度玩？香港18區好去處＋學生優惠全攻略（2026年7月版）",
+    "excerpt": "2026年7月暑假正式開始，同班中學同學約出街唔好再淨係識去飲茶！一文暴力盤點 15 大最划算避暑聖地。實測解鎖水上樂園低至 $98 的學生兩折特惠、全港各大院線 $30 學生飛，以及 18 區完全免門票的冷氣古蹟與日落打卡秘境。",
+    "tags": [
+      "中學生好去處",
+      "香港好去處2026"
+    ],
+    "category": "其他"
+  },
+  {
+    "slug": "dse-english-level-2-guide-2026",
+    "title": "【DSE 放榜】英文得 Level 2 點算？其實未輸晒！考評局沒告訴你的「破格取錄」隱藏玩法",
+    "excerpt": "收到成績表發現英文得 Level 2，以為八大夢碎？一文踢爆重考升 Grade 殘酷成功率，為你盤點比盲目重讀更有效的逆襲出路。深度拆解八大彈性收生特赦門檻、IELTS 換分神技，以及 Asso/High Dip 兩年後100%洗底的真實走法。",
+    "tags": [
+      "DSE English"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-math-core-paper-2-mc-trick",
+    "title": "【DSE 數學】Maths Paper 2 斬星神技｜原來考評局有固定模式？MC 答案秘密比例曝光",
+    "excerpt": "考 Math Paper 2 剩低幾條唔識做，望住 A B C D 亂撞根本送分給考評局！一文實測近年官方答案，揭開 Section A/B 背後沒公開的「分佈規律」。教你最後關頭如何靠數格仔，將純運氣的 25% 命中率強勢逆轉。",
+    "tags": [],
+    "category": "DSE 數學"
+  },
+  {
+    "slug": "english-ielts-versus-toefl-2026",
+    "title": "IELTS 與 TOEFL 分別全攻略｜2026改制詳解、DSE 豁免對照、升學選考指南",
+    "excerpt": "DSE放榜前後想去留學，揀 IELTS 定 TOEFL？一文拆解 DSE 英文豁免標準、2026年TOEFL 改版 90分鐘新制，以及香港 IELTS 全面轉電腦考最新不確定性。傳授英美澳加四國選考策略，助你避開名校拒收盲點。",
+    "tags": [
+      "IELTS",
+      "DSE English"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "jupas-oea-slp-guide-2026",
+    "title": "【JUPAS 選科】OEA 與 SLP 填寫全攻略｜500字附加說明、1000字Self-Account結構、排序策略",
+    "excerpt": "超過80% JUPAS成功入讀者皆有提交OEA。一文完美拆解OEA 8大類別排序策略、500字附加說明寫法，以及SLP 1000字Self-Account上品結構。助你拒絕流水帳，靠個人反思在DSE邊界分強勢突圍。",
+    "tags": [
+      "JUPAS"
+    ],
+    "category": "JUPAS 選科指南"
+  },
+  {
+    "slug": "dse-2027-circa-summer-revision-prep-guide",
+    "title": "【DSE 備考】升中六暑假溫書時間表與策略｜狀元補底方法、AI 盲點、JUPAS 目標試算",
+    "excerpt": "升 Form 6暑假係 DSE 最後底牌！一文拆解 70 日黃金連續時間分配，傳授歷屆狀元「弱點清單」診斷法與文理科補底策略。拒絕盲目操卷與過度依賴AI，配合4小時高效溫書時間表，助你開學前強勢領先。",
+    "tags": [],
+    "category": "DSE 攻略"
+  },
+  {
+    "slug": "retake-dse-vs-asso-hd-2026",
+    "title": "【DSE 放榜】重考 Retake DSE 定讀 Asso/HD？升學率沒人敢講的真實代價",
+    "excerpt": "JUPAS 落選唔想變炮灰？一文看清自修生重考 DSE 與兩年制 Asso/H 銜接大學率真相。殘酷對比高自律爆肝加紙重考、與GPA 3.0副學士生存戰，助你在放榜十字路口做出不後悔的黃金抉擇。",
+    "tags": [
+      "Asso",
+      "DSE Retake"
+    ],
+    "category": "JUPAS 選科指南"
+  },
+  {
+    "slug": "dse-english-paper-4-speaking-guide-2026",
+    "title": "【DSE 英文】Speaking/Oral 說話全攻略｜5** 發言框架、背熟呢幾句直接KO「I agree」",
+    "excerpt": "英文 Speaking 口試佔 10% 咪再淨係講 I agree！一文完美拆解 10 分鐘準備時間多角度思考法、Group Discussion 必備 SET 發言框架與高端詞彙替換表。獨家傳授 1 分鐘 Individual Response 結構與斷片、遇霸道組員等神級救命技巧。",
+    "tags": [
+      "DSE Speaking",
+      "English Paper 4"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-sba-group-discussion-individual-presentation-guide-2026",
+    "title": "【DSE 英文 SBA】指南：書/電影點揀? Individual Presentation/Group Interaction 全攻略",
+    "excerpt": "DSE 英文 SBA 佔 15%，書本同電影揀啱啱先係關鍵。呢篇指南根據 HKEAA 同 EDB 官方推薦清單，提供唔同英文程度都啱用的書本同電影選擇，再拆解評分範疇、Individual Presentation 同 Group Interaction 實際做法。",
+    "tags": [
+      "English SBA",
+      "English Paper 4"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-chinese-sba-guide-2026",
+    "title": "【DSE 中文】SBA 校本評核全攻略｜閱讀活動選書原則、高分文字報告結構、口試框架",
+    "excerpt": "中文科 SBA 佔 15% 唔想白白浪費？一文完美拆解 2024 改制後「閱讀活動」文字報告上品結構與選書原則。獨家傳授口頭匯報 30% 應對提問框架與考評局 AI 防抄襲新西，助你穩奪這 15% 穩定加分機會。",
+    "tags": [
+      "中文 SBA"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-introduction",
+    "title": "【DSE 英文 Listening】Introduction / Overview 格式攻略｜公司網站簡介、問卷引言、5必備句式",
+    "excerpt": "DSE Listening 突襲 Introduction 唔知點落筆？一文拆解 Company Website 與 Survey Intro 兩大情境格式。傳授公司專業語氣、概念分類邏輯與 5** 進階改寫句式。附最新評分準則與範文，拒絕直抄 Data File，遇冷門題照樣變送分題。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-webpage-online-content",
+    "title": "【DSE 英文 Listening】Webpage / Online Content 格式攻略｜標題、分段、語氣、5** 範文拆解",
+    "excerpt": "DSE 英文 Listening (Paper 3) Webpage／Online Content 係 Part B 較少見嘅格式，但一出就係死亡陷阱 — 唔少人當 essay 咁寫，又唔識用 subheadings 分節，結尾又冇 Call to Action。呢篇攻略逐段拆解頁面標題寫法、section headings、FAQ 格式、語氣設定同聯絡資訊收尾，附 HKEAA 5** 範文 annotation，直接睇頂尖答案係點寫。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-overview",
+    "title": "【DSE 英文 Listening】Part B 寫作格式全攻略｜7大必考文體、5計分陷阱、格式速查表",
+    "excerpt": "DSE 英文 Listening Part B 格式多到記唔到？本篇懶人包完美包攬 Email、Letter、Report、Speech 等 7 大必考格式結構與語氣。獨家傳授「總分減 9」精準計分技巧，助你秒速圈出 Data File 核心 Point，入場拒絕盲目照抄，冷門格式即變送分題。",
+    "tags": [
+      "DSE Listening Guide",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-speech",
+    "title": "【DSE 英文 Listening】Speech 演講辭 格式攻略 (5** 範文拆解)",
+    "excerpt": "DSE 英文 Listening (Paper 3) Speech 係 Part B 常見格式，但唔少人唔知開場要打招呼＋自我介紹定齋打招呼，又唔識用 Firstly／Secondly／Lastly 分點，結尾又唔記得留 closing message。呢篇攻略逐段拆解開場段寫法、自我介紹句式、body indicators 同結尾技巧，附 HKEAA 5** 範文 annotation，直接睇頂尖答案係點寫。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-report",
+    "title": "【DSE 英文 Listening】Report 格式攻略｜標題、Passive Voice、5** 範文拆解",
+    "excerpt": "DSE 英文 Listening (Paper 3) Report 係 Part B 常見格式，但唔少人唔識分 compare pros and cons／recommend／persuade 三類寫法，格式錯咗組織分直接扣。呢篇攻略逐段拆解標題寫法、numbered headings、sub-headings、passive voice 同 reporting verbs，附三份 HKEAA 5** 範文 annotation，直接睇頂尖答案係點寫。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-letter",
+    "title": "【DSE 英文 Writing】Letter 書信 (Formal/Informal)｜格式＋5** 範文＋常見錯誤",
+    "excerpt": "DSE 英文 Writing 書信格式全攻略：正式信 (Formal Letter) 與非正式信 (Informal Letter) 的地址、日期、稱呼(Salutation)、結尾敬語 (Complimentary Close) 配對規則，以及Yours sincerely 與 Yours faithfully 的正確用法。附5** 範文及常見錯誤，一頁學識 DSE Letter 寫作。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-article",
+    "title": "【DSE 英文 Listening】Article 格式攻略｜標題、開場段、5** 範文拆解",
+    "excerpt": "DSE 英文 Listening (Paper 3) Article 係 Part B 常見格式，但 expositary 同 persuasive 寫法唔同，topic phrases 用得啱先有組織分。呢篇攻略逐段拆解標題寫法、開場段 hook、topic phrases（For / Regarding / Apart from）、Data File 改寫技巧同 conclusion 收法，附 HKEAA 5** 範文 annotation，直接睇頂尖答案係點寫。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-writing-vocab-upgrade-list-1",
+    "title": "DSE 英文 Writing 5** Vocab 詞彙升級大全＋5**句式＋文體專用短語",
+    "excerpt": "DSE英文Writing由Level 3跳到Level 5，最直接方法係upgrade詞彙。動詞、形容詞、副詞、連接詞逐個level up，配Article、Speech、Formal Letter、Report、Blog專用開頭結尾句式，加Collocations、Idioms同Power Closings。考前溫呢篇，Language分即時見效。",
+    "tags": [
+      "English Paper 2",
+      "DSE Writing"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-letter-to-editor",
+    "title": "【DSE 英文 Listening】Letter To Editor 格式攻略｜開場段、句式 (5** 範文拆解)",
+    "excerpt": "DSE 英文 Listening (Paper 3) Letter to Editor 係 Part B 出現率最高嘅格式之一，但唔少人格式對咗、內容分照樣丟。呢篇攻略逐段拆解開場段寫法、內文句式同 Sign-off 配對，附 HKEAA 5** 範文 annotation，直接睇頂尖答案係點寫。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-email",
+    "title": "【DSE English Listening】Email 格式完全攻略｜Subject Line、開場段、5** 範文拆解",
+    "excerpt": "DSE English Listening Formal Email 唔係識格式就夠。呢篇攻略完整拆解 Subject Line、開場句式、內文段落組織，附 2013–2018 HKEAA Level 5** 範文逐段 Annotation，直接對照頂尖答案係點寫。",
+    "tags": [
+      "DSE Listening",
+      "English Paper 3"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-news-report",
+    "title": "DSE 英文卷二 News Report 新聞報道｜格式＋5**範文＋常見錯誤",
+    "excerpt": "DSE 英文 Writing News Report 稀有文體一出即死？唔使驚。標題 (Headline)、Byline、Dateline、5W1H 導言、倒金字塔結構、客觀中立語調、被動語態用法、引述技巧 — 15分鐘由零學識，附5**完整範文對比及7大必死錯誤。Part B唔使靠撞彩，",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-online-forum-post",
+    "title": "DSE 英文卷二 Online Forum Post 討論區帖文｜格式＋5**範文＋常見錯誤",
+    "excerpt": "DSE討論區帖文格式全攻略：論壇名、帖子標題、用戶名、日期、引言、內文及結尾互動句。Semi-formal語氣技巧、個人經歷融入、常見格式錯誤，附5**範文，一頁學識寫出真實感帖文。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-diary",
+    "title": "DSE 英文卷二 Diary Entry 日記｜格式＋5**範文＋搶分技巧＋常見錯誤",
+    "excerpt": "DSE Writing Diary 日記寫作完整指南：日期格式、Dear Diary稱呼、情感弧線規劃、第一人稱語氣、反思式結尾 — 逐項拆解。附5**真實範文及7大常見錯誤對照表。Part B 見到日記題即變送分題，立即查閱完整攻略。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-short-story",
+    "title": "DSE 英文卷二 Short Story 短篇故事｜格式＋5**範文＋創作技巧＋常見錯誤",
+    "excerpt": "DSE Short Story 短篇故事創作全攻略：開端（Opening）、發展（Rising Action）、高潮（Climax）及結局（Ending）結構，Show Don't Tell、人物塑造、Dialogue技巧，附5**範文及7大常見錯誤（包括離題、Tense亂用、結局太突然），一頁學識寫出高質Short Story。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-essay",
+    "title": "DSE 英文卷二 Essay/Argumentative Essay 論說文｜結構技巧＋5**範文＋常見錯誤",
+    "excerpt": "DSE Writing Essay/Argumentative Essay 論說文完全攻略：One-sided／Two-sided／Response-to-Quote 三大類型，3正1反1駁黃金結構、PEEL論證法、Counter-argument及Rebuttal技巧。附 5** 範文及10大常見錯誤，一頁學識寫出高說服力Essay。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-email",
+    "title": "DSE 英文卷二 Email 寫作全攻略｜格式 + 範文 + 5**技巧 + 常見錯誤",
+    "excerpt": "DSE 英文卷二 Writing Email 寫作全攻略：Subject line、上款稱謂及下款格式，正式及半正式語氣技巧，並附 Part A 5** 範文及 7 大常見錯誤，助你掌握 Email 獨有格式，穩奪分數。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-speech",
+    "title": "DSE 英文卷二 Speech 演講辭全攻略｜格式＋範文＋5**技巧＋常見錯誤",
+    "excerpt": "DSE English Writing | Speech 演講辭點先寫得自然又有說服力？問候語次序、修辭技巧（反問／排比）、互動句型全拆解。附5**範文及7大常見錯誤，一頁學識DSE英文卷二Speech格式。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-article",
+    "title": "DSE 英文卷二 Article 全攻略｜寫作技巧＋5**範文＋常見錯誤",
+    "excerpt": "DSE 英文卷二 Article 格式全攻略：Title 標題、Introduction 引言、Body 主體（PEEL 結構）及 Conclusion 結論。附 5** 範文、高分技巧同 7 大常見錯誤（包括漏 Title、語氣唔啱），一頁學識寫出專業 Article。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-r",
+    "title": "DSE 英文卷二 Report 報告全攻略｜格式＋範文＋5**技巧＋常見錯誤",
+    "excerpt": "DSE 英文 Writing Report格式全攻略：標題＋小標題＋被動語態＋Findings＋Recommendations，完整格式結構、Level 5** 範文拆解、數據呈現技巧及六大常見錯誤（包括誤加上下款）。一頁學識寫出專業DSE Report。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-proposal",
+    "title": "DSE 英文卷二 Proposal 建議書｜格式＋範文＋5**技巧＋常見錯誤",
+    "excerpt": "DSE 英文 Writing Proposal 建議書完整攻略。正式格式（Title＋Sub-headings）、語氣技巧（would vs will）、Counter-view處理、評分準則，以及Letter to the Editor常見混淆對比。附5**範文、Checklist及六大常見錯誤，一頁溫晒。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-blog-entry",
+    "title": "DSE 英文卷二 Blog Entry 寫作全攻略｜格式＋範文＋5**技巧＋常見錯誤",
+    "excerpt": "DSE English Writing Blog Entry 寫作全攻略：格式要求（標題＋日期＋互動結尾）＋語氣技巧＋與 Article 分別＋5**範文拆解＋六大常見錯誤（包括誤用 Letter 格式）。一頁學識寫出有個人風格嘅 Blog。",
+    "tags": [
+      "DSE Writing",
+      "English Paper 2"
+    ],
+    "category": "DSE 英文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-jyut-haa-duk-zoek",
+    "title": "《月下獨酌》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "李白《月下獨酌》係DSE中文十二篇範文必考詩篇。完整逐句語譯、字詞解釋、寫作手法分析，仲有人生觀、跨篇比較，一頁溫晒！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-cing-juk-on",
+    "title": "《青玉案．元夕》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "辛棄疾《青玉案．元夕》DSE「詞三首」必考。全文語譯、字詞注釋、段旨主旨，拆解反襯對比、意象隱喻等寫作手法，並附詞牌名、文體知識、跨篇比較及常見失分陷阱（如將上片與下片混淆），一頁溫晒。",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-sing-sing-maan",
+    "title": "《聲聲慢．秋情》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "《聲聲慢．秋情》係李清照後期代表作，亦係DSE中文甲部必考範文。完整語譯、字詞解釋、疊字及借景抒情手法分析、段旨主旨，仲有課文練習題，一頁溫晒！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-nim-nou-giu",
+    "title": "《念奴嬌．赤壁懷古》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "蘇軾《念奴嬌．赤壁懷古》逐句語譯、字詞解釋、段旨主旨。拆解豪放詞風、借景抒情、動態描寫、以古襯今及對比襯托手法（周瑜 vs 蘇軾），深入「懷才不遇」與「人生如夢」之情，附詞牌名、押韻分析、常見失分陷阱及跨篇比較要點。",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-san-geui-cau-ming",
+    "title": "《山居秋暝》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "DSE 中文卷一甲部必考《山居秋暝》完整精讀筆記。全文語譯、字詞注釋、段落大意、中心主旨、詩眼「空」字、以動襯靜、倒裝句及詩中有畫的寫作手法分析，並附跨篇比較題示例，一頁溫晒。",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-si-shuet",
+    "title": "《師說》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "《師說》係韓愈批判唐代「恥學於師」陋習嘅議論文，DSE中文甲部必考範文。完整語譯、字詞解釋、三大對比論證、段旨、主旨同修辭手法，一頁溫晒。",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "2027-dse-chinese-paper1-parta-tip",
+    "title": "2027 DSE 中文卷一甲部Tip題：邊幾篇最大機會出？",
+    "excerpt": "DSE 2027中文卷一甲部貼題分析：根據2018至2026年真實出題紀錄，推算最高機率範文（論語三篇、月下獨酌、登樓、聲聲慢），附低機率篇章、黑馬青玉案、備試優先順序及答題技巧，唔係空口講係有根據咁貼。",
+    "tags": [],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chemistry-paper-1a-mc-2024-eng",
+    "title": "DSE Chemistry 2024 Paper 1A MC 答案 & 詳細解析",
+    "excerpt": "2024 DSE Chemistry Paper 1A MC 全卷詳解，每題解析答案思路，唔係死背答案，係理解點解係咁答。",
+    "tags": [
+      "dse chem mc",
+      "mc ans"
+    ],
+    "category": "DSE 化學"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-dang-lau",
+    "title": "《登樓》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "《登樓》DSE必考範文懶人包：全文語譯、字詞解釋、主旨段旨、寫作及修辭手法，拆解以樂景襯哀情、借古諷今用典等必考手法，分析憂國傷時、報國無路主旨，一次過溫晒！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "2026-korean-study-hk-guide",
+    "title": "2026韓國留學香港攻略：費用＋大學申請＋TOPIK報名",
+    "excerpt": "DSE出路唔止英國澳洲！2026年韓國大學留學懶人包：學費生活費真實數字、TOPIK 2026年香港區報名日程、SKY三大學申請門檻、D-2簽證文件清單，再加GKS政府獎學金申請祕訣。文末附香港學生真實經驗分享，想去韓國讀書必睇！",
+    "tags": [],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-luk-kwok-lun",
+    "title": "《六國論》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "《六國論》DSE必考範文懶人包：全文語譯、字詞解釋、主旨段旨、論證及修辭手法，拆解弊在賂秦、破立對比論證、借古諷今等必考題型，兼備通假字同易錯點，一次過溫晒！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-ngok-yeung-lau-gei",
+    "title": "《岳陽樓記》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "范仲淹《岳陽樓記》DSE中文十二篇範文全解：完整語譯、文言字詞、段旨主旨、寫作手法，拆解借景抒情、對比手法、先天下之憂而憂等必考主題，兼備對比簡表、通假字分析同常見易錯點，一頁極速溫晒閱讀卷必考重點！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-lim-po",
+    "title": "《廉頗藺相如列傳》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "【DSE中文十二篇範文】司馬遷《廉頗藺相如列傳》全解：完整語譯、文言字詞、段落大意、主旨、寫作手法同人物形象分析，拆解完璧歸趙、澠池之會、負荊請罪三個故事，一頁極速溫晒閱讀卷必考重點！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-chut-si-biu",
+    "title": "《出師表》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "諸葛亮《出師表》DSE中文十二篇範文全解：議論抒情篇章，完整語譯、文言字詞、段落大意、主旨、寫作及修辭手法，拆解危急存亡之秋、親賢遠佞等必考主題，兼備常見DSE問答題目，一頁極速溫晒閱讀卷必考重點！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-sai-shan",
+    "title": "《始得西山宴遊記》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "【DSE中文十二篇範文】柳宗元《始得西山宴遊記》全解：完整語譯、文言字詞、段旨主旨、寫作手法，兼備常見易錯位同跨篇比較，一頁極速溫晒閱讀卷必考重點，輕鬆KO閱讀卷！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-huen-hok",
+    "title": "《勸學》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "《勸學》（節錄）出自荀子，係DSE中文甲部12篇範文之一。完整原文、逐句語譯、重點字詞解釋、通假字、段落大意、主旨分析、比喻論證、正反對比、修辭手法分析，仲有常見DSE問答題目同跨篇比較，一頁溫晒！",
+    "tags": [
+      "十二篇範文",
+      "中文卷一"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-siu-yiu-yau",
+    "title": "《逍遙遊》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "《逍遙遊》（節錄）係莊子《內篇》首篇，DSE中文閱讀卷十二篇範文必考篇章。全文透過莊子與惠子的對話，以不龜手之藥、狸狌、斄牛等寓言，闡述「有用」與「無用」只係角度之別，世俗所謂無用反而係「大用」，能順應自然才能達到逍遙自在的境界。本頁收錄完整原文、全文語譯、字詞解釋表、段落大意、主旨、寫作手法及修辭分析，附跨篇比較速查，係備試《逍遙遊》最完整的一頁筆記。",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "2026-dse-results-day-guide",
+    "title": "【2026放榜懶人包】DSE 放榜當日要做咩？時間表、文件、JUPAS改選全攻略",
+    "excerpt": "2026 DSE 放榜日（7月15日）完整攻略：幾點睇成績、回校流程、必帶文件清單、JUPAS改選時間表、覆核成績 Appeal 申請全攻略，一篇全搞掂。",
+    "tags": [
+      "放榜",
+      "JUPAS",
+      "覆核成績"
+    ],
+    "category": ""
+  },
+  {
+    "slug": "2026-dse-asso-full-guide",
+    "title": "【2026 副學士全攻略】DSE放榜後報Asso必知：入學要求、學費、升大學真相",
+    "excerpt": "DSE 放榜前想搵穩陣後備？一文拆解 2026 副學士入學要求、學費資助、Asso vs HD 點揀、「親生仔效應」、GPA 幾多先有力升八大，以及 GPA 唔夠時海外 Top-up 後路。",
+    "tags": [
+      "副學士",
+      "高級文憑",
+      "JUPAS"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-lunyue",
+    "title": "【DSE 中文】《論仁、論孝、論君子》超完整溫習筆記（逐節語譯＋手法＋易錯位）",
+    "excerpt": "《論仁、論孝、論君子》係DSE中文甲部十二篇範文頻率最高嘅一篇。呢篇筆記有齊全17節原文逐句語譯、字詞解釋（含通假字、古今異義、詞性活用）、段落大意、主旨、六大修辭手法分析、常見考試陷阱同埋跨篇比較速查表, 一頁搞掂。",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-yue-ngo-so-yuk-ya",
+    "title": "《魚我所欲也》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "excerpt": "孟子《魚我所欲也》DSE中文十二篇範文全解：完整語譯、文言字詞、段旨主旨、寫作手法、通假字同常見易錯位，拆解魚與熊掌比喻論證、捨生取義、性善論、本心等必考概念，兼備跨篇比較，一頁極速溫晒閱讀卷必考重點！",
+    "tags": [
+      "十二篇範文"
+    ],
+    "category": "DSE 中文"
+  },
+  {
+    "slug": "2026-hd-higher-diploma-full-guide",
+    "title": "【2026 高級文憑全攻略】Higher Diploma 報讀指南：入學要求、學費、升大學出路",
+    "excerpt": "考完DSE唔知讀High Dip係咪啱自己？呢篇整合咗2026/27學年高級文憑嘅入學要求、學費、報名時間線、院校比較同升大學真相，一次睇清。",
+    "tags": [
+      "高級文憑",
+      "DSE 出路",
+      "香港專上教育"
+    ],
+    "category": "升學資訊"
+  },
+  {
+    "slug": "dse-uk-ucas-clearing-2026-deadlines",
+    "title": "DSE 放榜後仲可以申請英國大學？2026最後截止日期整理",
+    "excerpt": "2026 DSE放榜後，仲趕唔趕得切申請英國大學？一文睇清UCAS Clearing時間線、關鍵截止日、仲有咩學科有位，以及實際操作步驟。",
+    "tags": [
+      "UCAS",
+      "英國升學",
+      "海外升學"
+    ],
+    "category": "升學資訊"
+  },
+  {
     "slug": "dse-2025-paper-3-task-4",
     "title": "DSE 英文｜ 2025 Paper 3 Task 4 低命中率題目分析（完整影片解說）",
     "excerpt": "DSE English Paper 3 Listening Task 4 一向是考生的「兵家必敗之地」。為什麼有些題目全港只有不到五分之一的考生答對？",
@@ -126,6 +972,17 @@
       "DSE2026"
     ],
     "category": "DSE 英文"
+  },
+  {
+    "slug": "what-do-i-do-if-i-fail-dse-2026",
+    "title": "DSE 唔合格點算？12種中六畢業生升學及就業全面出路圖解 (2026)",
+    "excerpt": "DSE 放榜在即，成績不理想？別擔心！本文詳解12種升學就業出路：自資學士、副學士、高級文憑、海外升學、大灣區升學、VTC 職訓、直接就業及創業。涵蓋入學要求、學費資助、升學前景、薪酬分析，助你找到最適合的 Plan B 。記住：DSE 只是起點，條條大路通羅馬！",
+    "tags": [
+      "香港升學",
+      "中六",
+      "DSE出路"
+    ],
+    "category": "DSE 攻略"
   },
   {
     "slug": "jupas-vs-dse-2025-2026",

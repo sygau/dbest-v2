@@ -1,5 +1,539 @@
 [
   {
+    "slug": "dse-school-principal-nominations-scheme-guide",
+    "title": "DSE 校長推薦計劃(SPN) 全攻略 | 申請條件、名額曝光，成功率原來係...",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "is-water-bubble-subjects-worth-it-jupas",
+    "title": "DSE水泡科全攻略2026｜邊啲科收分低？出路/轉系/Asso對比逐樣拆",
+    "category": "JUPAS 選科指南",
+    "categoryColor": "#444444"
+  },
+  {
+    "slug": "jupas-zero-offers-pathways-2026",
+    "title": "JUPAS放榜零Offer點算好？五條出路逐條行（附申請時間線）",
+    "category": "JUPAS 選科指南",
+    "categoryColor": "#444444"
+  },
+  {
+    "slug": "dse-private-candidate-application-guide-2027",
+    "title": "DSE自修生報名全攻略2027｜報考資格、程序步驟及與學校考生分別逐項拆解",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "dse-electives-combined-science-guide-2026",
+    "title": "DSE Combined Science揀科指南2026 | 物理/化學/生物三合一: 捷徑定伏位？",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "croatia-offside-sensor-dse-physics",
+    "title": "世界盃VAR越位爭議｜波入面粒Sensor點樣用Physics判入球有效定無效？",
+    "category": "DSE 物理",
+    "categoryColor": "#1565C0"
+  },
+  {
+    "slug": "dse-sec-school-students-summer-jobs-list",
+    "title": "DSE畢業生/中學生暑期工&Part time攻略2026 | 無經驗都請嘅15份筍工全覽",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-sec-student-cover-letter-cv-writing-guide",
+    "title": "DSE畢業生/中學生CV寫法教學2026 | 零經驗都搞得掂嘅履歷表全攻略",
+    "category": "其他",
+    "categoryColor": "#607D8B"
+  },
+  {
+    "slug": "dse-chinese-classical-grammar-guide",
+    "title": "DSE 文言文文法大全｜7大類核心技巧一次睇晒（倒裝句／特殊句式／詞類活用）",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-ancient-text-hui-word-guide",
+    "title": "DSE 中文文言文虛詞全攻略｜18個指定虛詞用法表＋例句",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-electives-is-english-literature-worth-it-guide",
+    "title": "DSE 英文文學 English Literature 選科攻略：全港200人考嘅隱藏選擇，英文底強必睇！",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-chinese-ancient-text-era-contrary-words-list",
+    "title": "DSE 中文文言文古今異義詞大全｜30個常考字表＋實戰題型拆解",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-drop-subject-guide-2026",
+    "title": "中四發現讀錯科，Drop唔Drop好？定係有第三條路？",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "csd-mainland-trip-report-guide",
+    "title": "公民科內地考察報告點寫？四部分結構＋選題技巧",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "dse-history-2030-new-curriculum",
+    "title": "DSE 歷史科 2030 新課程：第一批考生要知道嘅4個改變",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "dse-citizenship-attained-question-types-guide",
+    "title": "公民科達標完全攻略：幾多分先夠？6大題型逐個拆解（附答題框架）",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "asso-hd-senior-year-english-requirements",
+    "title": " Asso / HD 升Year 3英文要求｜八大Senior Entry英文要求逐間睇+IELTS補救策略",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-citizenship-and-social-development-study-guide-and-attained-rate",
+    "title": "DSE公民科係咪真係唔洗溫？94%達標率背後你要知嘅事",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "dse-electives-is-history-worth-it-guide",
+    "title": "【中三選科】History 歷史選科指南 | 讀歷史真係無出路？難唔難攞高分?",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-electives-is-chinese-literature-worth-it-guide",
+    "title": "【中三選科指南】DSE中國文學值唔值得揀？中文好就等於文學好？",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-electives-is-hsmc-worth-it-guide",
+    "title": "【中三選科】HMSC 健社選科指南 | 邊種人先啱讀呢科？難唔難合格？",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-electives-is-technology-living-worth-it-guide",
+    "title": "【中三選科】科技與生活選科指南 | 揀呢科即係讀家政？邊種人先啱讀呢科？",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-application-form",
+    "title": "【DSE 英文 Listening】Application Form 申請表 格式攻略 | 填表原則、5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-meeting-summary",
+    "title": "【DSE 英文 Listening】Meeting Summary 會議摘要 格式攻略 (5** 範文拆解)",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-faq",
+    "title": "【DSE 英文 Listening】FAQ 格式攻略 | 問答對應、簡潔答題邏輯、5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-appeal-full-guide-2026",
+    "title": "2026 DSE 成績覆核 Appeal 全攻略｜申請流程+邊科最值得覆核? JUPAS補選一文睇清",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-announcement",
+    "title": "【DSE 英文 Listening】Announcement 官方公告 格式攻略 | 分段/語氣 + 5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "is-appealing-dse-results-worth-it-2026",
+    "title": "【DSE 放榜 Appeal】DSE 成績值唔值得覆核？一文睇清Appeal成功率與 JUPAS 補選策略",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-video-script",
+    "title": "【DSE 英文 Listening】Video Script 格式攻略 | 旁白口語、修辭問句/分段 (+5** 範文拆解)",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-schedule",
+    "title": "【DSE 英文 Listening】Schedule 格式攻略 | 表格排版、時間時序 + 5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-biography",
+    "title": "【DSE 英文 Listening】Biography 傳記 格式攻略 | 時態運用/敘事邏輯 + 5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "hk-chatgpt-register-subscribe-guide-2026-july",
+    "title": "【AI 教學】2026 最新 ChatGPT 香港註冊、VPN 跨區與 Plus/Pro 訂閱全攻略",
+    "category": "其他",
+    "categoryColor": "#607D8B"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-flyer",
+    "title": "【DSE 英文 Listening】Flyer 格式攻略 | 標題/分段/語氣 (5**範文拆解)",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-brochure",
+    "title": "【DSE 英文 Listening】Brochure 格式攻略 | 標題/分段/推廣語氣 + 5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-leaflet",
+    "title": "【DSE 英文 Listening】Leaflet 格式攻略 | 標題/分段/語氣 + 5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "2026-secondary-students-have-fun-locations-list",
+    "title": "中學生考完試/DSE 可以去邊度玩？香港18區好去處＋學生優惠全攻略（2026年7月版）",
+    "category": "其他",
+    "categoryColor": "#607D8B"
+  },
+  {
+    "slug": "dse-english-level-2-guide-2026",
+    "title": "【DSE 放榜】英文得 Level 2 點算？其實未輸晒！考評局沒告訴你的「破格取錄」隱藏玩法",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-math-core-paper-2-mc-trick",
+    "title": "【DSE 數學】Maths Paper 2 斬星神技｜原來考評局有固定模式？MC 答案秘密比例曝光",
+    "category": "DSE 數學",
+    "categoryColor": "#0074d1"
+  },
+  {
+    "slug": "english-ielts-versus-toefl-2026",
+    "title": "IELTS 與 TOEFL 分別全攻略｜2026改制詳解、DSE 豁免對照、升學選考指南",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "jupas-oea-slp-guide-2026",
+    "title": "【JUPAS 選科】OEA 與 SLP 填寫全攻略｜500字附加說明、1000字Self-Account結構、排序策略",
+    "category": "JUPAS 選科指南",
+    "categoryColor": "#444444"
+  },
+  {
+    "slug": "dse-2027-circa-summer-revision-prep-guide",
+    "title": "【DSE 備考】升中六暑假溫書時間表與策略｜狀元補底方法、AI 盲點、JUPAS 目標試算",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
+  },
+  {
+    "slug": "retake-dse-vs-asso-hd-2026",
+    "title": "【DSE 放榜】重考 Retake DSE 定讀 Asso/HD？升學率沒人敢講的真實代價",
+    "category": "JUPAS 選科指南",
+    "categoryColor": "#444444"
+  },
+  {
+    "slug": "dse-english-paper-4-speaking-guide-2026",
+    "title": "【DSE 英文】Speaking/Oral 說話全攻略｜5** 發言框架、背熟呢幾句直接KO「I agree」",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-sba-group-discussion-individual-presentation-guide-2026",
+    "title": "【DSE 英文 SBA】指南：書/電影點揀? Individual Presentation/Group Interaction 全攻略",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-chinese-sba-guide-2026",
+    "title": "【DSE 中文】SBA 校本評核全攻略｜閱讀活動選書原則、高分文字報告結構、口試框架",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-introduction",
+    "title": "【DSE 英文 Listening】Introduction / Overview 格式攻略｜公司網站簡介、問卷引言、5必備句式",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-webpage-online-content",
+    "title": "【DSE 英文 Listening】Webpage / Online Content 格式攻略｜標題、分段、語氣、5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-overview",
+    "title": "【DSE 英文 Listening】Part B 寫作格式全攻略｜7大必考文體、5計分陷阱、格式速查表",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-speech",
+    "title": "【DSE 英文 Listening】Speech 演講辭 格式攻略 (5** 範文拆解)",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-report",
+    "title": "【DSE 英文 Listening】Report 格式攻略｜標題、Passive Voice、5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-letter",
+    "title": "【DSE 英文 Writing】Letter 書信 (Formal/Informal)｜格式＋5** 範文＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-article",
+    "title": "【DSE 英文 Listening】Article 格式攻略｜標題、開場段、5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-writing-vocab-upgrade-list-1",
+    "title": "DSE 英文 Writing 5** Vocab 詞彙升級大全＋5**句式＋文體專用短語",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-letter-to-editor",
+    "title": "【DSE 英文 Listening】Letter To Editor 格式攻略｜開場段、句式 (5** 範文拆解)",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-3-listening-guide-email",
+    "title": "【DSE English Listening】Email 格式完全攻略｜Subject Line、開場段、5** 範文拆解",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-news-report",
+    "title": "DSE 英文卷二 News Report 新聞報道｜格式＋5**範文＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-online-forum-post",
+    "title": "DSE 英文卷二 Online Forum Post 討論區帖文｜格式＋5**範文＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-diary",
+    "title": "DSE 英文卷二 Diary Entry 日記｜格式＋5**範文＋搶分技巧＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-short-story",
+    "title": "DSE 英文卷二 Short Story 短篇故事｜格式＋5**範文＋創作技巧＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-essay",
+    "title": "DSE 英文卷二 Essay/Argumentative Essay 論說文｜結構技巧＋5**範文＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-email",
+    "title": "DSE 英文卷二 Email 寫作全攻略｜格式 + 範文 + 5**技巧 + 常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-speech",
+    "title": "DSE 英文卷二 Speech 演講辭全攻略｜格式＋範文＋5**技巧＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-article",
+    "title": "DSE 英文卷二 Article 全攻略｜寫作技巧＋5**範文＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-r",
+    "title": "DSE 英文卷二 Report 報告全攻略｜格式＋範文＋5**技巧＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-proposal",
+    "title": "DSE 英文卷二 Proposal 建議書｜格式＋範文＋5**技巧＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-english-paper-2-writing-guide-blog-entry",
+    "title": "DSE 英文卷二 Blog Entry 寫作全攻略｜格式＋範文＋5**技巧＋常見錯誤",
+    "category": "DSE 英文",
+    "categoryColor": "#C17617"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-jyut-haa-duk-zoek",
+    "title": "《月下獨酌》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-cing-juk-on",
+    "title": "《青玉案．元夕》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-sing-sing-maan",
+    "title": "《聲聲慢．秋情》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-nim-nou-giu",
+    "title": "《念奴嬌．赤壁懷古》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-san-geui-cau-ming",
+    "title": "《山居秋暝》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-si-shuet",
+    "title": "《師說》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "2027-dse-chinese-paper1-parta-tip",
+    "title": "2027 DSE 中文卷一甲部Tip題：邊幾篇最大機會出？",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chemistry-paper-1a-mc-2024-eng",
+    "title": "DSE Chemistry 2024 Paper 1A MC 答案 & 詳細解析",
+    "category": "DSE 化學",
+    "categoryColor": "#00838F"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-dang-lau",
+    "title": "《登樓》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "2026-korean-study-hk-guide",
+    "title": "2026韓國留學香港攻略：費用＋大學申請＋TOPIK報名",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-luk-kwok-lun",
+    "title": "《六國論》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-ngok-yeung-lau-gei",
+    "title": "《岳陽樓記》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-lim-po",
+    "title": "《廉頗藺相如列傳》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-chut-si-biu",
+    "title": "《出師表》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-sai-shan",
+    "title": "《始得西山宴遊記》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-huen-hok",
+    "title": "《勸學》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-siu-yiu-yau",
+    "title": "《逍遙遊》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "2026-dse-results-day-guide",
+    "title": "【2026放榜懶人包】DSE 放榜當日要做咩？時間表、文件、JUPAS改選全攻略",
+    "category": "",
+    "categoryColor": ""
+  },
+  {
+    "slug": "2026-dse-asso-full-guide",
+    "title": "【2026 副學士全攻略】DSE放榜後報Asso必知：入學要求、學費、升大學真相",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-lunyue",
+    "title": "【DSE 中文】《論仁、論孝、論君子》超完整溫習筆記（逐節語譯＋手法＋易錯位）",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "dse-chinese-12p-guide-yue-ngo-so-yuk-ya",
+    "title": "《魚我所欲也》全文語譯、字詞解釋及寫作手法｜DSE中文十二篇範文",
+    "category": "DSE 中文",
+    "categoryColor": "#5B6AD3"
+  },
+  {
+    "slug": "2026-hd-higher-diploma-full-guide",
+    "title": "【2026 高級文憑全攻略】Higher Diploma 報讀指南：入學要求、學費、升大學出路",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
+    "slug": "dse-uk-ucas-clearing-2026-deadlines",
+    "title": "DSE 放榜後仲可以申請英國大學？2026最後截止日期整理",
+    "category": "升學資訊",
+    "categoryColor": "#A00B3E"
+  },
+  {
     "slug": "dse-2025-paper-3-task-4",
     "title": "DSE 英文｜ 2025 Paper 3 Task 4 低命中率題目分析（完整影片解說）",
     "category": "DSE 英文",
@@ -27,7 +561,7 @@
     "slug": "dse-approved-calculators-taobao-calculators-eligible-hkeaa-approved-calculators-guide",
     "title": "DSE 計數機全攻略：淘寶平機真係用得？考評局準用名單一次睇晒！",
     "category": "DSE 數學",
-    "categoryColor": "#64B5F6"
+    "categoryColor": "#0074d1"
   },
   {
     "slug": "form-6-last-day-markers-for-uniform-signing-recommendations",
@@ -76,6 +610,12 @@
     "title": "迎戰 DSE 英文 Paper 2 ｜進階寫作技巧概論（上）-  妙用 Vocab 語境和 Subtlety",
     "category": "DSE 英文",
     "categoryColor": "#C17617"
+  },
+  {
+    "slug": "what-do-i-do-if-i-fail-dse-2026",
+    "title": "DSE 唔合格點算？12種中六畢業生升學及就業全面出路圖解 (2026)",
+    "category": "DSE 攻略",
+    "categoryColor": "#673AB7"
   },
   {
     "slug": "jupas-vs-dse-2025-2026",
