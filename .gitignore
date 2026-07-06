@@ -17,6 +17,7 @@ tsconfig.tsbuildinfo
 
 # Build outputs
 public/blog/
+public/og/
 .og-cache.json
 .og-errors.json
 !data/blog-index.json
