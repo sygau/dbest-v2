@@ -83,7 +83,7 @@ export const STRIPPED_PROGRAMME_FIELDS = [
 // wrangler config (e.g. when frontend isn't ready yet, or for emergency rollback).
 export const ANTI_ABUSE = {
   turnstile: {
-    enabled: true,
+    enabled: false,
     headerName: 'cf-turnstile-token',
   },
   rateLimit: {
