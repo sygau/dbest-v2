@@ -189,10 +189,11 @@ export default function SearchPanel({
     if (!v.ok) return;
     const profile = buildPayload(form);
     const hash = hashForm(form);
-    if (hash === lastSubmittedHash.current) {
+    /* temp disable
+      if (hash === lastSubmittedHash.current) {
       setErrors(['搜尋條件未變更，已使用上次結果']);
       return;
-    }
+    } */
     lastSubmittedHash.current = hash;
     onSearch(profile, hash);
   }, [form, isSubmitting, cooldownLeft, onSearch]);

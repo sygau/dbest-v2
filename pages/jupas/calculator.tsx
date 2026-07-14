@@ -272,6 +272,13 @@ export default function JupasCalculator() {
             <b>HKMU </b><a href="https://admissions.hkmu.edu.hk/ug/jupas/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>admissions.hkmu.edu.hk/ug/jupas/</a>
           </AlertDescription>
          </Alert>
+         <Alert variant="default" style={{ marginBottom: '14px' }}>
+          <AlertTitle> <LuBadgeInfo size={15} style={{ marginBottom: '2.5px', marginRight: '5px' }} />學友社 出路指南2026</AlertTitle>
+          <AlertDescription>
+            <a href="https://admissions.hku.hk/apply/jupas/score-calculator" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>第一冊 PDF</a>
+              <br />
+          </AlertDescription>
+         </Alert>
         <SearchPanel
           fieldOptions={fieldOptions}
           filters={filters}
