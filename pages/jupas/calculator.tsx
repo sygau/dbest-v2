@@ -275,7 +275,7 @@ export default function JupasCalculator() {
          <Alert variant="default" style={{ marginBottom: '14px' }}>
           <AlertTitle> <LuBadgeInfo size={15} style={{ marginBottom: '2.5px', marginRight: '5px' }} />學友社 出路指南2026</AlertTitle>
           <AlertDescription>
-            <a href="https://admissions.hku.hk/apply/jupas/score-calculator" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>第一冊 PDF</a>
+            <a href="https://drive.google.com/file/d/1xt0PS3y8_UaYSFHcte6EaRvlUbpr1T_n/view?usp=drive_link" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>第一冊 PDF</a>
               <br />
           </AlertDescription>
          </Alert>
