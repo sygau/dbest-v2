@@ -32,7 +32,7 @@ export default function ScrollProgress({ sidebarCollapsed = false }: ScrollProgr
   return (
     <div
       className={cn(
-        'fixed h-[1.8px] bg-[#549ee8] z-50 transition-all duration-200 ease-out top-[56px] xl:top-[70px]',
+        'fixed h-[1.8px] bg-[#549ee8] z-50 transition-all duration-200 ease-out top-[65px] xl:top-[70px]',
         'left-0',
         sidebarCollapsed ? 'xl:left-0' : 'xl:left-[260px]'
       )}
