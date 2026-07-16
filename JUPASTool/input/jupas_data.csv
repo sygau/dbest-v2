@@ -195,7 +195,7 @@ JS4874,CUHK,Social Work,社會工作,Faculty of Social Sciences,FALSE,FALSE,FALS
 JS4886,CUHK,Sociology,社會學,Faculty of Social Sciences,FALSE,FALSE,FALSE,,社會科學與公共事務,Social Sciences & Public Affairs,社會學,sociology,,,37,Selective,4,37,28,26.5,26.5,799,33.75,32.25,30.75,,,,
 JS4892,CUHK,Global Studies,全球研究,Faculty of Social Sciences,FALSE,FALSE,FALSE,,社會科學與公共事務,Social Sciences & Public Affairs,全球研究,Global Research,,,18,Not required,4,18,26.5,26.5,25.75,799,26,24.5,24,,,,
 JS4893,CUHK,Data Science and Policy Research,數據科學與政策研究,Faculty of Social Sciences,FALSE,FALSE,FALSE,,社會科學與公共事務,Social Sciences & Public Affairs,數據科學,Data Science,政治,politics,18,Not required,4,18,24.5,23.5,23,799,31.85,29.75,28.45,,,,
-JS4898,CUHK,Bachelor of Engineering (Honours) in Automation Engineering and Robotics (part of JS3005/JS3140/JS3150/JS3160/JS3170/JS3180/JS3236/JS3237/JS3741 combined intake),自動化工程及機器人學(榮譽)工學士 (JS3005/JS3140/JS3150/JS3160/JS3170/JS3180/JS3236/JS3237/JS3741 合併招生),,FALSE,TRUE,FALSE,,工程與科技,Engineering & Technology,製造工程,Manufacturing Engineering,,,15,Selective,4,15,,,,799,,,,,,,
+JS4898,CUHK,Diplomacy and International Studies,外交與國際事務 ,,FALSE,TRUE,FALSE,,PENDING,PENDING,,,,,15,Selective,4,15,,,,799,,,,,,,
 JS4903,CUHK,Bachelor of Laws,法律學士,Faculty of Law,FALSE,TRUE,TRUE,,法律,Law,法律,law,,,68,Selective,4,68,36,36,34.5,799,34.5,33,33,,,,
 JS5101,HKUST,International Research Enrichment,國際科研,School of Science,FALSE,FALSE,FALSE,,社會科學與公共事務,Social Sciences & Public Affairs,國際關係,International Relations,,,20,Selective,4,20,,38.25,37.88,799,,,,,,,
 JS5102,HKUST,Science (Group A),科學A組,School of Science,FALSE,TRUE,FALSE,,科學與數理,Sciences & Quantitative Studies,科學,science,,,402,Not required,4,402,,33.13,32.63,799,,,,,,,
