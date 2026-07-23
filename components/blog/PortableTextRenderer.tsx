@@ -151,6 +151,7 @@ const components: PortableTextComponents = {
           href={value.href}
           variant={resolvedVariant}
           size="md"
+          className="mb-3"
           {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         >
           {value.label}
@@ -183,7 +184,7 @@ const components: PortableTextComponents = {
       if (!value?.description && !value?.title) return null
       const meta = ALERT_META[value.variant] ?? ALERT_META.info
       return (
-        <Alert variant={meta.variant} className="blog-alert my-5">
+        <Alert variant={meta.variant} className="blog-alert my-3">
           {value.title && (
             <AlertTitle icon={meta.icon}>{value.title}</AlertTitle>
           )}

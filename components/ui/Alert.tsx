@@ -36,7 +36,7 @@ export function AlertTitle({
   return (
     <div
       className={cn(
-        'flex items-center gap-1.5 font-semibold text-sm leading-tight text-[var(--color-heading)]',
+        'flex items-center gap-1.5 font-semibold text-sm leading-tight text-[var(--color-heading)] tracking-wide',
         className
       )}
       {...props}
@@ -50,7 +50,7 @@ export function AlertTitle({
 export function AlertDescription({ className, ...props }: HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn('text-sm leading-relaxed mt-1 text-[var(--color-body)] opacity-90 mb-0', className)}
+      className={cn('text-sm leading-relaxed mt-1 text-[var(--color-body)] mb-0 tracking-wide', className)}
       style={{ marginBottom: '-2px', ...((props.style as any) || {}) }}
       {...props}
     />
