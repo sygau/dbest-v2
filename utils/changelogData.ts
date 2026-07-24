@@ -4,8 +4,8 @@ export interface ChangelogEntry {
 }
 
 export const changelogData: ChangelogEntry = {
-  date: "28/4/2026",
+  date: "23/7/2026",
   changes: [
-    "m"
+    "I got best five of 24🥀🥀",
   ]
 };
