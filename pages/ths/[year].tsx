@@ -114,7 +114,7 @@ export default function THSYearPage({ subject, year, papers, availableFiles }: Y
                     <p className="text-sm" style={{ color: 'var(--color-body)', opacity: 0.8 }}>{paper.description}</p>
                   </div>
                   <div className="px-4 py-3 border-t" style={{ borderColor: 'var(--color-border)' }}>
-                    <a href="https://www.threads.com/@gung1zi2/post/DR8wuUPEUiJ" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded">
+                    <a href="https://drive.google.com/drive/u/0/folders/1j-j-2gxdrFRBPz-Pnuv31FRi8n_Fx_MA" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded">
                       <BiDownload style={{ fontSize: 22 }} />
                       下載
                     </a>

@@ -135,7 +135,7 @@ export default function M2YearPage({ subject, year, papers, availableFiles }: Ye
                       </div>
                       <div className="px-4 py-3 border-t" style={{ borderColor: 'var(--color-border)' }}>
                         <a
-                          href="https://www.threads.com/@gung1zi2/post/DR8wuUPEUiJ"
+                          href="https://drive.google.com/drive/u/0/folders/1j-j-2gxdrFRBPz-Pnuv31FRi8n_Fx_MA"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 px-4 py-2.5 bg-cyan-500 hover:bg-cyan-600 text-white rounded"
